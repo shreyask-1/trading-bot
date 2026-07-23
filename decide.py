@@ -1,10 +1,8 @@
 """
-Sends news candidates + portfolio state (including technical indicators)
+Sends news candidates + watchlist technical candidates + portfolio state
 to Gemini and asks for structured trade decisions, each tagged with an
-explicit short-term or long-term intent.
-
-Uses the current `google-genai` SDK. The old `google-generativeai` package
-is deprecated and no longer receiving updates/fixes.
+explicit short-term or long-term intent. Candidates with no news are
+still evaluated purely on technical indicators.
 """
 
 import json
@@ -21,11 +19,16 @@ portfolio (no real money). Use these well-established technical concepts to info
 reasoning -- they are heuristics used broadly in technical analysis, not guarantees:
 - Trend: price above both SMA20 and SMA50 = uptrend; below both = downtrend
 - RSI above 70 = potentially overbought; below 30 = potentially oversold
+- MACD histogram turning positive = bullish momentum shift; turning negative = bearish
+- Bollinger %B near 1.0 = price near upper band (possible overextension); near 0.0 = near lower band
 - Volume trend above baseline = stronger conviction behind a price move
+
+Some candidates below have real news attached; others have NO recent news and are being \
+evaluated purely on technical setup from a fixed watchlist scan. Both are valid reasons to trade.
 
 You have two jobs each run:
 1. Review EXISTING holdings and decide hold, add, trim, or fully exit.
-2. Consider NEW candidate tickers from today's news for potential new positions.
+2. Consider NEW candidate tickers (news-driven or technical-only) for potential new positions.
 
 For every trade, classify it as "short" (days, momentum/news-driven) or "long" \
 (weeks+, trend-driven) intent -- pick whichever horizon actually fits your reasoning.
@@ -37,7 +40,7 @@ Current portfolio:
 Existing holdings:
 {holdings_block}
 
-New candidate tickers from today's news (not currently held):
+New candidate tickers (news and/or technical watchlist):
 {news_block}
 
 Rules:
@@ -46,8 +49,10 @@ Rules:
 - Tickers marked "(order pending)" or "(cooldown active)" must be skipped entirely for NEW buys.
   Cooldown tickers CAN still be sold if you have a genuine reason to exit.
 - Prefer diversification over concentration. Moderate conviction trades only.
-- It's fine to recommend zero trades if nothing meets the bar.
-- Stop-loss/take-profit are enforced separately in code -- focus your reasoning on trend/momentum/news, not raw P/L.
+- It's fine to recommend zero trades if nothing meets the bar -- a technical-only setup should
+  meet a HIGHER bar than a news-confirmed one, since there's no external catalyst.
+- Stop-loss/take-profit and position caps are enforced separately in code -- focus your
+  reasoning on trend/momentum/news, not raw P/L.
 
 Respond with ONLY valid JSON, no markdown fences:
 {{
@@ -70,17 +75,26 @@ def _format_indicators(snap):
     parts.append(f"trend: {snap['trend']}")
     if snap["volume_trend_pct"] is not None:
         parts.append(f"volume {snap['volume_trend_pct']:+.2f}% vs avg")
+    if snap.get("macd"):
+        m = snap["macd"]
+        parts.append(f"MACD hist {m['histogram']:+.3f}")
+    if snap.get("bollinger"):
+        b = snap["bollinger"]
+        parts.append(f"Bollinger %B {b['percent_b']:.2f}")
     return ", ".join(parts)
 
 
 def build_news_block(candidates, recently_traded):
     lines = []
     for ticker, articles in candidates.items():
-        headlines = "; ".join(a["headline"] for a in articles[:3])
         snap = get_indicator_snapshot(ticker)
         cooldown_flag = " (cooldown active)" if ticker in recently_traded else ""
-        lines.append(f"- {ticker}: {_format_indicators(snap)} | news: {headlines}{cooldown_flag}")
-    return "\n".join(lines) if lines else "(no notable new candidates today)"
+        if articles:
+            headlines = "; ".join(a["headline"] for a in articles[:3])
+            lines.append(f"- {ticker}: {_format_indicators(snap)} | news: {headlines}{cooldown_flag}")
+        else:
+            lines.append(f"- {ticker}: {_format_indicators(snap)} | no recent news, technical setup only{cooldown_flag}")
+    return "\n".join(lines) if lines else "(no notable candidates today)"
 
 
 def build_holdings_block(holdings, candidates, open_order_tickers, recently_traded):
@@ -90,7 +104,7 @@ def build_holdings_block(holdings, candidates, open_order_tickers, recently_trad
     for ticker, pos in holdings.items():
         snap = get_indicator_snapshot(ticker)
         related_news = ""
-        if ticker in candidates:
+        if ticker in candidates and candidates[ticker]:
             headlines = "; ".join(a["headline"] for a in candidates[ticker][:2])
             related_news = f" | news: {headlines}"
         flags = ""
