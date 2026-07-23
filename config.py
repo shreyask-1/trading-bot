@@ -1,29 +1,41 @@
 """
-API keys go here. This file is kept separate from the logic so you only
-ever have to touch ONE place when setting up or rotating keys.
-
-THIS VERSION reads keys from environment variables (used by GitHub Actions,
-which injects your repo's encrypted "Secrets" as environment variables at
-run time). This means your real key values are never typed into this file
-or stored in your GitHub repo -- only referenced by name.
-
-If you're running this locally instead (not via GitHub Actions), you can
-just hardcode your real keys directly below each os.environ.get(...) call's
-second argument, the same way the original local config.py worked.
+API keys and settings. Keys are read from environment variables only --
+GitHub Actions injects these from your repo's encrypted Secrets. There is
+no fallback value here on purpose: if a key is missing, the bot should
+fail loudly instead of silently running with something wrong.
 """
 
 import os
 
-FINNHUB_API_KEY = os.environ.get("FINNHUB_API_KEY", "d9gglj1r01qq65366af0d9gglj1r01qq65366afg")
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY", "AQ.Ab8RN6LuDmKcUOMpMzcymMUdmf7QxuiRXH35hezCxeQ-_0kMkw")
+FINNHUB_API_KEY = os.environ.get("FINNHUB_API_KEY")
+GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
+ALPACA_API_KEY = os.environ.get("ALPACA_API_KEY")
+ALPACA_SECRET_KEY = os.environ.get("ALPACA_SECRET_KEY")
 
-# Alpaca PAPER TRADING keys (from the "Paper Trading" view of your dashboard,
-# NOT the live trading keys). Get these at https://app.alpaca.markets
-ALPACA_API_KEY = os.environ.get("ALPACA_API_KEY", "PPKBWCDYWNRY5IPPRCURYBFLEM2")
-ALPACA_SECRET_KEY = os.environ.get("ALPACA_SECRET_KEY", "FZX3xsCD2pArVJKZwMMCLgKDEQ6VguBCbUbp1RXJTaxX")
+if not all([FINNHUB_API_KEY, GEMINI_API_KEY, ALPACA_API_KEY, ALPACA_SECRET_KEY]):
+    raise RuntimeError(
+        "Missing one or more required API keys. On GitHub Actions, set them "
+        "as repo Secrets (Settings > Secrets and variables > Actions)."
+    )
 
 # --- Bot behavior settings ---
-STARTING_CASH = 100_000.00       # fake starting balance
-MAX_POSITION_PCT = 0.10          # never put more than 10% of portfolio in one stock (diversification)
-MAX_NEWS_ITEMS = 15              # how many news headlines to send to Gemini per run
-GEMINI_MODEL = "gemini-flash-latest"  # Google's alias for their current fast model
+STARTING_CASH = 100_000.00
+MAX_POSITION_PCT = 0.08          # max 8% of portfolio in any single stock
+MAX_NEWS_ITEMS = 15
+GEMINI_MODEL = "gemini-flash-latest"
+
+# --- Risk management (enforced in code, independent of Gemini) ---
+STOP_LOSS_PCT = -6.0
+TAKE_PROFIT_PCT = 15.0
+
+# --- Price/indicator context ---
+PRICE_HISTORY_DAYS = 5     # momentum window
+RSI_PERIOD = 14
+SMA_SHORT = 20
+SMA_LONG = 50
+VOLUME_LOOKBACK = 20
+
+# --- Duplicate-trade prevention ---
+# Don't let a ticker be bought again within this many minutes of its last
+# order, even across separate runs -- this is the main double-trading fix.
+TRADE_COOLDOWN_MINUTES = 25
