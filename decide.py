@@ -1,85 +1,144 @@
 """
-Sends the day's news candidates + current portfolio state to Gemini and
-asks it to come back with a structured list of trade decisions.
+Sends news candidates + portfolio state (including technical indicators)
+to Gemini and asks for structured trade decisions, each tagged with an
+explicit short-term or long-term intent.
 """
 
 import json
 import re
 import google.generativeai as genai
-from config import GEMINI_API_KEY, GEMINI_MODEL, MAX_POSITION_PCT
+from config import GEMINI_API_KEY, GEMINI_MODEL, MAX_POSITION_PCT, PRICE_HISTORY_DAYS
+from trader import get_indicator_snapshot, get_tickers_with_open_orders, get_recently_traded_tickers
 
 genai.configure(api_key=GEMINI_API_KEY)
 
 
-PROMPT_TEMPLATE = """You are a cautious, balanced-risk trading analyst for a SIMULATED \
-paper-trading portfolio (no real money). Analyze the news below and decide on \
-zero or more trades.
+PROMPT_TEMPLATE = """You are a disciplined trading analyst for a SIMULATED paper-trading \
+portfolio (no real money). Use these well-established technical concepts to inform your \
+reasoning -- they are heuristics used broadly in technical analysis, not guarantees:
+- Trend: price above both SMA20 and SMA50 = uptrend; below both = downtrend
+- RSI above 70 = potentially overbought; below 30 = potentially oversold
+- Volume trend above baseline = stronger conviction behind a price move
+
+You have two jobs each run:
+1. Review EXISTING holdings and decide hold, add, trim, or fully exit.
+2. Consider NEW candidate tickers from today's news for potential new positions.
+
+For every trade, classify it as "short" (days, momentum/news-driven) or "long" \
+(weeks+, trend-driven) intent -- pick whichever horizon actually fits your reasoning.
 
 Current portfolio:
 - Cash available: ${cash:,.2f}
-- Current holdings: {holdings}
 - Total portfolio value: ${total_value:,.2f}
 
-Rules you must follow:
-- Never recommend spending more than {max_pct}% of total portfolio value on a single stock.
-- Only choose tickers from the candidates list below -- do not invent tickers.
-- Prefer diversification over concentration.
-- If the news doesn't give a clear, reasonably strong signal, it's fine to recommend nothing (empty list).
-- Be balanced: not overly cautious, not reckless. Moderate conviction trades only.
+Existing holdings:
+{holdings_block}
 
-News candidates (ticker: recent headlines):
+New candidate tickers from today's news (not currently held):
 {news_block}
 
-Respond with ONLY valid JSON (no markdown fences, no commentary) in this exact shape:
+Rules:
+- Never let any single position exceed {max_pct}% of total portfolio value.
+- Only use tickers listed above -- do not invent tickers.
+- Tickers marked "(order pending)" or "(cooldown active)" must be skipped entirely for NEW buys.
+  Cooldown tickers CAN still be sold if you have a genuine reason to exit.
+- Prefer diversification over concentration. Moderate conviction trades only.
+- It's fine to recommend zero trades if nothing meets the bar.
+- Stop-loss/take-profit are enforced separately in code -- focus your reasoning on trend/momentum/news, not raw P/L.
+
+Respond with ONLY valid JSON, no markdown fences:
 {{
   "trades": [
-    {{"ticker": "AAPL", "action": "buy", "dollar_amount": 5000, "reasoning": "short reason"}}
+    {{"ticker": "AAPL", "action": "buy", "dollar_amount": 5000, "time_horizon": "short", "reasoning": "short reason"}}
   ]
 }}
-If you recommend no trades, return {{"trades": []}}.
+If no trades: {{"trades": []}}
 """
 
 
-def build_news_block(candidates):
+def _format_indicators(snap):
+    if snap is None:
+        return "indicators unavailable"
+    parts = [f"price ${snap['price']:.2f}"]
+    if snap["momentum_pct"] is not None:
+        parts.append(f"{PRICE_HISTORY_DAYS}d momentum {snap['momentum_pct']:+.2f}%")
+    if snap["rsi"] is not None:
+        parts.append(f"RSI {snap['rsi']}")
+    parts.append(f"trend: {snap['trend']}")
+    if snap["volume_trend_pct"] is not None:
+        parts.append(f"volume {snap['volume_trend_pct']:+.2f}% vs avg")
+    return ", ".join(parts)
+
+
+def build_news_block(candidates, recently_traded):
     lines = []
     for ticker, articles in candidates.items():
         headlines = "; ".join(a["headline"] for a in articles[:3])
-        lines.append(f"- {ticker}: {headlines}")
-    return "\n".join(lines) if lines else "(no notable news today)"
+        snap = get_indicator_snapshot(ticker)
+        cooldown_flag = " (cooldown active)" if ticker in recently_traded else ""
+        lines.append(f"- {ticker}: {_format_indicators(snap)} | news: {headlines}{cooldown_flag}")
+    return "\n".join(lines) if lines else "(no notable new candidates today)"
+
+
+def build_holdings_block(holdings, candidates, open_order_tickers, recently_traded):
+    if not holdings:
+        return "(no current holdings)"
+    lines = []
+    for ticker, pos in holdings.items():
+        snap = get_indicator_snapshot(ticker)
+        related_news = ""
+        if ticker in candidates:
+            headlines = "; ".join(a["headline"] for a in candidates[ticker][:2])
+            related_news = f" | news: {headlines}"
+        flags = ""
+        if ticker in open_order_tickers:
+            flags += " (order pending)"
+        elif ticker in recently_traded:
+            flags += " (cooldown active)"
+        lines.append(
+            f"- {ticker}: {pos['qty']} shares, P/L {pos['unrealized_plpc']:+.2f}%, "
+            f"{_format_indicators(snap)}{related_news}{flags}"
+        )
+    return "\n".join(lines)
 
 
 def get_trade_decisions(candidates, account_snapshot):
-    """
-    account_snapshot: {"cash": ..., "total_value": ..., "holdings": {ticker: qty}}
-    -- this comes from trader.get_account_snapshot(), i.e. your real Alpaca
-    paper account, not a local simulated file.
-    """
-    holdings_str = ", ".join(
-        f"{t}: {q} shares" for t, q in account_snapshot.get("holdings", {}).items()
-    ) or "none"
-
+    holdings = account_snapshot.get("holdings", {})
     cash = account_snapshot.get("cash", 0)
     total_value = account_snapshot.get("total_value", cash)
+    open_order_tickers = get_tickers_with_open_orders()
+    recently_traded = get_recently_traded_tickers()
+
+    new_candidates = {t: a for t, a in candidates.items() if t not in holdings}
 
     prompt = PROMPT_TEMPLATE.format(
         cash=cash,
-        holdings=holdings_str,
         total_value=total_value,
         max_pct=int(MAX_POSITION_PCT * 100),
-        news_block=build_news_block(candidates),
+        holdings_block=build_holdings_block(holdings, candidates, open_order_tickers, recently_traded),
+        news_block=build_news_block(new_candidates, recently_traded),
     )
 
     model = genai.GenerativeModel(GEMINI_MODEL)
     response = model.generate_content(prompt)
     raw_text = response.text.strip()
-
-    # Gemini sometimes wraps JSON in ```json fences despite instructions -- strip them
     raw_text = re.sub(r"^```json\s*|\s*```$", "", raw_text.strip())
 
     try:
         parsed = json.loads(raw_text)
-        return parsed.get("trades", [])
+        trades = parsed.get("trades", [])
     except json.JSONDecodeError:
         print("Warning: could not parse Gemini response as JSON:")
         print(raw_text)
         return []
+
+    final = []
+    for t in trades:
+        ticker = t.get("ticker")
+        action = t.get("action", "").lower()
+        if ticker in open_order_tickers:
+            continue
+        if action == "buy" and ticker in recently_traded:
+            continue
+        final.append(t)
+    return final
