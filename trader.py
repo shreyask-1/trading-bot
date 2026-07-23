@@ -10,6 +10,7 @@ from alpaca.trading.enums import OrderSide, TimeInForce, QueryOrderStatus
 from alpaca.data.historical import StockHistoricalDataClient
 from alpaca.data.requests import StockLatestTradeRequest, StockBarsRequest
 from alpaca.data.timeframe import TimeFrame
+from alpaca.data.enums import DataFeed
 
 from config import (
     ALPACA_API_KEY,
@@ -32,7 +33,7 @@ data_client = StockHistoricalDataClient(ALPACA_API_KEY, ALPACA_SECRET_KEY)
 
 def get_price(ticker):
     try:
-        request = StockLatestTradeRequest(symbol_or_symbols=ticker)
+        request = StockLatestTradeRequest(symbol_or_symbols=ticker, feed=DataFeed.IEX)
         trade = data_client.get_stock_latest_trade(request)
         return float(trade[ticker].price)
     except Exception as e:
@@ -45,6 +46,7 @@ def get_indicator_snapshot(ticker):
     Fetches ~120 calendar days of daily bars (enough for a 50-day SMA even
     accounting for weekends/holidays) and computes momentum, RSI, SMA20,
     SMA50, volume trend, and a basic trend label -- all from one API call.
+    Uses the IEX feed since Alpaca's free plan doesn't include SIP data.
     Returns None if there isn't enough data.
     """
     try:
@@ -55,6 +57,7 @@ def get_indicator_snapshot(ticker):
             timeframe=TimeFrame.Day,
             start=start,
             end=end,
+            feed=DataFeed.IEX,
         )
         bars = data_client.get_stock_bars(request)
         symbol_bars = bars[ticker]
