@@ -2,10 +2,12 @@ name: Run Trading Bot
 
 on:
   schedule:
-    # Runs at the top of every hour, every day.
-    # (Cron time is always UTC, regardless of your local time zone.)
-    - cron: "0 * * * *"
-  workflow_dispatch: {}  # lets you also trigger it manually from the GitHub website
+    - cron: "*/30 * * * *"
+  workflow_dispatch: {}
+
+concurrency:
+  group: trading-bot-run
+  cancel-in-progress: false
 
 jobs:
   run-bot:
