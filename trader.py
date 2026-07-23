@@ -23,9 +23,21 @@ from config import (
     SMA_SHORT,
     SMA_LONG,
     VOLUME_LOOKBACK,
+    MACD_FAST,
+    MACD_SLOW,
+    MACD_SIGNAL,
+    BOLLINGER_PERIOD,
+    BOLLINGER_STD,
     TRADE_COOLDOWN_MINUTES,
 )
-from indicators import compute_sma, compute_rsi, compute_volume_trend, classify_trend
+from indicators import (
+    compute_sma,
+    compute_rsi,
+    compute_volume_trend,
+    classify_trend,
+    compute_macd,
+    compute_bollinger_bands,
+)
 
 trading_client = TradingClient(ALPACA_API_KEY, ALPACA_SECRET_KEY, paper=True)
 data_client = StockHistoricalDataClient(ALPACA_API_KEY, ALPACA_SECRET_KEY)
@@ -44,9 +56,9 @@ def get_price(ticker):
 def get_indicator_snapshot(ticker):
     """
     Fetches ~120 calendar days of daily bars and computes momentum, RSI,
-    SMA20, SMA50, volume trend, and a basic trend label. Uses the IEX feed
-    since Alpaca's free plan doesn't include SIP data. Returns None if
-    there isn't enough data.
+    SMA20, SMA50, MACD, Bollinger Bands, volume trend, and a trend label.
+    Uses the IEX feed since Alpaca's free plan doesn't include SIP data.
+    Returns None if there isn't enough data.
     """
     try:
         end = datetime.now()
@@ -77,6 +89,8 @@ def get_indicator_snapshot(ticker):
         rsi = compute_rsi(closes, RSI_PERIOD)
         volume_trend = compute_volume_trend(volumes, VOLUME_LOOKBACK)
         trend = classify_trend(current_price, sma20, sma50)
+        macd = compute_macd(closes, MACD_FAST, MACD_SLOW, MACD_SIGNAL)
+        bollinger = compute_bollinger_bands(closes, BOLLINGER_PERIOD, BOLLINGER_STD)
 
         return {
             "price": current_price,
@@ -86,6 +100,8 @@ def get_indicator_snapshot(ticker):
             "rsi": rsi,
             "volume_trend_pct": volume_trend,
             "trend": trend,
+            "macd": macd,
+            "bollinger": bollinger,
         }
     except Exception as e:
         print(f"Could not compute indicators for {ticker}: {e}")
@@ -114,7 +130,6 @@ def get_account_snapshot():
 
 
 def get_tickers_with_open_orders():
-    """Tickers with a currently pending (unfilled) order."""
     try:
         request = GetOrdersRequest(status=QueryOrderStatus.OPEN)
         open_orders = trading_client.get_orders(request)
@@ -125,12 +140,6 @@ def get_tickers_with_open_orders():
 
 
 def get_recently_traded_tickers(minutes=None):
-    """
-    Tickers with ANY order (filled or not) submitted within the last
-    `minutes` -- the core double-trading fix. Checks Alpaca's own order
-    history directly, so it works correctly even across separate GitHub
-    Actions runs (which don't share local memory between runs).
-    """
     if minutes is None:
         minutes = TRADE_COOLDOWN_MINUTES
     try:
@@ -144,11 +153,6 @@ def get_recently_traded_tickers(minutes=None):
 
 
 def check_stop_loss_take_profit(account_snapshot):
-    """
-    Hard-coded risk management, independent of Gemini. Sells are always
-    allowed regardless of cooldown -- protecting capital takes priority
-    over the duplicate-trade guard.
-    """
     results = []
     open_order_tickers = get_tickers_with_open_orders()
 
@@ -173,14 +177,6 @@ def check_stop_loss_take_profit(account_snapshot):
 
 
 def check_position_caps(account_snapshot):
-    """
-    Hard-coded enforcement of MAX_POSITION_PCT, independent of Gemini.
-    Previously this only existed as a prompt instruction Gemini could
-    choose to follow or ignore -- this makes it automatic, the same way
-    stop-loss/take-profit already are. Trims any position whose current
-    value exceeds the cap down to exactly the cap, regardless of whether
-    Gemini notices or mentions it this run.
-    """
     results = []
     open_order_tickers = get_tickers_with_open_orders()
     total_value = account_snapshot["total_value"]
