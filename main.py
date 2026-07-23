@@ -8,9 +8,10 @@ Flow (in order):
   3. Enforce hard position-size caps (independent of Gemini)
   4. Refresh account state after any forced sells
   5. Fetch news, find which S&P 500 companies are mentioned
-  6. Ask Gemini to review existing holdings AND consider new candidates
-  7. Submit real (paper) orders to Alpaca, skipping cooldown/pending tickers
-  8. Record a performance snapshot and log everything to logs/
+  6. Add fixed watchlist tickers as technical-only candidates (no news needed)
+  7. Ask Gemini to review existing holdings AND consider new candidates
+  8. Submit real (paper) orders to Alpaca, skipping cooldown/pending tickers
+  9. Record a performance snapshot and log everything to logs/
 """
 
 import json
@@ -26,6 +27,7 @@ from trader import (
 )
 from news import get_news_candidates
 from decide import get_trade_decisions
+from config import WATCHLIST
 
 LOG_DIR = os.path.join(os.path.dirname(__file__), "logs")
 
@@ -56,6 +58,15 @@ def run():
 
     candidates = get_news_candidates()
     log_lines.append(f"Found {len(candidates)} companies mentioned in current news.")
+
+    # Add watchlist tickers as technical-only candidates if not already
+    # surfaced by news and not already held.
+    added_technical = 0
+    for ticker in WATCHLIST:
+        if ticker not in candidates and ticker not in account["holdings"]:
+            candidates[ticker] = []
+            added_technical += 1
+    log_lines.append(f"Added {added_technical} watchlist ticker(s) for technical-only evaluation.")
 
     trades = get_trade_decisions(candidates, account)
     log_lines.append(f"Gemini recommended {len(trades)} trade(s).")
