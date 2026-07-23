@@ -1,8 +1,7 @@
 """
 Plain-Python technical indicator calculations (no external TA library
-needed). These are standard, widely-used formulas from technical analysis
--- well-established as concepts, but heuristics, not guarantees of
-future performance.
+needed). Standard, widely-used formulas from technical analysis --
+established concepts, but heuristics, not guarantees of future performance.
 """
 
 
@@ -12,10 +11,19 @@ def compute_sma(closes, period):
     return round(sum(closes[-period:]) / period, 2)
 
 
+def compute_ema_series(closes, period):
+    """Returns the full EMA series (list), not just the final value."""
+    if len(closes) < period:
+        return []
+    multiplier = 2 / (period + 1)
+    ema_values = [sum(closes[:period]) / period]
+    for price in closes[period:]:
+        ema_values.append((price - ema_values[-1]) * multiplier + ema_values[-1])
+    return ema_values
+
+
 def compute_rsi(closes, period=14):
-    """
-    Wilder's RSI, 0-100. Traditionally >70 = overbought, <30 = oversold.
-    """
+    """Wilder's RSI, 0-100. Traditionally >70 = overbought, <30 = oversold."""
     if len(closes) < period + 1:
         return None
 
@@ -38,8 +46,64 @@ def compute_rsi(closes, period=14):
     return round(100 - (100 / (1 + rs)), 2)
 
 
+def compute_macd(closes, fast=12, slow=26, signal=9):
+    """
+    Returns dict with macd line, signal line, and histogram, or None if
+    not enough data. Histogram crossing from negative to positive is a
+    classic bullish signal; positive to negative is bearish.
+    """
+    if len(closes) < slow + signal:
+        return None
+
+    ema_fast_series = compute_ema_series(closes, fast)
+    ema_slow_series = compute_ema_series(closes, slow)
+
+    offset = len(ema_fast_series) - len(ema_slow_series)
+    macd_line_series = [
+        ema_fast_series[i + offset] - ema_slow_series[i]
+        for i in range(len(ema_slow_series))
+    ]
+
+    if len(macd_line_series) < signal:
+        return None
+
+    signal_series = compute_ema_series(macd_line_series, signal)
+    if not signal_series:
+        return None
+
+    macd_value = round(macd_line_series[-1], 3)
+    signal_value = round(signal_series[-1], 3)
+    histogram = round(macd_value - signal_value, 3)
+
+    return {"macd": macd_value, "signal": signal_value, "histogram": histogram}
+
+
+def compute_bollinger_bands(closes, period=20, num_std=2):
+    """
+    Returns upper/lower bands and %B (where price sits within the bands:
+    0 = at lower band, 1 = at upper band, >1 or <0 = outside the bands).
+    """
+    if len(closes) < period:
+        return None
+
+    window = closes[-period:]
+    sma = sum(window) / period
+    variance = sum((c - sma) ** 2 for c in window) / period
+    std = variance ** 0.5
+
+    upper = sma + num_std * std
+    lower = sma - num_std * std
+    current = closes[-1]
+
+    if upper == lower:
+        percent_b = 0.5
+    else:
+        percent_b = (current - lower) / (upper - lower)
+
+    return {"upper": round(upper, 2), "lower": round(lower, 2), "percent_b": round(percent_b, 2)}
+
+
 def compute_volume_trend(volumes, period=20):
-    """% difference between latest volume and the prior `period`-day average."""
     if len(volumes) < period + 1:
         return None
     recent = volumes[-1]
@@ -50,7 +114,6 @@ def compute_volume_trend(volumes, period=20):
 
 
 def classify_trend(price, sma20, sma50):
-    """Basic moving-average trend classification."""
     if sma20 is None or sma50 is None:
         return "unknown"
     if price > sma20 > sma50:
