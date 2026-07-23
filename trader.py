@@ -43,11 +43,10 @@ def get_price(ticker):
 
 def get_indicator_snapshot(ticker):
     """
-    Fetches ~120 calendar days of daily bars (enough for a 50-day SMA even
-    accounting for weekends/holidays) and computes momentum, RSI, SMA20,
-    SMA50, volume trend, and a basic trend label -- all from one API call.
-    Uses the IEX feed since Alpaca's free plan doesn't include SIP data.
-    Returns None if there isn't enough data.
+    Fetches ~120 calendar days of daily bars and computes momentum, RSI,
+    SMA20, SMA50, volume trend, and a basic trend label. Uses the IEX feed
+    since Alpaca's free plan doesn't include SIP data. Returns None if
+    there isn't enough data.
     """
     try:
         end = datetime.now()
@@ -128,9 +127,9 @@ def get_tickers_with_open_orders():
 def get_recently_traded_tickers(minutes=None):
     """
     Tickers with ANY order (filled or not) submitted within the last
-    `minutes` -- this is the core double-trading fix. It checks Alpaca's
-    own order history directly, so it works correctly even across separate
-    GitHub Actions runs (which don't share local memory between runs).
+    `minutes` -- the core double-trading fix. Checks Alpaca's own order
+    history directly, so it works correctly even across separate GitHub
+    Actions runs (which don't share local memory between runs).
     """
     if minutes is None:
         minutes = TRADE_COOLDOWN_MINUTES
@@ -168,6 +167,43 @@ def check_stop_loss_take_profit(account_snapshot):
             trade = {"ticker": ticker, "action": "sell", "dollar_amount": 0, "reasoning": reason}
             result = execute_trade(trade, account_snapshot)
             result["trigger"] = "risk_management"
+            results.append(result)
+
+    return results
+
+
+def check_position_caps(account_snapshot):
+    """
+    Hard-coded enforcement of MAX_POSITION_PCT, independent of Gemini.
+    Previously this only existed as a prompt instruction Gemini could
+    choose to follow or ignore -- this makes it automatic, the same way
+    stop-loss/take-profit already are. Trims any position whose current
+    value exceeds the cap down to exactly the cap, regardless of whether
+    Gemini notices or mentions it this run.
+    """
+    results = []
+    open_order_tickers = get_tickers_with_open_orders()
+    total_value = account_snapshot["total_value"]
+    max_allowed_value = total_value * MAX_POSITION_PCT
+
+    for ticker, pos in account_snapshot["holdings"].items():
+        if ticker in open_order_tickers:
+            continue
+
+        current_value = pos["qty"] * pos["current_price"]
+        if current_value > max_allowed_value:
+            excess_value = current_value - max_allowed_value
+            trade = {
+                "ticker": ticker,
+                "action": "sell",
+                "dollar_amount": excess_value,
+                "reasoning": (
+                    f"auto-trim: position (${current_value:,.2f}) exceeded "
+                    f"{MAX_POSITION_PCT * 100:.0f}% cap (${max_allowed_value:,.2f})"
+                ),
+            }
+            result = execute_trade(trade, account_snapshot)
+            result["trigger"] = "position_cap"
             results.append(result)
 
     return results
