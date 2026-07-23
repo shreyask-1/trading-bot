@@ -2,15 +2,18 @@
 Sends news candidates + portfolio state (including technical indicators)
 to Gemini and asks for structured trade decisions, each tagged with an
 explicit short-term or long-term intent.
+
+Uses the current `google-genai` SDK. The old `google-generativeai` package
+is deprecated and no longer receiving updates/fixes.
 """
 
 import json
 import re
-import google.generativeai as genai
+from google import genai
 from config import GEMINI_API_KEY, GEMINI_MODEL, MAX_POSITION_PCT, PRICE_HISTORY_DAYS
 from trader import get_indicator_snapshot, get_tickers_with_open_orders, get_recently_traded_tickers
 
-genai.configure(api_key=GEMINI_API_KEY)
+client = genai.Client(api_key=GEMINI_API_KEY)
 
 
 PROMPT_TEMPLATE = """You are a disciplined trading analyst for a SIMULATED paper-trading \
@@ -119,8 +122,10 @@ def get_trade_decisions(candidates, account_snapshot):
         news_block=build_news_block(new_candidates, recently_traded),
     )
 
-    model = genai.GenerativeModel(GEMINI_MODEL)
-    response = model.generate_content(prompt)
+    response = client.models.generate_content(
+        model=GEMINI_MODEL,
+        contents=prompt,
+    )
     raw_text = response.text.strip()
     raw_text = re.sub(r"^```json\s*|\s*```$", "", raw_text.strip())
 
