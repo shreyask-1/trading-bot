@@ -1,7 +1,3 @@
-"""
-API keys and settings. Keys are read from environment variables only.
-"""
-
 import os
 
 FINNHUB_API_KEY = os.environ.get("FINNHUB_API_KEY")
@@ -31,8 +27,19 @@ RSI_PERIOD = 14
 SMA_SHORT = 20
 SMA_LONG = 50
 VOLUME_LOOKBACK = 20
+MACD_FAST = 12
+MACD_SLOW = 26
+MACD_SIGNAL = 9
+BOLLINGER_PERIOD = 20
+BOLLINGER_STD = 2
 
 # --- Duplicate-trade prevention ---
-# Keep this well above the 5-min run interval so a ticker can't get bought
-# again just because the same headline is still showing up in the next run.
 TRADE_COOLDOWN_MINUTES = 30
+
+# --- Fixed watchlist scanned for pure technical setups even with no news ---
+# Kept to large, liquid, well-known names so indicator data is reliable.
+WATCHLIST = [
+    "AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "META", "TSLA",
+    "JPM", "V", "MA", "WMT", "JNJ", "PG", "UNH", "HD",
+    "DIS", "BAC", "XOM", "KO", "NFLX",
+]
