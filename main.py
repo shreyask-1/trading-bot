@@ -1,20 +1,29 @@
 """
-Ties everything together. This is the file cron will run every hour
-during market hours.
+Ties everything together. This is the file GitHub Actions runs on a
+schedule.
 
-Flow:
+Flow (in order):
   1. Pull current account state from your real Alpaca PAPER account
-  2. Fetch news, find which S&P 500 companies are mentioned
-  3. Ask Gemini for trade decisions
-  4. Submit real (paper) orders to Alpaca
-  5. Log everything to logs/
+  2. Enforce hard stop-loss / take-profit rules (independent of Gemini)
+  3. Enforce hard position-size caps (independent of Gemini)
+  4. Refresh account state after any forced sells
+  5. Fetch news, find which S&P 500 companies are mentioned
+  6. Ask Gemini to review existing holdings AND consider new candidates
+  7. Submit real (paper) orders to Alpaca, skipping cooldown/pending tickers
+  8. Record a performance snapshot and log everything to logs/
 """
 
 import json
 import os
 from datetime import datetime
 
-from trader import get_account_snapshot, execute_trade
+from trader import (
+    get_account_snapshot,
+    execute_trade,
+    check_stop_loss_take_profit,
+    check_position_caps,
+    record_performance_snapshot,
+)
 from news import get_news_candidates
 from decide import get_trade_decisions
 
@@ -28,23 +37,40 @@ def run():
 
     account = get_account_snapshot()
     log_lines.append(f"Alpaca paper account value: ${account['total_value']:,.2f}")
-    log_lines.append(f"Cash: ${account['cash']:,.2f} | Holdings: {account['holdings'] or 'none'}")
+    holdings_summary = {t: f"{p['qty']} shares ({p['unrealized_plpc']:+.2f}%)" for t, p in account["holdings"].items()}
+    log_lines.append(f"Cash: ${account['cash']:,.2f} | Holdings: {holdings_summary or 'none'}")
 
-    # Step 1: news
+    # Step 1: hard risk management, independent of Gemini's judgement this run
+    risk_sells = check_stop_loss_take_profit(account)
+    if risk_sells:
+        log_lines.append(f"Risk management triggered {len(risk_sells)} forced sell(s):")
+        for result in risk_sells:
+            log_lines.append(f"  -> {json.dumps(result)}")
+        account = get_account_snapshot()
+
+    # Step 2: hard position-cap enforcement, independent of Gemini's judgement
+    cap_trims = check_position_caps(account)
+    if cap_trims:
+        log_lines.append(f"Position-cap enforcement triggered {len(cap_trims)} trim(s):")
+        for result in cap_trims:
+            log_lines.append(f"  -> {json.dumps(result)}")
+        account = get_account_snapshot()
+
+    # Step 3: news-driven + full-portfolio review
     candidates = get_news_candidates()
     log_lines.append(f"Found {len(candidates)} companies mentioned in current news.")
 
-    if not candidates:
-        log_lines.append("No relevant news found this run. No trades considered.")
-    else:
-        # Step 2: ask Gemini for decisions
-        trades = get_trade_decisions(candidates, account)
-        log_lines.append(f"Gemini recommended {len(trades)} trade(s).")
+    trades = get_trade_decisions(candidates, account)
+    log_lines.append(f"Gemini recommended {len(trades)} trade(s).")
 
-        # Step 3: submit real (paper) orders
-        for trade in trades:
-            result = execute_trade(trade, account)
-            log_lines.append(f"  -> {json.dumps(result)}")
+    for trade in trades:
+        result = execute_trade(trade, account)
+        log_lines.append(f"  -> {json.dumps(result)}")
+
+    # Step 4: track performance over time
+    final_account = get_account_snapshot()
+    record_performance_snapshot(final_account, LOG_DIR)
+    log_lines.append(f"Ending portfolio value: ${final_account['total_value']:,.2f}")
 
     log_lines.append("")
 
