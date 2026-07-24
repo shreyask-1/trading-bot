@@ -1,2 +1,3 @@
 logs/*.log merge=union
 logs/performance.csv merge=union
+logs/last_gemini_call.txt merge=union
