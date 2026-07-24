@@ -1,13 +1,17 @@
 """
-Sends news candidates + watchlist technical candidates + portfolio state
+Sends news candidates + portfolio state (including technical indicators)
 to Gemini and asks for structured trade decisions, each tagged with an
-explicit short-term or long-term intent. Candidates with no news are
-still evaluated purely on technical indicators.
+explicit short-term or long-term intent.
+
+Now also adds SECTOR information (via yfinance) to help diversify across
+sectors rather than concentrating in the same industry.
 """
 
 import json
 import re
+import yfinance as yf
 from google import genai
+
 from config import GEMINI_API_KEY, GEMINI_MODEL, MAX_POSITION_PCT, PRICE_HISTORY_DAYS
 from trader import get_indicator_snapshot, get_tickers_with_open_orders, get_recently_traded_tickers
 
@@ -23,12 +27,13 @@ reasoning -- they are heuristics used broadly in technical analysis, not guarant
 - Bollinger %B near 1.0 = price near upper band (possible overextension); near 0.0 = near lower band
 - Volume trend above baseline = stronger conviction behind a price move
 
-Some candidates below have real news attached; others have NO recent news and are being \
-evaluated purely on technical setup from a fixed watchlist scan. Both are valid reasons to trade.
-
 You have two jobs each run:
 1. Review EXISTING holdings and decide hold, add, trim, or fully exit.
-2. Consider NEW candidate tickers (news-driven or technical-only) for potential new positions.
+2. Consider NEW candidate tickers (news-driven and/or technical-watchlist) for potential new positions.
+
+To avoid over-concentration, prefer diversification across SECTORS:
+- Prefer not to build multiple large positions in the same sector at the same time,
+  unless conviction is strong and technicals support it.
 
 For every trade, classify it as "short" (days, momentum/news-driven) or "long" \
 (weeks+, trend-driven) intent -- pick whichever horizon actually fits your reasoning.
@@ -49,10 +54,9 @@ Rules:
 - Tickers marked "(order pending)" or "(cooldown active)" must be skipped entirely for NEW buys.
   Cooldown tickers CAN still be sold if you have a genuine reason to exit.
 - Prefer diversification over concentration. Moderate conviction trades only.
-- It's fine to recommend zero trades if nothing meets the bar -- a technical-only setup should
-  meet a HIGHER bar than a news-confirmed one, since there's no external catalyst.
-- Stop-loss/take-profit and position caps are enforced separately in code -- focus your
-  reasoning on trend/momentum/news, not raw P/L.
+- It's fine to recommend zero trades if nothing meets the bar.
+- Stop-loss/take-profit and position caps are enforced separately in code.
+  Focus your reasoning on trend/momentum/news, not raw P/L.
 
 Respond with ONLY valid JSON, no markdown fences:
 {{
@@ -62,6 +66,19 @@ Respond with ONLY valid JSON, no markdown fences:
 }}
 If no trades: {{"trades": []}}
 """
+
+
+def _safe_sector(ticker: str) -> str:
+    """
+    Fetch sector via yfinance. If anything fails (rate limit / missing data),
+    return 'unknown' so the bot never crashes.
+    """
+    try:
+        info = yf.Ticker(ticker).info or {}
+        sector = info.get("sector")
+        return sector if sector else "unknown"
+    except Exception:
+        return "unknown"
 
 
 def _format_indicators(snap):
@@ -75,47 +92,63 @@ def _format_indicators(snap):
     parts.append(f"trend: {snap['trend']}")
     if snap["volume_trend_pct"] is not None:
         parts.append(f"volume {snap['volume_trend_pct']:+.2f}% vs avg")
+
     if snap.get("macd"):
         m = snap["macd"]
         parts.append(f"MACD hist {m['histogram']:+.3f}")
+
     if snap.get("bollinger"):
         b = snap["bollinger"]
         parts.append(f"Bollinger %B {b['percent_b']:.2f}")
+
     return ", ".join(parts)
 
 
-def build_news_block(candidates, recently_traded):
+def build_news_block(candidates, recently_traded, sector_cache):
     lines = []
     for ticker, articles in candidates.items():
         snap = get_indicator_snapshot(ticker)
+        sector = sector_cache.get(ticker, "unknown")
         cooldown_flag = " (cooldown active)" if ticker in recently_traded else ""
+
         if articles:
             headlines = "; ".join(a["headline"] for a in articles[:3])
-            lines.append(f"- {ticker}: {_format_indicators(snap)} | news: {headlines}{cooldown_flag}")
+            lines.append(
+                f"- {ticker} (Sector: {sector}): {_format_indicators(snap)} | news: {headlines}{cooldown_flag}"
+            )
         else:
-            lines.append(f"- {ticker}: {_format_indicators(snap)} | no recent news, technical setup only{cooldown_flag}")
+            lines.append(
+                f"- {ticker} (Sector: {sector}): {_format_indicators(snap)} | no recent news, technical setup only{cooldown_flag}"
+            )
+
     return "\n".join(lines) if lines else "(no notable candidates today)"
 
 
-def build_holdings_block(holdings, candidates, open_order_tickers, recently_traded):
+def build_holdings_block(holdings, candidates, open_order_tickers, recently_traded, sector_cache):
     if not holdings:
         return "(no current holdings)"
+
     lines = []
     for ticker, pos in holdings.items():
         snap = get_indicator_snapshot(ticker)
+        sector = sector_cache.get(ticker, "unknown")
+
         related_news = ""
         if ticker in candidates and candidates[ticker]:
             headlines = "; ".join(a["headline"] for a in candidates[ticker][:2])
             related_news = f" | news: {headlines}"
+
         flags = ""
         if ticker in open_order_tickers:
             flags += " (order pending)"
         elif ticker in recently_traded:
             flags += " (cooldown active)"
+
         lines.append(
-            f"- {ticker}: {pos['qty']} shares, P/L {pos['unrealized_plpc']:+.2f}%, "
+            f"- {ticker} (Sector: {sector}): {pos['qty']} shares, P/L {pos['unrealized_plpc']:+.2f}%, "
             f"{_format_indicators(snap)}{related_news}{flags}"
         )
+
     return "\n".join(lines)
 
 
@@ -123,23 +156,31 @@ def get_trade_decisions(candidates, account_snapshot):
     holdings = account_snapshot.get("holdings", {})
     cash = account_snapshot.get("cash", 0)
     total_value = account_snapshot.get("total_value", cash)
+
     open_order_tickers = get_tickers_with_open_orders()
     recently_traded = get_recently_traded_tickers()
 
-    new_candidates = {t: a for t, a in candidates.items() if t not in holdings}
+    # Sector cache for this run (avoid repeated yfinance calls for the same ticker)
+    all_tickers = set(holdings.keys()) | set(candidates.keys())
+    sector_cache = {}
+    for t in all_tickers:
+        sector_cache[t] = _safe_sector(t)
 
     prompt = PROMPT_TEMPLATE.format(
         cash=cash,
         total_value=total_value,
         max_pct=int(MAX_POSITION_PCT * 100),
-        holdings_block=build_holdings_block(holdings, candidates, open_order_tickers, recently_traded),
-        news_block=build_news_block(new_candidates, recently_traded),
+        holdings_block=build_holdings_block(
+            holdings, candidates, open_order_tickers, recently_traded, sector_cache
+        ),
+        news_block=build_news_block(candidates, recently_traded, sector_cache),
     )
 
     response = client.models.generate_content(
         model=GEMINI_MODEL,
         contents=prompt,
     )
+
     raw_text = response.text.strip()
     raw_text = re.sub(r"^```json\s*|\s*```$", "", raw_text.strip())
 
@@ -155,9 +196,12 @@ def get_trade_decisions(candidates, account_snapshot):
     for t in trades:
         ticker = t.get("ticker")
         action = t.get("action", "").lower()
+
         if ticker in open_order_tickers:
             continue
         if action == "buy" and ticker in recently_traded:
             continue
+
         final.append(t)
+
     return final
