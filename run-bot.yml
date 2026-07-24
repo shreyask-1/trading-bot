@@ -1,0 +1,34 @@
+name: Run Trading Bot
+
+on:
+  schedule:
+    # Fallback only -- GitHub's own cron isn't reliable at high frequency,
+    # so the real 5-minute triggering comes from an external scheduler
+    # (cron-job.org) calling workflow_dispatch via the GitHub API instead.
+    # This hourly schedule just acts as a safety net in case that external
+    # trigger ever goes down.
+    - cron: "0 * * * *"
+  workflow_dispatch: {}  # triggered externally every 5 min, and can also be run manually here
+
+jobs:
+  run-bot:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run the trading bot
+        env:
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+        run: python main.py
