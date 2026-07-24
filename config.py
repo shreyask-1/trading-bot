@@ -43,3 +43,9 @@ WATCHLIST = [
     "JPM", "V", "MA", "WMT", "JNJ", "PG", "UNH", "HD",
     "DIS", "BAC", "XOM", "KO", "NFLX",
 ]
+# --- Gemini call throttling (separate from the overall run frequency) ---
+# Free tier allows only ~20 requests/day. Risk management (stop-loss,
+# take-profit, position caps) still runs every trigger since it doesn't
+# use Gemini -- only the trade-idea generation step is throttled here.
+GEMINI_CALL_INTERVAL_MINUTES = 25
+GEMINI_TIMESTAMP_FILE = "logs/last_gemini_call.txt"
