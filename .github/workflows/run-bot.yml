@@ -3,12 +3,19 @@ name: Run Trading Bot
 on:
   schedule:
     # Fallback only -- GitHub's own cron isn't reliable at high frequency,
-    # so the real 5-minute triggering comes from an external scheduler
+    # so the real 2-minute triggering comes from an external scheduler
     # (cron-job.org) calling workflow_dispatch via the GitHub API instead.
     # This hourly schedule just acts as a safety net in case that external
     # trigger ever goes down.
     - cron: "0 * * * *"
-  workflow_dispatch: {}  # triggered externally every 5 min, and can also be run manually here
+  workflow_dispatch: {}  # triggered externally every 2 min, and can also be run manually here
+
+concurrency:
+  group: trading-bot-run
+  cancel-in-progress: false
+
+permissions:
+  contents: write
 
 jobs:
   run-bot:
@@ -32,3 +39,12 @@ jobs:
           ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
         run: python main.py
+
+      - name: Commit and push updated logs
+        run: |
+          git config user.name "trading-bot"
+          git config user.email "trading-bot@users.noreply.github.com"
+          git add logs/
+          git diff --staged --quiet && echo "No log changes to commit" || git commit -m "Update logs [skip ci]"
+          git pull --no-rebase origin main
+          git push
