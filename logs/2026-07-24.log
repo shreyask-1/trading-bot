@@ -356,3 +356,9 @@ Gemini recommended 2 trade(s).
   -> {"timestamp": "2026-07-24T20:10:49.946822", "ticker": "COST", "action": "buy", "qty": 2.6728, "order_id": "d013298c-64d4-4f76-8360-e980f79a206b", "order_status": "OrderStatus.ACCEPTED", "time_horizon": "long", "reasoning": "Initiating a position as MACD histogram shows a strong positive momentum shift (+2.102) with RSI at a neutral 46.73 and price centered at Bollinger %B 0.51, offering favorable risk/reward.", "status": "submitted"}
 Ending portfolio value: $100,289.50
 
+=== Run at 2026-07-24T20:11:26.802504 ===
+Alpaca paper account value: $100,291.69
+Cash: $39,628.58 | Holdings: {'A': '39.5186 shares (-0.44%)', 'AAPL': '10.8839 shares (+2.77%)', 'GM': '12.8986 shares (+1.46%)', 'GS': '7.4079 shares (-1.48%)', 'HON': '16.4761 shares (-0.35%)', 'J': '48.1132 shares (+2.51%)', 'JNJ': '23.0219 shares (+0.42%)', 'JPM': '11.4354 shares (+0.94%)', 'LMT': '7.0397 shares (+0.83%)', 'MA': '6.5295 shares (+0.61%)', 'NVDA': '26.269 shares (-1.19%)', 'PM': '15.4935 shares (-0.34%)', 'RTX': '11.7228 shares (-0.24%)', 'V': '9.8719 shares (+0.32%)'}
+Skipping Gemini this run (within cooldown interval) -- risk checks only.
+Ending portfolio value: $100,291.69
+
