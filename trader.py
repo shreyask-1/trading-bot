@@ -210,6 +210,12 @@ def execute_trade(trade, account_snapshot=None):
     action = trade["action"].lower()
     dollar_amount = trade.get("dollar_amount", 0)
 
+    # Gemini sometimes says "trim" or "reduce" meaning a partial sell, and
+    # "exit"/"close" meaning a full sell -- normalize these to "sell" so
+    # they're not silently rejected as unknown actions.
+    if action in ("trim", "reduce", "exit", "close"):
+        action = "sell"
+
     if account_snapshot is None:
         account_snapshot = get_account_snapshot()
 
