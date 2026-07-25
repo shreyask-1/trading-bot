@@ -112,4 +112,27 @@ def run():
                 result = execute_trade(trade, account)
                 log_lines.append(f"  -> {json.dumps(result)}")
             except Exception as e:
-                log_lines.append(f"  
+                log_lines.append(f"  -> FAILED to execute trade for {trade.get('ticker')}: {e}")
+    else:
+        log_lines.append("Skipping Gemini this run (within cooldown interval) -- risk checks only.")
+
+    try:
+        final_account = get_account_snapshot()
+        record_performance_snapshot(final_account, LOG_DIR)
+        log_lines.append(f"Ending portfolio value: ${final_account['total_value']:,.2f}")
+    except Exception as e:
+        log_lines.append(f"WARNING: could not record final performance snapshot: {e}")
+
+    _write_log(log_lines, timestamp)
+    print("\n".join(log_lines))
+
+
+def _write_log(log_lines, timestamp):
+    log_lines.append("")
+    log_path = os.path.join(LOG_DIR, f"{timestamp.strftime('%Y-%m-%d')}.log")
+    with open(log_path, "a") as f:
+        f.write("\n".join(log_lines) + "\n")
+
+
+if __name__ == "__main__":
+    run()
