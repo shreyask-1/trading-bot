@@ -1341,3 +1341,12 @@ Cash: $39,628.58 | Holdings: {'A': '39.5186 shares (-0.44%)', 'AAPL': '10.8839 s
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $100,295.09
 
+=== Run at 2026-07-25T06:46:32.166973 ===
+Alpaca paper account value: $100,295.05
+Cash: $39,628.54 | Holdings: {'A': '39.5186 shares (-0.51%)', 'AAPL': '10.8839 shares (+2.68%)', 'GM': '12.8986 shares (+1.46%)', 'GS': '7.4079 shares (-1.48%)', 'HON': '16.4761 shares (-0.35%)', 'J': '48.1132 shares (+2.51%)', 'JNJ': '23.0219 shares (+0.44%)', 'JPM': '11.4354 shares (+1.07%)', 'LMT': '7.0397 shares (+0.83%)', 'MA': '6.5295 shares (+0.68%)', 'NVDA': '26.269 shares (-1.23%)', 'PM': '15.4935 shares (-0.34%)', 'RTX': '11.7228 shares (-0.24%)', 'V': '9.8719 shares (+0.32%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 13 companies mentioned in current news.
+Added 14 watchlist ticker(s) for technical-only evaluation.
+WARNING: Gemini decision step failed this run, no new trades: 429 RESOURCE_EXHAUSTED. {'error': {'code': 429, 'message': 'You exceeded your current quota, please check your plan and billing details. For more information on this error, head to: https://ai.google.dev/gemini-api/docs/rate-limits. To monitor your current usage, head to: https://ai.dev/rate-limit. \n* Quota exceeded for metric: generativelanguage.googleapis.com/generate_content_free_tier_requests, limit: 20, model: gemini-3.6-flash\nPlease retry in 18.163746461s.', 'status': 'RESOURCE_EXHAUSTED', 'details': [{'@type': 'type.googleapis.com/google.rpc.Help', 'links': [{'description': 'Learn more about Gemini API quotas', 'url': 'https://ai.google.dev/gemini-api/docs/rate-limits'}]}, {'@type': 'type.googleapis.com/google.rpc.QuotaFailure', 'violations': [{'quotaMetric': 'generativelanguage.googleapis.com/generate_content_free_tier_requests', 'quotaId': 'GenerateRequestsPerDayPerProjectPerModel-FreeTier', 'quotaDimensions': {'model': 'gemini-3.6-flash', 'location': 'global'}, 'quotaValue': '20'}]}, {'@type': 'type.googleapis.com/google.rpc.RetryInfo', 'retryDelay': '18s'}]}}
+Ending portfolio value: $100,295.05
+
