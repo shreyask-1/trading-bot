@@ -79,39 +79,39 @@ def run():
         log_lines.append(f"WARNING: position-cap check failed this run: {e}")
 
     # Gemini-driven new trade ideas only run on their own slower interval.
-    if _should_call_gemini():
-        log_lines.append(f"Gemini call interval reached -- generating new trade ideas.")
+   if _should_call_gemini():
+    log_lines.append(f"Gemini call interval reached -- generating new trade ideas.")
+    _mark_gemini_called()   # mark the attempt NOW, regardless of outcome below
 
+    try:
+        candidates = get_news_candidates()
+        log_lines.append(f"Found {len(candidates)} companies mentioned in current news.")
+    except Exception as e:
+        log_lines.append(f"WARNING: news fetch failed this run, continuing with watchlist only: {e}")
+        candidates = {}
+
+    added_technical = 0
+    for ticker in WATCHLIST:
+        if ticker not in candidates and ticker not in account["holdings"]:
+            candidates[ticker] = []
+            added_technical += 1
+    log_lines.append(f"Added {added_technical} watchlist ticker(s) for technical-only evaluation.")
+
+    try:
+        trades = get_trade_decisions(candidates, account)
+        log_lines.append(f"Gemini recommended {len(trades)} trade(s).")
+    except Exception as e:
+        log_lines.append(f"WARNING: Gemini decision step failed this run, no new trades: {e}")
+        trades = []
+
+    for trade in trades:
         try:
-            candidates = get_news_candidates()
-            log_lines.append(f"Found {len(candidates)} companies mentioned in current news.")
+            result = execute_trade(trade, account)
+            log_lines.append(f"  -> {json.dumps(result)}")
         except Exception as e:
-            log_lines.append(f"WARNING: news fetch failed this run, continuing with watchlist only: {e}")
-            candidates = {}
-
-        added_technical = 0
-        for ticker in WATCHLIST:
-            if ticker not in candidates and ticker not in account["holdings"]:
-                candidates[ticker] = []
-                added_technical += 1
-        log_lines.append(f"Added {added_technical} watchlist ticker(s) for technical-only evaluation.")
-
-        try:
-            trades = get_trade_decisions(candidates, account)
-            log_lines.append(f"Gemini recommended {len(trades)} trade(s).")
-            _mark_gemini_called()
-        except Exception as e:
-            log_lines.append(f"WARNING: Gemini decision step failed this run, no new trades: {e}")
-            trades = []
-
-        for trade in trades:
-            try:
-                result = execute_trade(trade, account)
-                log_lines.append(f"  -> {json.dumps(result)}")
-            except Exception as e:
-                log_lines.append(f"  -> FAILED to execute trade for {trade.get('ticker')}: {e}")
-    else:
-        log_lines.append("Skipping Gemini this run (within cooldown interval) -- risk checks only.")
+            log_lines.append(f"  -> FAILED to execute trade for {trade.get('ticker')}: {e}")
+else:
+    log_lines.append("Skipping Gemini this run (within cooldown interval) -- risk checks only.")
 
     try:
         final_account = get_account_snapshot()
