@@ -3890,3 +3890,9 @@ Gemini recommended 2 trade(s).
   -> {"timestamp": "2026-07-27T20:27:16.879686", "ticker": "JPM", "action": "sell", "qty": 2.8076, "order_id": "1aff2117-6357-4d29-8606-18ff1a73a659", "order_status": "OrderStatus.ACCEPTED", "time_horizon": "short", "reasoning": "JPM RSI has entered overbought territory at 70.05 and price is above the upper Bollinger Band (%B 1.02). Trimming locks in gains and trims concentration in Financial Services.", "status": "submitted"}
 Ending portfolio value: $100,267.51
 
+=== Run at 2026-07-27T20:28:30.195438 ===
+Alpaca paper account value: $100,260.00
+Cash: $18,778.48 | Holdings: {'A': '39.5186 shares (-1.00%)', 'AAPL': '16.8813 shares (+2.44%)', 'BAC': '56.4061 shares (-0.69%)', 'COST': '2.6728 shares (+0.85%)', 'DIS': '25.7705 shares (-0.09%)', 'GM': '6.8472 shares (+6.78%)', 'HON': '10.3057 shares (+0.71%)', 'J': '36.9541 shares (+3.02%)', 'JNJ': '23.0219 shares (+1.24%)', 'JPM': '12.8795 shares (+1.07%)', 'KO': '29.8757 shares (+0.44%)', 'LMT': '1.3715 shares (+0.38%)', 'MA': '6.5295 shares (+2.93%)', 'MSFT': '8.9388 shares (-0.66%)', 'PG': '16.8056 shares (-0.10%)', 'PM': '25.8567 shares (+0.99%)', 'SO': '56.5339 shares (-0.70%)', 'TGT': '29.2462 shares (+0.92%)', 'TSLA': '8.0949 shares (+0.16%)', 'V': '9.8719 shares (+2.09%)', 'WAT': '9.3421 shares (-1.01%)', 'XOM': '38.4048 shares (+0.38%)'}
+Skipping Gemini this run (within cooldown interval) -- risk checks only.
+Ending portfolio value: $100,260.00
+
