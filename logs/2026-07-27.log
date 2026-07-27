@@ -3121,3 +3121,15 @@ Cash: $12,227.48 | Holdings: {'A': '39.5186 shares (-1.08%)', 'AAPL': '16.8813 s
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $100,357.46
 
+=== Run at 2026-07-27T16:32:46.806122 ===
+Alpaca paper account value: $100,352.57
+Cash: $12,227.48 | Holdings: {'A': '39.5186 shares (-1.07%)', 'AAPL': '16.8813 shares (+2.79%)', 'BAC': '56.4061 shares (-0.64%)', 'COST': '2.6728 shares (+0.59%)', 'GM': '6.8472 shares (+4.17%)', 'GS': '5.0522 shares (-2.54%)', 'HON': '10.3057 shares (+0.23%)', 'J': '36.9541 shares (+2.84%)', 'JNJ': '23.0219 shares (+1.88%)', 'JPM': '12.8795 shares (+0.64%)', 'KO': '29.8757 shares (-0.21%)', 'LMT': '2.7449 shares (+0.81%)', 'MA': '6.5295 shares (+3.22%)', 'MSFT': '8.9388 shares (-0.14%)', 'NFLX': '35.5341 shares (+1.34%)', 'NVDA': '35.9369 shares (-5.29%)', 'PM': '25.8567 shares (+0.73%)', 'RTX': '1.9722 shares (+2.94%)', 'SO': '56.5339 shares (-0.41%)', 'TGT': '29.2462 shares (+0.08%)', 'V': '9.8719 shares (+2.33%)', 'WAT': '9.3421 shares (-1.09%)', 'XOM': '25.4891 shares (+0.26%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 7 companies mentioned in current news.
+Added 9 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 3 trade(s).
+  -> {"timestamp": "2026-07-27T16:33:17.934393", "ticker": "RTX", "action": "sell", "qty": 1.9721, "order_id": "71e9378f-70ef-4be8-988e-143a978fd48b", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "RSI at 78.25 and Bollinger %B at 1.21 indicate significant short-term overextension following a 12.96% 5-day surge. Closing position to secure profits.", "status": "submitted"}
+  -> {"timestamp": "2026-07-27T16:33:18.021833", "ticker": "LMT", "action": "sell", "qty": 1.3734, "order_id": "f59531be-da57-4002-bce3-6ece6450e363", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "RSI elevated at 71.60 and Bollinger %B at 1.08 signal overbought conditions after a fast 14.38% 5-day rally. Trimming position to lock in gains.", "status": "submitted"}
+  -> {"timestamp": "2026-07-27T16:33:18.114080", "ticker": "DIS", "action": "buy", "qty": 25.7705, "order_id": "f5206017-672d-40ef-b6cd-572cf490ff13", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "MACD histogram has turned positive (+0.017) signaling a bullish momentum shift with neutral RSI (48.71), offering attractive entry for Communication Services diversification.", "status": "submitted"}
+Ending portfolio value: $100,332.57
+
