@@ -2786,3 +2786,14 @@ Cash: $15,309.40 | Holdings: {'A': '39.5186 shares (-0.48%)', 'AAPL': '16.8813 s
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $100,526.01
 
+=== Run at 2026-07-27T14:48:30.760940 ===
+Alpaca paper account value: $100,489.12
+Cash: $15,309.40 | Holdings: {'A': '39.5186 shares (-0.47%)', 'AAPL': '16.8813 shares (+2.50%)', 'BAC': '56.4061 shares (-0.35%)', 'COST': '2.6728 shares (+1.09%)', 'GM': '6.8472 shares (+3.36%)', 'GS': '5.0522 shares (-2.83%)', 'HON': '10.3057 shares (+0.54%)', 'J': '36.9541 shares (+2.98%)', 'JNJ': '23.0219 shares (+2.12%)', 'JPM': '12.8795 shares (+1.00%)', 'LMT': '4.4653 shares (+0.59%)', 'MA': '6.5295 shares (+2.84%)', 'MSFT': '8.9388 shares (-0.48%)', 'NFLX': '35.5341 shares (+0.29%)', 'NVDA': '35.9369 shares (-4.82%)', 'PM': '25.8567 shares (+0.88%)', 'RTX': '3.8071 shares (+2.16%)', 'SO': '35.9768 shares (+0.72%)', 'TGT': '29.2462 shares (+0.72%)', 'V': '9.8719 shares (+2.20%)', 'WAT': '9.3421 shares (-0.18%)', 'XOM': '25.4891 shares (+0.24%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 7 companies mentioned in current news.
+Added 10 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 2 trade(s).
+  -> {"timestamp": "2026-07-27T14:48:58.320223", "ticker": "LMT", "action": "sell", "qty": 1.7204, "order_id": "d19e85a7-adaf-46cf-bc99-8cf875f76e2c", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "RSI reached overbought levels at 70.81 with Bollinger %B at 1.07 following a sharp 14.08% 5-day move, making this a prudent spot to trim profits on short-term overextension.", "status": "submitted"}
+  -> {"timestamp": "2026-07-27T14:48:58.400533", "ticker": "TSLA", "action": "buy", "qty": 8.1777, "order_id": "5c808cf2-8be0-46f8-a71e-a7dc52c7859d", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "RSI has fallen into deeply oversold territory at 26.91 with Bollinger %B at -0.09, signaling severe short-term downward exhaustion suitable for a mean-reversion bounce.", "status": "submitted"}
+Ending portfolio value: $100,508.93
+
