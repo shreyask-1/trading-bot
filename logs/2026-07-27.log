@@ -4043,3 +4043,14 @@ Cash: $18,778.48 | Holdings: {'A': '39.5186 shares (-1.00%)', 'AAPL': '16.8813 s
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $100,200.21
 
+=== Run at 2026-07-27T21:18:29.815343 ===
+Alpaca paper account value: $100,215.25
+Cash: $18,778.48 | Holdings: {'A': '39.5186 shares (-1.00%)', 'AAPL': '16.8813 shares (+2.41%)', 'BAC': '56.4061 shares (-0.79%)', 'COST': '2.6728 shares (+0.96%)', 'DIS': '25.7705 shares (-0.20%)', 'GM': '6.8472 shares (+6.86%)', 'HON': '10.3057 shares (+0.71%)', 'J': '36.9541 shares (+3.02%)', 'JNJ': '23.0219 shares (+1.51%)', 'JPM': '12.8795 shares (+1.24%)', 'KO': '29.8757 shares (+0.42%)', 'LMT': '1.3715 shares (+0.22%)', 'MA': '6.5295 shares (+2.93%)', 'MSFT': '8.9388 shares (-0.68%)', 'PG': '16.8056 shares (-0.10%)', 'PM': '25.8567 shares (+0.10%)', 'SO': '56.5339 shares (-0.70%)', 'TGT': '29.2462 shares (+0.92%)', 'TSLA': '8.0949 shares (+0.13%)', 'V': '9.8719 shares (+2.09%)', 'WAT': '9.3421 shares (-1.01%)', 'XOM': '38.4048 shares (+0.11%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 8 companies mentioned in current news.
+Added 7 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 2 trade(s).
+  -> {"timestamp": "2026-07-27T21:19:03.323539", "ticker": "LMT", "action": "sell", "qty": 0.6898, "order_id": "4732a391-6eb6-41cd-b2ed-cbc9f3f857f9", "order_status": "OrderStatus.ACCEPTED", "time_horizon": "short", "reasoning": "LMT is overbought with RSI at 70.07 and Bollinger %B at 1.06, indicating price is stretched above the upper band following a 13.81% 5-day momentum surge. Trimming to lock in profits and manage short-term extension risk.", "status": "submitted"}
+  -> {"timestamp": "2026-07-27T21:19:03.407458", "ticker": "KO", "action": "buy", "qty": 23.7812, "order_id": "ac6c659c-a845-4c6d-a7bc-b71977d56833", "order_status": "OrderStatus.ACCEPTED", "time_horizon": "long", "reasoning": "KO is maintaining a steady uptrend above both SMA20 and SMA50, supported by elevated volume (+13.20% vs avg) showing strong conviction and a neutral RSI of 56.88 with room to move higher.", "status": "submitted"}
+Ending portfolio value: $100,215.25
+
