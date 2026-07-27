@@ -2869,3 +2869,15 @@ Cash: $13,808.47 | Holdings: {'A': '39.5186 shares (-0.65%)', 'AAPL': '16.8813 s
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $100,588.42
 
+=== Run at 2026-07-27T15:14:33.095963 ===
+Alpaca paper account value: $100,616.48
+Cash: $13,808.47 | Holdings: {'A': '39.5186 shares (-0.64%)', 'AAPL': '16.8813 shares (+3.19%)', 'BAC': '56.4061 shares (+0.02%)', 'COST': '2.6728 shares (+1.07%)', 'GM': '6.8472 shares (+3.80%)', 'GS': '5.0522 shares (-2.41%)', 'HON': '10.3057 shares (+0.54%)', 'J': '36.9541 shares (+2.97%)', 'JNJ': '23.0219 shares (+2.10%)', 'JPM': '12.8795 shares (+1.54%)', 'LMT': '2.7449 shares (+0.88%)', 'MA': '6.5295 shares (+3.21%)', 'MSFT': '8.9388 shares (+0.30%)', 'NFLX': '35.5341 shares (+0.77%)', 'NVDA': '35.9369 shares (-5.11%)', 'PM': '25.8567 shares (+0.35%)', 'RTX': '3.8071 shares (+2.20%)', 'SO': '35.9768 shares (+0.25%)', 'TGT': '29.2462 shares (+0.80%)', 'TSLA': '8.1777 shares (+1.19%)', 'V': '9.8719 shares (+2.44%)', 'WAT': '9.3421 shares (-0.15%)', 'XOM': '25.4891 shares (+0.31%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 7 companies mentioned in current news.
+Added 9 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 3 trade(s).
+  -> {"timestamp": "2026-07-27T15:15:04.683974", "ticker": "RTX", "action": "sell", "qty": 1.8349, "order_id": "ba6d72bc-6bfc-402d-883b-2abb3e6ee58f", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "RTX is overextended following a +12.11% 5-day rally, with RSI at 77.42 and Bollinger %B at 1.18, making a partial trim prudent to lock in gains.", "status": "submitted"}
+  -> {"timestamp": "2026-07-27T15:15:04.759113", "ticker": "SO", "action": "buy", "qty": 20.5571, "order_id": "df3067cd-8bad-45df-a871-f3b6ee1794c5", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "long", "reasoning": "SO continues its steady uptrend with moderate RSI (57.57) and positive MACD histogram momentum (+0.080), allowing expansion in an underweighted sector.", "status": "submitted"}
+  -> {"timestamp": "2026-07-27T15:15:04.837656", "ticker": "KO", "action": "buy", "qty": 29.8757, "order_id": "96be0b89-7d96-4fcf-b0e6-f01b5b7e8911", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "long", "reasoning": "KO displays a confirmed technical uptrend with healthy RSI (55.44) and standard Bollinger band positioning (%B 0.70), adding reliable defensive exposure.", "status": "submitted"}
+Ending portfolio value: $100,611.65
+
