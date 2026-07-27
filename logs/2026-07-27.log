@@ -3227,3 +3227,11 @@ Cash: $8,458.47 | Holdings: {'A': '39.5186 shares (-1.07%)', 'AAPL': '16.8813 sh
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $100,233.43
 
+=== Run at 2026-07-27T17:04:30.059603 ===
+Alpaca paper account value: $100,191.29
+Cash: $8,458.47 | Holdings: {'A': '39.5186 shares (-1.05%)', 'AAPL': '16.8813 shares (+2.31%)', 'BAC': '56.4061 shares (-0.95%)', 'COST': '2.6728 shares (+0.83%)', 'DIS': '25.7705 shares (-0.25%)', 'GM': '6.8472 shares (+4.67%)', 'GS': '5.0522 shares (-3.39%)', 'HON': '10.3057 shares (-0.06%)', 'J': '36.9541 shares (+2.66%)', 'JNJ': '23.0219 shares (+2.06%)', 'JPM': '12.8795 shares (+0.42%)', 'KO': '29.8757 shares (-0.05%)', 'LMT': '1.3715 shares (+0.62%)', 'MA': '6.5295 shares (+2.89%)', 'MSFT': '8.9388 shares (-0.20%)', 'NFLX': '35.5341 shares (+0.82%)', 'NVDA': '35.9369 shares (-6.07%)', 'PM': '25.8567 shares (+0.89%)', 'RTX': '0.0001 shares (+2.46%)', 'SO': '56.5339 shares (-0.46%)', 'TGT': '29.2462 shares (+0.49%)', 'TSLA': '8.1243 shares (-0.24%)', 'V': '9.8719 shares (+2.31%)', 'WAT': '9.3421 shares (-1.18%)', 'XOM': '25.4891 shares (+0.38%)'}
+Risk management triggered 1 forced sell(s):
+  -> {"timestamp": "2026-07-27T17:04:30.962635", "ticker": "NVDA", "action": "sell", "qty": 35.9369, "order_id": "d8b20252-e43a-49f0-93c5-cf1978316be6", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "unspecified", "reasoning": "stop-loss triggered (-6.07% <= -6.0%)", "status": "submitted", "trigger": "risk_management"}
+Skipping Gemini this run (within cooldown interval) -- risk checks only.
+Ending portfolio value: $100,191.58
+
