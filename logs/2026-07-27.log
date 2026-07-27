@@ -3467,3 +3467,9 @@ Gemini recommended 3 trade(s).
   -> {"timestamp": "2026-07-27T18:16:57.167331", "ticker": "XOM", "action": "buy", "qty": 12.9157, "order_id": "76a2bbc4-790a-44a4-91d7-834b92ee5dd5", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "long", "reasoning": "Adding to XOM as MACD histogram momentum expands positively (+1.874) alongside steady +4.28% 5-day price action, keeping overall position size well under the 8% portfolio threshold.", "status": "submitted"}
 Ending portfolio value: $100,286.32
 
+=== Run at 2026-07-27T18:18:51.697208 ===
+Alpaca paper account value: $100,297.85
+Cash: $18,517.93 | Holdings: {'A': '39.5186 shares (-1.01%)', 'AAPL': '16.8813 shares (+2.19%)', 'BAC': '56.4061 shares (-1.04%)', 'COST': '2.6728 shares (+1.16%)', 'DIS': '25.7705 shares (-0.41%)', 'GM': '6.8472 shares (+4.87%)', 'GS': '2.6419 shares (-3.85%)', 'HON': '10.3057 shares (-0.08%)', 'J': '36.9541 shares (+2.78%)', 'JNJ': '23.0219 shares (+2.29%)', 'JPM': '12.8795 shares (+0.81%)', 'KO': '29.8757 shares (+0.32%)', 'LMT': '1.3715 shares (+1.10%)', 'MA': '6.5295 shares (+2.97%)', 'MSFT': '8.9388 shares (+0.35%)', 'NFLX': '0.0255 shares (+0.83%)', 'PG': '16.8056 shares (+0.19%)', 'PM': '25.8567 shares (+1.11%)', 'SO': '56.5339 shares (-0.55%)', 'TGT': '29.2462 shares (+0.94%)', 'V': '9.8719 shares (+2.36%)', 'WAT': '9.3421 shares (-0.77%)', 'XOM': '38.4048 shares (+0.40%)'}
+Skipping Gemini this run (within cooldown interval) -- risk checks only.
+Ending portfolio value: $100,297.85
+
