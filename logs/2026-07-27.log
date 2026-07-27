@@ -3133,3 +3133,9 @@ Gemini recommended 3 trade(s).
   -> {"timestamp": "2026-07-27T16:33:18.114080", "ticker": "DIS", "action": "buy", "qty": 25.7705, "order_id": "f5206017-672d-40ef-b6cd-572cf490ff13", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "MACD histogram has turned positive (+0.017) signaling a bullish momentum shift with neutral RSI (48.71), offering attractive entry for Communication Services diversification.", "status": "submitted"}
 Ending portfolio value: $100,332.57
 
+=== Run at 2026-07-27T16:34:33.540854 ===
+Alpaca paper account value: $100,340.84
+Cash: $10,958.48 | Holdings: {'A': '39.5186 shares (-1.08%)', 'AAPL': '16.8813 shares (+2.76%)', 'BAC': '56.4061 shares (-0.70%)', 'COST': '2.6728 shares (+0.58%)', 'DIS': '25.7705 shares (+0.01%)', 'GM': '6.8472 shares (+4.15%)', 'GS': '5.0522 shares (-2.56%)', 'HON': '10.3057 shares (+0.23%)', 'J': '36.9541 shares (+2.83%)', 'JNJ': '23.0219 shares (+1.82%)', 'JPM': '12.8795 shares (+0.68%)', 'KO': '29.8757 shares (-0.22%)', 'LMT': '1.3715 shares (+0.73%)', 'MA': '6.5295 shares (+3.25%)', 'MSFT': '8.9388 shares (-0.14%)', 'NFLX': '35.5341 shares (+1.25%)', 'NVDA': '35.9369 shares (-5.50%)', 'PM': '25.8567 shares (+0.77%)', 'RTX': '0.0001 shares (+2.99%)', 'SO': '56.5339 shares (-0.31%)', 'TGT': '29.2462 shares (+0.17%)', 'V': '9.8719 shares (+2.37%)', 'WAT': '9.3421 shares (-1.03%)', 'XOM': '25.4891 shares (+0.25%)'}
+Skipping Gemini this run (within cooldown interval) -- risk checks only.
+Ending portfolio value: $100,340.63
+
