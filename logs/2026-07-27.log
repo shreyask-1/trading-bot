@@ -3790,3 +3790,15 @@ Cash: $18,778.48 | Holdings: {'A': '39.5186 shares (-0.94%)', 'AAPL': '16.8813 s
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $100,278.86
 
+=== Run at 2026-07-27T20:00:48.082825 ===
+Alpaca paper account value: $100,285.30
+Cash: $18,778.48 | Holdings: {'A': '39.5186 shares (-0.99%)', 'AAPL': '16.8813 shares (+2.54%)', 'BAC': '56.4061 shares (-0.79%)', 'COST': '2.6728 shares (+1.10%)', 'DIS': '25.7705 shares (-0.39%)', 'GM': '6.8472 shares (+6.93%)', 'HON': '10.3057 shares (+0.71%)', 'J': '36.9541 shares (+3.02%)', 'JNJ': '23.0219 shares (+1.41%)', 'JPM': '12.8795 shares (+1.30%)', 'KO': '29.8757 shares (+0.39%)', 'LMT': '1.3715 shares (+0.36%)', 'MA': '6.5295 shares (+2.93%)', 'MSFT': '8.9388 shares (-0.68%)', 'PG': '16.8056 shares (-0.08%)', 'PM': '25.8567 shares (+0.99%)', 'SO': '56.5339 shares (-0.70%)', 'TGT': '29.2462 shares (+0.94%)', 'TSLA': '8.0949 shares (+0.03%)', 'V': '9.8719 shares (+2.26%)', 'WAT': '9.3421 shares (-1.01%)', 'XOM': '38.4048 shares (+0.39%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 7 companies mentioned in current news.
+Added 8 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 3 trade(s).
+  -> {"timestamp": "2026-07-27T20:01:16.658552", "ticker": "DIS", "action": "sell", "qty": 25.7634, "order_id": "3c5fa10b-8fa5-407d-81f2-099768172b47", "order_status": "OrderStatus.ACCEPTED", "time_horizon": "short", "reasoning": "Exiting DIS due to confirmed downtrend, weak momentum (+0.18% 5-day), and negative MACD histogram indicator.", "status": "submitted"}
+  -> {"timestamp": "2026-07-27T20:01:16.784870", "ticker": "TSLA", "action": "sell", "qty": 8.0935, "order_id": "43ef31f3-4545-4cf4-8365-97f4c4656415", "order_status": "OrderStatus.ACCEPTED", "time_horizon": "short", "reasoning": "Exiting TSLA position to preserve capital following a sharp 16.34% 5-day momentum drop, severe negative MACD histogram breakdown (-9.487), and established downtrend.", "status": "submitted"}
+  -> {"ticker": "LMT", "status": "failed", "reason": "unknown action 'add'"}
+Ending portfolio value: $100,293.83
+
