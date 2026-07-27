@@ -3289,3 +3289,14 @@ Cash: $15,499.59 | Holdings: {'A': '39.5186 shares (-0.81%)', 'AAPL': '16.8813 s
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $100,248.25
 
+=== Run at 2026-07-27T17:24:33.767261 ===
+Alpaca paper account value: $100,228.07
+Cash: $15,499.59 | Holdings: {'A': '39.5186 shares (-0.84%)', 'AAPL': '16.8813 shares (+2.34%)', 'BAC': '56.4061 shares (-1.11%)', 'COST': '2.6728 shares (+0.94%)', 'DIS': '25.7705 shares (-0.01%)', 'GM': '6.8472 shares (+5.17%)', 'GS': '5.0522 shares (-3.86%)', 'HON': '10.3057 shares (-0.00%)', 'J': '36.9541 shares (+2.86%)', 'JNJ': '23.0219 shares (+2.17%)', 'JPM': '12.8795 shares (+0.43%)', 'KO': '29.8757 shares (+0.03%)', 'LMT': '1.3715 shares (+0.99%)', 'MA': '6.5295 shares (+3.01%)', 'MSFT': '8.9388 shares (+0.00%)', 'NFLX': '35.5341 shares (+0.88%)', 'PM': '25.8567 shares (+0.85%)', 'RTX': '0.0001 shares (+2.74%)', 'SO': '56.5339 shares (-0.42%)', 'TGT': '29.2462 shares (+0.71%)', 'TSLA': '8.1243 shares (-0.16%)', 'V': '9.8719 shares (+2.39%)', 'WAT': '9.3421 shares (-1.37%)', 'XOM': '25.4891 shares (+0.42%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 7 companies mentioned in current news.
+Added 8 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 2 trade(s).
+  -> {"timestamp": "2026-07-27T17:24:53.986416", "ticker": "RTX", "action": "sell", "qty": 0.0001, "order_id": "87bae6c3-6424-483a-a433-dc920ad035ef", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Exiting remaining fractional dust position (0.0001 shares) to clean up portfolio.", "status": "submitted"}
+  -> {"timestamp": "2026-07-27T17:24:54.057846", "ticker": "PG", "action": "buy", "qty": 16.8056, "order_id": "e3faae1a-f57f-45fa-976b-4e4a03e539f8", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "long", "reasoning": "PG is in a established uptrend with neutral RSI (51.15) and %B at 0.53, offering a disciplined entry near the 20-day moving average.", "status": "submitted"}
+Ending portfolio value: $100,235.67
+
