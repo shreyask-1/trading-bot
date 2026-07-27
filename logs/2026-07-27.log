@@ -2702,3 +2702,15 @@ Cash: $16,111.49 | Holdings: {'A': '39.5186 shares (-0.95%)', 'AAPL': '16.8813 s
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $100,584.49
 
+=== Run at 2026-07-27T14:22:32.242121 ===
+Alpaca paper account value: $100,600.25
+Cash: $16,111.49 | Holdings: {'A': '39.5186 shares (-0.79%)', 'AAPL': '16.8813 shares (+2.89%)', 'BAC': '56.4061 shares (+0.04%)', 'COST': '2.6728 shares (+0.70%)', 'GM': '6.8472 shares (+4.44%)', 'GS': '5.0522 shares (-1.13%)', 'HON': '10.3057 shares (+1.41%)', 'J': '36.9541 shares (+2.14%)', 'JNJ': '23.0219 shares (+1.98%)', 'JPM': '15.683 shares (+1.44%)', 'LMT': '4.4653 shares (+0.29%)', 'MA': '6.5295 shares (+2.52%)', 'MSFT': '8.9388 shares (-0.08%)', 'NVDA': '35.9369 shares (-3.99%)', 'PM': '25.8567 shares (+0.27%)', 'RTX': '7.0248 shares (+2.02%)', 'SO': '35.9768 shares (+0.44%)', 'TGT': '29.2462 shares (+0.65%)', 'V': '9.8719 shares (+2.16%)', 'WAT': '9.3421 shares (-0.33%)', 'XOM': '25.4891 shares (+0.53%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 8 companies mentioned in current news.
+Added 11 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 3 trade(s).
+  -> {"timestamp": "2026-07-27T14:22:51.540046", "ticker": "RTX", "action": "sell", "qty": 3.2177, "order_id": "9df2f2af-50cd-48a4-8ba2-9ff35cd41986", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "RSI is heavily overbought at 77.21 and Bollinger %B is 1.18, indicating price overextension above the upper band following a strong 11.9% 5-day rally.", "status": "submitted"}
+  -> {"timestamp": "2026-07-27T14:22:51.693178", "ticker": "JPM", "action": "sell", "qty": 2.8035, "order_id": "16272b10-f5e6-4718-9392-42b26c2cd7b6", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "RSI has reached overbought territory at 70.32 with %B at 1.03. Trimming locks in gains and reduces heavy financial sector concentration.", "status": "submitted"}
+  -> {"timestamp": "2026-07-27T14:22:51.848882", "ticker": "NFLX", "action": "buy", "qty": 35.5341, "order_id": "5d19aba2-54b7-4e45-9ed9-2d702df7d4ef", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "MACD histogram has turned positive (+0.073) indicating a bullish momentum shift, with RSI rebounding from near-oversold levels (39.65) and +4.17% 5-day momentum. Provides diversification into Communication Services.", "status": "submitted"}
+Ending portfolio value: $100,581.77
+
