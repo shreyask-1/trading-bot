@@ -1695,3 +1695,14 @@ Cash: $18,778.44 | Holdings: {'A': '39.5186 shares (-1.00%)', 'AAPL': '16.8813 s
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $100,614.87
 
+=== Run at 2026-07-28T09:00:43.180718 ===
+Alpaca paper account value: $100,615.54
+Cash: $18,778.44 | Holdings: {'A': '39.5186 shares (-1.00%)', 'AAPL': '16.8813 shares (+3.05%)', 'BAC': '56.4061 shares (-0.36%)', 'COST': '2.6728 shares (+1.72%)', 'DIS': '25.7705 shares (-0.05%)', 'GM': '6.8472 shares (+7.23%)', 'HON': '10.3057 shares (+1.59%)', 'J': '36.9541 shares (+3.02%)', 'JNJ': '23.0219 shares (+3.72%)', 'JPM': '12.8795 shares (+1.44%)', 'KO': '29.8757 shares (+0.73%)', 'LMT': '1.3715 shares (-0.47%)', 'MA': '6.5295 shares (+2.83%)', 'MSFT': '8.9388 shares (+0.13%)', 'PG': '16.8056 shares (+1.18%)', 'PM': '25.8567 shares (+2.25%)', 'SO': '56.5339 shares (-0.70%)', 'TGT': '29.2462 shares (+0.92%)', 'TSLA': '8.0949 shares (-1.06%)', 'V': '9.8719 shares (+2.46%)', 'WAT': '9.3421 shares (-1.01%)', 'XOM': '38.4048 shares (+0.07%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 7 companies mentioned in current news.
+Added 7 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 2 trade(s).
+  -> {"timestamp": "2026-07-28T09:01:01.889801", "ticker": "AAPL", "action": "buy", "qty": 4.452, "order_id": "a385f66a-661c-4d24-acd4-f1746d7d35ca", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "long", "reasoning": "Sustained uptrend with strong technical momentum (MACD hist +1.097, RSI 67.65) reinforced by market leadership sentiment; position size remains well within the 8% portfolio limit.", "status": "submitted"}
+  -> {"timestamp": "2026-07-28T09:01:01.907134", "ticker": "XOM", "action": "buy", "qty": 9.683, "order_id": "8ffd46d9-2cab-4088-9e6e-8b51c357cb0a", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "long", "reasoning": "Energy sector allocation showing solid 5-day momentum (+4.39%) and expanding positive MACD histogram (+1.881) as price trends upward toward upper Bollinger band.", "status": "submitted"}
+Ending portfolio value: $100,617.26
+
