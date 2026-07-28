@@ -3298,3 +3298,16 @@ Cash: $18,525.79 | Holdings: {'A': '39.728 shares (+0.19%)', 'AAPL': '21.3333 sh
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $101,538.71
 
+=== Run at 2026-07-28T17:18:29.784849 ===
+Alpaca paper account value: $101,520.52
+Cash: $18,525.79 | Holdings: {'A': '39.728 shares (+0.22%)', 'AAPL': '21.3333 shares (+2.49%)', 'BA': '20.5541 shares (+1.36%)', 'COST': '3.2341 shares (+1.38%)', 'DIS': '0.0001 shares (+1.90%)', 'HD': '7.194 shares (-0.90%)', 'HON': '6.2367 shares (+1.45%)', 'J': '11.4281 shares (+6.16%)', 'JNJ': '23.0219 shares (+2.03%)', 'JPM': '10.0719 shares (+1.18%)', 'KO': '14.5963 shares (+3.36%)', 'LMT': '0.6817 shares (-0.62%)', 'MA': '6.5295 shares (+4.74%)', 'MSFT': '8.9388 shares (+1.53%)', 'NFLX': '62.7223 shares (+0.92%)', 'PG': '30.2609 shares (+0.60%)', 'PM': '13.7899 shares (+3.70%)', 'SO': '77.2636 shares (+0.18%)', 'TGT': '29.2462 shares (+3.78%)', 'TSLA': '0.0034 shares (+0.05%)', 'V': '9.8719 shares (+3.97%)', 'WAT': '9.3421 shares (+2.13%)', 'XOM': '48.0878 shares (-1.25%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 7 companies mentioned in current news.
+Added 6 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 4 trade(s).
+  -> {"timestamp": "2026-07-28T17:18:50.584816", "ticker": "TSLA", "action": "sell", "qty": 0.0034, "order_id": "a49f9782-92a0-4e71-9977-f84a1677400f", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Exiting residual dust position in severe downtrend with negative MACD histogram (-9.754) and depressed momentum (-19.13%).", "status": "submitted"}
+  -> {"timestamp": "2026-07-28T17:18:50.629374", "ticker": "DIS", "action": "sell", "qty": 0.0001, "order_id": "81628291-c2b4-4b70-b7c1-75dfe9f06a11", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Clearing out non-material residual dust position to simplify portfolio tracking.", "status": "submitted"}
+  -> {"timestamp": "2026-07-28T17:18:50.662528", "ticker": "BA", "action": "buy", "qty": 6.7476, "order_id": "6f8af30f-be33-4b6e-93e5-6ebe10ec877a", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "MACD histogram turned positive (+0.071) with 5d momentum of +8.62% supported by strong volume (+46.73% above baseline) while Bollinger %B (0.65) leaves room for further upside.", "status": "submitted"}
+  -> {"timestamp": "2026-07-28T17:18:50.687184", "ticker": "LMT", "action": "buy", "qty": 2.5936, "order_id": "c143394f-e239-471d-894b-d6c426f103fb", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "long", "reasoning": "Strong uptrend with accelerating MACD momentum (+8.051) and +14.08% 5d momentum; expanding undersized position while keeping total sector exposure controlled.", "status": "submitted"}
+Ending portfolio value: $101,520.74
+
