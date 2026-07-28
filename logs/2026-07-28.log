@@ -3145,3 +3145,9 @@ Gemini recommended 3 trade(s).
   -> {"timestamp": "2026-07-28T16:27:00.747810", "ticker": "BA", "action": "buy", "qty": 6.7413, "order_id": "48f915e0-3a0a-4a84-aa30-ca365ab57f99", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Solid short-term momentum (+8.41%) backed by above-average volume surge (+36.11%) and positive MACD histogram turning point.", "status": "submitted"}
 Ending portfolio value: $101,680.81
 
+=== Run at 2026-07-28T16:28:27.339652 ===
+Alpaca paper account value: $101,659.73
+Cash: $18,525.79 | Holdings: {'A': '39.728 shares (+0.87%)', 'AAPL': '21.3333 shares (+2.76%)', 'BA': '20.5541 shares (+1.54%)', 'COST': '3.2341 shares (+1.76%)', 'DIS': '0.0001 shares (+1.76%)', 'HD': '7.194 shares (-0.76%)', 'HON': '6.2367 shares (+1.99%)', 'J': '11.4281 shares (+5.92%)', 'JNJ': '23.0219 shares (+2.58%)', 'JPM': '10.0719 shares (+1.06%)', 'KO': '14.5963 shares (+3.74%)', 'LMT': '0.6817 shares (-0.32%)', 'MA': '6.5295 shares (+4.73%)', 'MSFT': '8.9388 shares (+1.68%)', 'NFLX': '62.7223 shares (+0.69%)', 'PG': '30.2609 shares (+0.84%)', 'PM': '13.7899 shares (+4.56%)', 'SO': '77.2636 shares (+0.24%)', 'TGT': '29.2462 shares (+3.77%)', 'TSLA': '0.0034 shares (+0.02%)', 'V': '9.8719 shares (+3.92%)', 'WAT': '9.3421 shares (+2.53%)', 'XOM': '48.0878 shares (-1.58%)'}
+Skipping Gemini this run (within cooldown interval) -- risk checks only.
+Ending portfolio value: $101,659.73
+
