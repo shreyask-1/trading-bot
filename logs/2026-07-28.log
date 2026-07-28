@@ -2624,3 +2624,9 @@ Gemini recommended 3 trade(s).
   -> {"timestamp": "2026-07-28T13:49:55.405739", "ticker": "DIS", "action": "sell", "qty": 0.007, "order_id": "f2fd71af-840e-41e7-8f89-fdf704a1e5fb", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Clearing negligible dust position to keep the portfolio organized.", "status": "submitted"}
 Ending portfolio value: $101,903.74
 
+=== Run at 2026-07-28T13:50:33.418935 ===
+Alpaca paper account value: $101,915.91
+Cash: $11,602.40 | Holdings: {'A': '50.3905 shares (+1.34%)', 'AAPL': '21.3333 shares (+2.29%)', 'BAC': '32.2787 shares (-0.69%)', 'COST': '4.7746 shares (+2.63%)', 'DIS': '0.0001 shares (+1.05%)', 'GM': '0.0037 shares (+9.23%)', 'HON': '6.2367 shares (+2.54%)', 'J': '25.8631 shares (+4.84%)', 'JNJ': '23.0219 shares (+4.30%)', 'JPM': '10.0719 shares (+1.05%)', 'KO': '53.6569 shares (+4.98%)', 'LMT': '0.6817 shares (+1.44%)', 'MA': '6.5295 shares (+4.19%)', 'MSFT': '8.9388 shares (+0.42%)', 'NFLX': '35.5114 shares (+1.50%)', 'PG': '30.2609 shares (+1.59%)', 'PM': '25.8567 shares (+5.96%)', 'QCOM': '17.6481 shares (+0.03%)', 'SO': '77.2636 shares (+0.99%)', 'TGT': '29.2462 shares (+3.72%)', 'V': '9.8719 shares (+2.83%)', 'WAT': '9.3421 shares (+2.80%)', 'XOM': '48.0878 shares (+0.58%)'}
+Skipping Gemini this run (within cooldown interval) -- risk checks only.
+Ending portfolio value: $101,918.84
+
