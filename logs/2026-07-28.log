@@ -3550,3 +3550,14 @@ Cash: $15,525.72 | Holdings: {'A': '39.728 shares (+0.66%)', 'AAPL': '21.3333 sh
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $101,562.29
 
+=== Run at 2026-07-28T18:36:32.834357 ===
+Alpaca paper account value: $101,558.95
+Cash: $15,525.72 | Holdings: {'A': '39.728 shares (+0.64%)', 'AAPL': '21.3333 shares (+2.52%)', 'BA': '27.3017 shares (+0.34%)', 'COST': '3.2341 shares (+1.57%)', 'HD': '7.194 shares (-0.97%)', 'HON': '6.2367 shares (+1.33%)', 'J': '11.4281 shares (+7.15%)', 'JNJ': '23.0219 shares (+2.31%)', 'JPM': '10.0719 shares (+1.14%)', 'KO': '14.5963 shares (+3.17%)', 'LMT': '3.2753 shares (-0.27%)', 'MA': '6.5295 shares (+4.62%)', 'MSFT': '8.9388 shares (+1.38%)', 'NFLX': '62.7223 shares (+0.45%)', 'PG': '30.2609 shares (+0.47%)', 'PM': '13.7899 shares (+4.16%)', 'SO': '77.2636 shares (+0.25%)', 'TGT': '29.2462 shares (+3.52%)', 'V': '9.8719 shares (+4.38%)', 'WAT': '9.3421 shares (+2.12%)', 'XOM': '48.0878 shares (-0.69%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 9 companies mentioned in current news.
+Added 8 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 2 trade(s).
+  -> {"timestamp": "2026-07-28T18:36:56.463447", "ticker": "J", "action": "sell", "qty": 4.268, "order_id": "ebc3e695-4ba0-4f30-8d20-f5a7c594c4f1", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "RSI is overbought at 73.69 and Bollinger %B is overextended at 1.22 well above the upper band following a +8.44% 5-day move. Trimming to secure gains.", "status": "submitted"}
+  -> {"timestamp": "2026-07-28T18:36:56.599126", "ticker": "TSLA", "action": "buy", "qty": 8.1452, "order_id": "aa0483a7-31b9-4440-911e-2e37817b7dc2", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "TSLA is deeply oversold with RSI at 27.03 and Bollinger %B at 0.00 (touching the lower band) after an 18.99% 5-day pullback, offering a short-term mean-reversion bounce setup.", "status": "submitted"}
+Ending portfolio value: $101,566.69
+
