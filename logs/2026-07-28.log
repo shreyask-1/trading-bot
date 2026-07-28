@@ -2947,3 +2947,16 @@ Cash: $16,002.06 | Holdings: {'A': '50.3905 shares (+0.65%)', 'AAPL': '21.3333 s
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $101,791.81
 
+=== Run at 2026-07-28T15:32:30.898815 ===
+Alpaca paper account value: $101,731.57
+Cash: $16,002.06 | Holdings: {'A': '50.3905 shares (+0.62%)', 'AAPL': '21.3333 shares (+2.60%)', 'BAC': '32.2787 shares (-0.33%)', 'COST': '4.7746 shares (+2.44%)', 'DIS': '0.0001 shares (+1.73%)', 'GM': '0.0037 shares (+10.98%)', 'HD': '7.194 shares (-0.51%)', 'HON': '6.2367 shares (+1.58%)', 'J': '18.6296 shares (+5.75%)', 'JNJ': '23.0219 shares (+2.81%)', 'JPM': '10.0719 shares (+1.19%)', 'KO': '25.85 shares (+4.70%)', 'LMT': '0.6817 shares (-0.27%)', 'MA': '6.5295 shares (+4.75%)', 'MSFT': '8.9388 shares (+2.06%)', 'NFLX': '62.7223 shares (+0.54%)', 'PG': '30.2609 shares (+1.14%)', 'PM': '13.7899 shares (+5.27%)', 'SO': '77.2636 shares (+0.72%)', 'TGT': '29.2462 shares (+3.97%)', 'V': '9.8719 shares (+3.56%)', 'WAT': '9.3421 shares (+1.47%)', 'XOM': '48.0878 shares (-0.33%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 7 companies mentioned in current news.
+Added 6 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 4 trade(s).
+  -> {"timestamp": "2026-07-28T15:33:02.774457", "ticker": "BAC", "action": "sell", "qty": 32.2787, "order_id": "ce3cce78-8204-4f01-ae90-804a008e95a5", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "RSI is overbought at 70.23 while the MACD histogram has turned negative (-0.016), signaling a bearish momentum shift from extended levels.", "status": "submitted"}
+  -> {"timestamp": "2026-07-28T15:33:02.927885", "ticker": "GM", "action": "sell", "qty": 0.0037, "order_id": "6c554228-9d85-4f52-af1b-8ccf06ea9d40", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "RSI is overbought at 73.99 and Bollinger %B is overextended at 1.24; exiting to clean up dust position and lock in profits.", "status": "submitted"}
+  -> {"timestamp": "2026-07-28T15:33:03.025288", "ticker": "BA", "action": "buy", "qty": 13.8128, "order_id": "8921e5e3-3dbc-45a6-9ad2-fb4504786147", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Volume trend is +7.04% above baseline showing solid buying conviction, supported by positive 5d momentum (+6.18%) and neutral RSI (51.36).", "status": "submitted"}
+  -> {"timestamp": "2026-07-28T15:33:03.113562", "ticker": "TSLA", "action": "buy", "qty": 8.1569, "order_id": "c430e18f-d969-4cf8-bc76-c67c1c0aab50", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "RSI has dropped into deeply oversold territory at 26.91 with Bollinger %B at 0.00, setting up a potential short-term mean-reversion bounce.", "status": "submitted"}
+Ending portfolio value: $101,719.28
+
