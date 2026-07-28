@@ -2612,3 +2612,15 @@ Cash: $11,299.13 | Holdings: {'A': '50.3905 shares (+0.94%)', 'AAPL': '21.3333 s
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $101,810.40
 
+=== Run at 2026-07-28T13:48:38.919958 ===
+Alpaca paper account value: $101,836.28
+Cash: $11,299.13 | Holdings: {'A': '50.3905 shares (+1.16%)', 'AAPL': '21.3333 shares (+2.27%)', 'BAC': '32.2787 shares (-0.66%)', 'COST': '4.7746 shares (+2.61%)', 'DIS': '0.0071 shares (+0.83%)', 'GM': '3.4005 shares (+9.20%)', 'HON': '6.2367 shares (+2.31%)', 'J': '25.8631 shares (+5.00%)', 'JNJ': '23.0219 shares (+4.29%)', 'JPM': '10.0719 shares (+1.07%)', 'KO': '53.6569 shares (+4.76%)', 'LMT': '0.6817 shares (+1.46%)', 'MA': '6.5295 shares (+4.11%)', 'MSFT': '8.9388 shares (+0.29%)', 'NFLX': '35.5114 shares (+1.78%)', 'PG': '30.2609 shares (+1.65%)', 'PM': '25.8567 shares (+5.80%)', 'QCOM': '17.6481 shares (-0.78%)', 'SO': '77.2636 shares (+1.04%)', 'TGT': '29.2462 shares (+3.45%)', 'TSLA': '0.0014 shares (-1.32%)', 'V': '9.8719 shares (+2.55%)', 'WAT': '9.3421 shares (+2.46%)', 'XOM': '48.0878 shares (+0.60%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 8 companies mentioned in current news.
+Added 6 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 3 trade(s).
+  -> {"timestamp": "2026-07-28T13:49:55.093735", "ticker": "GM", "action": "sell", "qty": 3.3968, "order_id": "cdbefc04-43ed-49d7-b2dc-d380b971bb90", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Locking in gains (+9.20% P/L) as GM is overbought (RSI 72.37) and heavily overextended above the upper Bollinger Band (%B 1.19) following a swift +11.81% 5-day run.", "status": "submitted"}
+  -> {"timestamp": "2026-07-28T13:49:55.236947", "ticker": "TSLA", "action": "sell", "qty": 0.0014, "order_id": "cf71586d-b07e-465c-83a8-ccac756233ae", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Exiting residual dust position as TSLA remains in a sharp downtrend with oversold momentum (RSI 26.67, MACD hist -9.851).", "status": "submitted"}
+  -> {"timestamp": "2026-07-28T13:49:55.405739", "ticker": "DIS", "action": "sell", "qty": 0.007, "order_id": "f2fd71af-840e-41e7-8f89-fdf704a1e5fb", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Clearing negligible dust position to keep the portfolio organized.", "status": "submitted"}
+Ending portfolio value: $101,903.74
+
