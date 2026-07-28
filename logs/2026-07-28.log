@@ -2791,3 +2791,9 @@ Gemini recommended 3 trade(s).
   -> {"timestamp": "2026-07-28T14:40:58.848707", "ticker": "NFLX", "action": "buy", "qty": 27.2109, "order_id": "612e81d8-c8f1-47e7-9b0e-004b45fcf739", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "NFLX displays positive momentum shift with a rising MACD histogram (+0.373) and strong 5d momentum (+6.97%), while keeping a healthy RSI (49.43) and mid-band %B (0.57).", "status": "submitted"}
 Ending portfolio value: $101,974.87
 
+=== Run at 2026-07-28T14:42:46.602292 ===
+Alpaca paper account value: $101,991.71
+Cash: $13,004.34 | Holdings: {'A': '50.3905 shares (+0.46%)', 'AAPL': '21.3333 shares (+2.13%)', 'BAC': '32.2787 shares (-0.76%)', 'COST': '4.7746 shares (+2.96%)', 'DIS': '0.0001 shares (+1.68%)', 'GM': '0.0037 shares (+9.31%)', 'HD': '7.194 shares (-0.08%)', 'HON': '6.2367 shares (+1.79%)', 'J': '25.8631 shares (+5.77%)', 'JNJ': '23.0219 shares (+3.87%)', 'JPM': '10.0719 shares (+0.79%)', 'KO': '36.9921 shares (+5.83%)', 'LMT': '0.6817 shares (+0.79%)', 'MA': '6.5295 shares (+4.45%)', 'MSFT': '8.9388 shares (+1.10%)', 'NFLX': '62.7223 shares (+0.96%)', 'PG': '30.2609 shares (+1.56%)', 'PM': '18.6267 shares (+7.05%)', 'SO': '77.2636 shares (+1.30%)', 'TGT': '29.2462 shares (+4.75%)', 'V': '9.8719 shares (+2.93%)', 'WAT': '9.3421 shares (+0.86%)', 'XOM': '48.0878 shares (+1.14%)'}
+Skipping Gemini this run (within cooldown interval) -- risk checks only.
+Ending portfolio value: $101,991.07
+
