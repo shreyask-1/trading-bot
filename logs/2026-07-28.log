@@ -3133,3 +3133,15 @@ Cash: $17,030.54 | Holdings: {'A': '50.3905 shares (+0.86%)', 'AAPL': '21.3333 s
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $101,680.15
 
+=== Run at 2026-07-28T16:26:35.379268 ===
+Alpaca paper account value: $101,677.05
+Cash: $17,030.54 | Holdings: {'A': '50.3905 shares (+0.89%)', 'AAPL': '21.3333 shares (+2.75%)', 'BA': '13.8128 shares (+2.14%)', 'COST': '4.7746 shares (+1.77%)', 'DIS': '0.0001 shares (+1.79%)', 'HD': '7.194 shares (-0.63%)', 'HON': '6.2367 shares (+2.11%)', 'J': '11.4281 shares (+5.84%)', 'JNJ': '23.0219 shares (+2.62%)', 'JPM': '10.0719 shares (+1.02%)', 'KO': '14.5963 shares (+3.76%)', 'LMT': '0.6817 shares (-0.24%)', 'MA': '6.5295 shares (+4.74%)', 'MSFT': '8.9388 shares (+1.73%)', 'NFLX': '62.7223 shares (+0.68%)', 'PG': '30.2609 shares (+0.87%)', 'PM': '13.7899 shares (+4.59%)', 'SO': '77.2636 shares (+0.25%)', 'TGT': '29.2462 shares (+3.81%)', 'TSLA': '0.0034 shares (-0.05%)', 'V': '9.8719 shares (+3.96%)', 'WAT': '9.3421 shares (+2.54%)', 'XOM': '48.0878 shares (-1.49%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 7 companies mentioned in current news.
+Added 6 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 3 trade(s).
+  -> {"timestamp": "2026-07-28T16:27:00.449493", "ticker": "COST", "action": "sell", "qty": 1.5405, "order_id": "2378a32d-8bc4-4ca4-b0a6-de30811be0b5", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Price is overextended beyond the upper Bollinger Band (%B 1.12) within a mixed/sideways trend and weak volume; trimming to lock in profits.", "status": "submitted"}
+  -> {"timestamp": "2026-07-28T16:27:00.605477", "ticker": "A", "action": "sell", "qty": 10.6625, "order_id": "c407bfbd-3b8b-4a24-9d34-837e3e4b1db8", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Bollinger %B at 1.02 signals short-term overextension on significantly below-average volume (-48.57%); trimming to manage position size.", "status": "submitted"}
+  -> {"timestamp": "2026-07-28T16:27:00.747810", "ticker": "BA", "action": "buy", "qty": 6.7413, "order_id": "48f915e0-3a0a-4a84-aa30-ca365ab57f99", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Solid short-term momentum (+8.41%) backed by above-average volume surge (+36.11%) and positive MACD histogram turning point.", "status": "submitted"}
+Ending portfolio value: $101,680.81
+
