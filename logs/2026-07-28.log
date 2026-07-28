@@ -2707,3 +2707,9 @@ Gemini recommended 2 trade(s).
   -> {"timestamp": "2026-07-28T14:14:57.148767", "ticker": "HD", "action": "buy", "qty": 7.194, "order_id": "f0d318b4-6c17-4ee6-8041-b749fb3a3e85", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "long", "reasoning": "Home Depot is in an established uptrend above SMA20/SMA50 with a moderate RSI (57.89) and unextended Bollinger %B (0.69), while providing beneficial Consumer Cyclical sector exposure.", "status": "submitted"}
 Ending portfolio value: $102,122.60
 
+=== Run at 2026-07-28T14:16:33.485967 ===
+Alpaca paper account value: $102,172.89
+Cash: $12,004.75 | Holdings: {'A': '50.3905 shares (+2.06%)', 'AAPL': '21.3333 shares (+2.01%)', 'BAC': '32.2787 shares (-0.33%)', 'COST': '4.7746 shares (+2.97%)', 'DIS': '0.0001 shares (+1.77%)', 'GM': '0.0037 shares (+8.95%)', 'HD': '7.194 shares (+0.08%)', 'HON': '6.2367 shares (+2.46%)', 'J': '25.8631 shares (+5.21%)', 'JNJ': '23.0219 shares (+4.14%)', 'JPM': '10.0719 shares (+1.10%)', 'KO': '53.6569 shares (+5.67%)', 'LMT': '0.6817 shares (+1.32%)', 'MA': '6.5295 shares (+4.82%)', 'MSFT': '8.9388 shares (+0.84%)', 'NFLX': '35.5114 shares (+1.91%)', 'PG': '30.2609 shares (+1.77%)', 'PM': '25.8567 shares (+6.54%)', 'SO': '77.2636 shares (+1.44%)', 'TGT': '29.2462 shares (+4.32%)', 'V': '9.8719 shares (+3.42%)', 'WAT': '9.3421 shares (+2.86%)', 'XOM': '48.0878 shares (+0.83%)'}
+Skipping Gemini this run (within cooldown interval) -- risk checks only.
+Ending portfolio value: $102,174.19
+
