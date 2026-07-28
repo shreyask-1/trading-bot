@@ -2696,3 +2696,14 @@ Cash: $11,602.40 | Holdings: {'A': '50.3905 shares (+1.86%)', 'AAPL': '21.3333 s
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $101,981.00
 
+=== Run at 2026-07-28T14:14:35.673700 ===
+Alpaca paper account value: $102,096.68
+Cash: $11,602.40 | Holdings: {'A': '50.3905 shares (+1.83%)', 'AAPL': '21.3333 shares (+1.85%)', 'BAC': '32.2787 shares (-0.46%)', 'COST': '4.7746 shares (+2.83%)', 'DIS': '0.0001 shares (+1.60%)', 'GM': '0.0037 shares (+8.80%)', 'HON': '6.2367 shares (+2.58%)', 'J': '25.8631 shares (+5.20%)', 'JNJ': '23.0219 shares (+3.94%)', 'JPM': '10.0719 shares (+1.02%)', 'KO': '53.6569 shares (+5.63%)', 'LMT': '0.6817 shares (+1.46%)', 'MA': '6.5295 shares (+4.61%)', 'MSFT': '8.9388 shares (+0.61%)', 'NFLX': '35.5114 shares (+2.20%)', 'PG': '30.2609 shares (+1.75%)', 'PM': '25.8567 shares (+6.55%)', 'QCOM': '17.6481 shares (-0.49%)', 'SO': '77.2636 shares (+1.42%)', 'TGT': '29.2462 shares (+4.15%)', 'V': '9.8719 shares (+3.33%)', 'WAT': '9.3421 shares (+2.66%)', 'XOM': '48.0878 shares (+0.84%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 8 companies mentioned in current news.
+Added 7 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 2 trade(s).
+  -> {"timestamp": "2026-07-28T14:14:57.083191", "ticker": "QCOM", "action": "sell", "qty": 17.6481, "order_id": "2ce5fe49-fcdb-467e-a2aa-2af08ca19217", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "QCOM is in a clear downtrend below both SMA20 and SMA50 with negative MACD histogram momentum (-0.400) and weak 5-day return (-4.40%), signaling potential further weakness.", "status": "submitted"}
+  -> {"timestamp": "2026-07-28T14:14:57.148767", "ticker": "HD", "action": "buy", "qty": 7.194, "order_id": "f0d318b4-6c17-4ee6-8041-b749fb3a3e85", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "long", "reasoning": "Home Depot is in an established uptrend above SMA20/SMA50 with a moderate RSI (57.89) and unextended Bollinger %B (0.69), while providing beneficial Consumer Cyclical sector exposure.", "status": "submitted"}
+Ending portfolio value: $102,122.60
+
