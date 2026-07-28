@@ -2454,3 +2454,9 @@ Gemini recommended 1 trade(s).
   -> {"timestamp": "2026-07-28T12:56:52.011346", "ticker": "SO", "action": "buy", "qty": 20.7297, "order_id": "efe22bda-93c9-4779-9dd7-77649031aa90", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "long", "reasoning": "SO maintains a established uptrend with a balanced RSI of 54.07 and positive MACD histogram (+0.025). Bollinger %B of 0.64 shows headroom before overextension, offering safe defensive exposure in the Utilities sector while remaining under the 8% position limit.", "status": "submitted"}
 Ending portfolio value: $101,205.60
 
+=== Run at 2026-07-28T12:58:35.990307 ===
+Alpaca paper account value: $101,203.83
+Cash: $18,778.44 | Holdings: {'A': '39.5186 shares (-0.03%)', 'AAPL': '16.8813 shares (+3.20%)', 'BAC': '56.4061 shares (-0.17%)', 'COST': '2.6728 shares (+3.27%)', 'DIS': '25.7705 shares (+0.80%)', 'GM': '6.8472 shares (+7.42%)', 'HON': '10.3057 shares (+1.02%)', 'J': '36.9541 shares (+3.98%)', 'JNJ': '23.0219 shares (+3.34%)', 'JPM': '12.8795 shares (+1.86%)', 'KO': '29.8757 shares (+4.36%)', 'LMT': '1.3715 shares (+0.46%)', 'MA': '6.5295 shares (+4.61%)', 'MSFT': '8.9388 shares (+1.00%)', 'PG': '16.8056 shares (+1.91%)', 'PM': '25.8567 shares (+2.77%)', 'SO': '56.5339 shares (+0.19%)', 'TGT': '29.2462 shares (+2.36%)', 'TSLA': '8.0949 shares (-0.40%)', 'V': '9.8719 shares (+4.06%)', 'WAT': '9.3421 shares (-0.05%)', 'XOM': '38.4048 shares (-0.26%)'}
+Skipping Gemini this run (within cooldown interval) -- risk checks only.
+Ending portfolio value: $101,203.53
+
