@@ -3032,3 +3032,14 @@ Cash: $12,511.88 | Holdings: {'A': '50.3905 shares (+0.48%)', 'AAPL': '21.3333 s
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $101,631.61
 
+=== Run at 2026-07-28T15:59:19.464428 ===
+Alpaca paper account value: $101,618.04
+Cash: $15,031.87 | Holdings: {'A': '50.3905 shares (+0.56%)', 'AAPL': '21.3333 shares (+2.71%)', 'BA': '13.8128 shares (+1.58%)', 'COST': '4.7746 shares (+1.89%)', 'DIS': '0.0001 shares (+1.81%)', 'HD': '7.194 shares (-0.88%)', 'HON': '6.2367 shares (+1.78%)', 'J': '18.6296 shares (+5.68%)', 'JNJ': '23.0219 shares (+2.89%)', 'JPM': '10.0719 shares (+0.97%)', 'KO': '25.85 shares (+4.38%)', 'LMT': '0.6817 shares (-0.18%)', 'MA': '6.5295 shares (+4.54%)', 'MSFT': '8.9388 shares (+1.56%)', 'NFLX': '62.7223 shares (+0.32%)', 'PG': '30.2609 shares (+0.74%)', 'PM': '13.7899 shares (+5.16%)', 'SO': '77.2636 shares (+0.53%)', 'TGT': '29.2462 shares (+3.47%)', 'TSLA': '0.0034 shares (+0.90%)', 'V': '9.8719 shares (+3.55%)', 'WAT': '9.3421 shares (+1.65%)', 'XOM': '48.0878 shares (-1.10%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 7 companies mentioned in current news.
+Added 6 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 2 trade(s).
+  -> {"timestamp": "2026-07-28T15:59:47.977626", "ticker": "J", "action": "sell", "qty": 7.2015, "order_id": "9fd73614-32a7-4a52-a94f-d3564cf88ab9", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "RSI at 71.8 indicates overbought territory and Bollinger %B at 1.15 signals price extended beyond upper band while volume is low (-65%). Trimming to capture profits following the 5-day +7.11% move.", "status": "submitted"}
+  -> {"timestamp": "2026-07-28T15:59:48.113844", "ticker": "KO", "action": "sell", "qty": 11.2537, "order_id": "e46f8cfc-1d0a-4694-8573-fcfd47772cc9", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Bollinger %B is at an extreme 1.34 ahead of its earnings release. Trimming partial profits reduces event risk and protects recent momentum gains.", "status": "submitted"}
+Ending portfolio value: $101,617.08
+
