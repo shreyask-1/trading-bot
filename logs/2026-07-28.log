@@ -3893,3 +3893,9 @@ Gemini recommended 2 trade(s).
   -> {"timestamp": "2026-07-28T20:21:06.050941", "ticker": "TSLA", "action": "buy", "qty": 8.1452, "order_id": "b989e65e-42dc-478d-8bfb-7216622507fe", "order_status": "OrderStatus.ACCEPTED", "time_horizon": "short", "reasoning": "RSI is in oversold territory at 27.09 and Bollinger %B sits at 0.01, presenting a technical mean-reversion setup for a short-term bounce with low sector concentration.", "status": "submitted"}
 Ending portfolio value: $101,366.51
 
+=== Run at 2026-07-28T20:22:39.299718 ===
+Alpaca paper account value: $101,339.45
+Cash: $16,120.94 | Holdings: {'A': '39.728 shares (+0.79%)', 'AAPL': '21.3333 shares (+2.83%)', 'BA': '27.3017 shares (+0.86%)', 'COST': '3.2341 shares (+1.10%)', 'HD': '7.194 shares (-0.95%)', 'HON': '6.2367 shares (+1.45%)', 'J': '7.1601 shares (+7.12%)', 'JNJ': '23.0219 shares (+1.67%)', 'JPM': '10.0719 shares (+1.58%)', 'KO': '14.5963 shares (+3.60%)', 'LMT': '3.2753 shares (-0.21%)', 'MA': '6.5295 shares (+4.99%)', 'MSFT': '8.9388 shares (+0.51%)', 'NFLX': '62.7223 shares (+0.03%)', 'PG': '30.2609 shares (-0.84%)', 'PM': '13.7899 shares (+3.32%)', 'SO': '77.2636 shares (-0.52%)', 'TGT': '29.2462 shares (+3.70%)', 'V': '9.8719 shares (+2.09%)', 'WAT': '9.3421 shares (+2.37%)', 'XOM': '48.0878 shares (-0.78%)'}
+Skipping Gemini this run (within cooldown interval) -- risk checks only.
+Ending portfolio value: $101,339.45
+
