@@ -2863,3 +2863,15 @@ Cash: $13,004.34 | Holdings: {'A': '50.3905 shares (-0.08%)', 'AAPL': '21.3333 s
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $101,744.73
 
+=== Run at 2026-07-28T15:06:34.235508 ===
+Alpaca paper account value: $101,731.75
+Cash: $13,004.34 | Holdings: {'A': '50.3905 shares (-0.13%)', 'AAPL': '21.3333 shares (+2.19%)', 'BAC': '32.2787 shares (-0.42%)', 'COST': '4.7746 shares (+2.61%)', 'DIS': '0.0001 shares (+1.21%)', 'GM': '0.0037 shares (+9.35%)', 'HD': '7.194 shares (-0.76%)', 'HON': '6.2367 shares (+1.03%)', 'J': '25.8631 shares (+5.25%)', 'JNJ': '23.0219 shares (+3.58%)', 'JPM': '10.0719 shares (+1.03%)', 'KO': '36.9921 shares (+5.39%)', 'LMT': '0.6817 shares (-0.03%)', 'MA': '6.5295 shares (+4.38%)', 'MSFT': '8.9388 shares (+1.26%)', 'NFLX': '62.7223 shares (+0.04%)', 'PG': '30.2609 shares (+1.33%)', 'PM': '18.6267 shares (+6.71%)', 'SO': '77.2636 shares (+1.14%)', 'TGT': '29.2462 shares (+4.27%)', 'V': '9.8719 shares (+3.10%)', 'WAT': '9.3421 shares (+0.19%)', 'XOM': '48.0878 shares (+0.73%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 7 companies mentioned in current news.
+Added 6 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 3 trade(s).
+  -> {"timestamp": "2026-07-28T15:06:59.568534", "ticker": "KO", "action": "sell", "qty": 11.1421, "order_id": "5cceac5e-4c42-4401-a227-db3f92afac94", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Bollinger %B at 1.38 indicates extreme upper-band overextension ahead of upcoming earnings; trimming locks in profits (+5.39%) and reduces short-term event risk.", "status": "submitted"}
+  -> {"timestamp": "2026-07-28T15:06:59.706224", "ticker": "J", "action": "sell", "qty": 7.2335, "order_id": "3fcf54b8-a15f-4002-85c2-a3e5117eb3b4", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "RSI entering overbought territory at 71.06 with Bollinger %B at 1.12; taking partial profits after a +6.64% 5-day run.", "status": "submitted"}
+  -> {"timestamp": "2026-07-28T15:06:59.841917", "ticker": "PM", "action": "sell", "qty": 4.8368, "order_id": "2fb1fc88-10ed-4f2a-9f5e-3a88d81e2d03", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "RSI reaches overbought level at 70.05 and Bollinger %B stands at 1.17; trimming locks in gains following strong +9.95% momentum.", "status": "submitted"}
+Ending portfolio value: $101,754.64
+
