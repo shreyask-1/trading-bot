@@ -2875,3 +2875,9 @@ Gemini recommended 3 trade(s).
   -> {"timestamp": "2026-07-28T15:06:59.841917", "ticker": "PM", "action": "sell", "qty": 4.8368, "order_id": "2fb1fc88-10ed-4f2a-9f5e-3a88d81e2d03", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "RSI reaches overbought level at 70.05 and Bollinger %B stands at 1.17; trimming locks in gains following strong +9.95% momentum.", "status": "submitted"}
 Ending portfolio value: $101,754.64
 
+=== Run at 2026-07-28T15:08:32.110742 ===
+Alpaca paper account value: $101,791.61
+Cash: $16,002.06 | Holdings: {'A': '50.3905 shares (+0.07%)', 'AAPL': '21.3333 shares (+2.27%)', 'BAC': '32.2787 shares (-0.41%)', 'COST': '4.7746 shares (+2.71%)', 'DIS': '0.0001 shares (+1.28%)', 'GM': '0.0037 shares (+9.43%)', 'HD': '7.194 shares (-0.64%)', 'HON': '6.2367 shares (+1.09%)', 'J': '18.6296 shares (+5.22%)', 'JNJ': '23.0219 shares (+3.68%)', 'JPM': '10.0719 shares (+1.00%)', 'KO': '25.85 shares (+5.46%)', 'LMT': '0.6817 shares (+0.10%)', 'MA': '6.5295 shares (+4.44%)', 'MSFT': '8.9388 shares (+1.20%)', 'NFLX': '62.7223 shares (-0.03%)', 'PG': '30.2609 shares (+1.48%)', 'PM': '13.7899 shares (+6.67%)', 'SO': '77.2636 shares (+1.17%)', 'TGT': '29.2462 shares (+4.48%)', 'V': '9.8719 shares (+3.16%)', 'WAT': '9.3421 shares (+0.36%)', 'XOM': '48.0878 shares (+0.79%)'}
+Skipping Gemini this run (within cooldown interval) -- risk checks only.
+Ending portfolio value: $101,791.61
+
