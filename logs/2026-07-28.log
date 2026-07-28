@@ -3975,3 +3975,9 @@ Gemini recommended 1 trade(s).
   -> {"timestamp": "2026-07-28T20:46:57.152623", "ticker": "UNH", "action": "buy", "qty": 6.994, "order_id": "72cb1c17-86fa-46ad-bad3-a205fed39b2b", "order_status": "OrderStatus.ACCEPTED", "time_horizon": "long", "reasoning": "UNH is in a confirmed technical uptrend with a balanced RSI (56.30) and strong volume support (+18.24% vs average). The minor 5d pullback (-1.71%) offers a favorable entry point near Bollinger %B 0.70.", "status": "submitted"}
 Ending portfolio value: $101,320.73
 
+=== Run at 2026-07-28T20:48:39.962886 ===
+Alpaca paper account value: $101,314.53
+Cash: $16,120.94 | Holdings: {'A': '39.728 shares (+0.79%)', 'AAPL': '21.3333 shares (+2.73%)', 'BA': '27.3017 shares (+0.65%)', 'COST': '3.2341 shares (+1.10%)', 'HD': '7.194 shares (-0.95%)', 'HON': '6.2367 shares (+1.45%)', 'J': '7.1601 shares (+7.12%)', 'JNJ': '23.0219 shares (+2.00%)', 'JPM': '10.0719 shares (+1.57%)', 'KO': '14.5963 shares (+3.71%)', 'LMT': '3.2753 shares (+0.11%)', 'MA': '6.5295 shares (+4.01%)', 'MSFT': '8.9388 shares (+0.59%)', 'NFLX': '62.7223 shares (+0.07%)', 'PG': '30.2609 shares (-0.86%)', 'PM': '13.7899 shares (+4.43%)', 'SO': '77.2636 shares (-0.52%)', 'TGT': '29.2462 shares (+3.70%)', 'V': '9.8719 shares (+1.24%)', 'WAT': '9.3421 shares (+2.37%)', 'XOM': '48.0878 shares (-0.80%)'}
+Skipping Gemini this run (within cooldown interval) -- risk checks only.
+Ending portfolio value: $101,314.53
+
