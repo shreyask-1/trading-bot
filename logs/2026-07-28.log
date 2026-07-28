@@ -1859,3 +1859,14 @@ Cash: $18,778.44 | Holdings: {'A': '39.5186 shares (-1.00%)', 'AAPL': '16.8813 s
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $100,763.46
 
+=== Run at 2026-07-28T09:52:29.454688 ===
+Alpaca paper account value: $100,768.52
+Cash: $18,778.44 | Holdings: {'A': '39.5186 shares (-1.00%)', 'AAPL': '16.8813 shares (+3.29%)', 'BAC': '56.4061 shares (-0.37%)', 'COST': '2.6728 shares (+1.72%)', 'DIS': '25.7705 shares (+0.03%)', 'GM': '6.8472 shares (+7.42%)', 'HON': '10.3057 shares (+2.05%)', 'J': '36.9541 shares (+3.02%)', 'JNJ': '23.0219 shares (+4.45%)', 'JPM': '12.8795 shares (+1.91%)', 'KO': '29.8757 shares (+0.90%)', 'LMT': '1.3715 shares (-0.47%)', 'MA': '6.5295 shares (+3.17%)', 'MSFT': '8.9388 shares (+0.41%)', 'PG': '16.8056 shares (+1.30%)', 'PM': '25.8567 shares (+2.25%)', 'SO': '56.5339 shares (-0.70%)', 'TGT': '29.2462 shares (+1.40%)', 'TSLA': '8.0949 shares (-1.27%)', 'V': '9.8719 shares (+2.49%)', 'WAT': '9.3421 shares (-1.01%)', 'XOM': '38.4048 shares (+0.34%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 7 companies mentioned in current news.
+Added 7 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 2 trade(s).
+  -> {"timestamp": "2026-07-28T09:52:50.197588", "ticker": "COST", "action": "buy", "qty": 2.1018, "order_id": "a0d4895e-52de-4268-8a80-be821778281b", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "long", "reasoning": "COST shows a strong positive MACD histogram momentum shift (+3.444) with a neutral RSI of 53.06, offering an attractive entry to scale up defensive allocation well under position caps.", "status": "submitted"}
+  -> {"timestamp": "2026-07-28T09:52:50.245238", "ticker": "BAC", "action": "sell", "qty": 24.1274, "order_id": "301d837f-6c04-48f6-9c64-b14e353beac8", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "BAC RSI is approaching overbought levels (69.0) while its MACD histogram has turned negative (-0.025); trimming lock in gains and reduces concentration in Financial Services.", "status": "submitted"}
+Ending portfolio value: $100,767.39
+
