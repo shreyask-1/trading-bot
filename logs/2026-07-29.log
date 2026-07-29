@@ -3026,3 +3026,9 @@ Gemini recommended 2 trade(s).
   -> {"timestamp": "2026-07-29T15:51:23.131362", "ticker": "NFLX", "action": "buy", "qty": 34.4234, "order_id": "359ac04e-751c-4b5d-b4c3-29ade867be42", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Bullish momentum shift indicated by positive MACD histogram (+0.478) and strong 5-day gain (+5.98%), while RSI (47.27) and %B (0.50) reflect healthy mid-range levels with room for further upside.", "status": "submitted"}
 Ending portfolio value: $101,197.61
 
+=== Run at 2026-07-29T15:52:51.970790 ===
+Alpaca paper account value: $101,193.55
+Cash: $22,286.21 | Holdings: {'A': '39.728 shares (+0.38%)', 'AAPL': '16.9237 shares (+3.15%)', 'BALL': '38.2673 shares (+0.27%)', 'COST': '3.2341 shares (+1.24%)', 'DIS': '25.2806 shares (+0.23%)', 'HD': '7.194 shares (-1.93%)', 'HON': '4.2118 shares (-1.36%)', 'J': '18.2177 shares (+1.26%)', 'JNJ': '23.0219 shares (+2.32%)', 'JPM': '7.8335 shares (-1.14%)', 'LMT': '2.2432 shares (-0.50%)', 'MA': '4.4118 shares (+6.05%)', 'MSFT': '8.9388 shares (+0.87%)', 'NFLX': '34.4234 shares (+0.00%)', 'PM': '8.7919 shares (+3.85%)', 'SO': '77.2636 shares (-0.45%)', 'TGT': '29.2462 shares (+5.77%)', 'UNH': '6.994 shares (-1.01%)', 'UPS': '23.7706 shares (+0.51%)', 'V': '6.6436 shares (+4.89%)', 'WAT': '9.3421 shares (+2.32%)', 'WMT': '17.6835 shares (+0.64%)', 'XOM': '48.0878 shares (+2.23%)'}
+Skipping Gemini this run (within cooldown interval) -- risk checks only.
+Ending portfolio value: $101,194.76
+
