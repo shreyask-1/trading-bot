@@ -3786,3 +3786,9 @@ Gemini recommended 1 trade(s).
   -> {"timestamp": "2026-07-29T19:44:48.439021", "ticker": "TSLA", "action": "sell", "qty": 8.1647, "order_id": "1174e1f2-0796-4231-8c8a-c71c5c9bd7e3", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "TSLA is experiencing severe negative momentum (-20.17% 5-day move, MACD histogram -9.763) within an established downtrend, pushing price to the bottom of its Bollinger Band (%B 0.02). Exiting to limit downside risk.", "status": "submitted"}
 Ending portfolio value: $100,585.23
 
+=== Run at 2026-07-29T19:46:27.674023 ===
+Alpaca paper account value: $100,581.02
+Cash: $24,285.70 | Holdings: {'A': '39.728 shares (+0.19%)', 'AAPL': '8.1779 shares (+2.71%)', 'BA': '11.5666 shares (-0.86%)', 'BAC': '40.7067 shares (-0.68%)', 'BALL': '38.2673 shares (+0.34%)', 'COST': '2.2096 shares (+1.05%)', 'DIS': '25.2806 shares (-0.59%)', 'HD': '7.194 shares (-2.90%)', 'HON': '10.4104 shares (-0.61%)', 'HUM': '5.4572 shares (-1.60%)', 'J': '18.2177 shares (+0.36%)', 'JNJ': '23.0219 shares (+1.06%)', 'JPM': '7.8335 shares (-2.22%)', 'LMT': '4.858 shares (-1.19%)', 'MA': '1.771 shares (+5.13%)', 'MSFT': '8.9388 shares (+0.24%)', 'NFLX': '34.4234 shares (+0.95%)', 'PM': '8.7919 shares (+2.46%)', 'SO': '77.2636 shares (-1.45%)', 'TGT': '9.5405 shares (+5.40%)', 'UNH': '6.994 shares (-2.17%)', 'V': '3.4243 shares (+4.25%)', 'WAT': '9.3421 shares (+1.01%)', 'WMT': '17.6835 shares (+1.36%)', 'XOM': '48.0878 shares (+1.40%)'}
+Skipping Gemini this run (within cooldown interval) -- risk checks only.
+Ending portfolio value: $100,581.99
+
