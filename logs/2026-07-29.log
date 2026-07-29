@@ -3366,3 +3366,9 @@ Gemini recommended 2 trade(s).
   -> {"timestamp": "2026-07-29T17:34:46.328686", "ticker": "HUM", "action": "sell", "qty": 0.0012, "order_id": "546e137c-32f2-4376-957c-bc71daaa2675", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Exiting residual position in HUM after a sharp -9.23% 5-day decline on elevated volume (+117.57% above baseline) and expanding negative MACD histogram (-6.173).", "status": "submitted"}
 Ending portfolio value: $101,073.21
 
+=== Run at 2026-07-29T17:36:30.181162 ===
+Alpaca paper account value: $101,072.44
+Cash: $26,464.11 | Holdings: {'A': '39.728 shares (+0.26%)', 'AAPL': '16.9237 shares (+3.63%)', 'BALL': '38.2673 shares (+0.57%)', 'COST': '2.2096 shares (+1.17%)', 'DIS': '25.2806 shares (-0.32%)', 'HD': '7.194 shares (-1.61%)', 'HON': '10.4104 shares (-0.24%)', 'J': '18.2177 shares (+0.79%)', 'JNJ': '23.0219 shares (+1.91%)', 'JPM': '7.8335 shares (-0.87%)', 'LMT': '4.858 shares (-0.25%)', 'MA': '2.6549 shares (+5.63%)', 'MSFT': '8.9388 shares (+1.08%)', 'NFLX': '34.4234 shares (+0.26%)', 'PM': '8.7919 shares (+3.67%)', 'SO': '77.2636 shares (-0.75%)', 'TGT': '19.0407 shares (+5.61%)', 'UNH': '6.994 shares (-1.77%)', 'V': '3.4243 shares (+4.33%)', 'WAT': '9.3421 shares (+1.79%)', 'WMT': '17.6835 shares (+1.00%)', 'XOM': '48.0878 shares (+1.68%)'}
+Skipping Gemini this run (within cooldown interval) -- risk checks only.
+Ending portfolio value: $101,072.61
+
