@@ -3355,3 +3355,14 @@ Cash: $23,966.82 | Holdings: {'A': '39.728 shares (+0.25%)', 'AAPL': '16.9237 sh
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $101,081.67
 
+=== Run at 2026-07-29T17:34:24.020978 ===
+Alpaca paper account value: $101,085.21
+Cash: $23,966.82 | Holdings: {'A': '39.728 shares (+0.37%)', 'AAPL': '16.9237 shares (+3.58%)', 'BALL': '38.2673 shares (+0.60%)', 'COST': '2.2096 shares (+1.08%)', 'DIS': '25.2806 shares (-0.24%)', 'HD': '7.194 shares (-1.60%)', 'HON': '10.4104 shares (-0.20%)', 'HUM': '0.0012 shares (-0.94%)', 'J': '18.2177 shares (+0.83%)', 'JNJ': '23.0219 shares (+1.88%)', 'JPM': '7.8335 shares (-0.73%)', 'LMT': '4.858 shares (-0.23%)', 'MA': '2.6549 shares (+5.69%)', 'MSFT': '8.9388 shares (+1.08%)', 'NFLX': '34.4234 shares (+0.29%)', 'PM': '8.7919 shares (+3.55%)', 'SO': '77.2636 shares (-0.82%)', 'TGT': '19.0407 shares (+5.56%)', 'UNH': '6.994 shares (-1.69%)', 'UPS': '23.7706 shares (+0.40%)', 'V': '3.4243 shares (+4.49%)', 'WAT': '9.3421 shares (+1.89%)', 'WMT': '17.6835 shares (+0.77%)', 'XOM': '48.0878 shares (+1.77%)'}
+Gemini call interval reached -- generating new trade ideas.
+WARNING: news fetch failed this run, continuing with watchlist only: ('Connection aborted.', ConnectionResetError(104, 'Connection reset by peer'))
+Added 8 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 2 trade(s).
+  -> {"timestamp": "2026-07-29T17:34:46.249546", "ticker": "UPS", "action": "sell", "qty": 23.7706, "order_id": "7843fe1f-c42f-404f-bf4b-038434b86aa6", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "UPS has experienced a severe short-term breakdown (-9.30% 5-day momentum), with MACD histogram turning further negative (-1.184) and Bollinger %B falling below 0.0 (-0.06), indicating a breach of lower support.", "status": "submitted"}
+  -> {"timestamp": "2026-07-29T17:34:46.328686", "ticker": "HUM", "action": "sell", "qty": 0.0012, "order_id": "546e137c-32f2-4376-957c-bc71daaa2675", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Exiting residual position in HUM after a sharp -9.23% 5-day decline on elevated volume (+117.57% above baseline) and expanding negative MACD histogram (-6.173).", "status": "submitted"}
+Ending portfolio value: $101,073.21
+
