@@ -2925,3 +2925,16 @@ Cash: $10,715.50 | Holdings: {'A': '39.728 shares (+0.30%)', 'AAPL': '16.9237 sh
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $101,086.72
 
+=== Run at 2026-07-29T15:24:32.119434 ===
+Alpaca paper account value: $101,097.49
+Cash: $10,715.50 | Holdings: {'A': '39.728 shares (+0.31%)', 'AAPL': '16.9237 shares (+2.75%)', 'BA': '34.0734 shares (-3.73%)', 'BALL': '38.2673 shares (-0.31%)', 'COST': '3.2341 shares (+0.96%)', 'DIS': '25.2806 shares (+0.42%)', 'HD': '7.194 shares (-2.30%)', 'HON': '4.2118 shares (-0.84%)', 'HUM': '6.7844 shares (-0.57%)', 'J': '18.2177 shares (+1.23%)', 'JNJ': '23.0219 shares (+2.08%)', 'JPM': '7.8335 shares (-0.79%)', 'LMT': '2.2432 shares (-0.70%)', 'MA': '6.5295 shares (+5.71%)', 'MSFT': '8.9388 shares (+0.86%)', 'PM': '8.7919 shares (+3.71%)', 'SO': '77.2636 shares (-0.82%)', 'TGT': '29.2462 shares (+5.41%)', 'UNH': '6.994 shares (-0.99%)', 'UPS': '42.7883 shares (+0.53%)', 'V': '9.8719 shares (+4.86%)', 'WAT': '9.3421 shares (+2.10%)', 'WMT': '17.6835 shares (+0.33%)', 'XOM': '48.0878 shares (+2.27%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 10 companies mentioned in current news.
+Added 7 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 4 trade(s).
+  -> {"timestamp": "2026-07-29T15:25:10.690079", "ticker": "BA", "action": "sell", "qty": 34.0734, "order_id": "bcb72c3a-5390-4b3a-bb33-746215c2478a", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Exiting position in a confirmed downtrend with negative MACD histogram (-0.026) and above-average volume (+31.78%), showing strong selling conviction.", "status": "submitted"}
+  -> {"timestamp": "2026-07-29T15:25:10.822571", "ticker": "HUM", "action": "sell", "qty": 6.7844, "order_id": "3dc571b3-8337-4942-a89f-06054a6330c6", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Exiting due to strong negative momentum (-7.53% 5-day), sharply negative MACD (-5.743), and breakdown below lower Bollinger Band (%B -0.22) on higher volume (+36.65%).", "status": "submitted"}
+  -> {"timestamp": "2026-07-29T15:25:10.953811", "ticker": "V", "action": "sell", "qty": 3.2283, "order_id": "ee201d4a-b39a-460d-addf-57f79ab89420", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Trimming partial position as %B (1.09) and RSI (68.28) indicate short-term overextension above the upper Bollinger Band.", "status": "submitted"}
+  -> {"timestamp": "2026-07-29T15:25:11.068861", "ticker": "MA", "action": "sell", "qty": 2.1177, "order_id": "59a909e3-d8c7-4b91-b85e-77e456ccfe83", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Trimming partial position with %B at 1.07 and RSI near overbought (68.96) to lock in gains on overextended price action.", "status": "submitted"}
+Ending portfolio value: $101,078.98
+
