@@ -3616,3 +3616,9 @@ Gemini recommended 3 trade(s).
   -> {"timestamp": "2026-07-29T18:53:12.581555", "ticker": "HUM", "action": "buy", "qty": 5.4572, "order_id": "4c717edf-fb4d-4a95-a183-2b581c184fce", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Massive volume expansion (+157.8% vs avg) pushed %B below zero (-0.22) despite quarterly estimates beat and maintained outlook, presenting a mispriced oversold entry.", "status": "submitted"}
 Ending portfolio value: $101,195.65
 
+=== Run at 2026-07-29T18:54:38.101895 ===
+Alpaca paper account value: $101,200.89
+Cash: $22,854.80 | Holdings: {'A': '39.728 shares (+0.73%)', 'AAPL': '12.5607 shares (+3.85%)', 'BA': '11.5666 shares (+0.67%)', 'BALL': '38.2673 shares (+0.83%)', 'COST': '2.2096 shares (+1.13%)', 'DIS': '25.2806 shares (+0.20%)', 'HD': '7.194 shares (-1.71%)', 'HON': '10.4104 shares (+0.91%)', 'HUM': '5.4572 shares (-0.61%)', 'J': '18.2177 shares (+1.72%)', 'JNJ': '23.0219 shares (+1.51%)', 'JPM': '7.8335 shares (-0.91%)', 'LMT': '4.858 shares (-0.01%)', 'MA': '1.771 shares (+5.55%)', 'MSFT': '8.9388 shares (+2.31%)', 'NFLX': '34.4234 shares (+1.19%)', 'PM': '8.7919 shares (+3.01%)', 'SO': '77.2636 shares (-1.23%)', 'TGT': '9.5405 shares (+6.09%)', 'TSLA': '8.1647 shares (+0.03%)', 'UNH': '6.994 shares (-1.13%)', 'V': '3.4243 shares (+4.32%)', 'WAT': '9.3421 shares (+1.60%)', 'WMT': '17.6835 shares (+1.35%)', 'XOM': '48.0878 shares (+1.45%)'}
+Skipping Gemini this run (within cooldown interval) -- risk checks only.
+Ending portfolio value: $101,199.81
+
