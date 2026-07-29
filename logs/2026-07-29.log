@@ -3015,3 +3015,14 @@ Cash: $22,785.51 | Holdings: {'A': '39.728 shares (+0.41%)', 'AAPL': '16.9237 sh
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $101,180.16
 
+=== Run at 2026-07-29T15:50:41.862668 ===
+Alpaca paper account value: $101,182.89
+Cash: $22,785.51 | Holdings: {'A': '39.728 shares (+0.40%)', 'AAPL': '16.9237 shares (+3.05%)', 'BALL': '38.2673 shares (+0.15%)', 'COST': '3.2341 shares (+1.26%)', 'DIS': '25.2806 shares (+0.25%)', 'HD': '7.194 shares (-1.97%)', 'HON': '4.2118 shares (-1.26%)', 'J': '18.2177 shares (+1.38%)', 'JNJ': '23.0219 shares (+2.25%)', 'JPM': '7.8335 shares (-1.06%)', 'LMT': '2.2432 shares (-0.48%)', 'MA': '4.4118 shares (+6.07%)', 'MSFT': '8.9388 shares (+0.84%)', 'PM': '8.7919 shares (+3.85%)', 'SO': '77.2636 shares (-0.44%)', 'TGT': '29.2462 shares (+5.74%)', 'UNH': '6.994 shares (-0.95%)', 'UPS': '42.7883 shares (+0.48%)', 'V': '6.6436 shares (+4.97%)', 'WAT': '9.3421 shares (+2.37%)', 'WMT': '17.6835 shares (+0.52%)', 'XOM': '48.0878 shares (+2.13%)'}
+Gemini call interval reached -- generating new trade ideas.
+WARNING: news fetch failed this run, continuing with watchlist only: HTTPSConnectionPool(host='finnhub.io', port=443): Read timed out. (read timeout=15)
+Added 9 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 2 trade(s).
+  -> {"timestamp": "2026-07-29T15:51:23.002422", "ticker": "UPS", "action": "sell", "qty": 19.0177, "order_id": "4cef8fa8-ac54-462b-a9cb-43ae9d39ccca", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Sharp negative 5-day momentum (-9.23%), negative MACD histogram (-1.179), and price breaking below the lower Bollinger band (%B -0.05) signal a bearish momentum shift, warranting a position trim to manage downside risk.", "status": "submitted"}
+  -> {"timestamp": "2026-07-29T15:51:23.131362", "ticker": "NFLX", "action": "buy", "qty": 34.4234, "order_id": "359ac04e-751c-4b5d-b4c3-29ade867be42", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Bullish momentum shift indicated by positive MACD histogram (+0.478) and strong 5-day gain (+5.98%), while RSI (47.27) and %B (0.50) reflect healthy mid-range levels with room for further upside.", "status": "submitted"}
+Ending portfolio value: $101,197.61
+
