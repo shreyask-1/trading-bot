@@ -1766,3 +1766,14 @@ Cash: $16,120.89 | Holdings: {'A': '39.728 shares (-0.06%)', 'AAPL': '21.3333 sh
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $101,510.87
 
+=== Run at 2026-07-29T09:20:34.515810 ===
+Alpaca paper account value: $101,514.26
+Cash: $16,120.89 | Holdings: {'A': '39.728 shares (-0.06%)', 'AAPL': '21.3333 shares (+2.94%)', 'BA': '27.3017 shares (+0.70%)', 'COST': '3.2341 shares (+0.80%)', 'HD': '7.194 shares (-0.82%)', 'HON': '6.2367 shares (+1.06%)', 'J': '7.1601 shares (+7.12%)', 'JNJ': '23.0219 shares (+2.19%)', 'JPM': '10.0719 shares (+1.41%)', 'KO': '14.5963 shares (+1.57%)', 'LMT': '3.2753 shares (+0.34%)', 'MA': '6.5295 shares (+4.99%)', 'MSFT': '8.9388 shares (+0.68%)', 'NFLX': '62.7223 shares (-0.15%)', 'PG': '30.2609 shares (-0.70%)', 'PM': '13.7899 shares (+4.23%)', 'SO': '77.2636 shares (-0.52%)', 'TGT': '29.2462 shares (+3.91%)', 'V': '9.8719 shares (+3.02%)', 'WAT': '9.3421 shares (+2.37%)', 'XOM': '48.0878 shares (+0.46%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 11 companies mentioned in current news.
+Added 8 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 2 trade(s).
+  -> {"timestamp": "2026-07-29T09:20:55.658716", "ticker": "AAPL", "action": "sell", "qty": 4.4096, "order_id": "b246ad78-16d4-4436-bfce-02e2da262a53", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Trimming partial position to lock in gains near overbought RSI (69.21) and manage position concentration risk close to the 8% portfolio cap.", "status": "submitted"}
+  -> {"timestamp": "2026-07-29T09:20:55.809759", "ticker": "WMT", "action": "buy", "qty": 17.6835, "order_id": "ded343eb-c629-4a80-880b-4f935f56e2f3", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "long", "reasoning": "Bullish MACD histogram shift (+0.237) with solid baseline volume accumulation (+29.54%) and room to run (RSI 48.69, %B 0.64).", "status": "submitted"}
+Ending portfolio value: $101,514.97
+
