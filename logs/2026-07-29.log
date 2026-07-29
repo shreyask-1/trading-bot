@@ -2843,3 +2843,13 @@ Cash: $10,715.50 | Holdings: {'A': '39.728 shares (+0.51%)', 'AAPL': '16.9237 sh
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $101,022.70
 
+=== Run at 2026-07-29T14:58:36.290368 ===
+Alpaca paper account value: $100,994.97
+Cash: $10,715.50 | Holdings: {'A': '39.728 shares (+0.55%)', 'AAPL': '16.9237 shares (+2.92%)', 'BA': '34.0734 shares (-3.73%)', 'BALL': '38.2673 shares (-0.14%)', 'COST': '3.2341 shares (+0.86%)', 'DIS': '25.2806 shares (+0.52%)', 'HD': '7.194 shares (-2.67%)', 'HON': '4.2118 shares (-0.56%)', 'HUM': '6.7844 shares (-1.77%)', 'J': '18.2177 shares (+0.74%)', 'JNJ': '23.0219 shares (+1.65%)', 'JPM': '7.8335 shares (-0.67%)', 'LMT': '2.2432 shares (-0.34%)', 'MA': '6.5295 shares (+4.87%)', 'MSFT': '8.9388 shares (+0.82%)', 'PM': '8.7919 shares (+4.04%)', 'SO': '77.2636 shares (-0.82%)', 'TGT': '29.2462 shares (+5.12%)', 'UNH': '6.994 shares (-0.81%)', 'UPS': '42.7883 shares (+0.42%)', 'V': '9.8719 shares (+3.95%)', 'WAT': '9.3421 shares (+2.23%)', 'WMT': '17.6835 shares (+0.24%)', 'XOM': '48.0878 shares (+2.31%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 10 companies mentioned in current news.
+Added 7 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 1 trade(s).
+  -> {"ticker": "HUM", "status": "failed", "reason": "unknown action 'add'"}
+Ending portfolio value: $100,974.09
+
