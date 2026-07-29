@@ -3272,3 +3272,14 @@ Cash: $22,973.15 | Holdings: {'A': '39.728 shares (+0.10%)', 'AAPL': '16.9237 sh
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $101,097.41
 
+=== Run at 2026-07-29T17:08:34.136850 ===
+Alpaca paper account value: $101,067.45
+Cash: $22,973.15 | Holdings: {'A': '39.728 shares (+0.04%)', 'AAPL': '16.9237 shares (+3.35%)', 'BALL': '38.2673 shares (+0.47%)', 'COST': '2.2096 shares (+1.09%)', 'DIS': '25.2806 shares (-0.05%)', 'HD': '7.194 shares (-1.55%)', 'HON': '4.2118 shares (-0.83%)', 'HUM': '6.876 shares (-0.47%)', 'J': '18.2177 shares (+0.69%)', 'JNJ': '23.0219 shares (+1.87%)', 'JPM': '7.8335 shares (-0.94%)', 'LMT': '4.858 shares (-0.35%)', 'MA': '2.6549 shares (+6.02%)', 'MSFT': '8.9388 shares (+0.99%)', 'NFLX': '34.4234 shares (+0.15%)', 'PM': '8.7919 shares (+3.52%)', 'SO': '77.2636 shares (-0.84%)', 'TGT': '19.0407 shares (+5.57%)', 'UNH': '6.994 shares (-1.57%)', 'UPS': '23.7706 shares (+0.30%)', 'V': '3.4243 shares (+5.13%)', 'WAT': '9.3421 shares (+1.61%)', 'WMT': '17.6835 shares (+0.99%)', 'XOM': '48.0878 shares (+2.07%)'}
+Gemini call interval reached -- generating new trade ideas.
+WARNING: news fetch failed this run, continuing with watchlist only: HTTPSConnectionPool(host='finnhub.io', port=443): Read timed out. (read timeout=15)
+Added 8 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 2 trade(s).
+  -> {"timestamp": "2026-07-29T17:09:11.832458", "ticker": "HUM", "action": "sell", "qty": 6.8748, "order_id": "12d1a65f-5e62-406e-a943-00b3ceca713d", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Exiting HUM position following a sharp price breakdown characterized by -8.71% 5-day momentum, accelerating negative MACD histogram (-6.041), and heavy selling volume (+110.25% above average) indicating institutional distribution.", "status": "submitted"}
+  -> {"timestamp": "2026-07-29T17:09:11.885020", "ticker": "HON", "action": "buy", "qty": 6.1986, "order_id": "3f7d7b63-5625-4fbd-bb20-7a52dbde3822", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "long", "reasoning": "Adding to the existing small HON position as technicals remain strongly supportive in an established uptrend, backed by solid bullish momentum (MACD histogram +2.033) and a healthy RSI of 61.16.", "status": "submitted"}
+Ending portfolio value: $101,054.41
+
