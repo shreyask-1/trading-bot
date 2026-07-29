@@ -3604,3 +3604,15 @@ Cash: $25,963.48 | Holdings: {'A': '39.728 shares (+0.69%)', 'AAPL': '12.5607 sh
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $101,199.86
 
+=== Run at 2026-07-29T18:52:40.595726 ===
+Alpaca paper account value: $101,190.46
+Cash: $25,963.48 | Holdings: {'A': '39.728 shares (+0.65%)', 'AAPL': '12.5607 shares (+3.88%)', 'BA': '11.5666 shares (+0.52%)', 'BALL': '38.2673 shares (+0.86%)', 'COST': '2.2096 shares (+1.00%)', 'DIS': '25.2806 shares (+0.19%)', 'HD': '7.194 shares (-1.69%)', 'HON': '10.4104 shares (+0.91%)', 'J': '18.2177 shares (+1.53%)', 'JNJ': '23.0219 shares (+1.51%)', 'JPM': '7.8335 shares (-0.98%)', 'LMT': '4.858 shares (-0.11%)', 'MA': '1.771 shares (+5.66%)', 'MSFT': '8.9388 shares (+2.34%)', 'NFLX': '34.4234 shares (+1.25%)', 'PM': '8.7919 shares (+2.95%)', 'SO': '77.2636 shares (-1.28%)', 'TGT': '19.0407 shares (+6.08%)', 'UNH': '6.994 shares (-1.08%)', 'V': '3.4243 shares (+4.37%)', 'WAT': '9.3421 shares (+1.59%)', 'WMT': '17.6835 shares (+1.24%)', 'XOM': '48.0878 shares (+1.45%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 10 companies mentioned in current news.
+Added 6 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 3 trade(s).
+  -> {"timestamp": "2026-07-29T18:53:12.413989", "ticker": "TGT", "action": "sell", "qty": 9.5002, "order_id": "a1ae7011-4776-4e85-8eac-caa3a259c4d8", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "TGT is overextended above its upper Bollinger Band (%B 1.05) with RSI near overbought territory (68.46); trimming to take profits following a strong 5-day move.", "status": "submitted"}
+  -> {"timestamp": "2026-07-29T18:53:12.490853", "ticker": "TSLA", "action": "buy", "qty": 8.1647, "order_id": "752c5114-fbd7-4f13-b388-1ee210fdc528", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "RSI at 26.81 is deeply oversold and %B sits at 0.06 near the lower Bollinger Band, setting up a tactical mean-reversion bounce opportunity.", "status": "submitted"}
+  -> {"timestamp": "2026-07-29T18:53:12.581555", "ticker": "HUM", "action": "buy", "qty": 5.4572, "order_id": "4c717edf-fb4d-4a95-a183-2b581c184fce", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Massive volume expansion (+157.8% vs avg) pushed %B below zero (-0.22) despite quarterly estimates beat and maintained outlook, presenting a mispriced oversold entry.", "status": "submitted"}
+Ending portfolio value: $101,195.65
+
