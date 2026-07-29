@@ -2676,3 +2676,15 @@ Cash: $11,829.95 | Holdings: {'A': '39.728 shares (+1.11%)', 'AAPL': '16.9237 sh
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $101,221.54
 
+=== Run at 2026-07-29T14:06:30.859276 ===
+Alpaca paper account value: $101,159.47
+Cash: $11,829.95 | Holdings: {'A': '39.728 shares (+1.26%)', 'AAPL': '16.9237 shares (+3.72%)', 'BA': '34.0734 shares (-3.10%)', 'COST': '3.2341 shares (+0.53%)', 'DIS': '25.2806 shares (+0.46%)', 'HD': '7.194 shares (-2.27%)', 'HON': '4.2118 shares (-0.48%)', 'HUM': '6.7844 shares (-2.44%)', 'J': '3.6064 shares (+4.35%)', 'JNJ': '23.0219 shares (+1.93%)', 'JPM': '7.8335 shares (-0.90%)', 'KO': '10.0658 shares (+3.81%)', 'LMT': '2.2432 shares (-0.48%)', 'MA': '6.5295 shares (+5.06%)', 'MSFT': '8.9388 shares (+0.30%)', 'NFLX': '0.0029 shares (-0.76%)', 'PM': '8.7919 shares (+3.16%)', 'QCOM': '15.3553 shares (+0.04%)', 'SO': '77.2636 shares (-0.02%)', 'TGT': '29.2462 shares (+4.70%)', 'UNH': '6.994 shares (-1.08%)', 'UPS': '42.7883 shares (+0.14%)', 'V': '9.8719 shares (+3.78%)', 'WAT': '9.3421 shares (+3.81%)', 'WMT': '17.6835 shares (+0.11%)', 'XOM': '48.0878 shares (+2.09%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 10 companies mentioned in current news.
+Added 6 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 3 trade(s).
+  -> {"timestamp": "2026-07-29T14:07:03.589743", "ticker": "QCOM", "action": "sell", "qty": 15.3553, "order_id": "843b5455-6d4b-411c-95b0-db240e22f3be", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Exiting downtrend position showing sharp negative momentum (-7.50% 5d), negative MACD histogram (-0.655), and price near the lower Bollinger band (%B 0.07).", "status": "submitted"}
+  -> {"timestamp": "2026-07-29T14:07:03.680881", "ticker": "KO", "action": "sell", "qty": 10.0658, "order_id": "fca6933f-34ab-4c95-b148-7d062d535fd3", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Taking profits on an overextended position showing RSI above 70 (70.27) and Bollinger %B at 1.27 well beyond the upper band ahead of earnings.", "status": "submitted"}
+  -> {"timestamp": "2026-07-29T14:07:03.756478", "ticker": "J", "action": "buy", "qty": 14.6113, "order_id": "28ea740c-6156-4344-aaf7-4b0431bf3ad4", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "long", "reasoning": "Building out a small position in an established uptrend with solid 5-day momentum (+4.78%), a positive MACD histogram (+0.740), and healthy RSI (63.73).", "status": "submitted"}
+Ending portfolio value: $101,159.37
+
