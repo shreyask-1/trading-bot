@@ -2587,3 +2587,15 @@ Cash: $13,849.99 | Holdings: {'A': '39.728 shares (+1.15%)', 'AAPL': '16.9237 sh
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $101,219.94
 
+=== Run at 2026-07-29T13:40:43.524006 ===
+Alpaca paper account value: $101,341.21
+Cash: $13,849.99 | Holdings: {'A': '39.728 shares (+1.28%)', 'AAPL': '16.9237 shares (+3.18%)', 'BA': '34.0734 shares (-0.96%)', 'COST': '3.2341 shares (+0.72%)', 'DIS': '25.2806 shares (+0.37%)', 'HD': '7.194 shares (-2.05%)', 'HON': '4.2118 shares (+0.30%)', 'J': '3.6064 shares (+5.91%)', 'JNJ': '23.0219 shares (+1.84%)', 'JPM': '7.8335 shares (+0.77%)', 'KO': '10.0658 shares (+3.66%)', 'LMT': '2.2432 shares (-0.26%)', 'MA': '6.5295 shares (+5.55%)', 'MSFT': '8.9388 shares (-0.25%)', 'NFLX': '0.0029 shares (-0.76%)', 'PM': '8.7919 shares (+3.84%)', 'QCOM': '15.3553 shares (-0.16%)', 'SO': '77.2636 shares (-0.13%)', 'TGT': '29.2462 shares (+3.64%)', 'TSLA': '8.1452 shares (+0.01%)', 'UNH': '6.994 shares (-0.52%)', 'UPS': '23.6843 shares (+0.07%)', 'V': '9.8719 shares (+3.82%)', 'WAT': '9.3421 shares (+3.50%)', 'WMT': '17.6835 shares (+0.11%)', 'XOM': '48.0878 shares (+1.66%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 11 companies mentioned in current news.
+Added 5 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 3 trade(s).
+  -> {"timestamp": "2026-07-29T13:41:09.056524", "ticker": "TSLA", "action": "sell", "qty": 8.1452, "order_id": "836f3336-c511-4e0d-9cd0-f07ae22e41e2", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Downtrend confirmed with severe negative 5-day momentum (-18.14%) and expanding negative MACD histogram (-9.278); exiting position to protect capital.", "status": "submitted"}
+  -> {"timestamp": "2026-07-29T13:41:09.229803", "ticker": "UPS", "action": "buy", "qty": 19.104, "order_id": "f5e2a487-9db5-499a-a992-d82dafb681b8", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Adding to the position on a dip buy setup with price extended below the lower Bollinger band (%B -0.08) and RSI at 37.96.", "status": "submitted"}
+  -> {"timestamp": "2026-07-29T13:41:09.429809", "ticker": "HUM", "action": "buy", "qty": 6.7844, "order_id": "b35367a2-979e-42d5-b18e-60a05e4f1e9f", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Initiating position following an earnings beat and maintained guidance; stock is trading outside its lower Bollinger band (%B -0.04), favoring a mean-reversion move.", "status": "submitted"}
+Ending portfolio value: $101,345.76
+
