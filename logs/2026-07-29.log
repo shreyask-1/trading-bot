@@ -3693,3 +3693,14 @@ Cash: $22,854.80 | Holdings: {'A': '39.728 shares (+0.61%)', 'AAPL': '12.5607 sh
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $101,010.95
 
+=== Run at 2026-07-29T19:18:35.815323 ===
+Alpaca paper account value: $100,973.89
+Cash: $22,854.80 | Holdings: {'A': '39.728 shares (+0.62%)', 'AAPL': '12.5607 shares (+3.48%)', 'BA': '11.5666 shares (+0.24%)', 'BALL': '38.2673 shares (+0.41%)', 'COST': '2.2096 shares (+0.94%)', 'DIS': '25.2806 shares (-0.42%)', 'HD': '7.194 shares (-1.98%)', 'HON': '10.4104 shares (+0.06%)', 'HUM': '5.4572 shares (+0.82%)', 'J': '18.2177 shares (+1.10%)', 'JNJ': '23.0219 shares (+1.39%)', 'JPM': '7.8335 shares (-1.63%)', 'LMT': '4.858 shares (-0.52%)', 'MA': '1.771 shares (+5.28%)', 'MSFT': '8.9388 shares (+1.47%)', 'NFLX': '34.4234 shares (+0.97%)', 'PM': '8.7919 shares (+2.74%)', 'SO': '77.2636 shares (-1.28%)', 'TGT': '9.5405 shares (+5.74%)', 'TSLA': '8.1647 shares (-0.81%)', 'UNH': '6.994 shares (-1.39%)', 'V': '3.4243 shares (+4.22%)', 'WAT': '9.3421 shares (+1.66%)', 'WMT': '17.6835 shares (+1.31%)', 'XOM': '48.0878 shares (+1.08%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 11 companies mentioned in current news.
+Added 5 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 2 trade(s).
+  -> {"timestamp": "2026-07-29T19:19:04.051019", "ticker": "AAPL", "action": "sell", "qty": 4.3828, "order_id": "8a766e01-066b-4c13-b208-4d8ba01987b7", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "RSI has crossed overbought threshold (70.48) with %B near the upper Bollinger band (0.92) on below-average volume (-19.49%), suggesting potential near-term consolidation.", "status": "submitted"}
+  -> {"timestamp": "2026-07-29T19:19:04.218301", "ticker": "BAC", "action": "buy", "qty": 40.7067, "order_id": "2178d3bd-a107-49b5-89b6-d6f90a9ea2f9", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "long", "reasoning": "In a confirmed technical uptrend supported by above-average volume (+13.00%) showing buying conviction. RSI (60.87) and %B (0.67) indicate room for further upside without immediate overextension.", "status": "submitted"}
+Ending portfolio value: $100,960.01
+
