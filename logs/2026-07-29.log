@@ -1860,3 +1860,9 @@ Gemini recommended 2 trade(s).
   -> {"timestamp": "2026-07-29T09:47:03.139959", "ticker": "HON", "action": "sell", "qty": 2.0249, "order_id": "a2bee53a-a2ea-4656-9fec-23569f3c4138", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Trim HON due to overextension above the upper Bollinger band (%B 1.01) occurring on below-average volume (-32.38%), signaling weak conviction at elevated levels.", "status": "submitted"}
 Ending portfolio value: $101,419.32
 
+=== Run at 2026-07-29T09:48:26.328709 ===
+Alpaca paper account value: $101,415.52
+Cash: $16,120.89 | Holdings: {'A': '39.728 shares (-0.06%)', 'AAPL': '21.3333 shares (+2.68%)', 'BA': '27.3017 shares (+0.70%)', 'COST': '3.2341 shares (+0.80%)', 'HD': '7.194 shares (-0.82%)', 'HON': '6.2367 shares (+1.06%)', 'J': '7.1601 shares (+7.12%)', 'JNJ': '23.0219 shares (+1.83%)', 'JPM': '10.0719 shares (+1.41%)', 'KO': '14.5963 shares (+1.20%)', 'LMT': '3.2753 shares (+0.36%)', 'MA': '6.5295 shares (+4.88%)', 'MSFT': '8.9388 shares (+0.15%)', 'NFLX': '62.7223 shares (-0.65%)', 'PG': '30.2609 shares (-0.13%)', 'PM': '13.7899 shares (+3.78%)', 'SO': '77.2636 shares (-0.52%)', 'TGT': '29.2462 shares (+3.91%)', 'V': '9.8719 shares (+2.36%)', 'WAT': '9.3421 shares (+2.37%)', 'XOM': '48.0878 shares (+0.46%)'}
+Skipping Gemini this run (within cooldown interval) -- risk checks only.
+Ending portfolio value: $101,415.52
+
