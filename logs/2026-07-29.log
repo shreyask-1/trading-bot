@@ -3182,3 +3182,15 @@ Cash: $22,274.84 | Holdings: {'A': '39.728 shares (+0.10%)', 'AAPL': '16.9237 sh
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $101,082.02
 
+=== Run at 2026-07-29T16:42:32.064412 ===
+Alpaca paper account value: $101,052.78
+Cash: $22,274.84 | Holdings: {'A': '39.728 shares (-0.01%)', 'AAPL': '16.9237 shares (+2.81%)', 'BALL': '38.2673 shares (+0.39%)', 'COST': '3.2341 shares (+1.30%)', 'DIS': '25.2806 shares (+0.01%)', 'HD': '7.194 shares (-1.60%)', 'HON': '4.2118 shares (-1.14%)', 'HUM': '6.876 shares (-0.39%)', 'J': '18.2177 shares (+0.92%)', 'JNJ': '23.0219 shares (+1.97%)', 'JPM': '7.8335 shares (-1.07%)', 'LMT': '2.2432 shares (-0.98%)', 'MA': '2.6549 shares (+5.75%)', 'MSFT': '8.9388 shares (+0.61%)', 'NFLX': '34.4234 shares (-0.14%)', 'PM': '8.7919 shares (+3.33%)', 'SO': '77.2636 shares (-0.61%)', 'TGT': '19.0407 shares (+5.90%)', 'UNH': '6.994 shares (-1.18%)', 'UPS': '23.7706 shares (+0.38%)', 'V': '6.6436 shares (+5.19%)', 'WAT': '9.3421 shares (+1.58%)', 'WMT': '17.6835 shares (+0.80%)', 'XOM': '48.0878 shares (+2.10%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 10 companies mentioned in current news.
+Added 6 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 3 trade(s).
+  -> {"timestamp": "2026-07-29T16:43:04.465778", "ticker": "V", "action": "sell", "qty": 3.2193, "order_id": "ddaabddf-35ac-4878-81c5-cd5df3867bdf", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Bollinger %B is at 1.13 with RSI at 68.99, indicating price overextension above the upper band. Trimming locks in profits (+5.19% P/L) and mitigates mean-reversion risk.", "status": "submitted"}
+  -> {"timestamp": "2026-07-29T16:43:04.622133", "ticker": "COST", "action": "sell", "qty": 1.0245, "order_id": "6f294dc9-ee67-40eb-9751-832a6094f64d", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Bollinger %B stands at 1.07 while the overarching trend remains mixed/sideways. Trimming near upper band resistance reduces overextension exposure.", "status": "submitted"}
+  -> {"timestamp": "2026-07-29T16:43:04.776797", "ticker": "LMT", "action": "buy", "qty": 2.6148, "order_id": "5ec827eb-6f43-4dd3-a7ad-3e8e78d3d63b", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Exhibits strong uptrend momentum (+11.50% 5d return) with a surging MACD histogram (+7.677). With %B at 0.87 and RSI at 66.09, the stock retains upside room before becoming overbought.", "status": "submitted"}
+Ending portfolio value: $101,047.47
+
