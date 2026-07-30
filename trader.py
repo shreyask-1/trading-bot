@@ -3,6 +3,8 @@ Talks to your real Alpaca PAPER TRADING account (fake money, real broker
 infrastructure). No live/real money is touched as long as paper=True stays set.
 """
 
+import csv
+import os
 from datetime import datetime, timedelta, timezone
 from alpaca.trading.client import TradingClient
 from alpaca.trading.requests import MarketOrderRequest, GetOrdersRequest
@@ -61,7 +63,7 @@ def get_indicator_snapshot(ticker):
     Returns None if there isn't enough data.
     """
     try:
-        end = datetime.now()
+        end = datetime.now(timezone.utc)
         start = end - timedelta(days=120)
         request = StockBarsRequest(
             symbol_or_symbols=ticker,
@@ -210,9 +212,7 @@ def execute_trade(trade, account_snapshot=None):
     action = trade["action"].lower()
     dollar_amount = trade.get("dollar_amount", 0)
 
-    # Gemini sometimes says "trim" or "reduce" meaning a partial sell, and
-    # "exit"/"close" meaning a full sell -- normalize these to "sell" so
-    # they're not silently rejected as unknown actions.
+    # Normalize directional synonyms to standard actions
     if action in ("trim", "reduce", "exit", "close"):
         action = "sell"
 
@@ -229,6 +229,7 @@ def execute_trade(trade, account_snapshot=None):
     current_position_value = (current_holding["qty"] * price) if current_holding else 0
 
     if action == "buy":
+        # Dynamic risk sizing cap: enforce portfolio level & cash boundaries
         amount = min(dollar_amount, max_allowed - current_position_value, account_snapshot["cash"])
         if amount <= 0:
             return {"ticker": ticker, "status": "skipped", "reason": "position cap or insufficient cash"}
@@ -241,7 +242,7 @@ def execute_trade(trade, account_snapshot=None):
         shares_owned = current_holding["qty"] if current_holding else 0
         if shares_owned <= 0:
             return {"ticker": ticker, "status": "skipped", "reason": "no shares owned"}
-        qty = round(min(shares_owned, dollar_amount / price) if dollar_amount else shares_owned, 4)
+        qty = round(min(shares_owned, dollar_amount / price) if dollar_amount > 0 else shares_owned, 4)
         side = OrderSide.SELL
 
     else:
@@ -249,7 +250,7 @@ def execute_trade(trade, account_snapshot=None):
 
     try:
         order_request = MarketOrderRequest(
-            symbol=ticker, qty=qty, side=side, time_in_force=TimeInForce.DAY,
+            symbol=ticker, qty=qty, side=side, time_in_force=TimeInForce.DAY
         )
         order = trading_client.submit_order(order_request)
         return {
@@ -268,7 +269,6 @@ def execute_trade(trade, account_snapshot=None):
 
 
 def record_performance_snapshot(account_snapshot, log_dir):
-    import csv, os
     path = os.path.join(log_dir, "performance.csv")
     file_exists = os.path.exists(path)
     with open(path, "a", newline="") as f:
