@@ -29,8 +29,11 @@ MAX_PORTFOLIO_ALLOCATION_PCT = 0.80
 STOP_LOSS_PCT = 0.03
 TAKE_PROFIT_PCT = 0.08
 
-# Technical Analysis & Lookback Settings
-PRICE_HISTORY_DAYS = 30            # Number of historical bars/days required for indicator calculations
+# Technical Analysis & Indicator Settings
+PRICE_HISTORY_DAYS = 30            # Number of historical days/bars required
+RSI_PERIOD = 14                    # Relative Strength Index lookback window
+SMA_SHORT_PERIOD = 9               # Short-term Simple Moving Average
+SMA_LONG_PERIOD = 21               # Long-term Simple Moving Average
 
 # Signal Scoring Thresholds
 MIN_SIGNAL_SCORE = 50.0
