@@ -2811,3 +2811,9 @@ Gemini recommended 2 trade(s).
   -> {"timestamp": "2026-07-30T14:48:49.710133", "ticker": "SBUX", "action": "buy", "qty": 18.7988, "order_id": "89d53aa0-1c98-46f9-9930-017015014208", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "long", "reasoning": "Initiating a long position in an established uptrend (above SMA20 and SMA50) supported by volume expansion (+19.06% vs avg) and a healthy RSI of 58.6.", "status": "submitted"}
 Ending portfolio value: $99,836.08
 
+=== Run at 2026-07-30T14:50:39.289437 ===
+Alpaca paper account value: $99,759.45
+Cash: $10,906.58 | Holdings: {'A': '39.728 shares (-1.01%)', 'AAPL': '14.0875 shares (-1.20%)', 'AMZN': '13.2333 shares (+2.04%)', 'BA': '0.0025 shares (+1.15%)', 'BAC': '40.4924 shares (-0.15%)', 'BALL': '38.2673 shares (-1.33%)', 'COST': '1.21 shares (-2.24%)', 'DIS': '25.2806 shares (-4.10%)', 'FDX': '8.098 shares (-1.62%)', 'HD': '7.194 shares (-4.38%)', 'HON': '20.774 shares (-1.67%)', 'J': '29.2564 shares (-2.85%)', 'JNJ': '23.0219 shares (-2.63%)', 'JPM': '7.8335 shares (-1.49%)', 'KO': '28.5128 shares (-0.34%)', 'LMT': '8.3707 shares (-2.63%)', 'MA': '0.8832 shares (+6.06%)', 'MSFT': '4.0011 shares (+10.01%)', 'NFLX': '34.4234 shares (-2.15%)', 'PM': '8.7919 shares (-0.57%)', 'SBUX': '18.7988 shares (-0.39%)', 'SO': '77.2636 shares (-3.10%)', 'TGT': '15.8763 shares (+0.76%)', 'TSLA': '0.0035 shares (+0.88%)', 'UNH': '3.4282 shares (-2.63%)', 'V': '7.488 shares (+0.61%)', 'VRT': '11.2062 shares (-2.40%)', 'WAT': '9.3421 shares (-0.72%)', 'WMT': '17.6835 shares (-1.26%)', 'XOM': '48.0878 shares (+0.19%)'}
+Skipping Gemini this run (within cooldown interval) -- risk checks only.
+Ending portfolio value: $99,756.03
+
