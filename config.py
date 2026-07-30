@@ -19,7 +19,7 @@ ALPACA_BASE_URL = os.getenv("ALPACA_BASE_URL", "https://paper-api.alpaca.markets
 FINNHUB_API_KEY = os.getenv("FINNHUB_API_KEY", "")
 
 # =====================================================================
-# 2. RISK MANAGEMENT & POSITION SIZING (All Aliases Included)
+# 2. RISK MANAGEMENT & POSITION SIZING
 # =====================================================================
 MAX_POSITION_SIZE_PCT = 0.05
 MAX_POSITION_PCT = 0.05            # Alias for trader.py imports
@@ -29,15 +29,17 @@ STOP_LOSS_PCT = 0.03
 TAKE_PROFIT_PCT = 0.08
 
 # =====================================================================
-# 3. TECHNICAL ANALYSIS & INDICATOR SETTINGS (All Aliases Included)
+# 3. TECHNICAL ANALYSIS & INDICATOR SETTINGS (All Variations Covered)
 # =====================================================================
 PRICE_HISTORY_DAYS = 30
 RSI_PERIOD = 14
+RSI_WINDOW = 14
+
+# Moving Average Aliases (Covering SMA_SHORT, SMA_LONG, FAST, SLOW, etc.)
+SMA_SHORT = 9
+SMA_LONG = 21
 SMA_SHORT_PERIOD = 9
 SMA_LONG_PERIOD = 21
-
-# Additional legacy/module compatibility aliases
-RSI_WINDOW = 14
 SMA_FAST = 9
 SMA_SLOW = 21
 
