@@ -2561,3 +2561,9 @@ Gemini recommended 1 trade(s).
   -> {"timestamp": "2026-07-30T13:31:13.779105", "ticker": "BAC", "action": "buy", "qty": 40.4924, "order_id": "9e5e6334-3100-4281-8bb7-8b4d44f68555", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "long", "reasoning": "BAC maintains a clear uptrend with healthy RSI (58.4) and price consolidating near the mid-band (%B 0.60). Strong trading volume (+40.82% vs avg) indicates strong underlying support for a trend-continuation entry.", "status": "submitted"}
 Ending portfolio value: $100,391.57
 
+=== Run at 2026-07-30T13:32:30.010372 ===
+Alpaca paper account value: $100,343.53
+Cash: $17,953.12 | Holdings: {'A': '39.728 shares (-1.36%)', 'AAPL': '10.1779 shares (-0.87%)', 'AMZN': '13.2333 shares (-0.13%)', 'BA': '1.5666 shares (-0.82%)', 'BALL': '38.2673 shares (+0.95%)', 'COST': '1.21 shares (-1.85%)', 'DIS': '25.2806 shares (-2.34%)', 'FDX': '1.0 shares (-0.32%)', 'HD': '7.194 shares (-4.00%)', 'HON': '12.4104 shares (-1.12%)', 'HUM': '3.4572 shares (-1.61%)', 'J': '23.2177 shares (-1.67%)', 'JNJ': '23.0219 shares (-0.83%)', 'JPM': '7.8335 shares (-1.82%)', 'LMT': '8.3707 shares (-1.01%)', 'MA': '0.8832 shares (+7.95%)', 'MSFT': '13.9388 shares (+8.10%)', 'NFLX': '34.4234 shares (-1.70%)', 'PM': '8.7919 shares (+0.54%)', 'SO': '77.2636 shares (-0.91%)', 'TGT': '5.4281 shares (+3.41%)', 'TSLA': '6.7902 shares (-0.21%)', 'UNH': '4.994 shares (-3.78%)', 'V': '7.488 shares (+1.82%)', 'VRT': '7.0 shares (-1.48%)', 'WAT': '9.3421 shares (-0.39%)', 'WMT': '17.6835 shares (-0.42%)', 'XOM': '48.0878 shares (+0.67%)'}
+Skipping Gemini this run (within cooldown interval) -- risk checks only.
+Ending portfolio value: $100,344.14
+
