@@ -4,7 +4,6 @@ needed). Standard, widely-used formulas from technical analysis --
 established concepts, but heuristics, not guarantees of future performance.
 """
 
-
 def compute_sma(closes, period):
     if len(closes) < period:
         return None
@@ -121,3 +120,108 @@ def classify_trend(price, sma20, sma50):
     if price < sma20 < sma50:
         return "downtrend"
     return "mixed/sideways"
+
+
+def compute_atr(highs, lows, closes, period=14):
+    """
+    Calculates Average True Range (ATR) for dynamic position sizing and volatility stops.
+    """
+    if len(closes) < period + 1:
+        return None
+
+    tr_list = []
+    for i in range(1, len(closes)):
+        h = highs[i]
+        l = lows[i]
+        prev_c = closes[i - 1]
+        tr = max(h - l, abs(h - prev_c), abs(l - prev_c))
+        tr_list.append(tr)
+
+    if len(tr_list) < period:
+        return None
+
+    atr = sum(tr_list[:period]) / period
+    for i in range(period, len(tr_list)):
+        atr = (atr * (period - 1) + tr_list[i]) / period
+
+    return round(atr, 2)
+
+
+def compute_adx(highs, lows, closes, period=14):
+    """
+    Calculates Average Directional Index (ADX) to measure trend strength regardless of direction.
+    """
+    if len(closes) < (period * 2):
+        return None
+
+    tr_list, pos_dm, neg_dm = [], [], []
+
+    for i in range(1, len(closes)):
+        h = highs[i]
+        l = lows[i]
+        prev_h = highs[i - 1]
+        prev_l = lows[i - 1]
+        prev_c = closes[i - 1]
+
+        tr = max(h - l, abs(h - prev_c), abs(l - prev_c))
+        tr_list.append(tr)
+
+        up_move = h - prev_h
+        down_move = prev_l - l
+
+        if up_move > down_move and up_move > 0:
+            pos_dm.append(up_move)
+        else:
+            pos_dm.append(0)
+
+        if down_move > up_move and down_move > 0:
+            neg_dm.append(down_move)
+        else:
+            neg_dm.append(0)
+
+    if len(tr_list) < period:
+        return None
+
+    smooth_tr = sum(tr_list[:period])
+    smooth_pos = sum(pos_dm[:period])
+    smooth_neg = sum(neg_dm[:period])
+
+    dx_list = []
+    for i in range(period, len(tr_list)):
+        smooth_tr = smooth_tr - (smooth_tr / period) + tr_list[i]
+        smooth_pos = smooth_pos - (smooth_pos / period) + pos_dm[i]
+        smooth_neg = smooth_neg - (smooth_neg / period) + neg_dm[i]
+
+        pos_di = (smooth_pos / smooth_tr) * 100 if smooth_tr > 0 else 0
+        neg_di = (smooth_neg / smooth_tr) * 100 if smooth_tr > 0 else 0
+
+        di_sum = pos_di + neg_di
+        dx = (abs(pos_di - neg_di) / di_sum) * 100 if di_sum > 0 else 0
+        dx_list.append(dx)
+
+    if len(dx_list) < period:
+        return None
+
+    adx = sum(dx_list[:period]) / period
+    for i in range(period, len(dx_list)):
+        adx = (adx * (period - 1) + dx_list[i]) / period
+
+    return round(adx, 2)
+
+
+def compute_zscore(values, window=20):
+    """
+    Normalizes a feature series using standard score Z = (x - mu) / sigma.
+    """
+    if len(values) < window:
+        return None
+
+    subset = values[-window:]
+    mean = sum(subset) / window
+    variance = sum((x - mean) ** 2 for x in subset) / window
+    std = variance ** 0.5
+
+    if std == 0:
+        return 0.0
+
+    return round((values[-1] - mean) / std, 2)
