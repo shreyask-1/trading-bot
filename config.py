@@ -1,55 +1,45 @@
+"""
+Global Configuration & Environment Settings Engine.
+Loads API keys, environment endpoints, risk controls, and system parameters.
+"""
+
 import os
 
-# --- API Keys ---
-FINNHUB_API_KEY = os.environ.get("FINNHUB_API_KEY")
-GEMINI_API_KEY = os.environ.get("GEMINI_API_KEY")
-ALPACA_API_KEY = os.environ.get("ALPACA_API_KEY")
-ALPACA_SECRET_KEY = os.environ.get("ALPACA_SECRET_KEY")
+# =====================================================================
+# 1. API KEYS & CREDENTIALS
+# =====================================================================
+# Google GenAI / Gemini API Settings
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
 
-if not all([FINNHUB_API_KEY, GEMINI_API_KEY, ALPACA_API_KEY, ALPACA_SECRET_KEY]):
-    raise RuntimeError(
-        "Missing one or more required API keys. On GitHub Actions, set them "
-        "as repo Secrets (Settings > Secrets and variables > Actions)."
-    )
+# Alpaca Trading API Credentials
+ALPACA_API_KEY = os.getenv("ALPACA_API_KEY", "")
+ALPACA_SECRET_KEY = os.getenv("ALPACA_SECRET_KEY", "")
+# Default to Alpaca Paper Trading Endpoint
+ALPACA_BASE_URL = os.getenv("ALPACA_BASE_URL", "https://paper-api.alpaca.markets")
 
-# --- Bot Behavior & Portfolio Settings ---
-STARTING_CASH = 100_000.00
-MAX_POSITION_PCT = 0.08         # Cap single position to max 8% of portfolio
-MAX_RISK_PER_TRADE_PCT = 0.01   # Risk max 1% of total account equity per trade
-MAX_NEWS_ITEMS = 15
-GEMINI_MODEL = "gemini-flash-latest"
+# Finnhub Financial News API Credentials
+FINNHUB_API_KEY = os.getenv("FINNHUB_API_KEY", "")
 
-# --- Quantitative Pipeline Gate Thresholds ---
-MIN_SIGNAL_SCORE = 60.0         # Minimum pre-scoring gate required (0-100)
-MIN_GEMINI_CONFIDENCE = 75      # Minimum Gemini confidence score required (0-100)
+# =====================================================================
+# 2. QUANTITATIVE & RISK MANAGEMENT PARAMETERS
+# =====================================================================
+# Position Sizing & Allocation Bounds
+MAX_POSITION_SIZE_PCT = 0.05       # Max 5% of portfolio total value per position
+MAX_PORTFOLIO_ALLOCATION_PCT = 0.80 # Maintain at least 20% total cash reserve
 
-# --- Risk Management & Volatility Dynamic Stops ---
-STOP_LOSS_PCT = -6.0            # Static fallback stop loss percentage
-TAKE_PROFIT_PCT = 15.0          # Static fallback take profit percentage
-ATR_STOP_MULTIPLIER = 1.5       # Dynamic ATR multiplier for volatility-based stops
-RISK_REWARD_RATIO = 2.0         # Target risk-reward ratio for dynamic profit targets
+# Risk Limits per Trade
+STOP_LOSS_PCT = 0.03               # Stop-loss trigger at -3% drawdown
+TAKE_PROFIT_PCT = 0.08             # Take-profit trigger at +8% gain
 
-# --- Technical Indicator & Normalization Parameters ---
-PRICE_HISTORY_DAYS = 5
-FEATURE_LOOKBACK = 20           # Rolling lookback for Z-score feature normalization
-RSI_PERIOD = 14
-SMA_SHORT = 20
-SMA_LONG = 50
-VOLUME_LOOKBACK = 20
-MACD_FAST = 12
-MACD_SLOW = 26
-MACD_SIGNAL = 9
-BOLLINGER_PERIOD = 20
-BOLLINGER_STD = 2
+# Signal Scoring Thresholds
+MIN_SIGNAL_SCORE = 50.0            # Minimum quant composite score required to qualify
+MAX_EVALUATION_CANDIDATES = 10     # Top N screened candidates sent to Gemini Veto Agent
 
-# --- Duplicate-Trade Prevention & Throttling ---
-TRADE_COOLDOWN_MINUTES = 30
-GEMINI_CALL_INTERVAL_MINUTES = 25
-GEMINI_TIMESTAMP_FILE = "logs/last_gemini_call.txt"
+# News Ingestion Settings
+MAX_NEWS_ARTICLES = 5              # Max articles to pull per candidate symbol
+NEWS_LOOKBACK_DAYS = 3             # Lookback window for news catalyst detection
 
-# --- Fixed Watchlist Scanned for Technical Setups ---
-WATCHLIST = [
-    "AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "META", "TSLA",
-    "JPM", "V", "MA", "WMT", "JNJ", "PG", "UNH", "HD",
-    "DIS", "BAC", "XOM", "KO", "NFLX",
-]
+# System & Data Logging
+LOG_LEVEL = "INFO"
+PERFORMANCE_LOG_FILE = os.path.join(os.path.dirname(__file__), "logs", "performance.csv")
