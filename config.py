@@ -1,8 +1,4 @@
 import os
-from dotenv import load_dotenv
-
-# Load environment variables from a local .env file if present (safe for local testing)
-load_dotenv()
 
 # --- API Keys & Base URLs ---
 APEX_API_KEY = os.getenv("APEX_API_KEY", "")
@@ -16,8 +12,18 @@ ALPACA_PAPER = os.getenv("ALPACA_PAPER", "True").lower() in ("true", "1", "t")
 # Google Gemini API Key
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 
-# --- Trading Strategy Configuration ---
-MAX_PORTFOLIO_ALLOCATION_PCT = 0.20  # Max 20% allocation per individual ticker
-STOP_LOSS_PCT = 0.05                 # 5% stop loss threshold
-TAKE_PROFIT_PCT = 0.10               # 10% take profit threshold
-PAPER_TRADING_DEFAULT_CASH = 100000.0
+# --- Trading Strategy & Indicator Parameters ---
+MAX_POSITION_PCT = 0.20
+STOP_LOSS_PCT = -0.05
+TAKE_PROFIT_PCT = 0.10
+PRICE_HISTORY_DAYS = 14
+RSI_PERIOD = 14
+SMA_SHORT = 20
+SMA_LONG = 50
+VOLUME_LOOKBACK = 20
+MACD_FAST = 12
+MACD_SLOW = 26
+MACD_SIGNAL = 9
+BOLLINGER_PERIOD = 20
+BOLLINGER_STD = 2.0
+TRADE_COOLDOWN_MINUTES = 60
