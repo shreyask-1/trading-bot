@@ -12,8 +12,9 @@ ALPACA_PAPER = os.getenv("ALPACA_PAPER", "True").lower() in ("true", "1", "t")
 # Finnhub API Key (pulled from GitHub Secrets)
 FINNHUB_API_KEY = os.getenv("FINNHUB_API_KEY", "")
 
-# Google Gemini API Key
+# Google Gemini API Key & Model Configuration
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
 
 # --- Trading Strategy & Indicator Parameters ---
 MAX_POSITION_PCT = 0.20
