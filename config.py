@@ -9,6 +9,9 @@ ALPACA_API_KEY = os.getenv("ALPACA_API_KEY", "")
 ALPACA_SECRET_KEY = os.getenv("ALPACA_SECRET_KEY", "")
 ALPACA_PAPER = os.getenv("ALPACA_PAPER", "True").lower() in ("true", "1", "t")
 
+# Finnhub API Key (pulled from GitHub Secrets)
+FINNHUB_API_KEY = os.getenv("FINNHUB_API_KEY", "")
+
 # Google Gemini API Key
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
 
