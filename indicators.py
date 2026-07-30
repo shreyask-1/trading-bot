@@ -1,227 +1,127 @@
 """
-Plain-Python technical indicator calculations (no external TA library
-needed). Standard, widely-used formulas from technical analysis --
-established concepts, but heuristics, not guarantees of future performance.
+Technical Indicator Computation Engine.
+Calculates core indicators (SMA, RSI, Volume Trend, MACD, Bollinger Bands)
+and standardizes trend classification.
 """
 
-def compute_sma(closes, period):
-    if len(closes) < period:
+import math
+
+
+def compute_sma(data, period):
+    if not data or len(data) < period:
         return None
-    return round(sum(closes[-period:]) / period, 2)
+    return round(sum(data[-period:]) / period, 2)
 
 
-def compute_ema_series(closes, period):
-    """Returns the full EMA series (list), not just the final value."""
-    if len(closes) < period:
-        return []
-    multiplier = 2 / (period + 1)
-    ema_values = [sum(closes[:period]) / period]
-    for price in closes[period:]:
-        ema_values.append((price - ema_values[-1]) * multiplier + ema_values[-1])
-    return ema_values
-
-
-def compute_rsi(closes, period=14):
-    """Wilder's RSI, 0-100. Traditionally >70 = overbought, <30 = oversold."""
-    if len(closes) < period + 1:
+def compute_rsi(data, period=14):
+    if not data or len(data) <= period:
         return None
 
-    gains, losses = [], []
-    for i in range(1, len(closes)):
-        change = closes[i] - closes[i - 1]
-        gains.append(max(change, 0))
-        losses.append(max(-change, 0))
+    deltas = [data[i] - data[i - 1] for i in range(1, len(data))]
+    gains = [max(d, 0) for d in deltas[:period]]
+    losses = [max(-d, 0) for d in deltas[:period]]
 
-    avg_gain = sum(gains[:period]) / period
-    avg_loss = sum(losses[:period]) / period
+    avg_gain = sum(gains) / period
+    avg_loss = sum(losses) / period
 
-    for i in range(period, len(gains)):
-        avg_gain = (avg_gain * (period - 1) + gains[i]) / period
-        avg_loss = (avg_loss * (period - 1) + losses[i]) / period
+    for i in range(period, len(deltas)):
+        gain = max(deltas[i], 0)
+        loss = max(-deltas[i], 0)
+        avg_gain = (avg_gain * (period - 1) + gain) / period
+        avg_loss = (avg_loss * (period - 1) + loss) / period
 
     if avg_loss == 0:
         return 100.0
+
     rs = avg_gain / avg_loss
-    return round(100 - (100 / (1 + rs)), 2)
+    rsi = 100 - (100 / (1 + rs))
+    return round(rsi, 2)
 
 
-def compute_macd(closes, fast=12, slow=26, signal=9):
-    """
-    Returns dict with macd line, signal line, and histogram, or None if
-    not enough data. Histogram crossing from negative to positive is a
-    classic bullish signal; positive to negative is bearish.
-    """
-    if len(closes) < slow + signal:
+def compute_volume_trend(volumes, lookback=5):
+    if not volumes or len(volumes) < lookback * 2:
         return None
 
-    ema_fast_series = compute_ema_series(closes, fast)
-    ema_slow_series = compute_ema_series(closes, slow)
+    recent_avg = sum(volumes[-lookback:]) / lookback
+    prior_avg = sum(volumes[-(lookback * 2) : -lookback]) / lookback
 
-    offset = len(ema_fast_series) - len(ema_slow_series)
-    macd_line_series = [
-        ema_fast_series[i + offset] - ema_slow_series[i]
-        for i in range(len(ema_slow_series))
-    ]
+    if prior_avg == 0:
+        return 0.0
 
-    if len(macd_line_series) < signal:
+    return round(((recent_avg - prior_avg) / prior_avg) * 100, 2)
+
+
+def compute_ema(data, period):
+    if not data or len(data) < period:
+        return None
+    k = 2 / (period + 1)
+    ema = sum(data[:period]) / period
+    for price in data[period:]:
+        ema = (price * k) + (ema * (1 - k))
+    return ema
+
+
+def compute_macd(data, fast=12, slow=26, signal=9):
+    if not data or len(data) < slow + signal:
         return None
 
-    signal_series = compute_ema_series(macd_line_series, signal)
-    if not signal_series:
+    macd_line = []
+    # Calculate MACD series
+    k_fast = 2 / (fast + 1)
+    k_slow = 2 / (slow + 1)
+    
+    ema_fast = sum(data[:fast]) / fast
+    ema_slow = sum(data[:slow]) / slow
+
+    for i in range(len(data)):
+        if i >= fast:
+            ema_fast = (data[i] * k_fast) + (ema_fast * (1 - k_fast))
+        if i >= slow:
+            ema_slow = (data[i] * k_slow) + (ema_slow * (1 - k_slow))
+            macd_line.append(ema_fast - ema_slow)
+
+    if len(macd_line) < signal:
         return None
 
-    macd_value = round(macd_line_series[-1], 3)
-    signal_value = round(signal_series[-1], 3)
-    histogram = round(macd_value - signal_value, 3)
-
-    return {"macd": macd_value, "signal": signal_value, "histogram": histogram}
-
-
-def compute_bollinger_bands(closes, period=20, num_std=2):
-    """
-    Returns upper/lower bands and %B (where price sits within the bands:
-    0 = at lower band, 1 = at upper band, >1 or <0 = outside the bands).
-    """
-    if len(closes) < period:
+    # Calculate Signal series
+    signal_line = compute_ema(macd_line, signal)
+    current_macd = macd_line[-1]
+    
+    if current_macd is None or signal_line is None:
         return None
 
-    window = closes[-period:]
-    sma = sum(window) / period
-    variance = sum((c - sma) ** 2 for c in window) / period
-    std = variance ** 0.5
+    histogram = current_macd - signal_line
 
-    upper = sma + num_std * std
-    lower = sma - num_std * std
-    current = closes[-1]
-
-    if upper == lower:
-        percent_b = 0.5
-    else:
-        percent_b = (current - lower) / (upper - lower)
-
-    return {"upper": round(upper, 2), "lower": round(lower, 2), "percent_b": round(percent_b, 2)}
+    return {
+        "macd": round(current_macd, 4),
+        "signal": round(signal_line, 4),
+        "histogram": round(histogram, 4),
+    }
 
 
-def compute_volume_trend(volumes, period=20):
-    if len(volumes) < period + 1:
+def compute_bollinger_bands(data, period=20, std_dev_mult=2.0):
+    if not data or len(data) < period:
         return None
-    recent = volumes[-1]
-    baseline = sum(volumes[-period - 1:-1]) / period
-    if baseline == 0:
-        return None
-    return round(((recent - baseline) / baseline) * 100, 2)
+
+    subset = data[-period:]
+    mean = sum(subset) / period
+    variance = sum((x - mean) ** 2 for x in subset) / period
+    std_dev = math.sqrt(variance)
+
+    return {
+        "upper": round(mean + (std_dev_mult * std_dev), 2),
+        "middle": round(mean, 2),
+        "lower": round(mean - (std_dev_mult * std_dev), 2),
+    }
 
 
 def classify_trend(price, sma20, sma50):
-    if sma20 is None or sma50 is None:
-        return "unknown"
+    if not price or not sma20 or not sma50:
+        return "neutral"
+
     if price > sma20 > sma50:
-        return "uptrend"
-    if price < sma20 < sma50:
-        return "downtrend"
-    return "mixed/sideways"
-
-
-def compute_atr(highs, lows, closes, period=14):
-    """
-    Calculates Average True Range (ATR) for dynamic position sizing and volatility stops.
-    """
-    if len(closes) < period + 1:
-        return None
-
-    tr_list = []
-    for i in range(1, len(closes)):
-        h = highs[i]
-        l = lows[i]
-        prev_c = closes[i - 1]
-        tr = max(h - l, abs(h - prev_c), abs(l - prev_c))
-        tr_list.append(tr)
-
-    if len(tr_list) < period:
-        return None
-
-    atr = sum(tr_list[:period]) / period
-    for i in range(period, len(tr_list)):
-        atr = (atr * (period - 1) + tr_list[i]) / period
-
-    return round(atr, 2)
-
-
-def compute_adx(highs, lows, closes, period=14):
-    """
-    Calculates Average Directional Index (ADX) to measure trend strength regardless of direction.
-    """
-    if len(closes) < (period * 2):
-        return None
-
-    tr_list, pos_dm, neg_dm = [], [], []
-
-    for i in range(1, len(closes)):
-        h = highs[i]
-        l = lows[i]
-        prev_h = highs[i - 1]
-        prev_l = lows[i - 1]
-        prev_c = closes[i - 1]
-
-        tr = max(h - l, abs(h - prev_c), abs(l - prev_c))
-        tr_list.append(tr)
-
-        up_move = h - prev_h
-        down_move = prev_l - l
-
-        if up_move > down_move and up_move > 0:
-            pos_dm.append(up_move)
-        else:
-            pos_dm.append(0)
-
-        if down_move > up_move and down_move > 0:
-            neg_dm.append(down_move)
-        else:
-            neg_dm.append(0)
-
-    if len(tr_list) < period:
-        return None
-
-    smooth_tr = sum(tr_list[:period])
-    smooth_pos = sum(pos_dm[:period])
-    smooth_neg = sum(neg_dm[:period])
-
-    dx_list = []
-    for i in range(period, len(tr_list)):
-        smooth_tr = smooth_tr - (smooth_tr / period) + tr_list[i]
-        smooth_pos = smooth_pos - (smooth_pos / period) + pos_dm[i]
-        smooth_neg = smooth_neg - (smooth_neg / period) + neg_dm[i]
-
-        pos_di = (smooth_pos / smooth_tr) * 100 if smooth_tr > 0 else 0
-        neg_di = (smooth_neg / smooth_tr) * 100 if smooth_tr > 0 else 0
-
-        di_sum = pos_di + neg_di
-        dx = (abs(pos_di - neg_di) / di_sum) * 100 if di_sum > 0 else 0
-        dx_list.append(dx)
-
-    if len(dx_list) < period:
-        return None
-
-    adx = sum(dx_list[:period]) / period
-    for i in range(period, len(dx_list)):
-        adx = (adx * (period - 1) + dx_list[i]) / period
-
-    return round(adx, 2)
-
-
-def compute_zscore(values, window=20):
-    """
-    Normalizes a feature series using standard score Z = (x - mu) / sigma.
-    """
-    if len(values) < window:
-        return None
-
-    subset = values[-window:]
-    mean = sum(subset) / window
-    variance = sum((x - mean) ** 2 for x in subset) / window
-    std = variance ** 0.5
-
-    if std == 0:
-        return 0.0
-
-    return round((values[-1] - mean) / std, 2)
+        return "bullish"
+    elif price < sma20 < sma50:
+        return "bearish"
+    else:
+        return "neutral"
