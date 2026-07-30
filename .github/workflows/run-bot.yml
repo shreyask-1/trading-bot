@@ -2,13 +2,9 @@ name: Run Trading Bot
 
 on:
   schedule:
-    # Fallback only -- GitHub's own cron isn't reliable at high frequency,
-    # so the real 2-minute triggering comes from an external scheduler
-    # (cron-job.org) calling workflow_dispatch via the GitHub API instead.
-    # This hourly schedule just acts as a safety net in case that external
-    # trigger ever goes down.
+    # Fallback hourly safety net in case external cron (e.g. cron-job.org) drops
     - cron: "0 * * * *"
-  workflow_dispatch: {}  # triggered externally every 2 min, and can also be run manually here
+  workflow_dispatch: {} # Manual trigger or external 2-min API trigger
 
 concurrency:
   group: trading-bot-run
@@ -28,6 +24,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
+          cache: "pip" # Speeds up execution by caching pip dependencies
 
       - name: Install dependencies
         run: pip install -r requirements.txt
@@ -40,11 +37,18 @@ jobs:
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
         run: python main.py
 
-      - name: Commit and push updated logs
+      - name: Commit and push updated logs and trade memory
         run: |
           git config user.name "trading-bot"
           git config user.email "trading-bot@users.noreply.github.com"
-          git add logs/
-          git diff --staged --quiet && echo "No log changes to commit" || git commit -m "Update logs [skip ci]"
-          git pull --no-rebase origin main
-          git push
+          
+          # Stage both operational logs and trade memory state
+          git add logs/ data/
+          
+          if git diff --staged --quiet; then
+            echo "No log or memory changes to commit."
+          else
+            git commit -m "Update operational logs and trade memory [skip ci]"
+            git pull --rebase origin main
+            git push
+          fi
