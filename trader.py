@@ -114,12 +114,9 @@ def execute_trade(trade_payload, account):
     current_holding = positions.get(ticker)
 
     try:
-        # Fetch latest asset price context using a dummy evaluation or current holding
         if current_holding:
             price = current_holding["current_price"]
         else:
-            # Fallback or fetch current market price logic if needed
-            # For demonstration, query latest order or skip if unpriced
             print(f"[WARNING] No current position for {ticker}. Skipping standalone execution without live quote reference.")
             return {"ticker": ticker, "status": "skipped", "reason": "No live price context available for unheld asset."}
 
