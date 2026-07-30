@@ -14,8 +14,8 @@ FINNHUB_API_KEY = os.getenv("FINNHUB_API_KEY", "")
 
 # Google Gemini API Key & Model Configuration
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
-
+# Change this line in config.py
+GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-1.5-flash")
 # --- Trading Strategy & Indicator Parameters ---
 MAX_POSITION_PCT = 0.20
 STOP_LOSS_PCT = -0.05
