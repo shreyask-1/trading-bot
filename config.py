@@ -1,56 +1,23 @@
-"""
-Global Configuration & Environment Settings Engine.
-Contains all required keys, risk parameters, and indicator windows to 
-satisfy all imported references across the entire bot codebase.
-"""
-
 import os
+from dotenv import load_dotenv
 
-# =====================================================================
-# 1. API KEYS & CREDENTIALS
-# =====================================================================
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-2.5-flash")
+# Load environment variables from a local .env file if present
+load_dotenv()
 
-ALPACA_API_KEY = os.getenv("ALPACA_API_KEY", "")
-ALPACA_SECRET_KEY = os.getenv("ALPACA_SECRET_KEY", "")
-ALPACA_BASE_URL = os.getenv("ALPACA_BASE_URL", "https://paper-api.alpaca.markets")
+# --- API Keys & Base URLs ---
+APEX_API_KEY = os.getenv("APEX_API_KEY", "your_apex_api_key_here")
+APEX_API_SECRET = os.getenv("APEX_API_SECRET", "your_apex_api_secret_here")
 
-FINNHUB_API_KEY = os.getenv("FINNHUB_API_KEY", "")
+# Alpaca Credentials
+ALPACA_API_KEY = os.getenv("ALPACA_API_KEY", "your_alpaca_api_key_here")
+ALPACA_SECRET_KEY = os.getenv("ALPACA_SECRET_KEY", "your_alpaca_secret_key_here")
+ALPACA_PAPER = os.getenv("ALPACA_PAPER", "True").lower() in ("true", "1", "t")
 
-# =====================================================================
-# 2. RISK MANAGEMENT & POSITION SIZING
-# =====================================================================
-MAX_POSITION_SIZE_PCT = 0.05
-MAX_POSITION_PCT = 0.05            # Alias for trader.py imports
-MAX_PORTFOLIO_ALLOCATION_PCT = 0.80
+# Google Gemini API Key
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "your_gemini_api_key_here")
 
-STOP_LOSS_PCT = 0.03
-TAKE_PROFIT_PCT = 0.08
-
-# =====================================================================
-# 3. TECHNICAL ANALYSIS & INDICATOR SETTINGS (All Variations Covered)
-# =====================================================================
-PRICE_HISTORY_DAYS = 30
-RSI_PERIOD = 14
-RSI_WINDOW = 14
-
-# Moving Average Aliases (Covering SMA_SHORT, SMA_LONG, FAST, SLOW, etc.)
-SMA_SHORT = 9
-SMA_LONG = 21
-SMA_SHORT_PERIOD = 9
-SMA_LONG_PERIOD = 21
-SMA_FAST = 9
-SMA_SLOW = 21
-
-# =====================================================================
-# 4. SIGNAL SCORING & EXECUTION SETTINGS
-# =====================================================================
-MIN_SIGNAL_SCORE = 50.0
-MAX_EVALUATION_CANDIDATES = 10
-
-MAX_NEWS_ARTICLES = 5
-NEWS_LOOKBACK_DAYS = 3
-
-LOG_LEVEL = "INFO"
-PERFORMANCE_LOG_FILE = os.path.join(os.path.dirname(__file__), "logs", "performance.csv")
+# --- Trading Strategy Configuration ---
+MAX_PORTFOLIO_ALLOCATION_PCT = 0.20  # Max 20% allocation per individual ticker
+STOP_LOSS_PCT = 0.05                 # 5% stop loss threshold
+TAKE_PROFIT_PCT = 0.10               # 10% take profit threshold
+PAPER_TRADING_DEFAULT_CASH = 100000.0
