@@ -2983,3 +2983,9 @@ Gemini recommended 2 trade(s).
   -> {"ticker": "SBUX", "status": "failed", "reason": "unknown action 'add'"}
 Ending portfolio value: $99,923.91
 
+=== Run at 2026-07-30T15:42:31.282316 ===
+Alpaca paper account value: $99,921.31
+Cash: $11,795.89 | Holdings: {'A': '39.728 shares (-1.21%)', 'AAPL': '14.0875 shares (-1.21%)', 'AMZN': '13.2333 shares (+2.28%)', 'BA': '0.0025 shares (+0.70%)', 'BAC': '40.4924 shares (-0.25%)', 'BALL': '38.2673 shares (-0.86%)', 'COST': '1.21 shares (-1.81%)', 'DIS': '25.2806 shares (-3.56%)', 'FDX': '8.098 shares (-1.27%)', 'HD': '7.194 shares (-4.27%)', 'HON': '20.774 shares (-1.41%)', 'IT': '16.5981 shares (+0.15%)', 'J': '29.2564 shares (-2.92%)', 'JNJ': '23.0219 shares (-2.31%)', 'JPM': '7.8335 shares (-1.62%)', 'KO': '28.5128 shares (+0.36%)', 'LMT': '8.3707 shares (-2.22%)', 'MA': '0.8832 shares (+6.59%)', 'MSFT': '2.2173 shares (+9.64%)', 'NFLX': '34.4234 shares (-1.33%)', 'PM': '8.7919 shares (-0.84%)', 'SBUX': '18.7988 shares (+0.39%)', 'SO': '77.2636 shares (-3.28%)', 'TGT': '15.8763 shares (+0.86%)', 'TSLA': '0.0035 shares (+0.65%)', 'UNH': '3.4282 shares (-1.46%)', 'V': '7.488 shares (+0.61%)', 'WAT': '9.3421 shares (+0.06%)', 'WMT': '17.6835 shares (-1.14%)', 'XOM': '48.0878 shares (+0.36%)'}
+Skipping Gemini this run (within cooldown interval) -- risk checks only.
+Ending portfolio value: $99,921.07
+
