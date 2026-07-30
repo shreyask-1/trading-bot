@@ -2889,3 +2889,14 @@ Cash: $10,906.58 | Holdings: {'A': '39.728 shares (-0.79%)', 'AAPL': '14.0875 sh
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $99,776.03
 
+=== Run at 2026-07-30T15:14:35.215204 ===
+Alpaca paper account value: $99,748.85
+Cash: $10,906.58 | Holdings: {'A': '39.728 shares (-0.81%)', 'AAPL': '14.0875 shares (-1.25%)', 'AMZN': '13.2333 shares (+1.88%)', 'BA': '0.0025 shares (+0.91%)', 'BAC': '40.4924 shares (-0.51%)', 'BALL': '38.2673 shares (-1.01%)', 'COST': '1.21 shares (-2.11%)', 'DIS': '25.2806 shares (-4.07%)', 'FDX': '8.098 shares (-1.80%)', 'HD': '7.194 shares (-4.50%)', 'HON': '20.774 shares (-1.58%)', 'J': '29.2564 shares (-3.33%)', 'JNJ': '23.0219 shares (-2.31%)', 'JPM': '7.8335 shares (-1.91%)', 'KO': '28.5128 shares (+0.33%)', 'LMT': '8.3707 shares (-2.26%)', 'MA': '0.8832 shares (+6.43%)', 'MSFT': '4.0011 shares (+8.57%)', 'NFLX': '34.4234 shares (-1.94%)', 'PM': '8.7919 shares (-0.10%)', 'SBUX': '18.7988 shares (-0.71%)', 'SO': '77.2636 shares (-3.22%)', 'TGT': '15.8763 shares (+0.72%)', 'TSLA': '0.0035 shares (+0.41%)', 'UNH': '3.4282 shares (-2.47%)', 'V': '7.488 shares (+0.49%)', 'VRT': '11.2062 shares (-2.95%)', 'WAT': '9.3421 shares (-0.72%)', 'WMT': '17.6835 shares (-1.36%)', 'XOM': '48.0878 shares (+0.30%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 7 companies mentioned in current news.
+Added 4 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 2 trade(s).
+  -> {"timestamp": "2026-07-30T15:15:16.968330", "ticker": "VRT", "action": "sell", "qty": 11.2062, "order_id": "9dfdb105-1dd6-462b-9661-bd0bab59659f", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Exiting position due to severe breakdown (-24.12% 5d momentum), strong negative MACD histogram (-7.634), and heavy volume selling pressure following disappointing earnings guidance.", "status": "submitted"}
+  -> {"timestamp": "2026-07-30T15:15:17.083332", "ticker": "IT", "action": "buy", "qty": 16.5981, "order_id": "6b2f1a8b-7b7a-40a0-92f9-76f4168dfb8f", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Strong bullish momentum shift with MACD histogram rising (+2.911) and +12.67% 5d momentum, while RSI remains reasonable at 55.36.", "status": "submitted"}
+Ending portfolio value: $99,711.27
+
