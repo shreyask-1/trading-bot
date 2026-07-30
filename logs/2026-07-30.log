@@ -2728,3 +2728,9 @@ Gemini recommended 3 trade(s).
   -> {"timestamp": "2026-07-30T14:23:07.315422", "ticker": "KO", "action": "buy", "qty": 28.5128, "order_id": "670e05ac-3ac9-42d7-898e-d466ba53e1ed", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "long", "reasoning": "KO exhibits a confirmed uptrend with solid 5-day momentum (+8.11%) and expanding positive MACD histogram momentum (+0.549), offering defensive trend exposure.", "status": "submitted"}
 Ending portfolio value: $100,043.42
 
+=== Run at 2026-07-30T14:24:35.395280 ===
+Alpaca paper account value: $99,961.40
+Cash: $11,408.30 | Holdings: {'A': '39.728 shares (-0.74%)', 'AAPL': '14.0875 shares (-1.23%)', 'AMZN': '13.2333 shares (+1.95%)', 'BA': '0.0025 shares (+1.63%)', 'BAC': '40.4924 shares (+0.14%)', 'BALL': '38.2673 shares (-0.83%)', 'COST': '1.21 shares (-2.18%)', 'DIS': '25.2806 shares (-3.33%)', 'FDX': '8.098 shares (-1.46%)', 'HD': '7.194 shares (-3.86%)', 'HON': '20.774 shares (-1.47%)', 'J': '29.2564 shares (-2.70%)', 'JNJ': '23.0219 shares (-2.69%)', 'JPM': '7.8335 shares (-1.47%)', 'KO': '28.5128 shares (-0.15%)', 'LMT': '8.3707 shares (-2.00%)', 'MA': '0.8832 shares (+6.71%)', 'MSFT': '7.3316 shares (+9.24%)', 'NFLX': '34.4234 shares (-2.21%)', 'PM': '8.7919 shares (+0.35%)', 'SO': '77.2636 shares (-2.62%)', 'TGT': '15.8763 shares (+1.06%)', 'TSLA': '0.0035 shares (+1.21%)', 'UNH': '3.4282 shares (-2.92%)', 'V': '7.488 shares (+0.82%)', 'VRT': '11.2062 shares (-2.07%)', 'WAT': '9.3421 shares (-0.56%)', 'WMT': '17.6835 shares (-0.92%)', 'XOM': '48.0878 shares (+0.47%)'}
+Skipping Gemini this run (within cooldown interval) -- risk checks only.
+Ending portfolio value: $99,961.10
+
