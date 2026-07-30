@@ -1645,3 +1645,13 @@ Cash: $24,285.63 | Holdings: {'A': '39.728 shares (+0.51%)', 'AAPL': '8.1779 sha
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $100,848.16
 
+=== Run at 2026-07-30T08:44:28.653582 ===
+Alpaca paper account value: $100,846.44
+Cash: $24,285.63 | Holdings: {'A': '39.728 shares (+0.51%)', 'AAPL': '8.1779 shares (+0.28%)', 'BA': '11.5666 shares (-1.05%)', 'BAC': '40.7067 shares (-0.55%)', 'BALL': '38.2673 shares (+0.75%)', 'COST': '2.2096 shares (-0.00%)', 'DIS': '25.2806 shares (-0.58%)', 'HD': '7.194 shares (-2.92%)', 'HON': '10.4104 shares (-0.71%)', 'HUM': '5.4572 shares (-1.37%)', 'J': '18.2177 shares (-0.04%)', 'JNJ': '23.0219 shares (+0.29%)', 'JPM': '7.8335 shares (-3.06%)', 'LMT': '4.858 shares (-0.91%)', 'MA': '1.771 shares (+5.01%)', 'MSFT': '8.9388 shares (+8.29%)', 'NFLX': '34.4234 shares (+0.32%)', 'PM': '8.7919 shares (+2.38%)', 'SO': '77.2636 shares (-0.79%)', 'TGT': '9.5405 shares (+4.81%)', 'UNH': '6.994 shares (-2.68%)', 'V': '3.4243 shares (+3.80%)', 'WAT': '9.3421 shares (+1.20%)', 'WMT': '17.6835 shares (+1.25%)', 'XOM': '48.0878 shares (+1.68%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 9 companies mentioned in current news.
+Added 7 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 1 trade(s).
+  -> {"timestamp": "2026-07-30T08:44:50.382317", "ticker": "TGT", "action": "sell", "qty": 4.1124, "order_id": "84c6211e-fc08-4ed5-a9d2-c3670febc526", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Price is near the upper Bollinger band (%B 0.99) with RSI approaching overbought at 66.97 after a strong 5-day move (+5.82%); trimming secures profits and manages potential overextension.", "status": "submitted"}
+Ending portfolio value: $100,840.98
+
