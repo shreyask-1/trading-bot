@@ -1,77 +1,99 @@
 """
-Sends news candidates + portfolio state (including technical indicators)
-to Gemini and asks for structured trade decisions, each tagged with an
-explicit short-term or long-term intent.
-
-Now also adds SECTOR information (via yfinance) to help diversify across
-sectors rather than concentrating in the same industry.
+Evaluates news candidates and portfolio state using Gemini as a structured
+quantitative Veto Agent. Enforces confidence scores, objective justifications,
+and self-consistency validations while rejecting weak trades automatically.
 """
 
 import json
 import re
 import yfinance as yf
 from google import genai
+from google.genai import types
 
-from config import GEMINI_API_KEY, GEMINI_MODEL, MAX_POSITION_PCT, PRICE_HISTORY_DAYS
+from config import (
+    GEMINI_API_KEY, 
+    GEMINI_MODEL, 
+    MAX_POSITION_PCT, 
+    PRICE_HISTORY_DAYS,
+    MIN_GEMINI_CONFIDENCE
+)
 from trader import get_indicator_snapshot, get_tickers_with_open_orders, get_recently_traded_tickers
 
 client = genai.Client(api_key=GEMINI_API_KEY)
 
+# --- Structured Schema Definition for Gemini Validation Gate ---
+VALIDATION_SCHEMA = {
+    "type": "OBJECT",
+    "properties": {
+        "trades": {
+            "type": "ARRAY",
+            "items": {
+                "type": "OBJECT",
+                "properties": {
+                    "ticker": {"type": "STRING"},
+                    "action": {"type": "STRING", "enum": ["buy", "sell", "hold"]},
+                    "dollar_amount": {"type": "NUMBER"},
+                    "time_horizon": {"type": "STRING", "enum": ["short", "long"]},
+                    "confidence_score": {"type": "INTEGER"}, # Scale 0 to 100
+                    "objective_evidence": {
+                        "type": "ARRAY",
+                        "items": {"type": "STRING"}
+                    },
+                    "risk_factors": {
+                        "type": "ARRAY",
+                        "items": {"type": "STRING"}
+                    },
+                    "consistency_check_passed": {"type": "BOOLEAN"},
+                    "rejection_reason": {"type": "STRING"}
+                },
+                "required": [
+                    "ticker",
+                    "action",
+                    "confidence_score",
+                    "objective_evidence",
+                    "risk_factors",
+                    "consistency_check_passed"
+                ]
+            }
+        }
+    },
+    "required": ["trades"]
+}
 
-PROMPT_TEMPLATE = """You are a disciplined trading analyst for a SIMULATED paper-trading \
-portfolio (no real money). Use these well-established technical concepts to inform your \
-reasoning -- they are heuristics used broadly in technical analysis, not guarantees:
-- Trend: price above both SMA20 and SMA50 = uptrend; below both = downtrend
-- RSI above 70 = potentially overbought; below 30 = potentially oversold
-- MACD histogram turning positive = bullish momentum shift; turning negative = bearish
-- Bollinger %B near 1.0 = price near upper band (possible overextension); near 0.0 = near lower band
-- Volume trend above baseline = stronger conviction behind a price move
+SYSTEM_INSTRUCTION = """You are a quantitative risk management Veto Agent for a paper-trading portfolio.
+Your sole duty is to validate or reject proposed trade setups based on rigorous data alignment.
 
-You have two jobs each run:
-1. Review EXISTING holdings and decide hold, add, trim, or fully exit.
-2. Consider NEW candidate tickers (news-driven and/or technical-watchlist) for potential new positions.
+Rules:
+1. Require at least two distinct, data-backed justification points in 'objective_evidence'.
+2. Assign an explicit confidence score from 0 to 100 based strictly on technical/news alignment.
+3. Reject trades where high volatility chaos or market trend directly contradicts the trade direction.
+4. If internal reasoning contains contradictions (e.g., calling a breakdown bullish), set 'consistency_check_passed': false.
+5. Do not invent trades. Recommend zero trades if no setups meet strict criteria.
+"""
 
-To avoid over-concentration, prefer diversification across SECTORS:
-- Prefer not to build multiple large positions in the same sector at the same time,
-  unless conviction is strong and technicals support it.
+PROMPT_TEMPLATE = """Evaluate the following candidates and current portfolio holdings.
 
-For every trade, classify it as "short" (days, momentum/news-driven) or "long" \
-(weeks+, trend-driven) intent -- pick whichever horizon actually fits your reasoning.
-
-Current portfolio:
+Current Portfolio State:
 - Cash available: ${cash:,.2f}
 - Total portfolio value: ${total_value:,.2f}
 
-Existing holdings:
+Existing Holdings:
 {holdings_block}
 
-New candidate tickers (news and/or technical watchlist):
+Candidate Tickers & Technical/News Signals:
 {news_block}
 
-Rules:
-- Never let any single position exceed {max_pct}% of total portfolio value.
-- Only use tickers listed above -- do not invent tickers.
-- Tickers marked "(order pending)" or "(cooldown active)" must be skipped entirely for NEW buys.
-  Cooldown tickers CAN still be sold if you have a genuine reason to exit.
-- Prefer diversification over concentration. Moderate conviction trades only.
-- It's fine to recommend zero trades if nothing meets the bar.
-- Stop-loss/take-profit and position caps are enforced separately in code.
-  Focus your reasoning on trend/momentum/news, not raw P/L.
-
-Respond with ONLY valid JSON, no markdown fences:
-{{
-  "trades": [
-    {{"ticker": "AAPL", "action": "buy", "dollar_amount": 5000, "time_horizon": "short", "reasoning": "short reason"}}
-  ]
-}}
-If no trades: {{"trades": []}}
+Rules & Constraints:
+- Position cap: Max {max_pct}% of portfolio value per ticker.
+- Tickers marked '(order pending)' or '(cooldown active)' must be skipped for NEW buys.
+- Diversify across sectors.
+- Only output trades with high quantitative conviction and clear data justifications.
 """
 
 
 def _safe_sector(ticker: str) -> str:
     """
-    Fetch sector via yfinance. If anything fails (rate limit / missing data),
-    return 'unknown' so the bot never crashes.
+    Fetch sector via yfinance with rate limit safety fallback.
     """
     try:
         info = yf.Ticker(ticker).info or {}
@@ -85,12 +107,14 @@ def _format_indicators(snap):
     if snap is None:
         return "indicators unavailable"
     parts = [f"price ${snap['price']:.2f}"]
-    if snap["momentum_pct"] is not None:
+    if snap.get("momentum_pct") is not None:
         parts.append(f"{PRICE_HISTORY_DAYS}d momentum {snap['momentum_pct']:+.2f}%")
-    if snap["rsi"] is not None:
+    if snap.get("rsi") is not None:
         parts.append(f"RSI {snap['rsi']}")
-    parts.append(f"trend: {snap['trend']}")
-    if snap["volume_trend_pct"] is not None:
+    if snap.get("rsi_zscore") is not None:
+        parts.append(f"RSI Z-Score {snap['rsi_zscore']:+.2f}")
+    parts.append(f"trend: {snap.get('trend', 'unknown')}")
+    if snap.get("volume_trend_pct") is not None:
         parts.append(f"volume {snap['volume_trend_pct']:+.2f}% vs avg")
 
     if snap.get("macd"):
@@ -112,13 +136,13 @@ def build_news_block(candidates, recently_traded, sector_cache):
         cooldown_flag = " (cooldown active)" if ticker in recently_traded else ""
 
         if articles:
-            headlines = "; ".join(a["headline"] for a in articles[:3])
+            headlines = "; ".join(a.get("headline", "") for a in articles[:3])
             lines.append(
-                f"- {ticker} (Sector: {sector}): {_format_indicators(snap)} | news: {headlines}{cooldown_flag}"
+                f"- {ticker} (Sector: {sector}): {_format_indicators(snap)} | filtered news: {headlines}{cooldown_flag}"
             )
         else:
             lines.append(
-                f"- {ticker} (Sector: {sector}): {_format_indicators(snap)} | no recent news, technical setup only{cooldown_flag}"
+                f"- {ticker} (Sector: {sector}): {_format_indicators(snap)} | pure technical setup{cooldown_flag}"
             )
 
     return "\n".join(lines) if lines else "(no notable candidates today)"
@@ -135,7 +159,7 @@ def build_holdings_block(holdings, candidates, open_order_tickers, recently_trad
 
         related_news = ""
         if ticker in candidates and candidates[ticker]:
-            headlines = "; ".join(a["headline"] for a in candidates[ticker][:2])
+            headlines = "; ".join(a.get("headline", "") for a in candidates[ticker][:2])
             related_news = f" | news: {headlines}"
 
         flags = ""
@@ -160,11 +184,9 @@ def get_trade_decisions(candidates, account_snapshot):
     open_order_tickers = get_tickers_with_open_orders()
     recently_traded = get_recently_traded_tickers()
 
-    # Sector cache for this run (avoid repeated yfinance calls for the same ticker)
+    # Sector caching to prevent repetitive lookup overhead
     all_tickers = set(holdings.keys()) | set(candidates.keys())
-    sector_cache = {}
-    for t in all_tickers:
-        sector_cache[t] = _safe_sector(t)
+    sector_cache = {t: _safe_sector(t) for t in all_tickers}
 
     prompt = PROMPT_TEMPLATE.format(
         cash=cash,
@@ -176,32 +198,48 @@ def get_trade_decisions(candidates, account_snapshot):
         news_block=build_news_block(candidates, recently_traded, sector_cache),
     )
 
-    response = client.models.generate_content(
-        model=GEMINI_MODEL,
-        contents=prompt,
-    )
-
-    raw_text = response.text.strip()
-    raw_text = re.sub(r"^```json\s*|\s*```$", "", raw_text.strip())
-
     try:
+        response = client.models.generate_content(
+            model=GEMINI_MODEL,
+            contents=prompt,
+            config=types.GenerateContentConfig(
+                response_mime_type="application/json",
+                response_schema=VALIDATION_SCHEMA,
+                system_instruction=SYSTEM_INSTRUCTION,
+                temperature=0.1
+            )
+        )
+
+        raw_text = response.text.strip()
         parsed = json.loads(raw_text)
         trades = parsed.get("trades", [])
-    except json.JSONDecodeError:
-        print("Warning: could not parse Gemini response as JSON:")
-        print(raw_text)
+
+    except Exception as e:
+        print(f"Error during Gemini trade decision validation: {e}")
         return []
 
-    final = []
+    validated_trades = []
     for t in trades:
         ticker = t.get("ticker")
         action = t.get("action", "").lower()
+        confidence = t.get("confidence_score", 0)
+        consistency_passed = t.get("consistency_check_passed", False)
 
+        # 1. Skip pending orders or buy cooldowns
         if ticker in open_order_tickers:
+            print(f"Skipping {ticker}: Order already pending.")
             continue
         if action == "buy" and ticker in recently_traded:
+            print(f"Skipping {ticker}: Cooldown active.")
             continue
 
-        final.append(t)
+        # 2. Threshold Veto Gate: Reject low confidence or failed consistency checks
+        if confidence < MIN_GEMINI_CONFIDENCE or not consistency_passed:
+            reason = t.get("rejection_reason", "Failed minimum confidence score or self-consistency check.")
+            print(f"❌ [VETO REJECTED] {ticker} (Action: {action}): Confidence {confidence}/{MIN_GEMINI_CONFIDENCE} | Reason: {reason}")
+            continue
 
-    return final
+        print(f"✅ [VETO APPROVED] {ticker} (Action: {action}): Confidence {confidence}/100 | Evidence: {t.get('objective_evidence')}")
+        validated_trades.append(t)
+
+    return validated_trades
