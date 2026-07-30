@@ -2633,3 +2633,14 @@ Cash: $9,829.63 | Holdings: {'A': '39.728 shares (-0.59%)', 'AAPL': '14.0875 sha
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $100,209.53
 
+=== Run at 2026-07-30T13:56:26.824038 ===
+Alpaca paper account value: $100,163.52
+Cash: $9,829.63 | Holdings: {'A': '39.728 shares (-0.63%)', 'AAPL': '14.0875 shares (-1.23%)', 'AMZN': '13.2333 shares (+1.66%)', 'BA': '0.0025 shares (+1.13%)', 'BAC': '40.4924 shares (+0.14%)', 'BALL': '38.2673 shares (+0.18%)', 'COST': '1.21 shares (-2.29%)', 'DIS': '25.2806 shares (-2.78%)', 'FDX': '8.098 shares (-1.48%)', 'HD': '7.194 shares (-4.16%)', 'HON': '20.774 shares (-1.23%)', 'J': '29.2564 shares (-2.10%)', 'JNJ': '23.0219 shares (-2.18%)', 'JPM': '7.8335 shares (-1.87%)', 'LMT': '8.3707 shares (-1.58%)', 'MA': '0.8832 shares (+7.87%)', 'MSFT': '15.1503 shares (+9.48%)', 'NFLX': '34.4234 shares (-2.45%)', 'PM': '8.7919 shares (-0.31%)', 'SO': '77.2636 shares (-2.12%)', 'TGT': '5.4281 shares (+3.31%)', 'TSLA': '6.7902 shares (+1.09%)', 'UNH': '3.4282 shares (-2.81%)', 'V': '7.488 shares (+1.51%)', 'VRT': '11.2062 shares (-0.48%)', 'WAT': '9.3421 shares (-0.09%)', 'WMT': '17.6835 shares (-1.03%)', 'XOM': '48.0878 shares (+0.19%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 6 companies mentioned in current news.
+Added 5 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 2 trade(s).
+  -> {"timestamp": "2026-07-30T13:56:47.386958", "ticker": "MSFT", "action": "sell", "qty": 4.4564, "order_id": "2c89e8aa-d033-4743-abb6-72b9f81877c0", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Trimming profits after a strong 17.48% 5-day move, as RSI rises above 70 (71.49) and Bollinger %B hits 1.49, signaling short-term technical overextension.", "status": "submitted"}
+  -> {"timestamp": "2026-07-30T13:56:47.419055", "ticker": "TGT", "action": "buy", "qty": 10.4482, "order_id": "9cecf8e6-aeb6-480f-b10c-8fc2f82cd3dc", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "long", "reasoning": "Adding to existing position supported by uptrend, strong 5-day momentum (+6.74%), positive MACD histogram (+0.636), and healthy RSI (61.95).", "status": "submitted"}
+Ending portfolio value: $100,137.44
+
