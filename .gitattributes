@@ -1,3 +1,8 @@
+# Preserve all append-only log entries across concurrent branch updates
 logs/*.log merge=union
-logs/performance.csv merge=union
-logs/last_gemini_call.txt merge=union
+logs/*.csv merge=union
+logs/*.txt merge=union
+
+# Preserve continuous trade memory and state tracking across bot runs
+data/*.json merge=union
+data/*.csv merge=union
