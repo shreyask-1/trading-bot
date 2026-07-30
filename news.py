@@ -1,13 +1,24 @@
 """
-Pulls recent market news from Finnhub, then figures out which S&P 500
-companies are actually mentioned in that news (this is how the bot
-"dynamically picks" stocks instead of using a fixed watchlist).
+Pulls recent market news from Finnhub, isolates S&P 500 company mentions, 
+and ranks high-impact news catalysts while filtering out market noise.
 """
 
 import re
 import requests
 from config import FINNHUB_API_KEY, MAX_NEWS_ITEMS
 from sp500_data import SP500
+
+# High-impact catalyst categories and their relative weightings
+CATALYST_PATTERNS = {
+    "EARNINGS_GUIDANCE": (r"\b(earnings|revenue|eps|guidance|quarterly results|profit margin)\b", 1.5),
+    "FDA_REGULATORY": (r"\b(fda|approval|phase 3|clinical trial|clearance|patent)\b", 1.4),
+    "MA_CORPORATE": (r"\b(merger|acquisition|buyout|takeover|spin-off|divestiture)\b", 1.3),
+    "ANALYST_RATING": (r"\b(upgraded|downgraded|price target|outperform|strong buy)\b", 1.2),
+    "EXECUTIVE_LEADERSHIP": (r"\b(ceo|cfo|resigns|steps down|appointed|named CEO)\b", 1.1),
+}
+
+# Generic noise keywords to drop low-conviction articles
+NOISE_PATTERNS = r"\b(why it matters|3 reasons to buy|top stocks for today|what to watch|market recap)\b"
 
 
 def fetch_market_news():
@@ -32,10 +43,31 @@ def _clean_company_name(name):
     return name
 
 
+def classify_and_score_catalyst(text):
+    """
+    Evaluates news text against catalyst patterns and noise filters.
+    Returns (catalyst_type, impact_multiplier).
+    """
+    if re.search(NOISE_PATTERNS, text, flags=re.IGNORECASE):
+        return "NOISE", 0.5
+
+    best_type = "GENERAL_NEWS"
+    best_weight = 1.0
+
+    for catalyst_type, (pattern, weight) in CATALYST_PATTERNS.items():
+        if re.search(pattern, text, flags=re.IGNORECASE):
+            if weight > best_weight:
+                best_type = catalyst_type
+                best_weight = weight
+
+    return best_type, best_weight
+
+
 def find_mentioned_tickers(articles):
     """
-    Scan article headlines + summaries for S&P 500 tickers or company names.
-    Returns a dict: {ticker: [matching article dicts]}
+    Scan article headlines + summaries for S&P 500 tickers or company names,
+    ranking items by catalyst score.
+    Returns a dict: {ticker: [matching article dicts sorted by score]}
     """
     mentions = {}
 
@@ -43,8 +75,12 @@ def find_mentioned_tickers(articles):
     cleaned = [(ticker, name, _clean_company_name(name)) for ticker, name in SP500]
 
     for article in articles:
-        text = f"{article.get('headline', '')} {article.get('summary', '')}"
+        headline = article.get("headline", "")
+        summary = article.get("summary", "")[:300]
+        text = f"{headline} {summary}"
         text_lower = text.lower()
+
+        catalyst_type, catalyst_weight = classify_and_score_catalyst(text)
 
         for ticker, full_name, short_name in cleaned:
             if not short_name:
@@ -55,11 +91,17 @@ def find_mentioned_tickers(articles):
 
             if name_hit or ticker_hit:
                 mentions.setdefault(ticker, []).append({
-                    "headline": article.get("headline", ""),
-                    "summary": article.get("summary", "")[:300],
+                    "headline": headline,
+                    "summary": summary,
                     "source": article.get("source", ""),
                     "url": article.get("url", ""),
+                    "catalyst_type": catalyst_type,
+                    "catalyst_weight": catalyst_weight
                 })
+
+    # Sort each ticker's articles by highest catalyst weight first
+    for ticker in mentions:
+        mentions[ticker].sort(key=lambda x: x["catalyst_weight"], reverse=True)
 
     return mentions
 
@@ -79,4 +121,5 @@ if __name__ == "__main__":
     candidates = get_news_candidates()
     print(f"Found {len(candidates)} companies mentioned in today's news:\n")
     for ticker, items in list(candidates.items())[:10]:
-        print(f"{ticker}: {items[0]['headline']}")
+        first = items[0]
+        print(f"{ticker} [{first['catalyst_type']}]: {first['headline']}")
