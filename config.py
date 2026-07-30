@@ -20,14 +20,17 @@ FINNHUB_API_KEY = os.getenv("FINNHUB_API_KEY", "")
 # =====================================================================
 # 2. QUANTITATIVE & RISK MANAGEMENT PARAMETERS
 # =====================================================================
-# Position Sizing & Allocation Bounds (Aliases provided for safety)
+# Position Sizing & Allocation Bounds
 MAX_POSITION_SIZE_PCT = 0.05
-MAX_POSITION_PCT = 0.05            # Backward compatibility alias for trader.py
+MAX_POSITION_PCT = 0.05            # Backward compatibility alias
 MAX_PORTFOLIO_ALLOCATION_PCT = 0.80
 
 # Risk Limits per Trade
 STOP_LOSS_PCT = 0.03
 TAKE_PROFIT_PCT = 0.08
+
+# Technical Analysis & Lookback Settings
+PRICE_HISTORY_DAYS = 30            # Number of historical bars/days required for indicator calculations
 
 # Signal Scoring Thresholds
 MIN_SIGNAL_SCORE = 50.0
