@@ -2716,3 +2716,15 @@ Cash: $10,326.71 | Holdings: {'A': '39.728 shares (-0.21%)', 'AAPL': '14.0875 sh
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $100,148.85
 
+=== Run at 2026-07-30T14:22:39.021511 ===
+Alpaca paper account value: $100,048.78
+Cash: $10,326.71 | Holdings: {'A': '39.728 shares (-0.50%)', 'AAPL': '14.0875 shares (-1.19%)', 'AMZN': '13.2333 shares (+2.04%)', 'BA': '0.0025 shares (+1.69%)', 'BAC': '40.4924 shares (+0.15%)', 'BALL': '38.2673 shares (-0.94%)', 'COST': '1.21 shares (-2.16%)', 'DIS': '25.2806 shares (-3.33%)', 'FDX': '8.098 shares (-1.54%)', 'HD': '7.194 shares (-3.86%)', 'HON': '20.774 shares (-1.22%)', 'J': '29.2564 shares (-2.29%)', 'JNJ': '23.0219 shares (-2.50%)', 'JPM': '7.8335 shares (-1.44%)', 'LMT': '8.3707 shares (-1.79%)', 'MA': '0.8832 shares (+6.98%)', 'MSFT': '10.6939 shares (+9.14%)', 'NFLX': '34.4234 shares (-2.20%)', 'PM': '8.7919 shares (+0.21%)', 'SO': '77.2636 shares (-2.49%)', 'TGT': '15.8763 shares (+1.06%)', 'TSLA': '6.7902 shares (+1.07%)', 'UNH': '3.4282 shares (-2.92%)', 'V': '7.488 shares (+1.05%)', 'VRT': '11.2062 shares (-2.43%)', 'WAT': '9.3421 shares (-0.45%)', 'WMT': '17.6835 shares (-0.89%)', 'XOM': '48.0878 shares (+0.57%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 7 companies mentioned in current news.
+Added 5 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 3 trade(s).
+  -> {"timestamp": "2026-07-30T14:23:07.035554", "ticker": "TSLA", "action": "sell", "qty": 6.7867, "order_id": "403e7b29-147f-48cc-9e5c-46cdea05ae67", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "TSLA remains locked in a clear downtrend with price below SMA20/50, negative 5-day momentum (-4.01%), and severe negative MACD histogram momentum (-8.669).", "status": "submitted"}
+  -> {"timestamp": "2026-07-30T14:23:07.181296", "ticker": "MSFT", "action": "sell", "qty": 3.3623, "order_id": "12838803-c130-49ed-a854-9a338de66138", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "short", "reasoning": "Trimming MSFT to lock in profits as technicals reflect extreme short-term overextension with Bollinger %B at 1.48 and RSI above 70 (71.08) following a +16.98% 5-day surge.", "status": "submitted"}
+  -> {"timestamp": "2026-07-30T14:23:07.315422", "ticker": "KO", "action": "buy", "qty": 28.5128, "order_id": "670e05ac-3ac9-42d7-898e-d466ba53e1ed", "order_status": "OrderStatus.PENDING_NEW", "time_horizon": "long", "reasoning": "KO exhibits a confirmed uptrend with solid 5-day momentum (+8.11%) and expanding positive MACD histogram momentum (+0.549), offering defensive trend exposure.", "status": "submitted"}
+Ending portfolio value: $100,043.42
+
