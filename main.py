@@ -27,7 +27,6 @@ def get_ticker_news(ticker):
 
 def evaluate_trade_candidate(ticker, news, snapshot, account):
     """Mock Gemini validation agent evaluation output."""
-    # In production, replace this with direct Google GenAI calls analyzing the news and snapshot parameters
     return {
         "approve": True,
         "action": "BUY",
@@ -85,7 +84,6 @@ def run_trading_pipeline():
             print(f"Reasoning: {decision.get('reasoning')}")
 
             if decision.get("approve") and decision.get("action") == "BUY":
-                # Allocate 5% of total portfolio value per approved trade
                 allocation = account.get("total_value", 100000.0) * 0.05
                 trade_payload = {
                     "ticker": ticker,
