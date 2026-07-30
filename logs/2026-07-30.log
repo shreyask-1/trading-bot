@@ -91,3 +91,14 @@ Cash: $24,285.70 | Holdings: {'A': '39.728 shares (+0.51%)', 'AAPL': '8.1779 sha
 Skipping Gemini this run (within cooldown interval) -- risk checks only.
 Ending portfolio value: $100,862.24
 
+=== Run at 2026-07-30T00:30:32.525764 ===
+Alpaca paper account value: $100,862.92
+Cash: $24,285.70 | Holdings: {'A': '39.728 shares (+0.51%)', 'AAPL': '8.1779 shares (+2.63%)', 'BA': '11.5666 shares (-0.93%)', 'BAC': '40.7067 shares (-0.19%)', 'BALL': '38.2673 shares (+0.75%)', 'COST': '2.2096 shares (+1.06%)', 'DIS': '25.2806 shares (-0.34%)', 'HD': '7.194 shares (-2.67%)', 'HON': '10.4104 shares (-0.71%)', 'HUM': '5.4572 shares (-0.76%)', 'J': '18.2177 shares (-0.04%)', 'JNJ': '23.0219 shares (-0.62%)', 'JPM': '7.8335 shares (-2.04%)', 'LMT': '4.858 shares (-0.26%)', 'MA': '1.771 shares (+5.32%)', 'MSFT': '8.9388 shares (+7.62%)', 'NFLX': '34.4234 shares (+0.65%)', 'PM': '8.7919 shares (+2.41%)', 'SO': '77.2636 shares (-0.81%)', 'TGT': '9.5405 shares (+4.71%)', 'UNH': '6.994 shares (-2.56%)', 'V': '3.4243 shares (+4.30%)', 'WAT': '9.3421 shares (+1.20%)', 'WMT': '17.6835 shares (+1.37%)', 'XOM': '48.0878 shares (+1.58%)'}
+Gemini call interval reached -- generating new trade ideas.
+Found 11 companies mentioned in current news.
+Added 5 watchlist ticker(s) for technical-only evaluation.
+Gemini recommended 2 trade(s).
+  -> {"timestamp": "2026-07-30T00:30:57.011182", "ticker": "BAC", "action": "sell", "qty": 40.7067, "order_id": "fc91e86d-c864-4b33-8fcd-37e5a68f5588", "order_status": "OrderStatus.ACCEPTED", "time_horizon": "short", "reasoning": "MACD histogram turned negative (-0.107) signaling a loss of bullish momentum while price momentum is -0.94%. Exiting reduces heavy Financial Services sector exposure.", "status": "submitted"}
+  -> {"timestamp": "2026-07-30T00:30:57.073856", "ticker": "FDX", "action": "buy", "qty": 8.098, "order_id": "625c3b30-b0bb-476a-8631-f111ccfd1481", "order_status": "OrderStatus.ACCEPTED", "time_horizon": "short", "reasoning": "MACD histogram turned positive (+1.190) signaling a bullish momentum shift while price sits near the lower Bollinger band (%B 0.16) with moderate RSI (41.33).", "status": "submitted"}
+Ending portfolio value: $100,866.40
+
