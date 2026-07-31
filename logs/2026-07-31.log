@@ -2170,3 +2170,18 @@ Quant pre-screen: 2/5 candidates passed.
 Gemini proposed 0 trade(s) meeting the conviction bar.
 Ending portfolio value: $99,433.39
 
+=== Run at 2026-07-31T13:30:34.336677 ===
+Current time: 2026-07-31 09:30 AM EDT | Market open (per Alpaca): True
+Account value: $99,287.55
+Cash: $10,590.66 | Holdings (28): {'A': '39.728 sh (-1.10%)', 'AAPL': '48.8707 sh (-8.18%)', 'AMZN': '13.2333 sh (+13.47%)', 'BAC': '40.4924 sh (+1.22%)', 'BALL': '38.2673 sh (-0.23%)', 'COST': '1.21 sh (-3.25%)', 'DIS': '6.2806 sh (-2.72%)', 'FDX': '8.098 sh (+0.18%)', 'HD': '7.194 sh (-4.76%)', 'HON': '20.774 sh (-0.81%)', 'IT': '16.623 sh (-1.90%)', 'J': '29.2851 sh (-2.75%)', 'JNJ': '0.0006 sh (-2.54%)', 'JPM': '7.8335 sh (+0.08%)', 'KO': '28.5128 sh (+0.08%)', 'LMT': '8.3773 sh (+0.10%)', 'META': '1.8249 sh (+3.35%)', 'NFLX': '34.4234 sh (+0.15%)', 'PM': '8.8117 sh (-1.57%)', 'SBUX': '18.7988 sh (+0.53%)', 'SO': '77.2636 sh (-3.22%)', 'TGT': '15.8763 sh (+1.46%)', 'TSLA': '0.0002 sh (+2.43%)', 'UNH': '3.4282 sh (-2.10%)', 'V': '7.4984 sh (+0.70%)', 'WAT': '4.3421 sh (+1.71%)', 'WMT': '15.6835 sh (-2.10%)', 'XOM': '48.0878 sh (+0.28%)'}
+Consolidation engine triggered 2 forced cleanup sell(s):
+  -> {"timestamp": "2026-07-31T13:30:41.592678", "ticker": "TSLA", "action": "sell", "qty": 0.0002, "conviction": 10, "size_multiplier": 1.0, "order_id": "7915ac61-4576-4771-aeed-22e3b02d7fe6", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Consolidation exit: Ticker score 45.0 is below threshold (70) while holding 28 positions (limit 20).", "status": "submitted", "trigger": "portfolio_consolidation"}
+  -> {"timestamp": "2026-07-31T13:30:41.796104", "ticker": "JNJ", "action": "sell", "qty": 0.0006, "conviction": 10, "size_multiplier": 1.0, "order_id": "f524a25f-2d12-44f8-8b92-382c27ec4030", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Consolidation exit: Ticker score 50.0 is below threshold (70) while holding 28 positions (limit 20).", "status": "submitted", "trigger": "portfolio_consolidation"}
+Market regime: NEUTRAL (position-size multiplier: 60%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 3/7 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+  -> {"timestamp": "2026-07-31T13:30:59.627874", "ticker": "V", "action": "buy", "qty": 8.3114, "conviction": 8, "size_multiplier": 0.6, "order_id": "5ff09fe9-953e-4e37-81ee-a90acda39d98", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Strong uptrend with ADX at 29.25, healthy RSI at 63.3, positive MACD histogram, and increasing relative volume (+36.9%).", "status": "submitted"}
+  -> {"timestamp": "2026-07-31T13:30:59.944604", "ticker": "LMT", "action": "buy", "qty": 4.0879, "conviction": 8, "size_multiplier": 0.6, "order_id": "5d2c2903-7a8a-4f38-ac96-4010cd0e508b", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Solid uptrend with 11.75% 10-day momentum, strong MACD histogram expansion (+6.65), and above-average volume (+21.1%).", "status": "submitted"}
+Ending portfolio value: $99,152.40
+
