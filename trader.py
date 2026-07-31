@@ -20,11 +20,13 @@ from alpaca.trading.enums import OrderSide, TimeInForce, QueryOrderStatus
 from alpaca.data.historical import StockHistoricalDataClient
 from alpaca.data.requests import StockLatestTradeRequest, StockBarsRequest
 from alpaca.data.timeframe import TimeFrame
+from alpaca.data.enums import DataFeed
 
 from config import (
     ALPACA_API_KEY, ALPACA_SECRET_KEY, MAX_POSITION_PCT,
     ATR_STOP_MULTIPLIER, ATR_TAKE_PROFIT_MULTIPLIER, ATR_PERIOD,
     PRICE_HISTORY_DAYS, TRADE_COOLDOWN_MINUTES, MARKET_HIGH_VOLATILITY_THRESHOLD,
+    ALPACA_DATA_FEED,
 )
 import indicators as ind
 from market_regime import evaluate_market_regime
@@ -33,6 +35,9 @@ trading_client = TradingClient(ALPACA_API_KEY, ALPACA_SECRET_KEY, paper=True)
 data_client = StockHistoricalDataClient(ALPACA_API_KEY, ALPACA_SECRET_KEY)
 
 COOLDOWN_FILE = os.path.join(os.path.dirname(__file__), "logs", "cooldowns.json")
+
+_FEED_MAP = {"iex": DataFeed.IEX, "sip": DataFeed.SIP, "otc": DataFeed.OTC}
+DATA_FEED = _FEED_MAP.get(ALPACA_DATA_FEED.lower(), DataFeed.IEX)
 
 # Column order for logs/performance.csv. If a pre-existing file has a
 # different header (e.g. from an older version of the bot), it's archived
@@ -54,8 +59,8 @@ PERFORMANCE_CSV_HEADER = [
 def is_market_open():
     """
     True if the market is open for regular trading right now.
-    Fails closed: if the clock call errors, returns False so the bot
-    skips the run rather than firing orders blind.
+    Fails closed: if the clock call errors, returns False. Used only for
+    logging in main.py -- does NOT gate whether the bot runs or trades.
     """
     try:
         return bool(trading_client.get_clock().is_open)
@@ -93,7 +98,7 @@ def get_market_regime():
 def get_price(ticker):
     """Current real market price for a ticker."""
     try:
-        request = StockLatestTradeRequest(symbol_or_symbols=ticker)
+        request = StockLatestTradeRequest(symbol_or_symbols=ticker, feed=DATA_FEED)
         trade = data_client.get_stock_latest_trade(request)
         return float(trade[ticker].price)
     except Exception as e:
@@ -110,7 +115,10 @@ def get_price_history(ticker, days=PRICE_HISTORY_DAYS):
     try:
         end = datetime.now()
         start = end - timedelta(days=days + 10)  # pad for weekends/holidays
-        request = StockBarsRequest(symbol_or_symbols=ticker, timeframe=TimeFrame.Day, start=start, end=end)
+        request = StockBarsRequest(
+            symbol_or_symbols=ticker, timeframe=TimeFrame.Day,
+            start=start, end=end, feed=DATA_FEED,
+        )
         bars = list(data_client.get_stock_bars(request)[ticker])
         if len(bars) < 55:
             return None
