@@ -3954,3 +3954,13 @@ Gemini proposed 2 trade(s) meeting the conviction bar.
   -> {"timestamp": "2026-07-31T19:14:48.732097", "ticker": "BALL", "action": "buy", "qty": 26.0062, "conviction": 7, "size_multiplier": 1.0, "order_id": "301c209d-8dcd-4ae8-a7a5-e39720e97d1a", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Confirmed uptrend with high ADX 35.31, positive MACD histogram, and RSI at a healthy 60.36 level.", "status": "submitted"}
 Ending portfolio value: $99,382.21
 
+=== Run at 2026-07-31T19:16:32.579633 ===
+Current time: 2026-07-31 03:16 PM EDT | Market open (per Alpaca): True
+Account value: $99,378.80
+Cash: $22,224.47 | Holdings (10): {'AMZN': '4.6694 sh (-0.21%)', 'BALL': '161.3584 sh (-0.15%)', 'GM': '56.6701 sh (+0.81%)', 'HON': '48.6276 sh (+1.09%)', 'J': '77.4773 sh (+0.07%)', 'LMT': '12.4652 sh (+1.33%)', 'MA': '20.7977 sh (+0.28%)', 'PM': '8.8117 sh (-1.65%)', 'V': '26.6454 sh (+0.82%)', 'XOM': '48.0878 sh (+0.35%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 7/16 candidates passed.
+Gemini proposed 0 trade(s) meeting the conviction bar.
+Ending portfolio value: $99,383.75
+
