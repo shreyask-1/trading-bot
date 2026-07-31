@@ -47,11 +47,20 @@ WATCHLIST = [
 ]
 
 # --- Trading window ---
-# Skip the entire run when the market is closed. Without this, market orders
-# placed overnight queue until the next open and fill on prices that have
-# nothing to do with the data the decision was made on. Fractional-share
-# orders are also rejected outside regular trading hours.
-MARKET_HOURS_ONLY = True
+# NOTE: the bot no longer skips runs when the market is closed. Orders
+# submitted while closed are still evaluated and submitted; Alpaca queues
+# DAY orders and fills them at the next open. This flag is kept only for
+# logging/visibility (see main.py) -- it does not gate execution.
+MARKET_HOURS_ONLY = False
+
+# --- Data feed ---
+# Free/paper Alpaca accounts only have access to the IEX feed, not the
+# full SIP consolidated tape -- requesting SIP data without a paid market
+# data subscription fails outright with "subscription does not permit
+# querying recent SIP data". IEX is a real, tradable exchange's data, just
+# not a cross-exchange consolidated view. Set to "sip" only if you've
+# actually subscribed to Alpaca market data that includes it.
+ALPACA_DATA_FEED = os.environ.get("ALPACA_DATA_FEED", "iex")
 
 # --- Position sizing ---
 MAX_POSITION_PCT = 0.15          # hard ceiling: no single position over 15% of portfolio
@@ -76,9 +85,21 @@ TRADE_COOLDOWN_MINUTES = 30      # don't re-trade the same ticker within this wi
 NEWS_DEDUP_MAX_AGE_HOURS = 48    # forget "already seen" articles older than this
 
 # --- Model ---
-# Pinned deliberately: a floating "-latest" alias would let Google swap the
-# model underneath an unattended trading bot with no code change and no log entry.
-GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
+# Google periodically deprecates/restricts specific model IDs, sometimes
+# without much warning (e.g. "no longer available to new users"). A strict
+# pin is the right default -- it keeps behavior stable and detects drift --
+# but a pin that 404s stops the bot dead. decide.py tries GEMINI_MODEL
+# first, then falls through GEMINI_MODEL_FALLBACKS in order, and logs
+# loudly if it had to use a fallback. If you see that log line, update
+# GEMINI_MODEL to whatever it fell back to.
+GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-flash-latest")
+GEMINI_MODEL_FALLBACKS = [
+    GEMINI_MODEL,
+    "gemini-flash-latest",
+    "gemini-2.5-flash",
+    "gemini-2.5-flash-lite",
+    "gemini-2.0-flash",
+]
 
 # 150 calendar days ~= 103 trading days. Must comfortably exceed 50 so SMA-50
 # and classify_trend() actually resolve, plus warm-up room for ADX-14.
