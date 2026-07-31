@@ -47,3 +47,18 @@ Gemini proposed 3 trade(s) meeting the conviction bar.
   -> {"timestamp": "2026-07-31T06:30:55.031206", "ticker": "TSLA", "action": "sell", "qty": 0.0033, "conviction": 8, "size_multiplier": 0.6, "order_id": "686393e6-876a-4fd4-8d65-5afe1137d109", "order_status": "OrderStatus.ACCEPTED", "reasoning": "Downtrend, sharp negative momentum (-21.08%), weak MACD histogram, and low quant score (45/100).", "status": "submitted"}
 Ending portfolio value: $99,842.64
 
+=== Run at 2026-07-31T06:32:24.131474 ===
+Market open: True
+Account value: $99,845.16
+Cash: $3.81 | Holdings: {'A': '39.728 sh (-0.63%)', 'AAPL': '48.8707 sh (-6.35%)', 'AMZN': '13.2333 sh (+11.65%)', 'BA': '0.0025 sh (+2.22%)', 'BAC': '40.4924 sh (+0.62%)', 'BALL': '38.2673 sh (-0.06%)', 'COST': '1.21 sh (-2.31%)', 'DIS': '25.2806 sh (-2.41%)', 'FDX': '8.098 sh (-0.43%)', 'HD': '7.194 sh (-4.11%)', 'HON': '20.774 sh (-0.31%)', 'IT': '16.5981 sh (+1.74%)', 'J': '29.2564 sh (-2.20%)', 'JNJ': '23.0219 sh (-2.43%)', 'JPM': '7.8335 sh (-0.61%)', 'KO': '28.5128 sh (+0.74%)', 'LMT': '8.3707 sh (+0.11%)', 'MA': '0.4482 sh (+7.46%)', 'META': '2.8249 sh (+3.56%)', 'NFLX': '34.4234 sh (+0.36%)', 'PM': '8.7919 sh (-0.84%)', 'SBUX': '18.7988 sh (-0.46%)', 'SO': '77.2636 sh (-3.07%)', 'TGT': '15.8763 sh (+1.33%)', 'TSLA': '0.0035 sh (+4.08%)', 'UNH': '3.4282 sh (-2.20%)', 'V': '7.488 sh (+1.86%)', 'WAT': '9.3421 sh (+1.41%)', 'WMT': '17.6835 sh (-2.10%)', 'XOM': '48.0878 sh (+1.06%)'}
+Market regime: NEUTRAL (position-size multiplier: 60%)
+Found 0 newly-mentioned companies in news.
+Quant pre-screen: 2/5 candidates passed.
+Gemini proposed 5 trade(s) meeting the conviction bar.
+  -> {"timestamp": "2026-07-31T06:32:46.473787", "ticker": "META", "action": "sell", "qty": 2.8249, "conviction": 8, "size_multiplier": 0.6, "order_id": "8249203c-5fbc-4994-bf95-1287d21a05a1", "order_status": "OrderStatus.ACCEPTED", "reasoning": "Severe 10-day momentum loss (-18.89%), breaking below lower Bollinger Band (%B -0.0885), and heavy negative MACD histogram.", "status": "submitted"}
+  -> {"timestamp": "2026-07-31T06:32:46.778226", "ticker": "JNJ", "action": "sell", "qty": 23.0213, "conviction": 7, "size_multiplier": 0.6, "order_id": "3a4675cd-0776-4847-b296-2f2e01ba75cb", "order_status": "OrderStatus.ACCEPTED", "reasoning": "Weak quant score of 50/100, sideways trend, negative MACD histogram, and falling volume indicator.", "status": "submitted"}
+  -> {"timestamp": "2026-07-31T06:32:47.086083", "ticker": "UNH", "action": "sell", "qty": 3.4273, "conviction": 7, "size_multiplier": 0.6, "order_id": "831ca04d-cf9d-4137-9349-fd7b00fcf5b2", "order_status": "OrderStatus.ACCEPTED", "reasoning": "Low quant score of 50/100, sideways trend with persistent negative MACD histogram and low buying interest.", "status": "submitted"}
+  -> {"timestamp": "2026-07-31T06:32:47.392308", "ticker": "LMT", "action": "buy", "qty": 0.0066, "conviction": 8, "size_multiplier": 0.6, "order_id": "697534d4-ec84-4588-be3e-4032c0368d2c", "order_status": "OrderStatus.ACCEPTED", "reasoning": "Strong uptrend supported by high quant score (85/100), +11.75% 10-day momentum, +21.1% relative volume, and expanding MACD histogram.", "status": "submitted"}
+  -> {"timestamp": "2026-07-31T06:32:47.699068", "ticker": "IT", "action": "buy", "qty": 0.0249, "conviction": 8, "size_multiplier": 0.6, "order_id": "228596ce-1008-4195-bec4-20912756b9c3", "order_status": "OrderStatus.ACCEPTED", "reasoning": "High momentum (+7.02% 10d), strong relative volume spike (+57.4%), increasing volume trend, and expanding MACD histogram.", "status": "submitted"}
+Ending portfolio value: $99,845.19
+
