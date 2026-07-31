@@ -46,13 +46,6 @@ WATCHLIST = [
     "BAC", "DIS",
 ]
 
-# --- Trading window ---
-# NOTE: the bot no longer skips runs when the market is closed. Orders
-# submitted while closed are still evaluated and submitted; Alpaca queues
-# DAY orders and fills them at the next open. This flag is kept only for
-# logging/visibility (see main.py) -- it does not gate execution.
-MARKET_HOURS_ONLY = False
-
 # --- Data feed ---
 # Free/paper Alpaca accounts only have access to the IEX feed, not the
 # full SIP consolidated tape -- requesting SIP data without a paid market
@@ -68,6 +61,18 @@ MIN_CONVICTION_TO_TRADE = 6      # Gemini rates each idea 1-10; below this, skip
 # Position size scales with conviction: a conviction-10 idea can use the full
 # MAX_POSITION_PCT; a conviction-6 idea gets scaled down proportionally.
 # This makes size reflect how strong the setup actually is, not a flat amount.
+
+# --- Cash discipline & portfolio sprawl control ---
+# Without these, the bot will happily open new tiny positions every run
+# until cash runs out and every idea -- however good -- gets sized against
+# whatever crumbs are left. These three settings exist specifically to
+# prevent that.
+MIN_CASH_RESERVE_PCT = 0.05    # never invest this fraction of total portfolio value; kept as cash
+MIN_TRADE_DOLLAR_AMOUNT = 25   # buys sized below this are skipped outright, not executed as dust.
+                                # Does NOT apply to sells -- cleanup exits of small holdings still work.
+MAX_OPEN_POSITIONS = 20        # blocks opening NEW positions once this many distinct tickers are
+                                # held. Adds to existing holdings and sells are never blocked by this --
+                                # only the "start a brand new position" case is capped.
 
 # --- Risk management: ATR-based, not fixed percentages ---
 # ATR (Average True Range) measures how much a stock typically moves per day,
