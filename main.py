@@ -13,14 +13,15 @@ Flow (in order):
   6. Ask Gemini to review holdings + quant-prescreened news candidates +
      quant-prescreened watchlist
   7. Execute trades (conviction- and regime-scaled size, cash-reserve and
-     position-count aware, cooldown/open-order aware, re-checking account
-     state between trades -- orders submitted outside market hours queue
-     for the next open)
+     position-count aware -- with a narrow exception letting exceptional-
+     conviction ideas access part of the cash reserve -- cooldown/open-
+     order aware, re-checking account state between trades)
   8. Record a full performance snapshot and log everything
 
 Note on market hours: the bot does NOT skip runs when the market is
 closed. is_market_open() is queried purely for the log line below; it has
-no effect on whether the run proceeds or trades execute.
+no effect on whether the run proceeds or trades execute. Orders submitted
+while closed are queued by Alpaca and fill at the next open.
 """
 
 import json
