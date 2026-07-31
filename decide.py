@@ -21,7 +21,8 @@ from config import (
     MAX_POSITION_PCT, MIN_CONVICTION_TO_TRADE,
     WATCHLIST, ATR_STOP_MULTIPLIER, ATR_TAKE_PROFIT_MULTIPLIER,
     MIN_SIGNAL_SCORE_TO_CONSIDER, REGIME_POSITION_MULTIPLIERS,
-    EXCEPTIONAL_CONVICTION_THRESHOLD,
+    EXCEPTIONAL_CONVICTION_THRESHOLD, CONSOLIDATION_SCORE_THRESHOLD,
+    MAX_OPEN_POSITIONS,
 )
 from trader import get_full_indicators, get_tickers_with_open_orders, get_tickers_on_cooldown
 from signal_score import calculate_signal_score
@@ -104,9 +105,9 @@ Rules:
   are already enforced separately in code -- focus your reasoning on the setup itself, not exit levels.
 - Market-regime-based position-size scaling (described above) is enforced automatically in code,
   regardless of what you propose -- you don't need to and cannot override it.
-- A hard cap on total number of open positions is also enforced in code -- if the portfolio is at
-  that cap, a new (not-currently-held) buy idea will be blocked regardless of conviction, so for
-  a maxed-out portfolio, prioritize hold/trim/exit reasoning on existing holdings instead.
+- A hard cap on total number of open positions ({max_positions} held) is also enforced in code. If the portfolio is at \
+or over that cap, the consolidation engine will automatically purge the lowest-scoring excess positions \
+that score below {consolidation_threshold}. Focus your work on trimming existing weaker holdings to clear space.
 
 Respond with ONLY valid JSON (no markdown fences, no commentary):
 {{
@@ -218,11 +219,7 @@ def build_watchlist_block(scored, unavailable, min_score):
 
 def _generate_with_fallback(prompt):
     """
-    Tries GEMINI_MODEL_FALLBACKS in order until one succeeds. Google
-    periodically deprecates/restricts specific model IDs (sometimes for
-    new API keys specifically), which otherwise fails the whole run.
-    Prints a loud note if it had to use anything other than the first
-    (configured) entry, so you know to update GEMINI_MODEL.
+    Tries GEMINI_MODEL_FALLBACKS in order until one succeeds.
     """
     tried = []
     last_error = None
@@ -289,6 +286,8 @@ def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL"):
         max_pct=int(MAX_POSITION_PCT * 100),
         min_conviction=MIN_CONVICTION_TO_TRADE,
         exceptional_conviction=EXCEPTIONAL_CONVICTION_THRESHOLD,
+        consolidation_threshold=CONSOLIDATION_SCORE_THRESHOLD,
+        max_positions=MAX_OPEN_POSITIONS,
         stop_mult=ATR_STOP_MULTIPLIER,
         tp_mult=ATR_TAKE_PROFIT_MULTIPLIER,
         regime_block=_regime_block(regime),
