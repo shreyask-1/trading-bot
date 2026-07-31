@@ -1,61 +1,48 @@
-# config.py
-import os
+"""
+API keys and bot settings, all in one place.
 
-# --- API Keys & Base URLs ---
-APEX_API_KEY = os.getenv("APEX_API_KEY", "")
-APEX_API_SECRET = os.getenv("APEX_API_SECRET", "")
+Fill in the 4 keys below with your real values from:
+  - Finnhub:   https://finnhub.io/dashboard
+  - Gemini:    https://aistudio.google.com/apikey
+  - Alpaca:    https://app.alpaca.markets (Paper Trading view -> API Keys)
 
-# Alpaca Credentials
-ALPACA_API_KEY = os.getenv("ALPACA_API_KEY", "")
-ALPACA_SECRET_KEY = os.getenv("ALPACA_SECRET_KEY", "")
-ALPACA_PAPER = os.getenv("ALPACA_PAPER", "True").lower() in ("true", "1", "t")
+Treat these like passwords -- never commit real values to a public repo.
+"""
 
-# Finnhub API Key
-FINNHUB_API_KEY = os.getenv("FINNHUB_API_KEY", "")
+FINNHUB_API_KEY = "PASTE_YOUR_FINNHUB_KEY_HERE"
+GEMINI_API_KEY = "PASTE_YOUR_GEMINI_KEY_HERE"
+ALPACA_API_KEY = "PASTE_YOUR_ALPACA_PAPER_API_KEY_HERE"
+ALPACA_SECRET_KEY = "PASTE_YOUR_ALPACA_PAPER_SECRET_KEY_HERE"
 
-# Google Gemini API Key & Model Configuration
-GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
-GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-1.5-flash")
-
-# --- Trading Strategy & Indicator Parameters ---
-MAX_POSITION_PCT = 0.20
-STOP_LOSS_PCT = -0.05
-TAKE_PROFIT_PCT = 0.10
-PRICE_HISTORY_DAYS = 14
-RSI_PERIOD = 14
-SMA_SHORT = 20
-SMA_LONG = 50
-VOLUME_LOOKBACK = 20
-MACD_FAST = 12
-MACD_SLOW = 26
-MACD_SIGNAL = 9
-BOLLINGER_PERIOD = 20
-BOLLINGER_STD = 2.0
-TRADE_COOLDOWN_MINUTES = 60
-
-# --- 100-Stock Master Market Universe Watchlist ---
+# --- Universe ---
+MAX_NEWS_ITEMS = 15          # headlines considered per run
+# Liquid, well-known tickers always evaluated on technicals, even with zero
+# news that cycle -- so the bot isn't 100% dependent on a headline existing.
 WATCHLIST = [
-    # --- Mega-Cap & AI Infrastructure Core ---
-    "NVDA", "MSFT", "GOOGL", "AMZN", "META", "AAPL", "TSLA", "AVGO", "PLTR", "AMD",
-    "NFLX", "ORCL", "CRM", "TSM", "QCOM", "IBM", "NOW", "ADBE", "AMAT", "LRCX",
-    
-    # --- High-Growth Tech, Software & Cybersecurity ---
-    "SNOW", "CRWD", "PANW", "DDOG", "NET", "PATH", "ZS", "MDB", "HUBS", "SHOP",
-    "U", "TTD", "ANET", "MU", "INTC", "TXN", "ADI", "MRVL", "CDNS", "SNPS",
-    
-    # --- Financials & Fintech Innovators ---
-    "JPM", "V", "MA", "BAC", "GS", "MS", "AXP", "BLK", "SCHW", "PYPL",
-    "SQ", "COIN", "HOOD", "FI", "PGR", "TRV", "ICE", "CME", "SPGI", "CB",
-    
-    # --- Healthcare & Biotech Disruptors ---
-    "UNH", "JNJ", "LLY", "NVO", "ABBV", "MRK", "TMO", "DHR", "ISRG", "VRTX",
-    "REGN", "AMGN", "PFE", "BMY", "ELV", "CI", "CVS", "ZTS", "BSX", "GILD",
-    
-    # --- Industrials, Aerospace & Energy Transition ---
-    "GE", "CAT", "ETN", "HON", "UNP", "UPS", "RTX", "LMT", "BA", "DE",
-    "LIN", "SHW", "FCX", "NEM", "XOM", "CVX", "COP", "SLB", "HAL", "NEE",
-    
-    # --- Consumer Discretionary & High-Momentum Staples ---
-    "WMT", "COST", "HD", "MCD", "NKE", "SBUX", "DIS", "ABNB", "UBER", "BKNG",
-    "TJX", "LOW", "PM", "KO", "PEP", "MO", "MDLZ", "CL", "TGT", "CMCSA"
+    "AAPL", "MSFT", "GOOGL", "AMZN", "NVDA", "META", "TSLA", "AVGO",
+    "JPM", "V", "UNH", "XOM", "WMT", "MA", "HD", "PG", "COST", "NFLX",
+    "BAC", "DIS",
 ]
+
+# --- Position sizing ---
+MAX_POSITION_PCT = 0.15          # hard ceiling: no single position over 15% of portfolio
+MIN_CONVICTION_TO_TRADE = 6      # Gemini rates each idea 1-10; below this, skip it
+# Position size scales with conviction: a conviction-10 idea can use the full
+# MAX_POSITION_PCT; a conviction-6 idea gets scaled down proportionally.
+# This makes size reflect how strong the setup actually is, not a flat amount.
+
+# --- Risk management: ATR-based, not fixed percentages ---
+# ATR (Average True Range) measures how much a stock typically moves per day,
+# in its own price terms. Using it for stops means the stop distance adapts
+# to each stock's real volatility, instead of one fixed % for every ticker.
+ATR_STOP_MULTIPLIER = 2.5        # stop-loss = entry price - (2.5 x ATR)
+ATR_TAKE_PROFIT_MULTIPLIER = 4.0 # take-profit = entry price + (4.0 x ATR)
+ATR_PERIOD = 14
+
+# --- Cooldown & dedup ---
+TRADE_COOLDOWN_MINUTES = 30      # don't re-trade the same ticker within this window
+NEWS_DEDUP_MAX_AGE_HOURS = 48    # forget "already seen" articles older than this
+
+# --- Model ---
+GEMINI_MODEL = "gemini-flash-latest"
+PRICE_HISTORY_DAYS = 60          # bars of history fetched per ticker (needed for ADX/SMA50/etc.)
