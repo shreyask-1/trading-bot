@@ -12,20 +12,26 @@ Flow (in order):
   5. Fetch news (deduped against recently-seen articles)
   6. Ask Gemini to review holdings + quant-prescreened news candidates +
      quant-prescreened watchlist
-  7. Execute trades (conviction- and regime-scaled size, cooldown/open-order
-     aware, re-checking account state between trades -- orders submitted
-     outside market hours will queue for the next open)
+  7. Execute trades (conviction- and regime-scaled size, cash-reserve and
+     position-count aware, cooldown/open-order aware, re-checking account
+     state between trades -- orders submitted outside market hours queue
+     for the next open)
   8. Record a full performance snapshot and log everything
+
+Note on market hours: the bot does NOT skip runs when the market is
+closed. is_market_open() is queried purely for the log line below; it has
+no effect on whether the run proceeds or trades execute.
 """
 
 import json
 import os
 from datetime import datetime
 
-from config import MARKET_HOURS_ONLY, REGIME_POSITION_MULTIPLIERS
+from config import REGIME_POSITION_MULTIPLIERS
 from trader import (
     get_account_snapshot, execute_trade, check_atr_stop_take_profit,
     record_performance_snapshot, is_market_open, get_market_regime,
+    get_eastern_time_str,
 )
 from news import get_news_candidates
 from decide import get_trade_decisions
@@ -38,12 +44,8 @@ def run():
     timestamp = datetime.now()
     log_lines = [f"=== Run at {timestamp.isoformat()} ==="]
 
-    # Note: if the market is closed, orders submitted here will queue at
-    # Alpaca for the next open (DAY orders). We do NOT abort the run --
-    # the bot continues to evaluate news, regime, holdings, and submit
-    # trades regardless of the clock.
-    market_open = is_market_open() if MARKET_HOURS_ONLY else True
-    log_lines.append(f"Market open: {market_open}")
+    market_open = is_market_open()
+    log_lines.append(f"Current time: {get_eastern_time_str()} | Market open (per Alpaca): {market_open}")
 
     try:
         account = get_account_snapshot()
@@ -54,7 +56,7 @@ def run():
 
     log_lines.append(f"Account value: ${account['total_value']:,.2f}")
     holdings_summary = {t: f"{p['qty']} sh ({p['unrealized_plpc']:+.2f}%)" for t, p in account["holdings"].items()}
-    log_lines.append(f"Cash: ${account['cash']:,.2f} | Holdings: {holdings_summary or 'none'}")
+    log_lines.append(f"Cash: ${account['cash']:,.2f} | Holdings ({len(account['holdings'])}): {holdings_summary or 'none'}")
 
     # Step 1: hard ATR-based risk management (always allowed, any regime)
     risk_exits = 0
@@ -80,8 +82,12 @@ def run():
 
     # Step 3: news
     try:
-        candidates = get_news_candidates()
-        log_lines.append(f"Found {len(candidates)} newly-mentioned companies in news.")
+        candidates, news_stats = get_news_candidates()
+        log_lines.append(
+            f"News: fetched {news_stats['articles_fetched']}, "
+            f"{news_stats['articles_new_after_dedup']} new after dedup, "
+            f"{news_stats['tickers_matched']} ticker(s) matched."
+        )
     except Exception as e:
         log_lines.append(f"News fetch failed, proceeding with watchlist only: {e}")
         candidates = {}
