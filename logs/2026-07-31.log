@@ -21,3 +21,16 @@ Quant pre-screen: 0/5 candidates passed.
 Gemini proposed 0 trade(s) meeting the conviction bar.
 Ending portfolio value: $99,832.83
 
+=== Run at 2026-07-31T06:28:51.770604 ===
+Market open: True
+Account value: $99,838.29
+Cash: $3.81 | Holdings: {'A': '39.728 sh (-0.63%)', 'AAPL': '48.8707 sh (-6.40%)', 'AMZN': '13.2333 sh (+11.67%)', 'BA': '0.0025 sh (+2.22%)', 'BAC': '40.4924 sh (+0.62%)', 'BALL': '38.2673 sh (-0.06%)', 'COST': '1.21 sh (-2.31%)', 'DIS': '25.2806 sh (-2.41%)', 'FDX': '8.098 sh (-0.43%)', 'HD': '7.194 sh (-4.11%)', 'HON': '20.774 sh (-0.31%)', 'IT': '16.5981 sh (+1.74%)', 'J': '29.2564 sh (-2.20%)', 'JNJ': '23.0219 sh (-2.43%)', 'JPM': '7.8335 sh (-0.61%)', 'KO': '28.5128 sh (+0.74%)', 'LMT': '8.3707 sh (+0.11%)', 'MA': '0.4482 sh (+7.46%)', 'META': '2.8249 sh (+3.58%)', 'NFLX': '34.4234 sh (+0.36%)', 'PM': '8.7919 sh (-0.84%)', 'SBUX': '18.7988 sh (-0.46%)', 'SO': '77.2636 sh (-3.07%)', 'TGT': '15.8763 sh (+1.33%)', 'TSLA': '0.0035 sh (+4.17%)', 'UNH': '3.4282 sh (-2.20%)', 'V': '7.488 sh (+1.86%)', 'WAT': '9.3421 sh (+1.41%)', 'WMT': '17.6835 sh (-2.10%)', 'XOM': '48.0878 sh (+1.06%)'}
+Market regime: NEUTRAL (position-size multiplier: 60%)
+Found 0 newly-mentioned companies in news.
+Quant pre-screen: 2/5 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+  -> {"timestamp": "2026-07-31T06:29:08.229440", "ticker": "FDX", "action": "sell", "qty": 8.098, "conviction": 7, "size_multiplier": 0.6, "order_id": "aef3f5e3-f49f-47be-a213-d45c6b43868c", "order_status": "OrderStatus.ACCEPTED", "reasoning": "Exit underperforming position in clear downtrend with weak quant score of 55 and negative momentum.", "status": "submitted"}
+  -> {"timestamp": "2026-07-31T06:29:08.459132", "ticker": "HD", "action": "sell", "qty": 7.194, "conviction": 7, "size_multiplier": 0.6, "order_id": "d98df6df-9d27-44ae-acc3-50de546e44c8", "order_status": "OrderStatus.ACCEPTED", "reasoning": "Exit weak holding showing negative momentum and low quant score of 50.", "status": "submitted"}
+  -> {"timestamp": "2026-07-31T06:29:08.691673", "ticker": "V", "action": "buy", "qty": 0.0104, "conviction": 8, "size_multiplier": 0.6, "order_id": "a2a40fcc-b75d-4d3c-9175-5631b38c630c", "order_status": "OrderStatus.ACCEPTED", "reasoning": "Add to high-conviction uptrend with quant score of 90, strong ADX of 29.25, and expanding volume.", "status": "submitted"}
+Ending portfolio value: $99,838.29
+
