@@ -8,7 +8,9 @@ scale position size.
 
 import json
 import re
-import google.generativeai as genai
+
+from google import genai
+from google.genai import types
 
 from config import (
     GEMINI_API_KEY, GEMINI_MODEL, MAX_POSITION_PCT, MIN_CONVICTION_TO_TRADE,
@@ -16,8 +18,30 @@ from config import (
 )
 from trader import get_full_indicators, get_tickers_with_open_orders, get_tickers_on_cooldown
 
-genai.configure(api_key=GEMINI_API_KEY)
+_client = genai.Client(api_key=GEMINI_API_KEY)
 
+# Forces Gemini's output into this exact shape -- removes the need to hope
+# it didn't wrap the JSON in markdown fences or add commentary.
+_RESPONSE_SCHEMA = types.Schema(
+    type=types.Type.OBJECT,
+    properties={
+        "trades": types.Schema(
+            type=types.Type.ARRAY,
+            items=types.Schema(
+                type=types.Type.OBJECT,
+                properties={
+                    "ticker": types.Schema(type=types.Type.STRING),
+                    "action": types.Schema(type=types.Type.STRING, enum=["buy", "sell"]),
+                    "dollar_amount": types.Schema(type=types.Type.NUMBER),
+                    "conviction": types.Schema(type=types.Type.INTEGER),
+                    "reasoning": types.Schema(type=types.Type.STRING),
+                },
+                required=["ticker", "action", "conviction"],
+            ),
+        )
+    },
+    required=["trades"],
+)
 
 PROMPT_TEMPLATE = """You are a moderately aggressive trading analyst for a SIMULATED \
 paper-trading portfolio (no real money). Every trade idea you propose MUST include a \
@@ -155,9 +179,18 @@ def get_trade_decisions(candidates, account_snapshot):
         watchlist_block=build_watchlist_block(holdings, new_candidates, unavailable),
     )
 
-    model = genai.GenerativeModel(GEMINI_MODEL)
-    response = model.generate_content(prompt)
-    raw_text = re.sub(r"^```json\s*|\s*```$", "", response.text.strip())
+    response = _client.models.generate_content(
+        model=GEMINI_MODEL,
+        contents=prompt,
+        config=types.GenerateContentConfig(
+            temperature=0.3,
+            response_mime_type="application/json",
+            response_schema=_RESPONSE_SCHEMA,
+        ),
+    )
+
+    raw_text = (response.text or "").strip()
+    raw_text = re.sub(r"^```json\s*|\s*```$", "", raw_text)  # belt-and-suspenders
 
     try:
         trades = json.loads(raw_text).get("trades", [])
