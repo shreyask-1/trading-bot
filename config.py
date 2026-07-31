@@ -65,14 +65,24 @@ MIN_CONVICTION_TO_TRADE = 6      # Gemini rates each idea 1-10; below this, skip
 # --- Cash discipline & portfolio sprawl control ---
 # Without these, the bot will happily open new tiny positions every run
 # until cash runs out and every idea -- however good -- gets sized against
-# whatever crumbs are left. These three settings exist specifically to
-# prevent that.
-MIN_CASH_RESERVE_PCT = 0.05    # never invest this fraction of total portfolio value; kept as cash
+# whatever crumbs are left. These exist specifically to prevent that,
+# while still leaving room for a genuinely exceptional idea to act.
+MIN_CASH_RESERVE_PCT = 0.05    # normally-untouchable fraction of total portfolio value.
 MIN_TRADE_DOLLAR_AMOUNT = 25   # buys sized below this are skipped outright, not executed as dust.
                                 # Does NOT apply to sells -- cleanup exits of small holdings still work.
-MAX_OPEN_POSITIONS = 20        # blocks opening NEW positions once this many distinct tickers are
-                                # held. Adds to existing holdings and sells are never blocked by this --
-                                # only the "start a brand new position" case is capped.
+MAX_OPEN_POSITIONS = 20        # HARD cap, no exception -- blocks opening a brand new position once
+                                # this many distinct tickers are held. Adds to existing holdings and
+                                # sells are never blocked by this; only new tickers are capped. An
+                                # exceptional idea while at the cap should prompt trimming an existing
+                                # weak holding first (a separate, deliberate decision), not an override here.
+
+# An idea at or above this conviction is allowed to dip into part of the
+# cash reserve above -- the reserve stays the default for every other
+# trade. This does NOT bypass MIN_TRADE_DOLLAR_AMOUNT, MAX_POSITION_PCT,
+# or MAX_OPEN_POSITIONS -- it only affects how much of the cash reserve
+# counts as "available" for sizing purposes.
+EXCEPTIONAL_CONVICTION_THRESHOLD = 9
+EXCEPTIONAL_TRADE_RESERVE_ACCESS_PCT = 0.5   # fraction of the reserve an exceptional trade may use
 
 # --- Risk management: ATR-based, not fixed percentages ---
 # ATR (Average True Range) measures how much a stock typically moves per day,
