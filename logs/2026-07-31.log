@@ -2366,3 +2366,18 @@ Quant pre-screen: 4/12 candidates passed.
 Gemini proposed 0 trade(s) meeting the conviction bar.
 Ending portfolio value: $98,841.33
 
+=== Run at 2026-07-31T14:06:35.761953 ===
+Current time: 2026-07-31 10:06 AM EDT | Market open (per Alpaca): True
+Account value: $98,832.91
+Cash: $50,592.27 | Holdings (17): {'A': '0.002 sh (-1.59%)', 'BALL': '38.2673 sh (-1.61%)', 'DIS': '0.0024 sh (-2.67%)', 'GM': '56.6701 sh (-0.53%)', 'HON': '37.3867 sh (-0.64%)', 'J': '29.2851 sh (-2.38%)', 'JPM': '0.0001 sh (-0.80%)', 'LMT': '12.4652 sh (+0.05%)', 'MA': '10.4954 sh (+0.38%)', 'NFLX': '0.0057 sh (-0.92%)', 'PM': '8.8117 sh (-1.26%)', 'SO': '0.0063 sh (-3.37%)', 'TGT': '0.0001 sh (+0.94%)', 'UNH': '0.0009 sh (-3.00%)', 'V': '15.8098 sh (+0.94%)', 'WMT': '0.0057 sh (-1.21%)', 'XOM': '48.0878 sh (-0.69%)'}
+Market regime: NEUTRAL (position-size multiplier: 60%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 4/12 candidates passed.
+Gemini proposed 5 trade(s) meeting the conviction bar.
+  -> {"timestamp": "2026-07-31T14:06:55.494688", "ticker": "MA", "action": "buy", "qty": 1.9595, "conviction": 8, "size_multiplier": 0.6, "order_id": "a836219b-3a52-4316-8312-938281a0f11e", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Strong uptrend with ADX 33.32 confirming trend strength, bullish MACD histogram (+2.56), 5.08% 10-day momentum, and increasing volume trend.", "status": "submitted"}
+  -> {"ticker": "LMT", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,941.66 kept uninvested of $4,941.66 normal reserve, $50,592.27 cash on hand)"}
+  -> {"timestamp": "2026-07-31T14:06:55.621838", "ticker": "V", "action": "buy", "qty": 1.2767, "conviction": 7, "size_multiplier": 0.6, "order_id": "36ec8241-a6a4-406f-ad57-b23f68c3d384", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Uptrend backed by strong ADX 29.05, positive MACD histogram, and increasing volume trend.", "status": "submitted"}
+  -> {"timestamp": "2026-07-31T14:06:55.729868", "ticker": "UNH", "action": "sell", "qty": 0.0009, "conviction": 7, "size_multiplier": 0.6, "order_id": "7d57e3bc-55f7-4e37-b1f6-1fbd1975bacd", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Weak quant score 45/100, negative MACD histogram, and sideways price action.", "status": "submitted"}
+  -> {"timestamp": "2026-07-31T14:06:55.793270", "ticker": "DIS", "action": "sell", "qty": 0.0024, "conviction": 7, "size_multiplier": 0.6, "order_id": "ff92e9fb-a147-412b-aff7-3c7781f9f524", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Downtrend with quant score 45/100 and negative 10-day momentum.", "status": "submitted"}
+Ending portfolio value: $98,838.83
+
