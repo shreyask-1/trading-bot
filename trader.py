@@ -8,7 +8,8 @@ single price-history fetch per ticker, evaluates the broad market regime
 (via market_regime.py, using SPY as a proxy), and enforces ATR-based
 stop-loss/take-profit, a per-ticker trade cooldown, a minimum cash
 reserve (with a narrow exception for exceptional-conviction ideas), a
-minimum trade size, and a cap on total open positions.
+minimum trade size, a cap on total open positions, and automatic
+portfolio consolidation when over position limits.
 """
 
 import os
@@ -31,9 +32,11 @@ from config import (
     PRICE_HISTORY_DAYS, TRADE_COOLDOWN_MINUTES, MARKET_HIGH_VOLATILITY_THRESHOLD,
     ALPACA_DATA_FEED, MIN_CASH_RESERVE_PCT, MIN_TRADE_DOLLAR_AMOUNT, MAX_OPEN_POSITIONS,
     EXCEPTIONAL_CONVICTION_THRESHOLD, EXCEPTIONAL_TRADE_RESERVE_ACCESS_PCT,
+    CONSOLIDATION_SCORE_THRESHOLD,
 )
 import indicators as ind
 from market_regime import evaluate_market_regime
+from signal_score import calculate_signal_score
 
 trading_client = TradingClient(ALPACA_API_KEY, ALPACA_SECRET_KEY, paper=True)
 data_client = StockHistoricalDataClient(ALPACA_API_KEY, ALPACA_SECRET_KEY)
@@ -54,7 +57,7 @@ PERFORMANCE_CSV_HEADER = [
     "market_regime", "size_multiplier",
     "candidates_considered", "candidates_passed_prescreen",
     "trades_proposed", "trades_executed", "trades_skipped", "trades_failed",
-    "risk_exits",
+    "risk_exits", "consolidation_exits",
 ]
 
 
@@ -64,11 +67,8 @@ PERFORMANCE_CSV_HEADER = [
 
 def get_eastern_time_str():
     """
-    Explicit US-Eastern-time string, computed from timezone-AWARE UTC (not
-    from datetime.now(), which depends on whatever timezone the host
-    machine happens to be set to). Used purely for unambiguous logging --
-    NYSE hours are defined in Eastern time, and a naive local timestamp
-    printed elsewhere in the logs can otherwise look confusing.
+    Explicit US-Eastern-time string, computed from timezone-AWARE UTC.
+    Used purely for unambiguous logging.
     """
     now_utc = datetime.now(pytz.utc)
     now_et = now_utc.astimezone(_EASTERN)
@@ -78,9 +78,8 @@ def get_eastern_time_str():
 def is_market_open():
     """
     True if the market is open for regular trading right now, per Alpaca's
-    own authoritative clock (not derived from local system time in any
-    way). Fails closed: if the clock call errors, returns False. This is
-    purely informational for logging now -- it does not gate whether the
+    own authoritative clock. Fails closed: if the clock call errors, returns False.
+    This is purely informational for logging now -- it does not gate whether the
     bot runs or trades; orders submitted while closed simply queue at
     Alpaca for the next open.
     """
@@ -98,9 +97,7 @@ def get_market_regime():
     sizing when the broad market is unfavorable or unusually volatile --
     independent of what Gemini decides about any individual ticker.
 
-    Fails safe to "NEUTRAL" (a moderate, not maximal, sizing multiplier)
-    if SPY's history can't be fetched or evaluated, rather than either
-    fully blocking or fully allowing new trades based on missing data.
+    Fails safe to "NEUTRAL" if SPY's history can't be fetched or evaluated.
     """
     history = get_price_history("SPY")
     if history is None:
@@ -260,7 +257,7 @@ def _record_cooldown(ticker):
 
 
 # ============================================================
-# ATR-based risk management
+# ATR-based risk management & Portfolio Consolidation
 # ============================================================
 
 def check_atr_stop_take_profit(account_snapshot):
@@ -301,6 +298,60 @@ def check_atr_stop_take_profit(account_snapshot):
             trade = {"ticker": ticker, "action": "sell", "dollar_amount": 0, "reasoning": reason, "conviction": 10}
             result = execute_trade(trade, account_snapshot)
             result["trigger"] = "risk_management"
+            results.append(result)
+
+    return results
+
+
+def enforce_portfolio_consolidation(account_snapshot):
+    """
+    Enforces portfolio sprawl control if current holdings exceed MAX_OPEN_POSITIONS.
+    
+    1. Computes the deterministic quant score (0-100) for all holdings.
+    2. Identifies the excess count (N).
+    3. Sorts all holdings by score ascending.
+    4. Takes the worst N holdings.
+    5. Force-sells any of those worst N that score below CONSOLIDATION_SCORE_THRESHOLD.
+       If any score above the threshold, they are kept until they drop below.
+    """
+    results = []
+    holdings = account_snapshot.get("holdings", {})
+    if len(holdings) <= MAX_OPEN_POSITIONS:
+        return results
+
+    open_order_tickers = get_tickers_with_open_orders()
+    excess_count = len(holdings) - MAX_OPEN_POSITIONS
+
+    scored_holdings = []
+    for ticker in holdings.keys():
+        if ticker in open_order_tickers:
+            continue
+        indicators_data = get_full_indicators(ticker)
+        score = calculate_signal_score(indicators_data)
+        scored_holdings.append((score, ticker))
+
+    # Sort ascending (lowest score first, which isolates worst assets)
+    scored_holdings.sort(key=lambda x: x[0])
+
+    # Slice the worst N candidates (where N is the excess amount)
+    candidates = scored_holdings[:excess_count]
+
+    for score, ticker in candidates:
+        if score < CONSOLIDATION_SCORE_THRESHOLD:
+            reason = (
+                f"Consolidation exit: Ticker score {round(score, 1)} is "
+                f"below threshold ({CONSOLIDATION_SCORE_THRESHOLD}) while holding "
+                f"{len(holdings)} positions (limit {MAX_OPEN_POSITIONS})."
+            )
+            trade = {
+                "ticker": ticker,
+                "action": "sell",
+                "dollar_amount": 0,
+                "reasoning": reason,
+                "conviction": 10
+            }
+            result = execute_trade(trade, account_snapshot)
+            result["trigger"] = "portfolio_consolidation"
             results.append(result)
 
     return results
@@ -425,10 +476,7 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0):
 def record_performance_snapshot(account_snapshot, log_dir, **stats):
     """
     Appends one row to logs/performance.csv per run. Extra keyword args
-    (all optional) populate the regime/pre-screen/trade-outcome columns:
-        market_regime, size_multiplier, candidates_considered,
-        candidates_passed_prescreen, trades_proposed, trades_executed,
-        trades_skipped, trades_failed, risk_exits
+    (all optional) populate the columns.
 
     If an existing performance.csv has an outdated header (e.g. from
     before these columns existed), it's archived to a timestamped
@@ -464,6 +512,7 @@ def record_performance_snapshot(account_snapshot, log_dir, **stats):
         "trades_skipped": stats.get("trades_skipped", 0),
         "trades_failed": stats.get("trades_failed", 0),
         "risk_exits": stats.get("risk_exits", 0),
+        "consolidation_exits": stats.get("consolidation_exits", 0),
     }
 
     with open(path, "a", newline="") as f:
