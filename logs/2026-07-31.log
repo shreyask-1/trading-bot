@@ -2185,3 +2185,16 @@ Gemini proposed 2 trade(s) meeting the conviction bar.
   -> {"timestamp": "2026-07-31T13:30:59.944604", "ticker": "LMT", "action": "buy", "qty": 4.0879, "conviction": 8, "size_multiplier": 0.6, "order_id": "5d2c2903-7a8a-4f38-ac96-4010cd0e508b", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Solid uptrend with 11.75% 10-day momentum, strong MACD histogram expansion (+6.65), and above-average volume (+21.1%).", "status": "submitted"}
 Ending portfolio value: $99,152.40
 
+=== Run at 2026-07-31T13:32:26.036371 ===
+Current time: 2026-07-31 09:32 AM EDT | Market open (per Alpaca): True
+Account value: $99,025.84
+Cash: $42,757.01 | Holdings (22): {'A': '39.728 sh (-1.62%)', 'BALL': '38.2673 sh (-0.23%)', 'DIS': '6.2806 sh (-2.62%)', 'FDX': '2.098 sh (-0.30%)', 'HD': '4.194 sh (-5.10%)', 'HON': '20.774 sh (-0.47%)', 'IT': '16.623 sh (-1.18%)', 'J': '29.2851 sh (-3.04%)', 'JPM': '6.8335 sh (-0.26%)', 'KO': '14.9565 sh (-0.48%)', 'LMT': '8.3773 sh (+0.60%)', 'META': '1.8249 sh (+4.72%)', 'NFLX': '33.4234 sh (-0.22%)', 'PM': '8.8117 sh (-2.04%)', 'SBUX': '1.7988 sh (+1.44%)', 'SO': '63.2636 sh (-3.28%)', 'TGT': '2.8763 sh (+0.20%)', 'UNH': '1.4282 sh (-2.51%)', 'V': '7.4984 sh (+0.59%)', 'WAT': '4.3421 sh (+1.82%)', 'WMT': '15.6835 sh (-2.36%)', 'XOM': '48.0878 sh (+0.41%)'}
+Consolidation engine triggered 2 forced cleanup sell(s):
+  -> {"timestamp": "2026-07-31T13:32:28.190652", "ticker": "IT", "action": "sell", "qty": 16.623, "conviction": 10, "size_multiplier": 1.0, "order_id": "fba83ad1-bd1b-4413-97ae-f8fdcec53a50", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Consolidation exit: Ticker score 65.0 is below threshold (70) while holding 22 positions (limit 20).", "status": "submitted", "trigger": "portfolio_consolidation"}
+  -> {"timestamp": "2026-07-31T13:32:28.215596", "ticker": "KO", "action": "sell", "qty": 14.9565, "conviction": 10, "size_multiplier": 1.0, "order_id": "4bbf52c6-91c2-4698-9899-38b37931ca9f", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Consolidation exit: Ticker score 65.0 is below threshold (70) while holding 22 positions (limit 20).", "status": "submitted", "trigger": "portfolio_consolidation"}
+Market regime: NEUTRAL (position-size multiplier: 60%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 5/11 candidates passed.
+Gemini proposed 0 trade(s) meeting the conviction bar.
+Ending portfolio value: $99,007.40
+
