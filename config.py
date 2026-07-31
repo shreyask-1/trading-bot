@@ -4,18 +4,18 @@ import os
 APEX_API_KEY = os.getenv("APEX_API_KEY", "")
 APEX_API_SECRET = os.getenv("APEX_API_SECRET", "")
 
-# Alpaca Credentials (pulled automatically from GitHub Secrets in CI/CD)
+# Alpaca Credentials
 ALPACA_API_KEY = os.getenv("ALPACA_API_KEY", "")
 ALPACA_SECRET_KEY = os.getenv("ALPACA_SECRET_KEY", "")
 ALPACA_PAPER = os.getenv("ALPACA_PAPER", "True").lower() in ("true", "1", "t")
 
-# Finnhub API Key (pulled from GitHub Secrets)
+# Finnhub API Key
 FINNHUB_API_KEY = os.getenv("FINNHUB_API_KEY", "")
 
 # Google Gemini API Key & Model Configuration
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY", "")
-# Change this line in config.py
 GEMINI_MODEL = os.getenv("GEMINI_MODEL", "gemini-1.5-flash")
+
 # --- Trading Strategy & Indicator Parameters ---
 MAX_POSITION_PCT = 0.20
 STOP_LOSS_PCT = -0.05
