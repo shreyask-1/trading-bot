@@ -70,11 +70,13 @@ MIN_CONVICTION_TO_TRADE = 6      # Gemini rates each idea 1-10; below this, skip
 MIN_CASH_RESERVE_PCT = 0.05    # normally-untouchable fraction of total portfolio value.
 MIN_TRADE_DOLLAR_AMOUNT = 25   # buys sized below this are skipped outright, not executed as dust.
                                 # Does NOT apply to sells -- cleanup exits of small holdings still work.
-MAX_OPEN_POSITIONS = 20        # HARD cap, no exception -- blocks opening a brand new position once
-                                # this many distinct tickers are held. Adds to existing holdings and
-                                # sells are never blocked by this; only new tickers are capped. An
-                                # exceptional idea while at the cap should prompt trimming an existing
-                                # weak holding first (a separate, deliberate decision), not an override here.
+MAX_OPEN_POSITIONS = 20        # HARD cap -- blocks opening a brand new position once this many distinct
+                                # tickers are held. Adds to existing holdings and sells are never blocked.
+                                
+CONSOLIDATION_SCORE_THRESHOLD = 70  # When total positions are over MAX_OPEN_POSITIONS, the consolidation
+                                    # engine will rank all holdings by technical signal score (0-100) and
+                                    # automatically force-sell any of the worst-scoring "excess" positions
+                                    # that fall below this threshold.
 
 # An idea at or above this conviction is allowed to dip into part of the
 # cash reserve above -- the reserve stays the default for every other
