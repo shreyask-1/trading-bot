@@ -7,7 +7,8 @@ Also computes the full technical indicator set (via indicators.py) from a
 single price-history fetch per ticker, evaluates the broad market regime
 (via market_regime.py, using SPY as a proxy), and enforces ATR-based
 stop-loss/take-profit, a per-ticker trade cooldown, a minimum cash
-reserve, a minimum trade size, and a cap on total open positions.
+reserve (with a narrow exception for exceptional-conviction ideas), a
+minimum trade size, and a cap on total open positions.
 """
 
 import os
@@ -29,6 +30,7 @@ from config import (
     ATR_STOP_MULTIPLIER, ATR_TAKE_PROFIT_MULTIPLIER, ATR_PERIOD,
     PRICE_HISTORY_DAYS, TRADE_COOLDOWN_MINUTES, MARKET_HIGH_VOLATILITY_THRESHOLD,
     ALPACA_DATA_FEED, MIN_CASH_RESERVE_PCT, MIN_TRADE_DOLLAR_AMOUNT, MAX_OPEN_POSITIONS,
+    EXCEPTIONAL_CONVICTION_THRESHOLD, EXCEPTIONAL_TRADE_RESERVE_ACCESS_PCT,
 )
 import indicators as ind
 from market_regime import evaluate_market_regime
@@ -66,9 +68,7 @@ def get_eastern_time_str():
     from datetime.now(), which depends on whatever timezone the host
     machine happens to be set to). Used purely for unambiguous logging --
     NYSE hours are defined in Eastern time, and a naive local timestamp
-    printed elsewhere in the logs can otherwise look confusing (e.g. a
-    log labeled "06:28" is meaningless without knowing which timezone
-    produced it).
+    printed elsewhere in the logs can otherwise look confusing.
     """
     now_utc = datetime.now(pytz.utc)
     now_et = now_utc.astimezone(_EASTERN)
@@ -308,7 +308,8 @@ def check_atr_stop_take_profit(account_snapshot):
 
 # ============================================================
 # Order execution (conviction-scaled, regime-scaled, cash- and
-# sprawl-aware sizing)
+# sprawl-aware sizing, with a narrow exception for exceptional
+# conviction ideas to access part of the cash reserve)
 # ============================================================
 
 def execute_trade(trade, account_snapshot=None, size_multiplier=1.0):
@@ -318,9 +319,15 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0):
     Buy sizing, in order of constraints applied:
       1. conviction/10 and the market-regime size_multiplier scale the
          MAX_POSITION_PCT cap (0.0 regime multiplier blocks all buys).
-      2. MIN_CASH_RESERVE_PCT of total portfolio value is never spendable.
+      2. MIN_CASH_RESERVE_PCT of total portfolio value is normally kept
+         uninvested -- EXCEPT for a trade at or above
+         EXCEPTIONAL_CONVICTION_THRESHOLD conviction, which may draw down
+         up to EXCEPTIONAL_TRADE_RESERVE_ACCESS_PCT of that reserve. Every
+         other constraint below still applies to exceptional trades too --
+         this only changes how much cash counts as "available."
       3. MAX_OPEN_POSITIONS blocks opening a BRAND NEW ticker (adds to an
-         existing holding are unaffected) once the cap is reached.
+         existing holding are unaffected) once the cap is reached -- no
+         exception, regardless of conviction.
       4. MIN_TRADE_DOLLAR_AMOUNT -- anything smaller than this is skipped
          rather than executed as a dust trade.
     None of these apply to sells: an exit is always allowed regardless of
@@ -348,21 +355,30 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0):
         if is_new_position and len(account_snapshot["holdings"]) >= MAX_OPEN_POSITIONS:
             return {
                 "ticker": ticker, "status": "skipped",
-                "reason": f"max open positions reached ({MAX_OPEN_POSITIONS} held); "
-                          f"only adds to existing holdings or sells are allowed until it consolidates",
+                "reason": f"max open positions reached ({MAX_OPEN_POSITIONS} held, no exception for "
+                          f"conviction); only adds to existing holdings or sells are allowed until "
+                          f"it consolidates",
             }
 
         max_allowed = total_value * MAX_POSITION_PCT * (conviction / 10) * size_multiplier
-        cash_reserve = total_value * MIN_CASH_RESERVE_PCT
-        available_cash = max(0.0, account_snapshot["cash"] - cash_reserve)
+
+        base_reserve = total_value * MIN_CASH_RESERVE_PCT
+        is_exceptional = conviction >= EXCEPTIONAL_CONVICTION_THRESHOLD
+        if is_exceptional:
+            reserve_kept = base_reserve * (1 - EXCEPTIONAL_TRADE_RESERVE_ACCESS_PCT)
+        else:
+            reserve_kept = base_reserve
+        available_cash = max(0.0, account_snapshot["cash"] - reserve_kept)
 
         amount = min(requested_amount, max_allowed - current_position_value, available_cash)
         if amount < MIN_TRADE_DOLLAR_AMOUNT:
+            note = " (exceptional conviction already granted partial reserve access)" if is_exceptional else ""
             return {
                 "ticker": ticker, "status": "skipped",
                 "reason": f"below minimum trade size (${MIN_TRADE_DOLLAR_AMOUNT}) after position cap, "
-                          f"regime multiplier, and/or cash reserve (${cash_reserve:,.2f} kept uninvested, "
-                          f"${account_snapshot['cash']:,.2f} cash on hand)",
+                          f"regime multiplier, and/or cash reserve (${reserve_kept:,.2f} kept uninvested "
+                          f"of ${base_reserve:,.2f} normal reserve, ${account_snapshot['cash']:,.2f} cash "
+                          f"on hand){note}",
             }
         qty = round(amount / price, 4)
         if qty <= 0:
