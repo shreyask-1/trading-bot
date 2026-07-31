@@ -18,6 +18,13 @@ from sp500_data import SP500
 
 SEEN_NEWS_FILE = os.path.join(os.path.dirname(__file__), "logs", "seen_news.json")
 
+# Tickers this short produce too many false-positive matches against plain
+# English text (e.g. "Q" matches "Q&A", "A" matches "Class A", "T" matches
+# "Plan T"-style enumeration, headline Title Case, etc). For tickers at or
+# below this length, we rely on the company-name match instead of the raw
+# ticker regex.
+MIN_TICKER_LEN_FOR_DIRECT_MATCH = 2
+
 
 def fetch_market_news():
     """Get general market news from Finnhub. Returns a list of dicts."""
@@ -86,10 +93,12 @@ def find_mentioned_tickers(articles, seen_news):
         text_lower = text.lower()
 
         for ticker, full_name, short_name in cleaned:
-            if not short_name:
-                continue
-            name_hit = short_name.lower() in text_lower and len(short_name) > 3
-            ticker_hit = bool(re.search(rf"\b{re.escape(ticker)}\b", text))
+            name_hit = bool(short_name) and len(short_name) > 3 and short_name.lower() in text_lower
+
+            ticker_hit = False
+            if len(ticker) >= MIN_TICKER_LEN_FOR_DIRECT_MATCH:
+                ticker_hit = bool(re.search(rf"\b{re.escape(ticker)}\b", text))
+
             if name_hit or ticker_hit:
                 mentions.setdefault(ticker, []).append({
                     "headline": article.get("headline", ""),
