@@ -75,3 +75,14 @@ Gemini proposed 3 trade(s) meeting the conviction bar.
   -> {"timestamp": "2026-07-31T06:34:43.866515", "ticker": "J", "action": "buy", "qty": 0.0287, "conviction": 8, "size_multiplier": 0.6, "order_id": "67e40f05-1b0b-420b-8cdd-1e2f7d360c69", "order_status": "OrderStatus.ACCEPTED", "reasoning": "Quant score 90/100 with confirmed uptrend (ADX 25.94), bullish MACD histogram (+0.3488), and moderate RSI (55.35).", "status": "submitted"}
 Ending portfolio value: $99,858.85
 
+=== Run at 2026-07-31T06:36:25.486877 ===
+Market open: True
+Account value: $99,875.11
+Cash: $3.81 | Holdings: {'A': '39.728 sh (-0.63%)', 'AAPL': '48.8707 sh (-6.14%)', 'AMZN': '13.2333 sh (+11.47%)', 'BA': '0.0025 sh (+2.22%)', 'BAC': '40.4924 sh (+0.62%)', 'BALL': '38.2673 sh (-0.06%)', 'COST': '1.21 sh (-2.31%)', 'DIS': '25.2806 sh (-2.26%)', 'FDX': '8.098 sh (-0.43%)', 'HD': '7.194 sh (-4.11%)', 'HON': '20.774 sh (-0.31%)', 'IT': '16.5981 sh (+1.74%)', 'J': '29.2564 sh (-2.20%)', 'JNJ': '23.0219 sh (-2.43%)', 'JPM': '7.8335 sh (-0.61%)', 'KO': '28.5128 sh (+0.75%)', 'LMT': '8.3707 sh (+0.11%)', 'MA': '0.4482 sh (+7.46%)', 'META': '2.8249 sh (+3.56%)', 'NFLX': '34.4234 sh (+0.25%)', 'PM': '8.7919 sh (-0.84%)', 'SBUX': '18.7988 sh (-0.46%)', 'SO': '77.2636 sh (-3.07%)', 'TGT': '15.8763 sh (+1.33%)', 'TSLA': '0.0035 sh (+3.82%)', 'UNH': '3.4282 sh (-2.20%)', 'V': '7.488 sh (+1.86%)', 'WAT': '9.3421 sh (+1.41%)', 'WMT': '17.6835 sh (-2.10%)', 'XOM': '48.0878 sh (+1.06%)'}
+Market regime: NEUTRAL (position-size multiplier: 60%)
+Found 0 newly-mentioned companies in news.
+Quant pre-screen: 2/5 candidates passed.
+Gemini proposed 1 trade(s) meeting the conviction bar.
+  -> {"timestamp": "2026-07-31T06:36:37.986752", "ticker": "MA", "action": "sell", "qty": 0.4482, "conviction": 8, "size_multiplier": 0.6, "order_id": "342242dc-1458-4044-8e28-c6854d56c6ef", "order_status": "OrderStatus.ACCEPTED", "reasoning": "MA is overbought with RSI at 72.24, Stochastic %K at 92.4, and price extended above upper Bollinger Band (BB %B 1.15). Selling to lock in +7.46% profit.", "status": "submitted"}
+Ending portfolio value: $99,876.46
+
