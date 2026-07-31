@@ -4434,3 +4434,16 @@ Quant pre-screen: 8/16 candidates passed.
 Gemini proposed 0 trade(s) meeting the conviction bar.
 Ending portfolio value: $99,392.96
 
+=== Run at 2026-07-31T20:54:13.998096 ===
+Current time: 2026-07-31 04:54 PM EDT | Market open (per Alpaca): False
+Account value: $99,408.96
+Cash: $22,224.47 | Holdings (10): {'AMZN': '4.6694 sh (-0.35%)', 'BALL': '161.3584 sh (+0.21%)', 'GM': '56.6701 sh (+1.06%)', 'HON': '48.6276 sh (+0.24%)', 'J': '77.4773 sh (-0.18%)', 'LMT': '12.4652 sh (+1.65%)', 'MA': '20.7977 sh (+0.46%)', 'PM': '8.8117 sh (-0.86%)', 'V': '26.6454 sh (+0.86%)', 'XOM': '48.0878 sh (+1.00%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 8/16 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+  -> {"ticker": "MA", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,970.45 kept uninvested of $4,970.45 normal reserve, $22,224.47 cash on hand)"}
+  -> {"timestamp": "2026-07-31T20:54:26.493463", "ticker": "BALL", "action": "buy", "qty": 22.4911, "conviction": 8, "size_multiplier": 1.0, "order_id": "e40bb16f-24a6-4a9a-8187-7ed3bbd73bf8", "order_status": "OrderStatus.ACCEPTED", "reasoning": "Strong trending momentum with ADX at 35.31, bullish MACD, controlled RSI of 61.5, and increasing volume trend.", "status": "submitted"}
+  -> {"timestamp": "2026-07-31T20:54:26.526550", "ticker": "PM", "action": "buy", "qty": 15.7389, "conviction": 7, "size_multiplier": 1.0, "order_id": "79ad342f-ca0f-4f96-9818-e7e090ccd4ed", "order_status": "OrderStatus.ACCEPTED", "reasoning": "Attractive pullback buy within a broader uptrend, with RSI reset to 52.89 and Stochastic %K at 46.34 while MACD remains positive.", "status": "submitted"}
+Ending portfolio value: $99,408.78
+
