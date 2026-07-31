@@ -16,7 +16,8 @@ from google import genai
 from google.genai import types
 
 from config import (
-    GEMINI_API_KEY, GEMINI_MODEL, MAX_POSITION_PCT, MIN_CONVICTION_TO_TRADE,
+    GEMINI_API_KEY, GEMINI_MODEL, GEMINI_MODEL_FALLBACKS,
+    MAX_POSITION_PCT, MIN_CONVICTION_TO_TRADE,
     WATCHLIST, ATR_STOP_MULTIPLIER, ATR_TAKE_PROFIT_MULTIPLIER,
     MIN_SIGNAL_SCORE_TO_CONSIDER, REGIME_POSITION_MULTIPLIERS,
 )
@@ -208,6 +209,44 @@ def build_watchlist_block(scored, unavailable, min_score):
     return "\n".join(lines) if lines else "(no watchlist tickers cleared the quantitative pre-screen this run)"
 
 
+def _generate_with_fallback(prompt):
+    """
+    Tries GEMINI_MODEL_FALLBACKS in order until one succeeds. Google
+    periodically deprecates/restricts specific model IDs (sometimes for
+    new API keys specifically), which otherwise fails the whole run.
+    Prints a loud note if it had to use anything other than the first
+    (configured) entry, so you know to update GEMINI_MODEL.
+    """
+    tried = []
+    last_error = None
+    for model_name in GEMINI_MODEL_FALLBACKS:
+        if model_name in tried:
+            continue
+        tried.append(model_name)
+        try:
+            response = _client.models.generate_content(
+                model=model_name,
+                contents=prompt,
+                config=types.GenerateContentConfig(
+                    temperature=0.3,
+                    response_mime_type="application/json",
+                    response_schema=_RESPONSE_SCHEMA,
+                ),
+            )
+            if model_name != GEMINI_MODEL:
+                print(
+                    f"NOTE: configured GEMINI_MODEL '{GEMINI_MODEL}' failed; used fallback "
+                    f"'{model_name}' instead for this run. Update GEMINI_MODEL in config.py "
+                    f"(or the GEMINI_MODEL env var) to '{model_name}' to stop seeing this."
+                )
+            return response
+        except Exception as e:
+            last_error = e
+            print(f"Gemini model '{model_name}' failed: {e}")
+            continue
+    raise last_error if last_error else RuntimeError("No Gemini models configured.")
+
+
 def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL"):
     """
     Returns (trades, meta) where trades is the filtered list of trade
@@ -251,17 +290,9 @@ def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL"):
     )
 
     try:
-        response = _client.models.generate_content(
-            model=GEMINI_MODEL,
-            contents=prompt,
-            config=types.GenerateContentConfig(
-                temperature=0.3,
-                response_mime_type="application/json",
-                response_schema=_RESPONSE_SCHEMA,
-            ),
-        )
+        response = _generate_with_fallback(prompt)
     except Exception as e:
-        print(f"Gemini call failed: {e}")
+        print(f"Gemini call failed on all configured models: {e}")
         return [], meta
 
     raw_text = (response.text or "").strip()
