@@ -6,7 +6,8 @@ through a quantitative pre-screen (signal_score.py) before they're shown
 to Gemini at all. Also informs Gemini of the current market regime, though
 regime-based position-size enforcement happens in code (trader.py), not
 via prompt instruction alone. Asks for a conviction score (1-10) on every
-surviving trade idea, which trader.py uses to scale position size.
+surviving trade idea, which trader.py uses to scale position size (and,
+for exceptional conviction, how much of the cash reserve it may touch).
 """
 
 import json
@@ -20,6 +21,7 @@ from config import (
     MAX_POSITION_PCT, MIN_CONVICTION_TO_TRADE,
     WATCHLIST, ATR_STOP_MULTIPLIER, ATR_TAKE_PROFIT_MULTIPLIER,
     MIN_SIGNAL_SCORE_TO_CONSIDER, REGIME_POSITION_MULTIPLIERS,
+    EXCEPTIONAL_CONVICTION_THRESHOLD,
 )
 from trader import get_full_indicators, get_tickers_with_open_orders, get_tickers_on_cooldown
 from signal_score import calculate_signal_score
@@ -53,7 +55,9 @@ PROMPT_TEMPLATE = """You are a moderately aggressive trading analyst for a SIMUL
 paper-trading portfolio (no real money). Every trade idea you propose MUST include a \
 "conviction" score from 1-10, reflecting how strongly the signals (news, trend, \
 momentum, RSI, MACD, volume) agree with each other. Ideas below conviction {min_conviction} \
-will be discarded automatically, so only include ideas you'd actually rate that high.
+will be discarded automatically, so only include ideas you'd actually rate that high. \
+Reserve conviction {exceptional_conviction}+ for truly exceptional setups only -- those get \
+access to extra cash reserve room in code, so treat that rating as rare, not routine.
 
 {regime_block}
 
@@ -100,6 +104,9 @@ Rules:
   are already enforced separately in code -- focus your reasoning on the setup itself, not exit levels.
 - Market-regime-based position-size scaling (described above) is enforced automatically in code,
   regardless of what you propose -- you don't need to and cannot override it.
+- A hard cap on total number of open positions is also enforced in code -- if the portfolio is at
+  that cap, a new (not-currently-held) buy idea will be blocked regardless of conviction, so for
+  a maxed-out portfolio, prioritize hold/trim/exit reasoning on existing holdings instead.
 
 Respond with ONLY valid JSON (no markdown fences, no commentary):
 {{
@@ -281,6 +288,7 @@ def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL"):
         total_value=total_value,
         max_pct=int(MAX_POSITION_PCT * 100),
         min_conviction=MIN_CONVICTION_TO_TRADE,
+        exceptional_conviction=EXCEPTIONAL_CONVICTION_THRESHOLD,
         stop_mult=ATR_STOP_MULTIPLIER,
         tp_mult=ATR_TAKE_PROFIT_MULTIPLIER,
         regime_block=_regime_block(regime),
