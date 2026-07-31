@@ -2381,3 +2381,13 @@ Gemini proposed 5 trade(s) meeting the conviction bar.
   -> {"timestamp": "2026-07-31T14:06:55.793270", "ticker": "DIS", "action": "sell", "qty": 0.0024, "conviction": 7, "size_multiplier": 0.6, "order_id": "ff92e9fb-a147-412b-aff7-3c7781f9f524", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Downtrend with quant score 45/100 and negative 10-day momentum.", "status": "submitted"}
 Ending portfolio value: $98,838.83
 
+=== Run at 2026-07-31T14:08:23.801422 ===
+Current time: 2026-07-31 10:08 AM EDT | Market open (per Alpaca): True
+Account value: $98,777.66
+Cash: $49,007.63 | Holdings (15): {'A': '0.002 sh (-1.93%)', 'BALL': '38.2673 sh (-1.62%)', 'GM': '56.6701 sh (-0.69%)', 'HON': '37.3867 sh (-0.79%)', 'J': '29.2851 sh (-2.23%)', 'JPM': '0.0001 sh (-0.82%)', 'LMT': '12.4652 sh (-0.30%)', 'MA': '12.4549 sh (+0.34%)', 'NFLX': '0.0057 sh (-0.96%)', 'PM': '8.8117 sh (-1.46%)', 'SO': '0.0063 sh (-3.33%)', 'TGT': '0.0001 sh (+0.86%)', 'V': '17.0865 sh (+0.86%)', 'WMT': '0.0057 sh (-1.26%)', 'XOM': '48.0878 sh (-0.86%)'}
+Market regime: NEUTRAL (position-size multiplier: 60%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 3/14 candidates passed.
+Gemini proposed 0 trade(s) meeting the conviction bar.
+Ending portfolio value: $98,776.63
+
