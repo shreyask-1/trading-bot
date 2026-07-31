@@ -3001,3 +3001,16 @@ Quant pre-screen: 6/16 candidates passed.
 Gemini proposed 0 trade(s) meeting the conviction bar.
 Ending portfolio value: $99,106.00
 
+=== Run at 2026-07-31T16:08:32.663209 ===
+Current time: 2026-07-31 12:08 PM EDT | Market open (per Alpaca): True
+Account value: $99,109.35
+Cash: $41,004.24 | Holdings (10): {'AMZN': '18.4006 sh (-0.87%)', 'BALL': '84.9417 sh (-0.34%)', 'GM': '56.6701 sh (-0.01%)', 'HON': '37.3867 sh (+0.64%)', 'J': '29.2851 sh (-1.08%)', 'LMT': '12.4652 sh (+0.83%)', 'MA': '12.4549 sh (+0.34%)', 'PM': '8.8117 sh (-0.46%)', 'V': '17.0865 sh (+1.09%)', 'XOM': '48.0878 sh (-0.41%)'}
+Market regime: NEUTRAL (position-size multiplier: 60%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 6/16 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+  -> {"ticker": "MA", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,955.47 kept uninvested of $4,955.47 normal reserve, $41,004.24 cash on hand)"}
+  -> {"timestamp": "2026-07-31T16:08:45.559275", "ticker": "J", "action": "buy", "qty": 17.2174, "conviction": 7, "size_multiplier": 0.6, "order_id": "1a324b62-4a41-48f3-8288-d5d339846ef1", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "High quant score of 85 with confirmed uptrend (ADX 25.63), increasing volume, and RSI at 57.41 leaving ample room to move higher.", "status": "submitted"}
+  -> {"timestamp": "2026-07-31T16:08:45.596489", "ticker": "AMZN", "action": "sell", "qty": 9.2828, "conviction": 7, "size_multiplier": 0.6, "order_id": "32df6cec-ef59-47af-8be3-b1daa2bb932e", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Sideways broad trend combined with overbought Stochastic %K (94.76) and extended Bollinger %B (1.17) warrants trimming near local resistance.", "status": "submitted"}
+Ending portfolio value: $99,108.49
+
