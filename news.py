@@ -19,10 +19,9 @@ from sp500_data import SP500
 SEEN_NEWS_FILE = os.path.join(os.path.dirname(__file__), "logs", "seen_news.json")
 
 # Tickers this short produce too many false-positive matches against plain
-# English text (e.g. "Q" matches "Q&A", "A" matches "Class A", "T" matches
-# "Plan T"-style enumeration, headline Title Case, etc). For tickers at or
-# below this length, we rely on the company-name match instead of the raw
-# ticker regex.
+# English text (e.g. "Q" matches "Q&A", "A" matches "Class A", headline
+# Title Case, etc). For tickers at or below this length, we rely on the
+# company-name match instead of the raw ticker regex.
 MIN_TICKER_LEN_FOR_DIRECT_MATCH = 2
 
 
@@ -113,8 +112,13 @@ def find_mentioned_tickers(articles, seen_news):
 def get_news_candidates():
     """
     Main entry point: fetch news, filter out already-seen articles, return
-    {ticker: [article info]} for every newly-mentioned S&P 500 company.
-    Also persists the updated "seen" list to disk.
+    ({ticker: [article info]}, stats) for every newly-mentioned S&P 500
+    company. Also persists the updated "seen" list to disk.
+
+    stats lets callers (main.py) distinguish "Finnhub returned nothing at
+    all" from "articles came back but none were new or matched a ticker" --
+    both look identical as a bare empty dict otherwise, and only one of
+    them is actually worth investigating as a problem.
     """
     seen = _prune_old_entries(_load_seen_news())
     articles = fetch_market_news()
@@ -125,11 +129,17 @@ def get_news_candidates():
         seen[aid] = now_iso
     _save_seen_news(seen)
 
-    return mentions
+    stats = {
+        "articles_fetched": len(articles),
+        "articles_new_after_dedup": len(newly_seen),
+        "tickers_matched": len(mentions),
+    }
+    return mentions, stats
 
 
 if __name__ == "__main__":
-    candidates = get_news_candidates()
+    candidates, stats = get_news_candidates()
+    print(f"Stats: {stats}")
     print(f"Found {len(candidates)} newly-mentioned companies:\n")
     for ticker, items in list(candidates.items())[:10]:
         print(f"{ticker}: {items[0]['headline']}")
