@@ -9,7 +9,8 @@ Flow (in order):
   4. Fetch news (deduped against recently-seen articles)
   5. Ask Gemini to review holdings + news candidates + fixed watchlist,
      each idea scored with a conviction rating
-  6. Execute trades (conviction-scaled size, cooldown/open-order aware)
+  6. Execute trades (conviction-scaled size, cooldown/open-order aware,
+     re-checking account state between trades)
   7. Record a performance snapshot and log everything
 """
 
@@ -71,10 +72,14 @@ def run():
         trades = []
 
     # Step 4: execute
+    # Re-fetch account state after each fill so a run with multiple trades
+    # doesn't size every trade against the same stale cash/holdings figures.
     for trade in trades:
         try:
             result = execute_trade(trade, account)
             log_lines.append(f"  -> {json.dumps(result)}")
+            if result.get("status") == "submitted":
+                account = get_account_snapshot()
         except Exception as e:
             log_lines.append(f"  -> FAILED to execute {trade.get('ticker')}: {e}")
 
