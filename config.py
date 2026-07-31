@@ -83,3 +83,25 @@ GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash")
 # 150 calendar days ~= 103 trading days. Must comfortably exceed 50 so SMA-50
 # and classify_trend() actually resolve, plus warm-up room for ADX-14.
 PRICE_HISTORY_DAYS = 150
+
+# --- Market regime filter ---
+# Broad-market (SPY) trend/volatility check, evaluated independently of any
+# individual ticker's setup. Multiplies (not replaces) the position-sizing
+# cap above -- see get_market_regime() in trader.py and evaluate_market_regime()
+# in market_regime.py. A multiplier of 0.0 hard-blocks all new buys (adds and
+# opens) via the existing MAX_POSITION_PCT cap math; it never affects sells,
+# so the bot can still exit/trim positions during a bearish or volatile regime.
+MARKET_HIGH_VOLATILITY_THRESHOLD = 2.5  # 20-day realized volatility (%) considered "elevated"
+REGIME_POSITION_MULTIPLIERS = {
+    "BULLISH": 1.0,
+    "NEUTRAL": 0.6,
+    "BEARISH": 0.0,
+    "HIGH_VOLATILITY": 0.3,
+}
+
+# --- Quantitative pre-screen ---
+# New candidates (news-driven or watchlist) below this signal_score.py score
+# are filtered out in decide.py and never shown to Gemini at all. Existing
+# holdings are never filtered this way -- a bad score on something you own
+# is a reason to consider exiting, not a reason to hide it from review.
+MIN_SIGNAL_SCORE_TO_CONSIDER = 55
