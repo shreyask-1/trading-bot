@@ -4,12 +4,14 @@ infrastructure, real order execution logic). No live/real money is ever
 touched as long as paper=True stays set below.
 
 Also computes the full technical indicator set (via indicators.py) from a
-single price-history fetch per ticker, and enforces ATR-based stop-loss /
-take-profit plus a per-ticker trade cooldown.
+single price-history fetch per ticker, evaluates the broad market regime
+(via market_regime.py, using SPY as a proxy), and enforces ATR-based
+stop-loss/take-profit plus a per-ticker trade cooldown.
 """
 
 import os
 import json
+import csv
 from datetime import datetime, timedelta
 
 from alpaca.trading.client import TradingClient
@@ -22,18 +24,31 @@ from alpaca.data.timeframe import TimeFrame
 from config import (
     ALPACA_API_KEY, ALPACA_SECRET_KEY, MAX_POSITION_PCT,
     ATR_STOP_MULTIPLIER, ATR_TAKE_PROFIT_MULTIPLIER, ATR_PERIOD,
-    PRICE_HISTORY_DAYS, TRADE_COOLDOWN_MINUTES,
+    PRICE_HISTORY_DAYS, TRADE_COOLDOWN_MINUTES, MARKET_HIGH_VOLATILITY_THRESHOLD,
 )
 import indicators as ind
+from market_regime import evaluate_market_regime
 
 trading_client = TradingClient(ALPACA_API_KEY, ALPACA_SECRET_KEY, paper=True)
 data_client = StockHistoricalDataClient(ALPACA_API_KEY, ALPACA_SECRET_KEY)
 
 COOLDOWN_FILE = os.path.join(os.path.dirname(__file__), "logs", "cooldowns.json")
 
+# Column order for logs/performance.csv. If a pre-existing file has a
+# different header (e.g. from an older version of the bot), it's archived
+# rather than appended to under a mismatched schema -- see
+# record_performance_snapshot().
+PERFORMANCE_CSV_HEADER = [
+    "timestamp", "total_value", "cash", "num_holdings",
+    "market_regime", "size_multiplier",
+    "candidates_considered", "candidates_passed_prescreen",
+    "trades_proposed", "trades_executed", "trades_skipped", "trades_failed",
+    "risk_exits",
+]
+
 
 # ============================================================
-# Market clock
+# Market clock & regime
 # ============================================================
 
 def is_market_open():
@@ -47,6 +62,28 @@ def is_market_open():
     except Exception as e:
         print(f"Could not fetch market clock, assuming closed: {e}")
         return False
+
+
+def get_market_regime():
+    """
+    Evaluates the broad market regime from SPY's own price history (see
+    market_regime.py). Used to scale down (or fully block) new position
+    sizing when the broad market is unfavorable or unusually volatile --
+    independent of what Gemini decides about any individual ticker.
+
+    Fails safe to "NEUTRAL" (a moderate, not maximal, sizing multiplier)
+    if SPY's history can't be fetched or evaluated, rather than either
+    fully blocking or fully allowing new trades based on missing data.
+    """
+    history = get_price_history("SPY")
+    if history is None:
+        print("Could not fetch SPY history for market regime check, defaulting to NEUTRAL.")
+        return "NEUTRAL"
+    try:
+        return evaluate_market_regime(history["closes"], high_vol_threshold=MARKET_HIGH_VOLATILITY_THRESHOLD)
+    except Exception as e:
+        print(f"Market regime evaluation failed, defaulting to NEUTRAL: {e}")
+        return "NEUTRAL"
 
 
 # ============================================================
@@ -177,9 +214,9 @@ def _save_cooldowns(cooldowns):
 def get_tickers_on_cooldown():
     """
     Returns the set of tickers traded within the last TRADE_COOLDOWN_MINUTES.
-    Used to stop Gemini/the decision layer from churning the same ticker
-    repeatedly -- NOT used to gate the ATR stop-loss/take-profit check,
-    which must always be able to force an exit regardless of cooldown.
+    Used to stop Gemini from churning the same ticker repeatedly -- NOT used
+    to gate the ATR stop-loss/take-profit check, which must always be able
+    to force an exit regardless of cooldown.
     """
     cooldowns = _load_cooldowns()
     cutoff = datetime.now() - timedelta(minutes=TRADE_COOLDOWN_MINUTES)
@@ -200,7 +237,8 @@ def check_atr_stop_take_profit(account_snapshot):
     """
     For every holding, computes an ATR-based stop-loss and take-profit
     level from its average entry price and current ATR, and force-sells
-    if either is breached. Independent of what Gemini decides that run.
+    if either is breached. Independent of what Gemini decides that run,
+    and independent of market regime (an exit is always allowed).
 
     Deliberately ignores the trade cooldown: a position opened moments ago
     is exactly the one most in need of its stop-loss staying active. Only
@@ -239,14 +277,19 @@ def check_atr_stop_take_profit(account_snapshot):
 
 
 # ============================================================
-# Order execution (conviction-scaled sizing)
+# Order execution (conviction-scaled sizing, regime-scaled sizing)
 # ============================================================
 
-def execute_trade(trade, account_snapshot=None):
+def execute_trade(trade, account_snapshot=None, size_multiplier=1.0):
     """
     trade: {"ticker", "action", "dollar_amount", "reasoning", "conviction" (1-10)}
-    Position size is scaled by conviction/10, then hard-capped at
-    MAX_POSITION_PCT of total portfolio value regardless of what was asked.
+    Position size is scaled by conviction/10 AND by size_multiplier (the
+    market-regime multiplier from config.REGIME_POSITION_MULTIPLIERS, passed
+    in by main.py), then hard-capped at MAX_POSITION_PCT of total portfolio
+    value regardless of what was asked. size_multiplier only affects buys --
+    a value of 0.0 (BEARISH regime) makes max_allowed <= 0 for every ticker,
+    which the existing "position cap" rejection below naturally blocks. It
+    never restricts sells, so exits/trims still work in any regime.
     """
     ticker = trade["ticker"]
     action = trade["action"].lower()
@@ -261,14 +304,14 @@ def execute_trade(trade, account_snapshot=None):
         return {"ticker": ticker, "status": "failed", "reason": "no price data"}
 
     total_value = account_snapshot["total_value"]
-    max_allowed = total_value * MAX_POSITION_PCT * (conviction / 10)
+    max_allowed = total_value * MAX_POSITION_PCT * (conviction / 10) * size_multiplier
     current_holding = account_snapshot["holdings"].get(ticker)
     current_position_value = (current_holding["qty"] * price) if current_holding else 0
 
     if action == "buy":
         amount = min(requested_amount, max_allowed - current_position_value, account_snapshot["cash"])
         if amount <= 0:
-            return {"ticker": ticker, "status": "skipped", "reason": "position cap, low conviction, or insufficient cash"}
+            return {"ticker": ticker, "status": "skipped", "reason": "position cap, regime multiplier, low conviction, or insufficient cash"}
         qty = round(amount / price, 4)
         if qty <= 0:
             return {"ticker": ticker, "status": "skipped", "reason": "calculated quantity too small"}
@@ -297,6 +340,7 @@ def execute_trade(trade, account_snapshot=None):
             "action": action,
             "qty": qty,
             "conviction": conviction,
+            "size_multiplier": size_multiplier,
             "order_id": str(order.id),
             "order_status": str(order.status),
             "reasoning": trade.get("reasoning", ""),
@@ -306,17 +350,56 @@ def execute_trade(trade, account_snapshot=None):
         return {"ticker": ticker, "status": "failed", "reason": str(e)}
 
 
-def record_performance_snapshot(account_snapshot, log_dir):
-    import csv
+# ============================================================
+# Performance logging
+# ============================================================
+
+def record_performance_snapshot(account_snapshot, log_dir, **stats):
+    """
+    Appends one row to logs/performance.csv per run. Extra keyword args
+    (all optional) populate the regime/pre-screen/trade-outcome columns:
+        market_regime, size_multiplier, candidates_considered,
+        candidates_passed_prescreen, trades_proposed, trades_executed,
+        trades_skipped, trades_failed, risk_exits
+
+    If an existing performance.csv has an outdated header (e.g. from
+    before these columns existed), it's archived to a timestamped
+    "_legacy" file rather than appended to under a mismatched schema --
+    silently misaligned columns would be worse than a clearly separate file.
+    """
     path = os.path.join(log_dir, "performance.csv")
     file_exists = os.path.exists(path)
+
+    if file_exists:
+        with open(path) as f:
+            first_line = f.readline().strip()
+        existing_header = first_line.split(",") if first_line else []
+        if existing_header != PERFORMANCE_CSV_HEADER:
+            backup_path = os.path.join(
+                log_dir, f"performance_legacy_{datetime.now().strftime('%Y%m%d%H%M%S')}.csv"
+            )
+            os.rename(path, backup_path)
+            print(f"performance.csv had an outdated schema; archived old file to {backup_path}")
+            file_exists = False
+
+    row = {
+        "timestamp": datetime.now().isoformat(),
+        "total_value": round(account_snapshot["total_value"], 2),
+        "cash": round(account_snapshot["cash"], 2),
+        "num_holdings": len(account_snapshot["holdings"]),
+        "market_regime": stats.get("market_regime", "UNKNOWN"),
+        "size_multiplier": stats.get("size_multiplier", 1.0),
+        "candidates_considered": stats.get("candidates_considered", 0),
+        "candidates_passed_prescreen": stats.get("candidates_passed_prescreen", 0),
+        "trades_proposed": stats.get("trades_proposed", 0),
+        "trades_executed": stats.get("trades_executed", 0),
+        "trades_skipped": stats.get("trades_skipped", 0),
+        "trades_failed": stats.get("trades_failed", 0),
+        "risk_exits": stats.get("risk_exits", 0),
+    }
+
     with open(path, "a", newline="") as f:
-        writer = csv.writer(f)
+        writer = csv.DictWriter(f, fieldnames=PERFORMANCE_CSV_HEADER)
         if not file_exists:
-            writer.writerow(["timestamp", "total_value", "cash", "num_holdings"])
-        writer.writerow([
-            datetime.now().isoformat(),
-            round(account_snapshot["total_value"], 2),
-            round(account_snapshot["cash"], 2),
-            len(account_snapshot["holdings"]),
-        ])
+            writer.writeheader()
+        writer.writerow(row)
