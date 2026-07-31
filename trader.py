@@ -6,7 +6,8 @@ touched as long as paper=True stays set below.
 Also computes the full technical indicator set (via indicators.py) from a
 single price-history fetch per ticker, evaluates the broad market regime
 (via market_regime.py, using SPY as a proxy), and enforces ATR-based
-stop-loss/take-profit plus a per-ticker trade cooldown.
+stop-loss/take-profit, a per-ticker trade cooldown, a minimum cash
+reserve, a minimum trade size, and a cap on total open positions.
 """
 
 import os
@@ -14,6 +15,7 @@ import json
 import csv
 from datetime import datetime, timedelta
 
+import pytz
 from alpaca.trading.client import TradingClient
 from alpaca.trading.requests import MarketOrderRequest, GetOrdersRequest
 from alpaca.trading.enums import OrderSide, TimeInForce, QueryOrderStatus
@@ -26,7 +28,7 @@ from config import (
     ALPACA_API_KEY, ALPACA_SECRET_KEY, MAX_POSITION_PCT,
     ATR_STOP_MULTIPLIER, ATR_TAKE_PROFIT_MULTIPLIER, ATR_PERIOD,
     PRICE_HISTORY_DAYS, TRADE_COOLDOWN_MINUTES, MARKET_HIGH_VOLATILITY_THRESHOLD,
-    ALPACA_DATA_FEED,
+    ALPACA_DATA_FEED, MIN_CASH_RESERVE_PCT, MIN_TRADE_DOLLAR_AMOUNT, MAX_OPEN_POSITIONS,
 )
 import indicators as ind
 from market_regime import evaluate_market_regime
@@ -38,6 +40,8 @@ COOLDOWN_FILE = os.path.join(os.path.dirname(__file__), "logs", "cooldowns.json"
 
 _FEED_MAP = {"iex": DataFeed.IEX, "sip": DataFeed.SIP, "otc": DataFeed.OTC}
 DATA_FEED = _FEED_MAP.get(ALPACA_DATA_FEED.lower(), DataFeed.IEX)
+
+_EASTERN = pytz.timezone("America/New_York")
 
 # Column order for logs/performance.csv. If a pre-existing file has a
 # different header (e.g. from an older version of the bot), it's archived
@@ -53,14 +57,32 @@ PERFORMANCE_CSV_HEADER = [
 
 
 # ============================================================
-# Market clock & regime
+# Time / market clock / regime
 # ============================================================
+
+def get_eastern_time_str():
+    """
+    Explicit US-Eastern-time string, computed from timezone-AWARE UTC (not
+    from datetime.now(), which depends on whatever timezone the host
+    machine happens to be set to). Used purely for unambiguous logging --
+    NYSE hours are defined in Eastern time, and a naive local timestamp
+    printed elsewhere in the logs can otherwise look confusing (e.g. a
+    log labeled "06:28" is meaningless without knowing which timezone
+    produced it).
+    """
+    now_utc = datetime.now(pytz.utc)
+    now_et = now_utc.astimezone(_EASTERN)
+    return now_et.strftime("%Y-%m-%d %I:%M %p %Z")
+
 
 def is_market_open():
     """
-    True if the market is open for regular trading right now.
-    Fails closed: if the clock call errors, returns False. Used only for
-    logging in main.py -- does NOT gate whether the bot runs or trades.
+    True if the market is open for regular trading right now, per Alpaca's
+    own authoritative clock (not derived from local system time in any
+    way). Fails closed: if the clock call errors, returns False. This is
+    purely informational for logging now -- it does not gate whether the
+    bot runs or trades; orders submitted while closed simply queue at
+    Alpaca for the next open.
     """
     try:
         return bool(trading_client.get_clock().is_open)
@@ -285,19 +307,25 @@ def check_atr_stop_take_profit(account_snapshot):
 
 
 # ============================================================
-# Order execution (conviction-scaled sizing, regime-scaled sizing)
+# Order execution (conviction-scaled, regime-scaled, cash- and
+# sprawl-aware sizing)
 # ============================================================
 
 def execute_trade(trade, account_snapshot=None, size_multiplier=1.0):
     """
     trade: {"ticker", "action", "dollar_amount", "reasoning", "conviction" (1-10)}
-    Position size is scaled by conviction/10 AND by size_multiplier (the
-    market-regime multiplier from config.REGIME_POSITION_MULTIPLIERS, passed
-    in by main.py), then hard-capped at MAX_POSITION_PCT of total portfolio
-    value regardless of what was asked. size_multiplier only affects buys --
-    a value of 0.0 (BEARISH regime) makes max_allowed <= 0 for every ticker,
-    which the existing "position cap" rejection below naturally blocks. It
-    never restricts sells, so exits/trims still work in any regime.
+
+    Buy sizing, in order of constraints applied:
+      1. conviction/10 and the market-regime size_multiplier scale the
+         MAX_POSITION_PCT cap (0.0 regime multiplier blocks all buys).
+      2. MIN_CASH_RESERVE_PCT of total portfolio value is never spendable.
+      3. MAX_OPEN_POSITIONS blocks opening a BRAND NEW ticker (adds to an
+         existing holding are unaffected) once the cap is reached.
+      4. MIN_TRADE_DOLLAR_AMOUNT -- anything smaller than this is skipped
+         rather than executed as a dust trade.
+    None of these apply to sells: an exit is always allowed regardless of
+    size, cash reserve, or position count, so the bot can always clean up
+    or de-risk.
     """
     ticker = trade["ticker"]
     action = trade["action"].lower()
@@ -312,14 +340,30 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0):
         return {"ticker": ticker, "status": "failed", "reason": "no price data"}
 
     total_value = account_snapshot["total_value"]
-    max_allowed = total_value * MAX_POSITION_PCT * (conviction / 10) * size_multiplier
     current_holding = account_snapshot["holdings"].get(ticker)
     current_position_value = (current_holding["qty"] * price) if current_holding else 0
 
     if action == "buy":
-        amount = min(requested_amount, max_allowed - current_position_value, account_snapshot["cash"])
-        if amount <= 0:
-            return {"ticker": ticker, "status": "skipped", "reason": "position cap, regime multiplier, low conviction, or insufficient cash"}
+        is_new_position = current_holding is None
+        if is_new_position and len(account_snapshot["holdings"]) >= MAX_OPEN_POSITIONS:
+            return {
+                "ticker": ticker, "status": "skipped",
+                "reason": f"max open positions reached ({MAX_OPEN_POSITIONS} held); "
+                          f"only adds to existing holdings or sells are allowed until it consolidates",
+            }
+
+        max_allowed = total_value * MAX_POSITION_PCT * (conviction / 10) * size_multiplier
+        cash_reserve = total_value * MIN_CASH_RESERVE_PCT
+        available_cash = max(0.0, account_snapshot["cash"] - cash_reserve)
+
+        amount = min(requested_amount, max_allowed - current_position_value, available_cash)
+        if amount < MIN_TRADE_DOLLAR_AMOUNT:
+            return {
+                "ticker": ticker, "status": "skipped",
+                "reason": f"below minimum trade size (${MIN_TRADE_DOLLAR_AMOUNT}) after position cap, "
+                          f"regime multiplier, and/or cash reserve (${cash_reserve:,.2f} kept uninvested, "
+                          f"${account_snapshot['cash']:,.2f} cash on hand)",
+            }
         qty = round(amount / price, 4)
         if qty <= 0:
             return {"ticker": ticker, "status": "skipped", "reason": "calculated quantity too small"}
