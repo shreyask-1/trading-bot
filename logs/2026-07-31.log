@@ -3014,3 +3014,13 @@ Gemini proposed 3 trade(s) meeting the conviction bar.
   -> {"timestamp": "2026-07-31T16:08:45.596489", "ticker": "AMZN", "action": "sell", "qty": 9.2828, "conviction": 7, "size_multiplier": 0.6, "order_id": "32df6cec-ef59-47af-8be3-b1daa2bb932e", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Sideways broad trend combined with overbought Stochastic %K (94.76) and extended Bollinger %B (1.17) warrants trimming near local resistance.", "status": "submitted"}
 Ending portfolio value: $99,108.49
 
+=== Run at 2026-07-31T16:10:40.357849 ===
+Current time: 2026-07-31 12:10 PM EDT | Market open (per Alpaca): True
+Account value: $99,122.67
+Cash: $41,188.42 | Holdings (10): {'AMZN': '9.1178 sh (-0.65%)', 'BALL': '84.9417 sh (-0.22%)', 'GM': '56.6701 sh (+0.06%)', 'HON': '37.3867 sh (+0.57%)', 'J': '46.5025 sh (-0.61%)', 'LMT': '12.4652 sh (+0.89%)', 'MA': '12.4549 sh (+0.29%)', 'PM': '8.8117 sh (-0.50%)', 'V': '17.0865 sh (+1.03%)', 'XOM': '48.0878 sh (-0.38%)'}
+Market regime: NEUTRAL (position-size multiplier: 60%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 6/16 candidates passed.
+Gemini proposed 0 trade(s) meeting the conviction bar.
+Ending portfolio value: $99,126.63
+
