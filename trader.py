@@ -1,48 +1,45 @@
-import csv
+"""
+Talks to your real Alpaca PAPER TRADING account (fake money, real broker
+infrastructure, real order execution logic). No live/real money is ever
+touched as long as paper=True stays set below.
+
+Also computes the full technical indicator set (via indicators.py) from a
+single price-history fetch per ticker, and enforces ATR-based stop-loss /
+take-profit plus a per-ticker trade cooldown.
+"""
+
 import os
-from datetime import datetime, timedelta, timezone
+import json
+from datetime import datetime, timedelta
+
 from alpaca.trading.client import TradingClient
 from alpaca.trading.requests import MarketOrderRequest, GetOrdersRequest
 from alpaca.trading.enums import OrderSide, TimeInForce, QueryOrderStatus
 from alpaca.data.historical import StockHistoricalDataClient
 from alpaca.data.requests import StockLatestTradeRequest, StockBarsRequest
 from alpaca.data.timeframe import TimeFrame
-from alpaca.data.enums import DataFeed
 
 from config import (
-    ALPACA_API_KEY,
-    ALPACA_SECRET_KEY,
-    MAX_POSITION_PCT,
-    STOP_LOSS_PCT,
-    TAKE_PROFIT_PCT,
-    PRICE_HISTORY_DAYS,
-    RSI_PERIOD,
-    SMA_SHORT,
-    SMA_LONG,
-    VOLUME_LOOKBACK,
-    MACD_FAST,
-    MACD_SLOW,
-    MACD_SIGNAL,
-    BOLLINGER_PERIOD,
-    BOLLINGER_STD,
-    TRADE_COOLDOWN_MINUTES,
+    ALPACA_API_KEY, ALPACA_SECRET_KEY, MAX_POSITION_PCT,
+    ATR_STOP_MULTIPLIER, ATR_TAKE_PROFIT_MULTIPLIER, ATR_PERIOD,
+    PRICE_HISTORY_DAYS, TRADE_COOLDOWN_MINUTES,
 )
-from indicators import (
-    compute_sma,
-    compute_rsi,
-    compute_volume_trend,
-    classify_trend,
-    compute_macd,
-    compute_bollinger_bands,
-)
+import indicators as ind
 
 trading_client = TradingClient(ALPACA_API_KEY, ALPACA_SECRET_KEY, paper=True)
 data_client = StockHistoricalDataClient(ALPACA_API_KEY, ALPACA_SECRET_KEY)
 
+COOLDOWN_FILE = os.path.join(os.path.dirname(__file__), "logs", "cooldowns.json")
+
+
+# ============================================================
+# Price data
+# ============================================================
 
 def get_price(ticker):
+    """Current real market price for a ticker."""
     try:
-        request = StockLatestTradeRequest(symbol_or_symbols=ticker, feed=DataFeed.IEX)
+        request = StockLatestTradeRequest(symbol_or_symbols=ticker)
         trade = data_client.get_stock_latest_trade(request)
         return float(trade[ticker].price)
     except Exception as e:
@@ -50,59 +47,71 @@ def get_price(ticker):
         return None
 
 
-def get_indicator_snapshot(ticker):
+def get_price_history(ticker, days=PRICE_HISTORY_DAYS):
+    """
+    Fetches daily OHLCV history ONCE per ticker and returns plain lists,
+    oldest-first, ready to feed into any indicators.py function. Returns
+    None if there isn't enough data.
+    """
     try:
-        end = datetime.now(timezone.utc)
-        start = end - timedelta(days=120)
-        request = StockBarsRequest(
-            symbol_or_symbols=ticker,
-            timeframe=TimeFrame.Day,
-            start=start,
-            end=end,
-            feed=DataFeed.IEX,
-        )
-        bars = data_client.get_stock_bars(request)
-        symbol_bars = bars[ticker]
-        if len(symbol_bars) < 10:
+        end = datetime.now()
+        start = end - timedelta(days=days + 10)  # pad for weekends/holidays
+        request = StockBarsRequest(symbol_or_symbols=ticker, timeframe=TimeFrame.Day, start=start, end=end)
+        bars = list(data_client.get_stock_bars(request)[ticker])
+        if len(bars) < 15:
             return None
-
-        closes = [b.close for b in symbol_bars]
-        volumes = [b.volume for b in symbol_bars]
-        current_price = closes[-1]
-
-        momentum = None
-        if len(closes) > PRICE_HISTORY_DAYS:
-            past = closes[-(PRICE_HISTORY_DAYS + 1)]
-            momentum = round(((current_price - past) / past) * 100, 2)
-
-        sma20 = compute_sma(closes, SMA_SHORT)
-        sma50 = compute_sma(closes, SMA_LONG)
-        rsi = compute_rsi(closes, RSI_PERIOD)
-        volume_trend = compute_volume_trend(volumes, VOLUME_LOOKBACK)
-        trend = classify_trend(current_price, sma20, sma50)
-        macd = compute_macd(closes, MACD_FAST, MACD_SLOW, MACD_SIGNAL)
-        bollinger = compute_bollinger_bands(closes, BOLLINGER_PERIOD, BOLLINGER_STD)
-
         return {
-            "price": current_price,
-            "momentum_pct": momentum,
-            "sma20": sma20,
-            "sma50": sma50,
-            "rsi": rsi,
-            "volume_trend_pct": volume_trend,
-            "trend": trend,
-            "macd": macd,
-            "bollinger": bollinger,
+            "closes": [b.close for b in bars],
+            "highs": [b.high for b in bars],
+            "lows": [b.low for b in bars],
+            "volumes": [b.volume for b in bars],
         }
     except Exception as e:
-        print(f"Could not compute indicators for {ticker}: {e}")
+        print(f"Could not get price history for {ticker}: {e}")
         return None
 
+
+def get_full_indicators(ticker):
+    """
+    Computes the complete indicator set for a ticker from a single history
+    fetch. Returns a dict; any indicator that couldn't be computed (not
+    enough history) is None rather than missing.
+    """
+    history = get_price_history(ticker)
+    if history is None:
+        return None
+
+    closes, highs, lows, volumes = history["closes"], history["highs"], history["lows"], history["volumes"]
+
+    macd = ind.compute_macd(closes)
+    bb = ind.compute_bollinger_bands(closes)
+    stoch = ind.compute_stochastic(highs, lows, closes)
+
+    return {
+        "price": closes[-1],
+        "sma_20": ind.compute_sma(closes, 20),
+        "sma_50": ind.compute_sma(closes, 50),
+        "rsi_14": ind.compute_rsi(closes),
+        "atr_14": ind.compute_atr(highs, lows, closes, period=ATR_PERIOD),
+        "adx_14": ind.compute_adx(highs, lows, closes),
+        "macd": macd,
+        "bollinger": bb,
+        "stochastic": stoch,
+        "momentum_10d": ind.compute_momentum(closes, period=10),
+        "volatility_20d": ind.compute_volatility(closes, period=20),
+        "volume_trend": ind.compute_volume_trend(volumes),
+        "relative_volume_pct": ind.compute_relative_volume(volumes),
+        "trend": ind.classify_trend(closes),
+    }
+
+
+# ============================================================
+# Account state
+# ============================================================
 
 def get_account_snapshot():
     account = trading_client.get_account()
     positions = trading_client.get_all_positions()
-
     holdings = {}
     for p in positions:
         holdings[p.symbol] = {
@@ -112,7 +121,6 @@ def get_account_snapshot():
             "unrealized_pl": float(p.unrealized_pl),
             "unrealized_plpc": round(float(p.unrealized_plpc) * 100, 2),
         }
-
     return {
         "cash": float(account.cash),
         "total_value": float(account.portfolio_value),
@@ -123,30 +131,81 @@ def get_account_snapshot():
 def get_tickers_with_open_orders():
     try:
         request = GetOrdersRequest(status=QueryOrderStatus.OPEN)
-        open_orders = trading_client.get_orders(request)
-        return {o.symbol for o in open_orders}
+        return {o.symbol for o in trading_client.get_orders(request)}
     except Exception as e:
         print(f"Could not fetch open orders: {e}")
         return set()
 
 
-def check_stop_loss_take_profit(account_snapshot):
+# ============================================================
+# Cooldown tracking
+# ============================================================
+
+def _load_cooldowns():
+    if not os.path.exists(COOLDOWN_FILE):
+        return {}
+    try:
+        with open(COOLDOWN_FILE) as f:
+            return json.load(f)
+    except (json.JSONDecodeError, OSError):
+        return {}
+
+
+def _save_cooldowns(cooldowns):
+    os.makedirs(os.path.dirname(COOLDOWN_FILE), exist_ok=True)
+    with open(COOLDOWN_FILE, "w") as f:
+        json.dump(cooldowns, f)
+
+
+def get_tickers_on_cooldown():
+    """Returns the set of tickers traded within the last TRADE_COOLDOWN_MINUTES."""
+    cooldowns = _load_cooldowns()
+    cutoff = datetime.now() - timedelta(minutes=TRADE_COOLDOWN_MINUTES)
+    return {t for t, ts in cooldowns.items() if datetime.fromisoformat(ts) > cutoff}
+
+
+def _record_cooldown(ticker):
+    cooldowns = _load_cooldowns()
+    cooldowns[ticker] = datetime.now().isoformat()
+    _save_cooldowns(cooldowns)
+
+
+# ============================================================
+# ATR-based risk management
+# ============================================================
+
+def check_atr_stop_take_profit(account_snapshot):
+    """
+    For every holding, computes an ATR-based stop-loss and take-profit
+    level from its average entry price and current ATR, and force-sells
+    if either is breached. Independent of what Gemini decides that run.
+    """
     results = []
     open_order_tickers = get_tickers_with_open_orders()
+    on_cooldown = get_tickers_on_cooldown()
 
     for ticker, pos in account_snapshot["holdings"].items():
-        if ticker in open_order_tickers:
+        if ticker in open_order_tickers or ticker in on_cooldown:
             continue
 
-        plpc = pos["unrealized_plpc"]
+        indicators_data = get_full_indicators(ticker)
+        atr = indicators_data["atr_14"] if indicators_data else None
+        if atr is None:
+            continue  # can't compute a data-driven stop without ATR; skip rather than guess
+
+        entry = pos["avg_entry_price"]
+        current = pos["current_price"]
+        stop_level = entry - (ATR_STOP_MULTIPLIER * atr)
+        target_level = entry + (ATR_TAKE_PROFIT_MULTIPLIER * atr)
+
         reason = None
-        if plpc <= (STOP_LOSS_PCT * 100):
-            reason = f"stop-loss triggered ({plpc}% <= {STOP_LOSS_PCT * 100}%)"
-        elif plpc >= (TAKE_PROFIT_PCT * 100):
-            reason = f"take-profit triggered ({plpc}% >= {TAKE_PROFIT_PCT * 100}%)"
+        if current <= stop_level:
+            reason = f"ATR stop-loss hit (price {current} <= stop {round(stop_level, 2)}, ATR {atr})"
+        elif current >= target_level:
+            reason = f"ATR take-profit hit (price {current} >= target {round(target_level, 2)}, ATR {atr})"
 
         if reason:
-            trade = {"ticker": ticker, "action": "sell", "dollar_amount": 0, "reasoning": reason}
+            trade = {"ticker": ticker, "action": "sell", "dollar_amount": 0, "reasoning": reason, "conviction": 10}
             result = execute_trade(trade, account_snapshot)
             result["trigger"] = "risk_management"
             results.append(result)
@@ -154,42 +213,20 @@ def check_stop_loss_take_profit(account_snapshot):
     return results
 
 
-def check_position_caps(account_snapshot):
-    results = []
-    open_order_tickers = get_tickers_with_open_orders()
-    total_value = account_snapshot["total_value"]
-    max_allowed_value = total_value * MAX_POSITION_PCT
-
-    for ticker, pos in account_snapshot["holdings"].items():
-        if ticker in open_order_tickers:
-            continue
-
-        current_value = pos["qty"] * pos["current_price"]
-        if current_value > max_allowed_value:
-            excess_value = current_value - max_allowed_value
-            trade = {
-                "ticker": ticker,
-                "action": "sell",
-                "dollar_amount": excess_value,
-                "reasoning": (
-                    f"auto-trim: position (${current_value:,.2f}) exceeded "
-                    f"{MAX_POSITION_PCT * 100:.0f}% cap (${max_allowed_value:,.2f})"
-                ),
-            }
-            result = execute_trade(trade, account_snapshot)
-            result["trigger"] = "position_cap"
-            results.append(result)
-
-    return results
-
+# ============================================================
+# Order execution (conviction-scaled sizing)
+# ============================================================
 
 def execute_trade(trade, account_snapshot=None):
+    """
+    trade: {"ticker", "action", "dollar_amount", "reasoning", "conviction" (1-10)}
+    Position size is scaled by conviction/10, then hard-capped at
+    MAX_POSITION_PCT of total portfolio value regardless of what was asked.
+    """
     ticker = trade["ticker"]
     action = trade["action"].lower()
-    dollar_amount = trade.get("dollar_amount", 0)
-
-    if action in ("trim", "reduce", "exit", "close"):
-        action = "sell"
+    requested_amount = trade.get("dollar_amount", 0)
+    conviction = max(1, min(10, trade.get("conviction", 5)))
 
     if account_snapshot is None:
         account_snapshot = get_account_snapshot()
@@ -199,14 +236,14 @@ def execute_trade(trade, account_snapshot=None):
         return {"ticker": ticker, "status": "failed", "reason": "no price data"}
 
     total_value = account_snapshot["total_value"]
-    max_allowed = total_value * MAX_POSITION_PCT
+    max_allowed = total_value * MAX_POSITION_PCT * (conviction / 10)
     current_holding = account_snapshot["holdings"].get(ticker)
     current_position_value = (current_holding["qty"] * price) if current_holding else 0
 
     if action == "buy":
-        amount = min(dollar_amount, max_allowed - current_position_value, account_snapshot["cash"])
+        amount = min(requested_amount, max_allowed - current_position_value, account_snapshot["cash"])
         if amount <= 0:
-            return {"ticker": ticker, "status": "skipped", "reason": "position cap or insufficient cash"}
+            return {"ticker": ticker, "status": "skipped", "reason": "position cap, low conviction, or insufficient cash"}
         qty = round(amount / price, 4)
         if qty <= 0:
             return {"ticker": ticker, "status": "skipped", "reason": "calculated quantity too small"}
@@ -216,31 +253,25 @@ def execute_trade(trade, account_snapshot=None):
         shares_owned = current_holding["qty"] if current_holding else 0
         if shares_owned <= 0:
             return {"ticker": ticker, "status": "skipped", "reason": "no shares owned"}
-        
-        if dollar_amount <= 0:
-            qty = shares_owned
-        else:
-            shares_to_sell = dollar_amount / price
-            qty = round(min(shares_owned, shares_to_sell), 4)
-            
+        qty = round(min(shares_owned, requested_amount / price) if requested_amount else shares_owned, 4)
         side = OrderSide.SELL
 
     else:
         return {"ticker": ticker, "status": "failed", "reason": f"unknown action '{action}'"}
 
     try:
-        order_request = MarketOrderRequest(
-            symbol=ticker, qty=qty, side=side, time_in_force=TimeInForce.DAY
-        )
+        order_request = MarketOrderRequest(symbol=ticker, qty=qty, side=side, time_in_force=TimeInForce.DAY)
         order = trading_client.submit_order(order_request)
+        _record_cooldown(ticker)
+
         return {
             "timestamp": datetime.now().isoformat(),
             "ticker": ticker,
             "action": action,
             "qty": qty,
+            "conviction": conviction,
             "order_id": str(order.id),
             "order_status": str(order.status),
-            "time_horizon": trade.get("time_horizon", "unspecified"),
             "reasoning": trade.get("reasoning", ""),
             "status": "submitted",
         }
@@ -249,7 +280,7 @@ def execute_trade(trade, account_snapshot=None):
 
 
 def record_performance_snapshot(account_snapshot, log_dir):
-    os.makedirs(log_dir, exist_ok=True)
+    import csv
     path = os.path.join(log_dir, "performance.csv")
     file_exists = os.path.exists(path)
     with open(path, "a", newline="") as f:
