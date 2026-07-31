@@ -33,6 +33,23 @@ COOLDOWN_FILE = os.path.join(os.path.dirname(__file__), "logs", "cooldowns.json"
 
 
 # ============================================================
+# Market clock
+# ============================================================
+
+def is_market_open():
+    """
+    True if the market is open for regular trading right now.
+    Fails closed: if the clock call errors, returns False so the bot
+    skips the run rather than firing orders blind.
+    """
+    try:
+        return bool(trading_client.get_clock().is_open)
+    except Exception as e:
+        print(f"Could not fetch market clock, assuming closed: {e}")
+        return False
+
+
+# ============================================================
 # Price data
 # ============================================================
 
@@ -58,7 +75,7 @@ def get_price_history(ticker, days=PRICE_HISTORY_DAYS):
         start = end - timedelta(days=days + 10)  # pad for weekends/holidays
         request = StockBarsRequest(symbol_or_symbols=ticker, timeframe=TimeFrame.Day, start=start, end=end)
         bars = list(data_client.get_stock_bars(request)[ticker])
-        if len(bars) < 15:
+        if len(bars) < 55:
             return None
         return {
             "closes": [b.close for b in bars],
@@ -158,7 +175,12 @@ def _save_cooldowns(cooldowns):
 
 
 def get_tickers_on_cooldown():
-    """Returns the set of tickers traded within the last TRADE_COOLDOWN_MINUTES."""
+    """
+    Returns the set of tickers traded within the last TRADE_COOLDOWN_MINUTES.
+    Used to stop Gemini/the decision layer from churning the same ticker
+    repeatedly -- NOT used to gate the ATR stop-loss/take-profit check,
+    which must always be able to force an exit regardless of cooldown.
+    """
     cooldowns = _load_cooldowns()
     cutoff = datetime.now() - timedelta(minutes=TRADE_COOLDOWN_MINUTES)
     return {t for t, ts in cooldowns.items() if datetime.fromisoformat(ts) > cutoff}
@@ -179,13 +201,16 @@ def check_atr_stop_take_profit(account_snapshot):
     For every holding, computes an ATR-based stop-loss and take-profit
     level from its average entry price and current ATR, and force-sells
     if either is breached. Independent of what Gemini decides that run.
+
+    Deliberately ignores the trade cooldown: a position opened moments ago
+    is exactly the one most in need of its stop-loss staying active. Only
+    skips tickers with an already-open order, to avoid duplicate exits.
     """
     results = []
     open_order_tickers = get_tickers_with_open_orders()
-    on_cooldown = get_tickers_on_cooldown()
 
     for ticker, pos in account_snapshot["holdings"].items():
-        if ticker in open_order_tickers or ticker in on_cooldown:
+        if ticker in open_order_tickers:
             continue
 
         indicators_data = get_full_indicators(ticker)
