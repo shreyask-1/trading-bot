@@ -254,6 +254,8 @@ def execute_trade(trade, account_snapshot=None):
         if shares_owned <= 0:
             return {"ticker": ticker, "status": "skipped", "reason": "no shares owned"}
         qty = round(min(shares_owned, requested_amount / price) if requested_amount else shares_owned, 4)
+        if qty <= 0:
+            return {"ticker": ticker, "status": "skipped", "reason": "calculated quantity too small"}
         side = OrderSide.SELL
 
     else:
