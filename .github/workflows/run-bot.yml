@@ -16,6 +16,7 @@ permissions:
 jobs:
   run-bot:
     runs-on: ubuntu-latest
+    timeout-minutes: 5
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
@@ -24,7 +25,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-          cache: "pip" # Speeds up execution by caching pip dependencies
+          cache: "pip"
 
       - name: Install dependencies
         run: pip install -r requirements.txt
@@ -38,17 +39,17 @@ jobs:
         run: python main.py
 
       - name: Commit and push updated logs and trade memory
+        if: always()
         run: |
           git config user.name "trading-bot"
           git config user.email "trading-bot@users.noreply.github.com"
-          
-          # Stage both operational logs and trade memory state
+
           git add logs/ data/
-          
+
           if git diff --staged --quiet; then
             echo "No log or memory changes to commit."
           else
             git commit -m "Update operational logs and trade memory [skip ci]"
-            git pull --rebase origin main
+            git pull --rebase --autostash origin main
             git push
           fi
