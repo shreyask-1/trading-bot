@@ -3,20 +3,19 @@ Ties everything together. This is the file cron / GitHub Actions / your
 external scheduler runs.
 
 Flow (in order):
-  0. Skip entirely if the market is closed (MARKET_HOURS_ONLY in config.py)
   1. Pull current account state from Alpaca
   2. Enforce ATR-based stop-loss / take-profit (independent of Gemini
      and of market regime)
   3. Refresh account state after any forced sells
   4. Evaluate the broad market regime (SPY-based) -- determines a
-     position-sizing multiplier enforced in code, not just by prompt
+     position-sizing multiplier enforced in code
   5. Fetch news (deduped against recently-seen articles)
   6. Ask Gemini to review holdings + quant-prescreened news candidates +
-     quant-prescreened watchlist, each idea scored with a conviction rating
+     quant-prescreened watchlist
   7. Execute trades (conviction- and regime-scaled size, cooldown/open-order
-     aware, re-checking account state between trades)
-  8. Record a full performance snapshot (regime, pre-screen stats, trade
-     outcome counts) and log everything
+     aware, re-checking account state between trades -- orders submitted
+     outside market hours will queue for the next open)
+  8. Record a full performance snapshot and log everything
 """
 
 import json
@@ -39,11 +38,12 @@ def run():
     timestamp = datetime.now()
     log_lines = [f"=== Run at {timestamp.isoformat()} ==="]
 
-    if MARKET_HOURS_ONLY and not is_market_open():
-        log_lines.append("Market closed -- skipping run.")
-        _write_log(log_lines, timestamp)
-        print("\n".join(log_lines))
-        return
+    # Note: if the market is closed, orders submitted here will queue at
+    # Alpaca for the next open (DAY orders). We do NOT abort the run --
+    # the bot continues to evaluate news, regime, holdings, and submit
+    # trades regardless of the clock.
+    market_open = is_market_open() if MARKET_HOURS_ONLY else True
+    log_lines.append(f"Market open: {market_open}")
 
     try:
         account = get_account_snapshot()
@@ -86,7 +86,7 @@ def run():
         log_lines.append(f"News fetch failed, proceeding with watchlist only: {e}")
         candidates = {}
 
-    # Step 4: decisions (quant pre-screen happens inside get_trade_decisions)
+    # Step 4: decisions (quant pre-screen inside get_trade_decisions)
     decision_meta = {"candidates_considered": 0, "candidates_passed_prescreen": 0}
     try:
         trades, decision_meta = get_trade_decisions(candidates, account, regime)
@@ -100,10 +100,8 @@ def run():
         trades = []
 
     # Step 5: execute
-    # Re-fetch account state after each fill so a run with multiple trades
-    # doesn't size every trade against the same stale cash/holdings figures.
-    # size_multiplier enforces the market-regime cap on every buy in code;
-    # it has no effect on sells.
+    # Re-fetch account state after each fill. Orders submitted when the
+    # market is closed are queued by Alpaca and execute at the open.
     executed = skipped = failed = 0
     for trade in trades:
         try:
