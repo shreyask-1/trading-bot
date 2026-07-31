@@ -3696,3 +3696,16 @@ Quant pre-screen: 6/16 candidates passed.
 Gemini proposed 0 trade(s) meeting the conviction bar.
 Ending portfolio value: $99,388.19
 
+=== Run at 2026-07-31T18:24:23.323754 ===
+Current time: 2026-07-31 02:24 PM EDT | Market open (per Alpaca): True
+Account value: $99,406.91
+Cash: $40,738.22 | Holdings (10): {'AMZN': '4.6694 sh (-0.15%)', 'BALL': '96.7481 sh (-0.03%)', 'GM': '56.6701 sh (+1.24%)', 'HON': '37.3867 sh (+1.44%)', 'J': '53.0949 sh (-0.15%)', 'LMT': '12.4652 sh (+1.19%)', 'MA': '12.4549 sh (+0.54%)', 'PM': '8.8117 sh (-1.31%)', 'V': '17.0865 sh (+1.48%)', 'XOM': '48.0878 sh (+0.32%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 0, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 6/16 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+  -> {"timestamp": "2026-07-31T18:24:42.189633", "ticker": "MA", "action": "buy", "qty": 6.9863, "conviction": 8, "size_multiplier": 1.0, "order_id": "a5cdc711-8b13-423f-afb4-39bbe8844c59", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Highest quant score in portfolio (90/100) supported by strong uptrend, robust ADX of 33.32, expanding MACD histogram, and increasing volume trend with +37.5% relative volume.", "status": "submitted"}
+  -> {"timestamp": "2026-07-31T18:24:42.256498", "ticker": "J", "action": "buy", "qty": 22.2255, "conviction": 7, "size_multiplier": 1.0, "order_id": "8c8a06a0-6ddf-4718-8cf9-2ac26e8d362f", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "High quant score (85/100) with solid uptrend, ADX above 25 indicating real trend strength, positive MACD histogram, and increasing volume trend with room to run on RSI (58.43).", "status": "submitted"}
+  -> {"timestamp": "2026-07-31T18:24:42.293696", "ticker": "BALL", "action": "buy", "qty": 38.6041, "conviction": 7, "size_multiplier": 1.0, "order_id": "145b083a-4200-4844-8629-2bf7ce87b337", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Very strong trend strength with ADX at 35.31, solid quant score (75/100), positive MACD histogram, and increasing volume trend in a bullish market regime.", "status": "submitted"}
+Ending portfolio value: $99,412.22
+
