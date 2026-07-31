@@ -138,3 +138,13 @@ Gemini proposed 2 trade(s) meeting the conviction bar.
   -> {"timestamp": "2026-07-31T06:46:51.574738", "ticker": "KO", "action": "sell", "qty": 13.5563, "conviction": 7, "size_multiplier": 0.6, "order_id": "e2b09251-3815-42ad-9ec8-14f49634b2fd", "order_status": "OrderStatus.ACCEPTED", "reasoning": "Trimming overextended position trading above upper Bollinger Band (%B 1.0224) with elevated Stochastic (%K 76.27) to secure profits.", "status": "submitted"}
 Ending portfolio value: $99,882.59
 
+=== Run at 2026-07-31T06:48:28.125682 ===
+Market open: True
+Account value: $99,871.85
+Cash: $3.81 | Holdings: {'A': '39.728 sh (-0.63%)', 'AAPL': '48.8707 sh (-6.22%)', 'AMZN': '13.2333 sh (+11.57%)', 'BA': '0.0025 sh (+2.22%)', 'BAC': '40.4924 sh (+0.62%)', 'BALL': '38.2673 sh (-0.06%)', 'COST': '1.21 sh (-2.31%)', 'DIS': '25.2806 sh (-2.26%)', 'FDX': '8.098 sh (-0.43%)', 'HD': '7.194 sh (-4.11%)', 'HON': '20.774 sh (-0.31%)', 'IT': '16.5981 sh (+1.74%)', 'J': '29.2564 sh (-2.20%)', 'JNJ': '23.0219 sh (-2.43%)', 'JPM': '7.8335 sh (-0.61%)', 'KO': '28.5128 sh (+0.75%)', 'LMT': '8.3707 sh (+0.11%)', 'MA': '0.4482 sh (+7.37%)', 'META': '2.8249 sh (+3.21%)', 'NFLX': '34.4234 sh (+0.34%)', 'PM': '8.7919 sh (-0.84%)', 'SBUX': '18.7988 sh (-0.46%)', 'SO': '77.2636 sh (-3.07%)', 'TGT': '15.8763 sh (+1.33%)', 'TSLA': '0.0035 sh (+3.61%)', 'UNH': '3.4282 sh (-2.20%)', 'V': '7.488 sh (+1.86%)', 'WAT': '9.3421 sh (+1.41%)', 'WMT': '17.6835 sh (-1.67%)', 'XOM': '48.0878 sh (+1.06%)'}
+Market regime: NEUTRAL (position-size multiplier: 60%)
+Found 0 newly-mentioned companies in news.
+Quant pre-screen: 2/5 candidates passed.
+Gemini proposed 0 trade(s) meeting the conviction bar.
+Ending portfolio value: $99,871.85
+
