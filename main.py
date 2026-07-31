@@ -1,8 +1,8 @@
 import os
+import time
 from sp500_data import get_sp500_tickers
 from signal_score import calculate_signal_score
-from news import get_ticker_news
-from decide import evaluate_trade_candidate
+from decide import evaluate_entire_market
 from trader import (
     get_account_snapshot,
     get_indicator_snapshot,
@@ -19,13 +19,14 @@ os.makedirs(LOG_DIR, exist_ok=True)
 def safe_get_snapshot(ticker):
     try:
         return get_indicator_snapshot(ticker)
-    except Exception as e:
+    except Exception:
         return None
 
 
 def run_pipeline():
+    start_time = time.time()
     print("=" * 60)
-    print("STARTING TRADING BOT PIPELINE EXECUTION")
+    print("STARTING FAST MACRO-SCAN TRADING PIPELINE")
     print("=" * 60)
 
     try:
@@ -39,93 +40,74 @@ def run_pipeline():
     try:
         risk_trades = check_stop_loss_take_profit(account)
         cap_trades = check_position_caps(account)
-        executed_risk_trades = (risk_trades or []) + (cap_trades or [])
-        if executed_risk_trades:
-            print(f"Executed {len(executed_risk_trades)} risk/cap trades.")
+        if (risk_trades or []) + (cap_trades or []):
             account = get_account_snapshot()
-        else:
-            print("No risk or position cap triggers met.")
     except Exception as e:
-        print(f"[WARNING] Risk management check encountered an error: {e}")
+        print(f"[WARNING] Risk management check error: {e}")
 
-    print("\n--- [Stage 2] Universe Screening & Macro Regime Check ---")
+    print("\n--- [Stage 2 & 3] Building Master Universe Data ---")
     try:
         tickers = get_sp500_tickers()
-        print(f"Total Tickers In Universe: {len(tickers)}")
-    except Exception as e:
-        print(f"[ERROR] Failed to fetch ticker list: {e}")
-        tickers = ["AAPL", "MSFT", "NVDA", "SPY", "MU", "PLTR"]
-
-    regime = "NEUTRAL"
-    try:
-        spy_snapshot = safe_get_snapshot("SPY")
-        if spy_snapshot and spy_snapshot.get("trend") == "bullish":
-            regime = "BULLISH"
     except Exception:
-        pass
-    print(f"Current Market Regime: {regime}")
+        tickers = ["AAPL", "MSFT", "NVDA", "SPY", "MU", "PLTR", "TSLA", "AMZN"]
 
-    print("\n--- [Stage 3] Quantitative Signal Scoring ---")
-    scored_candidates = []
-
+    master_universe_data = []
     for ticker in tickers:
         snapshot = safe_get_snapshot(ticker)
         if not snapshot:
             continue
-
         try:
             score = calculate_signal_score(snapshot)
-            if score >= 50.0:
-                scored_candidates.append({
-                    "ticker": ticker,
-                    "score": score,
-                    "snapshot": snapshot
-                })
-        except Exception as e:
+            # Filter pre-screen candidates to keep payload relevant and clean
+            if score >= 40.0:
+                snapshot["ticker"] = ticker
+                snapshot["signal_score"] = score
+                master_universe_data.append(snapshot)
+        except Exception:
             continue
 
-    scored_candidates.sort(key=lambda x: x["score"], reverse=True)
-    top_candidates = scored_candidates[:10]
-    print(f"Top {len(top_candidates)} Quant Candidates Selected For Gemini Veto.")
+    print(f"Collected indicators for {len(master_universe_data)} viable candidates.")
 
-    print("\n--- [Stage 4] Gemini News Catalyst & Trade Veto Agent ---")
-    for candidate in top_candidates:
-        ticker = candidate["ticker"]
-        snapshot = candidate["snapshot"]
+    print("\n--- [Stage 4] Single-Prompt Macro Gemini Sweep ---")
+    approved_signals = []
+    if master_universe_data:
+        approved_signals = evaluate_entire_market(master_universe_data)
 
-        try:
-            account = get_account_snapshot()
-            news = get_ticker_news(ticker)
-            decision = evaluate_trade_candidate(ticker, news, snapshot, account)
+    print(f"Gemini Approved Trades: {len(approved_signals)}")
 
-            print(f"\nCandidate: {ticker} | Signal Score: {candidate['score']}")
-            print(f"Gemini Decision: Approve={decision.get('approve')} | Action={decision.get('action')}")
-            print(f"Reasoning: {decision.get('reasoning')}")
-
-            if decision.get("approve") and decision.get("action") == "BUY":
-                allocation = account.get("total_value", 100000) * 0.05
-                trade_payload = {
-                    "ticker": ticker,
-                    "action": "buy",
-                    "dollar_amount": allocation,
-                    "reasoning": decision.get("reasoning", "Approved by Gemini Veto Agent"),
-                }
-                res = execute_trade(trade_payload, account)
-                print(f"Trade Execution Result ({ticker}): {res.get('status')}")
-
-        except Exception as e:
-            print(f"[ERROR] Failed evaluation/execution for {ticker}: {e}")
-            continue
+    for trade in approved_signals:
+        if trade.get("approve") and trade.get("action") == "BUY":
+            ticker = trade["ticker"]
+            allocation = account.get("total_value", 100000) * 0.05
+            trade_payload = {
+                "ticker": ticker,
+                "action": "buy",
+                "dollar_amount": allocation,
+                "reasoning": trade.get("reasoning", "Approved by Gemini Macro Scan"),
+            }
+            res = execute_trade(trade_payload, account)
+            print(f"Trade Execution Result ({ticker}): {res.get('status')}")
 
     try:
         record_performance_snapshot(account, LOG_DIR)
     except Exception as e:
         print(f"[WARNING] Could not write performance log: {e}")
 
-    print("\n=" * 60)
-    print("PIPELINE EXECUTION COMPLETE")
+    elapsed = time.time() - start_time
+    print(f"\nPipeline finished in {elapsed:.2f} seconds.")
     print("=" * 60)
 
 
 if __name__ == "__main__":
-    run_pipeline()
+    while True:
+        loop_start = time.time()
+        try:
+            run_pipeline()
+        except Exception as e:
+            print(f"[Loop Error]: {e}")
+        
+        # Keep pace with your 2-minute cron rhythm safely
+        elapsed = time.time() - loop_start
+        sleep_time = max(5, 120 - elapsed)
+        print(f"Sleeping for {sleep_time:.1f} seconds until next scan...\n")
+        time.sleep(sleep_time)
