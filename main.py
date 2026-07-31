@@ -3,6 +3,7 @@ Ties everything together. This is the file cron / GitHub Actions / your
 external scheduler runs.
 
 Flow (in order):
+  0. Skip entirely if the market is closed (MARKET_HOURS_ONLY in config.py)
   1. Pull current account state from Alpaca
   2. Enforce ATR-based stop-loss / take-profit (independent of Gemini)
   3. Refresh account state after any forced sells
@@ -10,7 +11,8 @@ Flow (in order):
   5. Ask Gemini to review holdings + news candidates + fixed watchlist,
      each idea scored with a conviction rating
   6. Execute trades (conviction-scaled size, cooldown/open-order aware,
-     re-checking account state between trades)
+     re-checking account state between trades so multi-trade runs don't
+     all size against the same stale cash figure)
   7. Record a performance snapshot and log everything
 """
 
@@ -18,9 +20,10 @@ import json
 import os
 from datetime import datetime
 
+from config import MARKET_HOURS_ONLY
 from trader import (
     get_account_snapshot, execute_trade, check_atr_stop_take_profit,
-    record_performance_snapshot,
+    record_performance_snapshot, is_market_open,
 )
 from news import get_news_candidates
 from decide import get_trade_decisions
@@ -32,6 +35,12 @@ def run():
     os.makedirs(LOG_DIR, exist_ok=True)
     timestamp = datetime.now()
     log_lines = [f"=== Run at {timestamp.isoformat()} ==="]
+
+    if MARKET_HOURS_ONLY and not is_market_open():
+        log_lines.append("Market closed -- skipping run.")
+        _write_log(log_lines, timestamp)
+        print("\n".join(log_lines))
+        return
 
     try:
         account = get_account_snapshot()
