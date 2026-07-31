@@ -2716,3 +2716,18 @@ Quant pre-screen: 7/16 candidates passed.
 Gemini proposed 0 trade(s) meeting the conviction bar.
 Ending portfolio value: $98,945.76
 
+=== Run at 2026-07-31T15:14:33.636986 ===
+Current time: 2026-07-31 11:14 AM EDT | Market open (per Alpaca): True
+Account value: $98,970.96
+Cash: $46,004.84 | Holdings (12): {'A': '0.002 sh (-2.18%)', 'BALL': '84.9417 sh (-0.74%)', 'GM': '56.6701 sh (+0.15%)', 'HON': '37.3867 sh (+0.25%)', 'J': '29.2851 sh (-2.18%)', 'JPM': '0.0001 sh (+0.01%)', 'LMT': '12.4652 sh (+0.10%)', 'MA': '12.4549 sh (+0.24%)', 'PM': '8.8117 sh (-0.96%)', 'TGT': '0.0001 sh (+0.89%)', 'V': '17.0865 sh (+0.81%)', 'XOM': '48.0878 sh (-0.47%)'}
+Market regime: NEUTRAL (position-size multiplier: 60%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 7/16 candidates passed.
+Gemini proposed 5 trade(s) meeting the conviction bar.
+  -> {"timestamp": "2026-07-31T15:14:51.595224", "ticker": "JPM", "action": "sell", "qty": 0.0001, "conviction": 8, "size_multiplier": 0.6, "order_id": "b2934284-b8a2-4688-a8be-7a4f93589cb7", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Exit fractional dust position with low quant score of 45/100 and negative MACD histogram.", "status": "submitted"}
+  -> {"timestamp": "2026-07-31T15:14:51.898315", "ticker": "A", "action": "sell", "qty": 0.002, "conviction": 7, "size_multiplier": 0.6, "order_id": "34c001a1-28b5-437d-87c4-b41d77fb11c2", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Exit residual fractional position showing negative P/L and low relative volume.", "status": "submitted"}
+  -> {"timestamp": "2026-07-31T15:14:52.161100", "ticker": "TGT", "action": "sell", "qty": 0.0001, "conviction": 7, "size_multiplier": 0.6, "order_id": "c35450aa-ad53-480c-bf1e-33e3882a263c", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Exit residual fractional dust holding to keep portfolio clean.", "status": "submitted"}
+  -> {"ticker": "MA", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,948.20 kept uninvested of $4,948.20 normal reserve, $46,005.16 cash on hand)"}
+  -> {"timestamp": "2026-07-31T15:14:52.468658", "ticker": "AMZN", "action": "buy", "qty": 18.4006, "conviction": 7, "size_multiplier": 0.6, "order_id": "3c3d6390-a316-4510-b04c-f451447561b8", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Strong 10-day momentum (+9.76%) backed by robust relative volume spike (+48.3%) and positive MACD histogram.", "status": "submitted"}
+Ending portfolio value: $98,964.52
+
