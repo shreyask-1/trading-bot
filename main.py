@@ -4,24 +4,19 @@ external scheduler runs.
 
 Flow (in order):
   1. Pull current account state from Alpaca
-  2. Enforce ATR-based stop-loss / take-profit (independent of Gemini
-     and of market regime)
-  3. Refresh account state after any forced sells
-  4. Evaluate the broad market regime (SPY-based) -- determines a
+  2. Enforce ATR-based stop-loss / take-profit (independent of Gemini)
+  3. Enforce portfolio consolidation if over MAX_OPEN_POSITIONS limits,
+     purging the worst-scoring excess holdings that score below threshold
+  4. Refresh account state after any forced sells
+  5. Evaluate the broad market regime (SPY-based) -- determines a
      position-sizing multiplier enforced in code
-  5. Fetch news (deduped against recently-seen articles)
-  6. Ask Gemini to review holdings + quant-prescreened news candidates +
+  6. Fetch news (deduped against recently-seen articles)
+  7. Ask Gemini to review holdings + quant-prescreened news candidates +
      quant-prescreened watchlist
-  7. Execute trades (conviction- and regime-scaled size, cash-reserve and
-     position-count aware -- with a narrow exception letting exceptional-
-     conviction ideas access part of the cash reserve -- cooldown/open-
-     order aware, re-checking account state between trades)
-  8. Record a full performance snapshot and log everything
-
-Note on market hours: the bot does NOT skip runs when the market is
-closed. is_market_open() is queried purely for the log line below; it has
-no effect on whether the run proceeds or trades execute. Orders submitted
-while closed are queued by Alpaca and fill at the next open.
+  8. Execute trades (conviction- and regime-scaled size, cash-reserve and
+     position-count aware, cooldown/open-order aware, re-checking account
+     state between trades)
+  9. Record a full performance snapshot and log everything
 """
 
 import json
@@ -31,8 +26,8 @@ from datetime import datetime
 from config import REGIME_POSITION_MULTIPLIERS
 from trader import (
     get_account_snapshot, execute_trade, check_atr_stop_take_profit,
-    record_performance_snapshot, is_market_open, get_market_regime,
-    get_eastern_time_str,
+    enforce_portfolio_consolidation, record_performance_snapshot,
+    is_market_open, get_market_regime, get_eastern_time_str,
 )
 from news import get_news_candidates
 from decide import get_trade_decisions
@@ -72,6 +67,19 @@ def run():
     except Exception as e:
         log_lines.append(f"Risk management step failed (continuing anyway): {e}")
 
+    # Step 1b: portfolio consolidation (purges worst excess holdings below threshold)
+    consolidation_exits = 0
+    try:
+        consolidation_sells = enforce_portfolio_consolidation(account)
+        consolidation_exits = len(consolidation_sells)
+        if consolidation_sells:
+            log_lines.append(f"Consolidation engine triggered {consolidation_exits} forced cleanup sell(s):")
+            for c in consolidation_sells:
+                log_lines.append(f"  -> {json.dumps(c)}")
+            account = get_account_snapshot()
+    except Exception as e:
+        log_lines.append(f"Consolidation step failed (continuing anyway): {e}")
+
     # Step 2: market regime -> position-sizing multiplier
     try:
         regime = get_market_regime()
@@ -107,8 +115,6 @@ def run():
         trades = []
 
     # Step 5: execute
-    # Re-fetch account state after each fill. Orders submitted when the
-    # market is closed are queued by Alpaca and execute at the open.
     executed = skipped = failed = 0
     for trade in trades:
         try:
@@ -140,6 +146,7 @@ def run():
             trades_skipped=skipped,
             trades_failed=failed,
             risk_exits=risk_exits,
+            consolidation_exits=consolidation_exits,
         )
         log_lines.append(f"Ending portfolio value: ${final_account['total_value']:,.2f}")
     except Exception as e:
