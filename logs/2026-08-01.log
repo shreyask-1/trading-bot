@@ -3337,3 +3337,6 @@ Quant pre-screen: 8/16 candidates passed.
 Gemini proposed 0 trade(s) meeting the conviction bar.
 Ending portfolio value: $99,368.33
 
+=== Run at 2026-08-01T11:02:33.385378 ===
+Current time: 2026-08-01 07:02 AM EDT | Market open (per Alpaca): False
+FATAL: could not fetch account snapshot, aborting run. Error: HTTPSConnectionPool(host='paper-api.alpaca.markets', port=443): Max retries exceeded with url: /v2/account (Caused by NewConnectionError("HTTPSConnection(host='paper-api.alpaca.markets', port=443): Failed to establish a new connection: [Errno 111] Connection refused"))
