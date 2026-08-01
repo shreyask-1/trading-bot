@@ -8,16 +8,27 @@ regime-based position-size enforcement happens in code (trader.py), not
 via prompt instruction alone. Asks for a conviction score (1-10) on every
 surviving trade idea, which trader.py uses to scale position size (and,
 for exceptional conviction, how much of the cash reserve it may touch).
+
+IMPORTANT: actual calls to the Gemini API are metered against
+GEMINI_MAX_CALLS_PER_DAY (config.py) and spread EVENLY across each quota
+day (which resets at midnight Pacific Time, matching Google's own reset).
+This lets the bot's scheduler fire as often as it wants (e.g. every 2 min)
+while still maximizing total daily Gemini usage without blowing the free
+tier or front-loading all the calls into the first hour of the day.
 """
 
 import json
+import os
 import re
+from datetime import datetime, timedelta
 
+import pytz
 from google import genai
 from google.genai import types
 
 from config import (
     GEMINI_API_KEY, GEMINI_MODEL, GEMINI_MODEL_FALLBACKS,
+    GEMINI_MAX_CALLS_PER_DAY, GEMINI_QUOTA_RESET_TIMEZONE,
     MAX_POSITION_PCT, MIN_CONVICTION_TO_TRADE,
     WATCHLIST, ATR_STOP_MULTIPLIER, ATR_TAKE_PROFIT_MULTIPLIER,
     MIN_SIGNAL_SCORE_TO_CONSIDER, REGIME_POSITION_MULTIPLIERS,
@@ -28,6 +39,9 @@ from trader import get_full_indicators, get_tickers_with_open_orders, get_ticker
 from signal_score import calculate_signal_score
 
 _client = genai.Client(api_key=GEMINI_API_KEY)
+
+_CALL_TRACKER_FILE = os.path.join(os.path.dirname(__file__), "data", "gemini_call_tracker.json")
+_QUOTA_TZ = pytz.timezone(GEMINI_QUOTA_RESET_TIMEZONE)
 
 # Forces Gemini's output into this exact shape -- removes the need to hope
 # it didn't wrap the JSON in markdown fences or add commentary.
@@ -217,6 +231,83 @@ def build_watchlist_block(scored, unavailable, min_score):
     return "\n".join(lines) if lines else "(no watchlist tickers cleared the quantitative pre-screen this run)"
 
 
+# ============================================================
+# Daily-quota-maximizing throttle
+# ============================================================
+
+def _quota_day_now():
+    """Current date string in the quota-reset timezone (Pacific by default)."""
+    return datetime.now(pytz.utc).astimezone(_QUOTA_TZ).strftime("%Y-%m-%d")
+
+
+def _seconds_until_next_quota_day():
+    now_local = datetime.now(pytz.utc).astimezone(_QUOTA_TZ)
+    next_midnight = (now_local + timedelta(days=1)).replace(hour=0, minute=0, second=0, microsecond=0)
+    return max((next_midnight - now_local).total_seconds(), 1)
+
+
+def _load_tracker():
+    default = {"date": _quota_day_now(), "count": 0, "last_call": None}
+    if not os.path.exists(_CALL_TRACKER_FILE):
+        return default
+    try:
+        with open(_CALL_TRACKER_FILE) as f:
+            data = json.load(f)
+    except (json.JSONDecodeError, OSError):
+        return default
+    if data.get("date") != _quota_day_now():
+        return default  # new quota day -- counter rolls over
+    data.setdefault("count", 0)
+    data.setdefault("last_call", None)
+    return data
+
+
+def _save_tracker(data):
+    os.makedirs(os.path.dirname(_CALL_TRACKER_FILE), exist_ok=True)
+    with open(_CALL_TRACKER_FILE, "w") as f:
+        json.dump(data, f)
+
+
+def _should_call_gemini(tracker):
+    """
+    Decides whether THIS run should spend one of today's Gemini calls.
+
+    Two rules, in order:
+      1. Hard cap: never exceed GEMINI_MAX_CALLS_PER_DAY calls within a
+         single quota day (resets at midnight Pacific).
+      2. Even spacing: given however many calls remain in today's budget
+         and however much time is left before the quota resets, calculate
+         the minimum gap needed to spread the REMAINING calls evenly across
+         the REMAINING time. This is what maximizes total daily usage without
+         front-loading everything into the first hour and then going quiet.
+
+    Returns (should_call: bool, reason_if_not: str or None).
+    """
+    if tracker["count"] >= GEMINI_MAX_CALLS_PER_DAY:
+        return False, f"daily Gemini call limit reached ({GEMINI_MAX_CALLS_PER_DAY}/day) for today's quota window"
+
+    if tracker["last_call"] is None:
+        return True, None
+
+    try:
+        last_call = datetime.fromisoformat(tracker["last_call"])
+    except (ValueError, TypeError):
+        return True, None  # corrupted timestamp -- fail open, allow the call
+
+    calls_remaining = GEMINI_MAX_CALLS_PER_DAY - tracker["count"]
+    seconds_left_in_day = _seconds_until_next_quota_day()
+    min_gap_seconds = seconds_left_in_day / max(calls_remaining, 1)
+
+    elapsed = (datetime.now(pytz.utc) - last_call).total_seconds()
+    if elapsed < min_gap_seconds:
+        return False, (
+            f"spacing calls evenly across the day: {elapsed:.0f}s since last call, "
+            f"need {min_gap_seconds:.0f}s ({calls_remaining} call(s) left of "
+            f"{GEMINI_MAX_CALLS_PER_DAY}/day budget)"
+        )
+    return True, None
+
+
 def _generate_with_fallback(prompt):
     """
     Tries GEMINI_MODEL_FALLBACKS in order until one succeeds.
@@ -255,7 +346,8 @@ def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL"):
     """
     Returns (trades, meta) where trades is the filtered list of trade
     ideas and meta is a stats dict for logging to performance.csv:
-        {"candidates_considered": int, "candidates_passed_prescreen": int}
+        {"candidates_considered": int, "candidates_passed_prescreen": int,
+         "throttled": bool, "gemini_calls_today": int}
     """
     holdings = account_snapshot.get("holdings", {})
     cash = account_snapshot.get("cash", 0)
@@ -272,13 +364,23 @@ def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL"):
     scored_news = _score_candidates(list(new_candidates.keys()))
     scored_watchlist = _score_candidates(watchlist_tickers)
 
+    tracker = _load_tracker()
+
     meta = {
         "candidates_considered": len(scored_news) + len(scored_watchlist),
         "candidates_passed_prescreen": sum(
             1 for info in list(scored_news.values()) + list(scored_watchlist.values())
             if info["score"] >= MIN_SIGNAL_SCORE_TO_CONSIDER
         ),
+        "throttled": False,
+        "gemini_calls_today": tracker["count"],
     }
+
+    should_call, reason = _should_call_gemini(tracker)
+    if not should_call:
+        print(f"Skipping Gemini call this run: {reason}")
+        meta["throttled"] = True
+        return [], meta
 
     prompt = PROMPT_TEMPLATE.format(
         cash=cash,
@@ -298,6 +400,13 @@ def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL"):
 
     try:
         response = _generate_with_fallback(prompt)
+        # Only counts against today's budget on an actual successful call --
+        # a failed call shouldn't burn a slot we never got value from.
+        tracker["count"] += 1
+        tracker["last_call"] = datetime.now(pytz.utc).isoformat()
+        tracker["date"] = _quota_day_now()
+        _save_tracker(tracker)
+        meta["gemini_calls_today"] = tracker["count"]
     except Exception as e:
         print(f"Gemini call failed on all configured models: {e}")
         return [], meta
