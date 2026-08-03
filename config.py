@@ -86,18 +86,57 @@ CONSOLIDATION_SCORE_THRESHOLD = 70  # When total positions are over MAX_OPEN_POS
 EXCEPTIONAL_CONVICTION_THRESHOLD = 9
 EXCEPTIONAL_TRADE_RESERVE_ACCESS_PCT = 0.5   # fraction of the reserve an exceptional trade may use
 
-# --- Risk management: ATR-based, not fixed percentages ---
-# ATR (Average True Range) measures how much a stock typically moves per day,
-# in its own price terms. Using it for stops means the stop distance adapts
-# to each stock's real volatility, instead of one fixed % for every ticker.
-ATR_STOP_MULTIPLIER = 2.5        # stop-loss = entry price - (2.5 x ATR)
-ATR_TAKE_PROFIT_MULTIPLIER = 4.0 # take-profit = entry price + (4.0 x ATR)
+# --- Risk management: chart-based custom exits, with ATR as a fallback/floor ---
+# Every filled BUY gets its OWN stop-loss and take-profit computed from
+# actual recent chart structure (10-day swing low/high), not a single
+# flat multiplier applied identically to every ticker. Gemini may also
+# propose its own specific stop_loss/take_profit price per trade (see
+# decide.py's prompt/schema) if it identifies a better level -- those are
+# sanity-clamped against the multipliers below so a bad Gemini suggestion
+# can't set an absurdly tight or absurdly wide stop.
+#
+# ATR (Average True Range) is still used as the sanity-bound unit AND as
+# the fallback if swing-based levels can't be computed (e.g. insufficient
+# history) -- it measures how much a stock typically moves per day, in
+# its own price terms, so the bound scales per-ticker automatically.
 ATR_PERIOD = 14
+ATR_STOP_MULTIPLIER = 2.5          # fallback stop-loss = entry price - (2.5 x ATR), if no swing data available
+ATR_TAKE_PROFIT_MULTIPLIER = 4.0   # fallback take-profit = entry price + (4.0 x ATR), if no swing data available
+
+SWING_LOOKBACK_DAYS = 10           # how many recent daily bars define "the chart's" swing low/high
+MIN_STOP_DISTANCE_ATR_MULT = 1.0   # a stop can never be tighter than this many ATRs from entry (avoids noise stopouts)
+MAX_STOP_DISTANCE_ATR_MULT = 5.0   # a stop can never be further than this many ATRs from entry (avoids runaway risk)
+MIN_TAKE_PROFIT_DISTANCE_ATR_MULT = 1.5
+MAX_TAKE_PROFIT_DISTANCE_ATR_MULT = 8.0
+
+# Whether Gemini-proposed custom stop_loss/take_profit prices (see
+# decide.py) are honored at all. If False, every position always gets the
+# system-computed swing/ATR-based default regardless of what Gemini asks
+# for -- useful if you ever want to fully remove Gemini's influence over
+# exit levels while still letting it pick entries.
+ALLOW_GEMINI_CUSTOM_EXITS = os.environ.get("ALLOW_GEMINI_CUSTOM_EXITS", "true").lower() == "true"
+
+# --- Intraday analysis ---
+# In addition to the existing daily-bar analysis, each ticker also gets a
+# short-term intraday read (RSI, momentum, trend, VWAP deviation) computed
+# from recent 5-minute bars. This gives the bot day-trading-relevant
+# context (e.g. "up on the daily chart AND showing intraday momentum right
+# now") instead of relying on daily bars alone, which can be a day stale
+# on timing.
+#
+# CAVEAT: this roughly DOUBLES the number of Alpaca market-data API calls
+# per run (one extra fetch per ticker). If you notice run slowdowns or
+# GitHub Actions workflow timeouts after enabling this, either disable it
+# here, shrink WATCHLIST, or increase `timeout-minutes` in
+# .github/workflows/run-bot.yml.
+ENABLE_INTRADAY_ANALYSIS = os.environ.get("ENABLE_INTRADAY_ANALYSIS", "true").lower() == "true"
+INTRADAY_BAR_MINUTES = int(os.environ.get("INTRADAY_BAR_MINUTES", 5))
+INTRADAY_LOOKBACK_DAYS = int(os.environ.get("INTRADAY_LOOKBACK_DAYS", 2))
 
 # --- Cooldown & dedup ---
 TRADE_COOLDOWN_MINUTES = 30      # don't re-trade the same ticker within this window
 # NOTE: this cooldown applies to Gemini-proposed trades only. Forced risk-management
-# exits (ATR stop-loss / take-profit) deliberately ignore it -- see
+# exits (stop-loss / take-profit) deliberately ignore it -- see
 # check_atr_stop_take_profit() in trader.py.
 NEWS_DEDUP_MAX_AGE_HOURS = 48    # forget "already seen" articles older than this
 
@@ -105,20 +144,13 @@ NEWS_DEDUP_MAX_AGE_HOURS = 48    # forget "already seen" articles older than thi
 # Each model below has its OWN independent free-tier daily quota (RPD) --
 # they do NOT share a pool. Using all three in rotation therefore gives a
 # combined effective daily budget of ~60 calls/day instead of ~20/day for
-# a single model, which is why this list stays at three models rather
-# than one. Order matters: earlier entries are preferred when multiple
-# still have quota remaining this run (gemini-2.5-flash-lite has the best
-# RPM headroom, so it's tried first).
+# a single model. Order matters: earlier entries are preferred when
+# multiple still have quota remaining this run.
 #
 # CONFIRMED limits as of your last dashboard check (https://ai.dev/rate-limit):
 #   gemini-2.5-flash-lite : 10 RPM, 20 RPD
 #   gemini-2.5-flash      :  5 RPM, 20 RPD
 #   gemini-flash-latest   :  5 RPM, 20 RPD  (currently resolves to gemini-3.6-flash)
-# TPM (250K for all three) is not tracked -- it's far too large to ever
-# bind given this bot's prompt sizes; RPD/RPM are the real constraints.
-#
-# gemini-2.0-flash and gemini-2.0-flash-lite are deliberately NOT included
-# -- your account's confirmed free-tier quota for both is 0.
 #
 # decide.py also self-corrects: if Google's actual 429 response ever
 # reports a different real quotaValue than what's configured here, that
@@ -151,13 +183,6 @@ GEMINI_MODEL_LIMITS = {
 # sync with the actual quota refill.
 GEMINI_QUOTA_RESET_TIMEZONE = "America/Los_Angeles"
 
-# With a combined daily budget this small (~60 calls across all models),
-# restricting Gemini calls to actual market hours means every call goes
-# toward a decision that can act immediately, rather than one sitting
-# stale overnight. Set to "false" via env var to spread calls across the
-# full 24 hours instead.
-GEMINI_ONLY_DURING_MARKET_HOURS = os.environ.get("GEMINI_ONLY_DURING_MARKET_HOURS", "true").lower() == "true"
-
 # 150 calendar days ~= 103 trading days. Must comfortably exceed 50 so SMA-50
 # and classify_trend() actually resolve, plus warm-up room for ADX-14.
 PRICE_HISTORY_DAYS = 150
@@ -183,3 +208,11 @@ REGIME_POSITION_MULTIPLIERS = {
 # holdings are never filtered this way -- a bad score on something you own
 # is a reason to consider exiting, not a reason to hide it from review.
 MIN_SIGNAL_SCORE_TO_CONSIDER = 55
+
+# --- Pure-technical fallback (when a Gemini call is throttled) ---
+# When the Gemini quota-spacing gate blocks a call, a pure-technical
+# decision engine generates trade ideas based on indicators + quant score
+# alone (including the chart-based swing levels and intraday context
+# above), so the bot keeps trading every run even between Gemini calls.
+TECHNICAL_MIN_CONVICTION = int(os.environ.get("TECHNICAL_MIN_CONVICTION", 5))
+TECHNICAL_CONVICTION_AGGRESSIVENESS = float(os.environ.get("TECHNICAL_CONVICTION_AGGRESSIVENESS", 0.8))
