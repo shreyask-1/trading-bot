@@ -101,27 +101,62 @@ TRADE_COOLDOWN_MINUTES = 30      # don't re-trade the same ticker within this wi
 # check_atr_stop_take_profit() in trader.py.
 NEWS_DEDUP_MAX_AGE_HOURS = 48    # forget "already seen" articles older than this
 
-# --- Model ---
-# Google periodically deprecates/restricts specific model IDs, sometimes
-# without much warning (e.g. "no longer available to new users"). A strict
-# pin is the right default -- it keeps behavior stable and detects drift --
-# but a pin that 404s stops the bot dead. decide.py tries GEMINI_MODEL
-# first, then falls through GEMINI_MODEL_FALLBACKS in order, and logs
-# loudly if it had to use a fallback. If you see that log line, update
-# GEMINI_MODEL to whatever it fell back to.
+# --- Model & quota (CONFIRMED live from https://ai.dev/rate-limit) ---
+# Each model below has its OWN independent free-tier daily quota (RPD) --
+# they do NOT share a pool. Using all three in rotation therefore gives a
+# combined effective daily budget of ~60 calls/day instead of ~20/day for
+# a single model, which is why this list stays at three models rather
+# than one. Order matters: earlier entries are preferred when multiple
+# still have quota remaining this run (gemini-2.5-flash-lite has the best
+# RPM headroom, so it's tried first).
 #
-# Flash-Lite is the default because it has a MUCH higher free-tier daily
-# quota (RPD) than standard Flash or Pro -- directly relevant since the
-# whole point of the settings below is maximizing calls per day.
-GEMINI_MODEL = os.environ.get("GEMINI_MODEL", "gemini-2.5-flash-lite")
+# CONFIRMED limits as of your last dashboard check (https://ai.dev/rate-limit):
+#   gemini-2.5-flash-lite : 10 RPM, 20 RPD
+#   gemini-2.5-flash      :  5 RPM, 20 RPD
+#   gemini-flash-latest   :  5 RPM, 20 RPD  (currently resolves to gemini-3.6-flash)
+# TPM (250K for all three) is not tracked -- it's far too large to ever
+# bind given this bot's prompt sizes; RPD/RPM are the real constraints.
+#
+# gemini-2.0-flash and gemini-2.0-flash-lite are deliberately NOT included
+# -- your account's confirmed free-tier quota for both is 0.
+#
+# decide.py also self-corrects: if Google's actual 429 response ever
+# reports a different real quotaValue than what's configured here, that
+# real number is parsed out and adopted automatically for the rest of the
+# day, so these defaults staying slightly stale over time isn't fatal.
 GEMINI_MODEL_FALLBACKS = [
-    GEMINI_MODEL,
     "gemini-2.5-flash-lite",
-    "gemini-2.0-flash-lite",
     "gemini-2.5-flash",
     "gemini-flash-latest",
-    "gemini-2.0-flash",
 ]
+GEMINI_MODEL = os.environ.get("GEMINI_MODEL", GEMINI_MODEL_FALLBACKS[0])
+
+GEMINI_MODEL_LIMITS = {
+    "gemini-2.5-flash-lite": {
+        "rpd": int(os.environ.get("GEMINI_RPD_25_FLASH_LITE", 20)),
+        "rpm": int(os.environ.get("GEMINI_RPM_25_FLASH_LITE", 10)),
+    },
+    "gemini-2.5-flash": {
+        "rpd": int(os.environ.get("GEMINI_RPD_25_FLASH", 20)),
+        "rpm": int(os.environ.get("GEMINI_RPM_25_FLASH", 5)),
+    },
+    "gemini-flash-latest": {
+        "rpd": int(os.environ.get("GEMINI_RPD_FLASH_LATEST", 20)),
+        "rpm": int(os.environ.get("GEMINI_RPM_FLASH_LATEST", 5)),
+    },
+}
+
+# Google resets daily API quotas at midnight Pacific Time (not UTC, not
+# your local time) -- used so each model's daily counter rolls over in
+# sync with the actual quota refill.
+GEMINI_QUOTA_RESET_TIMEZONE = "America/Los_Angeles"
+
+# With a combined daily budget this small (~60 calls across all models),
+# restricting Gemini calls to actual market hours means every call goes
+# toward a decision that can act immediately, rather than one sitting
+# stale overnight. Set to "false" via env var to spread calls across the
+# full 24 hours instead.
+GEMINI_ONLY_DURING_MARKET_HOURS = os.environ.get("GEMINI_ONLY_DURING_MARKET_HOURS", "true").lower() == "true"
 
 # 150 calendar days ~= 103 trading days. Must comfortably exceed 50 so SMA-50
 # and classify_trend() actually resolve, plus warm-up room for ADX-14.
@@ -148,23 +183,3 @@ REGIME_POSITION_MULTIPLIERS = {
 # holdings are never filtered this way -- a bad score on something you own
 # is a reason to consider exiting, not a reason to hide it from review.
 MIN_SIGNAL_SCORE_TO_CONSIDER = 55
-
-# --- Gemini daily-quota maximizer ---
-# Your scheduler fires very often (e.g. every ~2 minutes, ~720 potential
-# runs/day). Gemini's free tier resets daily, not per-minute, so the goal
-# isn't to slow the bot down -- it's to spend AS MANY of the day's allowed
-# calls as possible, spread EVENLY across the full day, so the bot keeps
-# making fresh decisions all day instead of exhausting the quota in the
-# first couple hours and then going silent for the rest.
-#
-# Set this to (comfortably under) your model's current free-tier RPD limit.
-# Check the live numbers at https://ai.google.dev/gemini-api/docs/rate-limits
-# -- Google changes these periodically. 300/day is a safe conservative
-# default; raise it via the env var below once you've confirmed your
-# model/tier supports more, with no code change needed.
-GEMINI_MAX_CALLS_PER_DAY = int(os.environ.get("GEMINI_MAX_CALLS_PER_DAY", 300))
-
-# Google resets daily API quotas at midnight Pacific Time (not UTC, not
-# your local time) -- this is used only so the day's call counter rolls
-# over in sync with the actual quota refill.
-GEMINI_QUOTA_RESET_TIMEZONE = "America/Los_Angeles"
