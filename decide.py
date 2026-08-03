@@ -9,12 +9,18 @@ via prompt instruction alone. Asks for a conviction score (1-10) on every
 surviving trade idea, which trader.py uses to scale position size (and,
 for exceptional conviction, how much of the cash reserve it may touch).
 
-IMPORTANT: actual calls to the Gemini API are metered against
-GEMINI_MAX_CALLS_PER_DAY (config.py) and spread EVENLY across each quota
-day (which resets at midnight Pacific Time, matching Google's own reset).
-This lets the bot's scheduler fire as often as it wants (e.g. every 2 min)
-while still maximizing total daily Gemini usage without blowing the free
-tier or front-loading all the calls into the first hour of the day.
+IMPORTANT -- quota management: each model in GEMINI_MODEL_FALLBACKS
+(config.py) has its OWN independent daily (RPD) and per-minute (RPM) free
+tier quota -- confirmed directly from the account's own rate-limit
+dashboard, not guessed. This file tracks usage separately per model,
+rotates through them in the configured priority order, and spreads calls
+evenly across the day (or across remaining market hours, if
+GEMINI_ONLY_DURING_MARKET_HOURS is on) to use as much of the combined
+daily budget as possible without tripping any single model's real limit.
+If Google's live response ever reports a different real quotaValue than
+what's configured, that number is parsed out and adopted automatically
+for the rest of the day, so the bot self-corrects if the confirmed
+numbers ever drift.
 """
 
 import json
@@ -27,15 +33,18 @@ from google import genai
 from google.genai import types
 
 from config import (
-    GEMINI_API_KEY, GEMINI_MODEL, GEMINI_MODEL_FALLBACKS,
-    GEMINI_MAX_CALLS_PER_DAY, GEMINI_QUOTA_RESET_TIMEZONE,
+    GEMINI_API_KEY, GEMINI_MODEL, GEMINI_MODEL_FALLBACKS, GEMINI_MODEL_LIMITS,
+    GEMINI_QUOTA_RESET_TIMEZONE, GEMINI_ONLY_DURING_MARKET_HOURS,
     MAX_POSITION_PCT, MIN_CONVICTION_TO_TRADE,
     WATCHLIST, ATR_STOP_MULTIPLIER, ATR_TAKE_PROFIT_MULTIPLIER,
     MIN_SIGNAL_SCORE_TO_CONSIDER, REGIME_POSITION_MULTIPLIERS,
     EXCEPTIONAL_CONVICTION_THRESHOLD, CONSOLIDATION_SCORE_THRESHOLD,
     MAX_OPEN_POSITIONS,
 )
-from trader import get_full_indicators, get_tickers_with_open_orders, get_tickers_on_cooldown
+from trader import (
+    get_full_indicators, get_tickers_with_open_orders, get_tickers_on_cooldown,
+    is_market_open,
+)
 from signal_score import calculate_signal_score
 
 _client = genai.Client(api_key=GEMINI_API_KEY)
@@ -232,7 +241,7 @@ def build_watchlist_block(scored, unavailable, min_score):
 
 
 # ============================================================
-# Daily-quota-maximizing throttle
+# Per-model quota tracking (RPD + RPM, confirmed from live dashboard)
 # ============================================================
 
 def _quota_day_now():
@@ -246,19 +255,43 @@ def _seconds_until_next_quota_day():
     return max((next_midnight - now_local).total_seconds(), 1)
 
 
+def _default_model_state():
+    return {"count": 0, "recent_calls": [], "exhausted": False}
+
+
+def _default_tracker():
+    return {
+        "date": _quota_day_now(),
+        "last_call": None,  # ISO timestamp (UTC) of the last successful call, any model
+        "models": {name: _default_model_state() for name in GEMINI_MODEL_FALLBACKS},
+        # Real limits learned from an actual 429 response override the
+        # config.py defaults for the rest of the day. Persists across the
+        # day-rollover below since it's a fact about the account, not
+        # something that resets daily.
+        "confirmed_limits": {},  # e.g. {"gemini-2.5-flash": {"rpd": 20, "rpm": 5}}
+    }
+
+
 def _load_tracker():
-    default = {"date": _quota_day_now(), "count": 0, "last_call": None}
     if not os.path.exists(_CALL_TRACKER_FILE):
-        return default
+        return _default_tracker()
     try:
         with open(_CALL_TRACKER_FILE) as f:
             data = json.load(f)
     except (json.JSONDecodeError, OSError):
-        return default
+        return _default_tracker()
+
+    confirmed = data.get("confirmed_limits", {})
     if data.get("date") != _quota_day_now():
-        return default  # new quota day -- counter rolls over
-    data.setdefault("count", 0)
+        fresh = _default_tracker()
+        fresh["confirmed_limits"] = confirmed  # keep learned facts across day rollover
+        return fresh
+
     data.setdefault("last_call", None)
+    data.setdefault("models", {})
+    data.setdefault("confirmed_limits", {})
+    for name in GEMINI_MODEL_FALLBACKS:
+        data["models"].setdefault(name, _default_model_state())
     return data
 
 
@@ -268,23 +301,72 @@ def _save_tracker(data):
         json.dump(data, f)
 
 
-def _should_call_gemini(tracker):
-    """
-    Decides whether THIS run should spend one of today's Gemini calls.
+def _effective_limits(tracker, model_name):
+    """Real learned limits (from an actual 429) override the config.py defaults."""
+    learned = tracker["confirmed_limits"].get(model_name, {})
+    configured = GEMINI_MODEL_LIMITS.get(model_name, {"rpd": 20, "rpm": 5})
+    return {
+        "rpd": learned.get("rpd", configured["rpd"]),
+        "rpm": learned.get("rpm", configured["rpm"]),
+    }
 
-    Two rules, in order:
-      1. Hard cap: never exceed GEMINI_MAX_CALLS_PER_DAY calls within a
-         single quota day (resets at midnight Pacific).
-      2. Even spacing: given however many calls remain in today's budget
-         and however much time is left before the quota resets, calculate
-         the minimum gap needed to spread the REMAINING calls evenly across
-         the REMAINING time. This is what maximizes total daily usage without
-         front-loading everything into the first hour and then going quiet.
 
-    Returns (should_call: bool, reason_if_not: str or None).
+def _prune_recent_calls(recent_calls):
+    now = datetime.now(pytz.utc)
+    cutoff = now - timedelta(seconds=60)
+    kept = []
+    for ts in recent_calls:
+        try:
+            if datetime.fromisoformat(ts) > cutoff:
+                kept.append(ts)
+        except ValueError:
+            continue
+    return kept
+
+
+def _remaining_rpd(tracker, model_name):
+    state = tracker["models"][model_name]
+    if state["exhausted"]:
+        return 0
+    limit = _effective_limits(tracker, model_name)["rpd"]
+    return max(0, limit - state["count"])
+
+
+def _has_rpm_room(tracker, model_name):
+    state = tracker["models"][model_name]
+    state["recent_calls"] = _prune_recent_calls(state["recent_calls"])
+    limit = _effective_limits(tracker, model_name)["rpm"]
+    return len(state["recent_calls"]) < limit
+
+
+def _total_remaining(tracker):
+    return sum(_remaining_rpd(tracker, name) for name in GEMINI_MODEL_FALLBACKS)
+
+
+def _extract_quota_value(error_str, marker):
     """
-    if tracker["count"] >= GEMINI_MAX_CALLS_PER_DAY:
-        return False, f"daily Gemini call limit reached ({GEMINI_MAX_CALLS_PER_DAY}/day) for today's quota window"
+    Parses the REAL quota number straight out of Google's own 429 error
+    body for the given marker (e.g. "PerDay" or "PerMinute"). Best-effort
+    text parsing since the SDK only exposes this as a stringified error.
+    """
+    pattern = rf"'quotaId':\s*'[^']*{marker}[^']*'.*?'quotaValue':\s*'(\d+)'"
+    match = re.search(pattern, error_str, re.DOTALL)
+    return int(match.group(1)) if match else None
+
+
+def _is_daily_quota_error(error_str):
+    return "PerDay" in error_str or "GenerateRequestsPerDayPerProjectPerModel" in error_str
+
+
+def _should_attempt_call(tracker):
+    """
+    Even-spacing gate across the COMBINED remaining budget of every
+    non-exhausted model, so the bot uses as much of the real ~60/day total
+    as possible without front-loading it all into the first hour.
+    """
+    total_remaining = _total_remaining(tracker)
+    if total_remaining <= 0:
+        return False, "all configured models have exhausted their daily free-tier quota"
 
     if tracker["last_call"] is None:
         return True, None
@@ -292,32 +374,34 @@ def _should_call_gemini(tracker):
     try:
         last_call = datetime.fromisoformat(tracker["last_call"])
     except (ValueError, TypeError):
-        return True, None  # corrupted timestamp -- fail open, allow the call
+        return True, None
 
-    calls_remaining = GEMINI_MAX_CALLS_PER_DAY - tracker["count"]
-    seconds_left_in_day = _seconds_until_next_quota_day()
-    min_gap_seconds = seconds_left_in_day / max(calls_remaining, 1)
-
+    seconds_left = _seconds_until_next_quota_day()
+    min_gap_seconds = seconds_left / total_remaining
     elapsed = (datetime.now(pytz.utc) - last_call).total_seconds()
+
     if elapsed < min_gap_seconds:
         return False, (
-            f"spacing calls evenly across the day: {elapsed:.0f}s since last call, "
-            f"need {min_gap_seconds:.0f}s ({calls_remaining} call(s) left of "
-            f"{GEMINI_MAX_CALLS_PER_DAY}/day budget)"
+            f"spacing calls evenly across remaining budget: {elapsed:.0f}s since last call, "
+            f"need {min_gap_seconds:.0f}s ({total_remaining} call(s) left today across all models)"
         )
     return True, None
 
 
-def _generate_with_fallback(prompt):
+def _generate_with_rotation(prompt, tracker):
     """
-    Tries GEMINI_MODEL_FALLBACKS in order until one succeeds.
+    Tries each model in GEMINI_MODEL_FALLBACKS order that still has RPD
+    remaining AND has RPM room in the last 60s. On a genuine daily-quota
+    429, marks that model exhausted and moves to the next. Also parses
+    real quotaValue numbers out of any 429 and adopts them going forward.
     """
-    tried = []
     last_error = None
     for model_name in GEMINI_MODEL_FALLBACKS:
-        if model_name in tried:
+        if _remaining_rpd(tracker, model_name) <= 0:
             continue
-        tried.append(model_name)
+        if not _has_rpm_room(tracker, model_name):
+            continue
+
         try:
             response = _client.models.generate_content(
                 model=model_name,
@@ -328,18 +412,36 @@ def _generate_with_fallback(prompt):
                     response_schema=_RESPONSE_SCHEMA,
                 ),
             )
+            now_iso = datetime.now(pytz.utc).isoformat()
+            tracker["models"][model_name]["count"] += 1
+            tracker["models"][model_name]["recent_calls"].append(now_iso)
+            tracker["last_call"] = now_iso
+            tracker["date"] = _quota_day_now()
             if model_name != GEMINI_MODEL:
-                print(
-                    f"NOTE: configured GEMINI_MODEL '{GEMINI_MODEL}' failed; used fallback "
-                    f"'{model_name}' instead for this run. Update GEMINI_MODEL in config.py "
-                    f"(or the GEMINI_MODEL env var) to '{model_name}' to stop seeing this."
-                )
+                print(f"NOTE: used '{model_name}' this run (rotation/fallback), not the default '{GEMINI_MODEL}'.")
             return response
         except Exception as e:
+            error_str = str(e)
             last_error = e
-            print(f"Gemini model '{model_name}' failed: {e}")
+
+            real_rpd = _extract_quota_value(error_str, "PerDay")
+            real_rpm = _extract_quota_value(error_str, "PerMinute")
+            if real_rpd is not None or real_rpm is not None:
+                learned = tracker["confirmed_limits"].setdefault(model_name, {})
+                if real_rpd is not None:
+                    learned["rpd"] = real_rpd
+                if real_rpm is not None:
+                    learned["rpm"] = real_rpm
+                print(f"Learned real quota for '{model_name}' from Google's response: {learned}. Adopting it.")
+
+            if _is_daily_quota_error(error_str):
+                tracker["models"][model_name]["exhausted"] = True
+                print(f"Model '{model_name}' hit its daily free-tier quota -- marking exhausted until quota reset.")
+            else:
+                print(f"Gemini model '{model_name}' failed (not a daily-quota error, will retry it next run): {e}")
             continue
-    raise last_error if last_error else RuntimeError("No Gemini models configured.")
+
+    raise last_error if last_error else RuntimeError("No Gemini models had remaining quota.")
 
 
 def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL"):
@@ -365,6 +467,7 @@ def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL"):
     scored_watchlist = _score_candidates(watchlist_tickers)
 
     tracker = _load_tracker()
+    calls_today = sum(tracker["models"][m]["count"] for m in GEMINI_MODEL_FALLBACKS)
 
     meta = {
         "candidates_considered": len(scored_news) + len(scored_watchlist),
@@ -373,10 +476,15 @@ def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL"):
             if info["score"] >= MIN_SIGNAL_SCORE_TO_CONSIDER
         ),
         "throttled": False,
-        "gemini_calls_today": tracker["count"],
+        "gemini_calls_today": calls_today,
     }
 
-    should_call, reason = _should_call_gemini(tracker)
+    if GEMINI_ONLY_DURING_MARKET_HOURS and not is_market_open():
+        print("Skipping Gemini call this run: market is closed and GEMINI_ONLY_DURING_MARKET_HOURS is enabled.")
+        meta["throttled"] = True
+        return [], meta
+
+    should_call, reason = _should_attempt_call(tracker)
     if not should_call:
         print(f"Skipping Gemini call this run: {reason}")
         meta["throttled"] = True
@@ -399,16 +507,13 @@ def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL"):
     )
 
     try:
-        response = _generate_with_fallback(prompt)
-        # Only counts against today's budget on an actual successful call --
-        # a failed call shouldn't burn a slot we never got value from.
-        tracker["count"] += 1
-        tracker["last_call"] = datetime.now(pytz.utc).isoformat()
-        tracker["date"] = _quota_day_now()
+        response = _generate_with_rotation(prompt, tracker)
         _save_tracker(tracker)
-        meta["gemini_calls_today"] = tracker["count"]
+        meta["gemini_calls_today"] = sum(tracker["models"][m]["count"] for m in GEMINI_MODEL_FALLBACKS)
     except Exception as e:
-        print(f"Gemini call failed on all configured models: {e}")
+        _save_tracker(tracker)  # persist any exhaustion/learned-limit flags either way
+        print(f"Gemini call failed on all models with remaining quota: {e}")
+        meta["throttled"] = True
         return [], meta
 
     raw_text = (response.text or "").strip()
