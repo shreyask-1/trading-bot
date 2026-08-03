@@ -5844,3 +5844,15 @@ Gemini proposed 1 trade(s) meeting the conviction bar.
   -> {"timestamp": "2026-08-03T19:14:34.932397", "ticker": "GOOGL", "action": "buy", "qty": 12.0043, "conviction": 8, "size_multiplier": 1.0, "order_id": "a4d4f6ff-266d-4a82-82d1-fa661d8e4fad", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Strong intraday momentum (+3.39%) in an intraday uptrend, supported by positive daily MACD histogram and above-average relative volume (+10.2%).", "status": "submitted"}
 Ending portfolio value: $99,604.76
 
+=== Run at 2026-08-03T19:16:36.050251 ===
+Current time: 2026-08-03 03:16 PM EDT | Market open (per Alpaca): True
+Account value: $99,653.11
+Cash: $10,123.38 | Holdings (10): {'AVGO': '12.7841 sh (+0.10%)', 'BALL': '183.8495 sh (+1.03%)', 'GOOGL': '12.0043 sh (-0.04%)', 'HON': '48.6276 sh (+1.56%)', 'J': '88.5024 sh (+2.43%)', 'LMT': '17.6119 sh (+1.45%)', 'MA': '20.8727 sh (+0.48%)', 'MSFT': '12.2431 sh (-0.31%)', 'V': '13.6489 sh (+0.07%)', 'XOM': '67.3509 sh (+0.06%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 7/14 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+  -> {"ticker": "BALL", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,982.66 kept uninvested of $4,982.66 normal reserve, $10,123.38 cash on hand)"}
+  -> {"ticker": "MA", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,982.66 kept uninvested of $4,982.66 normal reserve, $10,123.38 cash on hand)"}
+Ending portfolio value: $99,645.87
+
