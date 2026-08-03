@@ -5525,3 +5525,15 @@ Gemini proposed 2 trade(s) meeting the conviction bar.
   -> {"ticker": "XOM", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,970.97 kept uninvested of $4,970.97 normal reserve, $25,634.24 cash on hand)"}
 Ending portfolio value: $99,423.32
 
+=== Run at 2026-08-03T18:20:34.416713 ===
+Current time: 2026-08-03 02:20 PM EDT | Market open (per Alpaca): True
+Account value: $99,463.15
+Cash: $25,634.24 | Holdings (9): {'AAPL': '16.3241 sh (-0.02%)', 'BALL': '183.8495 sh (+0.47%)', 'GOOGL': '0.0119 sh (-0.37%)', 'HON': '48.6276 sh (+0.82%)', 'J': '88.5024 sh (+2.44%)', 'LMT': '17.6119 sh (+0.79%)', 'MA': '20.8727 sh (+0.45%)', 'MSFT': '0.0057 sh (+0.20%)', 'XOM': '67.3509 sh (+0.13%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 8/15 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+  -> {"timestamp": "2026-08-03T18:20:56.277373", "ticker": "MSFT", "action": "sell", "qty": 0.0057, "conviction": 7, "size_multiplier": 1.0, "order_id": "3e1515a5-f5ff-45bd-a9a8-3d912a6670cd", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Daily RSI is heavily overbought at 78.76 with Stochastic %K at 98.53 and BB %B at 1.25. Exiting residual position to lock in gains and clean portfolio.", "status": "submitted"}
+  -> {"timestamp": "2026-08-03T18:20:56.591357", "ticker": "AVGO", "action": "buy", "qty": 12.7841, "conviction": 7, "size_multiplier": 1.0, "order_id": "c12c7995-a4dd-405b-8c27-a14139e43daf", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Strong intraday momentum (+1.97%) supported by intraday uptrend and VWAP deviation (+1.80%). Daily RSI at 52.3 leaves plenty of upside room with rising daily volume trend.", "status": "submitted"}
+Ending portfolio value: $99,460.30
+
