@@ -8895,3 +8895,18 @@ Gemini proposed 5 trade(s) meeting the conviction bar.
   -> {"ticker": "DIS", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,982.89 kept uninvested of $4,982.89 normal reserve, $24,136.99 cash on hand)"}
 Ending portfolio value: $99,652.31
 
+=== Run at 2026-08-04T18:50:36.290514 ===
+Current time: 2026-08-04 02:50 PM EDT | Market open (per Alpaca): True
+Account value: $99,627.65
+Cash: $24,136.99 | Holdings (9): {'AMZN': '26.7022 sh (-0.12%)', 'AVGO': '12.0119 sh (+5.71%)', 'HON': '48.6276 sh (+2.70%)', 'J': '88.5024 sh (+5.74%)', 'LMT': '12.4928 sh (+2.29%)', 'MA': '20.9251 sh (-0.15%)', 'NFLX': '47.736 sh (+0.28%)', 'NVDA': '16.5728 sh (+0.79%)', 'XOM': '77.0147 sh (+0.22%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 9/14 candidates passed.
+Gemini proposed 5 trade(s) meeting the conviction bar.
+  -> {"ticker": "J", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,981.38 kept uninvested of $4,981.38 normal reserve, $24,136.99 cash on hand)"}
+  -> {"ticker": "V", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,981.38 kept uninvested of $4,981.38 normal reserve, $24,136.99 cash on hand)"}
+  -> {"ticker": "HD", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,981.38 kept uninvested of $4,981.38 normal reserve, $24,136.99 cash on hand)"}
+  -> {"ticker": "COST", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,981.38 kept uninvested of $4,981.38 normal reserve, $24,136.99 cash on hand)"}
+  -> {"ticker": "DIS", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,981.38 kept uninvested of $4,981.38 normal reserve, $24,136.99 cash on hand)"}
+Ending portfolio value: $99,626.61
+
