@@ -6940,3 +6940,14 @@ Gemini proposed 3 trade(s) meeting the conviction bar.
   -> {"timestamp": "2026-08-04T13:44:48.523317", "ticker": "NVDA", "action": "buy", "qty": 16.5728, "conviction": 7, "size_multiplier": 1.0, "order_id": "33c445cb-d597-48bc-a9a0-501419818fef", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Intraday momentum surge (+6.47%) with strong intraday uptrend breaking toward 10-day swing high.", "status": "submitted"}
 Ending portfolio value: $98,382.99
 
+=== Run at 2026-08-04T13:46:32.236022 ===
+Current time: 2026-08-04 09:46 AM EDT | Market open (per Alpaca): True
+Account value: $98,429.44
+Cash: $17,627.32 | Holdings (12): {'AMZN': '26.7022 sh (-0.25%)', 'AVGO': '12.0119 sh (+3.17%)', 'BAC': '56.009 sh (+0.13%)', 'GOOGL': '0.0006 sh (-0.43%)', 'HON': '48.6276 sh (+1.14%)', 'J': '88.5024 sh (+3.11%)', 'LMT': '12.4928 sh (+0.65%)', 'MA': '20.9251 sh (-0.91%)', 'NFLX': '47.736 sh (+0.04%)', 'NVDA': '16.5728 sh (+0.31%)', 'PFE': '119.7844 sh (+0.08%)', 'XOM': '77.0147 sh (-2.54%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 5/12 candidates passed.
+Gemini proposed 1 trade(s) meeting the conviction bar.
+  -> {"ticker": "XOM", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,921.47 kept uninvested of $4,921.47 normal reserve, $17,627.32 cash on hand)"}
+Ending portfolio value: $98,421.80
+
