@@ -9101,3 +9101,20 @@ Gemini proposed 6 trade(s) meeting the conviction bar.
   -> {"ticker": "DIS", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,984.70 kept uninvested of $4,984.70 normal reserve, $24,136.99 cash on hand)"}
 Ending portfolio value: $99,702.18
 
+=== Run at 2026-08-04T19:16:34.897195 ===
+Current time: 2026-08-04 03:16 PM EDT | Market open (per Alpaca): True
+Account value: $99,704.76
+Cash: $24,136.99 | Holdings (9): {'AMZN': '26.7022 sh (+0.08%)', 'AVGO': '12.0119 sh (+5.91%)', 'HON': '48.6276 sh (+2.85%)', 'J': '88.5024 sh (+5.95%)', 'LMT': '12.4928 sh (+2.16%)', 'MA': '20.9251 sh (-0.06%)', 'NFLX': '47.736 sh (+0.73%)', 'NVDA': '16.5728 sh (+0.76%)', 'XOM': '77.0147 sh (+0.18%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 9/14 candidates passed.
+Gemini proposed 7 trade(s) meeting the conviction bar.
+  -> {"ticker": "J", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,985.24 kept uninvested of $4,985.24 normal reserve, $24,136.99 cash on hand)"}
+  -> {"ticker": "MA", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,985.24 kept uninvested of $4,985.24 normal reserve, $24,136.99 cash on hand)"}
+  -> {"ticker": "JPM", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,985.24 kept uninvested of $4,985.24 normal reserve, $24,136.99 cash on hand)"}
+  -> {"ticker": "V", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,985.24 kept uninvested of $4,985.24 normal reserve, $24,136.99 cash on hand)"}
+  -> {"ticker": "HD", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,985.24 kept uninvested of $4,985.24 normal reserve, $24,136.99 cash on hand)"}
+  -> {"ticker": "COST", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,985.24 kept uninvested of $4,985.24 normal reserve, $24,136.99 cash on hand)"}
+  -> {"ticker": "DIS", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,985.24 kept uninvested of $4,985.24 normal reserve, $24,136.99 cash on hand)"}
+Ending portfolio value: $99,711.58
+
