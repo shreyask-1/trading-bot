@@ -3816,3 +3816,17 @@ Gemini proposed 8 trade(s) meeting the conviction bar.
   -> {"ticker": "DIS", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,976.18 kept uninvested of $4,976.18 normal reserve, $10,123.38 cash on hand)"}
 Ending portfolio value: $99,523.69
 
+=== Run at 2026-08-04T07:00:33.585965 ===
+Current time: 2026-08-04 03:00 AM EDT | Market open (per Alpaca): False
+Account value: $99,520.78
+Cash: $10,123.38 | Holdings (10): {'AVGO': '12.7841 sh (+0.56%)', 'BALL': '183.8495 sh (+0.38%)', 'GOOGL': '12.0043 sh (-0.71%)', 'HON': '48.6276 sh (+1.79%)', 'J': '88.5024 sh (+2.36%)', 'LMT': '17.6119 sh (+1.57%)', 'MA': '20.8727 sh (-0.05%)', 'MSFT': '12.2431 sh (-1.22%)', 'V': '13.6489 sh (+0.05%)', 'XOM': '67.3509 sh (+0.46%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 8/14 candidates passed.
+Gemini proposed 4 trade(s) meeting the conviction bar.
+  -> {"timestamp": "2026-08-04T07:00:54.243219", "ticker": "V", "action": "sell", "qty": 13.6489, "conviction": 7, "size_multiplier": 1.0, "order_id": "9435c274-86f0-4306-b4de-ba30c19513e5", "order_status": "OrderStatus.ACCEPTED", "reasoning": "Lowest quant score in portfolio (55/100) with negative MACD histogram, low relative volume (-42.6%), and negative intraday momentum (-1.51%). Reallocating capital to stronger setups.", "status": "submitted"}
+  -> {"timestamp": "2026-08-04T07:00:54.397022", "ticker": "AVGO", "action": "buy", "qty": 10.1958, "conviction": 8, "size_multiplier": 1.0, "order_id": "fa7b78ae-da78-4267-8ab3-1291b0a89af6", "order_status": "OrderStatus.ACCEPTED", "reasoning": "Strong intraday momentum (+2.23%) and VWAP deviation (+1.52%) backed by increasing daily volume and positive MACD histogram in a bullish market regime.", "status": "submitted"}
+  -> {"ticker": "MA", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,976.11 kept uninvested of $4,976.11 normal reserve, $10,123.38 cash on hand)"}
+  -> {"timestamp": "2026-08-04T07:00:54.570511", "ticker": "XOM", "action": "buy", "qty": 9.6638, "conviction": 8, "size_multiplier": 1.0, "order_id": "1e7d5305-6095-4bab-bbfd-b865dd29cc0a", "order_status": "OrderStatus.ACCEPTED", "reasoning": "Highest quant score in portfolio (85/100) with solid daily uptrend, positive relative volume (+24.1%), and positive intraday momentum (+1.12%).", "status": "submitted"}
+Ending portfolio value: $99,522.23
+
