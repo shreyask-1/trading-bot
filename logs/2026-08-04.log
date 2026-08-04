@@ -6927,3 +6927,16 @@ Gemini proposed 1 trade(s) meeting the conviction bar.
   -> {"ticker": "XOM", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,920.49 kept uninvested of $4,920.49 normal reserve, $19,635.58 cash on hand)"}
 Ending portfolio value: $98,416.51
 
+=== Run at 2026-08-04T13:44:30.445306 ===
+Current time: 2026-08-04 09:44 AM EDT | Market open (per Alpaca): True
+Account value: $98,400.44
+Cash: $19,635.58 | Holdings (11): {'AMZN': '15.8381 sh (-0.67%)', 'AVGO': '22.9799 sh (+3.10%)', 'BAC': '56.009 sh (+0.22%)', 'GOOGL': '0.0006 sh (-0.42%)', 'HON': '48.6276 sh (+1.32%)', 'J': '88.5024 sh (+2.84%)', 'LMT': '12.4928 sh (+0.83%)', 'MA': '20.9251 sh (-1.05%)', 'NFLX': '47.736 sh (+0.04%)', 'PFE': '119.7844 sh (-0.16%)', 'XOM': '77.0147 sh (-2.49%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 7/13 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+  -> {"timestamp": "2026-08-04T13:44:48.339529", "ticker": "AVGO", "action": "sell", "qty": 10.968, "conviction": 8, "size_multiplier": 1.0, "order_id": "f499ff07-a940-431c-bcc4-60d0dcda538c", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Extremely overbought intraday RSI (92.54) and VWAP dev +5.11% near 10-day swing high ($411.085); locking in gains on extended intraday move.", "status": "submitted"}
+  -> {"timestamp": "2026-08-04T13:44:48.416066", "ticker": "AMZN", "action": "buy", "qty": 10.8641, "conviction": 7, "size_multiplier": 1.0, "order_id": "174e9be0-8066-4ac1-be90-f538912d9d83", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Strong daily uptrend offering intraday dip buying with intraday RSI oversold at 21.08 and -2.57% VWAP deviation.", "status": "submitted"}
+  -> {"timestamp": "2026-08-04T13:44:48.523317", "ticker": "NVDA", "action": "buy", "qty": 16.5728, "conviction": 7, "size_multiplier": 1.0, "order_id": "33c445cb-d597-48bc-a9a0-501419818fef", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Intraday momentum surge (+6.47%) with strong intraday uptrend breaking toward 10-day swing high.", "status": "submitted"}
+Ending portfolio value: $98,382.99
+
