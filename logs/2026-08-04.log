@@ -4891,3 +4891,19 @@ Gemini proposed 1 trade(s) meeting the conviction bar.
   -> {"timestamp": "2026-08-04T09:12:49.613715", "ticker": "META", "action": "buy", "qty": 6.7779, "conviction": 7, "size_multiplier": 1.0, "order_id": "23edee9b-779c-4aaa-bbfe-1533369ef66e", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Strong intraday momentum (+4.08%) on above-average volume (+27.2%) provides a high-probability day-trade long entry.", "status": "submitted"}
 Ending portfolio value: $99,336.31
 
+=== Run at 2026-08-04T09:14:24.228280 ===
+Current time: 2026-08-04 05:14 AM EDT | Market open (per Alpaca): False
+Account value: $99,329.97
+Cash: $10,123.31 | Holdings (10): {'AVGO': '12.7841 sh (+0.59%)', 'BALL': '183.8495 sh (+0.39%)', 'GOOGL': '12.0043 sh (-0.79%)', 'HON': '48.6276 sh (+1.79%)', 'J': '88.5024 sh (+2.36%)', 'LMT': '17.6119 sh (+0.66%)', 'MA': '20.8727 sh (-0.39%)', 'MSFT': '12.2431 sh (-1.24%)', 'V': '13.6489 sh (-0.61%)', 'XOM': '67.3509 sh (+0.47%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 8/14 candidates passed.
+Gemini proposed 6 trade(s) meeting the conviction bar.
+  -> {"ticker": "BALL", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,966.50 kept uninvested of $4,966.50 normal reserve, $10,123.31 cash on hand)"}
+  -> {"ticker": "HON", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,966.50 kept uninvested of $4,966.50 normal reserve, $10,123.31 cash on hand)"}
+  -> {"ticker": "J", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,966.50 kept uninvested of $4,966.50 normal reserve, $10,123.31 cash on hand)"}
+  -> {"ticker": "COST", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,966.50 kept uninvested of $4,966.50 normal reserve, $10,123.31 cash on hand)"}
+  -> {"ticker": "NFLX", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,966.50 kept uninvested of $4,966.50 normal reserve, $10,123.31 cash on hand)"}
+  -> {"ticker": "DIS", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,966.50 kept uninvested of $4,966.50 normal reserve, $10,123.31 cash on hand)"}
+Ending portfolio value: $99,329.97
+
