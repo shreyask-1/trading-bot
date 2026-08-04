@@ -7061,3 +7061,16 @@ Gemini proposed 1 trade(s) meeting the conviction bar.
   -> {"ticker": "XOM", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,938.63 kept uninvested of $4,938.63 normal reserve, $17,627.32 cash on hand)"}
 Ending portfolio value: $98,759.71
 
+=== Run at 2026-08-04T14:08:28.668762 ===
+Current time: 2026-08-04 10:08 AM EDT | Market open (per Alpaca): True
+Account value: $98,746.28
+Cash: $17,627.32 | Holdings (12): {'AMZN': '26.7022 sh (+0.19%)', 'AVGO': '12.0119 sh (+3.36%)', 'BAC': '56.009 sh (+0.47%)', 'GOOGL': '0.0006 sh (+0.98%)', 'HON': '48.6276 sh (+1.79%)', 'J': '88.5024 sh (+3.58%)', 'LMT': '12.4928 sh (+0.79%)', 'MA': '20.9251 sh (-0.79%)', 'NFLX': '47.736 sh (+0.26%)', 'NVDA': '16.5728 sh (-0.26%)', 'PFE': '119.7844 sh (+0.48%)', 'XOM': '77.0147 sh (-1.65%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 5/12 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+  -> {"timestamp": "2026-08-04T14:08:58.839323", "ticker": "BAC", "action": "sell", "qty": 56.0089, "conviction": 7, "size_multiplier": 1.0, "order_id": "36ce7b2d-4734-48bf-8c37-40d1cafe40ce", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Quant score 55 with negative daily MACD histogram and overbought intraday RSI (74.01); exiting to reduce exposure to weakening setup.", "status": "submitted"}
+  -> {"timestamp": "2026-08-04T14:08:58.891488", "ticker": "GOOGL", "action": "sell", "qty": 0.0006, "conviction": 8, "size_multiplier": 1.0, "order_id": "d07edec5-f1d4-4c7e-a33b-60a1d98c012e", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Exiting fractional dust position in a sideways trend with weak quant score (55).", "status": "submitted"}
+  -> {"ticker": "MA", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,937.95 kept uninvested of $4,937.95 normal reserve, $17,627.55 cash on hand)"}
+Ending portfolio value: $98,758.94
+
