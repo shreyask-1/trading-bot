@@ -4457,3 +4457,16 @@ Gemini proposed 6 trade(s) meeting the conviction bar.
   -> {"ticker": "DIS", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,973.78 kept uninvested of $4,973.78 normal reserve, $10,123.31 cash on hand)"}
 Ending portfolio value: $99,475.55
 
+=== Run at 2026-08-04T08:18:33.843852 ===
+Current time: 2026-08-04 04:18 AM EDT | Market open (per Alpaca): False
+Account value: $99,483.61
+Cash: $10,123.31 | Holdings (10): {'AVGO': '12.7841 sh (+1.44%)', 'BALL': '183.8495 sh (+0.39%)', 'GOOGL': '12.0043 sh (-0.78%)', 'HON': '48.6276 sh (+1.79%)', 'J': '88.5024 sh (+2.36%)', 'LMT': '17.6119 sh (+1.53%)', 'MA': '20.8727 sh (-0.38%)', 'MSFT': '12.2431 sh (-1.40%)', 'V': '13.6489 sh (-0.41%)', 'XOM': '67.3509 sh (+0.68%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 8/14 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+  -> {"timestamp": "2026-08-04T08:19:01.470906", "ticker": "GOOGL", "action": "sell", "qty": 12.0037, "conviction": 7, "size_multiplier": 1.0, "order_id": "c6a64cbd-a2bf-4955-ad05-f3ec76230683", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Sideways daily trend with weak ADX (14.65), overbought daily Stochastic (94.87), and active intraday downtrend context.", "status": "submitted"}
+  -> {"ticker": "BALL", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,974.06 kept uninvested of $4,974.06 normal reserve, $10,123.31 cash on hand)"}
+  -> {"timestamp": "2026-08-04T08:19:01.856423", "ticker": "BAC", "action": "buy", "qty": 56.009, "conviction": 7, "size_multiplier": 1.0, "order_id": "5ea33d3c-430d-4043-a797-d6b405903618", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Strong trend strength on daily timeframe (ADX 31.11) aligned with intraday uptrend, positive momentum, and healthy RSI levels.", "status": "submitted"}
+Ending portfolio value: $99,481.21
+
