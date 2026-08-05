@@ -7317,3 +7317,15 @@ Quant pre-screen: 5/10 candidates passed.
 Gemini proposed 0 trade(s) meeting the conviction bar.
 Ending portfolio value: $100,440.17
 
+=== Run at 2026-08-05T14:04:33.866287 ===
+Current time: 2026-08-05 10:04 AM EDT | Market open (per Alpaca): True
+Account value: $100,461.27
+Cash: $24,392.32 | Holdings (12): {'AMZN': '13.3631 sh (-0.35%)', 'AVGO': '9.8426 sh (+2.07%)', 'BAC': '71.5308 sh (+0.57%)', 'GOOGL': '10.515 sh (-0.57%)', 'HD': '12.9173 sh (+0.41%)', 'HON': '48.6276 sh (+3.07%)', 'LMT': '12.4928 sh (+1.96%)', 'MA': '20.9251 sh (+0.50%)', 'NFLX': '47.736 sh (+1.71%)', 'NVDA': '17.0401 sh (+2.61%)', 'V': '12.1776 sh (-0.12%)', 'XOM': '77.0147 sh (-0.42%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 2 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 5/10 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+  -> {"timestamp": "2026-08-05T14:04:55.040138", "ticker": "MSFT", "action": "buy", "qty": 12.2951, "conviction": 8, "size_multiplier": 1.0, "order_id": "376ecbbd-55c3-4187-a5a9-30327ff73066", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Strong daily uptrend with high momentum (25.24%), positive MACD, and increasing volume, combined with an intraday dip (RSI 31.77) near VWAP offering a high-probability entry point.", "status": "submitted"}
+  -> {"timestamp": "2026-08-05T14:04:55.333192", "ticker": "BAC", "action": "sell", "qty": 71.502, "conviction": 7, "size_multiplier": 1.0, "order_id": "e1f763ce-e8cd-4136-a0bd-8707976b47e1", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Negative MACD histogram, overbought daily Stochastic K (97.4), intraday downtrend, and lower quant score (55) warrant exiting position to free capital.", "status": "submitted"}
+Ending portfolio value: $100,459.16
+
