@@ -7593,3 +7593,16 @@ Quant pre-screen: 5/10 candidates passed.
 Gemini proposed 0 trade(s) meeting the conviction bar.
 Ending portfolio value: $100,172.64
 
+=== Run at 2026-08-05T15:00:48.110190 ===
+Current time: 2026-08-05 11:00 AM EDT | Market open (per Alpaca): True
+Account value: $100,221.71
+Cash: $37,538.29 | Holdings (12): {'AMZN': '13.3631 sh (+0.14%)', 'BAC': '0.0288 sh (+0.45%)', 'GOOGL': '10.515 sh (-0.08%)', 'HD': '12.9173 sh (+0.70%)', 'HON': '48.6276 sh (+2.28%)', 'JPM': '13.8345 sh (-0.13%)', 'LMT': '12.4928 sh (+0.98%)', 'MA': '20.9251 sh (-0.04%)', 'MSFT': '12.2951 sh (+0.81%)', 'NFLX': '47.736 sh (+2.07%)', 'V': '12.1776 sh (-0.74%)', 'XOM': '0.0527 sh (-1.57%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 5/10 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+  -> {"timestamp": "2026-08-05T15:01:17.076702", "ticker": "DIS", "action": "buy", "qty": 39.7852, "conviction": 7, "size_multiplier": 1.0, "order_id": "e9a4c229-a3dd-48c2-89c2-c2133c6c8e01", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Intraday momentum (+2.91%) and VWAP deviation (+2.06%) show active buying, aligning with positive 10-day momentum and daily MACD expansion.", "status": "submitted"}
+  -> {"timestamp": "2026-08-05T15:01:17.768354", "ticker": "WMT", "action": "buy", "qty": 35.4988, "conviction": 7, "size_multiplier": 1.0, "order_id": "6bf3dfec-e0b9-4cae-809a-e8ece62b7457", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Strong intraday trend (+1.98% momentum, 63.18 intraday RSI) breaking out from neutral daily RSI (49.09) with positive daily MACD histogram.", "status": "submitted"}
+  -> {"timestamp": "2026-08-05T15:01:17.929015", "ticker": "MSFT", "action": "sell", "qty": 6.1062, "conviction": 7, "size_multiplier": 1.0, "order_id": "2c350ea9-a336-4dcd-9561-6e1cbadb282e", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Trimming gains on overextended daily setup (RSI 78.24, BB %B 1.00, Stoch %K 93.22) as intraday trend has turned downtrend.", "status": "submitted"}
+Ending portfolio value: $100,198.96
+
