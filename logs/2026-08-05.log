@@ -7195,3 +7195,15 @@ Quant pre-screen: 5/10 candidates passed.
 Gemini proposed 0 trade(s) meeting the conviction bar.
 Ending portfolio value: $100,546.87
 
+=== Run at 2026-08-05T13:40:28.506617 ===
+Current time: 2026-08-05 09:40 AM EDT | Market open (per Alpaca): True
+Account value: $100,604.85
+Cash: $16,894.89 | Holdings (12): {'AMZN': '13.3631 sh (+0.63%)', 'AVGO': '19.2429 sh (+3.59%)', 'BAC': '71.5308 sh (+0.12%)', 'GOOGL': '10.515 sh (-0.09%)', 'HD': '12.9173 sh (+0.00%)', 'HON': '48.6276 sh (+3.25%)', 'LMT': '12.4928 sh (+1.76%)', 'MA': '20.9251 sh (+0.70%)', 'NFLX': '47.736 sh (+2.66%)', 'NVDA': '32.8443 sh (+3.06%)', 'V': '12.1776 sh (-0.05%)', 'XOM': '77.0147 sh (-0.67%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 5/10 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+  -> {"timestamp": "2026-08-05T13:40:46.674823", "ticker": "AVGO", "action": "sell", "qty": 9.4003, "conviction": 7, "size_multiplier": 1.0, "order_id": "76a7c3b8-eab6-4058-94c6-7d62cb75ea3d", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Locking in gains as price hits 10-day swing high with extreme overbought Stoch %K (99.7) and BB %B (1.16) in a sideways daily trend.", "status": "submitted"}
+  -> {"timestamp": "2026-08-05T13:40:46.785238", "ticker": "NVDA", "action": "sell", "qty": 15.8042, "conviction": 7, "size_multiplier": 1.0, "order_id": "eb9846c5-d622-484a-b957-b943fe869ce3", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Taking profits near 10-day resistance ($221.08) with intraday RSI at 84.1 and VWAP dev 5.6% in a sideways market setup.", "status": "submitted"}
+Ending portfolio value: $100,567.62
+
