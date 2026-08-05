@@ -7606,3 +7606,13 @@ Gemini proposed 3 trade(s) meeting the conviction bar.
   -> {"timestamp": "2026-08-05T15:01:17.929015", "ticker": "MSFT", "action": "sell", "qty": 6.1062, "conviction": 7, "size_multiplier": 1.0, "order_id": "2c350ea9-a336-4dcd-9561-6e1cbadb282e", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Trimming gains on overextended daily setup (RSI 78.24, BB %B 1.00, Stoch %K 93.22) as intraday trend has turned downtrend.", "status": "submitted"}
 Ending portfolio value: $100,198.96
 
+=== Run at 2026-08-05T15:02:24.865853 ===
+Current time: 2026-08-05 11:02 AM EDT | Market open (per Alpaca): True
+Account value: $100,196.42
+Cash: $32,534.36 | Holdings (14): {'AMZN': '13.3631 sh (+0.05%)', 'BAC': '0.0288 sh (+0.49%)', 'DIS': '39.7852 sh (+0.01%)', 'GOOGL': '10.515 sh (-0.23%)', 'HD': '12.9173 sh (+0.84%)', 'HON': '48.6276 sh (+2.33%)', 'JPM': '13.8345 sh (-0.11%)', 'LMT': '12.4928 sh (+1.01%)', 'MA': '20.9251 sh (-0.07%)', 'MSFT': '6.1889 sh (+0.56%)', 'NFLX': '47.736 sh (+1.90%)', 'V': '12.1776 sh (-0.80%)', 'WMT': '35.4988 sh (-0.12%)', 'XOM': '0.0527 sh (-1.70%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 2 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 3/8 candidates passed.
+Gemini proposed 0 trade(s) meeting the conviction bar.
+Ending portfolio value: $100,204.08
+
