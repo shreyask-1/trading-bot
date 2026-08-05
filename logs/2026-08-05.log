@@ -7460,3 +7460,16 @@ Gemini proposed 2 trade(s) meeting the conviction bar.
   -> {"timestamp": "2026-08-05T14:33:44.945455", "ticker": "JPM", "action": "buy", "qty": 13.8345, "conviction": 7, "size_multiplier": 1.0, "order_id": "28ffa276-c840-4d15-8544-93efdd39cb1d", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Daily uptrend aligned with strong intraday momentum (+2.22%), intraday trend uptrend, and VWAP deviation +1.25% near 10-day highs in a bullish market regime.", "status": "submitted"}
 Ending portfolio value: $100,354.33
 
+=== Run at 2026-08-05T14:34:33.588503 ===
+Current time: 2026-08-05 10:34 AM EDT | Market open (per Alpaca): True
+Account value: $100,331.72
+Cash: $29,641.77 | Holdings (14): {'AMZN': '13.3631 sh (-0.06%)', 'AVGO': '9.8426 sh (+2.27%)', 'BAC': '0.0288 sh (+0.55%)', 'GOOGL': '10.515 sh (+0.01%)', 'HD': '12.9173 sh (+0.97%)', 'HON': '48.6276 sh (+2.51%)', 'JPM': '13.8345 sh (-0.02%)', 'LMT': '12.4928 sh (+1.59%)', 'MA': '20.9251 sh (+0.21%)', 'MSFT': '12.2951 sh (+0.59%)', 'NFLX': '47.736 sh (+1.85%)', 'NVDA': '17.0401 sh (+2.58%)', 'V': '12.1776 sh (-0.49%)', 'XOM': '0.0527 sh (-1.18%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 3/8 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+  -> {"timestamp": "2026-08-05T14:35:01.541171", "ticker": "NVDA", "action": "sell", "qty": 17.0401, "conviction": 7, "size_multiplier": 1.0, "order_id": "b9647c5a-311a-42d5-bea3-e44a1cd13d11", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Daily sideways trend with overextended daily indicators (BB %B 1.03, Stoch %K 94) and extended intraday VWAP deviation (+4.04%), providing a strong profit-taking window.", "status": "submitted"}
+  -> {"timestamp": "2026-08-05T14:35:01.846667", "ticker": "AVGO", "action": "sell", "qty": 9.8426, "conviction": 7, "size_multiplier": 1.0, "order_id": "872b982f-fc72-4faa-8735-95eb97c6153e", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Sideways daily chart overextended past upper Bollinger Band (%B 1.10) with Stoch %K at 92 and VWAP deviation at +2.5%, making this an optimal exit to capture short-term gains.", "status": "submitted"}
+  -> {"ticker": "HON", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($5,015.69 kept uninvested of $5,015.69 normal reserve, $29,641.77 cash on hand)"}
+Ending portfolio value: $100,313.32
+
