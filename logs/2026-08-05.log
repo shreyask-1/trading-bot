@@ -4454,3 +4454,15 @@ Gemini proposed 7 trade(s) meeting the conviction bar.
   -> {"ticker": "DIS", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,984.12 kept uninvested of $4,984.12 normal reserve, $24,136.89 cash on hand)"}
 Ending portfolio value: $99,682.36
 
+=== Run at 2026-08-05T07:50:38.441632 ===
+Current time: 2026-08-05 03:50 AM EDT | Market open (per Alpaca): False
+Account value: $99,682.56
+Cash: $24,136.89 | Holdings (9): {'AMZN': '26.7022 sh (+0.27%)', 'AVGO': '12.0119 sh (+3.50%)', 'HON': '48.6276 sh (+3.02%)', 'J': '88.5024 sh (+5.28%)', 'LMT': '12.4928 sh (+2.11%)', 'MA': '20.9251 sh (-0.36%)', 'NFLX': '47.736 sh (+1.40%)', 'NVDA': '16.5728 sh (+2.53%)', 'XOM': '77.0147 sh (+0.22%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 9/14 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+  -> {"timestamp": "2026-08-05T07:50:56.660299", "ticker": "V", "action": "buy", "qty": 12.1776, "conviction": 7, "size_multiplier": 1.0, "order_id": "d99df077-9d52-457f-9fc3-522469061c36", "order_status": "OrderStatus.ACCEPTED", "reasoning": "Strong daily uptrend with ADX 29.1 and quant score 80; intraday RSI reset to 44.2 provides a solid risk-reward entry towards recent swing highs.", "status": "submitted"}
+  -> {"timestamp": "2026-08-05T07:50:57.005218", "ticker": "BAC", "action": "buy", "qty": 71.5308, "conviction": 7, "size_multiplier": 1.0, "order_id": "1788f275-d689-41d1-82fc-f846de72aac5", "order_status": "OrderStatus.ACCEPTED", "reasoning": "Daily uptrend with strong ADX 31.49 experiencing an intraday oversold pullback to RSI 27.53 near VWAP, setting up a sharp mean-reversion trade aligned with broader momentum.", "status": "submitted"}
+Ending portfolio value: $99,683.10
+
