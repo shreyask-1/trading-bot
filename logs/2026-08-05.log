@@ -7173,3 +7173,15 @@ Gemini proposed 1 trade(s) meeting the conviction bar.
   -> {"ticker": "J", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,995.25 kept uninvested of $4,995.25 normal reserve, $7,266.47 cash on hand)"}
 Ending portfolio value: $99,913.94
 
+=== Run at 2026-08-05T13:36:34.129987 ===
+Current time: 2026-08-05 09:36 AM EDT | Market open (per Alpaca): True
+Account value: $100,746.47
+Cash: $3,926.99 | Holdings (13): {'AMZN': '13.3631 sh (+0.79%)', 'AVGO': '19.2429 sh (+2.60%)', 'BAC': '68.0 sh (-0.04%)', 'GOOGL': '10.515 sh (-0.13%)', 'HD': '12.9173 sh (+0.06%)', 'HON': '48.6276 sh (+3.26%)', 'J': '88.5024 sh (+11.72%)', 'LMT': '12.4928 sh (+1.82%)', 'MA': '20.9251 sh (+0.89%)', 'NFLX': '47.736 sh (+2.28%)', 'NVDA': '32.8443 sh (+2.03%)', 'V': '12.1776 sh (+0.19%)', 'XOM': '77.0147 sh (-0.17%)'}
+Risk management triggered 1 forced sell(s):
+  -> {"timestamp": "2026-08-05T13:36:36.747911", "ticker": "J", "action": "sell", "qty": 88.5024, "conviction": 10, "size_multiplier": 1.0, "order_id": "86a530ba-d3b1-49c9-bdda-091640173a3c", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Take-profit hit (atr_default_no_stored_exit): price 151.405 >= target 150.09", "status": "submitted", "trigger": "risk_management"}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 5/10 candidates passed.
+Gemini proposed 0 trade(s) meeting the conviction bar.
+Ending portfolio value: $100,684.85
+
