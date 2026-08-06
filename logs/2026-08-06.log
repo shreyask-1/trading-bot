@@ -6636,3 +6636,15 @@ Gemini proposed 2 trade(s) meeting the conviction bar.
   -> {"ticker": "COST", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,966.53 kept uninvested of $4,966.53 normal reserve, $33,125.98 cash on hand)"}
 Ending portfolio value: $99,318.91
 
+=== Run at 2026-08-06T19:27:36.795374 ===
+Current time: 2026-08-06 03:27 PM EDT | Market open (per Alpaca): True
+Account value: $99,267.99
+Cash: $33,125.98 | Holdings (9): {'AMZN': '43.7766 sh (-1.15%)', 'AVGO': '0.0528 sh (+0.99%)', 'BAC': '0.0824 sh (-1.57%)', 'HD': '29.9205 sh (-0.78%)', 'HON': '48.7516 sh (-0.43%)', 'LMT': '20.7665 sh (+0.49%)', 'MA': '20.9251 sh (+0.12%)', 'NVDA': '36.2064 sh (-0.46%)', 'XOM': '0.0016 sh (-0.06%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 6/13 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+  -> {"ticker": "HON", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,963.40 kept uninvested of $4,963.40 normal reserve, $33,125.98 cash on hand)"}
+  -> {"ticker": "COST", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,963.40 kept uninvested of $4,963.40 normal reserve, $33,125.98 cash on hand)"}
+Ending portfolio value: $99,266.81
+
