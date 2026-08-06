@@ -3765,3 +3765,15 @@ Gemini proposed 5 trade(s) meeting the conviction bar.
   -> {"ticker": "COST", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,997.88 kept uninvested of $4,997.88 normal reserve, $30,799.96 cash on hand)"}
 Ending portfolio value: $99,957.66
 
+=== Run at 2026-08-06T07:52:23.017023 ===
+Current time: 2026-08-06 03:52 AM EDT | Market open (per Alpaca): False
+Account value: $99,957.66
+Cash: $30,799.96 | Holdings (11): {'AMZN': '28.0366 sh (-0.63%)', 'DIS': '39.7852 sh (+1.51%)', 'GOOGL': '10.515 sh (-4.57%)', 'HD': '12.9173 sh (+1.04%)', 'HON': '48.6276 sh (+2.33%)', 'JPM': '13.8345 sh (-0.23%)', 'LMT': '20.6316 sh (-0.04%)', 'MA': '20.9251 sh (+0.15%)', 'MSFT': '0.0029 sh (-0.50%)', 'NFLX': '47.736 sh (+2.02%)', 'V': '12.1776 sh (-0.60%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 6/11 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+  -> {"timestamp": "2026-08-06T07:52:30.931929", "ticker": "AVGO", "action": "buy", "qty": 11.9477, "conviction": 7, "size_multiplier": 1.0, "order_id": "bfa9759f-4121-41ea-9057-a23e158725be", "order_status": "OrderStatus.ACCEPTED", "reasoning": "Oversold intraday RSI (29.6) presenting a low-risk entry opportunity within an intraday uptrend (+3.83% momentum) and strong daily MACD momentum.", "status": "submitted"}
+  -> {"timestamp": "2026-08-06T07:52:30.975701", "ticker": "WMT", "action": "buy", "qty": 44.4919, "conviction": 7, "size_multiplier": 1.0, "order_id": "c2435db2-0a29-47e9-9c76-9a8241b1a104", "order_status": "OrderStatus.ACCEPTED", "reasoning": "Quant score 70 with strong intraday momentum (+3.44%) and intraday uptrend pushing price toward the top of its recent range.", "status": "submitted"}
+Ending portfolio value: $99,957.66
+
