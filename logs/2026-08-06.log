@@ -4615,3 +4615,15 @@ Gemini proposed 3 trade(s) meeting the conviction bar.
   -> {"ticker": "COST", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($5,004.41 kept uninvested of $5,004.41 normal reserve, $30,799.96 cash on hand)"}
 Ending portfolio value: $100,086.98
 
+=== Run at 2026-08-06T10:00:35.452720 ===
+Current time: 2026-08-06 06:00 AM EDT | Market open (per Alpaca): False
+Account value: $100,086.37
+Cash: $30,799.96 | Holdings (11): {'AMZN': '28.0366 sh (-0.27%)', 'DIS': '39.7852 sh (+1.90%)', 'GOOGL': '10.515 sh (-4.52%)', 'HD': '12.9173 sh (+1.38%)', 'HON': '48.6276 sh (+2.34%)', 'JPM': '13.8345 sh (+0.13%)', 'LMT': '20.6316 sh (+0.29%)', 'MA': '20.9251 sh (+0.15%)', 'MSFT': '0.0029 sh (-0.54%)', 'NFLX': '47.736 sh (+1.96%)', 'V': '12.1776 sh (-0.32%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 6/11 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+  -> {"timestamp": "2026-08-06T10:00:48.756651", "ticker": "BAC", "action": "buy", "qty": 79.0451, "conviction": 7, "size_multiplier": 1.0, "order_id": "ee0301f0-f9d5-4b9f-b969-2cc91fd1943e", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Strong daily uptrend with ADX at 31.79 experiencing a short-term intraday pullback with intraday RSI at 32.94 near VWAP, presenting a favorable dip-buying setup aligned with market regime.", "status": "submitted"}
+  -> {"ticker": "HON", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($5,004.32 kept uninvested of $5,004.32 normal reserve, $30,799.96 cash on hand)"}
+Ending portfolio value: $100,086.37
+
