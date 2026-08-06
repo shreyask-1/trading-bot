@@ -6435,3 +6435,13 @@ Gemini proposed 2 trade(s) meeting the conviction bar.
   -> {"timestamp": "2026-08-06T14:56:47.638442", "ticker": "JPM", "action": "buy", "qty": 11.1982, "conviction": 7, "size_multiplier": 1.0, "order_id": "68af03d6-3a5d-45ba-9c2e-a5255d0d3d75", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Uptrending daily profile with intraday RSI pullback to oversold levels (33.02) near VWAP, presenting a high-probability intraday bounce setup.", "status": "submitted"}
 Ending portfolio value: $99,515.25
 
+=== Run at 2026-08-06T14:58:28.399489 ===
+Current time: 2026-08-06 10:58 AM EDT | Market open (per Alpaca): True
+Account value: $99,510.59
+Cash: $24,156.54 | Holdings (11): {'AMZN': '43.7766 sh (-0.13%)', 'AVGO': '0.0528 sh (+1.62%)', 'BAC': '0.0824 sh (-1.02%)', 'HD': '29.9205 sh (+0.07%)', 'HON': '48.7516 sh (+0.77%)', 'JPM': '11.1982 sh (-0.12%)', 'LMT': '20.7665 sh (+0.15%)', 'MA': '20.9251 sh (-0.53%)', 'NVDA': '36.2064 sh (-0.68%)', 'WMT': '44.4919 sh (-1.32%)', 'XOM': '0.0016 sh (-1.38%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 6/11 candidates passed.
+Gemini proposed 0 trade(s) meeting the conviction bar.
+Ending portfolio value: $99,503.79
+
