@@ -4126,3 +4126,15 @@ Gemini proposed 4 trade(s) meeting the conviction bar.
   -> {"ticker": "COST", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,998.67 kept uninvested of $4,998.67 normal reserve, $30,799.96 cash on hand)"}
 Ending portfolio value: $99,973.39
 
+=== Run at 2026-08-06T08:44:28.317301 ===
+Current time: 2026-08-06 04:44 AM EDT | Market open (per Alpaca): False
+Account value: $99,973.98
+Cash: $30,799.96 | Holdings (11): {'AMZN': '28.0366 sh (-0.60%)', 'DIS': '39.7852 sh (+1.52%)', 'GOOGL': '10.515 sh (-4.34%)', 'HD': '12.9173 sh (+1.01%)', 'HON': '48.6276 sh (+2.34%)', 'JPM': '13.8345 sh (-0.21%)', 'LMT': '20.6316 sh (-0.04%)', 'MA': '20.9251 sh (+0.15%)', 'MSFT': '0.0029 sh (-0.75%)', 'NFLX': '47.736 sh (+2.02%)', 'V': '12.1776 sh (-0.52%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 6/11 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+  -> {"timestamp": "2026-08-06T08:44:45.050090", "ticker": "GOOGL", "action": "sell", "qty": 10.4941, "conviction": 7, "size_multiplier": 1.0, "order_id": "b14c28b4-eb1c-464b-8aea-5cd4240b2a1c", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Sideways daily trend combined with intraday downtrend (-1.14%) and negative VWAP deviation (-2.09%) signals short-term weakness.", "status": "submitted"}
+  -> {"ticker": "HON", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,999.16 kept uninvested of $4,999.16 normal reserve, $30,799.96 cash on hand)"}
+Ending portfolio value: $99,983.23
+
