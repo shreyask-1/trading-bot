@@ -5572,3 +5572,13 @@ Gemini proposed 3 trade(s) meeting the conviction bar.
   -> {"ticker": "COST", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($5,006.48 kept uninvested of $5,006.48 normal reserve, $30,799.96 cash on hand)"}
 Ending portfolio value: $100,129.58
 
+=== Run at 2026-08-06T12:28:32.451178 ===
+Current time: 2026-08-06 08:28 AM EDT | Market open (per Alpaca): False
+Account value: $100,128.26
+Cash: $30,799.96 | Holdings (11): {'AMZN': '28.0366 sh (-0.27%)', 'DIS': '39.7852 sh (+1.99%)', 'GOOGL': '10.515 sh (-5.73%)', 'HD': '12.9173 sh (+1.52%)', 'HON': '48.6276 sh (+2.66%)', 'JPM': '13.8345 sh (+0.37%)', 'LMT': '20.6316 sh (+0.51%)', 'MA': '20.9251 sh (+0.29%)', 'MSFT': '0.0029 sh (-0.82%)', 'NFLX': '47.736 sh (+2.36%)', 'V': '12.1776 sh (-0.93%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 6/11 candidates passed.
+Gemini proposed 0 trade(s) meeting the conviction bar.
+Ending portfolio value: $100,131.77
+
