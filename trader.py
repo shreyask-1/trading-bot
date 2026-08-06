@@ -10,9 +10,8 @@ the broad market regime (via market_regime.py, using SPY as a proxy), and
 enforces a per-position, CHART-BASED stop-loss/take-profit (computed from
 recent swing lows/highs, with ATR-based sanity bounds and fallback), a
 per-ticker trade cooldown, a minimum cash reserve (with a narrow exception
-for exceptional-conviction ideas), a minimum trade size, a cap on total
-open positions, and automatic portfolio consolidation when over position
-limits.
+for exceptional-conviction ideas), a minimum trade size, a cap on total open
+positions, and automatic portfolio consolidation when over position limits.
 """
 
 import os
@@ -30,16 +29,17 @@ from alpaca.data.timeframe import TimeFrame, TimeFrameUnit
 from alpaca.data.enums import DataFeed
 
 from config import (
-    ALPACA_API_KEY, ALPACA_SECRET_KEY, MAX_POSITION_PCT,
-    ATR_STOP_MULTIPLIER, ATR_TAKE_PROFIT_MULTIPLIER, ATR_PERIOD,
-    SWING_LOOKBACK_DAYS, MIN_STOP_DISTANCE_ATR_MULT, MAX_STOP_DISTANCE_ATR_MULT,
-    MIN_TAKE_PROFIT_DISTANCE_ATR_MULT, MAX_TAKE_PROFIT_DISTANCE_ATR_MULT,
-    ALLOW_GEMINI_CUSTOM_EXITS,
+    ALPACA_API_KEY, ALPACA_SECRET_KEY,
+    MAX_POSITION_PCT, ATR_STOP_MULTIPLIER, ATR_TAKE_PROFIT_MULTIPLIER,
+    ATR_PERIOD, SWING_LOOKBACK_DAYS, MIN_STOP_DISTANCE_ATR_MULT,
+    MAX_STOP_DISTANCE_ATR_MULT, MIN_TAKE_PROFIT_DISTANCE_ATR_MULT,
+    MAX_TAKE_PROFIT_DISTANCE_ATR_MULT, ALLOW_GEMINI_CUSTOM_EXITS,
     ENABLE_INTRADAY_ANALYSIS, INTRADAY_BAR_MINUTES, INTRADAY_LOOKBACK_DAYS,
-    PRICE_HISTORY_DAYS, TRADE_COOLDOWN_MINUTES, MARKET_HIGH_VOLATILITY_THRESHOLD,
-    ALPACA_DATA_FEED, MIN_CASH_RESERVE_PCT, MIN_TRADE_DOLLAR_AMOUNT, MAX_OPEN_POSITIONS,
-    EXCEPTIONAL_CONVICTION_THRESHOLD, EXCEPTIONAL_TRADE_RESERVE_ACCESS_PCT,
-    CONSOLIDATION_SCORE_THRESHOLD,
+    PRICE_HISTORY_DAYS, TRADE_COOLDOWN_MINUTES,
+    MARKET_HIGH_VOLATILITY_THRESHOLD, ALPACA_DATA_FEED,
+    MIN_CASH_RESERVE_PCT, MIN_TRADE_DOLLAR_AMOUNT,
+    MAX_OPEN_POSITIONS, EXCEPTIONAL_CONVICTION_THRESHOLD,
+    EXCEPTIONAL_TRADE_RESERVE_ACCESS_PCT, CONSOLIDATION_SCORE_THRESHOLD,
 )
 import indicators as ind
 from market_regime import evaluate_market_regime
@@ -61,23 +61,19 @@ _EASTERN = pytz.timezone("America/New_York")
 # rather than appended to under a mismatched schema -- see
 # record_performance_snapshot().
 PERFORMANCE_CSV_HEADER = [
-    "timestamp", "total_value", "cash", "num_holdings",
-    "market_regime", "size_multiplier",
-    "candidates_considered", "candidates_passed_prescreen",
+    "timestamp", "total_value", "cash", "num_holdings", "market_regime",
+    "size_multiplier", "candidates_considered", "candidates_passed_prescreen",
     "trades_proposed", "trades_executed", "trades_skipped", "trades_failed",
     "risk_exits", "consolidation_exits",
 ]
-
 
 # ============================================================
 # Time / market clock / regime
 # ============================================================
 
 def get_eastern_time_str():
-    """
-    Explicit US-Eastern-time string, computed from timezone-AWARE UTC.
-    Used purely for unambiguous logging.
-    """
+    """Explicit US-Eastern-time string, computed from timezone-AWARE UTC.
+    Used purely for unambiguous logging."""
     now_utc = datetime.now(pytz.utc)
     now_et = now_utc.astimezone(_EASTERN)
     return now_et.strftime("%Y-%m-%d %I:%M %p %Z")
@@ -86,11 +82,10 @@ def get_eastern_time_str():
 def is_market_open():
     """
     True if the market is open for regular trading right now, per Alpaca's
-    own authoritative clock. Fails closed: if the clock call errors, returns False.
-    This is purely informational for logging -- it does not gate whether the
-    bot runs or trades; orders submitted while closed simply queue at
-    Alpaca for the next open (this is exactly how after-hours order queuing
-    works for this bot).
+    own authoritative clock. Fails closed: if the clock call errors, returns
+    False. This is purely informational for logging -- it does not gate
+    whether the bot runs or trades; orders submitted while closed simply
+    queue at Alpaca for the next open.
     """
     try:
         return bool(trading_client.get_clock().is_open)
@@ -118,7 +113,6 @@ def get_market_regime():
         print(f"Market regime evaluation failed, defaulting to NEUTRAL: {e}")
         return "NEUTRAL"
 
-
 # ============================================================
 # Price data (daily)
 # ============================================================
@@ -144,8 +138,11 @@ def get_price_history(ticker, days=PRICE_HISTORY_DAYS):
         end = datetime.now()
         start = end - timedelta(days=days + 10)  # pad for weekends/holidays
         request = StockBarsRequest(
-            symbol_or_symbols=ticker, timeframe=TimeFrame.Day,
-            start=start, end=end, feed=DATA_FEED,
+            symbol_or_symbols=ticker,
+            timeframe=TimeFrame.Day,
+            start=start,
+            end=end,
+            feed=DATA_FEED,
         )
         bars = list(data_client.get_stock_bars(request)[ticker])
         if len(bars) < 55:
@@ -160,7 +157,6 @@ def get_price_history(ticker, days=PRICE_HISTORY_DAYS):
         print(f"Could not get price history for {ticker}: {e}")
         return None
 
-
 # ============================================================
 # Price data (intraday) -- for day-trading-relevant short-term context
 # ============================================================
@@ -169,14 +165,13 @@ def get_intraday_indicators(ticker):
     """
     Fetches recent short-interval (default 5-minute) bars and computes a
     short-term technical read: intraday RSI, intraday momentum (vs this
-    session's opening bar), a crude VWAP (volume-weighted average price)
-    and the current price's deviation from it, and a short-term trend
-    read (10-bar vs 30-bar SMA of intraday closes).
+    session's opening bar), a crude VWAP and the current price's deviation
+    from it, and a short-term trend read (10-bar vs 30-bar SMA of intraday
+    closes).
 
-    Returns None if intraday analysis is disabled, or if there isn't
-    enough recent bar data to compute anything meaningful (e.g. a newly
-    listed ticker, or a data hiccup) -- callers should treat None fields
-    as "unknown", not as a signal of any kind.
+    Returns None if intraday analysis is disabled, or if there isn't enough
+    recent bar data to compute anything meaningful -- callers should treat
+    None fields as "unknown", not as a signal of any kind.
     """
     if not ENABLE_INTRADAY_ANALYSIS:
         return None
@@ -186,7 +181,9 @@ def get_intraday_indicators(ticker):
         request = StockBarsRequest(
             symbol_or_symbols=ticker,
             timeframe=TimeFrame(INTRADAY_BAR_MINUTES, TimeFrameUnit.Minute),
-            start=start, end=end, feed=DATA_FEED,
+            start=start,
+            end=end,
+            feed=DATA_FEED,
         )
         bars = list(data_client.get_stock_bars(request)[ticker])
         if len(bars) < 20:
@@ -204,7 +201,8 @@ def get_intraday_indicators(ticker):
         current_price = closes[-1]
         session_open = closes[0]
         intraday_momentum_pct = (
-            round(((current_price - session_open) / session_open) * 100, 2) if session_open else None
+            round(((current_price - session_open) / session_open) * 100, 2)
+            if session_open else None
         )
         vwap_deviation_pct = round(((current_price - vwap) / vwap) * 100, 2) if vwap else None
 
@@ -236,12 +234,11 @@ def get_intraday_indicators(ticker):
 def get_full_indicators(ticker):
     """
     Computes the complete indicator set for a ticker: the existing daily
-    technical set, PLUS a 10-day swing low/high (used for chart-based
-    stop-loss/take-profit -- see compute_chart_based_exits() below), PLUS
-    a short-term intraday read (see get_intraday_indicators() above).
+    technical set, PLUS a swing low/high (used for chart-based
+    stop-loss/take-profit), PLUS a short-term intraday read.
 
-    Returns a dict; any indicator that couldn't be computed (not enough
-    history, or intraday disabled/unavailable) is None rather than missing.
+    Returns a dict; any indicator that couldn't be computed is None rather
+    than missing.
     """
     history = get_price_history(ticker)
     if history is None:
@@ -290,7 +287,6 @@ def get_full_indicators(ticker):
 
     return result
 
-
 # ============================================================
 # Account state
 # ============================================================
@@ -322,7 +318,6 @@ def get_tickers_with_open_orders():
         print(f"Could not fetch open orders: {e}")
         return set()
 
-
 # ============================================================
 # Cooldown tracking
 # ============================================================
@@ -345,10 +340,10 @@ def _save_cooldowns(cooldowns):
 
 def get_tickers_on_cooldown():
     """
-    Returns the set of tickers traded within the last TRADE_COOLDOWN_MINUTES.
-    Used to stop Gemini from churning the same ticker repeatedly -- NOT used
-    to gate the stop-loss/take-profit check, which must always be able
-    to force an exit regardless of cooldown.
+    Returns the set of tickers traded within the last
+    TRADE_COOLDOWN_MINUTES. Used to stop the decision engine from churning
+    the same ticker repeatedly -- NOT used to gate the stop-loss/take-profit
+    check, which must always be able to force an exit regardless of cooldown.
     """
     cooldowns = _load_cooldowns()
     cutoff = datetime.now() - timedelta(minutes=TRADE_COOLDOWN_MINUTES)
@@ -359,7 +354,6 @@ def _record_cooldown(ticker):
     cooldowns = _load_cooldowns()
     cooldowns[ticker] = datetime.now().isoformat()
     _save_cooldowns(cooldowns)
-
 
 # ============================================================
 # Chart-based custom exit levels (stop-loss / take-profit)
@@ -393,8 +387,7 @@ def _clamp_stop_loss(entry_price, atr, candidate_stop):
     """
     Ensures a stop-loss (whether chart-derived or Gemini-proposed) sits
     between MIN_STOP_DISTANCE_ATR_MULT and MAX_STOP_DISTANCE_ATR_MULT away
-    from entry, in ATR terms -- prevents both noise-triggered stopouts
-    (too tight) and unbounded risk (too wide/missing).
+    from entry, in ATR terms.
     """
     if candidate_stop is None or atr is None or atr <= 0:
         return None
@@ -418,26 +411,11 @@ def _clamp_take_profit(entry_price, atr, candidate_tp):
 def _record_custom_exit(ticker, trade, entry_price):
     """
     Called after every successful BUY fill. Computes and stores a
-    chart-based stop-loss/take-profit for this position:
+    chart-based stop-loss/take-profit for this position.
 
-      1. If the trade dict includes explicit stop_loss/take_profit prices
-         (i.e. Gemini proposed specific levels) AND ALLOW_GEMINI_CUSTOM_EXITS
-         is on, those are used as the starting candidates.
-      2. Otherwise (or for whichever of the two Gemini didn't specify),
-         falls back to the recent SWING_LOOKBACK_DAYS-day swing low/high.
-      3. Either way, both levels are clamped to sit within a sane ATR-based
-         distance from entry (see _clamp_stop_loss/_clamp_take_profit) so
-         neither an overly-tight chart level nor a bad Gemini suggestion
-         can produce a nonsensical stop.
-      4. If ATR itself can't be computed, falls back further to the
-         original flat ATR_STOP_MULTIPLIER/ATR_TAKE_PROFIT_MULTIPLIER
-         defaults applied directly (old behavior), as a last resort.
-
-    NOTE: this OVERWRITES any existing stored exit for the ticker,
-    including on an "add" to an existing position -- each new fill
-    re-anchors the stop/take-profit to the latest chart action. This is
-    intentional (a day-trading-style bot should let stops trail with
-    fresh price action, not stay pinned to a stale first-entry level).
+    NOTE: this OVERWRITES any existing stored exit for the ticker, including
+    on an "add" to an existing position -- each new fill re-anchors the
+    stop/take-profit to the latest chart action.
     """
     atr = None
     swing_low = swing_high = None
@@ -491,7 +469,6 @@ def _record_custom_exit(ticker, trade, entry_price):
     _save_custom_exits(exits)
     print(f"Set exit levels for {ticker}: stop ${stop_loss} / target ${take_profit} (source: {source})")
 
-
 # ============================================================
 # ATR/chart-based risk management & Portfolio Consolidation
 # ============================================================
@@ -499,16 +476,12 @@ def _record_custom_exit(ticker, trade, entry_price):
 def check_atr_stop_take_profit(account_snapshot):
     """
     For every holding, checks its stored chart-based stop-loss/take-profit
-    (set at entry time by _record_custom_exit -- see above) and force-sells
-    if either is breached. Falls back to a fresh flat-ATR-based level for
-    any holding that somehow has no stored custom exit (e.g. positions that
-    existed before this feature was added). Independent of what Gemini
-    decides that run, and independent of market regime (an exit is always
-    allowed).
+    and force-sells if either is breached. Falls back to a fresh flat-ATR
+    level for any holding that has no stored custom exit. Independent of
+    what Gemini decides that run, and independent of market regime.
 
-    Deliberately ignores the trade cooldown: a position opened moments ago
-    is exactly the one most in need of its stop-loss staying active. Only
-    skips tickers with an already-open order, to avoid duplicate exits.
+    Deliberately ignores the trade cooldown. Only skips tickers with an
+    already-open order, to avoid duplicate exits.
     """
     results = []
     open_order_tickers = get_tickers_with_open_orders()
@@ -528,13 +501,10 @@ def check_atr_stop_take_profit(account_snapshot):
             target_level = custom["take_profit"]
             level_source = custom.get("source", "custom")
         else:
-            # No stored custom exit (e.g. a pre-existing position from
-            # before this feature existed) -- compute a fresh flat-ATR
-            # default on the fly, same as the old behavior.
             indicators_data = get_full_indicators(ticker)
             atr = indicators_data["atr_14"] if indicators_data else None
             if atr is None:
-                continue  # can't compute a data-driven stop without ATR; skip rather than guess
+                continue
             stop_level = entry - (ATR_STOP_MULTIPLIER * atr)
             target_level = entry + (ATR_TAKE_PROFIT_MULTIPLIER * atr)
             level_source = "atr_default_no_stored_exit"
@@ -557,14 +527,9 @@ def check_atr_stop_take_profit(account_snapshot):
 
 def enforce_portfolio_consolidation(account_snapshot):
     """
-    Enforces portfolio sprawl control if current holdings exceed MAX_OPEN_POSITIONS.
-
-    1. Computes the deterministic quant score (0-100) for all holdings.
-    2. Identifies the excess count (N).
-    3. Sorts all holdings by score ascending.
-    4. Takes the worst N holdings.
-    5. Force-sells any of those worst N that score below CONSOLIDATION_SCORE_THRESHOLD.
-       If any score above the threshold, they are kept until they drop below.
+    Enforces portfolio sprawl control if current holdings exceed
+    MAX_OPEN_POSITIONS. Force-sells the worst-scoring excess holdings that
+    fall below CONSOLIDATION_SCORE_THRESHOLD.
     """
     results = []
     holdings = account_snapshot.get("holdings", {})
@@ -582,10 +547,7 @@ def enforce_portfolio_consolidation(account_snapshot):
         score = calculate_signal_score(indicators_data)
         scored_holdings.append((score, ticker))
 
-    # Sort ascending (lowest score first, which isolates worst assets)
     scored_holdings.sort(key=lambda x: x[0])
-
-    # Slice the worst N candidates (where N is the excess amount)
     candidates = scored_holdings[:excess_count]
 
     for score, ticker in candidates:
@@ -595,57 +557,52 @@ def enforce_portfolio_consolidation(account_snapshot):
                 f"below threshold ({CONSOLIDATION_SCORE_THRESHOLD}) while holding "
                 f"{len(holdings)} positions (limit {MAX_OPEN_POSITIONS})."
             )
-            trade = {
-                "ticker": ticker,
-                "action": "sell",
-                "dollar_amount": 0,
-                "reasoning": reason,
-                "conviction": 10
-            }
+            trade = {"ticker": ticker, "action": "sell", "dollar_amount": 0, "reasoning": reason, "conviction": 10}
             result = execute_trade(trade, account_snapshot)
             result["trigger"] = "portfolio_consolidation"
             results.append(result)
 
     return results
 
-
 # ============================================================
 # Order execution (conviction-scaled, regime-scaled, cash- and
-# sprawl-aware sizing, with a narrow exception for exceptional
-# conviction ideas to access part of the cash reserve)
+# sprawl-aware sizing)
 # ============================================================
 
 def execute_trade(trade, account_snapshot=None, size_multiplier=1.0):
     """
-    trade: {"ticker", "action", "dollar_amount", "reasoning", "conviction" (1-10),
-            "stop_loss" (optional, BUY only), "take_profit" (optional, BUY only)}
+    trade: {"ticker", "action", "dollar_amount", "reasoning", "conviction"
+    (1-10), "stop_loss" (optional, BUY only), "take_profit" (optional, BUY
+    only)}
 
-    Buy sizing, in order of constraints applied:
-      1. conviction/10 and the market-regime size_multiplier scale the
-         MAX_POSITION_PCT cap (0.0 regime multiplier blocks all buys).
-      2. MIN_CASH_RESERVE_PCT of total portfolio value is normally kept
-         uninvested -- EXCEPT for a trade at or above
-         EXCEPTIONAL_CONVICTION_THRESHOLD conviction, which may draw down
-         up to EXCEPTIONAL_TRADE_RESERVE_ACCESS_PCT of that reserve. Every
-         other constraint below still applies to exceptional trades too --
-         this only changes how much cash counts as "available."
-      3. MAX_OPEN_POSITIONS blocks opening a BRAND NEW ticker (adds to an
-         existing holding are unaffected) once the cap is reached -- no
-         exception, regardless of conviction.
-      4. MIN_TRADE_DOLLAR_AMOUNT -- anything smaller than this is skipped
-         rather than executed as a dust trade.
-    None of these apply to sells: an exit is always allowed regardless of
-    size, cash reserve, or position count, so the bot can always clean up
-    or de-risk.
+    BUY sizing, in order of constraints applied:
+    1. conviction/10 and the market-regime size_multiplier scale the
+       MAX_POSITION_PCT cap (0.0 regime multiplier blocks all buys).
+    2. MIN_CASH_RESERVE_PCT of total portfolio value is normally kept
+       uninvested -- except for exceptional-conviction trades, which may
+       draw down part of that reserve.
+    3. MAX_OPEN_POSITIONS blocks opening a BRAND NEW ticker once the cap is
+       reached (adds to an existing holding are unaffected).
+    4. MIN_TRADE_DOLLAR_AMOUNT -- anything smaller than this is skipped.
+
+    IMPORTANT: "dollar_amount" of 0 (or missing/None) on a BUY means "no
+    specific amount requested -- size this fully off conviction, regime, and
+    cash caps" (this mirrors how a 0 dollar_amount on a SELL already means
+    "sell the whole position", rather than being treated as a literal
+    request for $0). This matters because the pure-technical fallback
+    engine (decide.py) always omits a specific dollar_amount and relies on
+    this behavior; a positive dollar_amount from Gemini is still honored as
+    a cap, same as before.
+
+    None of the buy-only constraints above apply to sells: an exit is
+    always allowed regardless of size, cash reserve, or position count.
 
     On a successful BUY fill, a chart-based stop-loss/take-profit is
-    computed and stored for this position (see _record_custom_exit) --
-    using trade["stop_loss"]/trade["take_profit"] if provided and allowed,
-    otherwise a fresh swing-high/low read of the chart.
+    computed and stored for this position.
     """
     ticker = trade["ticker"]
     action = trade["action"].lower()
-    requested_amount = trade.get("dollar_amount", 0)
+    requested_amount = trade.get("dollar_amount") or 0
     conviction = max(1, min(10, trade.get("conviction", 5)))
 
     if account_snapshot is None:
@@ -663,7 +620,8 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0):
         is_new_position = current_holding is None
         if is_new_position and len(account_snapshot["holdings"]) >= MAX_OPEN_POSITIONS:
             return {
-                "ticker": ticker, "status": "skipped",
+                "ticker": ticker,
+                "status": "skipped",
                 "reason": f"max open positions reached ({MAX_OPEN_POSITIONS} held, no exception for "
                           f"conviction); only adds to existing holdings or sells are allowed until "
                           f"it consolidates",
@@ -679,16 +637,34 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0):
             reserve_kept = base_reserve
         available_cash = max(0.0, account_snapshot["cash"] - reserve_kept)
 
-        amount = min(requested_amount, max_allowed - current_position_value, available_cash)
+        room_remaining = max_allowed - current_position_value
+
+        # --- THE FIX ---
+        # A requested_amount of 0/None means "no specific dollar figure was
+        # proposed -- size this fully off the caps below" (exactly how a
+        # sell with dollar_amount=0 already means "sell everything"). Before
+        # this fix, a 0 here caused min(0, ..., ...) == 0 every single time,
+        # which silently zeroed out EVERY buy from the pure-technical
+        # fallback engine (it never sets a specific dollar_amount) and any
+        # Gemini buy that omitted the field.
+        if requested_amount and requested_amount > 0:
+            amount = min(requested_amount, room_remaining, available_cash)
+        else:
+            amount = min(room_remaining, available_cash)
+
+        amount = max(0.0, amount)
+
         if amount < MIN_TRADE_DOLLAR_AMOUNT:
             note = " (exceptional conviction already granted partial reserve access)" if is_exceptional else ""
             return {
-                "ticker": ticker, "status": "skipped",
+                "ticker": ticker,
+                "status": "skipped",
                 "reason": f"below minimum trade size (${MIN_TRADE_DOLLAR_AMOUNT}) after position cap, "
                           f"regime multiplier, and/or cash reserve (${reserve_kept:,.2f} kept uninvested "
                           f"of ${base_reserve:,.2f} normal reserve, ${account_snapshot['cash']:,.2f} cash "
                           f"on hand){note}",
             }
+
         qty = round(amount / price, 4)
         if qty <= 0:
             return {"ticker": ticker, "status": "skipped", "reason": "calculated quantity too small"}
@@ -729,20 +705,15 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0):
     except Exception as e:
         return {"ticker": ticker, "status": "failed", "reason": str(e)}
 
-
 # ============================================================
 # Performance logging
 # ============================================================
 
 def record_performance_snapshot(account_snapshot, log_dir, **stats):
     """
-    Appends one row to logs/performance.csv per run. Extra keyword args
-    (all optional) populate the columns.
-
-    If an existing performance.csv has an outdated header (e.g. from
-    before these columns existed), it's archived to a timestamped
-    "_legacy" file rather than appended to under a mismatched schema --
-    silently misaligned columns would be worse than a clearly separate file.
+    Appends one row to logs/performance.csv per run. If an existing
+    performance.csv has an outdated header, it's archived to a timestamped
+    "_legacy" file rather than appended to under a mismatched schema.
     """
     path = os.path.join(log_dir, "performance.csv")
     file_exists = os.path.exists(path)
