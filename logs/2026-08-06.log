@@ -6290,3 +6290,16 @@ Quant pre-screen: 7/12 candidates passed.
 Gemini proposed 0 trade(s) meeting the conviction bar.
 Ending portfolio value: $99,453.62
 
+=== Run at 2026-08-06T14:30:33.410422 ===
+Current time: 2026-08-06 10:30 AM EDT | Market open (per Alpaca): True
+Account value: $99,546.17
+Cash: $27,617.84 | Holdings (10): {'AMZN': '38.5111 sh (-0.68%)', 'AVGO': '0.0528 sh (+1.63%)', 'BAC': '79.0451 sh (-0.66%)', 'HD': '29.9205 sh (-0.17%)', 'HON': '48.6276 sh (+1.18%)', 'LMT': '20.7665 sh (+0.61%)', 'MA': '20.9251 sh (-0.59%)', 'NVDA': '22.5296 sh (-0.94%)', 'WMT': '44.4919 sh (-1.11%)', 'XOM': '0.0016 sh (-1.22%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 7/12 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+  -> {"timestamp": "2026-08-06T14:31:01.016676", "ticker": "AMZN", "action": "buy", "qty": 5.2655, "conviction": 8, "size_multiplier": 1.0, "order_id": "f31df3bb-deb0-467e-96b7-423f6a1a158f", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Strong daily uptrend with ADX 25.22 and MACD hist +4.38 pulling back intraday (VWAP dev -1.18%), presenting a solid intraday dip buying opportunity.", "status": "submitted"}
+  -> {"timestamp": "2026-08-06T14:31:01.767398", "ticker": "HON", "action": "buy", "qty": 0.124, "conviction": 8, "size_multiplier": 1.0, "order_id": "d10df1d6-60d0-4124-b8c7-454b78975534", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Strong daily trend with high ADX (37.08) experiencing an intraday oversold dip (intraday RSI 27.15, VWAP dev -1.31%), offering an ideal pullback entry.", "status": "submitted"}
+  -> {"timestamp": "2026-08-06T14:31:01.872980", "ticker": "BAC", "action": "sell", "qty": 78.9627, "conviction": 7, "size_multiplier": 1.0, "order_id": "71a80210-3a9e-4dfb-957a-fea89e819bb1", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Low quant score (55), negative MACD histogram, and intraday downtrend indicate weakening momentum. Exiting to reallocate capital.", "status": "submitted"}
+Ending portfolio value: $99,560.07
+
