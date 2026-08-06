@@ -3,20 +3,17 @@ Ties everything together. This is the file cron / GitHub Actions / your
 external scheduler runs.
 
 Flow (in order):
-  1. Pull current account state from Alpaca
-  2. Enforce ATR-based stop-loss / take-profit (independent of Gemini)
-  3. Enforce portfolio consolidation if over MAX_OPEN_POSITIONS limits,
-     purging the worst-scoring excess holdings that score below threshold
-  4. Refresh account state after any forced sells
-  5. Evaluate the broad market regime (SPY-based) -- determines a
-     position-sizing multiplier enforced in code
-  6. Fetch news (deduped against recently-seen articles)
-  7. Ask Gemini to review holdings + quant-prescreened news candidates +
-     quant-prescreened watchlist
-  8. Execute trades (conviction- and regime-scaled size, cash-reserve and
-     position-count aware, cooldown/open-order aware, re-checking account
-     state between trades)
-  9. Record a full performance snapshot and log everything
+1. Pull current account state from Alpaca
+2. Enforce ATR-based stop-loss / take-profit (independent of Gemini)
+3. Enforce portfolio consolidation if over MAX_OPEN_POSITIONS limits
+4. Refresh account state after any forced sells
+5. Evaluate the broad market regime (SPY-based)
+6. Fetch news (deduped against recently-seen articles)
+7. Ask Gemini (or fall back to the pure-technical engine) to review holdings
+   + quant-prescreened news candidates + quant-prescreened watchlist
+8. Execute trades (conviction- and regime-scaled size, cash-reserve and
+   position-count aware, cooldown/open-order aware)
+9. Record a full performance snapshot and log everything
 """
 
 import json
@@ -25,9 +22,14 @@ from datetime import datetime
 
 from config import REGIME_POSITION_MULTIPLIERS
 from trader import (
-    get_account_snapshot, execute_trade, check_atr_stop_take_profit,
-    enforce_portfolio_consolidation, record_performance_snapshot,
-    is_market_open, get_market_regime, get_eastern_time_str,
+    get_account_snapshot,
+    execute_trade,
+    check_atr_stop_take_profit,
+    enforce_portfolio_consolidation,
+    record_performance_snapshot,
+    is_market_open,
+    get_market_regime,
+    get_eastern_time_str,
 )
 from news import get_news_candidates
 from decide import get_trade_decisions
@@ -109,7 +111,14 @@ def run():
             f"Quant pre-screen: {decision_meta['candidates_passed_prescreen']}/"
             f"{decision_meta['candidates_considered']} candidates passed."
         )
-        log_lines.append(f"Gemini proposed {len(trades)} trade(s) meeting the conviction bar.")
+        # FIX: this used to unconditionally say "Gemini proposed...", even on
+        # runs where Gemini's quota was exhausted and the pure-technical
+        # fallback engine generated the ideas instead. Now it reflects what
+        # actually produced the trades, and surfaces today's Gemini call
+        # count so quota usage is visible at a glance.
+        engine_label = "Technical fallback (Gemini throttled/unavailable)" if decision_meta.get("technical_fallback") else "Gemini"
+        log_lines.append(f"{engine_label} proposed {len(trades)} trade(s) meeting the conviction bar.")
+        log_lines.append(f"Gemini calls used today (all models combined): {decision_meta.get('gemini_calls_today', 0)}")
     except Exception as e:
         log_lines.append(f"Decision step failed, no trades this run: {e}")
         trades = []
@@ -136,7 +145,8 @@ def run():
     try:
         final_account = get_account_snapshot()
         record_performance_snapshot(
-            final_account, LOG_DIR,
+            final_account,
+            LOG_DIR,
             market_regime=regime,
             size_multiplier=size_multiplier,
             candidates_considered=decision_meta.get("candidates_considered", 0),
