@@ -7426,3 +7426,16 @@ Gemini calls used today (all models combined): 0
   -> {"timestamp": "2026-08-06T23:34:32.226539", "ticker": "COST", "action": "buy", "qty": 7.8517, "conviction": 5, "size_multiplier": 1.0, "order_id": "dbee409e-4ec6-4428-9f35-7eaaa24dfa31", "order_status": "OrderStatus.ACCEPTED", "reasoning": "technical score 70/100, strong signal on technicals alone, no recent news but pattern is compelling.", "status": "submitted"}
 Ending portfolio value: $99,337.87
 
+=== Run at 2026-08-06T23:36:29.052321 ===
+Current time: 2026-08-06 07:36 PM EDT | Market open (per Alpaca): False
+Account value: $99,341.32
+Cash: $33,125.98 | Holdings (9): {'AMZN': '43.7766 sh (-0.86%)', 'AVGO': '0.0528 sh (+0.86%)', 'BAC': '0.0824 sh (-1.30%)', 'HD': '29.9205 sh (-0.47%)', 'HON': '48.7516 sh (-0.94%)', 'LMT': '20.7665 sh (+0.60%)', 'MA': '20.9251 sh (+0.66%)', 'NVDA': '36.2064 sh (-0.62%)', 'XOM': '0.0016 sh (+0.20%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 7/13 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 0
+  -> {"ticker": "HON", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,967.07 kept uninvested of $4,967.07 normal reserve, $33,125.98 cash on hand)"}
+  -> {"ticker": "MA", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,967.07 kept uninvested of $4,967.07 normal reserve, $33,125.98 cash on hand)"}
+Ending portfolio value: $99,341.32
+
