@@ -3379,3 +3379,15 @@ Gemini proposed 6 trade(s) meeting the conviction bar.
   -> {"ticker": "COST", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,996.11 kept uninvested of $4,996.11 normal reserve, $30,801.25 cash on hand)"}
 Ending portfolio value: $99,922.21
 
+=== Run at 2026-08-06T07:00:42.655482 ===
+Current time: 2026-08-06 03:00 AM EDT | Market open (per Alpaca): False
+Account value: $99,923.29
+Cash: $30,801.25 | Holdings (11): {'AMZN': '28.0366 sh (-0.53%)', 'DIS': '39.7852 sh (+1.40%)', 'GOOGL': '10.515 sh (-4.54%)', 'HD': '12.9173 sh (+1.04%)', 'HON': '48.6276 sh (+2.33%)', 'JPM': '13.8345 sh (-0.43%)', 'LMT': '20.6316 sh (-0.39%)', 'MA': '20.9251 sh (+0.15%)', 'MSFT': '0.0029 sh (-0.65%)', 'NFLX': '47.736 sh (+2.38%)', 'V': '12.1776 sh (-0.60%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 6/11 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+  -> {"timestamp": "2026-08-06T07:01:03.020183", "ticker": "MSFT", "action": "sell", "qty": 0.0029, "conviction": 8, "size_multiplier": 1.0, "order_id": "493c363d-2881-4563-850f-25d8d675df2e", "order_status": "OrderStatus.ACCEPTED", "reasoning": "Exiting residual dust position; daily RSI is overbought (76.26) with a low quant score (55/100).", "status": "submitted"}
+  -> {"timestamp": "2026-08-06T07:01:03.365808", "ticker": "XOM", "action": "buy", "qty": 32.9826, "conviction": 7, "size_multiplier": 1.0, "order_id": "b10b20e0-6ec5-463a-8164-875660c31374", "order_status": "OrderStatus.ACCEPTED", "reasoning": "Daily uptrend with high quant score (75/100); daily Stochastic reset to 41.14 near 10-day swing low support ($149.34), presenting strong risk/reward.", "status": "submitted"}
+Ending portfolio value: $99,915.23
+
