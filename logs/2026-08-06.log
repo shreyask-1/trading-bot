@@ -4294,3 +4294,14 @@ Gemini proposed 3 trade(s) meeting the conviction bar.
   -> {"ticker": "COST", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,999.63 kept uninvested of $4,999.63 normal reserve, $30,799.96 cash on hand)"}
 Ending portfolio value: $99,992.64
 
+=== Run at 2026-08-06T09:10:29.116520 ===
+Current time: 2026-08-06 05:10 AM EDT | Market open (per Alpaca): False
+Account value: $99,989.38
+Cash: $30,799.96 | Holdings (11): {'AMZN': '28.0366 sh (-0.60%)', 'DIS': '39.7852 sh (+1.60%)', 'GOOGL': '10.515 sh (-4.70%)', 'HD': '12.9173 sh (+1.38%)', 'HON': '48.6276 sh (+2.34%)', 'JPM': '13.8345 sh (+0.02%)', 'LMT': '20.6316 sh (-0.04%)', 'MA': '20.9251 sh (+0.15%)', 'MSFT': '0.0029 sh (-0.68%)', 'NFLX': '47.736 sh (+1.87%)', 'V': '12.1776 sh (-0.42%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 6/11 candidates passed.
+Gemini proposed 1 trade(s) meeting the conviction bar.
+  -> {"timestamp": "2026-08-06T09:10:45.225862", "ticker": "AMZN", "action": "buy", "qty": 10.4745, "conviction": 7, "size_multiplier": 1.0, "order_id": "8970e44d-4292-41bc-aff3-71d527953a16", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "AMZN exhibits a strong daily uptrend with robust MACD momentum (4.62) and solid ADX (24.44). The intraday pullback to -1.33% VWAP deviation provides a favorable entry to add to this top-performing setup.", "status": "submitted"}
+Ending portfolio value: $99,989.48
+
