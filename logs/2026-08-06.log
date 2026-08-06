@@ -6157,3 +6157,16 @@ Quant pre-screen: 8/13 candidates passed.
 Gemini proposed 0 trade(s) meeting the conviction bar.
 Ending portfolio value: $99,659.46
 
+=== Run at 2026-08-06T14:04:37.399326 ===
+Current time: 2026-08-06 10:04 AM EDT | Market open (per Alpaca): True
+Account value: $99,672.68
+Cash: $22,593.01 | Holdings (9): {'AMZN': '38.5111 sh (-0.49%)', 'AVGO': '11.9477 sh (+0.20%)', 'BAC': '79.0451 sh (-0.73%)', 'HD': '29.9205 sh (+0.20%)', 'HON': '48.6276 sh (+1.73%)', 'LMT': '20.7665 sh (+0.23%)', 'MA': '20.9251 sh (-0.55%)', 'WMT': '44.4919 sh (-0.79%)', 'XOM': '32.9826 sh (-1.26%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News fetch failed, proceeding with watchlist only: HTTPSConnectionPool(host='finnhub.io', port=443): Read timed out. (read timeout=15)
+Quant pre-screen: 8/13 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+  -> {"timestamp": "2026-08-06T14:05:21.559446", "ticker": "NVDA", "action": "buy", "qty": 22.5296, "conviction": 7, "size_multiplier": 1.0, "order_id": "8a12a89d-bc3e-4453-81f1-b45f4cd868ac", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Strong intraday momentum (+5.58%) aligned with established daily uptrend and high VWAP deviation.", "status": "submitted"}
+  -> {"timestamp": "2026-08-06T14:05:21.864287", "ticker": "XOM", "action": "sell", "qty": 32.981, "conviction": 7, "size_multiplier": 1.0, "order_id": "4398e191-8c6b-42a4-a8cf-b59222bf4668", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Weak 10-day momentum (-2.91%), negative MACD histogram, and low quant score (55) with intraday downtrend.", "status": "submitted"}
+  -> {"timestamp": "2026-08-06T14:05:22.186620", "ticker": "AVGO", "action": "sell", "qty": 11.8949, "conviction": 7, "size_multiplier": 1.0, "order_id": "965a4ab5-c186-4bb5-8565-a999cec1207a", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Sideways daily trend with low ADX (15.12), weak quant score (55), and negative intraday momentum.", "status": "submitted"}
+Ending portfolio value: $99,640.18
+
