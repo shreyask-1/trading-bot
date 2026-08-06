@@ -3571,3 +3571,16 @@ Gemini proposed 5 trade(s) meeting the conviction bar.
   -> {"ticker": "COST", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,996.70 kept uninvested of $4,996.70 normal reserve, $30,801.25 cash on hand)"}
 Ending portfolio value: $99,932.76
 
+=== Run at 2026-08-06T07:26:25.823798 ===
+Current time: 2026-08-06 03:26 AM EDT | Market open (per Alpaca): False
+Account value: $99,928.27
+Cash: $30,801.25 | Holdings (11): {'AMZN': '28.0366 sh (-0.54%)', 'DIS': '39.7852 sh (+1.51%)', 'GOOGL': '10.515 sh (-4.52%)', 'HD': '12.9173 sh (+1.04%)', 'HON': '48.6276 sh (+2.33%)', 'JPM': '13.8345 sh (-0.23%)', 'LMT': '20.6316 sh (-0.39%)', 'MA': '20.9251 sh (+0.15%)', 'MSFT': '0.0029 sh (-0.43%)', 'NFLX': '47.736 sh (+2.09%)', 'V': '12.1776 sh (-0.60%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 6/11 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+  -> {"timestamp": "2026-08-06T07:26:43.049453", "ticker": "HD", "action": "buy", "qty": 11.3241, "conviction": 8, "size_multiplier": 1.0, "order_id": "99fb7a02-1250-4148-b0ba-9ee1586df1c7", "order_status": "OrderStatus.ACCEPTED", "reasoning": "Daily uptrend reinforced by strong intraday momentum (+3.98%) and positive VWAP deviation.", "status": "submitted"}
+  -> {"timestamp": "2026-08-06T07:26:43.147248", "ticker": "LMT", "action": "buy", "qty": 0.1349, "conviction": 8, "size_multiplier": 1.0, "order_id": "d3285cac-22b7-4e92-b866-18d9408468e4", "order_status": "OrderStatus.ACCEPTED", "reasoning": "Strong daily uptrend (ADX 24.32, MACD hist 4.14) pulling back into intraday oversold territory (RSI 27.14), presenting a favorable dip-buy entry.", "status": "submitted"}
+  -> {"timestamp": "2026-08-06T07:26:43.200613", "ticker": "V", "action": "sell", "qty": 12.1769, "conviction": 7, "size_multiplier": 1.0, "order_id": "f04c9771-c470-4786-bb9c-b66b90b984db", "order_status": "OrderStatus.ACCEPTED", "reasoning": "Weakest quant score (55) among holdings, negative daily MACD histogram, weak relative volume (-45.3%), and intraday downtrend.", "status": "submitted"}
+Ending portfolio value: $99,928.27
+
