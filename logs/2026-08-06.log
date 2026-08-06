@@ -6303,3 +6303,13 @@ Gemini proposed 3 trade(s) meeting the conviction bar.
   -> {"timestamp": "2026-08-06T14:31:01.872980", "ticker": "BAC", "action": "sell", "qty": 78.9627, "conviction": 7, "size_multiplier": 1.0, "order_id": "71a80210-3a9e-4dfb-957a-fea89e819bb1", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Low quant score (55), negative MACD histogram, and intraday downtrend indicate weakening momentum. Exiting to reallocate capital.", "status": "submitted"}
 Ending portfolio value: $99,560.07
 
+=== Run at 2026-08-06T14:32:31.147424 ===
+Current time: 2026-08-06 10:32 AM EDT | Market open (per Alpaca): True
+Account value: $99,565.43
+Cash: $31,159.11 | Holdings (10): {'AMZN': '43.7766 sh (-0.40%)', 'AVGO': '0.0528 sh (+1.64%)', 'BAC': '0.0824 sh (-0.74%)', 'HD': '29.9205 sh (-0.21%)', 'HON': '48.7516 sh (+1.22%)', 'LMT': '20.7665 sh (+0.57%)', 'MA': '20.9251 sh (-0.52%)', 'NVDA': '22.5296 sh (-1.04%)', 'WMT': '44.4919 sh (-1.20%)', 'XOM': '0.0016 sh (-1.43%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 1 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 7/12 candidates passed.
+Gemini proposed 0 trade(s) meeting the conviction bar.
+Ending portfolio value: $99,558.89
+
