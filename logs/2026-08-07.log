@@ -6826,3 +6826,15 @@ Gemini calls used today (all models combined): 20
   -> {"ticker": "AVGO", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($12,011.57), room ($12,011.57), regime multiplier (100%), and cash reserve ($5,004.82 kept of $-5,377.81 cash)"}
 Ending portfolio value: $100,093.89
 
+=== Run at 2026-08-07T18:22:26.044054 ===
+Current time: 2026-08-07 02:22 PM EDT | Market open (per Alpaca): True
+Account value: $100,073.37
+Cash: $-5,377.81 | Holdings (14): {'AAPL': '12.8012 sh (-0.39%)', 'AMZN': '25.4179 sh (+0.22%)', 'COP': '63.8341 sh (+1.71%)', 'COST': '7.8517 sh (+0.50%)', 'DIS': '66.8769 sh (+0.35%)', 'GOOGL': '20.8177 sh (-1.01%)', 'HD': '34.1034 sh (+0.66%)', 'HON': '49.4672 sh (+1.38%)', 'LMT': '20.7665 sh (+1.17%)', 'MA': '15.7159 sh (-1.78%)', 'META': '12.712 sh (+0.48%)', 'MSFT': '14.999 sh (-0.85%)', 'NVDA': '2.777 sh (+0.49%)', 'TSLA': '13.0184 sh (+1.34%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 5/9 candidates passed.
+Gemini proposed 1 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 21
+  -> {"timestamp": "2026-08-07T18:22:34.832025", "ticker": "NVDA", "action": "sell", "qty": 2.777, "conviction": 8, "size_multiplier": 1.0, "order_id": "1a2bb16b-3541-4d3d-9b6a-5f117212941c", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Taking short-term profits on momentum exhaustion to free up margin.", "status": "submitted"}
+Ending portfolio value: $100,075.85
+
