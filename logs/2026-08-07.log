@@ -3820,3 +3820,14 @@ Gemini calls used today (all models combined): 0
 Ending portfolio value: $99,259.37
 Ending portfolio value: $99,259.06
 
+=== Run at 2026-08-07T09:54:26.245761 ===
+Current time: 2026-08-07 05:54 AM EDT | Market open (per Alpaca): False
+Account value: $99,256.47
+Cash: $33,124.91 | Holdings (9): {'AMZN': '43.7766 sh (-0.91%)', 'AVGO': '0.0528 sh (+1.06%)', 'BAC': '0.0824 sh (-1.36%)', 'HD': '29.9205 sh (-0.90%)', 'HON': '48.7516 sh (-1.03%)', 'LMT': '20.7665 sh (+0.78%)', 'MA': '20.9251 sh (+0.31%)', 'NVDA': '36.2064 sh (-0.65%)', 'XOM': '0.0016 sh (+0.19%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 7/13 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 0 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 0
+Ending portfolio value: $99,256.47
+
