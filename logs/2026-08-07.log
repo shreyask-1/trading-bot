@@ -4716,3 +4716,14 @@ Gemini calls used today (all models combined): 4
   -> {"timestamp": "2026-08-07T12:32:47.070986", "ticker": "META", "action": "buy", "qty": 12.712, "conviction": 7, "size_multiplier": 1.0, "order_id": "d5fa4eac-d481-46e2-a611-38f84446ce5a", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Bouncing off key intraday support level with increasing relative strength.", "status": "submitted"}
 Ending portfolio value: $99,402.76
 
+=== Run at 2026-08-07T12:34:26.028875 ===
+Current time: 2026-08-07 08:34 AM EDT | Market open (per Alpaca): False
+Account value: $99,436.12
+Cash: $33,124.91 | Holdings (9): {'AMZN': '43.7766 sh (-0.43%)', 'AVGO': '0.0528 sh (+1.95%)', 'BAC': '0.0824 sh (-1.02%)', 'HD': '29.9205 sh (+0.24%)', 'HON': '48.7516 sh (-1.64%)', 'LMT': '20.7665 sh (+0.73%)', 'MA': '20.9251 sh (+0.63%)', 'NVDA': '36.2064 sh (-0.12%)', 'XOM': '0.0016 sh (-0.21%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 7/13 candidates passed.
+Gemini proposed 0 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 5
+Ending portfolio value: $99,438.32
+
