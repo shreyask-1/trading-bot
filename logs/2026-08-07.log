@@ -5488,3 +5488,15 @@ Gemini proposed 0 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 44
 Ending portfolio value: $100,135.69
 
+=== Run at 2026-08-07T14:46:26.625095 ===
+Current time: 2026-08-07 10:46 AM EDT | Market open (per Alpaca): True
+Account value: $100,233.18
+Cash: $-9,377.66 | Holdings (14): {'AAPL': '12.8012 sh (+0.27%)', 'AMZN': '25.4179 sh (+0.86%)', 'COP': '63.8341 sh (+1.04%)', 'COST': '7.8517 sh (+0.84%)', 'DIS': '66.8769 sh (+0.06%)', 'GOOGL': '20.8177 sh (-0.91%)', 'HD': '34.1034 sh (+1.21%)', 'HON': '49.4672 sh (+1.05%)', 'LMT': '20.7665 sh (+0.34%)', 'MA': '15.7159 sh (-0.98%)', 'META': '12.712 sh (+1.35%)', 'MSFT': '14.999 sh (-0.03%)', 'NVDA': '2.777 sh (+0.91%)', 'TSLA': '25.0579 sh (+2.03%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 6/9 candidates passed.
+Gemini proposed 1 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 45
+  -> {"ticker": "AVGO", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($12,027.98), room ($12,027.98), regime multiplier (100%), and cash reserve ($5,011.66 kept of $-9,377.66 cash)"}
+Ending portfolio value: $100,226.69
+
