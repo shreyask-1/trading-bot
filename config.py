@@ -77,27 +77,24 @@ INTRADAY_LOOKBACK_DAYS = int(os.environ.get("INTRADAY_LOOKBACK_DAYS", 2))
 TRADE_COOLDOWN_MINUTES = 30
 NEWS_DEDUP_MAX_AGE_HOURS = 48
 
-# --- Model & quota (Valid Google AI Studio Models) ---
+# --- Model & quota ---
+# NOTE: decide.py now discovers live, currently-valid model IDs from
+# Google's own ListModels endpoint at runtime and caches them for the day --
+# this static list below is ONLY used as a last-resort fallback if that
+# discovery call itself fails (e.g. no network). Don't rely on these names
+# staying accurate forever; Google renames/retires models over time (this
+# is exactly what caused the gemini-1.5-flash / gemini-1.5-flash-8b 404s).
 GEMINI_MODEL_FALLBACKS = [
+    "gemini-flash-latest",
     "gemini-2.0-flash",
-    "gemini-1.5-flash",
-    "gemini-1.5-flash-8b",
+    "gemini-2.0-flash-lite",
 ]
 GEMINI_MODEL = os.environ.get("GEMINI_MODEL", GEMINI_MODEL_FALLBACKS[0])
 
 GEMINI_MODEL_LIMITS = {
-    "gemini-2.0-flash": {
-        "rpd": int(os.environ.get("GEMINI_RPD_20_FLASH", 1500)),
-        "rpm": int(os.environ.get("GEMINI_RPM_20_FLASH", 15)),
-    },
-    "gemini-1.5-flash": {
-        "rpd": int(os.environ.get("GEMINI_RPD_15_FLASH", 1500)),
-        "rpm": int(os.environ.get("GEMINI_RPM_15_FLASH", 15)),
-    },
-    "gemini-1.5-flash-8b": {
-        "rpd": int(os.environ.get("GEMINI_RPD_15_FLASH_8B", 1500)),
-        "rpm": int(os.environ.get("GEMINI_RPM_15_FLASH_8B", 15)),
-    },
+    "gemini-flash-latest": {"rpd": int(os.environ.get("GEMINI_RPD_FLASH_LATEST", 1500)), "rpm": int(os.environ.get("GEMINI_RPM_FLASH_LATEST", 15))},
+    "gemini-2.0-flash": {"rpd": int(os.environ.get("GEMINI_RPD_20_FLASH", 1500)), "rpm": int(os.environ.get("GEMINI_RPM_20_FLASH", 15))},
+    "gemini-2.0-flash-lite": {"rpd": int(os.environ.get("GEMINI_RPD_20_FLASH_LITE", 1500)), "rpm": int(os.environ.get("GEMINI_RPM_20_FLASH_LITE", 15))},
 }
 
 GEMINI_QUOTA_RESET_TIMEZONE = "America/Los_Angeles"
