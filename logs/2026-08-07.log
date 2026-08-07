@@ -3595,3 +3595,15 @@ Gemini proposed 0 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 6
 Ending portfolio value: $99,268.87
 
+=== Run at 2026-08-07T09:14:28.862645 ===
+Current time: 2026-08-07 05:14 AM EDT | Market open (per Alpaca): False
+Account value: $99,270.83
+Cash: $33,124.91 | Holdings (9): {'AMZN': '43.7766 sh (-0.93%)', 'AVGO': '0.0528 sh (+1.18%)', 'BAC': '0.0824 sh (-1.33%)', 'HD': '29.9205 sh (-0.90%)', 'HON': '48.7516 sh (-1.03%)', 'LMT': '20.7665 sh (+0.78%)', 'MA': '20.9251 sh (+0.31%)', 'NVDA': '36.2064 sh (-0.45%)', 'XOM': '0.0016 sh (-0.13%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 7/13 candidates passed.
+Gemini proposed 1 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 1
+  -> {"timestamp": "2026-08-07T09:14:44.632037", "ticker": "MA", "action": "sell", "qty": 5.2092, "conviction": 7, "size_multiplier": 1.0, "order_id": "8f818be6-ad15-49b0-8a55-fc8f6c09391d", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "MA is extended near its 10-day swing high ($583.56) with an overbought intraday RSI of 74.29 and daily Stochastic at 87.17 on decreasing relative volume (-21.4%). Trimming to capture gains and manage short-term pullback risk.", "status": "submitted"}
+Ending portfolio value: $99,270.83
+
