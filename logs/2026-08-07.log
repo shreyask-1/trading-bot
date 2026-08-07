@@ -5046,3 +5046,15 @@ Gemini calls used today (all models combined): 6
   -> {"timestamp": "2026-08-07T13:31:00.409274", "ticker": "AAPL", "action": "buy", "qty": 12.8012, "conviction": 8, "size_multiplier": 1.0, "order_id": "97df1487-290b-4dbc-b527-e51a49194cb5", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Strong intraday momentum breaking key resistance on high relative volume.", "status": "submitted"}
 Ending portfolio value: $99,379.24
 
+=== Run at 2026-08-07T13:32:30.471106 ===
+Current time: 2026-08-07 09:32 AM EDT | Market open (per Alpaca): True
+Account value: $99,553.55
+Cash: $2,639.62 | Holdings (14): {'AMZN': '36.7766 sh (+0.75%)', 'COP': '25.0 sh (+0.11%)', 'COST': '1.0 sh (-0.28%)', 'DIS': '66.8769 sh (-0.71%)', 'GOOGL': '9.0 sh (-0.47%)', 'HD': '32.9205 sh (+0.31%)', 'HON': '49.4672 sh (-0.97%)', 'LMT': '20.7665 sh (-0.06%)', 'MA': '15.7159 sh (-0.08%)', 'META': '12.712 sh (+1.01%)', 'MSFT': '4.0 sh (+0.65%)', 'NVDA': '47.6623 sh (+0.25%)', 'TSLA': '25.0579 sh (+0.34%)', 'XOM': '0.0016 sh (-0.83%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 4/9 candidates passed.
+Gemini proposed 1 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 7
+  -> {"ticker": "NFLX", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($10,453.12), room ($10,453.12), regime multiplier (100%), and cash reserve ($4,977.68 kept of $2,639.62 cash)"}
+Ending portfolio value: $99,571.10
+
