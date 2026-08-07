@@ -1,1 +1,26 @@
-{"date": "2026-08-07", "last_call": "2026-08-07T11:50:36.782692+00:00", "models": {"gemini-2.5-flash-lite": {"count": 0, "recent_calls": [], "exhausted": false}, "gemini-2.5-flash": {"count": 0, "recent_calls": [], "exhausted": false}, "gemini-flash-latest": {"count": 8, "recent_calls": ["2026-08-07T11:50:36.782692+00:00"], "exhausted": false}, "gemini-2.0-flash": {"count": 0, "recent_calls": [], "exhausted": true}, "gemini-1.5-flash": {"count": 0, "recent_calls": [], "exhausted": false}, "gemini-1.5-flash-8b": {"count": 0, "recent_calls": [], "exhausted": false}}, "confirmed_limits": {}}
+{
+  "date": "2026-08-07",
+  "last_call": null,
+  "models": {
+    "gemini-2.0-flash": {
+      "count": 0,
+      "recent_calls": [],
+      "exhausted": false
+    },
+    "gemini-1.5-flash": {
+      "count": 0,
+      "recent_calls": [],
+      "exhausted": false
+    },
+    "gemini-1.5-flash-8b": {
+      "count": 0,
+      "recent_calls": [],
+      "exhausted": false
+    }
+  },
+  "confirmed_limits": {
+    "gemini-2.0-flash": { "rpd": 1500, "rpm": 15 },
+    "gemini-1.5-flash": { "rpd": 1500, "rpm": 15 },
+    "gemini-1.5-flash-8b": { "rpd": 1500, "rpm": 15 }
+  }
+}
