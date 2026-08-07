@@ -1,6 +1,14 @@
 """
-Decision Engine: Handles Gemini LLM reviews with rotating model fallback and rate limit tracking.
-Includes pure-technical decision engine fallback when LLM calls are unavailable.
+Decision Engine: Handles Gemini LLM reviews with dynamic model discovery,
+rotating fallback, and rate limit tracking. Includes pure-technical decision
+engine fallback when LLM calls are unavailable.
+
+IMPORTANT: Google renames/deprecates model IDs over time (confirmed by your
+own 404 errors on gemini-1.5-flash / gemini-1.5-flash-8b). Rather than trust
+a hardcoded list forever, this file queries the live ListModels endpoint once
+per day, caches whatever text-capable models actually exist on YOUR account
+right now, and uses that -- falling back to the static config list only if
+the discovery call itself fails (e.g. no network).
 """
 
 import json
@@ -14,19 +22,14 @@ from google.genai import types
 
 from config import (
     GEMINI_API_KEY,
-    GEMINI_MODEL,
     GEMINI_MODEL_FALLBACKS,
     GEMINI_MODEL_LIMITS,
     GEMINI_QUOTA_RESET_TIMEZONE,
-    MAX_POSITION_PCT,
     MIN_CONVICTION_TO_TRADE,
     WATCHLIST,
     SWING_LOOKBACK_DAYS,
     MIN_SIGNAL_SCORE_TO_CONSIDER,
-    REGIME_POSITION_MULTIPLIERS,
-    EXCEPTIONAL_CONVICTION_THRESHOLD,
-    CONSOLIDATION_SCORE_THRESHOLD,
-    MAX_OPEN_POSITIONS,
+    MAX_POSITION_PCT,
     TECHNICAL_MIN_CONVICTION,
     TECHNICAL_CONVICTION_AGGRESSIVENESS,
 )
@@ -47,6 +50,14 @@ _QUOTA_TZ = pytz.timezone(GEMINI_QUOTA_RESET_TIMEZONE)
 _SWING_LOW_KEY = f"recent_swing_low_{SWING_LOOKBACK_DAYS}d"
 _SWING_HIGH_KEY = f"recent_swing_high_{SWING_LOOKBACK_DAYS}d"
 
+_DEFAULT_LIMITS = {"rpd": 1500, "rpm": 15}
+
+# Keywords that mean "not a text chat model we can use here"
+_EXCLUDE_KEYWORDS = [
+    "embed", "aqa", "vision", "image", "imagen", "tts", "audio",
+    "video", "veo", "live", "ocr", "vision", "gemma",
+]
+
 _RESPONSE_SCHEMA = types.Schema(
     type=types.Type.OBJECT,
     properties={
@@ -56,9 +67,7 @@ _RESPONSE_SCHEMA = types.Schema(
                 type=types.Type.OBJECT,
                 properties={
                     "ticker": types.Schema(type=types.Type.STRING),
-                    "action": types.Schema(
-                        type=types.Type.STRING, enum=["buy", "sell"]
-                    ),
+                    "action": types.Schema(type=types.Type.STRING, enum=["buy", "sell"]),
                     "dollar_amount": types.Schema(type=types.Type.NUMBER),
                     "conviction": types.Schema(type=types.Type.INTEGER),
                     "reasoning": types.Schema(type=types.Type.STRING),
@@ -72,9 +81,7 @@ _RESPONSE_SCHEMA = types.Schema(
     required=["trades"],
 )
 
-PROMPT_TEMPLATE = """You are a moderately aggressive DAY-TRADING analyst for a SIMULATED paper-trading portfolio (no real money). You have access to BOTH daily-chart context (trend, moving averages, multi-week momentum) AND short-term intraday context (5-minute-bar RSI, intraday momentum since today's open, VWAP deviation) for every ticker below -- use both: the daily context tells you the broader setup, the intraday context tells you whether NOW is a good moment to act on it.
-
-Every trade idea you propose MUST include a "conviction" score from 1-10, reflecting how strongly the signals agree with each other. Ideas below conviction {min_conviction} will be discarded automatically.
+PROMPT_TEMPLATE = """You are a moderately aggressive DAY-TRADING analyst for a SIMULATED paper-trading portfolio (no real money). Every trade idea MUST include a "conviction" score from 1-10. Ideas below conviction {min_conviction} will be discarded.
 
 Current portfolio: - Cash available: ${cash:,.2f} - Total portfolio value: ${total_value:,.2f}
 Existing holdings: {holdings_block}
@@ -84,19 +91,106 @@ Watchlist candidates: {watchlist_block}
 Respond with ONLY valid JSON:
 {{"trades": [{{"ticker": "AAPL", "action": "buy", "dollar_amount": 5000, "conviction": 8, "reasoning": "short reason"}}]}}"""
 
+
+# ============================================================
+# Dynamic model discovery -- self-heals when Google renames models
+# ============================================================
+def _rank_model_name(name):
+    n = name.lower()
+    if "lite" in n:
+        return 0
+    if "flash" in n and "pro" not in n:
+        return 1
+    if "pro" in n:
+        return 3
+    return 2
+
+
+def _discover_live_models():
+    """
+    Queries Google's own ListModels endpoint to find whatever text-capable
+    models actually exist on this account RIGHT NOW. Returns a ranked list
+    of short model names (e.g. "gemini-2.0-flash"), or None if the call
+    itself failed (e.g. no network) -- callers should fall back to the
+    static config list in that case only.
+    """
+    try:
+        models_iter = _client.models.list()
+    except Exception as e:
+        print(f"Could not list live Gemini models (using static fallback list): {e}")
+        return None
+
+    candidates = []
+    try:
+        for m in models_iter:
+            name = getattr(m, "name", None) or ""
+            short = name.split("/")[-1] if "/" in name else name
+            if not short:
+                continue
+            lname = short.lower()
+            if any(bad in lname for bad in _EXCLUDE_KEYWORDS):
+                continue
+            # Only interested in gemini text models
+            if "gemini" not in lname:
+                continue
+            candidates.append(short)
+    except Exception as e:
+        print(f"Error while iterating live Gemini model list (using static fallback list): {e}")
+        return None
+
+    if not candidates:
+        return None
+
+    candidates = sorted(set(candidates), key=_rank_model_name)
+    return candidates
+
+
+def _get_effective_model_list(tracker):
+    """
+    Returns the fallback list to actually use this run: live-discovered
+    models (refreshed once per calendar day and cached in the tracker file)
+    minus any models already proven invalid today, or the static config
+    list if discovery has never succeeded.
+    """
+    today = _quota_day_now()
+    if tracker.get("discovered_date") != today or not tracker.get("discovered_models"):
+        discovered = _discover_live_models()
+        tracker["discovered_date"] = today
+        tracker["discovered_models"] = discovered  # may be None
+
+    invalid = set(tracker.get("invalid_models", []))
+    live_list = tracker.get("discovered_models")
+
+    if live_list:
+        effective = [m for m in live_list if m not in invalid]
+        if effective:
+            return effective
+    # Fall back to static config list (also filtered for known-invalid today)
+    return [m for m in GEMINI_MODEL_FALLBACKS if m not in invalid]
+
+
+# ============================================================
+# Per-model quota tracking
+# ============================================================
 def _quota_day_now():
     return datetime.now(pytz.utc).astimezone(_QUOTA_TZ).strftime("%Y-%m-%d")
 
+
 def _default_model_state():
     return {"count": 0, "recent_calls": [], "exhausted": False}
+
 
 def _default_tracker():
     return {
         "date": _quota_day_now(),
         "last_call": None,
-        "models": {name: _default_model_state() for name in GEMINI_MODEL_FALLBACKS},
+        "models": {},
         "confirmed_limits": {},
+        "discovered_date": None,
+        "discovered_models": None,
+        "invalid_models": [],
     }
+
 
 def _load_tracker():
     if not os.path.exists(_CALL_TRACKER_FILE):
@@ -110,24 +204,35 @@ def _load_tracker():
     if data.get("date") != _quota_day_now():
         fresh = _default_tracker()
         fresh["confirmed_limits"] = data.get("confirmed_limits", {})
+        # discovered_models/invalid_models intentionally reset daily --
+        # yesterday's "invalid" model might be valid again after Google's
+        # own daily refresh, and yesterday's discovery is stale anyway.
         return fresh
 
-    for name in GEMINI_MODEL_FALLBACKS:
-        data.setdefault("models", {}).setdefault(name, _default_model_state())
+    data.setdefault("models", {})
+    data.setdefault("confirmed_limits", {})
+    data.setdefault("discovered_date", None)
+    data.setdefault("discovered_models", None)
+    data.setdefault("invalid_models", [])
     return data
+
 
 def _save_tracker(data):
     os.makedirs(os.path.dirname(_CALL_TRACKER_FILE), exist_ok=True)
-    with open(_CALL_TRACKER_FILE, "w") as f:
+    tmp = _CALL_TRACKER_FILE + ".tmp"
+    with open(tmp, "w") as f:
         json.dump(data, f)
+    os.replace(tmp, _CALL_TRACKER_FILE)
+
 
 def _effective_limits(tracker, model_name):
-    configured = GEMINI_MODEL_LIMITS.get(model_name, {"rpd": 1500, "rpm": 15})
+    configured = GEMINI_MODEL_LIMITS.get(model_name, _DEFAULT_LIMITS)
     learned = tracker.get("confirmed_limits", {}).get(model_name, {})
     return {
         "rpd": learned.get("rpd", configured["rpd"]),
         "rpm": learned.get("rpm", configured["rpm"]),
     }
+
 
 def _prune_recent_calls(recent_calls):
     now = datetime.now(pytz.utc)
@@ -141,27 +246,48 @@ def _prune_recent_calls(recent_calls):
             continue
     return kept
 
+
+def _get_model_state(tracker, model_name):
+    return tracker["models"].setdefault(model_name, _default_model_state())
+
+
 def _remaining_rpd(tracker, model_name):
-    state = tracker["models"].get(model_name, _default_model_state())
+    state = _get_model_state(tracker, model_name)
     if state.get("exhausted"):
         return 0
     limit = _effective_limits(tracker, model_name)["rpd"]
     return max(0, limit - state.get("count", 0))
 
+
 def _has_rpm_room(tracker, model_name):
-    state = tracker["models"].get(model_name, _default_model_state())
-    recent = _prune_recent_calls(state.get("recent_calls", []))
-    state["recent_calls"] = recent
+    state = _get_model_state(tracker, model_name)
+    state["recent_calls"] = _prune_recent_calls(state.get("recent_calls", []))
     limit = _effective_limits(tracker, model_name)["rpm"]
-    return len(recent) < limit
+    return len(state["recent_calls"]) < limit
 
-def _total_remaining(tracker):
-    return sum(_remaining_rpd(tracker, name) for name in GEMINI_MODEL_FALLBACKS)
 
-def _should_attempt_call(tracker):
-    total_remaining = _total_remaining(tracker)
+def _total_remaining(tracker, model_list):
+    return sum(_remaining_rpd(tracker, name) for name in model_list)
+
+
+def _is_daily_quota_error(error_str):
+    return "PerDay" in error_str or "GenerateRequestsPerDayPerProjectPerModel" in error_str or "RESOURCE_EXHAUSTED" in error_str
+
+
+def _is_model_not_found_error(error_str):
+    return "404" in error_str or "NOT_FOUND" in error_str
+
+
+def _extract_quota_value(error_str, marker):
+    pattern = rf'["\']quotaId["\']\s*:\s*["\'][^"\']*{marker}[^"\']*["\'].*?["\']quotaValue["\']\s*:\s*["\'](\d+)["\']'
+    m = re.search(pattern, error_str, re.DOTALL)
+    return int(m.group(1)) if m else None
+
+
+def _should_attempt_call(tracker, model_list):
+    total_remaining = _total_remaining(tracker, model_list)
     if total_remaining <= 0:
-        return False, "all configured models have exhausted their daily free-tier quota"
+        return False, "all available models have exhausted their daily free-tier quota"
     if tracker.get("last_call") is None:
         return True, None
     try:
@@ -172,13 +298,14 @@ def _should_attempt_call(tracker):
         return True, None
 
     elapsed = (datetime.now(pytz.utc) - last_call).total_seconds()
-    if elapsed < 30.0:  # 30-second RPM safety interval
-        return False, f"spacing calls ({elapsed:.0f}s since last call, need 30s)"
+    if elapsed < 20.0:  # simple RPM safety floor
+        return False, f"spacing calls ({elapsed:.0f}s since last call, need 20s minimum)"
     return True, None
 
-def _generate_with_rotation(prompt, tracker):
+
+def _generate_with_rotation(prompt, tracker, model_list):
     last_error = None
-    for model_name in GEMINI_MODEL_FALLBACKS:
+    for model_name in model_list:
         if _remaining_rpd(tracker, model_name) <= 0:
             continue
         if not _has_rpm_room(tracker, model_name):
@@ -195,39 +322,77 @@ def _generate_with_rotation(prompt, tracker):
                 ),
             )
             now_iso = datetime.now(pytz.utc).isoformat()
-            model_state = tracker["models"][model_name]
-            model_state["count"] += 1
-            model_state["recent_calls"].append(now_iso)
+            state = _get_model_state(tracker, model_name)
+            state["count"] += 1
+            state["recent_calls"].append(now_iso)
             tracker["last_call"] = now_iso
             tracker["date"] = _quota_day_now()
             return response
         except Exception as e:
             error_str = str(e)
             last_error = e
-            if "PerDay" in error_str or "429" in error_str:
-                tracker["models"][model_name]["exhausted"] = True
-                print(f"Model '{model_name}' exhausted daily quota.")
+
+            if _is_model_not_found_error(error_str):
+                # Not a quota problem -- this model ID simply doesn't exist
+                # (renamed/deprecated by Google). Remove it from today's
+                # rotation entirely so we don't waste time retrying it.
+                tracker.setdefault("invalid_models", [])
+                if model_name not in tracker["invalid_models"]:
+                    tracker["invalid_models"].append(model_name)
+                print(f"Model '{model_name}' not found/unsupported for this API version -- "
+                      f"removing from today's rotation.")
+                continue
+
+            real_rpd = _extract_quota_value(error_str, "PerDay")
+            real_rpm = _extract_quota_value(error_str, "PerMinute")
+            if real_rpd is not None or real_rpm is not None:
+                learned = tracker["confirmed_limits"].setdefault(model_name, {})
+                if real_rpd is not None:
+                    learned["rpd"] = real_rpd
+                if real_rpm is not None:
+                    learned["rpm"] = real_rpm
+
+            if _is_daily_quota_error(error_str):
+                _get_model_state(tracker, model_name)["exhausted"] = True
+                print(f"Model '{model_name}' exhausted its daily quota.")
             else:
-                print(f"Model '{model_name}' call failed: {e}")
+                print(f"Model '{model_name}' call failed (will retry next run): {e}")
             continue
 
     raise last_error if last_error else RuntimeError("No Gemini models had remaining quota.")
 
+
+# ============================================================
+# Pure-technical fallback (when Gemini is throttled/unavailable)
+# ============================================================
 def _technical_conviction_from_score(quant_score):
+    """
+    Maps quant signal_score (0-100) to a conviction level for pure-technical
+    trading. FIXED: the pass-threshold score (MIN_SIGNAL_SCORE_TO_CONSIDER)
+    now ALWAYS maps to at least TECHNICAL_MIN_CONVICTION -- previously the
+    aggressiveness multiplier was applied to the whole value including its
+    floor, which could push a genuinely-qualifying candidate's conviction
+    below the very gate it needed to clear, silently producing zero trades.
+    Aggressiveness now only scales the BONUS above that guaranteed floor.
+    """
     if quant_score < MIN_SIGNAL_SCORE_TO_CONSIDER:
         return 0
-    base = 5 + ((quant_score - MIN_SIGNAL_SCORE_TO_CONSIDER) / (100 - MIN_SIGNAL_SCORE_TO_CONSIDER)) * 4.5
-    scaled = base * TECHNICAL_CONVICTION_AGGRESSIVENESS
-    return min(9, max(1, round(scaled, 1)))
+    span_score = max(1.0, 100 - MIN_SIGNAL_SCORE_TO_CONSIDER)
+    span_conviction = max(0.0, 9 - TECHNICAL_MIN_CONVICTION)
+    bonus = ((quant_score - MIN_SIGNAL_SCORE_TO_CONSIDER) / span_score) * span_conviction
+    bonus *= TECHNICAL_CONVICTION_AGGRESSIVENESS
+    conviction = TECHNICAL_MIN_CONVICTION + bonus
+    return round(min(9, max(TECHNICAL_MIN_CONVICTION, conviction)), 1)
+
 
 def get_technical_trade_decisions(scored_holdings, scored_watchlist, account_snapshot):
     holdings = account_snapshot.get("holdings", {})
     open_orders = get_tickers_with_open_orders()
     cooldowns = get_tickers_on_cooldown()
     unavailable = open_orders | cooldowns
+    total_val = account_snapshot.get("total_value", 100000)
 
     trades = []
-    total_val = account_snapshot.get("total_value", 100000)
 
     for ticker, pos in holdings.items():
         if ticker in unavailable:
@@ -236,18 +401,18 @@ def get_technical_trade_decisions(scored_holdings, scored_watchlist, account_sna
         score = info.get("score", 0.0)
 
         if score < MIN_SIGNAL_SCORE_TO_CONSIDER:
+            conviction = max(1, int(10 - (score / 10)))
             trades.append({
                 "ticker": ticker,
                 "action": "sell",
                 "dollar_amount": 0,
-                "conviction": max(1, int(10 - (score / 10))),
-                "reasoning": f"technical score {score:.0f}/100 below threshold",
+                "conviction": conviction,
+                "reasoning": f"technical score {score:.0f}/100 below threshold ({MIN_SIGNAL_SCORE_TO_CONSIDER}), exiting to consolidate.",
             })
         elif score >= 80:
-            # Check if position is already near/over max allowed ceiling before proposing buy
-            cur_val = pos["qty"] * pos["current_price"]
+            current_val = pos["qty"] * pos["current_price"]
             max_allowed = total_val * MAX_POSITION_PCT
-            if cur_val < max_allowed * 0.9:
+            if current_val < max_allowed * 0.9:
                 conviction = _technical_conviction_from_score(score)
                 if conviction >= TECHNICAL_MIN_CONVICTION:
                     data = info.get("indicators") or {}
@@ -256,7 +421,7 @@ def get_technical_trade_decisions(scored_holdings, scored_watchlist, account_sna
                         "action": "buy",
                         "dollar_amount": 0,
                         "conviction": int(conviction),
-                        "reasoning": f"technical score {score:.0f}/100, adding to position",
+                        "reasoning": f"technical score {score:.0f}/100, strong setup, adding to position.",
                         "stop_loss": data.get(_SWING_LOW_KEY),
                         "take_profit": data.get(_SWING_HIGH_KEY),
                     })
@@ -273,19 +438,22 @@ def get_technical_trade_decisions(scored_holdings, scored_watchlist, account_sna
                 "action": "buy",
                 "dollar_amount": 0,
                 "conviction": int(conviction),
-                "reasoning": f"technical score {score:.0f}/100",
+                "reasoning": f"technical score {score:.0f}/100, strong signal on technicals alone.",
                 "stop_loss": data.get(_SWING_LOW_KEY),
                 "take_profit": data.get(_SWING_HIGH_KEY),
             })
 
     meta = {
         "candidates_considered": len(scored_watchlist),
-        "candidates_passed_prescreen": sum(1 for info in scored_watchlist.values() if info["score"] >= MIN_SIGNAL_SCORE_TO_CONSIDER),
+        "candidates_passed_prescreen": sum(
+            1 for info in scored_watchlist.values() if info["score"] >= MIN_SIGNAL_SCORE_TO_CONSIDER
+        ),
         "throttled": False,
         "technical_fallback": True,
         "gemini_calls_today": 0,
     }
     return trades, meta
+
 
 def _score_candidates(tickers):
     scored = {}
@@ -293,6 +461,7 @@ def _score_candidates(tickers):
         data = get_full_indicators(t)
         scored[t] = {"indicators": data, "score": calculate_signal_score(data)}
     return scored
+
 
 def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL"):
     holdings = account_snapshot.get("holdings", {})
@@ -311,23 +480,30 @@ def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL"):
     scored_watchlist = _score_candidates(watchlist_tickers)
 
     tracker = _load_tracker()
-    calls_today = sum(tracker["models"][m]["count"] for m in GEMINI_MODEL_FALLBACKS if m in tracker["models"])
+    model_list = _get_effective_model_list(tracker)
+    calls_today = sum(tracker["models"].get(m, {}).get("count", 0) for m in model_list)
 
     meta = {
         "candidates_considered": len(scored_news) + len(scored_watchlist),
-        "candidates_passed_prescreen": sum(1 for info in list(scored_news.values()) + list(scored_watchlist.values()) if info["score"] >= MIN_SIGNAL_SCORE_TO_CONSIDER),
+        "candidates_passed_prescreen": sum(
+            1 for info in list(scored_news.values()) + list(scored_watchlist.values())
+            if info["score"] >= MIN_SIGNAL_SCORE_TO_CONSIDER
+        ),
         "throttled": False,
         "technical_fallback": False,
         "gemini_calls_today": calls_today,
     }
 
-    should_call, reason = _should_attempt_call(tracker)
+    should_call, reason = _should_attempt_call(tracker, model_list)
     if not should_call:
-        print(f"Skipping Gemini call: {reason}. Falling back to technical engine.")
+        print(f"Skipping Gemini call this run: {reason}")
+        print("Falling back to pure-technical decision engine instead.")
+        _save_tracker(tracker)
         meta["throttled"] = True
         combined = {**scored_news, **scored_watchlist}
         trades, tech_meta = get_technical_trade_decisions(scored_holdings, combined, account_snapshot)
         meta.update(tech_meta)
+        meta["gemini_calls_today"] = calls_today  # preserve real count
         return trades, meta
 
     prompt = PROMPT_TEMPLATE.format(
@@ -340,23 +516,27 @@ def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL"):
     )
 
     try:
-        response = _generate_with_rotation(prompt, tracker)
+        response = _generate_with_rotation(prompt, tracker, model_list)
         _save_tracker(tracker)
+        meta["gemini_calls_today"] = sum(tracker["models"].get(m, {}).get("count", 0) for m in model_list)
     except Exception as e:
         _save_tracker(tracker)
-        print(f"Gemini call failed on all models: {e}. Falling back to technical engine.")
+        print(f"Gemini call failed on all models with remaining quota: {e}")
+        print("Falling back to pure-technical decision engine instead.")
         combined = {**scored_news, **scored_watchlist}
         trades, tech_meta = get_technical_trade_decisions(scored_holdings, combined, account_snapshot)
         meta.update(tech_meta)
+        meta["gemini_calls_today"] = calls_today
         return trades, meta
 
     raw_text = (response.text or "").strip()
-    raw_text = re.sub(r"^```json\s*|\s*```$", "", raw_text)
+    raw_text = re.sub(r"^```(?:json)?\s*|\s*```$", "", raw_text, flags=re.MULTILINE)
 
     try:
         trades = json.loads(raw_text).get("trades", [])
     except json.JSONDecodeError:
-        print("Warning: could not parse Gemini response as JSON:", raw_text)
+        print("Warning: could not parse Gemini response as JSON:")
+        print(raw_text)
         return [], meta
 
     filtered = []
