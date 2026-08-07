@@ -5034,3 +5034,15 @@ Gemini proposed 0 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 5
 Ending portfolio value: $99,447.93
 
+=== Run at 2026-08-07T13:30:44.515328 ===
+Current time: 2026-08-07 09:30 AM EDT | Market open (per Alpaca): True
+Account value: $99,491.54
+Cash: $14,508.97 | Holdings (10): {'AMZN': '43.7766 sh (-0.15%)', 'COP': '25.0 sh (-0.26%)', 'HD': '29.9205 sh (+0.21%)', 'HON': '49.4672 sh (-0.56%)', 'LMT': '20.7665 sh (+0.41%)', 'MA': '20.9251 sh (-0.17%)', 'META': '12.712 sh (+0.22%)', 'NVDA': '36.2064 sh (+0.19%)', 'TSLA': '25.0579 sh (+0.01%)', 'XOM': '0.0016 sh (-0.93%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 9/13 candidates passed.
+Gemini proposed 1 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 6
+  -> {"timestamp": "2026-08-07T13:31:00.409274", "ticker": "AAPL", "action": "buy", "qty": 12.8012, "conviction": 8, "size_multiplier": 1.0, "order_id": "97df1487-290b-4dbc-b527-e51a49194cb5", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "Strong intraday momentum breaking key resistance on high relative volume.", "status": "submitted"}
+Ending portfolio value: $99,379.24
+
