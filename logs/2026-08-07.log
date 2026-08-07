@@ -4682,3 +4682,14 @@ Gemini calls used today (all models combined): 1
   -> {"timestamp": "2026-08-07T12:26:31.170522", "ticker": "TSLA", "action": "buy", "qty": 25.0579, "conviction": 8, "size_multiplier": 1.0, "order_id": "23947e3c-9652-466b-98f4-9ee22c9c6bec", "order_status": "OrderStatus.PENDING_NEW", "reasoning": "High momentum breakout expected during intraday volatility.", "status": "submitted"}
 Ending portfolio value: $99,282.98
 
+=== Run at 2026-08-07T12:28:33.869300 ===
+Current time: 2026-08-07 08:28 AM EDT | Market open (per Alpaca): False
+Account value: $99,286.18
+Cash: $33,124.91 | Holdings (9): {'AMZN': '43.7766 sh (-0.40%)', 'AVGO': '0.0528 sh (+1.80%)', 'BAC': '0.0824 sh (-1.22%)', 'HD': '29.9205 sh (-0.53%)', 'HON': '48.7516 sh (-1.64%)', 'LMT': '20.7665 sh (+0.70%)', 'MA': '20.9251 sh (+0.33%)', 'NVDA': '36.2064 sh (-0.53%)', 'XOM': '0.0016 sh (-0.30%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 7/13 candidates passed.
+Gemini proposed 0 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 2
+Ending portfolio value: $99,320.36
+
