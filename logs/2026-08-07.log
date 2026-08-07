@@ -2745,3 +2745,19 @@ Gemini calls used today (all models combined): 0
   -> {"ticker": "MA", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,964.88 kept uninvested of $4,964.88 normal reserve, $33,125.98 cash on hand)"}
 Ending portfolio value: $99,297.51
 
+=== Run at 2026-08-07T07:00:37.803901 ===
+Current time: 2026-08-07 03:00 AM EDT | Market open (per Alpaca): False
+Account value: $99,314.67
+Cash: $33,125.98 | Holdings (9): {'AMZN': '43.7766 sh (-0.73%)', 'AVGO': '0.0528 sh (+0.80%)', 'BAC': '0.0824 sh (-1.35%)', 'HD': '29.9205 sh (-0.52%)', 'HON': '48.7516 sh (-0.94%)', 'LMT': '20.7665 sh (+0.84%)', 'MA': '20.9251 sh (+0.15%)', 'NVDA': '36.2064 sh (-0.67%)', 'XOM': '0.0016 sh (+0.06%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 7/13 candidates passed.
+Gemini proposed 5 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 1
+  -> {"timestamp": "2026-08-07T07:00:57.592679", "ticker": "NVDA", "action": "buy", "qty": 11.4559, "conviction": 7, "size_multiplier": 1.0, "order_id": "cd324692-35e3-404a-814e-7d44c2264845", "order_status": "OrderStatus.ACCEPTED", "reasoning": "Daily uptrend with positive MACD histogram and solid multi-week momentum. Intraday momentum is positive (+1.55%) with short-term RSI recovering from oversold levels, providing an attractive entry within the broader trend.", "status": "submitted"}
+  -> {"ticker": "HD", "status": "skipped", "reason": "below minimum trade size ($25) after position cap, regime multiplier, and/or cash reserve ($4,965.73 kept uninvested of $4,965.73 normal reserve, $33,125.98 cash on hand)"}
+  -> {"timestamp": "2026-08-07T07:00:57.963152", "ticker": "AVGO", "action": "sell", "qty": 0.0528, "conviction": 8, "size_multiplier": 1.0, "order_id": "9890fdb4-934e-434a-b460-bd92384cb1ca", "order_status": "OrderStatus.ACCEPTED", "reasoning": "Exiting residual fractional position dust (0.0528 shares) to consolidate portfolio capital.", "status": "submitted"}
+  -> {"timestamp": "2026-08-07T07:00:58.259315", "ticker": "BAC", "action": "sell", "qty": 0.0824, "conviction": 8, "size_multiplier": 1.0, "order_id": "ac19cd22-d3e0-4acc-9969-80399b957f98", "order_status": "OrderStatus.ACCEPTED", "reasoning": "Exiting residual fractional position dust (0.0824 shares) to consolidate portfolio capital.", "status": "submitted"}
+  -> {"timestamp": "2026-08-07T07:00:58.556662", "ticker": "XOM", "action": "sell", "qty": 0.0016, "conviction": 8, "size_multiplier": 1.0, "order_id": "b425cfb0-8cfa-4bcc-9cc3-db3234457747", "order_status": "OrderStatus.ACCEPTED", "reasoning": "Exiting residual fractional position dust (0.0016 shares) to consolidate portfolio capital.", "status": "submitted"}
+Ending portfolio value: $99,314.67
+
