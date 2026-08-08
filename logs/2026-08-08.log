@@ -4353,3 +4353,7 @@ Gemini calls used today (all models combined): 2
   -> {"ticker": "NVDA", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($12,028.22), room ($12,028.22), regime multiplier (100%), and cash reserve ($5,011.76 kept of $-4,761.65 cash)"}
 Ending portfolio value: $100,235.16
 
+=== Run at 2026-08-08T11:26:28.474535 ===
+Current time: 2026-08-08 07:26 AM EDT | Market open (per Alpaca): False
+FATAL: could not fetch account snapshot, aborting run. Error: {"message": "service temporary unavailable."}
+
