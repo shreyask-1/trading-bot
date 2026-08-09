@@ -7602,3 +7602,6 @@ Gemini calls used today (all models combined): 4
   -> {"ticker": "NVDA", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($13,531.75), room ($13,531.75), regime multiplier (100%), and cash reserve ($2,505.88 kept of $-4,761.65 cash)"}
 Ending portfolio value: $100,235.16
 
+=== Run at 2026-08-09T20:30:31.536870 ===
+Current time: 2026-08-09 04:32 PM EDT | Market open (per Alpaca): False
+FATAL: could not fetch account snapshot, aborting run. Error: HTTPSConnectionPool(host='paper-api.alpaca.markets', port=443): Max retries exceeded with url: /v2/account (Caused by ConnectTimeoutError(<HTTPSConnection(host='paper-api.alpaca.markets', port=443) at 0x7efce9f71050>, 'Connection to paper-api.alpaca.markets timed out. (connect timeout=None)'))
