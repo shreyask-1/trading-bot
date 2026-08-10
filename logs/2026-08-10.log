@@ -2382,3 +2382,16 @@ Gemini calls used today (all models combined): 81
   -> {"ticker": "AVGO", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($10,545.36), room ($10,545.36), regime multiplier (100%), and cash reserve ($5,021.60 kept of $-4,761.65 cash)"}
 Ending portfolio value: $100,432.04
 
+=== Run at 2026-08-10T06:26:26.038875 ===
+Current time: 2026-08-10 02:26 AM EDT | Market open (per Alpaca): False
+Account value: $100,425.93
+Cash: $-4,761.65 | Holdings (13): {'AAPL': '12.8012 sh (+0.00%)', 'AMZN': '25.4179 sh (+0.64%)', 'COP': '63.8341 sh (+1.72%)', 'COST': '7.8517 sh (+0.77%)', 'DIS': '66.8769 sh (+0.51%)', 'GOOGL': '20.8177 sh (-0.53%)', 'HD': '34.1034 sh (+1.06%)', 'HON': '49.4672 sh (+1.55%)', 'LMT': '20.7665 sh (+1.92%)', 'MA': '15.7159 sh (-1.68%)', 'META': '12.712 sh (+0.85%)', 'MSFT': '14.999 sh (-0.60%)', 'TSLA': '13.0184 sh (+2.56%)'}
+Market regime: BULLISH (position-size multiplier: 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 6/10 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 82
+  -> {"ticker": "NVDA", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($13,557.50), room ($13,557.50), regime multiplier (100%), and cash reserve ($2,510.65 kept of $-4,761.65 cash)"}
+  -> {"ticker": "NFLX", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($10,544.72), room ($10,544.72), regime multiplier (100%), and cash reserve ($5,021.30 kept of $-4,761.65 cash)"}
+Ending portfolio value: $100,425.93
+
