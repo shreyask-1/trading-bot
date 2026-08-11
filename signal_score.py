@@ -14,18 +14,24 @@ Expects the exact dict shape produced by trader.get_full_indicators().
 from typing import Optional, Dict
 
 
-def calculate_signal_score(indicators: Optional[Dict]) -> float:
+def calculate_signal_score(indicators: Optional[Dict], news_sentiment: float = 0.0) -> float:
     """
     Args:
         indicators: The dict returned by trader.get_full_indicators(),
             or None if indicators couldn't be computed for that ticker
             (returns 0.0 -- can't score what we can't measure).
+        news_sentiment: Optional -1..+1 headline sentiment for news-driven
+            candidates, from news.headline_sentiment(). Added to the score as
+            news_sentiment * NEWS_SENTIMENT_WEIGHT (config), so positive news
+            can push a borderline candidate over the pre-screen bar.
 
     Returns:
         A composite score from 0.0 to 100.0. 50.0 is neutral/baseline.
     """
     if not indicators:
         return 0.0
+
+    from config import NEWS_SENTIMENT_WEIGHT
 
     score = 50.0  # baseline
 
@@ -74,5 +80,21 @@ def calculate_signal_score(indicators: Optional[Dict]) -> float:
             score += 10
         elif histogram < 0:
             score -= 10
+
+    # --- News catalyst (+/- NEWS_SENTIMENT_WEIGHT) ---
+    # The "dual focus" half of the bot: a headline moving the story matters
+    # as much as the chart. Only applies to news-driven candidates (0.0 for
+    # watchlist/holdings by default).
+    if news_sentiment:
+        score += news_sentiment * NEWS_SENTIMENT_WEIGHT
+
+    # --- Opening-range breakout (+/-5) ---
+    # Daytrading confirmation: breaking above/below the first 15-minute range
+    # of the session is a classic momentum entry/exit trigger.
+    or_status = indicators.get("opening_range_status")
+    if or_status == "above":
+        score += 5
+    elif or_status == "below":
+        score -= 5
 
     return max(0.0, min(100.0, score))
