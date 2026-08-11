@@ -36,6 +36,12 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+          # Optional: ping you on margin warnings / halts / flattens.
+          DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
+          # Optional risk-tuning overrides (see config.py for all options):
+          # TRADE_ONLY_DURING_MARKET_HOURS, MAX_TOTAL_EXPOSURE_PCT,
+          # DAILY_LOSS_HALT_PCT, MAX_DRAWDOWN_DELEVERAGE_PCT,
+          # MAX_DRAWDOWN_FLATTEN_PCT, RESET_EQUITY_PEAK_ON_START
         run: python main.py
 
       - name: Commit and push updated logs and trade memory
