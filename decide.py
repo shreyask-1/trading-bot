@@ -39,6 +39,7 @@ from trader import (
     get_tickers_on_cooldown,
 )
 from signal_score import calculate_signal_score
+from news import headline_sentiment
 
 _client = genai.Client(api_key=GEMINI_API_KEY)
 
@@ -81,15 +82,24 @@ _RESPONSE_SCHEMA = types.Schema(
     required=["trades"],
 )
 
-PROMPT_TEMPLATE = """You are a moderately aggressive DAY-TRADING analyst for a SIMULATED paper-trading portfolio (no real money). Every trade idea MUST include a "conviction" score from 1-10. Ideas below conviction {min_conviction} will be discarded.
+PROMPT_TEMPLATE = """You are a disciplined DAY TRADER with a DUAL focus for a SIMULATED paper-trading portfolio (no real money): you trade NEWS CATALYSTS (headlines with sentiment scores) AND CHART/TECHNICAL setups (trend, momentum, VWAP, opening-range breakouts). It is now {now_et} Eastern time, market open. Every trade idea MUST include a "conviction" score from 1-10. Ideas below conviction {min_conviction} will be discarded.
+
+HARD CONSTRAINTS (enforced by code, but respect them anyway):
+- CASH-ONLY: you may only recommend buys that fit within available cash. NEVER recommend margin purchases. The total of all buy dollar_amounts must stay well under the cash available.
+- NEVER recommend buying when cash is negative or near zero.
+- Prefer small, sized entries over large bets; a single position must stay a modest fraction of the portfolio.
+- Every BUY should carry a stop_loss and take_profit price from the setup (opening-range high/low, VWAP, swing levels); if you have no opinion, omit them and the code will derive them from ATR/swings.
+- Respect the daytrading window: no late-session entries, no chasing after big moves.
 
 Current portfolio: - Cash available: ${cash:,.2f} - Total portfolio value: ${total_value:,.2f}
 Existing holdings: {holdings_block}
-News-driven candidates: {news_block}
-Watchlist candidates: {watchlist_block}
+News-driven candidates (score = quant technical score INCLUDING headline sentiment; news sentiment -1..+1; opening-range = above/below/inside today's first 15-min range):
+{news_block}
+Watchlist candidates (score 0-100; intraday = % move vs session open; opening-range = above/below/inside):
+{watchlist_block}
 
 Respond with ONLY valid JSON:
-{{"trades": [{{"ticker": "AAPL", "action": "buy", "dollar_amount": 5000, "conviction": 8, "reasoning": "short reason"}}]}}"""
+{{"trades": [{{"ticker": "AAPL", "action": "buy", "dollar_amount": 5000, "conviction": 8, "stop_loss": 210.5, "take_profit": 224.0, "reasoning": "short reason"}}]}}"""
 
 
 # ============================================================
@@ -416,12 +426,15 @@ def get_technical_trade_decisions(scored_holdings, scored_watchlist, account_sna
                 conviction = _technical_conviction_from_score(score)
                 if conviction >= TECHNICAL_MIN_CONVICTION:
                     data = info.get("indicators") or {}
+                    or_status = data.get("opening_range_status")
+                    conviction = min(9, conviction + (1 if or_status == "above" else 0))
                     trades.append({
                         "ticker": ticker,
                         "action": "buy",
                         "dollar_amount": 0,
                         "conviction": int(conviction),
-                        "reasoning": f"technical score {score:.0f}/100, strong setup, adding to position.",
+                        "reasoning": f"technical score {score:.0f}/100, strong setup, adding to position"
+                                     + (f" on opening-range breakout ({or_status})." if or_status else "."),
                         "stop_loss": data.get(_SWING_LOW_KEY),
                         "take_profit": data.get(_SWING_HIGH_KEY),
                     })
@@ -433,12 +446,15 @@ def get_technical_trade_decisions(scored_holdings, scored_watchlist, account_sna
         conviction = _technical_conviction_from_score(score)
         if conviction >= TECHNICAL_MIN_CONVICTION:
             data = info.get("indicators") or {}
+            or_status = data.get("opening_range_status")
+            conviction = min(9, conviction + (1 if or_status == "above" else 0))
             trades.append({
                 "ticker": ticker,
                 "action": "buy",
                 "dollar_amount": 0,
                 "conviction": int(conviction),
-                "reasoning": f"technical score {score:.0f}/100, strong signal on technicals alone.",
+                "reasoning": f"technical score {score:.0f}/100, strong signal on technicals alone"
+                             + (f" with opening-range breakout ({or_status})." if or_status else "."),
                 "stop_loss": data.get(_SWING_LOW_KEY),
                 "take_profit": data.get(_SWING_HIGH_KEY),
             })
@@ -455,12 +471,54 @@ def get_technical_trade_decisions(scored_holdings, scored_watchlist, account_sna
     return trades, meta
 
 
-def _score_candidates(tickers):
+def _score_candidates(tickers, sentiment=None):
+    """
+    Scores tickers on technicals PLUS an optional news-sentiment boost (the
+    dual-focus half of the bot). sentiment: {ticker: -1..+1}.
+    """
     scored = {}
     for t in tickers:
         data = get_full_indicators(t)
-        scored[t] = {"indicators": data, "score": calculate_signal_score(data)}
+        score = calculate_signal_score(data, news_sentiment=(sentiment or {}).get(t, 0.0))
+        scored[t] = {"indicators": data, "score": score}
     return scored
+
+
+def _fmt_holdings_block(scored_holdings):
+    parts = []
+    for t, info in scored_holdings.items():
+        d = info.get("indicators") or {}
+        parts.append(
+            f"{t} (score {info['score']:.0f}/100, trend {d.get('trend')}, "
+            f"intraday {d.get('intraday_momentum_pct')}% vs open, "
+            f"opening-range {d.get('opening_range_status')})"
+        )
+    return "; ".join(parts) or "none"
+
+
+def _fmt_news_block(candidates, scored_news, sentiment):
+    parts = []
+    for t, info in scored_news.items():
+        articles = candidates.get(t, [])
+        headline = (articles[0].get("headline", "") if articles else "")[:140]
+        d = info.get("indicators") or {}
+        parts.append(
+            f"{t} (score {info['score']:.0f}/100, news sentiment {sentiment.get(t, 0.0):+.2f}, "
+            f"opening-range {d.get('opening_range_status')}): \"{headline}\""
+        )
+    return "; ".join(parts) or "none"
+
+
+def _fmt_watchlist_block(scored_watchlist):
+    parts = []
+    for t, info in scored_watchlist.items():
+        d = info.get("indicators") or {}
+        parts.append(
+            f"{t} (score {info['score']:.0f}/100, trend {d.get('trend')}, "
+            f"intraday {d.get('intraday_momentum_pct')}% vs open, "
+            f"opening-range {d.get('opening_range_status')})"
+        )
+    return "; ".join(parts) or "none"
 
 
 def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL"):
@@ -475,8 +533,15 @@ def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL"):
     new_candidates = {t: a for t, a in candidates.items() if t not in holdings}
     watchlist_tickers = [t for t in WATCHLIST if t not in holdings and t not in new_candidates]
 
+    # Dual focus: average headline sentiment per news candidate feeds the
+    # quant score so a real catalyst moves the needle alongside the chart.
+    news_sentiment = {}
+    for t, articles in new_candidates.items():
+        if articles:
+            news_sentiment[t] = sum(headline_sentiment(a) for a in articles) / len(articles)
+
     scored_holdings = _score_candidates(list(holdings.keys()))
-    scored_news = _score_candidates(list(new_candidates.keys()))
+    scored_news = _score_candidates(list(new_candidates.keys()), sentiment=news_sentiment)
     scored_watchlist = _score_candidates(watchlist_tickers)
 
     tracker = _load_tracker()
@@ -506,13 +571,15 @@ def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL"):
         meta["gemini_calls_today"] = calls_today  # preserve real count
         return trades, meta
 
+    now_et = datetime.now(pytz.timezone("America/New_York")).strftime("%Y-%m-%d %I:%M %p %Z")
     prompt = PROMPT_TEMPLATE.format(
         cash=cash,
         total_value=total_value,
         min_conviction=MIN_CONVICTION_TO_TRADE,
-        holdings_block=str(list(holdings.keys())),
-        news_block=str(list(scored_news.keys())),
-        watchlist_block=str(list(scored_watchlist.keys())),
+        now_et=now_et,
+        holdings_block=_fmt_holdings_block(scored_holdings),
+        news_block=_fmt_news_block(new_candidates, scored_news, news_sentiment),
+        watchlist_block=_fmt_watchlist_block(scored_watchlist),
     )
 
     try:
