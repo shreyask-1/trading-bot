@@ -8,6 +8,7 @@ import json
 import csv
 from datetime import datetime, timedelta
 import pytz
+import requests
 
 from alpaca.trading.client import TradingClient
 from alpaca.trading.requests import MarketOrderRequest, GetOrdersRequest
@@ -43,6 +44,22 @@ from config import (
     EXCEPTIONAL_CONVICTION_THRESHOLD,
     EXCEPTIONAL_TRADE_RESERVE_ACCESS_PCT,
     CONSOLIDATION_SCORE_THRESHOLD,
+    MAX_TOTAL_EXPOSURE_PCT,
+    MAX_POSITION_LOSS_PCT,
+    DELEVERAGE_TARGET_CASH_PCT,
+    DAILY_LOSS_HALT_PCT,
+    MAX_DRAWDOWN_DELEVERAGE_PCT,
+    MAX_DRAWDOWN_FLATTEN_PCT,
+    DELEVERAGE_SIZE_MULTIPLIER,
+    RESET_EQUITY_PEAK_ON_START,
+    DISCORD_WEBHOOK_URL,
+    ENABLE_FOREIGN_ACTIVITY_DETECTION,
+    DAYTRADE_MODE,
+    END_OF_DAY_FLATTEN,
+    END_OF_DAY_FLATTEN_TIME,
+    OPENING_RANGE_BARS,
+    TRADE_START_MINUTES_AFTER_OPEN,
+    STOP_NEW_BUYS_AFTER,
 )
 import indicators as ind
 from market_regime import evaluate_market_regime
@@ -53,6 +70,9 @@ data_client = StockHistoricalDataClient(ALPACA_API_KEY, ALPACA_SECRET_KEY)
 
 COOLDOWN_FILE = os.path.join(os.path.dirname(__file__), "logs", "cooldowns.json")
 CUSTOM_EXITS_FILE = os.path.join(os.path.dirname(__file__), "logs", "custom_exits.json")
+RISK_STATE_FILE = os.path.join(os.path.dirname(__file__), "logs", "risk_state.json")
+ORDER_LEDGER_FILE = os.path.join(os.path.dirname(__file__), "logs", "bot_order_ledger.json")
+RECON_STATE_FILE = os.path.join(os.path.dirname(__file__), "logs", "reconciliation_state.json")
 
 _FEED_MAP = {"iex": DataFeed.IEX, "sip": DataFeed.SIP, "otc": DataFeed.OTC}
 DATA_FEED = _FEED_MAP.get(ALPACA_DATA_FEED.lower(), DataFeed.IEX)
@@ -185,6 +205,65 @@ def get_intraday_indicators(ticker):
         print(f"Could not get intraday indicators for {ticker}: {e}")
         return None
 
+def get_opening_range_breakout(ticker):
+    """
+    Daytrading signal: the first OPENING_RANGE_BARS 5-minute bars of the
+    current session define an opening range; price above it is a bullish
+    breakout, below it a bearish breakdown. Returns None if not enough
+    intraday data (e.g. pre-open), else a dict with high/low/status.
+    """
+    try:
+        now = datetime.now()
+        start = now - timedelta(days=2)
+        request = StockBarsRequest(
+            symbol_or_symbols=ticker,
+            timeframe=TimeFrame(INTRADAY_BAR_MINUTES, TimeFrameUnit.Minute),
+            start=start,
+            end=now,
+            feed=DATA_FEED,
+        )
+        bars = list(data_client.get_stock_bars(request)[ticker])
+    except Exception as e:
+        print(f"Could not get opening-range bars for {ticker}: {e}")
+        return None
+    if not bars:
+        return None
+
+    # Keep only bars from today's Eastern session (9:30 ET open).
+    today_et = datetime.now(pytz.utc).astimezone(_EASTERN).strftime("%Y-%m-%d")
+    session_bars = []
+    for b in bars:
+        ts = b.timestamp
+        if ts.tzinfo is None:
+            ts = pytz.utc.localize(ts)
+        ts_et = ts.astimezone(_EASTERN)
+        if ts_et.strftime("%Y-%m-%d") != today_et:
+            continue
+        if ts_et.time() < datetime.strptime("09:30", "%H:%M").time():
+            continue
+        session_bars.append(b)
+    if len(session_bars) < OPENING_RANGE_BARS + 1:
+        return None
+
+    open_bars = session_bars[:OPENING_RANGE_BARS]
+    range_high = max(b.high for b in open_bars)
+    range_low = min(b.low for b in open_bars)
+    current = session_bars[-1].close
+
+    if current > range_high:
+        status = "above"
+    elif current < range_low:
+        status = "below"
+    else:
+        status = "inside"
+    return {
+        "opening_range_high": round(range_high, 2),
+        "opening_range_low": round(range_low, 2),
+        "opening_range_status": status,
+        "opening_range_bars": OPENING_RANGE_BARS,
+    }
+
+
 def get_full_indicators(ticker):
     history = get_price_history(ticker)
     if history is None:
@@ -226,6 +305,16 @@ def get_full_indicators(ticker):
             "intraday_rsi": None, "intraday_momentum_pct": None,
             "intraday_trend": None, "vwap": None, "vwap_deviation_pct": None,
         })
+
+    if DAYTRADE_MODE:
+        or_data = get_opening_range_breakout(ticker)
+        if or_data:
+            result.update(or_data)
+        else:
+            result.update({
+                "opening_range_high": None, "opening_range_low": None,
+                "opening_range_status": None, "opening_range_bars": OPENING_RANGE_BARS,
+            })
     return result
 
 def get_account_snapshot():
@@ -253,6 +342,409 @@ def get_tickers_with_open_orders():
     except Exception as e:
         print(f"Could not fetch open orders: {e}")
         return set()
+
+def get_open_orders_with_side():
+    """
+    Returns open orders as [{'symbol', 'qty', 'side'}] (side in {'buy','sell'}).
+    Used to reserve cash for pending BUY orders -- the missing piece that let
+    the bot stack overnight orders that all filled at once on 2026-08-07.
+    """
+    try:
+        request = GetOrdersRequest(status=QueryOrderStatus.OPEN)
+        orders = trading_client.get_orders(request)
+    except Exception as e:
+        print(f"Could not fetch open order details: {e}")
+        return []
+    out = []
+    for o in orders:
+        side_str = str(o.side).lower()
+        if "buy" in side_str:
+            side = "buy"
+        elif "sell" in side_str:
+            side = "sell"
+        else:
+            continue
+        try:
+            qty = float(o.qty) if o.qty else 0.0
+        except (TypeError, ValueError):
+            qty = 0.0
+        if qty <= 0:
+            continue
+        out.append({"symbol": o.symbol, "qty": qty, "side": side})
+    return out
+
+def pending_order_notional(open_orders=None):
+    """
+    Estimated dollars already committed to the market by open orders:
+    returns (buy_notional, sell_notional). Buys consume cash when they fill;
+    sells free cash. A missing price simply skips that order (conservative
+    enough -- the hard no-margin and exposure rules still apply).
+    """
+    if open_orders is None:
+        open_orders = get_open_orders_with_side()
+    symbols = {o["symbol"] for o in open_orders}
+    prices = {}
+    for s in symbols:
+        p = get_price(s)
+        if p and p > 0:
+            prices[s] = p
+    buy_notional = 0.0
+    sell_notional = 0.0
+    for o in open_orders:
+        p = prices.get(o["symbol"])
+        if not p:
+            continue
+        notional = o["qty"] * p
+        if o["side"] == "buy":
+            buy_notional += notional
+        else:
+            sell_notional += notional
+    return buy_notional, sell_notional
+
+def get_gross_exposure(account_snapshot):
+    """Dollar value of all held long positions (short exposure unsupported)."""
+    holdings = account_snapshot.get("holdings", {})
+    return sum(p["qty"] * p["current_price"] for p in holdings.values())
+
+# ============================================================
+# Equity-level circuit breakers
+# ============================================================
+def _default_risk_state():
+    return {
+        "peak_equity": None,
+        "day": None,
+        "day_start_equity": None,
+        "halted": False,
+        "halt_reason": "",
+        "halt_date": None,
+        "deleveraged": False,
+        "deleverage_date": None,
+    }
+
+def load_risk_state():
+    state = _load_json_file(RISK_STATE_FILE, _default_risk_state())
+    for k, v in _default_risk_state().items():
+        state.setdefault(k, v)
+    return state
+
+def save_risk_state(state):
+    _save_json_file(RISK_STATE_FILE, state)
+
+def _load_json_file(path, default):
+    if not os.path.exists(path):
+        return default
+    try:
+        with open(path) as f:
+            return json.load(f)
+    except (json.JSONDecodeError, OSError):
+        return default
+
+def _save_json_file(path, data):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    tmp = path + ".tmp"
+    with open(tmp, "w") as f:
+        json.dump(data, f)
+    os.replace(tmp, path)
+
+def evaluate_circuit_breakers(account_snapshot):
+    """
+    Equity-level risk guardrails that run every cycle, before anything else.
+
+    Returns (halted, halt_reason, size_multiplier, drawdown_pct, daily_pl_pct,
+    peak_equity, messages). 'halted' means NO new buys for the rest of the day
+    (stops and forced sells still run). size_multiplier is 1.0 normally and
+    drops to DELEVERAGE_SIZE_MULTIPLIER once drawdown passes the deleverage
+    threshold.
+    """
+    equity = float(account_snapshot.get("total_value", 0.0))
+    state = load_risk_state()
+    messages = []
+
+    # Running equity peak (used for drawdown). Default: start at current value
+    # on first run so an already-damaged account isn't surprised on deploy.
+    peak = state.get("peak_equity")
+    if RESET_EQUITY_PEAK_ON_START and peak is None:
+        peak = equity
+    if peak is None or equity > peak:
+        peak = equity
+    state["peak_equity"] = peak
+
+    # Daily anchor: equity at the start of each Eastern day.
+    now_utc = datetime.now(pytz.utc)
+    day = now_utc.astimezone(_EASTERN).strftime("%Y-%m-%d")
+    if state.get("day") != day:
+        state["day"] = day
+        state["day_start_equity"] = equity
+        state["halted"] = False
+        state["halt_reason"] = ""
+
+    day_start = state.get("day_start_equity")
+    daily_pl_pct = 0.0
+    if day_start:
+        daily_pl_pct = (equity - day_start) / day_start * 100.0
+        if daily_pl_pct <= -DAILY_LOSS_HALT_PCT:
+            state["halted"] = True
+            state["halt_reason"] = (
+                f"daily loss {daily_pl_pct:.1f}% >= limit {DAILY_LOSS_HALT_PCT}%"
+            )
+            state["halt_date"] = day
+
+    drawdown_pct = 0.0
+    if peak:
+        drawdown_pct = (peak - equity) / peak * 100.0
+
+    if drawdown_pct >= MAX_DRAWDOWN_FLATTEN_PCT:
+        state["halted"] = True
+        state["halt_reason"] = (
+            f"drawdown {drawdown_pct:.1f}% >= flatten threshold "
+            f"{MAX_DRAWDOWN_FLATTEN_PCT}%"
+        )
+        state["halt_date"] = day
+
+    size_multiplier = 1.0
+    if drawdown_pct >= MAX_DRAWDOWN_DELEVERAGE_PCT:
+        size_multiplier = DELEVERAGE_SIZE_MULTIPLIER
+        if (not state.get("deleveraged")) or state.get("deleverage_date") != day:
+            messages.append(
+                f"Drawdown {drawdown_pct:.1f}% >= {MAX_DRAWDOWN_DELEVERAGE_PCT}%: "
+                f"position sizing cut to {DELEVERAGE_SIZE_MULTIPLIER:.0%}."
+            )
+        state["deleveraged"] = True
+        state["deleverage_date"] = day
+
+    halted = bool(state.get("halted"))
+    if halted:
+        messages.append(f"Trading halted: {state.get('halt_reason', 'unknown')}.")
+
+    save_risk_state(state)
+    return halted, state.get("halt_reason", ""), size_multiplier, drawdown_pct, daily_pl_pct, peak, messages
+
+def enforce_deleveraging(account_snapshot):
+    """
+    Margin healing: if cash is below DELEVERAGE_TARGET_CASH_PCT of equity
+    (almost always negative), sell the weakest-scored holdings until projected
+    cash is back above target. This is what would have dug the account out of
+    its -$4.7k hole on 2026-08-07 instead of leaving it negative for 4 days.
+    """
+    results = []
+    total_value = float(account_snapshot.get("total_value", 0.0))
+    cash = float(account_snapshot.get("cash", 0.0))
+    target_cash = total_value * DELEVERAGE_TARGET_CASH_PCT
+    if cash >= target_cash:
+        return results
+
+    open_order_tickers = get_tickers_with_open_orders()
+    holdings = account_snapshot.get("holdings", {})
+
+    scored = []
+    for ticker in holdings.keys():
+        if ticker in open_order_tickers:
+            continue
+        indicators_data = get_full_indicators(ticker)
+        score = calculate_signal_score(indicators_data)
+        scored.append((score, ticker))
+    scored.sort(key=lambda x: x[0])  # weakest first
+
+    projected_cash = cash
+    for score, ticker in scored:
+        if projected_cash >= target_cash:
+            break
+        pos = holdings[ticker]
+        notional = pos["qty"] * pos["current_price"]
+        reason = (
+            f"De-leveraging: cash ${projected_cash:,.2f} below target "
+            f"${target_cash:,.2f}; selling weakest holding "
+            f"(score {score:.0f})."
+        )
+        trade = {
+            "ticker": ticker,
+            "action": "sell",
+            "dollar_amount": 0,
+            "reasoning": reason,
+            "conviction": 10,
+        }
+        result = execute_trade(trade, account_snapshot)
+        result["trigger"] = "deleveraging"
+        if result.get("status") == "submitted":
+            projected_cash += notional
+        results.append(result)
+    return results
+
+def notify(message):
+    """
+    Optional alerting. Currently posts to a Discord webhook if configured;
+    extend with email/Telegram in the same spot. Always logged to console.
+    """
+    print(f"[ALERT] {message}")
+    if not DISCORD_WEBHOOK_URL:
+        return
+    try:
+        requests.post(DISCORD_WEBHOOK_URL, json={"content": message[:1900]}, timeout=10)
+    except Exception as e:
+        print(f"Could not send alert: {e}")
+
+# ============================================================
+# Second-trader / foreign-activity detection
+# ============================================================
+def _append_order_to_ledger(entry):
+    """Record every order this bot submits so holdings can be reconciled."""
+    try:
+        ledger = _load_json_file(ORDER_LEDGER_FILE, [])
+        ledger.append(entry)
+        _save_json_file(ORDER_LEDGER_FILE, ledger)
+    except Exception as e:
+        print(f"Could not write order ledger: {e}")
+
+def get_expected_holdings():
+    """
+    Recompute the quantities this bot should own from its order ledger:
+    returns {ticker: qty} summing buys minus sells. Empty ledger -> {}.
+
+    Only orders that actually FILLED count. Pending / canceled / rejected
+    orders are excluded so a still-working order doesn't create a false
+    'foreign activity' flag on the next reconciliation run.
+    """
+    ledger = _load_json_file(ORDER_LEDGER_FILE, [])
+    expected = {}
+    for o in ledger:
+        t = o.get("ticker")
+        side = str(o.get("action", "")).lower()
+        status = str(o.get("order_status", "")).lower()
+        if status and status != "filled":
+            # Pending (PENDING_NEW / new / submitted), canceled, expired,
+            # rejected orders haven't changed holdings (yet).
+            continue
+        try:
+            qty = float(o.get("qty", 0.0))
+        except (TypeError, ValueError):
+            continue
+        if side == "buy":
+            expected[t] = expected.get(t, 0.0) + qty
+        elif side == "sell":
+            expected[t] = expected.get(t, 0.0) - qty
+    return {t: q for t, q in expected.items() if abs(q) > 0.0001}
+
+def reconcile_foreign_activity(account_snapshot):
+    """
+    Compare actual account holdings against what the bot's own order ledger
+    says it should own. Returns (flags, baseline_created):
+
+      flags: list of strings describing positions the bot did not create or
+             quantities that changed without the bot's orders. Empty means
+             the account matches the bot exactly.
+      baseline_created: True on the very first run after deploy, when there
+             is no ledger history yet (the account's pre-existing positions
+             can't be attributed to this bot -- flag them once so you can
+             verify, then treat them as the baseline going forward).
+
+    Catches a second bot / local cron / manual trades on the same Alpaca keys.
+    """
+    if not ENABLE_FOREIGN_ACTIVITY_DETECTION:
+        return [], False
+    holdings = account_snapshot.get("holdings", {})
+    recon = _load_json_file(RECON_STATE_FILE, {})
+    flags = []
+
+    if not recon.get("baseline"):
+        # First run: no ledger history for the pre-existing account. Record
+        # current quantities as the baseline and surface them once so the
+        # user can verify them in Alpaca's Activity log.
+        baseline = {t: p["qty"] for t, p in holdings.items()}
+        recon["baseline"] = baseline
+        _save_json_file(RECON_STATE_FILE, recon)
+        if holdings:
+            flags.append(
+                "FIRST RUN BASELINE: these holdings existed before this deploy "
+                "(no order history on record): " + ", ".join(
+                    f"{t} x{baseline[t]:.4f}" for t in sorted(baseline)
+                ) + ". Verify them in the Alpaca dashboard Activity log."
+            )
+        return flags, True
+
+    baseline = recon["baseline"]
+    expected = dict(baseline)
+    for t, q in get_expected_holdings().items():
+        expected[t] = expected.get(t, 0.0) + q
+
+    for t, q in expected.items():
+        if abs(q) <= 0.0001:
+            continue
+        actual = holdings.get(t, {}).get("qty", 0.0)
+        if abs(actual - q) > 0.01:
+            flags.append(
+                f"FOREIGN ACTIVITY: {t} holds {actual:.4f} sh but this bot "
+                f"should own {q:.4f} sh (diff {actual - q:+.4f}). Someone/something "
+                "else is trading this account."
+            )
+    for t in holdings:
+        if abs(expected.get(t, 0.0)) <= 0.0001:
+            flags.append(
+                f"FOREIGN ACTIVITY: {t} position ({holdings[t]['qty']:.4f} sh) "
+                "was never created by this bot."
+            )
+    return flags, False
+
+def flatten_portfolio(account_snapshot, reason="Circuit breaker: flattening portfolio on deep drawdown.", trigger="circuit_breaker_flatten"):
+    """
+    Sell every held position (skipping tickers that already have open orders)
+    to take the portfolio to cash. Used by the deep-drawdown circuit breaker
+    and the daytrading end-of-day flatten.
+    """
+    results = []
+    open_orders = get_tickers_with_open_orders()
+    for ticker, pos in account_snapshot.get("holdings", {}).items():
+        if ticker in open_orders:
+            continue
+        if pos.get("qty", 0) <= 0:
+            continue
+        trade = {
+            "ticker": ticker,
+            "action": "sell",
+            "dollar_amount": 0,
+            "reasoning": reason,
+            "conviction": 10,
+        }
+        result = execute_trade(trade, account_snapshot)
+        result["trigger"] = trigger
+        results.append(result)
+    return results
+
+def should_end_of_day_flatten():
+    """
+    Daytrading discipline: after END_OF_DAY_FLATTEN_TIME ET, sell everything
+    so the account never carries overnight risk (the 2026-08-11 liquidation
+    hit an overnight position at 3:30 AM ET). Only active when DAYTRADE_MODE
+    and END_OF_DAY_FLATTEN are enabled.
+    """
+    if not (DAYTRADE_MODE and END_OF_DAY_FLATTEN):
+        return False
+    now_et = datetime.now(pytz.utc).astimezone(_EASTERN)
+    cutoff = datetime.strptime(END_OF_DAY_FLATTEN_TIME, "%H:%M").time()
+    return now_et.time() >= cutoff
+
+def is_within_trade_window():
+    """
+    Daytrading entry window: no new buys in the first N minutes after the
+    open (auction chop) and none after STOP_NEW_BUYS_AFTER ET. Sells are
+    never restricted by this. Inactive when DAYTRADE_MODE is off.
+    """
+    if not DAYTRADE_MODE:
+        return True
+    try:
+        now_et = datetime.now(pytz.utc).astimezone(_EASTERN)
+        t = now_et.time()
+        open_t = datetime.strptime("09:30", "%H:%M").time()
+        start_t = (datetime.combine(datetime.now().date(), open_t) + timedelta(minutes=TRADE_START_MINUTES_AFTER_OPEN)).time()
+        stop_t = datetime.strptime(STOP_NEW_BUYS_AFTER, "%H:%M").time()
+        if t < open_t:
+            return False
+        if t < start_t:
+            return False
+        if t > stop_t:
+            return False
+        return True
+    except Exception:
+        return True
 
 def _load_cooldowns():
     if not os.path.exists(COOLDOWN_FILE):
@@ -320,7 +812,12 @@ def _record_custom_exit(ticker, trade, entry_price):
     atr = None
     swing_low = swing_high = None
     try:
-        history = get_price_history(ticker, days=30)
+        # FIX: get_price_history() returns None unless there are 55+ bars, so
+        # a 30-day fetch ALWAYS came back empty and custom exits were silently
+        # never saved -- Gemini's stop_loss/take_profit values were dead code.
+        # Use the full default lookback so ATR/swing levels can actually be
+        # computed and persisted.
+        history = get_price_history(ticker)
         if history:
             atr = ind.compute_atr(history["highs"], history["lows"], history["closes"], period=ATR_PERIOD)
             window = min(SWING_LOOKBACK_DAYS, len(history["lows"]))
@@ -344,7 +841,7 @@ def _record_custom_exit(ticker, trade, entry_price):
         take_profit = round(entry_price + ATR_TAKE_PROFIT_MULTIPLIER * atr, 2)
 
     if stop_loss is None or take_profit is None:
-        return
+        return None
 
     exits = _load_custom_exits()
     exits[ticker] = {
@@ -354,6 +851,7 @@ def _record_custom_exit(ticker, trade, entry_price):
         "set_at": datetime.now().isoformat(),
     }
     _save_custom_exits(exits)
+    return exits[ticker]
 
 def check_atr_stop_take_profit(account_snapshot):
     results = []
@@ -375,15 +873,24 @@ def check_atr_stop_take_profit(account_snapshot):
             indicators_data = get_full_indicators(ticker)
             atr = indicators_data["atr_14"] if indicators_data else None
             if atr is None:
-                continue
-            stop_level = entry - (ATR_STOP_MULTIPLIER * atr)
-            target_level = entry + (ATR_TAKE_PROFIT_MULTIPLIER * atr)
+                # Never let a data hiccup leave a position unprotected: fall
+                # back to a hard %-of-entry loss cap instead of skipping.
+                stop_level = entry * (1.0 - MAX_POSITION_LOSS_PCT / 100.0)
+                target_level = None
+            else:
+                stop_level = entry - (ATR_STOP_MULTIPLIER * atr)
+                target_level = entry + (ATR_TAKE_PROFIT_MULTIPLIER * atr)
+
+        # Hard per-position loss cap, always enforced regardless of ATR/indicators.
+        hard_stop = entry * (1.0 - MAX_POSITION_LOSS_PCT / 100.0)
 
         reason = None
         if current <= stop_level:
             reason = f"Stop-loss hit: price {current} <= stop {round(stop_level, 2)}"
-        elif current >= target_level:
+        elif target_level is not None and current >= target_level:
             reason = f"Take-profit hit: price {current} >= target {round(target_level, 2)}"
+        elif current <= hard_stop:
+            reason = f"Hard loss cap hit: price {current} <= {round(hard_stop, 2)} (-{MAX_POSITION_LOSS_PCT:.0f}% from entry {entry})"
 
         if reason:
             trade = {"ticker": ticker, "action": "sell", "dollar_amount": 0, "reasoning": reason, "conviction": 10}
@@ -442,6 +949,15 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0):
     current_position_value = (current_holding["qty"] * price) if current_holding else 0.0
 
     if action == "buy":
+        # Hard no-margin rule: never buy into a negative-cash account. This is
+        # the direct consequence of the 2026-08-07 overnight order stacking.
+        if account_snapshot.get("cash", 0.0) < 0:
+            return {
+                "ticker": ticker,
+                "status": "skipped",
+                "reason": f"no-margin rule: cash is negative (${account_snapshot['cash']:,.2f}); de-leveraging first",
+            }
+
         is_new_position = current_holding is None
         if is_new_position and len(account_snapshot["holdings"]) >= MAX_OPEN_POSITIONS:
             return {
@@ -462,9 +978,24 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0):
         base_reserve = total_value * MIN_CASH_RESERVE_PCT
         is_exceptional = conviction >= EXCEPTIONAL_CONVICTION_THRESHOLD
         reserve_kept = base_reserve * (1.0 - EXCEPTIONAL_TRADE_RESERVE_ACCESS_PCT) if is_exceptional else base_reserve
-        available_cash = max(0.0, account_snapshot["cash"] - reserve_kept)
 
-        amount = min(buy_target, available_cash)
+        # Reserve cash for orders already sitting open in the market (the bug
+        # that let ~10 queued overnight buys all fill at once). Sells that are
+        # open will free cash when they fill, so they're credited back.
+        try:
+            buy_pending, sell_pending = pending_order_notional()
+        except Exception as e:
+            print(f"Could not compute pending order notional (continuing without it): {e}")
+            buy_pending, sell_pending = 0.0, 0.0
+        available_cash = max(0.0, account_snapshot["cash"] - reserve_kept - buy_pending + sell_pending)
+
+        # Total gross exposure cap: holdings + pending buys may not exceed
+        # MAX_TOTAL_EXPOSURE_PCT of the portfolio, so the account can never
+        # lever itself into margin even with many positions.
+        current_exposure = get_gross_exposure(account_snapshot) + buy_pending
+        exposure_room = max(0.0, total_value * MAX_TOTAL_EXPOSURE_PCT - current_exposure)
+
+        amount = min(buy_target, available_cash, exposure_room)
 
         if amount < MIN_TRADE_DOLLAR_AMOUNT:
             return {
@@ -499,8 +1030,25 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0):
         order = trading_client.submit_order(order_request)
         _record_cooldown(ticker)
 
+        # Per-trade custom stop-loss / take-profit: computed from THIS trade's
+        # own setup (swing levels clamped by ATR, or Gemini's levels), saved to
+        # custom_exits.json and enforced by check_atr_stop_take_profit.
+        stop_loss = take_profit = None
         if side == OrderSide.BUY:
-            _record_custom_exit(ticker, trade, price)
+            custom = _record_custom_exit(ticker, trade, price)
+            if custom:
+                stop_loss = custom.get("stop_loss")
+                take_profit = custom.get("take_profit")
+
+        # Second-trader detection ledger: every order this bot submits.
+        _append_order_to_ledger({
+            "timestamp": datetime.now().isoformat(),
+            "ticker": ticker,
+            "action": action,
+            "qty": qty,
+            "order_id": str(order.id),
+            "order_status": str(order.status),
+        })
 
         return {
             "timestamp": datetime.now().isoformat(),
@@ -511,6 +1059,8 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0):
             "size_multiplier": size_multiplier,
             "order_id": str(order.id),
             "order_status": str(order.status),
+            "stop_loss": stop_loss,
+            "take_profit": take_profit,
             "reasoning": trade.get("reasoning", ""),
             "status": "submitted",
         }
