@@ -56,8 +56,48 @@ def _prune_old_entries(seen):
     cutoff = datetime.now() - timedelta(hours=NEWS_DEDUP_MAX_AGE_HOURS)
     return {aid: ts for aid, ts in seen.items() if datetime.fromisoformat(ts) > cutoff}
 
+# Lightweight lexicon for headline sentiment (-1 .. +1). This is a crude
+# directional proxy, not a model: it only needs to nudge the quant score for
+# news candidates, and it is deterministic (no LLM calls, free).
+_POSITIVE_WORDS = {
+    "beat", "beats", "surge", "surges", "soar", "soars", "rally", "rallies",
+    "gain", "gains", "jump", "jumps", "climb", "climbs", "record", "outperform",
+    "upgrade", "upgraded", "buy", "bullish", "growth", "profit", "profits",
+    "strong", "stronger", "raised", "raise", "launch", "launches", "wins",
+    "win", "partnership", "expansion", "boost", "boosts", "soaring",
+    "positive", "record-high", "all-time high", "upgraded", "outlook",
+}
+_NEGATIVE_WORDS = {
+    "miss", "misses", "plunge", "plunges", "drop", "drops", "fall", "falls",
+    "decline", "declines", "downgrade", "downgraded", "sell", "bearish",
+    "loss", "losses", "weak", "weaker", "cut", "cuts", "lawsuit", "probe",
+    "investigation", "fraud", "recall", "recalls", "warning", "warns",
+    "layoff", "layoffs", "bankrupt", "bankruptcy", "guidance", "below",
+    "underperform", "negative", "halt", "halted", "delay", "delays",
+}
+
+
+def headline_sentiment(article):
+    """
+    Crude -1..+1 sentiment for a single article's headline+summary.
+    0.0 means neutral or no signal. Deterministic keyword match only.
+    """
+    text = f"{article.get('headline', '')} {article.get('summary', '')}".lower()
+    if not text.strip():
+        return 0.0
+    pos = sum(1 for w in _POSITIVE_WORDS if w in text)
+    neg = sum(1 for w in _NEGATIVE_WORDS if w in text)
+    if pos == 0 and neg == 0:
+        return 0.0
+    raw = (pos - neg) / (pos + neg)
+    # Scale hits so a single strong word is ~+/-0.5, multiple corroborating
+    # words push toward +/-1.0.
+    return max(-1.0, min(1.0, raw * 0.5 + (0.5 if pos > neg else (-0.5 if neg > pos else 0.0))))
+
+
 def find_mentioned_tickers(articles, seen_news):
     mentions = {}
+    sentiment_by_ticker = {}
     newly_seen = []
     cleaned = [(ticker, name, _clean_company_name(name)) for ticker, name in SP500]
 
@@ -69,6 +109,7 @@ def find_mentioned_tickers(articles, seen_news):
 
         text = f"{article.get('headline', '')} {article.get('summary', '')}"
         text_lower = text.lower()
+        sent = headline_sentiment(article)
 
         for ticker, full_name, short_name in cleaned:
             name_hit = bool(short_name) and len(short_name) > 3 and short_name.lower() in text_lower
@@ -82,14 +123,22 @@ def find_mentioned_tickers(articles, seen_news):
                     "summary": article.get("summary", "")[:300],
                     "source": article.get("source", ""),
                     "url": article.get("url", ""),
+                    "sentiment": round(sent, 2),
                 })
+                sentiment_by_ticker[ticker] = sentiment_by_ticker.get(ticker, 0.0) + sent
 
-    return mentions, newly_seen
+    # Average sentiment across the ticker's matched articles.
+    for t in sentiment_by_ticker:
+        sentiment_by_ticker[t] = round(
+            sentiment_by_ticker[t] / len(mentions.get(t, [])), 2
+        )
+    return mentions, newly_seen, sentiment_by_ticker
+
 
 def get_news_candidates():
     seen = _prune_old_entries(_load_seen_news())
     articles = fetch_market_news()
-    mentions, newly_seen = find_mentioned_tickers(articles, seen)
+    mentions, newly_seen, sentiment_by_ticker = find_mentioned_tickers(articles, seen)
 
     now_iso = datetime.now().isoformat()
     for aid in newly_seen:
@@ -101,4 +150,4 @@ def get_news_candidates():
         "articles_new_after_dedup": len(newly_seen),
         "tickers_matched": len(mentions),
     }
-    return mentions, stats
+    return mentions, stats, sentiment_by_ticker
