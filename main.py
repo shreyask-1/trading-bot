@@ -13,12 +13,18 @@ Flow (in order):
 6. Flatten every position if the deep-drawdown circuit breaker fired
 7. Refresh account state after any forced sells
 8. Evaluate the broad market regime (SPY-based)
-9. NEW TRADES ARE ONLY PROPOSED/EXECUTED DURING A TRADING SESSION (the
-   regular session, or the extended session when ALLOW_EXTENDED_HOURS is on)
-   and the circuit breakers haven't halted the day -- no more blind overnight
-   order stacking while no session is running
-10. Fetch news -> decisions -> execute (pending-order-aware cash, hard
-    no-margin rule, total-exposure cap)
+9. 24/7 news -> decisions -> execution flow:
+   - Live session (regular, or extended when ALLOW_EXTENDED_HOURS is on):
+     decisions execute immediately -- but any overnight-queued ideas are first
+     handed to Gemini for re-verification against fresh data, so a setup that
+     broke overnight is dropped instead of placed blindly.
+   - Overnight dead zone (8 PM - 4 AM ET, weekends): no order can fill, so the
+     bot runs its analysis and QUEUES the trade ideas to
+     data/pending_trades.json for the next morning's verification. No blind
+     order submission while no session is running (the 2026-08-07 failure
+     mode is structurally prevented).
+10. Execute with pending-order-aware cash, hard no-margin rule, total-exposure
+    cap, and flat (same-size) position sizing.
 11. Record a full performance snapshot and log everything
 """
 
@@ -30,7 +36,7 @@ from config import (
     REGIME_POSITION_MULTIPLIERS,
     TRADE_ONLY_DURING_MARKET_HOURS,
     MAX_DRAWDOWN_FLATTEN_PCT,
-    DAYTRADE_MODE,
+    OVERNIGHT_QUEUE_ENABLED,
 )
 from trader import (
     get_account_snapshot,
@@ -49,7 +55,9 @@ from trader import (
     reconcile_foreign_activity,
     get_open_orders_with_side,
     should_end_of_day_flatten,
-    is_within_trade_window,
+    load_pending_trades,
+    save_pending_trades,
+    clear_pending_trades,
     summarize_trade_results,
     summarize_performance,
     build_performance_brief,
@@ -66,9 +74,10 @@ def run():
     log_lines = [f"=== Run at {timestamp.isoformat()} ==="]
 
     market_open = is_market_open()
-    # A "trading session" is the regular session, plus the Alpaca extended
+    # A live "trading session" is the regular session, plus the Alpaca extended
     # session (4:00-9:30 AM / 4:00-8:00 PM ET) when ALLOW_EXTENDED_HOURS is on
-    # and the strict TRADE_ONLY_DURING_MARKET_HOURS kill-switch is off.
+    # and the strict TRADE_ONLY_DURING_MARKET_HOURS kill-switch is off. Outside
+    # a live session the bot QUEUES trade ideas instead of submitting (below).
     trading_session_active = market_open or (not TRADE_ONLY_DURING_MARKET_HOURS and is_trading_session())
     if market_open:
         session_label = "REGULAR"
@@ -228,10 +237,16 @@ def run():
     size_multiplier = REGIME_POSITION_MULTIPLIERS.get(regime, 0.6) * breaker_multiplier
     log_lines.append(f"Market regime: {regime} (position-size multiplier: {size_multiplier:.0%} incl. circuit breaker {breaker_multiplier:.0%})")
 
-    # Steps 3-5 (news -> decisions -> execution) are GATED: never propose new
-    # trades while the market is closed (the overnight order-stacking bug) or
-    # while the day is halted by a circuit breaker. Risk management and
-    # de-leveraging above still run in all cases.
+    # Steps 3-5 (news -> decisions -> execution): 24/7 flow.
+    #   * Live session (regular, or extended when ALLOW_EXTENDED_HOURS):
+    #     decisions execute immediately, but any overnight-queued ideas are
+    #     first re-verified by Gemini against fresh data -- a setup that broke
+    #     overnight is dropped, not placed blindly.
+    #   * Overnight dead zone (8 PM - 4 AM ET, weekends, holidays): no order
+    #     can fill, so instead of submitting blind orders (the 2026-08-07
+    #     failure mode) the bot runs its analysis and QUEUES the ideas to
+    #     data/pending_trades.json for the next morning's verification.
+    # Risk management / de-leveraging above always run, regardless of session.
     trades = []
     decision_meta = {
         "candidates_considered": 0,
@@ -241,22 +256,20 @@ def run():
     }
     executed = skipped = failed = 0
 
-    daytrade_window = is_within_trade_window()
     if halted:
         log_lines.append(f"Trading halted ({halt_reason}) -- no new trades this run.")
-    elif not trading_session_active:
-        log_lines.append(
-            "No trading session active (market closed and not in the extended "
-            "session) -- skipping news, decisions, and execution this run. "
-            "Risk management and de-leveraging still ran above."
-        )
-    elif DAYTRADE_MODE and not daytrade_window:
-        log_lines.append(
-            "Outside the daytrading entry window (first 15 min chop / after "
-            "the entry cutoff ET) -- no NEW buys this run. Risk management, "
-            "stops, and de-leveraging still ran above."
-        )
-    else:
+    elif trading_session_active:
+        # Morning verification: hand any overnight-queued ideas to Gemini so it
+        # re-checks them against fresh data BEFORE anything executes. Whatever
+        # Gemini re-approves comes back in `trades` and is executed below;
+        # everything it omits is dropped when the queue is cleared.
+        pending = load_pending_trades() if OVERNIGHT_QUEUE_ENABLED else []
+        if pending:
+            log_lines.append(
+                f"Morning verification: {len(pending)} overnight-queued trade(s) "
+                "handed to Gemini for re-verification against fresh data."
+            )
+
         # Step 3: news
         try:
             candidates, news_stats, news_sentiment = get_news_candidates()
@@ -273,16 +286,13 @@ def run():
 
         # Step 4: decisions (quant pre-screen inside get_trade_decisions)
         try:
-            trades, decision_meta = get_trade_decisions(candidates, account, regime)
+            trades, decision_meta = get_trade_decisions(candidates, account, regime, pending_trades=pending)
             log_lines.append(
                 f"Quant pre-screen: {decision_meta['candidates_passed_prescreen']}/"
                 f"{decision_meta['candidates_considered']} candidates passed."
             )
-            # FIX: this used to unconditionally say "Gemini proposed...", even on
-            # runs where Gemini's quota was exhausted and the pure-technical
-            # fallback engine generated the ideas instead. Now it reflects what
-            # actually produced the trades, and surfaces today's Gemini call
-            # count so quota usage is visible at a glance.
+            # Reflect what actually produced the trades, and surface today's
+            # Gemini call count so quota usage is visible at a glance.
             engine_label = "Technical fallback (Gemini throttled/unavailable)" if decision_meta.get("technical_fallback") else "Gemini"
             log_lines.append(f"{engine_label} proposed {len(trades)} trade(s) meeting the conviction bar.")
             log_lines.append(f"Gemini calls used today (all models combined): {decision_meta.get('gemini_calls_today', 0)}")
@@ -306,6 +316,54 @@ def run():
             except Exception as e:
                 failed += 1
                 log_lines.append(f"  -> FAILED to execute {trade.get('ticker')}: {e}")
+
+        # Gemini re-verified the queue this round: whatever it re-approved is
+        # in `trades` (executed above); everything it dropped is discarded.
+        if pending:
+            clear_pending_trades()
+            log_lines.append("Overnight queue cleared after verification.")
+    else:
+        # Overnight dead zone: analyze and QUEUE ideas for the morning. Nothing
+        # is submitted now -- the first live-session run re-verifies them with
+        # Gemini before placing anything.
+        try:
+            candidates, news_stats, news_sentiment = get_news_candidates()
+            log_lines.append(
+                f"News: fetched {news_stats['articles_fetched']}, "
+                f"{news_stats['articles_new_after_dedup']} new after dedup, "
+                f"{news_stats['tickers_matched']} ticker(s) matched."
+            )
+        except Exception as e:
+            log_lines.append(f"News fetch failed, proceeding with watchlist only: {e}")
+            candidates = {}
+
+        try:
+            trades, decision_meta = get_trade_decisions(candidates, account, regime)
+            log_lines.append(
+                f"Quant pre-screen: {decision_meta['candidates_passed_prescreen']}/"
+                f"{decision_meta['candidates_considered']} candidates passed."
+            )
+            engine_label = "Technical fallback (Gemini throttled/unavailable)" if decision_meta.get("technical_fallback") else "Gemini"
+            log_lines.append(f"{engine_label} proposed {len(trades)} trade(s) meeting the conviction bar.")
+            log_lines.append(f"Gemini calls used today (all models combined): {decision_meta.get('gemini_calls_today', 0)}")
+        except Exception as e:
+            log_lines.append(f"Decision step failed, no trades this run: {e}")
+            trades = []
+
+        if OVERNIGHT_QUEUE_ENABLED and trades:
+            queued = save_pending_trades(trades)
+            log_lines.append(
+                f"Market closed (overnight): queued {queued} trade idea(s) for "
+                "next-morning verification -- nothing submitted yet."
+            )
+            for trade in trades:
+                log_lines.append(
+                    f"  -> queued {trade.get('ticker')} {trade.get('action')} "
+                    f"(conf {trade.get('confidence')}, stop {trade.get('stop_loss')}, "
+                    f"tp {trade.get('take_profit')})"
+                )
+        else:
+            log_lines.append("Market closed (overnight): no trade ideas queued this run.")
 
     # Step 6: performance tracking
     try:
