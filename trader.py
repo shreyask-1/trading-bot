@@ -22,6 +22,8 @@ from config import (
     ALPACA_API_KEY,
     ALPACA_SECRET_KEY,
     ALLOW_EXTENDED_HOURS,
+    FLAT_SIZING,
+    FLAT_TRADE_SIZE_PCT,
     MAX_POSITION_PCT,
     ATR_STOP_MULTIPLIER,
     ATR_TAKE_PROFIT_MULTIPLIER,
@@ -103,6 +105,9 @@ TRADE_RESULTS_FILE = os.path.join(os.path.dirname(__file__), "logs", "trade_resu
 OPEN_TRADES_FILE = os.path.join(os.path.dirname(__file__), "logs", "open_trades.json")
 NEWS_SENTIMENT_CACHE_FILE = os.path.join(os.path.dirname(__file__), "logs", "news_sentiment_cache.json")
 EARNINGS_CAL_FILE = os.path.join(os.path.dirname(__file__), "logs", "earnings_calendar.json")
+# Overnight queue: trade ideas proposed while no session could fill, re-verified
+# by Gemini at the next live-session run before anything is placed.
+PENDING_TRADES_FILE = os.path.join(os.path.dirname(__file__), "data", "pending_trades.json")
 
 _FEED_MAP = {"iex": DataFeed.IEX, "sip": DataFeed.SIP, "otc": DataFeed.OTC}
 DATA_FEED = _FEED_MAP.get(ALPACA_DATA_FEED.lower(), DataFeed.IEX)
@@ -587,6 +592,34 @@ def get_gross_exposure(account_snapshot):
     """Dollar value of all held long positions (short exposure unsupported)."""
     holdings = account_snapshot.get("holdings", {})
     return sum(p["qty"] * p["current_price"] for p in holdings.values())
+
+# ============================================================
+# Overnight trade queue (24/7 flow: queue at night, verify at the open)
+# ============================================================
+def load_pending_trades():
+    """Overnight queue: trade ideas proposed while no session could fill."""
+    return _load_json_file(PENDING_TRADES_FILE, [])
+
+
+def save_pending_trades(trades):
+    """
+    Merge `trades` into the overnight queue (dedup by ticker+action; newer
+    entries win, so a later run's fresher analysis replaces an older idea for
+    the same name). Returns the total number queued.
+    """
+    existing = load_pending_trades()
+    merged = {}
+    for t in existing + list(trades):
+        key = (t.get("ticker"), str(t.get("action", "buy")).lower())
+        merged[key] = t
+    out = list(merged.values())
+    _save_json_file(PENDING_TRADES_FILE, out)
+    return len(out)
+
+
+def clear_pending_trades():
+    """Drop the overnight queue (called after Gemini re-verified it)."""
+    _save_json_file(PENDING_TRADES_FILE, [])
 
 # ============================================================
 # Equity-level circuit breakers
@@ -1674,9 +1707,20 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
                 "reason": f"no-margin rule: cash is negative (${account_snapshot['cash']:,.2f}); de-leveraging first",
             }
 
-        # Confidence-based sizing: when Gemini returns a confidence score, the
-        # code converts it to a % of equity instead of trusting a dollar amount.
-        if trade.get("confidence") is not None:
+        # Confidence: a GATE in flat mode (skip below the bar, size unchanged)
+        # and a SIZER in tiered mode (converts the 0-100 score to % of equity).
+        if FLAT_SIZING:
+            if trade.get("confidence") is not None:
+                try:
+                    if float(trade["confidence"]) < CONFIDENCE_MIN_TO_TRADE:
+                        return {
+                            "ticker": ticker,
+                            "status": "skipped",
+                            "reason": f"confidence {trade['confidence']} below tradeable bar ({CONFIDENCE_MIN_TO_TRADE})",
+                        }
+                except (TypeError, ValueError):
+                    pass
+        elif trade.get("confidence") is not None:
             size_pct = confidence_to_size_pct(trade.get("confidence"))
             if size_pct <= 0:
                 return {
@@ -1720,34 +1764,49 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
                     "reason": f"chase filter: already up {intraday_move:.1f}% on the session (limit {MAX_INTRADAY_MOVE_PCT}%)",
                 }
 
-        max_allowed = total_value * MAX_POSITION_PCT * (conviction / 10.0) * size_multiplier
-        target_room = max(0.0, max_allowed - current_position_value)
-
-        # Fix: If requested_amount is 0/unspecified, default to remaining target position room
-        if requested_amount <= 0:
+        # FLAT sizing (default): every trade gets the SAME FLAT_TRADE_SIZE_PCT
+        # of equity, capped only by the per-position ceiling and the
+        # regime/breaker multiplier. Confidence/conviction/time-of-day/
+        # setup-learning/economic-event/earnings multipliers are skipped in
+        # flat mode -- size is uniform by design. Stops/TPs are still computed
+        # per trade (protection) but never resize the position.
+        exit_levels = None
+        if FLAT_SIZING:
+            max_allowed = total_value * MAX_POSITION_PCT
+            flat_target = total_value * FLAT_TRADE_SIZE_PCT * size_multiplier
+            flat_target = min(flat_target, max_allowed)
+            target_room = max(0.0, flat_target - current_position_value)
             buy_target = target_room
+            exit_levels = _compute_exit_levels(ticker, trade, price, ind=ind_data)
         else:
-            buy_target = min(requested_amount, target_room)
+            max_allowed = total_value * MAX_POSITION_PCT * (conviction / 10.0) * size_multiplier
+            target_room = max(0.0, max_allowed - current_position_value)
 
-        # Time-of-day sizing: full size in the high-edge windows, smaller
-        # through the lunch lull. Sells are never affected by this.
-        buy_target *= get_time_of_day_multiplier()
+            # Fix: If requested_amount is 0/unspecified, default to remaining target position room
+            if requested_amount <= 0:
+                buy_target = target_room
+            else:
+                buy_target = min(requested_amount, target_room)
 
-        # Phase 3 self-learning: size this setup by its DEMONSTRATED edge from
-        # the closed-trade journal (winning setups bigger, losing setups
-        # smaller). Never affects sells.
-        buy_target *= get_setup_multiplier(_setup_category(trade.get("reasoning")))
+            # Time-of-day sizing: full size in the high-edge windows, smaller
+            # through the lunch lull. Sells are never affected by this.
+            buy_target *= get_time_of_day_multiplier()
 
-        # Phase 2: on high-impact economic event days (CPI/FOMC/NFP...), size
-        # new buys down -- the market reprices hard around those prints.
-        buy_target *= get_economic_event_multiplier()
+            # Phase 3 self-learning: size this setup by its DEMONSTRATED edge from
+            # the closed-trade journal (winning setups bigger, losing setups
+            # smaller). Never affects sells.
+            buy_target *= get_setup_multiplier(_setup_category(trade.get("reasoning")))
 
-        # Earnings proximity: buying into a print means carrying overnight gap
-        # risk; shrink the entry when earnings are within the window.
-        if ind_data and ind_data.get("days_until_earnings") is not None:
-            days = ind_data.get("days_until_earnings")
-            if 0 <= days <= EARNINGS_PROXIMITY_DAYS:
-                buy_target *= EARNINGS_PROXIMITY_SIZE_MULT
+            # Phase 2: on high-impact economic event days (CPI/FOMC/NFP...), size
+            # new buys down -- the market reprices hard around those prints.
+            buy_target *= get_economic_event_multiplier()
+
+            # Earnings proximity: buying into a print means carrying overnight gap
+            # risk; shrink the entry when earnings are within the window.
+            if ind_data and ind_data.get("days_until_earnings") is not None:
+                days = ind_data.get("days_until_earnings")
+                if 0 <= days <= EARNINGS_PROXIMITY_DAYS:
+                    buy_target *= EARNINGS_PROXIMITY_SIZE_MULT
 
         base_reserve = total_value * MIN_CASH_RESERVE_PCT
         is_exceptional = conviction >= EXCEPTIONAL_CONVICTION_THRESHOLD
@@ -1771,11 +1830,12 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
 
         amount = min(buy_target, available_cash, exposure_room)
 
-        # Risk-based sizing: cap the position so a stop-out costs at most
-        # MAX_RISK_PER_TRADE_PCT of equity, using THIS trade's real stop
-        # distance (tight stop = bigger size, wide stop = smaller size).
-        exit_levels = None
-        if MAX_RISK_PER_TRADE_PCT > 0:
+        # Risk-based sizing (tiered mode only; flat mode sizes uniformly -- the
+        # per-position stop and hard loss cap still bound the loss): cap the
+        # position so a stop-out costs at most MAX_RISK_PER_TRADE_PCT of
+        # equity, using THIS trade's real stop distance (tight stop = bigger
+        # size, wide stop = smaller size).
+        if not FLAT_SIZING and MAX_RISK_PER_TRADE_PCT > 0:
             exit_levels = _compute_exit_levels(ticker, trade, price, ind=ind_data)
             stop_for_risk = exit_levels[0] if exit_levels else None
             risk_budget = total_value * MAX_RISK_PER_TRADE_PCT / 100.0
@@ -1875,131 +1935,6 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
 
         return {
             "timestamp": datetime.now().isoformat(),
-            "ticker": ticker,
-            "action": action,
-            "qty": qty,
-            "conviction": conviction,
-            "size_multiplier": size_multiplier,
-            "order_id": str(order.id),
-            "order_status": str(order.status),
-            "stop_loss": stop_loss,
-            "take_profit": take_profit,
-            "reasoning": trade.get("reasoning", ""),
-            "status": "submitted",
-        }
-    except Exception as e:
-        return {"ticker": ticker, "status": "failed", "reason": str(e)}
+           
 
-def record_performance_snapshot(account_snapshot, log_dir, **stats):
-    path = os.path.join(log_dir, "performance.csv")
-    file_exists = os.path.exists(path)
-
-    if file_exists:
-        with open(path) as f:
-            first_line = f.readline().strip()
-            existing_header = first_line.split(",") if first_line else []
-        if existing_header != PERFORMANCE_CSV_HEADER:
-            backup_path = os.path.join(
-                log_dir,
-                f"performance_legacy_{datetime.now().strftime('%Y%m%d%H%M%S')}.csv",
-            )
-            os.rename(path, backup_path)
-            file_exists = False
-
-    row = {
-        "timestamp": datetime.now().isoformat(),
-        "total_value": round(account_snapshot["total_value"], 2),
-        "cash": round(account_snapshot["cash"], 2),
-        "num_holdings": len(account_snapshot["holdings"]),
-        "market_regime": stats.get("market_regime", "UNKNOWN"),
-        "size_multiplier": stats.get("size_multiplier", 1.0),
-        "candidates_considered": stats.get("candidates_considered", 0),
-        "candidates_passed_prescreen": stats.get("candidates_passed_prescreen", 0),
-        "trades_proposed": stats.get("trades_proposed", 0),
-        "trades_executed": stats.get("trades_executed", 0),
-        "trades_skipped": stats.get("trades_skipped", 0),
-        "trades_failed": stats.get("trades_failed", 0),
-        "risk_exits": stats.get("risk_exits", 0),
-        "consolidation_exits": stats.get("consolidation_exits", 0),
-    }
-
-    with open(path, "a", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=PERFORMANCE_CSV_HEADER)
-        if not file_exists:
-            writer.writeheader()
-        writer.writerow(row)
-
-
-def summarize_performance(account_snapshot=None):
-    """
-    Portfolio stats for the run log, computed from the existing logs:
-    total return, max drawdown, daily Sharpe (from performance.csv) and win
-    rate / avg winner / avg loser (from trade_results.csv).
-    """
-    lines = []
-    values = []
-    daily = {}
-    perf_path = os.path.join(os.path.dirname(__file__), "logs", "performance.csv")
-    if os.path.exists(perf_path):
-        try:
-            with open(perf_path) as f:
-                rows = list(csv.DictReader(f))
-            for r in rows:
-                try:
-                    values.append(float(r["total_value"]))
-                    daily.setdefault(r["timestamp"][:10], []).append(float(r["total_value"]))
-                except (KeyError, ValueError):
-                    continue
-        except (OSError, csv.Error):
-            pass
-
-    if values:
-        total_ret = (values[-1] / values[0] - 1.0) * 100.0 if values[0] else 0.0
-        peak = -1e18
-        max_dd = 0.0
-        for v in values:
-            peak = max(peak, v)
-            if peak > 0:
-                max_dd = max(max_dd, (peak - v) / peak * 100.0)
-        day_rets = []
-        for day in sorted(daily):
-            ds = daily[day]
-            if len(ds) >= 2 and ds[0]:
-                day_rets.append((ds[-1] / ds[0] - 1.0) * 100.0)
-        sharpe = None
-        if len(day_rets) >= 2:
-            mean = sum(day_rets) / len(day_rets)
-            std = (sum((d - mean) ** 2 for d in day_rets) / len(day_rets)) ** 0.5
-            sharpe = (mean / std * (252 ** 0.5)) if std > 0 else 0.0
-        lines.append(f"Total return {total_ret:+.2f}% | Max drawdown {max_dd:.2f}% | Daily Sharpe {sharpe:.2f}" if sharpe is not None
-                     else f"Total return {total_ret:+.2f}% | Max drawdown {max_dd:.2f}%")
-
-    if os.path.exists(TRADE_RESULTS_FILE):
-        try:
-            with open(TRADE_RESULTS_FILE) as f:
-                rows = list(csv.DictReader(f))
-            pcts = []
-            for r in rows:
-                try:
-                    pcts.append(float(r["pnl_pct"]))
-                except (ValueError, KeyError):
-                    continue
-            if pcts:
-                wins = [p for p in pcts if p > 0]
-                losses = [p for p in pcts if p <= 0]
-                wr = len(wins) / len(pcts) * 100.0
-                avg_w = sum(wins) / len(wins) if wins else 0.0
-                avg_l = sum(losses) / len(losses) if losses else 0.0
-                lines.append(
-                    f"{len(pcts)} closed trades | Win rate {wr:.0f}% | "
-                    f"Avg winner {avg_w:+.2f}% | Avg loser {avg_l:+.2f}%"
-                )
-        except (OSError, csv.Error):
-            pass
-
-    if account_snapshot is not None:
-        lines.append(
-            f"Open positions: {len(account_snapshot.get('holdings', {}))} | "
-            f"Equity ${account_snapshot.get('total_value', 0):,.2f}"
-        )
-    return " | ".join(lines) if lines else "no performance history yet"
+⚠️ No response from agent
