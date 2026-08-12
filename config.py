@@ -42,6 +42,15 @@ UNIVERSE_SCAN_PER_RUN = int(os.environ.get("UNIVERSE_SCAN_PER_RUN", 40))
 ALPACA_DATA_FEED = os.environ.get("ALPACA_DATA_FEED", "iex")
 
 # --- Position sizing ---
+# FLAT sizing (ON by default): EVERY trade is sized the same -- FLAT_TRADE_SIZE_PCT
+# of portfolio equity, capped only by the per-position ceiling and the
+# regime/breaker multiplier. Confidence/conviction/time-of-day/setup-learning/
+# economic-event/earnings multipliers do NOT change size in flat mode;
+# confidence still GATES (below CONFIDENCE_MIN_TO_TRADE the trade is skipped,
+# it just doesn't resize). Set FLAT_SIZING=false to restore per-confidence
+# tiered sizing.
+FLAT_SIZING = os.environ.get("FLAT_SIZING", "true").lower() == "true"
+FLAT_TRADE_SIZE_PCT = float(os.environ.get("FLAT_TRADE_SIZE_PCT", 0.10))
 MAX_POSITION_PCT = 0.15  # Hard ceiling: no single position over 15% of portfolio
 MIN_CONVICTION_TO_TRADE = 6  # Conviction 1-10; below this, skip trade
 
@@ -54,25 +63,29 @@ CONSOLIDATION_SCORE_THRESHOLD = 70  # Force-sell excess positions scoring below 
 EXCEPTIONAL_CONVICTION_THRESHOLD = 9
 EXCEPTIONAL_TRADE_RESERVE_ACCESS_PCT = 0.5
 
-# --- Trading sessions (regular + extended hours) ---
-# The 2026-08-07 failure mode: this bot historically submitted orders 24/7.
-# DAY market orders placed while no session was running sat queued in Alpaca
-# and ALL filled at the next 9:30 AM ET open at once, blowing cash into
-# negative margin (cash went +$33k -> -$19k in minutes). Two knobs now
-# control when NEW trades may be proposed/executed:
-#   TRADE_ONLY_DURING_MARKET_HOURS=true -> strictly the regular session
-#     (9:30-16:00 ET). Default now false.
-#   ALLOW_EXTENDED_HOURS=true           -> ALSO the Alpaca extended session
-#     (4:00-9:30 AM and 4:00-8:00 PM ET). Orders placed there must be LIMIT
-#     orders (Alpaca rejects market orders in extended hours), so the bot
-#     converts to a limit at the last traded price with extended_hours=True.
-#     Thin liquidity / wide spreads are the tradeoff the user accepted.
-# Risk management (stops, de-leveraging) always runs, any session.
+# --- Trading sessions: 24/7 with an overnight queue ---
+# The bot runs 24/7 and never idles:
+#   * Regular session (9:30-16:00 ET): trades execute immediately.
+#   * Extended session (4:00-9:30 AM / 4:00-8:00 PM ET): trades execute
+#     immediately as LIMIT orders at the last traded price with
+#     extended_hours=True (Alpaca rejects market orders there).
+#   * Overnight dead zone (8:00 PM - 4:00 AM ET, weekends, holidays): no
+#     order can fill, so instead of submitting blind orders (the 2026-08-07
+#     failure mode, where queued DAY market orders ALL filled at once at the
+#     open) the bot QUEUES its trade ideas to data/pending_trades.json. The
+#     first live-session run hands the queue to Gemini for re-verification
+#     against fresh data, and only the re-confirmed trades are placed.
+# TRADE_ONLY_DURING_MARKET_HOURS=true restores the old strict gate (regular
+# session only, everything else queues); default false = 24/7 behavior.
 TRADE_ONLY_DURING_MARKET_HOURS = (
     os.environ.get("TRADE_ONLY_DURING_MARKET_HOURS", "false").lower() == "true"
 )
 ALLOW_EXTENDED_HOURS = (
     os.environ.get("ALLOW_EXTENDED_HOURS", "true").lower() == "true"
+)
+# Master switch for the overnight queue + next-morning Gemini verification.
+OVERNIGHT_QUEUE_ENABLED = (
+    os.environ.get("OVERNIGHT_QUEUE_ENABLED", "true").lower() == "true"
 )
 
 # --- Hard no-margin / exposure discipline ---
@@ -159,7 +172,9 @@ END_OF_DAY_FLATTEN_TIME = os.environ.get("END_OF_DAY_FLATTEN_TIME", "15:50")
 # price breaking above/below it is a classic daytrading entry signal.
 OPENING_RANGE_BARS = int(os.environ.get("OPENING_RANGE_BARS", 3))
 # Skip NEW buys in the first N minutes of the session (open auction chop).
-TRADE_START_MINUTES_AFTER_OPEN = int(os.environ.get("TRADE_START_MINUTES_AFTER_OPEN", 15))
+# Default 0 = no opening restriction (24/7 trading; the overnight queue
+# already handles everything pre-open).
+TRADE_START_MINUTES_AFTER_OPEN = int(os.environ.get("TRADE_START_MINUTES_AFTER_OPEN", 0))
 # Skip NEW buys after this ET time (no late-session entries). Default 23:59
 # = disabled: with ALLOW_EXTENDED_HOURS on, after-hours entries are wanted,
 # so the only regular-session restriction left is
@@ -265,11 +280,16 @@ PRICE_HISTORY_DAYS = 400
 
 # --- Market regime filter ---
 MARKET_HIGH_VOLATILITY_THRESHOLD = 2.5
+# Every trade is sized the same in normal conditions (NEUTRAL and BULLISH are
+# both 1.0 -- no per-trade or per-regime size variation). BEARISH still blocks
+# ALL new buys (confirmed bear tape = no entries) and HIGH_VOLATILITY trades
+# defensively at half size. This is a market-level gate, not a per-trade size
+# difference.
 REGIME_POSITION_MULTIPLIERS = {
     "BULLISH": 1.0,
-    "NEUTRAL": 0.6,
+    "NEUTRAL": 1.0,
     "BEARISH": 0.0,
-    "HIGH_VOLATILITY": 0.3,
+    "HIGH_VOLATILITY": 0.5,
 }
 
 # --- Quantitative pre-screen ---
@@ -281,11 +301,12 @@ MIN_SIGNAL_SCORE_TO_CONSIDER = 55
 # below this threshold never reach Gemini. 0 = no filtering.
 NEWS_MIN_SCORE_TO_CONSIDER = float(os.environ.get("NEWS_MIN_SCORE_TO_CONSIDER", 5.0))
 
-# --- Confidence-based position sizing ---
+# --- Confidence-based position sizing (used only when FLAT_SIZING=false) ---
 # Gemini returns a confidence score 0-100 (instead of a raw dollar amount) and
 # the code converts it to a target position size as a % of portfolio equity.
 # (threshold, size % of equity), checked top-down. Below the lowest threshold
-# the trade is skipped outright.
+# the trade is skipped outright. With FLAT_SIZING=true (default), confidence
+# only gates (min to trade) and every trade gets FLAT_TRADE_SIZE_PCT instead.
 CONFIDENCE_SIZING = [
     (90, 0.08),  # 90+  -> 8%
     (80, 0.05),  # 80+  -> 5%
@@ -324,7 +345,11 @@ TECHNICAL_CONVICTION_AGGRESSIVENESS = float(
 # All feeds are fail-soft: a missing key, network error, or blocked IP never
 # breaks a run -- the bot just trades without that feed.
 ENABLE_ECONOMIC_CALENDAR = os.environ.get("ENABLE_ECONOMIC_CALENDAR", "true").lower() == "true"
-ENABLE_ANALYST_ACTIONS = os.environ.get("ENABLE_ANALYST_ACTIONS", "true").lower() == "true"
+# Analyst upgrades/downgrades need a PAID Finnhub plan (free keys get HTTP
+# 403) -- off by default so the bot is fully free-plan accustomed with zero
+# error spam. Everything else (news, earnings, insider transactions, SEC
+# filings, Reddit best-effort) is free-tier.
+ENABLE_ANALYST_ACTIONS = os.environ.get("ENABLE_ANALYST_ACTIONS", "false").lower() == "true"
 ENABLE_INSIDER_ACTIVITY = os.environ.get("ENABLE_INSIDER_ACTIVITY", "true").lower() == "true"
 ENABLE_SEC_FILINGS = os.environ.get("ENABLE_SEC_FILINGS", "true").lower() == "true"
 ENABLE_REDDIT_SENTIMENT = os.environ.get("ENABLE_REDDIT_SENTIMENT", "true").lower() == "true"
