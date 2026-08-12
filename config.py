@@ -5,6 +5,8 @@ Keys are read from environment variables -- never hardcoded, never committed.
 
 import os
 
+from sp500_data import SP500
+
 _REQUIRED_KEYS = [
     "FINNHUB_API_KEY",
     "GEMINI_API_KEY",
@@ -28,12 +30,13 @@ ALPACA_SECRET_KEY = os.environ["ALPACA_SECRET_KEY"]
 # --- Universe ---
 MAX_NEWS_ITEMS = 15  # headlines considered per run
 
-WATCHLIST = [
-    "AAPL", "MSFT", "GOOGL", "AMZN", "NVDA",
-    "META", "TSLA", "AVGO", "JPM", "V",
-    "UNH", "XOM", "WMT", "MA", "HD",
-    "PG", "COST", "NFLX", "BAC", "DIS",
-]
+# The technical universe is now the ENTIRE S&P 500. Every name gets scanned
+# over the course of the day via a rotating slice (UNIVERSE_SCAN_PER_RUN per
+# run) so we get full coverage without hammering the data API in one shot.
+# News-matched tickers are ALWAYS scored regardless of the slice.
+WATCHLIST = [ticker for ticker, _ in SP500]
+# How many non-news universe tickers are scanned per run (rotating window).
+UNIVERSE_SCAN_PER_RUN = int(os.environ.get("UNIVERSE_SCAN_PER_RUN", 40))
 
 # --- Data feed ---
 ALPACA_DATA_FEED = os.environ.get("ALPACA_DATA_FEED", "iex")
@@ -237,7 +240,9 @@ GEMINI_MODEL_LIMITS = {
 }
 
 GEMINI_QUOTA_RESET_TIMEZONE = "America/Los_Angeles"
-PRICE_HISTORY_DAYS = 150
+# ~52 weeks of daily bars so 52-week high/low distances are available in the
+# same fetch as all other indicators (same API cost).
+PRICE_HISTORY_DAYS = 400
 
 # --- Market regime filter ---
 MARKET_HIGH_VOLATILITY_THRESHOLD = 2.5
@@ -251,8 +256,85 @@ REGIME_POSITION_MULTIPLIERS = {
 # --- Quantitative pre-screen ---
 MIN_SIGNAL_SCORE_TO_CONSIDER = 55
 
+# --- Better news filtering ---
+# Every article is scored 0-10 (news.score_article: earnings beats and
+# partnerships score high, interviews and store openings score low). Articles
+# below this threshold never reach Gemini. 0 = no filtering.
+NEWS_MIN_SCORE_TO_CONSIDER = float(os.environ.get("NEWS_MIN_SCORE_TO_CONSIDER", 5.0))
+
+# --- Confidence-based position sizing ---
+# Gemini returns a confidence score 0-100 (instead of a raw dollar amount) and
+# the code converts it to a target position size as a % of portfolio equity.
+# (threshold, size % of equity), checked top-down. Below the lowest threshold
+# the trade is skipped outright.
+CONFIDENCE_SIZING = [
+    (90, 0.08),  # 90+  -> 8%
+    (80, 0.05),  # 80+  -> 5%
+    (70, 0.03),  # 70+  -> 3%
+    (60, 0.02),  # 60+  -> 2%
+]
+CONFIDENCE_MIN_TO_TRADE = 60  # below this, no position
+
+# --- Smarter exits ---
+# Moving-average breakdown: exit a long when price closes below SMA-20.
+ENABLE_MA_BREAKDOWN_EXIT = os.environ.get("ENABLE_MA_BREAKDOWN_EXIT", "true").lower() == "true"
+# RSI exhaustion: exit a long when RSI-14 pushes above this (overbought
+# exhaustion after a run).
+ENABLE_RSI_EXHAUSTION_EXIT = os.environ.get("ENABLE_RSI_EXHAUSTION_EXIT", "true").lower() == "true"
+RSI_EXHAUSTION_LEVEL = float(os.environ.get("RSI_EXHAUSTION_LEVEL", 75.0))
+# Negative-news exit: exit a position when the most recent news for the
+# ticker carries strong negative sentiment (uses the last news fetch).
+ENABLE_NEGATIVE_NEWS_EXIT = os.environ.get("ENABLE_NEGATIVE_NEWS_EXIT", "true").lower() == "true"
+NEGATIVE_NEWS_SENTIMENT_THRESHOLD = float(os.environ.get("NEGATIVE_NEWS_SENTIMENT_THRESHOLD", -0.4))
+
+# --- Market regime filter (SPY + QQQ + VIX) ---
+# VIX stress levels (best-effort: tries "VIX", then "UVXY" as a proxy, then
+# falls back to SPY realized volatility). Above the stress level the bot goes
+# HIGH_VOLATILITY/defensive; above severe it goes fully defensive (BEARISH).
+MARKET_VIX_STRESS_LEVEL = float(os.environ.get("MARKET_VIX_STRESS_LEVEL", 30.0))
+MARKET_VIX_SEVERE_LEVEL = float(os.environ.get("MARKET_VIX_SEVERE_LEVEL", 40.0))
+
 # --- Pure-technical fallback ---
 TECHNICAL_MIN_CONVICTION = int(os.environ.get("TECHNICAL_MIN_CONVICTION", 5))
 TECHNICAL_CONVICTION_AGGRESSIVENESS = float(
     os.environ.get("TECHNICAL_CONVICTION_AGGRESSIVENESS", 0.8)
 )
+
+# --- Phase 2: data feeds (economic calendar, analyst, insider, SEC, Reddit) ---
+# All feeds are fail-soft: a missing key, network error, or blocked IP never
+# breaks a run -- the bot just trades without that feed.
+ENABLE_ECONOMIC_CALENDAR = os.environ.get("ENABLE_ECONOMIC_CALENDAR", "true").lower() == "true"
+ENABLE_ANALYST_ACTIONS = os.environ.get("ENABLE_ANALYST_ACTIONS", "true").lower() == "true"
+ENABLE_INSIDER_ACTIVITY = os.environ.get("ENABLE_INSIDER_ACTIVITY", "true").lower() == "true"
+ENABLE_SEC_FILINGS = os.environ.get("ENABLE_SEC_FILINGS", "true").lower() == "true"
+ENABLE_REDDIT_SENTIMENT = os.environ.get("ENABLE_REDDIT_SENTIMENT", "true").lower() == "true"
+# Per-ticker feeds (insider/SEC) are limited so a run never makes dozens of
+# API calls: only the top N candidates get the deep look, cached for 24h.
+MAX_FUNDAMENTAL_TICKERS = int(os.environ.get("MAX_FUNDAMENTAL_TICKERS", 12))
+# On a day with a high-impact economic event (CPI/FOMC/NFP/GDP...), new buys
+# are sized down to this fraction of normal (event uncertainty is real).
+HIGH_IMPACT_EVENT_SIZE_MULT = float(os.environ.get("HIGH_IMPACT_EVENT_SIZE_MULT", 0.5))
+# New buys into a name reporting earnings within this many days are sized down
+# (gap risk on the print is not something a daytrader should carry).
+EARNINGS_PROXIMITY_DAYS = int(os.environ.get("EARNINGS_PROXIMITY_DAYS", 3))
+EARNINGS_PROXIMITY_SIZE_MULT = float(os.environ.get("EARNINGS_PROXIMITY_SIZE_MULT", 0.5))
+# Boosts applied by signal_score.py from the Phase 2 feeds (0 disables each).
+ANALYST_UPGRADE_BOOST = float(os.environ.get("ANALYST_UPGRADE_BOOST", 8.0))
+ANALYST_DOWNGRADE_PENALTY = float(os.environ.get("ANALYST_DOWNGRADE_PENALTY", 8.0))
+INSIDER_BUY_BOOST = float(os.environ.get("INSIDER_BUY_BOOST", 6.0))
+INSIDER_SELL_PENALTY = float(os.environ.get("INSIDER_SELL_PENALTY", 5.0))
+REDDIT_SENTIMENT_WEIGHT = float(os.environ.get("REDDIT_SENTIMENT_WEIGHT", 8.0))
+HIGH_IMPACT_EVENT_PENALTY = float(os.environ.get("HIGH_IMPACT_EVENT_PENALTY", 5.0))
+
+# --- Phase 3: self-learning statistics ---
+# The bot tracks every trade in logs/trades_journal.csv (reason, confidence,
+# stop, outcome) and pairs buys/sells into logs/trade_results.csv. From that
+# it learns which SETUPS actually win, and sizes future entries of a setup by
+# its demonstrated expectancy (this is the "increase weighting toward
+# successful patterns" loop). Multiplier is clamped to [MIN, MAX] and only
+# kicks in once a setup has >= MIN_SAMPLES closed trades.
+SELF_LEARNING_ENABLED = os.environ.get("SELF_LEARNING_ENABLED", "true").lower() == "true"
+SETUP_MULT_MIN = float(os.environ.get("SETUP_MULT_MIN", 0.5))
+SETUP_MULT_MAX = float(os.environ.get("SETUP_MULT_MAX", 1.5))
+SELF_LEARNING_MIN_SAMPLES = int(os.environ.get("SELF_LEARNING_MIN_SAMPLES", 5))
+SELF_LEARNING_EDGE_MIN = float(os.environ.get("SELF_LEARNING_EDGE_MIN", 0.0))  # min avg win % for a positive multiplier
