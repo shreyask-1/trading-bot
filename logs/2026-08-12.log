@@ -4079,3 +4079,16 @@ Ending portfolio value: $99,717.34
 Trade journal: no closed trades yet
 Performance: Total return -0.12% | Max drawdown 12.37% | Daily Sharpe 0.38 | Open positions: 13 | Equity $99,717.34
 
+=== Run at 2026-08-12T11:12:23.781099 ===
+Current time: 2026-08-12 07:12 AM EDT | Market open (per Alpaca): False
+Account value: $99,707.36
+Cash: $-4,761.65 | Holdings (13): {'AAPL': '12.8012 sh (-2.69%)', 'AMZN': '25.4179 sh (+0.01%)', 'COP': '63.8341 sh (+7.54%)', 'COST': '7.8517 sh (+0.08%)', 'DIS': '66.8769 sh (-1.19%)', 'GOOGL': '20.8177 sh (-3.48%)', 'HD': '34.1034 sh (+0.51%)', 'HON': '49.4672 sh (-4.96%)', 'LMT': '20.7665 sh (+3.22%)', 'MA': '15.7159 sh (-2.20%)', 'META': '12.712 sh (+2.20%)', 'MSFT': '14.999 sh (-0.74%)', 'TSLA': '13.0184 sh (+3.50%)'}
+Open orders (13): COP sell 63.8341, META sell 6.6766, GOOGL sell 20.8177, DIS sell 66.8769, HD sell 34.1034, MA sell 15.7159, TSLA sell 13.0184, COST sell 7.8517, HON sell 49.4672, AAPL sell 12.8012, AMZN sell 25.4179, MSFT sell 14.999
+  !! FOREIGN ACTIVITY: HON position (49.4672 sh) was never created by this bot.
+Risk state: peak $99,809.74 | drawdown 0.10% | today +12.80% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 60% incl. circuit breaker 100%)
+Market closed and TRADE_ONLY_DURING_MARKET_HOURS is enabled -- skipping news, decisions, and execution this run. Risk management and de-leveraging still ran above.
+Ending portfolio value: $99,707.36
+Trade journal: no closed trades yet
+Performance: Total return -0.13% | Max drawdown 12.37% | Daily Sharpe 0.38 | Open positions: 13 | Equity $99,707.36
+
