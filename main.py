@@ -44,6 +44,7 @@ from trader import (
     get_eastern_time_str,
     notify,
     reconcile_foreign_activity,
+    get_open_orders_with_side,
     should_end_of_day_flatten,
     is_within_trade_window,
     summarize_trade_results,
@@ -73,7 +74,19 @@ def run():
 
     log_lines.append(f"Account value: ${account['total_value']:,.2f}")
     holdings_summary = {t: f"{p['qty']} sh ({p['unrealized_plpc']:+.2f}%)" for t, p in account["holdings"].items()}
-    log_lines.append(f"Cash: ${account['cash']:,.2f} | Holdings ({len(account['holdings'])}): {holdings_summary or 'none'}")
+    log_lines.append(f"Cash: ${account['cash']:,.2f} | Holdings ({len(account['holdings'])}): {holdings_summary or 'none'})")
+
+    # Open-order visibility: queued/pending orders (e.g. de-leveraging sells
+    # placed after the close) are why the account may look unchanged at night
+    # -- they fill at the next open. Log them so a night run never looks like
+    # it "did nothing".
+    try:
+        open_orders = get_open_orders_with_side()
+        if open_orders:
+            brief = ", ".join(f"{o['symbol']} {o['side']} {o['qty']:g}" for o in open_orders[:12])
+            log_lines.append(f"Open orders ({len(open_orders)}): {brief}")
+    except Exception as e:
+        log_lines.append(f"Could not fetch open orders: {e}")
 
     # Step -1: second-trader detection -- reconcile the actual account against
     # this bot's own order ledger. Any holding or quantity this bot never
