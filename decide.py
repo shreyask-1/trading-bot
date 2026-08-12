@@ -545,4 +545,261 @@ def _refresh_data_feeds(candidate_tickers):
             get_insider_activity(candidate_tickers[:MAX_FUNDAMENTAL_TICKERS])
         except Exception as e:
             print(f"Insider activity refresh failed: {e}")
-    if ENA
+    if ENABLE_SEC_FILINGS:
+        try:
+            get_sec_filings(candidate_tickers[:MAX_FUNDAMENTAL_TICKERS])
+        except Exception as e:
+            print(f"SEC filings refresh failed: {e}")
+
+
+def _build_fundamental_block(tickers):
+    """Phase 2 context block for the Gemini prompt (pure cache reads)."""
+    from data_feeds import get_context_block
+    try:
+        return get_context_block(tickers)
+    except Exception as e:
+        print(f"Could not build fundamental context: {e}")
+        return "none"
+
+
+def _fmt_setup(d):
+    """Compact, information-dense formatting of a ticker's key setup fields."""
+    d = d or {}
+    parts = []
+    parts.append(f"trend {d.get('trend')}")
+    if d.get("rsi_14") is not None:
+        parts.append(f"RSI {d['rsi_14']:.0f}")
+    if d.get("atr_14") is not None:
+        parts.append(f"ATR {d['atr_14']:.2f}")
+    if d.get("adx_14") is not None:
+        parts.append(f"ADX {d['adx_14']:.0f}")
+    if d.get("macd_cross"):
+        parts.append(f"MACD {d['macd_cross']}")
+    if d.get("gap_pct") is not None:
+        parts.append(f"gap {d['gap_pct']:+.1f}%")
+    if d.get("dist_from_52w_high_pct") is not None:
+        parts.append(f"{d['dist_from_52w_high_pct']:.0f}% off 52wH")
+    if d.get("dist_from_52w_low_pct") is not None:
+        parts.append(f"{d['dist_from_52w_low_pct']:.0f}% off 52wL")
+    if d.get("days_until_earnings") is not None:
+        parts.append(f"earnings in {d['days_until_earnings']}d")
+    if d.get("support") is not None:
+        parts.append(f"sup {d['support']:.2f}")
+    if d.get("resistance") is not None:
+        parts.append(f"res {d['resistance']:.2f}")
+    if d.get("intraday_momentum_pct") is not None:
+        parts.append(f"{d['intraday_momentum_pct']:+.1f}% vs open")
+    if d.get("opening_range_status"):
+        parts.append(f"OR {d['opening_range_status']}")
+    return " | ".join(parts)
+
+
+def _apply_news_confluence(new_candidates, scored_news, news_sentiment):
+    """
+    Headline alone is not a setup: drop news candidates whose PURE technical
+    score (before the sentiment boost) is below NEWS_CONFLUENCE_MIN_TECH_SCORE,
+    so the chart has to agree with the story at least somewhat. Returns
+    filtered copies of (new_candidates, scored_news, news_sentiment).
+    Disabled when the config value is <= 0.
+    """
+    if NEWS_CONFLUENCE_MIN_TECH_SCORE <= 0:
+        return new_candidates, scored_news, news_sentiment
+    keep = []
+    for t, info in scored_news.items():
+        tech_only = calculate_signal_score(info.get("indicators"), news_sentiment=0.0)
+        if tech_only >= NEWS_CONFLUENCE_MIN_TECH_SCORE:
+            keep.append(t)
+    return (
+        {t: new_candidates[t] for t in keep},
+        {t: scored_news[t] for t in keep},
+        {t: news_sentiment[t] for t in keep if t in news_sentiment},
+    )
+
+
+def _fmt_holdings_block(scored_holdings):
+    parts = []
+    for t, info in scored_holdings.items():
+        parts.append(f"{t} (score {info['score']:.0f}/100 | {_fmt_setup(info.get('indicators'))})")
+    return "; ".join(parts) or "none"
+
+
+def _fmt_news_block(candidates, scored_news, sentiment):
+    parts = []
+    for t, info in scored_news.items():
+        articles = candidates.get(t, [])
+        best = max((a for a in articles if a.get("score") is not None), key=lambda a: a.get("score", 0), default=None) or (articles[0] if articles else None)
+        headline = (best.get("headline", "") if best else "")[:120]
+        ascore = best.get("score") if best else None
+        parts.append(
+            f"{t} (quant {info['score']:.0f}/100 | {_fmt_setup(info.get('indicators'))} | "
+            f"news {ascore}/10 sent {sentiment.get(t, 0.0):+.2f}): \"{headline}\""
+        )
+    return "; ".join(parts) or "none"
+
+
+def _fmt_watchlist_block(scored_watchlist):
+    parts = []
+    for t, info in scored_watchlist.items():
+        parts.append(f"{t} (score {info['score']:.0f}/100 | {_fmt_setup(info.get('indicators'))})")
+    return "; ".join(parts) or "none"
+
+
+def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL"):
+    holdings = account_snapshot.get("holdings", {})
+    cash = account_snapshot.get("cash", 0)
+    total_value = account_snapshot.get("total_value", cash)
+
+    open_orders = get_tickers_with_open_orders()
+    cooldowns = get_tickers_on_cooldown()
+    unavailable = open_orders | cooldowns
+
+    new_candidates = {t: a for t, a in candidates.items() if t not in holdings}
+
+    # Morning prep briefing (morning_prep.py): pre-analyzed names from the
+    # overnight/early-morning Gemini call are injected as candidates so the
+    # open trades on the prepared context, not just whatever news just hit.
+    try:
+        prep_path = os.path.join(os.path.dirname(__file__), "data", "morning_candidates.json")
+        if os.path.exists(prep_path):
+            with open(prep_path) as f:
+                prep = json.load(f)
+            for item in (prep if isinstance(prep, list) else []):
+                t = item.get("ticker")
+                if not t or t in holdings or t in new_candidates:
+                    continue
+                new_candidates.setdefault(t, []).append({
+                    "headline": item.get("notes") or item.get("stance") or "morning prep pick",
+                    "summary": "",
+                    "source": "morning-brief",
+                    "url": "",
+                    "sentiment": 0.0,
+                    "score": float(item.get("priority", 5) or 5),
+                })
+    except Exception as e:
+        print(f"Could not load morning candidates: {e}")
+
+    # Rotate through the FULL S&P 500 universe: every name gets scanned over
+    # the day, but each run only scores UNIVERSE_SCAN_PER_RUN non-news names
+    # (deterministic per hour, so the same run-hour reuses the same slice).
+    watchlist_tickers = [t for t in WATCHLIST if t not in holdings and t not in new_candidates]
+    if UNIVERSE_SCAN_PER_RUN > 0 and len(watchlist_tickers) > UNIVERSE_SCAN_PER_RUN:
+        watchlist_tickers = sorted(watchlist_tickers)
+        seed = int(datetime.now(pytz.timezone("America/New_York")).strftime("%Y%m%d%H"))
+        start = seed % len(watchlist_tickers)
+        watchlist_tickers = (watchlist_tickers[start:] + watchlist_tickers[:start])[:UNIVERSE_SCAN_PER_RUN]
+
+    # Dual focus: average headline sentiment per news candidate feeds the
+    # quant score so a real catalyst moves the needle alongside the chart.
+    news_sentiment = {}
+    for t, articles in new_candidates.items():
+        if articles:
+            news_sentiment[t] = sum(headline_sentiment(a) for a in articles) / len(articles)
+
+    # Phase 2: refresh the cached market-wide + per-ticker feeds, then build
+    # cache-only fundamental signals (analyst / insider / reddit / earnings /
+    # SEC) for every candidate so the quant score and the LLM see them.
+    all_candidate_tickers = list(dict.fromkeys(
+        list(new_candidates.keys()) + list(watchlist_tickers)
+    ))
+    _refresh_data_feeds(all_candidate_tickers)
+    fundamental = {}
+    try:
+        from data_feeds import get_fundamental_signals
+        fundamental = get_fundamental_signals(all_candidate_tickers)
+    except Exception as e:
+        print(f"Fundamental signals unavailable (continuing without them): {e}")
+
+    scored_holdings = _score_candidates(list(holdings.keys()))
+    scored_news = _score_candidates(list(new_candidates.keys()), sentiment=news_sentiment, extras=fundamental)
+    scored_watchlist = _score_candidates(watchlist_tickers, extras=fundamental)
+
+    # News + technical confluence: a news candidate only reaches the LLM if
+    # its pure technical score (without the sentiment boost) clears the bar.
+    new_candidates, scored_news, news_sentiment = _apply_news_confluence(
+        new_candidates, scored_news, news_sentiment
+    )
+
+    tracker = _load_tracker()
+    model_list = _get_effective_model_list(tracker)
+    calls_today = sum(tracker["models"].get(m, {}).get("count", 0) for m in model_list)
+
+    meta = {
+        "candidates_considered": len(scored_news) + len(scored_watchlist),
+        "candidates_passed_prescreen": sum(
+            1 for info in list(scored_news.values()) + list(scored_watchlist.values())
+            if info["score"] >= MIN_SIGNAL_SCORE_TO_CONSIDER
+        ),
+        "throttled": False,
+        "technical_fallback": False,
+        "gemini_calls_today": calls_today,
+    }
+
+    should_call, reason = _should_attempt_call(tracker, model_list)
+    if not should_call:
+        print(f"Skipping Gemini call this run: {reason}")
+        print("Falling back to pure-technical decision engine instead.")
+        _save_tracker(tracker)
+        meta["throttled"] = True
+        combined = {**scored_news, **scored_watchlist}
+        trades, tech_meta = get_technical_trade_decisions(scored_holdings, combined, account_snapshot)
+        meta.update(tech_meta)
+        meta["gemini_calls_today"] = calls_today  # preserve real count
+        return trades, meta
+
+    now_et = datetime.now(pytz.timezone("America/New_York")).strftime("%Y-%m-%d %I:%M %p %Z")
+    prompt = PROMPT_TEMPLATE.format(
+        cash=cash,
+        total_value=total_value,
+        min_conviction=MIN_CONVICTION_TO_TRADE,
+        now_et=now_et,
+        holdings_block=_fmt_holdings_block(scored_holdings),
+        news_block=_fmt_news_block(new_candidates, scored_news, news_sentiment),
+        watchlist_block=_fmt_watchlist_block(scored_watchlist),
+        fundamental_block=_build_fundamental_block(all_candidate_tickers),
+        performance_brief=build_performance_brief(),
+    )
+
+    try:
+        response = _generate_with_rotation(prompt, tracker, model_list)
+        _save_tracker(tracker)
+        meta["gemini_calls_today"] = sum(tracker["models"].get(m, {}).get("count", 0) for m in model_list)
+    except Exception as e:
+        _save_tracker(tracker)
+        print(f"Gemini call failed on all models with remaining quota: {e}")
+        print("Falling back to pure-technical decision engine instead.")
+        combined = {**scored_news, **scored_watchlist}
+        trades, tech_meta = get_technical_trade_decisions(scored_holdings, combined, account_snapshot)
+        meta.update(tech_meta)
+        meta["gemini_calls_today"] = calls_today
+        return trades, meta
+
+    raw_text = (response.text or "").strip()
+    raw_text = re.sub(r"^```(?:json)?\s*|\s*```$", "", raw_text, flags=re.MULTILINE)
+
+    try:
+        trades = json.loads(raw_text).get("trades", [])
+    except json.JSONDecodeError:
+        print("Warning: could not parse Gemini response as JSON:")
+        print(raw_text)
+        return [], meta
+
+    filtered = []
+    for t in trades:
+        if t.get("ticker") in unavailable:
+            continue
+        confidence = t.get("confidence")
+        if confidence is not None:
+            try:
+                confidence = float(confidence)
+            except (TypeError, ValueError):
+                confidence = None
+        conviction = int(t.get("conviction") or 0)
+        if confidence is not None:
+            if confidence < CONFIDENCE_MIN_TO_TRADE:
+                continue
+            conviction = max(conviction, round(confidence / 10.0))
+        if conviction < MIN_CONVICTION_TO_TRADE:
+            continue
+        t["conviction"] = conviction
+        filtered.append(t)
+    return filtered, meta
