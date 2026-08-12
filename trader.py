@@ -130,9 +130,18 @@ def is_market_open():
 def get_market_regime():
     """
     Broad market regime from SPY + QQQ trend/volatility plus a best-effort
-    VIX check ("VIX" index, then "UVXY" as a proxy). Returns the most
-    defensive regime across the inputs so the bot never buys aggressively
-    into a bear tape. Falls back to NEUTRAL if no data is available.
+    VIX check (CBOE "VIX" index when the data feed provides it). Returns
+    the most defensive regime across the inputs so the bot never buys
+    aggressively into a bear tape. Falls back to NEUTRAL if no data is
+    available.
+
+    NOTE: Alpaca's stock feeds (iex/sip) do NOT carry the CBOE VIX index,
+    so that fetch normally fails -- expected, not an error. When VIX is
+    unavailable, the elevated-volatility signal comes from SPY/QQQ realized
+    volatility inside evaluate_market_regime(), which is the correct
+    fallback. (Previously this compared UVXY's raw price -- a 2x short-vol
+    ETN whose level has nothing to do with the VIX index -- against VIX
+    index thresholds, which could flag a fake stress regime.)
     """
     order = ["BEARISH", "HIGH_VOLATILITY", "NEUTRAL", "BULLISH"]
     regimes = []
@@ -154,17 +163,23 @@ def get_market_regime():
         return "NEUTRAL"
 
     vix = None
-    for sym in ("VIX", "UVXY"):
-        vix = get_price(sym)
-        if vix and vix > 0:
-            break
-    if vix:
+    try:
+        request = StockLatestTradeRequest(symbol_or_symbols="VIX", feed=DATA_FEED)
+        trade = data_client.get_stock_latest_trade(request)
+        vix = float(trade["VIX"].price)
+    except Exception:
+        vix = None
+    if vix and vix > 0:
         if vix > MARKET_VIX_SEVERE_LEVEL:
             print(f"VIX {vix:.1f} > severe {MARKET_VIX_SEVERE_LEVEL:.0f} -> BEARISH (defensive).")
             return "BEARISH"
         if vix > MARKET_VIX_STRESS_LEVEL:
             print(f"VIX {vix:.1f} > stress {MARKET_VIX_STRESS_LEVEL:.0f} -> HIGH_VOLATILITY (defensive).")
             return "HIGH_VOLATILITY"
+    else:
+        # Expected on Alpaca: VIX is a CBOE index, not a tradeable stock.
+        # SPY/QQQ realized volatility already covers the elevated-vol case.
+        print("VIX index unavailable on this data feed (expected); using SPY/QQQ volatility.")
 
     defensive = min(regimes, key=lambda r: order.index(r) if r in order else 2)
     return defensive
