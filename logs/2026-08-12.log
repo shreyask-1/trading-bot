@@ -5002,3 +5002,21 @@ Ending portfolio value: $99,667.48
 Trade journal: no closed trades yet
 Performance: Total return -0.17% | Max drawdown 12.37% | Daily Sharpe 0.36 | Open positions: 13 | Equity $99,671.85
 
+=== Run at 2026-08-12T13:30:39.391289 ===
+Current time: 2026-08-12 09:30 AM EDT | Market open (per Alpaca): True
+Account value: $99,456.08
+Cash: $21,545.95 | Holdings (12): {'AAPL': '12.8012 sh (-2.86%)', 'AMZN': '25.4179 sh (-0.25%)', 'COP': '23.8341 sh (+8.27%)', 'COST': '7.8517 sh (-0.23%)', 'GOOGL': '20.8177 sh (-3.59%)', 'HD': '34.1034 sh (+0.20%)', 'HON': '49.4672 sh (-4.96%)', 'LMT': '2.7665 sh (+1.82%)', 'MA': '10.7159 sh (-2.34%)', 'META': '12.712 sh (+2.37%)', 'MSFT': '14.999 sh (-0.71%)', 'TSLA': '10.0184 sh (+3.38%)'}
+Open orders (12): COP sell 63.8341, META sell 6.6766, GOOGL sell 20.8177, HD sell 34.1034, MA sell 15.7159, TSLA sell 13.0184, COST sell 7.8517, HON sell 49.4672, AAPL sell 12.8012, AMZN sell 25.4179, MSFT sell 14.999, LMT sell 20.7665
+  !! FOREIGN ACTIVITY: COP holds 23.8341 sh but this bot should own 63.8341 sh (diff -40.0000). Someone/something else is trading this account.
+  !! FOREIGN ACTIVITY: DIS holds 0.0000 sh but this bot should own 66.8769 sh (diff -66.8769). Someone/something else is trading this account.
+  !! FOREIGN ACTIVITY: LMT holds 2.7665 sh but this bot should own 20.7665 sh (diff -18.0000). Someone/something else is trading this account.
+  !! FOREIGN ACTIVITY: MA holds 10.7159 sh but this bot should own 15.7159 sh (diff -5.0000). Someone/something else is trading this account.
+  !! FOREIGN ACTIVITY: TSLA holds 10.0184 sh but this bot should own 13.0184 sh (diff -3.0000). Someone/something else is trading this account.
+  !! FOREIGN ACTIVITY: HON position (49.4672 sh) was never created by this bot.
+Risk state: peak $99,809.74 | drawdown 0.35% | today +12.51% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 60% incl. circuit breaker 100%)
+Outside the daytrading entry window (first 15 min chop / after 15:30 ET) -- no NEW buys this run. Risk management, stops, and de-leveraging still ran above.
+Ending portfolio value: $99,451.79
+Trade journal: no closed trades yet
+Performance: Total return -0.38% | Max drawdown 12.37% | Daily Sharpe 0.31 | Open positions: 12 | Equity $99,456.08
+
