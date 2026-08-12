@@ -1,0 +1,2 @@
+timestamp,ticker,action,qty,price,stop_loss,take_profit,conviction,confidence,trigger,reasoning
+2026-08-12T07:32:27.312840,HON,sell,49.4672,230.005,,,10,,ma_breakdown,Moving-average breakdown: price 230.5 < SMA-20 238.73

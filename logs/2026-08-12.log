@@ -2629,3 +2629,18 @@ Ending portfolio value: $88,406.24
 Trade journal: no closed trades yet
 Performance: Total return -11.45% | Max drawdown 12.37% | Daily Sharpe -4.21 | Open positions: 12 | Equity $88,406.24
 
+=== Run at 2026-08-12T07:32:26.676159 ===
+Current time: 2026-08-12 03:32 AM EDT | Market open (per Alpaca): False
+Account value: $99,809.74
+Cash: $-4,761.65 | Holdings (13): {'AAPL': '12.8012 sh (-2.66%)', 'AMZN': '25.4179 sh (-0.24%)', 'COP': '63.8341 sh (+8.41%)', 'COST': '7.8517 sh (+0.30%)', 'DIS': '66.8769 sh (-1.04%)', 'GOOGL': '20.8177 sh (-3.43%)', 'HD': '34.1034 sh (+0.91%)', 'HON': '49.4672 sh (-4.93%)', 'LMT': '20.7665 sh (+3.13%)', 'MA': '15.7159 sh (-1.95%)', 'META': '12.712 sh (+1.73%)', 'MSFT': '14.999 sh (-0.61%)', 'TSLA': '13.0184 sh (+3.11%)'}
+Open orders (12): TSLA sell 13.0184, MSFT sell 14.999, MA sell 15.7159, LMT sell 20.7665, HD sell 34.1034, GOOGL sell 20.8177, DIS sell 66.8769, COP sell 63.8341, AMZN sell 25.4179, COST sell 7.8517, AAPL sell 12.8012, META sell 6.6766
+  !! FOREIGN ACTIVITY: HON position (49.4672 sh) was never created by this bot.
+Risk state: peak $99,809.74 | drawdown 0.00% | today +12.91% | halted: False
+Risk management triggered 1 forced sell(s):
+  -> {"timestamp": "2026-08-12T07:32:27.313033", "ticker": "HON", "action": "sell", "qty": 49.4672, "conviction": 10, "size_multiplier": 1.0, "order_id": "68dfc06d-d14e-43c1-9f2d-6c5fba5af8ae", "order_status": "OrderStatus.ACCEPTED", "stop_loss": null, "take_profit": null, "reasoning": "Moving-average breakdown: price 230.5 < SMA-20 238.73", "status": "submitted", "trigger": "ma_breakdown"}
+Market regime: NEUTRAL (position-size multiplier: 60% incl. circuit breaker 100%)
+Market closed and TRADE_ONLY_DURING_MARKET_HOURS is enabled -- skipping news, decisions, and execution this run. Risk management and de-leveraging still ran above.
+Ending portfolio value: $99,809.74
+Trade journal: no closed trades yet
+Performance: Total return -0.02% | Max drawdown 12.37% | Daily Sharpe 0.40 | Open positions: 13 | Equity $99,809.74
+
