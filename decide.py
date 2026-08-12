@@ -33,11 +33,20 @@ from config import (
     TECHNICAL_MIN_CONVICTION,
     TECHNICAL_CONVICTION_AGGRESSIVENESS,
     NEWS_CONFLUENCE_MIN_TECH_SCORE,
+    CONFIDENCE_MIN_TO_TRADE,
+    UNIVERSE_SCAN_PER_RUN,
+    ENABLE_ECONOMIC_CALENDAR,
+    ENABLE_ANALYST_ACTIONS,
+    ENABLE_INSIDER_ACTIVITY,
+    ENABLE_SEC_FILINGS,
+    ENABLE_REDDIT_SENTIMENT,
+    MAX_FUNDAMENTAL_TICKERS,
 )
 from trader import (
     get_full_indicators,
     get_tickers_with_open_orders,
     get_tickers_on_cooldown,
+    build_performance_brief,
 )
 from signal_score import calculate_signal_score
 from news import headline_sentiment
@@ -71,36 +80,45 @@ _RESPONSE_SCHEMA = types.Schema(
                     "ticker": types.Schema(type=types.Type.STRING),
                     "action": types.Schema(type=types.Type.STRING, enum=["buy", "sell"]),
                     "dollar_amount": types.Schema(type=types.Type.NUMBER),
+                    "confidence": types.Schema(type=types.Type.NUMBER),
                     "conviction": types.Schema(type=types.Type.INTEGER),
                     "reasoning": types.Schema(type=types.Type.STRING),
                     "stop_loss": types.Schema(type=types.Type.NUMBER),
                     "take_profit": types.Schema(type=types.Type.NUMBER),
                 },
-                required=["ticker", "action", "conviction"],
+                required=["ticker", "action"],
             ),
         )
     },
     required=["trades"],
 )
 
-PROMPT_TEMPLATE = """You are a disciplined DAY TRADER with a DUAL focus for a SIMULATED paper-trading portfolio (no real money): you trade NEWS CATALYSTS (headlines with sentiment scores) AND CHART/TECHNICAL setups (trend, momentum, VWAP, opening-range breakouts). It is now {now_et} Eastern time, market open. Every trade idea MUST include a "conviction" score from 1-10. Ideas below conviction {min_conviction} will be discarded.
+PROMPT_TEMPLATE = """You are a disciplined DAY TRADER with a DUAL focus for a SIMULATED paper-trading portfolio (no real money): you trade NEWS CATALYSTS (headlines scored 0-10 with sentiment -1..+1) AND CHART/TECHNICAL setups (trend, RSI, ATR, ADX, MACD crossover, support/resistance, gap %, 52-week position, VWAP, opening-range breakouts). It is now {now_et} Eastern time, market open.
+
+Every trade idea MUST include a "confidence" score from 0-100 -- your honest probability-weighted conviction in this setup. The code converts it to size: 90+ -> 8% of equity, 80+ -> 5%, 70+ -> 3%, 60+ -> 2%, below {conf_min} -> skipped. A raw "dollar_amount" is optional and IGNORED whenever confidence is present. Also include a "conviction" 1-10 as a secondary gate.
 
 HARD CONSTRAINTS (enforced by code, but respect them anyway):
-- CASH-ONLY: you may only recommend buys that fit within available cash. NEVER recommend margin purchases. The total of all buy dollar_amounts must stay well under the cash available.
+- CASH-ONLY: never recommend buys that need margin; total size stays well under available cash.
 - NEVER recommend buying when cash is negative or near zero.
-- Prefer small, sized entries over large bets; a single position must stay a modest fraction of the portfolio.
+- Be selective: only the best 2-4 ideas per run. No filler trades just because a name is on screen.
 - Every BUY should carry a stop_loss and take_profit price from the setup (opening-range high/low, VWAP, swing levels); if you have no opinion, omit them and the code will derive them from ATR/swings.
 - Respect the daytrading window: no late-session entries, no chasing after big moves.
 
 Current portfolio: - Cash available: ${cash:,.2f} - Total portfolio value: ${total_value:,.2f}
 Existing holdings: {holdings_block}
-News-driven candidates (score = quant technical score INCLUDING headline sentiment; news sentiment -1..+1; opening-range = above/below/inside today's first 15-min range):
+News-driven candidates (score = quant technical score INCLUDING headline sentiment; article score 0-10 = importance; sentiment -1..+1):
 {news_block}
-Watchlist candidates (score 0-100; intraday = % move vs session open; opening-range = above/below/inside):
+Watchlist candidates (score 0-100; RSI; ATR; MACD cross; gap %; 52w position; S/R; opening-range):
 {watchlist_block}
 
+Phase 2 fundamental context (analyst actions, insider activity, Reddit sentiment, SEC filings, economic calendar):
+{fundamental_block}
+
+What actually WORKS so far (learned from the closed-trade journal -- favor the WORKING setups, avoid LOSING ones):
+{performance_brief}
+
 Respond with ONLY valid JSON:
-{{"trades": [{{"ticker": "AAPL", "action": "buy", "dollar_amount": 5000, "conviction": 8, "stop_loss": 210.5, "take_profit": 224.0, "reasoning": "short reason"}}]}}"""
+{{"trades": [{{"ticker": "AAPL", "action": "buy", "confidence": 82, "conviction": 8, "stop_loss": 210.5, "take_profit": 224.0, "reasoning": "short reason"}}]}}"""
 
 
 # ============================================================
@@ -314,7 +332,7 @@ def _should_attempt_call(tracker, model_list):
     return True, None
 
 
-def _generate_with_rotation(prompt, tracker, model_list):
+def _generate_with_rotation(prompt, tracker, model_list, schema=None):
     last_error = None
     for model_name in model_list:
         if _remaining_rpd(tracker, model_name) <= 0:
@@ -329,7 +347,7 @@ def _generate_with_rotation(prompt, tracker, model_list):
                 config=types.GenerateContentConfig(
                     temperature=0.3,
                     response_mime_type="application/json",
-                    response_schema=_RESPONSE_SCHEMA,
+                    response_schema=schema or _RESPONSE_SCHEMA,
                 ),
             )
             now_iso = datetime.now(pytz.utc).isoformat()
@@ -472,174 +490,59 @@ def get_technical_trade_decisions(scored_holdings, scored_watchlist, account_sna
     return trades, meta
 
 
-def _score_candidates(tickers, sentiment=None):
+def _score_candidates(tickers, sentiment=None, extras=None):
     """
     Scores tickers on technicals PLUS an optional news-sentiment boost (the
-    dual-focus half of the bot). sentiment: {ticker: -1..+1}.
+    dual-focus half of the bot) PLUS Phase 2 fundamental signals (analyst
+    actions, insider activity, Reddit sentiment, earnings proximity, SEC
+    filings). sentiment: {ticker: -1..+1}; extras: {ticker: signal-dict}
+    from data_feeds.get_fundamental_signals().
     """
     scored = {}
     for t in tickers:
         data = get_full_indicators(t)
-        score = calculate_signal_score(data, news_sentiment=(sentiment or {}).get(t, 0.0))
+        score = calculate_signal_score(
+            data,
+            news_sentiment=(sentiment or {}).get(t, 0.0),
+            extras=(extras or {}).get(t),
+        )
         scored[t] = {"indicators": data, "score": score}
     return scored
 
 
-def _apply_news_confluence(new_candidates, scored_news, news_sentiment):
+def _refresh_data_feeds(candidate_tickers):
     """
-    Headline alone is not a setup: drop news candidates whose PURE technical
-    score (before the sentiment boost) is below NEWS_CONFLUENCE_MIN_TECH_SCORE,
-    so the chart has to agree with the story at least somewhat. Returns
-    filtered copies of (new_candidates, scored_news, news_sentiment).
-    Disabled when the config value is <= 0.
+    Phase 2: populate the cached market-wide feeds (economic calendar,
+    analyst actions, Reddit) and per-ticker feeds (insider, SEC) for the
+    current candidate set. Everything is TTL-cached and fail-soft, so this
+    is cheap on the hot loop and never breaks a run. Config flags gate each
+    feed (each defaults to enabled).
     """
-    if NEWS_CONFLUENCE_MIN_TECH_SCORE <= 0:
-        return new_candidates, scored_news, news_sentiment
-    keep = []
-    for t, info in scored_news.items():
-        tech_only = calculate_signal_score(info.get("indicators"), news_sentiment=0.0)
-        if tech_only >= NEWS_CONFLUENCE_MIN_TECH_SCORE:
-            keep.append(t)
-    return (
-        {t: new_candidates[t] for t in keep},
-        {t: scored_news[t] for t in keep},
-        {t: news_sentiment[t] for t in keep if t in news_sentiment},
+    from data_feeds import (
+        fetch_economic_calendar,
+        fetch_analyst_actions,
+        get_insider_activity,
+        get_sec_filings,
+        get_reddit_sentiment,
     )
-
-
-def _fmt_holdings_block(scored_holdings):
-    parts = []
-    for t, info in scored_holdings.items():
-        d = info.get("indicators") or {}
-        parts.append(
-            f"{t} (score {info['score']:.0f}/100, trend {d.get('trend')}, "
-            f"intraday {d.get('intraday_momentum_pct')}% vs open, "
-            f"opening-range {d.get('opening_range_status')})"
-        )
-    return "; ".join(parts) or "none"
-
-
-def _fmt_news_block(candidates, scored_news, sentiment):
-    parts = []
-    for t, info in scored_news.items():
-        articles = candidates.get(t, [])
-        headline = (articles[0].get("headline", "") if articles else "")[:140]
-        d = info.get("indicators") or {}
-        parts.append(
-            f"{t} (score {info['score']:.0f}/100, news sentiment {sentiment.get(t, 0.0):+.2f}, "
-            f"opening-range {d.get('opening_range_status')}): \"{headline}\""
-        )
-    return "; ".join(parts) or "none"
-
-
-def _fmt_watchlist_block(scored_watchlist):
-    parts = []
-    for t, info in scored_watchlist.items():
-        d = info.get("indicators") or {}
-        parts.append(
-            f"{t} (score {info['score']:.0f}/100, trend {d.get('trend')}, "
-            f"intraday {d.get('intraday_momentum_pct')}% vs open, "
-            f"opening-range {d.get('opening_range_status')})"
-        )
-    return "; ".join(parts) or "none"
-
-
-def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL"):
-    holdings = account_snapshot.get("holdings", {})
-    cash = account_snapshot.get("cash", 0)
-    total_value = account_snapshot.get("total_value", cash)
-
-    open_orders = get_tickers_with_open_orders()
-    cooldowns = get_tickers_on_cooldown()
-    unavailable = open_orders | cooldowns
-
-    new_candidates = {t: a for t, a in candidates.items() if t not in holdings}
-    watchlist_tickers = [t for t in WATCHLIST if t not in holdings and t not in new_candidates]
-
-    # Dual focus: average headline sentiment per news candidate feeds the
-    # quant score so a real catalyst moves the needle alongside the chart.
-    news_sentiment = {}
-    for t, articles in new_candidates.items():
-        if articles:
-            news_sentiment[t] = sum(headline_sentiment(a) for a in articles) / len(articles)
-
-    scored_holdings = _score_candidates(list(holdings.keys()))
-    scored_news = _score_candidates(list(new_candidates.keys()), sentiment=news_sentiment)
-    scored_watchlist = _score_candidates(watchlist_tickers)
-
-    # News + technical confluence: a news candidate only reaches the LLM if
-    # its pure technical score (without the sentiment boost) clears the bar.
-    new_candidates, scored_news, news_sentiment = _apply_news_confluence(
-        new_candidates, scored_news, news_sentiment
-    )
-
-    tracker = _load_tracker()
-    model_list = _get_effective_model_list(tracker)
-    calls_today = sum(tracker["models"].get(m, {}).get("count", 0) for m in model_list)
-
-    meta = {
-        "candidates_considered": len(scored_news) + len(scored_watchlist),
-        "candidates_passed_prescreen": sum(
-            1 for info in list(scored_news.values()) + list(scored_watchlist.values())
-            if info["score"] >= MIN_SIGNAL_SCORE_TO_CONSIDER
-        ),
-        "throttled": False,
-        "technical_fallback": False,
-        "gemini_calls_today": calls_today,
-    }
-
-    should_call, reason = _should_attempt_call(tracker, model_list)
-    if not should_call:
-        print(f"Skipping Gemini call this run: {reason}")
-        print("Falling back to pure-technical decision engine instead.")
-        _save_tracker(tracker)
-        meta["throttled"] = True
-        combined = {**scored_news, **scored_watchlist}
-        trades, tech_meta = get_technical_trade_decisions(scored_holdings, combined, account_snapshot)
-        meta.update(tech_meta)
-        meta["gemini_calls_today"] = calls_today  # preserve real count
-        return trades, meta
-
-    now_et = datetime.now(pytz.timezone("America/New_York")).strftime("%Y-%m-%d %I:%M %p %Z")
-    prompt = PROMPT_TEMPLATE.format(
-        cash=cash,
-        total_value=total_value,
-        min_conviction=MIN_CONVICTION_TO_TRADE,
-        now_et=now_et,
-        holdings_block=_fmt_holdings_block(scored_holdings),
-        news_block=_fmt_news_block(new_candidates, scored_news, news_sentiment),
-        watchlist_block=_fmt_watchlist_block(scored_watchlist),
-    )
-
-    try:
-        response = _generate_with_rotation(prompt, tracker, model_list)
-        _save_tracker(tracker)
-        meta["gemini_calls_today"] = sum(tracker["models"].get(m, {}).get("count", 0) for m in model_list)
-    except Exception as e:
-        _save_tracker(tracker)
-        print(f"Gemini call failed on all models with remaining quota: {e}")
-        print("Falling back to pure-technical decision engine instead.")
-        combined = {**scored_news, **scored_watchlist}
-        trades, tech_meta = get_technical_trade_decisions(scored_holdings, combined, account_snapshot)
-        meta.update(tech_meta)
-        meta["gemini_calls_today"] = calls_today
-        return trades, meta
-
-    raw_text = (response.text or "").strip()
-    raw_text = re.sub(r"^```(?:json)?\s*|\s*```$", "", raw_text, flags=re.MULTILINE)
-
-    try:
-        trades = json.loads(raw_text).get("trades", [])
-    except json.JSONDecodeError:
-        print("Warning: could not parse Gemini response as JSON:")
-        print(raw_text)
-        return [], meta
-
-    filtered = []
-    for t in trades:
-        if t.get("ticker") in unavailable:
-            continue
-        if t.get("conviction", 0) < MIN_CONVICTION_TO_TRADE:
-            continue
-        filtered.append(t)
-    return filtered, meta
+    if ENABLE_ECONOMIC_CALENDAR:
+        try:
+            fetch_economic_calendar()
+        except Exception as e:
+            print(f"Economic calendar refresh failed: {e}")
+    if ENABLE_ANALYST_ACTIONS:
+        try:
+            fetch_analyst_actions()
+        except Exception as e:
+            print(f"Analyst actions refresh failed: {e}")
+    if ENABLE_REDDIT_SENTIMENT:
+        try:
+            get_reddit_sentiment()
+        except Exception as e:
+            print(f"Reddit sentiment refresh failed: {e}")
+    if ENABLE_INSIDER_ACTIVITY:
+        try:
+            get_insider_activity(candidate_tickers[:MAX_FUNDAMENTAL_TICKERS])
+        except Exception as e:
+            print(f"Insider activity refresh failed: {e}")
+    if ENA
