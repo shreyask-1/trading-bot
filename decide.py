@@ -32,6 +32,7 @@ from config import (
     MAX_POSITION_PCT,
     TECHNICAL_MIN_CONVICTION,
     TECHNICAL_CONVICTION_AGGRESSIVENESS,
+    NEWS_CONFLUENCE_MIN_TECH_SCORE,
 )
 from trader import (
     get_full_indicators,
@@ -484,6 +485,28 @@ def _score_candidates(tickers, sentiment=None):
     return scored
 
 
+def _apply_news_confluence(new_candidates, scored_news, news_sentiment):
+    """
+    Headline alone is not a setup: drop news candidates whose PURE technical
+    score (before the sentiment boost) is below NEWS_CONFLUENCE_MIN_TECH_SCORE,
+    so the chart has to agree with the story at least somewhat. Returns
+    filtered copies of (new_candidates, scored_news, news_sentiment).
+    Disabled when the config value is <= 0.
+    """
+    if NEWS_CONFLUENCE_MIN_TECH_SCORE <= 0:
+        return new_candidates, scored_news, news_sentiment
+    keep = []
+    for t, info in scored_news.items():
+        tech_only = calculate_signal_score(info.get("indicators"), news_sentiment=0.0)
+        if tech_only >= NEWS_CONFLUENCE_MIN_TECH_SCORE:
+            keep.append(t)
+    return (
+        {t: new_candidates[t] for t in keep},
+        {t: scored_news[t] for t in keep},
+        {t: news_sentiment[t] for t in keep if t in news_sentiment},
+    )
+
+
 def _fmt_holdings_block(scored_holdings):
     parts = []
     for t, info in scored_holdings.items():
@@ -543,6 +566,12 @@ def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL"):
     scored_holdings = _score_candidates(list(holdings.keys()))
     scored_news = _score_candidates(list(new_candidates.keys()), sentiment=news_sentiment)
     scored_watchlist = _score_candidates(watchlist_tickers)
+
+    # News + technical confluence: a news candidate only reaches the LLM if
+    # its pure technical score (without the sentiment boost) clears the bar.
+    new_candidates, scored_news, news_sentiment = _apply_news_confluence(
+        new_candidates, scored_news, news_sentiment
+    )
 
     tracker = _load_tracker()
     model_list = _get_effective_model_list(tracker)
