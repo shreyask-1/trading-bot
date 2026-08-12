@@ -14,7 +14,7 @@ Expects the exact dict shape produced by trader.get_full_indicators().
 from typing import Optional, Dict
 
 
-def calculate_signal_score(indicators: Optional[Dict], news_sentiment: float = 0.0) -> float:
+def calculate_signal_score(indicators: Optional[Dict], news_sentiment: float = 0.0, extras: Optional[Dict] = None) -> float:
     """
     Args:
         indicators: The dict returned by trader.get_full_indicators(),
@@ -24,6 +24,12 @@ def calculate_signal_score(indicators: Optional[Dict], news_sentiment: float = 0
             candidates, from news.headline_sentiment(). Added to the score as
             news_sentiment * NEWS_SENTIMENT_WEIGHT (config), so positive news
             can push a borderline candidate over the pre-screen bar.
+        extras: Optional Phase 2 fundamental signals from
+            data_feeds.get_fundamental_signals() -- {"analyst", "insider_net",
+            "reddit_sentiment", "recent_filings", "days_until_earnings"}.
+            Analyst upgrades/insider buying/positive Reddit nudge the score
+            up; downgrades/insider selling/negative Reddit pull it down; an
+            8-K or 10-Q filing adds mild confirmation. Pure cache reads.
 
     Returns:
         A composite score from 0.0 to 100.0. 50.0 is neutral/baseline.
@@ -31,7 +37,16 @@ def calculate_signal_score(indicators: Optional[Dict], news_sentiment: float = 0
     if not indicators:
         return 0.0
 
-    from config import NEWS_SENTIMENT_WEIGHT
+    from config import (
+        NEWS_SENTIMENT_WEIGHT,
+        ANALYST_UPGRADE_BOOST,
+        ANALYST_DOWNGRADE_PENALTY,
+        INSIDER_BUY_BOOST,
+        INSIDER_SELL_PENALTY,
+        REDDIT_SENTIMENT_WEIGHT,
+        EARNINGS_PROXIMITY_DAYS,
+    )
+    extras = extras or {}
 
     score = 50.0  # baseline
 
@@ -96,5 +111,47 @@ def calculate_signal_score(indicators: Optional[Dict], news_sentiment: float = 0
         score += 5
     elif or_status == "below":
         score -= 5
+
+    # --- Phase 2: analyst actions ---
+    # A fresh upgrade is a real catalyst (price targets move); a downgrade is
+    # an equal and opposite warning. 0 disables each.
+    analyst = extras.get("analyst")
+    if analyst == "upgrade":
+        score += ANALYST_UPGRADE_BOOST
+    elif analyst == "downgrade":
+        score -= ANALYST_DOWNGRADE_PENALTY
+
+    # --- Phase 2: insider activity ---
+    # Insiders buying their own stock with cash is one of the strongest
+    # fundamental tells that exists; heavy selling is a caution flag.
+    insider_net = extras.get("insider_net", 0.0) or 0.0
+    if insider_net > 5000:
+        score += INSIDER_BUY_BOOST
+    elif insider_net < -5000:
+        score -= INSIDER_SELL_PENALTY
+
+    # --- Phase 2: Reddit sentiment ---
+    # Crowd sentiment as a mild confirmation factor (best-effort feed).
+    reddit = extras.get("reddit_sentiment")
+    if reddit is not None:
+        score += reddit * REDDIT_SENTIMENT_WEIGHT
+
+    # --- Phase 2: earnings proximity ---
+    # Buying into an earnings print means carrying overnight gap risk -- a
+    # daytrader's worst trade. Names reporting within the window get a
+    # penalty so they rarely pass the pre-screen (the position-sizing layer
+    # also shrinks them when they do slip through).
+    days = extras.get("days_until_earnings")
+    if days is not None and 0 <= days <= EARNINGS_PROXIMITY_DAYS:
+        score -= 8.0
+
+    # --- Phase 2: SEC filings ---
+    # A fresh 8-K means something material just happened; a 10-Q/10-K is the
+    # quarterly scorecard. Mild confirmation for the story the chart tells.
+    filings = extras.get("recent_filings") or []
+    if any(f.startswith("8-K") for f in filings):
+        score += 3.0
+    elif any(f.startswith(("10-Q", "10-K")) for f in filings):
+        score += 2.0
 
     return max(0.0, min(100.0, score))
