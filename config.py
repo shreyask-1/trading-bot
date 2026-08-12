@@ -54,15 +54,25 @@ CONSOLIDATION_SCORE_THRESHOLD = 70  # Force-sell excess positions scoring below 
 EXCEPTIONAL_CONVICTION_THRESHOLD = 9
 EXCEPTIONAL_TRADE_RESERVE_ACCESS_PCT = 0.5
 
-# --- Market-hours gating ---
-# THE big one: this bot historically submitted orders 24/7. DAY orders placed
-# while the market is closed sit queued in Alpaca and ALL fill at the next
-# 9:30 AM ET open at once -- which is exactly what blew through cash into
-# negative margin on 2026-08-07 (cash went +$33k -> -$19k in minutes).
-# When enabled, the bot never proposes or executes NEW trades unless the
-# market is open. Risk management (stops) still runs so exits are never blocked.
+# --- Trading sessions (regular + extended hours) ---
+# The 2026-08-07 failure mode: this bot historically submitted orders 24/7.
+# DAY market orders placed while no session was running sat queued in Alpaca
+# and ALL filled at the next 9:30 AM ET open at once, blowing cash into
+# negative margin (cash went +$33k -> -$19k in minutes). Two knobs now
+# control when NEW trades may be proposed/executed:
+#   TRADE_ONLY_DURING_MARKET_HOURS=true -> strictly the regular session
+#     (9:30-16:00 ET). Default now false.
+#   ALLOW_EXTENDED_HOURS=true           -> ALSO the Alpaca extended session
+#     (4:00-9:30 AM and 4:00-8:00 PM ET). Orders placed there must be LIMIT
+#     orders (Alpaca rejects market orders in extended hours), so the bot
+#     converts to a limit at the last traded price with extended_hours=True.
+#     Thin liquidity / wide spreads are the tradeoff the user accepted.
+# Risk management (stops, de-leveraging) always runs, any session.
 TRADE_ONLY_DURING_MARKET_HOURS = (
-    os.environ.get("TRADE_ONLY_DURING_MARKET_HOURS", "true").lower() == "true"
+    os.environ.get("TRADE_ONLY_DURING_MARKET_HOURS", "false").lower() == "true"
+)
+ALLOW_EXTENDED_HOURS = (
+    os.environ.get("ALLOW_EXTENDED_HOURS", "true").lower() == "true"
 )
 
 # --- Hard no-margin / exposure discipline ---
@@ -128,15 +138,21 @@ ENABLE_FOREIGN_ACTIVITY_DETECTION = (
 # logs/custom_exits.json and enforced every run by check_atr_stop_take_profit.
 
 # --- Daytrading mode (dual focus: news catalysts + chart/technicals) ---
-# When True the bot acts as a news+technical day trader: news-driven
-# candidates get a sentiment boost to their signal score, entries prefer
-# opening-range breakouts and VWAP-aligned intraday momentum, and all
-# positions are flattened back to cash at END_OF_DAY_FLATTEN_TIME ET so the
-# account never carries overnight risk (the 2026-08-11 liquidation happened
-# at 3:30 AM ET on an overnight position).
+# When True the bot acts as a news+technical trader: news-driven candidates
+# get a sentiment boost to their signal score, entries prefer opening-range
+# breakouts and VWAP-aligned intraday momentum, and the same opening-range /
+# intraday context is fed to Gemini. DAYTRADE_MODE does NOT force an
+# end-of-day exit by itself.
 DAYTRADE_MODE = os.environ.get("DAYTRADE_MODE", "true").lower() == "true"
+# Overnight holds (short-term AND long-term / swing positions): default OFF
+# so winners may be held past the close and managed over days. The per-trade
+# stop-loss / trailing stop / hard loss cap / negative-news exits still
+# protect every position around the clock. Set END_OF_DAY_FLATTEN=true to
+# force-flatten everything back to cash at END_OF_DAY_FLATTEN_TIME ET (the
+# old daytrading-only discipline; the 2026-08-11 liquidation hit an
+# overnight position, which is why this used to be on).
 END_OF_DAY_FLATTEN = (
-    os.environ.get("END_OF_DAY_FLATTEN", "true").lower() == "true"
+    os.environ.get("END_OF_DAY_FLATTEN", "false").lower() == "true"
 )
 END_OF_DAY_FLATTEN_TIME = os.environ.get("END_OF_DAY_FLATTEN_TIME", "15:50")
 # First OPENING_RANGE_BARS 5-minute bars after 9:30 ET form the opening range;
@@ -144,8 +160,11 @@ END_OF_DAY_FLATTEN_TIME = os.environ.get("END_OF_DAY_FLATTEN_TIME", "15:50")
 OPENING_RANGE_BARS = int(os.environ.get("OPENING_RANGE_BARS", 3))
 # Skip NEW buys in the first N minutes of the session (open auction chop).
 TRADE_START_MINUTES_AFTER_OPEN = int(os.environ.get("TRADE_START_MINUTES_AFTER_OPEN", 15))
-# Skip NEW buys after this ET time (no late-session entries).
-STOP_NEW_BUYS_AFTER = os.environ.get("STOP_NEW_BUYS_AFTER", "15:30")
+# Skip NEW buys after this ET time (no late-session entries). Default 23:59
+# = disabled: with ALLOW_EXTENDED_HOURS on, after-hours entries are wanted,
+# so the only regular-session restriction left is
+# TRADE_START_MINUTES_AFTER_OPEN (the open-auction chop).
+STOP_NEW_BUYS_AFTER = os.environ.get("STOP_NEW_BUYS_AFTER", "23:59")
 # Signal-score points added per unit of headline sentiment (-1..+1) for
 # news-driven candidates. E.g. weight 10 = up to +/-10 points on the 0-100
 # scale, enough to push a 50-60 candidate over the 55 pre-screen bar.
@@ -288,8 +307,9 @@ ENABLE_NEGATIVE_NEWS_EXIT = os.environ.get("ENABLE_NEGATIVE_NEWS_EXIT", "true").
 NEGATIVE_NEWS_SENTIMENT_THRESHOLD = float(os.environ.get("NEGATIVE_NEWS_SENTIMENT_THRESHOLD", -0.4))
 
 # --- Market regime filter (SPY + QQQ + VIX) ---
-# VIX stress levels (best-effort: tries "VIX", then "UVXY" as a proxy, then
-# falls back to SPY realized volatility). Above the stress level the bot goes
+# VIX stress levels (best-effort: only used when the data feed actually
+# provides the CBOE VIX index; otherwise SPY/QQQ realized volatility is the
+# elevated-volatility signal). Above the stress level the bot goes
 # HIGH_VOLATILITY/defensive; above severe it goes fully defensive (BEARISH).
 MARKET_VIX_STRESS_LEVEL = float(os.environ.get("MARKET_VIX_STRESS_LEVEL", 30.0))
 MARKET_VIX_SEVERE_LEVEL = float(os.environ.get("MARKET_VIX_SEVERE_LEVEL", 40.0))
