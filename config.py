@@ -74,16 +74,24 @@ MAX_POSITION_LOSS_PCT = float(os.environ.get("MAX_POSITION_LOSS_PCT", 8.0))
 # cash is back to this fraction of portfolio value (default 2% = positive cash).
 DELEVERAGE_TARGET_CASH_PCT = float(os.environ.get("DELEVERAGE_TARGET_CASH_PCT", 0.02))
 
-# --- Equity-level circuit breakers (the "never again" guards) ---
-# Halt ALL new buys for the rest of the day if equity is down this much (%) from
-# the start of the day. Stops and sells are still allowed.
-DAILY_LOSS_HALT_PCT = float(os.environ.get("DAILY_LOSS_HALT_PCT", 3.0))
-# If drawdown from the running equity peak reaches this (%), cut new position
-# sizing to DELEVERAGE_SIZE_MULTIPLIER.
+# --- Equity-level circuit breakers (OPT-IN; OFF by default) ---
+# As requested: the bot NEVER stops buying/selling/trading for the day on its
+# own. Both "stop the day" breakers default to 0.0 = disabled. The 2026-08-11
+# loss was NOT a bad trading day -- it was margin caused by overnight order
+# stacking. THAT failure mode is prevented by the market-hours gate, the hard
+# no-margin rule, pending-order-aware cash, de-leveraging, and per-position
+# stops, all of which remain ON. Re-enable either breaker by setting it to a
+# positive value (e.g. DAILY_LOSS_HALT_PCT=3.0).
+# Halt ALL new buys for the rest of the day if equity is down this much (%)
+# from the start of the day. 0 = disabled (default). Stops and sells always run.
+DAILY_LOSS_HALT_PCT = float(os.environ.get("DAILY_LOSS_HALT_PCT", 0.0))
+# Drawdown sizing cut (does NOT stop trading -- it only shrinks NEW buy size to
+# DELEVERAGE_SIZE_MULTIPLIER while drawdown from peak exceeds this %). Set <= 0
+# to disable even this.
 MAX_DRAWDOWN_DELEVERAGE_PCT = float(os.environ.get("MAX_DRAWDOWN_DELEVERAGE_PCT", 5.0))
-# If drawdown from peak reaches this (%), flatten every position and halt new
-# trading until the user reviews. 12% is the blast radius from 2026-08-11.
-MAX_DRAWDOWN_FLATTEN_PCT = float(os.environ.get("MAX_DRAWDOWN_FLATTEN_PCT", 8.0))
+# Flatten every position + halt the day at this drawdown from peak.
+# 0 = disabled (default).
+MAX_DRAWDOWN_FLATTEN_PCT = float(os.environ.get("MAX_DRAWDOWN_FLATTEN_PCT", 0.0))
 DELEVERAGE_SIZE_MULTIPLIER = float(os.environ.get("DELEVERAGE_SIZE_MULTIPLIER", 0.25))
 # When True (default), the equity peak is initialized to the account value on
 # the first run after deploy, so an already-damaged account isn't instantly
@@ -154,6 +162,48 @@ MAX_TAKE_PROFIT_DISTANCE_ATR_MULT = 8.0
 ALLOW_GEMINI_CUSTOM_EXITS = (
     os.environ.get("ALLOW_GEMINI_CUSTOM_EXITS", "true").lower() == "true"
 )
+
+# --- Profit-maximizing entry filters & trailing stops ---
+# Chase filters (set <= 0 to disable): never buy into a name already extended
+# on the day -- chasing is the #1 way daytraders give back gains. Sells are
+# never filtered by these.
+# Skip buys where price is more than this % above VWAP.
+MAX_BUY_EXTENSION_ABOVE_VWAP_PCT = float(os.environ.get("MAX_BUY_EXTENSION_ABOVE_VWAP_PCT", 2.5))
+# Skip buys where the name is already up more than this % on the session
+# (gap + run = reversion risk).
+MAX_INTRADAY_MOVE_PCT = float(os.environ.get("MAX_INTRADAY_MOVE_PCT", 4.0))
+# Trailing stop: once a position is up TRAILING_STOP_ACTIVATE_MULT x ATR from
+# entry, the stop ratchets up to (best price - TRAILING_STOP_DISTANCE_MULT x
+# ATR). The stop only ever moves up, so winners are banked instead of given
+# back. Persisted in logs/custom_exits.json.
+TRAILING_STOP_ACTIVATE_MULT = float(os.environ.get("TRAILING_STOP_ACTIVATE_MULT", 1.5))
+TRAILING_STOP_DISTANCE_MULT = float(os.environ.get("TRAILING_STOP_DISTANCE_MULT", 2.0))
+
+# --- Risk-based position sizing (profit lever) ---
+# Size each buy so a stop-out costs at most MAX_RISK_PER_TRADE_PCT of
+# portfolio equity, computed from the trade's ACTUAL stop distance (tighter
+# stop = bigger position, wider stop = smaller). Uniform per-trade pain is
+# what lets compounding work. If no stop is known, the hard
+# MAX_POSITION_LOSS_PCT distance is assumed. 0 disables.
+MAX_RISK_PER_TRADE_PCT = float(os.environ.get("MAX_RISK_PER_TRADE_PCT", 0.75))
+
+# --- Time-of-day size multipliers (daytrading edge windows) ---
+# New buys are multiplied by the factor for the current ET window; the lunch
+# lull trades smaller, the open/closing windows trade full size. Sells are
+# never affected. Format: (h_start, m_start, h_end, m_end): multiplier
+TIME_OF_DAY_MULTIPLIERS = {
+    (9, 30, 11, 0): 1.0,    # open power hour
+    (11, 0, 11, 30): 0.7,
+    (11, 30, 13, 30): 0.5,  # lunch lull
+    (13, 30, 15, 0): 0.8,
+    (15, 0, 16, 0): 1.0,    # closing push
+}
+
+# --- News + technical confluence (profit lever) ---
+# A news-driven candidate only reaches Gemini if its PURE technical score
+# (before the sentiment boost) is at least this value -- headline alone is
+# not a setup; the chart must agree at least somewhat. 0 disables.
+NEWS_CONFLUENCE_MIN_TECH_SCORE = float(os.environ.get("NEWS_CONFLUENCE_MIN_TECH_SCORE", 50.0))
 
 # --- Intraday analysis ---
 ENABLE_INTRADAY_ANALYSIS = (
