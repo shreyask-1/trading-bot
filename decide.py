@@ -93,7 +93,7 @@ _RESPONSE_SCHEMA = types.Schema(
     required=["trades"],
 )
 
-PROMPT_TEMPLATE = """You are a disciplined DAY TRADER with a DUAL focus for a SIMULATED paper-trading portfolio (no real money): you trade NEWS CATALYSTS (headlines scored 0-10 with sentiment -1..+1) AND CHART/TECHNICAL setups (trend, RSI, ATR, ADX, MACD crossover, support/resistance, gap %, 52-week position, VWAP, opening-range breakouts). It is now {now_et} Eastern time, market open.
+PROMPT_TEMPLATE = """You are a disciplined news+technical trader with a DUAL focus for a SIMULATED paper-trading portfolio (no real money): you trade NEWS CATALYSTS (headlines scored 0-10 with sentiment -1..+1) AND CHART/TECHNICAL setups (trend, RSI, ATR, ADX, MACD crossover, support/resistance, gap %, 52-week position, VWAP, opening-range breakouts). You trade short-term AND longer-term: daytrades and multi-day holds are both fine. It is now {now_et} Eastern time, session: {session}.
 
 Every trade idea MUST include a "confidence" score from 0-100 -- your honest probability-weighted conviction in this setup. The code converts it to size: 90+ -> 8% of equity, 80+ -> 5%, 70+ -> 3%, 60+ -> 2%, below {conf_min} -> skipped. A raw "dollar_amount" is optional and IGNORED whenever confidence is present. Also include a "conviction" 1-10 as a secondary gate.
 
@@ -102,7 +102,7 @@ HARD CONSTRAINTS (enforced by code, but respect them anyway):
 - NEVER recommend buying when cash is negative or near zero.
 - Be selective: only the best 2-4 ideas per run. No filler trades just because a name is on screen.
 - Every BUY should carry a stop_loss and take_profit price from the setup (opening-range high/low, VWAP, swing levels); if you have no opinion, omit them and the code will derive them from ATR/swings.
-- Respect the daytrading window: no late-session entries, no chasing after big moves.
+- Respect the session: in the regular session avoid chasing big moves and late-session entries. In the EXTENDED session (thin liquidity, wide spreads) only take high-confidence setups and expect fills near the last price. Positions may be HELD OVERNIGHT if the setup is still intact -- your stop_loss/take_profit (plus the code's trailing stop and hard loss cap) protect them around the clock, so longer-term winners are encouraged.
 
 Current portfolio: - Cash available: ${cash:,.2f} - Total portfolio value: ${total_value:,.2f}
 Existing holdings: {holdings_block}
@@ -746,12 +746,23 @@ def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL"):
         meta["gemini_calls_today"] = calls_today  # preserve real count
         return trades, meta
 
-    now_et = datetime.now(pytz.timezone("America/New_York")).strftime("%Y-%m-%d %I:%M %p %Z")
+    now_et_dt = datetime.now(pytz.timezone("America/New_York"))
+    now_et = now_et_dt.strftime("%Y-%m-%d %I:%M %p %Z")
+    _mins = now_et_dt.hour * 60 + now_et_dt.minute
+    _wd = now_et_dt.weekday()
+    if _wd < 5 and 570 <= _mins < 960:  # 9:30-16:00
+        session = "regular session, market open"
+    elif _wd < 5 and ((240 <= _mins < 570) or (960 <= _mins < 1200)):  # 4:00-9:30 / 16:00-20:00
+        session = "extended session (after-hours / pre-market)"
+    else:
+        session = "market closed (orders queue to the next session)"
     prompt = PROMPT_TEMPLATE.format(
         cash=cash,
         total_value=total_value,
         min_conviction=MIN_CONVICTION_TO_TRADE,
+        conf_min=CONFIDENCE_MIN_TO_TRADE,
         now_et=now_et,
+        session=session,
         holdings_block=_fmt_holdings_block(scored_holdings),
         news_block=_fmt_news_block(new_candidates, scored_news, news_sentiment),
         watchlist_block=_fmt_watchlist_block(scored_watchlist),
