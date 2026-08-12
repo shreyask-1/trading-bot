@@ -314,7 +314,7 @@ def get_opening_range_breakout(ticker):
             symbol_or_symbols=ticker,
             timeframe=TimeFrame(INTRADAY_BAR_MINUTES, TimeFrameUnit.Minute),
             start=start,
-            end=end,
+            end=now,
             feed=DATA_FEED,
         )
         bars = list(data_client.get_stock_bars(request)[ticker])
@@ -460,6 +460,11 @@ def get_account_snapshot():
             "unrealized_plpc": round(float(p.unrealized_plpc) * 100, 2),
         }
     return {
+        # Account identity for the second-trader baseline: every Alpaca account
+        # (live / paper / each new paper key set) has a unique id, so a switch
+        # to a new account is detected and the stale baseline / risk state is
+        # reset instead of being misread as a second trader.
+        "account_id": str(getattr(account, "id", "") or ""),
         "cash": float(account.cash),
         "total_value": float(account.portfolio_value),
         "holdings": holdings,
@@ -589,6 +594,18 @@ def evaluate_circuit_breakers(account_snapshot):
     equity = float(account_snapshot.get("total_value", 0.0))
     state = load_risk_state()
     messages = []
+
+    # New account / new API keys: drop the old account's peak / daily anchor /
+    # halt flags so the new account isn't measured against the old one (the
+    # stale day-anchor is what printed a bogus 'today +12%' on a fresh account
+    # after the 2026-08-12 switch).
+    global _ACCOUNT_CHANGED_THIS_RUN
+    account_id = account_snapshot.get("account_id", "")
+    if _ACCOUNT_CHANGED_THIS_RUN or _account_changed(account_id, state):
+        print("ACCOUNT CHANGED: resetting risk state (equity peak / daily anchor) for the new account.")
+        state = _default_risk_state()
+        _ACCOUNT_CHANGED_THIS_RUN = False
+    state["account_id"] = account_id
 
     # Running equity peak (used for drawdown). Default: start at current value
     # on first run so an already-damaged account isn't surprised on deploy.
@@ -986,6 +1003,51 @@ def get_economic_event_multiplier():
 # ============================================================
 # Second-trader / foreign-activity detection
 # ============================================================
+# Set when this process detects the Alpaca account changed (new API keys /
+# new paper account), so later steps in the same run (circuit breakers) can
+# reset their own cached state without re-deriving the detection.
+_ACCOUNT_CHANGED_THIS_RUN = False
+
+
+def _account_changed(account_id, state):
+    """True when `state` was recorded under a different Alpaca account id."""
+    if not account_id:
+        return False  # no identity to compare against -- treat as unchanged
+    recorded = state.get("account_id")
+    return recorded is not None and recorded != account_id
+
+
+def _detect_account_change(account_snapshot):
+    """
+    Detect that the Alpaca account this bot is now talking to is not the one
+    its cached state was built against (new paper account / keys rotated to a
+    different account).
+
+    Two signals, either of which counts:
+      1. The recorded account_id (stored by current code) differs from the
+         live account id.
+      2. Legacy state written before account_id existed: the account holds
+         NONE of the baseline tickers AND this bot has no FILLED orders on
+         record. That combination means the baseline belongs to a different
+         account -- NOT a second trader (a real liquidation on the same
+         account would still show the bot's own filled sells in the ledger).
+    """
+    account_id = account_snapshot.get("account_id", "")
+    recon = _load_json_file(RECON_STATE_FILE, {})
+    if _account_changed(account_id, recon):
+        return True
+    baseline = recon.get("baseline") or {}
+    if not baseline:
+        return False
+    holdings = account_snapshot.get("holdings", {})
+    if any(t in holdings for t in baseline):
+        return False  # still holds baseline names -> same account
+    ledger = _load_json_file(ORDER_LEDGER_FILE, [])
+    if any(str(o.get("order_status", "")).lower() == "filled" for o in ledger):
+        return False  # bot has filled orders on this account -> same account
+    return True
+
+
 def _append_order_to_ledger(entry):
     """Record every order this bot submits so holdings can be reconciled."""
     try:
@@ -1110,15 +1172,34 @@ def reconcile_foreign_activity(account_snapshot):
         _refresh_ledger_statuses()
     except Exception as e:
         print(f"Ledger refresh failed (reconciling anyway): {e}")
+    account_id = account_snapshot.get("account_id", "")
+
+    # New account / new API keys: the cached baseline, order ledger, and open
+    # trade state were built against a DIFFERENT Alpaca account and must not
+    # be reconciled (that produced the 2026-08-12 'SECOND TRADER' storm after
+    # the account switch). Reset them so the new account starts clean.
+    if _detect_account_change(account_snapshot):
+        global _ACCOUNT_CHANGED_THIS_RUN
+        _ACCOUNT_CHANGED_THIS_RUN = True
+        print("ACCOUNT CHANGED (new API keys / new Alpaca account detected): resetting reconciliation baseline, order ledger, and open-trade state for the new account.")
+        _save_json_file(RECON_STATE_FILE, {"account_id": account_id})
+        _save_json_file(ORDER_LEDGER_FILE, [])
+        _save_json_file(OPEN_TRADES_FILE, {})
+
     holdings = account_snapshot.get("holdings", {})
     recon = _load_json_file(RECON_STATE_FILE, {})
     flags = []
 
-    if not recon.get("baseline"):
+    # Key-presence check (not dict truthiness): a NEW account with zero
+    # positions legitimately has an EMPTY baseline -- that must not be treated
+    # as 'no baseline' on the next run, or the bot would re-baseline over its
+    # own first buys and double-count them as foreign activity.
+    if "baseline" not in recon:
         # First run: no ledger history for the pre-existing account. Record
         # current quantities as the baseline and surface them once so the
         # user can verify them in Alpaca's Activity log.
         baseline = {t: p["qty"] for t, p in holdings.items()}
+        recon["account_id"] = account_id
         recon["baseline"] = baseline
         _save_json_file(RECON_STATE_FILE, recon)
         if holdings:
