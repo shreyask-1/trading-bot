@@ -5020,3 +5020,27 @@ Ending portfolio value: $99,451.79
 Trade journal: no closed trades yet
 Performance: Total return -0.38% | Max drawdown 12.37% | Daily Sharpe 0.31 | Open positions: 12 | Equity $99,456.08
 
+=== Run at 2026-08-12T13:32:27.273346 ===
+Current time: 2026-08-12 09:32 AM EDT | Market open (per Alpaca): True
+Account value: $99,256.29
+Cash: $86,241.73 | Holdings (6): {'AAPL': '7.8012 sh (-3.24%)', 'AMZN': '5.4179 sh (-0.59%)', 'HD': '2.1034 sh (+0.15%)', 'MA': '1.7159 sh (-2.14%)', 'META': '9.712 sh (+1.58%)', 'TSLA': '5.0184 sh (+2.76%)'}
+Open orders (6): META sell 6.6766, HD sell 34.1034, MA sell 15.7159, TSLA sell 13.0184, AAPL sell 12.8012, AMZN sell 25.4179
+  !! FOREIGN ACTIVITY: AAPL holds 7.8012 sh but this bot should own 12.8012 sh (diff -5.0000). Someone/something else is trading this account.
+  !! FOREIGN ACTIVITY: AMZN holds 5.4179 sh but this bot should own 25.4179 sh (diff -20.0000). Someone/something else is trading this account.
+  !! FOREIGN ACTIVITY: COP holds 0.0000 sh but this bot should own 63.8341 sh (diff -63.8341). Someone/something else is trading this account.
+  !! FOREIGN ACTIVITY: COST holds 0.0000 sh but this bot should own 7.8517 sh (diff -7.8517). Someone/something else is trading this account.
+  !! FOREIGN ACTIVITY: DIS holds 0.0000 sh but this bot should own 66.8769 sh (diff -66.8769). Someone/something else is trading this account.
+  !! FOREIGN ACTIVITY: GOOGL holds 0.0000 sh but this bot should own 20.8177 sh (diff -20.8177). Someone/something else is trading this account.
+  !! FOREIGN ACTIVITY: HD holds 2.1034 sh but this bot should own 34.1034 sh (diff -32.0000). Someone/something else is trading this account.
+  !! FOREIGN ACTIVITY: LMT holds 0.0000 sh but this bot should own 20.7665 sh (diff -20.7665). Someone/something else is trading this account.
+  !! FOREIGN ACTIVITY: MA holds 1.7159 sh but this bot should own 15.7159 sh (diff -14.0000). Someone/something else is trading this account.
+  !! FOREIGN ACTIVITY: META holds 9.7120 sh but this bot should own 12.7120 sh (diff -3.0000). Someone/something else is trading this account.
+  !! FOREIGN ACTIVITY: MSFT holds 0.0000 sh but this bot should own 14.9990 sh (diff -14.9990). Someone/something else is trading this account.
+  !! FOREIGN ACTIVITY: TSLA holds 5.0184 sh but this bot should own 13.0184 sh (diff -8.0000). Someone/something else is trading this account.
+Risk state: peak $99,809.74 | drawdown 0.55% | today +12.29% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 60% incl. circuit breaker 100%)
+Outside the daytrading entry window (first 15 min chop / after 15:30 ET) -- no NEW buys this run. Risk management, stops, and de-leveraging still ran above.
+Ending portfolio value: $99,256.00
+Trade journal: no closed trades yet
+Performance: Total return -0.58% | Max drawdown 12.37% | Daily Sharpe 0.25 | Open positions: 6 | Equity $99,256.29
+
