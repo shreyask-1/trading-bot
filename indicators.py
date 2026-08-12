@@ -353,6 +353,40 @@ def classify_trend(closes: List[float], short_period: int = 20, long_period: int
 # MACD
 # ============================================================
 
+def compute_macd_crossover(
+    closes: List[float],
+    fast_period: int = 12,
+    slow_period: int = 26,
+    signal_period: int = 9,
+) -> Optional[str]:
+    """
+    Direction of the most recent MACD line / signal line crossover:
+    "bullish" (macd crossed above signal on the last bar), "bearish"
+    (crossed below), "none" (no crossover at the last bar), or None if
+    there isn't enough history.
+    """
+    fast_series = compute_ema_series(closes, fast_period)
+    slow_series = compute_ema_series(closes, slow_period)
+    if not fast_series or not slow_series:
+        return None
+    offset = len(fast_series) - len(slow_series)
+    if offset < 0:
+        return None
+    macd_line = [fast_series[i + offset] - slow_series[i] for i in range(len(slow_series))]
+    if len(macd_line) < signal_period + 1:
+        return None
+    signal_series = compute_ema_series(macd_line, signal_period)
+    if not signal_series:
+        return None
+    above_now = macd_line[-1] > signal_series[-1]
+    above_prev = macd_line[-2] > signal_series[-2]
+    if above_now and not above_prev:
+        return "bullish"
+    if not above_now and above_prev:
+        return "bearish"
+    return "none"
+
+
 def compute_macd(
     closes: List[float],
     fast_period: int = 12,
