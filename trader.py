@@ -314,7 +314,7 @@ def get_opening_range_breakout(ticker):
             symbol_or_symbols=ticker,
             timeframe=TimeFrame(INTRADAY_BAR_MINUTES, TimeFrameUnit.Minute),
             start=start,
-            end=now,
+            end=end,
             feed=DATA_FEED,
         )
         bars = list(data_client.get_stock_bars(request)[ticker])
@@ -698,6 +698,12 @@ def enforce_deleveraging(account_snapshot):
             break
         pos = holdings[ticker]
         notional = pos["qty"] * pos["current_price"]
+        if notional <= 0:
+            # Can't price it -> can't know how much cash selling it frees, so
+            # selling it is blind. Skip rather than queue a blind liquidation
+            # (a zero price here is what could let de-leveraging "sell
+            # everything" when the snapshot is missing prices).
+            continue
         reason = (
             f"De-leveraging: cash ${projected_cash:,.2f} below target "
             f"${target_cash:,.2f}; selling weakest holding "
@@ -989,6 +995,66 @@ def _append_order_to_ledger(entry):
     except Exception as e:
         print(f"Could not write order ledger: {e}")
 
+_LEDGER_IN_FLIGHT_STATUSES = {
+    "accepted", "pending_new", "pending_replace", "new",
+    "submitted", "held", "partially_filled", "pending_cancel",
+}
+
+
+def _refresh_ledger_statuses():
+    """
+    Sync the order ledger with reality before reconciling.
+
+    Ledger entries are written with the order's status at SUBMISSION time
+    (e.g. 'accepted' for an after-hours DAY order that Alpaca holds until the
+    open). If that status is never updated, a sell that filled at the open
+    still looks 'pending' forever -- so get_expected_holdings() ignores it and
+    the reconciliation accuses the bot's OWN fills of being a second trader:
+
+        FOREIGN ACTIVITY: AAPL holds 0.0000 sh but this bot should own 12.8 sh
+
+    This queries Alpaca once for recent orders (open + closed) and rewrites
+    any in-flight ledger entry to its real final status (filled / canceled /
+    expired / rejected). One API call per run; no-op when nothing is in
+    flight. Orders we can't find (purged from Alpaca's history) are left as-is
+    rather than guessed at.
+    """
+    try:
+        ledger = _load_json_file(ORDER_LEDGER_FILE, [])
+        if not ledger:
+            return 0
+        needs_refresh = [
+            e for e in ledger
+            if str(e.get("order_status", "")).lower() in _LEDGER_IN_FLIGHT_STATUSES
+        ]
+        if not needs_refresh:
+            return 0
+        orders = trading_client.get_orders(GetOrdersRequest(status=QueryOrderStatus.ALL))
+        by_id = {}
+        for o in orders:
+            oid = str(getattr(o, "id", "") or "").strip()
+            status = str(getattr(o, "status", "") or "").lower()
+            if oid:
+                by_id[oid] = status
+        changed = 0
+        for entry in ledger:
+            oid = str(entry.get("order_id", "") or "").strip()
+            status = str(entry.get("order_status", "")).lower()
+            if status not in _LEDGER_IN_FLIGHT_STATUSES or not oid or oid == "x":
+                continue
+            resolved = by_id.get(oid)
+            if resolved and resolved != status:
+                entry["order_status"] = resolved
+                changed += 1
+        if changed:
+            _save_json_file(ORDER_LEDGER_FILE, ledger)
+            print(f"Order ledger refreshed: {changed} order(s) updated to their final status.")
+        return changed
+    except Exception as e:
+        print(f"Could not refresh order ledger statuses: {e}")
+        return 0
+
+
 def get_expected_holdings():
     """
     Recompute the quantities this bot should own from its order ledger:
@@ -996,7 +1062,9 @@ def get_expected_holdings():
 
     Only orders that actually FILLED count. Pending / canceled / rejected
     orders are excluded so a still-working order doesn't create a false
-    'foreign activity' flag on the next reconciliation run.
+    'foreign activity' flag on the next reconciliation run. (Ledger statuses
+    are kept current by _refresh_ledger_statuses(), called before
+    reconciliation, so a queued order that filled at the open is counted.)
     """
     ledger = _load_json_file(ORDER_LEDGER_FILE, [])
     expected = {}
@@ -1035,6 +1103,13 @@ def reconcile_foreign_activity(account_snapshot):
     """
     if not ENABLE_FOREIGN_ACTIVITY_DETECTION:
         return [], False
+    # Bring the ledger up to date first: otherwise a sell that filled at the
+    # open still reads as 'accepted' and this bot accuses its OWN fills of
+    # being a second trader (the 2026-08-12 false-alarm storm).
+    try:
+        _refresh_ledger_statuses()
+    except Exception as e:
+        print(f"Ledger refresh failed (reconciling anyway): {e}")
     holdings = account_snapshot.get("holdings", {})
     recon = _load_json_file(RECON_STATE_FILE, {})
     flags = []
