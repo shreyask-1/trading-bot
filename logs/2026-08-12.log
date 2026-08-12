@@ -9751,3 +9751,7 @@ Ending portfolio value: $99,257.90
 Trade journal: no closed trades yet
 Performance: Total return -0.58% | Max drawdown 12.37% | Daily Sharpe 0.25 | Open positions: 0 | Equity $99,257.90
 
+=== Run at 2026-08-12T20:06:27.933253 ===
+Current time: 2026-08-12 04:06 PM EDT | Market open (per Alpaca): False
+FATAL: could not fetch account snapshot, aborting run. Error: {"message": "unauthorized."}
+
