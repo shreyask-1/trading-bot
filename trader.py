@@ -1935,6 +1935,131 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
 
         return {
             "timestamp": datetime.now().isoformat(),
-           
+            "ticker": ticker,
+            "action": action,
+            "qty": qty,
+            "conviction": conviction,
+            "size_multiplier": size_multiplier,
+            "order_id": str(order.id),
+            "order_status": str(order.status),
+            "stop_loss": stop_loss,
+            "take_profit": take_profit,
+            "reasoning": trade.get("reasoning", ""),
+            "status": "submitted",
+        }
+    except Exception as e:
+        return {"ticker": ticker, "status": "failed", "reason": str(e)}
 
-⚠️ No response from agent
+def record_performance_snapshot(account_snapshot, log_dir, **stats):
+    path = os.path.join(log_dir, "performance.csv")
+    file_exists = os.path.exists(path)
+
+    if file_exists:
+        with open(path) as f:
+            first_line = f.readline().strip()
+            existing_header = first_line.split(",") if first_line else []
+        if existing_header != PERFORMANCE_CSV_HEADER:
+            backup_path = os.path.join(
+                log_dir,
+                f"performance_legacy_{datetime.now().strftime('%Y%m%d%H%M%S')}.csv",
+            )
+            os.rename(path, backup_path)
+            file_exists = False
+
+    row = {
+        "timestamp": datetime.now().isoformat(),
+        "total_value": round(account_snapshot["total_value"], 2),
+        "cash": round(account_snapshot["cash"], 2),
+        "num_holdings": len(account_snapshot["holdings"]),
+        "market_regime": stats.get("market_regime", "UNKNOWN"),
+        "size_multiplier": stats.get("size_multiplier", 1.0),
+        "candidates_considered": stats.get("candidates_considered", 0),
+        "candidates_passed_prescreen": stats.get("candidates_passed_prescreen", 0),
+        "trades_proposed": stats.get("trades_proposed", 0),
+        "trades_executed": stats.get("trades_executed", 0),
+        "trades_skipped": stats.get("trades_skipped", 0),
+        "trades_failed": stats.get("trades_failed", 0),
+        "risk_exits": stats.get("risk_exits", 0),
+        "consolidation_exits": stats.get("consolidation_exits", 0),
+    }
+
+    with open(path, "a", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=PERFORMANCE_CSV_HEADER)
+        if not file_exists:
+            writer.writeheader()
+        writer.writerow(row)
+
+
+def summarize_performance(account_snapshot=None):
+    """
+    Portfolio stats for the run log, computed from the existing logs:
+    total return, max drawdown, daily Sharpe (from performance.csv) and win
+    rate / avg winner / avg loser (from trade_results.csv).
+    """
+    lines = []
+    values = []
+    daily = {}
+    perf_path = os.path.join(os.path.dirname(__file__), "logs", "performance.csv")
+    if os.path.exists(perf_path):
+        try:
+            with open(perf_path) as f:
+                rows = list(csv.DictReader(f))
+            for r in rows:
+                try:
+                    values.append(float(r["total_value"]))
+                    daily.setdefault(r["timestamp"][:10], []).append(float(r["total_value"]))
+                except (KeyError, ValueError):
+                    continue
+        except (OSError, csv.Error):
+            pass
+
+    if values:
+        total_ret = (values[-1] / values[0] - 1.0) * 100.0 if values[0] else 0.0
+        peak = -1e18
+        max_dd = 0.0
+        for v in values:
+            peak = max(peak, v)
+            if peak > 0:
+                max_dd = max(max_dd, (peak - v) / peak * 100.0)
+        day_rets = []
+        for day in sorted(daily):
+            ds = daily[day]
+            if len(ds) >= 2 and ds[0]:
+                day_rets.append((ds[-1] / ds[0] - 1.0) * 100.0)
+        sharpe = None
+        if len(day_rets) >= 2:
+            mean = sum(day_rets) / len(day_rets)
+            std = (sum((d - mean) ** 2 for d in day_rets) / len(day_rets)) ** 0.5
+            sharpe = (mean / std * (252 ** 0.5)) if std > 0 else 0.0
+        lines.append(f"Total return {total_ret:+.2f}% | Max drawdown {max_dd:.2f}% | Daily Sharpe {sharpe:.2f}" if sharpe is not None
+                     else f"Total return {total_ret:+.2f}% | Max drawdown {max_dd:.2f}%")
+
+    if os.path.exists(TRADE_RESULTS_FILE):
+        try:
+            with open(TRADE_RESULTS_FILE) as f:
+                rows = list(csv.DictReader(f))
+            pcts = []
+            for r in rows:
+                try:
+                    pcts.append(float(r["pnl_pct"]))
+                except (ValueError, KeyError):
+                    continue
+            if pcts:
+                wins = [p for p in pcts if p > 0]
+                losses = [p for p in pcts if p <= 0]
+                wr = len(wins) / len(pcts) * 100.0
+                avg_w = sum(wins) / len(wins) if wins else 0.0
+                avg_l = sum(losses) / len(losses) if losses else 0.0
+                lines.append(
+                    f"{len(pcts)} closed trades | Win rate {wr:.0f}% | "
+                    f"Avg winner {avg_w:+.2f}% | Avg loser {avg_l:+.2f}%"
+                )
+        except (OSError, csv.Error):
+            pass
+
+    if account_snapshot is not None:
+        lines.append(
+            f"Open positions: {len(account_snapshot.get('holdings', {}))} | "
+            f"Equity ${account_snapshot.get('total_value', 0):,.2f}"
+        )
+    return " | ".join(lines) if lines else "no performance history yet"
