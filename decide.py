@@ -111,6 +111,9 @@ News-driven candidates (score = quant technical score INCLUDING headline sentime
 Watchlist candidates (score 0-100; RSI; ATR; MACD cross; gap %; 52w position; S/R; opening-range):
 {watchlist_block}
 
+Overnight-queued trades (proposed while the market was closed; RE-VERIFY each against the FRESH data above -- re-emit only the ones still valid, with updated stop_loss/take_profit; omit anything whose setup broke, gapped against you, or you no longer want -- it will be dropped):
+{pending_block}
+
 Phase 2 fundamental context (analyst actions, insider activity, Reddit sentiment, SEC filings, economic calendar):
 {fundamental_block}
 
@@ -644,7 +647,21 @@ def _fmt_watchlist_block(scored_watchlist):
     return "; ".join(parts) or "none"
 
 
-def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL"):
+def _fmt_pending_block(pending):
+    """Compact one-line-per-trade view of the overnight queue for re-verification."""
+    if not pending:
+        return "none"
+    parts = []
+    for t in pending:
+        parts.append(
+            f"{t.get('ticker')} {t.get('action', 'buy')} (conf {t.get('confidence')}, "
+            f"conv {t.get('conviction')}, stop {t.get('stop_loss')}, "
+            f"tp {t.get('take_profit')}): {(t.get('reasoning') or '')[:80]}"
+        )
+    return "; ".join(parts)
+
+
+def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL", pending_trades=None):
     holdings = account_snapshot.get("holdings", {})
     cash = account_snapshot.get("cash", 0)
     total_value = account_snapshot.get("total_value", cash)
@@ -766,6 +783,7 @@ def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL"):
         holdings_block=_fmt_holdings_block(scored_holdings),
         news_block=_fmt_news_block(new_candidates, scored_news, news_sentiment),
         watchlist_block=_fmt_watchlist_block(scored_watchlist),
+        pending_block=_fmt_pending_block(pending_trades),
         fundamental_block=_build_fundamental_block(all_candidate_tickers),
         performance_brief=build_performance_brief(),
     )
