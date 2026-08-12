@@ -291,3 +291,13 @@ Market closed and TRADE_ONLY_DURING_MARKET_HOURS is enabled -- skipping news, de
 Ending portfolio value: $88,448.07
 Trade journal: no closed trades yet
 
+=== Run at 2026-08-12T00:58:27.673918 ===
+Current time: 2026-08-11 08:58 PM EDT | Market open (per Alpaca): False
+Account value: $88,460.85
+Cash: $-4,761.65 | Holdings (12): {'AAPL': '12.8012 sh (-2.67%)', 'AMZN': '25.4179 sh (-0.31%)', 'COP': '63.8341 sh (+8.73%)', 'COST': '7.8517 sh (+0.29%)', 'DIS': '66.8769 sh (-1.13%)', 'GOOGL': '20.8177 sh (-3.50%)', 'HD': '34.1034 sh (+0.91%)', 'LMT': '20.7665 sh (+3.19%)', 'MA': '15.7159 sh (-1.95%)', 'META': '12.712 sh (+1.86%)', 'MSFT': '14.999 sh (-0.21%)', 'TSLA': '13.0184 sh (+3.12%)'}
+Risk state: peak $88,460.85 | drawdown 0.00% | today +0.04% | halted: False
+Market regime: BULLISH (position-size multiplier: 100% incl. circuit breaker 100%)
+Market closed and TRADE_ONLY_DURING_MARKET_HOURS is enabled -- skipping news, decisions, and execution this run. Risk management and de-leveraging still ran above.
+Ending portfolio value: $88,460.85
+Trade journal: no closed trades yet
+
