@@ -505,3 +505,14 @@ Ending portfolio value: $88,433.08
 Trade journal: no closed trades yet
 Performance: Total return -11.42% | Max drawdown 12.37% | Daily Sharpe -4.20 | Open positions: 12 | Equity $88,433.08
 
+=== Run at 2026-08-12T01:42:25.380855 ===
+Current time: 2026-08-11 09:42 PM EDT | Market open (per Alpaca): False
+Account value: $88,433.47
+Cash: $-4,761.65 | Holdings (12): {'AAPL': '12.8012 sh (-2.65%)', 'AMZN': '25.4179 sh (-0.40%)', 'COP': '63.8341 sh (+8.73%)', 'COST': '7.8517 sh (+0.33%)', 'DIS': '66.8769 sh (-1.13%)', 'GOOGL': '20.8177 sh (-3.69%)', 'HD': '34.1034 sh (+0.91%)', 'LMT': '20.7665 sh (+3.19%)', 'MA': '15.7159 sh (-1.95%)', 'META': '12.712 sh (+1.85%)', 'MSFT': '14.999 sh (-0.31%)', 'TSLA': '13.0184 sh (+3.07%)'}
+Risk state: peak $88,461.60 | drawdown 0.03% | today +0.01% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 60% incl. circuit breaker 100%)
+Market closed and TRADE_ONLY_DURING_MARKET_HOURS is enabled -- skipping news, decisions, and execution this run. Risk management and de-leveraging still ran above.
+Ending portfolio value: $88,433.47
+Trade journal: no closed trades yet
+Performance: Total return -11.42% | Max drawdown 12.37% | Daily Sharpe -4.20 | Open positions: 12 | Equity $88,433.47
+
