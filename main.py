@@ -13,8 +13,10 @@ Flow (in order):
 6. Flatten every position if the deep-drawdown circuit breaker fired
 7. Refresh account state after any forced sells
 8. Evaluate the broad market regime (SPY-based)
-9. NEW TRADES ARE ONLY PROPOSED/EXECUTED WHILE THE MARKET IS OPEN and the
-   circuit breakers haven't halted the day -- no more overnight order stacking
+9. NEW TRADES ARE ONLY PROPOSED/EXECUTED DURING A TRADING SESSION (the
+   regular session, or the extended session when ALLOW_EXTENDED_HOURS is on)
+   and the circuit breakers haven't halted the day -- no more blind overnight
+   order stacking while no session is running
 10. Fetch news -> decisions -> execute (pending-order-aware cash, hard
     no-margin rule, total-exposure cap)
 11. Record a full performance snapshot and log everything
@@ -40,6 +42,7 @@ from trader import (
     evaluate_circuit_breakers,
     record_performance_snapshot,
     is_market_open,
+    is_trading_session,
     get_market_regime,
     get_eastern_time_str,
     notify,
@@ -63,7 +66,17 @@ def run():
     log_lines = [f"=== Run at {timestamp.isoformat()} ==="]
 
     market_open = is_market_open()
-    log_lines.append(f"Current time: {get_eastern_time_str()} | Market open (per Alpaca): {market_open}")
+    # A "trading session" is the regular session, plus the Alpaca extended
+    # session (4:00-9:30 AM / 4:00-8:00 PM ET) when ALLOW_EXTENDED_HOURS is on
+    # and the strict TRADE_ONLY_DURING_MARKET_HOURS kill-switch is off.
+    trading_session_active = market_open or (not TRADE_ONLY_DURING_MARKET_HOURS and is_trading_session())
+    if market_open:
+        session_label = "REGULAR"
+    elif trading_session_active:
+        session_label = "EXTENDED"
+    else:
+        session_label = "CLOSED"
+    log_lines.append(f"Current time: {get_eastern_time_str()} | Market open (per Alpaca): {market_open} | Session: {session_label}")
 
     try:
         account = get_account_snapshot()
@@ -231,17 +244,17 @@ def run():
     daytrade_window = is_within_trade_window()
     if halted:
         log_lines.append(f"Trading halted ({halt_reason}) -- no new trades this run.")
-    elif not market_open and TRADE_ONLY_DURING_MARKET_HOURS:
+    elif not trading_session_active:
         log_lines.append(
-            "Market closed and TRADE_ONLY_DURING_MARKET_HOURS is enabled -- "
-            "skipping news, decisions, and execution this run. Risk management "
-            "and de-leveraging still ran above."
+            "No trading session active (market closed and not in the extended "
+            "session) -- skipping news, decisions, and execution this run. "
+            "Risk management and de-leveraging still ran above."
         )
     elif DAYTRADE_MODE and not daytrade_window:
         log_lines.append(
             "Outside the daytrading entry window (first 15 min chop / after "
-            "15:30 ET) -- no NEW buys this run. Risk management, stops, and "
-            "de-leveraging still ran above."
+            "the entry cutoff ET) -- no NEW buys this run. Risk management, "
+            "stops, and de-leveraging still ran above."
         )
     else:
         # Step 3: news
