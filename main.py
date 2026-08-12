@@ -47,6 +47,8 @@ from trader import (
     should_end_of_day_flatten,
     is_within_trade_window,
     summarize_trade_results,
+    summarize_performance,
+    build_performance_brief,
 )
 from news import get_news_candidates
 from decide import get_trade_decisions
@@ -306,6 +308,22 @@ def run():
         log_lines.append(f"Trade journal: {summary}")
     except Exception as e:
         log_lines.append(f"Could not summarize trade results: {e}")
+
+    # Step 6b2: Phase 3 self-learning -- what setups are being weighted up/down.
+    try:
+        brief = build_performance_brief()
+        if brief != "no closed trades yet -- all setups unproven":
+            log_lines.append(f"Self-learning: {brief}")
+    except Exception as e:
+        log_lines.append(f"Could not build self-learning brief: {e}")
+
+    # Step 6c: portfolio stats -- total/daily return, Sharpe, max drawdown,
+    # win rate, avg winner/loser, open positions.
+    try:
+        perf = summarize_performance(account)
+        log_lines.append(f"Performance: {perf}")
+    except Exception as e:
+        log_lines.append(f"Could not summarize performance: {e}")
 
     log_lines.append("")
     _write_log(log_lines, timestamp)
