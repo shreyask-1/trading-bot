@@ -1,8 +1,11 @@
 """
 Phase 2 data feeds: everything beyond price/news that a pro daytrader watches.
 
-  - Economic calendar (CPI, FOMC, NFP, GDP, PCE ...)   -- Finnhub /calendar/economic
+  - Economic calendar (CPI, FOMC, NFP, GDP, PCE ...)   -- BUILT-IN table, free and
+    offline (Finnhub's /calendar/economic endpoint needs a PAID plan, so it is
+    never called -- there is no fallback, this IS the calendar)
   - Analyst upgrades / downgrades                       -- Finnhub /stock/upgrade-downgrade
+    (PAID tier; disabled by default so free keys never 403)
   - Insider buying / selling                            -- Finnhub /stock/insider-transactions (per ticker)
   - SEC filings (8-K, 10-Q, 10-K, Form 4)               -- Finnhub /stock/filings (per ticker)
   - Reddit sentiment (best-effort, r/wallstreetbets + r/stocks + r/investing)
@@ -27,7 +30,7 @@ from datetime import datetime, timedelta
 
 import requests
 
-from config import FINNHUB_API_KEY
+from config import FINNHUB_API_KEY, ENABLE_ANALYST_ACTIONS
 
 BASE_DIR = os.path.dirname(__file__)
 LOG_DIR = os.path.join(BASE_DIR, "logs")
@@ -38,13 +41,12 @@ _HIGH_IMPACT_EVENTS = (
     "unemployment", "interest rate decision",
 )
 
-# Built-in fallback calendar of the big market-moving releases.
+# Built-in calendar of the big market-moving releases -- the PRIMARY source.
 # Finnhub's /calendar/economic endpoint requires a PAID plan (free keys get
-# HTTP 403), so this table keeps the defensive sizing alive without it.
-# Dates are the OFFICIAL scheduled dates:
+# HTTP 403), so this table IS the economic calendar on the free plan: no live
+# fetch, no fallback. Dates are the OFFICIAL scheduled dates:
 #   - FOMC decision days: federalreserve.gov 2026 meeting calendar
 #   - CPI + Employment Situation (NFP): bls.gov 2026 release schedule
-# When a paid Finnhub key is used, live data overrides this table entirely.
 _FALLBACK_EVENTS_2026 = {
     # FOMC rate decisions (2nd day of each meeting)
     "2026-01-28": ["FOMC rate decision"],
@@ -131,65 +133,25 @@ def fetch_economic_calendar():
     Returns {"events": [{"date", "event", "impact", "actual", "forecast"}...]}
     for the next ~14 days, or a cache hit. Never raises.
 
-    Finnhub's /calendar/economic endpoint requires a PAID plan; free keys get
-    HTTP 403. When the live feed is unavailable, the built-in fallback table
-    (_FALLBACK_EVENTS_2026 -- official FOMC/CPI/NFP dates) is used instead so
-    defensive sizing still works. Live data always takes precedence when the
-    feed succeeds.
+    Free-plan friendly: Finnhub's /calendar/economic endpoint requires a PAID
+    plan (free keys get HTTP 403), so this feed is a pure local table of the
+    official FOMC / CPI / Employment-Situation (NFP) release dates. There is
+    no live fetch and no fallback -- the built-in table IS the calendar.
     """
     cached = _load_cache("eco_calendar.json", 6)
-    if cached and cached.get("_source") != "fallback":
+    if cached:
         return cached
-    events = []
-    try:
-        today = datetime.now().date().isoformat()
-        end = (datetime.now().date() + timedelta(days=14)).isoformat()
-        resp = requests.get(
-            "https://finnhub.io/api/v1/calendar/economic",
-            params={"from": today, "to": end, "token": FINNHUB_API_KEY},
-            timeout=15,
-        )
-        resp.raise_for_status()
-        events = resp.json().get("economicCalendar", []) or []
-    except Exception as e:
-        print(f"Economic calendar fetch failed (trading continues without it): {e}")
-        return _fallback_economic_calendar()
-
-    high_impact_today = None
-    today_str = datetime.now().date().isoformat()
-    for ev in events:
-        # Only flag events that are still UPCOMING (no actual released yet) --
-        # once CPI/NFP actually prints, the uncertainty is gone.
-        if ev.get("actual"):
-            continue
-        date = (ev.get("date") or "")[:10]
-        event = ev.get("event", "")
-        impact = (ev.get("impact") or "").lower()
-        is_high = impact in ("high", "market") or any(k in event.lower() for k in _HIGH_IMPACT_EVENTS)
-        if date == today_str and is_high:
-            high_impact_today = f"{event} ({impact} impact) forecast {ev.get('forecast', '')}".strip()
-            break
-    result = {"events": events, "high_impact_today": high_impact_today, "_source": "live"}
+    result = _builtin_economic_calendar()
     _save_cache("eco_calendar.json", result)
     return result
 
 
-def _fallback_economic_calendar():
+def _builtin_economic_calendar():
     """
-    Built-in 2026 high-impact event calendar (FOMC decision days, CPI, and
-    Employment Situation/NFP -- all official scheduled dates) used when the
-    Finnhub feed is unavailable (free-tier keys get 403 on this endpoint).
-    Rebuilt at most every 6h; live Finnhub data, when it works, always takes
-    precedence over this table.
+    Built-in high-impact event calendar (official 2026 FOMC decision days,
+    CPI, and Employment Situation/NFP -- from federalreserve.gov and bls.gov
+    schedules) covering the next 14 days. No API, no fallback, never raises.
     """
-    cached = _load_cache("eco_calendar.json", 6)
-    if cached and cached.get("_source") == "fallback":
-        return cached
-
-    print(
-        "Economic calendar: Finnhub feed unavailable (paid tier required) "
-        "-- using built-in 2026 fallback (FOMC/CPI/NFP dates)."
-    )
     today = datetime.now().date()
     events = []
     for day in range(15):
@@ -199,14 +161,11 @@ def _fallback_economic_calendar():
                 "date": d, "event": name, "impact": "high",
                 "actual": None, "forecast": "n/a",
             })
-
     high_impact_today = None
     today_names = _FALLBACK_EVENTS_2026.get(today.isoformat())
     if today_names:
         high_impact_today = f"{today_names[0]} (high impact) forecast n/a"
-    result = {"events": events, "high_impact_today": high_impact_today, "_source": "fallback"}
-    _save_cache("eco_calendar.json", result)
-    return result
+    return {"events": events, "high_impact_today": high_impact_today, "_source": "builtin"}
 
 
 def high_impact_event_today():
@@ -229,7 +188,15 @@ def fetch_analyst_actions():
     """
     Returns {"actions": [{"symbol", "grade_time", "action", "from_grade",
     "to_grade", "company"}...]} from the last ~7 days of analyst actions.
+
+    Finnhub's /stock/upgrade-downgrade endpoint requires a PAID plan (free
+    keys get HTTP 403), so this feed is DISABLED by default
+    (ENABLE_ANALYST_ACTIONS=false) and returns empty without any API call --
+    the bot is free-plan accustomed with zero error spam. Re-enable only
+    with a paid Finnhub key.
     """
+    if not ENABLE_ANALYST_ACTIONS:
+        return {"actions": []}
     cached = _load_cache("analyst_actions.json", 6)
     if cached:
         return cached
