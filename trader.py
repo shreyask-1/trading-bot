@@ -11,7 +11,7 @@ import pytz
 import requests
 
 from alpaca.trading.client import TradingClient
-from alpaca.trading.requests import MarketOrderRequest, GetOrdersRequest
+from alpaca.trading.requests import MarketOrderRequest, LimitOrderRequest, GetOrdersRequest
 from alpaca.trading.enums import OrderSide, TimeInForce, QueryOrderStatus
 from alpaca.data.historical import StockHistoricalDataClient
 from alpaca.data.requests import StockLatestTradeRequest, StockBarsRequest
@@ -21,6 +21,7 @@ from alpaca.data.enums import DataFeed
 from config import (
     ALPACA_API_KEY,
     ALPACA_SECRET_KEY,
+    ALLOW_EXTENDED_HOURS,
     MAX_POSITION_PCT,
     ATR_STOP_MULTIPLIER,
     ATR_TAKE_PROFIT_MULTIPLIER,
@@ -126,6 +127,52 @@ def is_market_open():
     except Exception as e:
         print(f"Could not fetch market clock, assuming closed: {e}")
         return False
+
+def is_extended_session(now_et=None):
+    """
+    True during Alpaca's extended sessions: 4:00-9:30 AM and 4:00-8:00 PM ET
+    on weekdays. Pure local-time check (no API call); callers combine it with
+    the market clock for holiday/weekend awareness. 'now_et' is injectable
+    for tests.
+    """
+    if now_et is None:
+        now_et = datetime.now(pytz.utc).astimezone(_EASTERN)
+    if now_et.weekday() >= 5:
+        return False
+    t = now_et.time()
+    pre_open = datetime.strptime("04:00", "%H:%M").time()
+    open_t = datetime.strptime("09:30", "%H:%M").time()
+    close_t = datetime.strptime("16:00", "%H:%M").time()
+    after_close = datetime.strptime("20:00", "%H:%M").time()
+    return (pre_open <= t < open_t) or (close_t <= t < after_close)
+
+
+def is_trading_session():
+    """
+    True when the bot may propose/execute NEW trades right now: the regular
+    session (9:30-16:00 ET) always counts; when ALLOW_EXTENDED_HOURS is on,
+    the extended sessions (4:00-9:30 and 16:00-20:00 ET) count too. Guards
+    against weekend/holiday drift: when the clock says the market is closed
+    and the next regular open is more than 16h away, no session is live.
+    """
+    try:
+        clock = trading_client.get_clock()
+        if clock.is_open:
+            return True
+        if not ALLOW_EXTENDED_HOURS:
+            return False
+        try:
+            next_open = getattr(clock, "next_open", None)
+            if next_open is not None:
+                if getattr(next_open, "tzinfo", None) is None:
+                    next_open = _EASTERN.localize(next_open)
+                if (next_open.astimezone(pytz.utc) - datetime.now(pytz.utc)) > timedelta(hours=16):
+                    return False  # weekend or holiday gap -- no session
+        except Exception:
+            pass
+        return is_extended_session()
+    except Exception:
+        return is_extended_session()
 
 def get_market_regime():
     """
@@ -1286,11 +1333,20 @@ def is_within_trade_window():
         open_t = datetime.strptime("09:30", "%H:%M").time()
         start_t = (datetime.combine(datetime.now().date(), open_t) + timedelta(minutes=TRADE_START_MINUTES_AFTER_OPEN)).time()
         stop_t = datetime.strptime(STOP_NEW_BUYS_AFTER, "%H:%M").time()
+        # The extended session is always in-window when extended hours are
+        # allowed (after-hours entries are wanted; fills use limit orders).
+        if ALLOW_EXTENDED_HOURS and is_extended_session(now_et):
+            return True
         if t < open_t:
             return False
         if t < start_t:
             return False
         if t > stop_t:
+            return False
+        # Outside the regular session and not in the extended session (the
+        # dead zone, e.g. 9-10 PM): no entries.
+        close_t = datetime.strptime("16:00", "%H:%M").time()
+        if t >= close_t:
             return False
         return True
     except Exception:
@@ -1754,12 +1810,34 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
         return {"ticker": ticker, "status": "failed", "reason": f"unknown action '{action}'"}
 
     try:
-        order_request = MarketOrderRequest(
-            symbol=ticker,
-            qty=qty,
-            side=side,
-            time_in_force=TimeInForce.DAY,
-        )
+        # Extended-hours trading: Alpaca's extended session (4:00-9:30 AM and
+        # 4:00-8:00 PM ET) REJECTS market orders -- only LIMIT orders with
+        # extended_hours=True are accepted. So whenever the regular session is
+        # closed (and ALLOW_EXTENDED_HOURS is on) we submit a limit order at
+        # the last traded price. Outside any session Alpaca holds it and
+        # enters it at the next eligible session (4 AM) instead of queueing a
+        # market order to the 9:30 open (the 2026-08-07 failure mode).
+        use_extended = False
+        try:
+            use_extended = bool(ALLOW_EXTENDED_HOURS) and not bool(trading_client.get_clock().is_open)
+        except Exception:
+            use_extended = False
+        if use_extended:
+            order_request = LimitOrderRequest(
+                symbol=ticker,
+                qty=qty,
+                side=side,
+                time_in_force=TimeInForce.DAY,
+                limit_price=price,
+                extended_hours=True,
+            )
+        else:
+            order_request = MarketOrderRequest(
+                symbol=ticker,
+                qty=qty,
+                side=side,
+                time_in_force=TimeInForce.DAY,
+            )
         order = trading_client.submit_order(order_request)
         _record_cooldown(ticker)
 
