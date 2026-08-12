@@ -60,6 +60,12 @@ from config import (
     OPENING_RANGE_BARS,
     TRADE_START_MINUTES_AFTER_OPEN,
     STOP_NEW_BUYS_AFTER,
+    MAX_BUY_EXTENSION_ABOVE_VWAP_PCT,
+    MAX_INTRADAY_MOVE_PCT,
+    TRAILING_STOP_ACTIVATE_MULT,
+    TRAILING_STOP_DISTANCE_MULT,
+    MAX_RISK_PER_TRADE_PCT,
+    TIME_OF_DAY_MULTIPLIERS,
 )
 import indicators as ind
 from market_regime import evaluate_market_regime
@@ -73,6 +79,9 @@ CUSTOM_EXITS_FILE = os.path.join(os.path.dirname(__file__), "logs", "custom_exit
 RISK_STATE_FILE = os.path.join(os.path.dirname(__file__), "logs", "risk_state.json")
 ORDER_LEDGER_FILE = os.path.join(os.path.dirname(__file__), "logs", "bot_order_ledger.json")
 RECON_STATE_FILE = os.path.join(os.path.dirname(__file__), "logs", "reconciliation_state.json")
+TRADES_JOURNAL_FILE = os.path.join(os.path.dirname(__file__), "logs", "trades_journal.csv")
+TRADE_RESULTS_FILE = os.path.join(os.path.dirname(__file__), "logs", "trade_results.csv")
+OPEN_TRADES_FILE = os.path.join(os.path.dirname(__file__), "logs", "open_trades.json")
 
 _FEED_MAP = {"iex": DataFeed.IEX, "sip": DataFeed.SIP, "otc": DataFeed.OTC}
 DATA_FEED = _FEED_MAP.get(ALPACA_DATA_FEED.lower(), DataFeed.IEX)
@@ -167,12 +176,34 @@ def get_intraday_indicators(ticker):
         lows = [b.low for b in bars]
         volumes = [b.volume for b in bars]
 
-        typical_prices = [(h + l + c) / 3 for h, l, c in zip(highs, lows, closes)]
-        total_volume = sum(volumes) or 1
-        vwap = sum(tp * v for tp, v in zip(typical_prices, volumes)) / total_volume
+        # Today's Eastern session bars only -- session open / VWAP / momentum
+        # must be measured against TODAY's open, not a 2-day-old close. (This
+        # was a bug: intraday_momentum_pct was % vs a 2-day-old anchor, which
+        # made the VWAP/momentum numbers in the prompt and filters misleading.)
+        today_et = datetime.now(pytz.utc).astimezone(_EASTERN).strftime("%Y-%m-%d")
+        session_bars = []
+        for b in bars:
+            ts = b.timestamp
+            if ts.tzinfo is None:
+                ts = pytz.utc.localize(ts)
+            if ts.astimezone(_EASTERN).strftime("%Y-%m-%d") == today_et:
+                session_bars.append(b)
+
+        if session_bars:
+            session_open = session_bars[0].open
+            sp = [((b.high + b.low + b.close) / 3) * b.volume for b in session_bars]
+            sv = sum(b.volume for b in session_bars)
+            vwap = (sum(sp) / sv) if sv else None
+        else:
+            # Pre-open fallback: session not started yet -- anchor to the last
+            # close so the fields are still populated (bot won't buy pre-open
+            # anyway due to the market-hours gate).
+            session_open = closes[-1]
+            typical_prices = [(h + l + c) / 3 for h, l, c in zip(highs, lows, closes)]
+            total_volume = sum(volumes) or 1
+            vwap = sum(tp * v for tp, v in zip(typical_prices, volumes)) / total_volume
 
         current_price = closes[-1]
-        session_open = closes[0]
         intraday_momentum_pct = (
             round(((current_price - session_open) / session_open) * 100, 2)
             if session_open else None
@@ -478,11 +509,18 @@ def evaluate_circuit_breakers(account_snapshot):
         state["halted"] = False
         state["halt_reason"] = ""
 
+    # Both "stop the day" breakers are opt-in (config defaults to 0 = off).
+    # If both are disabled, never let a stale 'halted' flag from a previous
+    # config/day keep the bot from trading.
+    if DAILY_LOSS_HALT_PCT <= 0 and MAX_DRAWDOWN_FLATTEN_PCT <= 0:
+        state["halted"] = False
+        state["halt_reason"] = ""
+
     day_start = state.get("day_start_equity")
     daily_pl_pct = 0.0
     if day_start:
         daily_pl_pct = (equity - day_start) / day_start * 100.0
-        if daily_pl_pct <= -DAILY_LOSS_HALT_PCT:
+        if DAILY_LOSS_HALT_PCT > 0 and daily_pl_pct <= -DAILY_LOSS_HALT_PCT:
             state["halted"] = True
             state["halt_reason"] = (
                 f"daily loss {daily_pl_pct:.1f}% >= limit {DAILY_LOSS_HALT_PCT}%"
@@ -493,7 +531,7 @@ def evaluate_circuit_breakers(account_snapshot):
     if peak:
         drawdown_pct = (peak - equity) / peak * 100.0
 
-    if drawdown_pct >= MAX_DRAWDOWN_FLATTEN_PCT:
+    if MAX_DRAWDOWN_FLATTEN_PCT > 0 and drawdown_pct >= MAX_DRAWDOWN_FLATTEN_PCT:
         state["halted"] = True
         state["halt_reason"] = (
             f"drawdown {drawdown_pct:.1f}% >= flatten threshold "
@@ -563,7 +601,7 @@ def enforce_deleveraging(account_snapshot):
             "reasoning": reason,
             "conviction": 10,
         }
-        result = execute_trade(trade, account_snapshot)
+        result = execute_trade(trade, account_snapshot, trigger="deleveraging")
         result["trigger"] = "deleveraging"
         if result.get("status") == "submitted":
             projected_cash += notional
@@ -582,6 +620,130 @@ def notify(message):
         requests.post(DISCORD_WEBHOOK_URL, json={"content": message[:1900]}, timeout=10)
     except Exception as e:
         print(f"Could not send alert: {e}")
+
+# ============================================================
+# Trade journal & results (win rate by setup)
+# ============================================================
+JOURNAL_HEADER = [
+    "timestamp", "ticker", "action", "qty", "price",
+    "stop_loss", "take_profit", "conviction", "trigger", "reasoning",
+]
+RESULTS_HEADER = [
+    "closed_at", "opened_at", "ticker", "entry_price", "exit_price",
+    "qty", "pnl_pct", "pnl_dollars", "setup", "exit_reason",
+]
+
+
+def _append_csv(path, header, row):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    new = not os.path.exists(path)
+    with open(path, "a", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=header)
+        if new:
+            writer.writeheader()
+        writer.writerow(row)
+
+
+def _record_trade_journal(ticker, action, qty, price, stop_loss, take_profit, conviction, trigger, reasoning):
+    """Append one row per fill to logs/trades_journal.csv."""
+    try:
+        _append_csv(TRADES_JOURNAL_FILE, JOURNAL_HEADER, {
+            "timestamp": datetime.now().isoformat(),
+            "ticker": ticker,
+            "action": action,
+            "qty": qty,
+            "price": price,
+            "stop_loss": stop_loss if stop_loss is not None else "",
+            "take_profit": take_profit if take_profit is not None else "",
+            "conviction": conviction,
+            "trigger": trigger,
+            "reasoning": (reasoning or "")[:200],
+        })
+    except Exception as e:
+        print(f"Could not write trade journal: {e}")
+
+
+def _track_open_close(ticker, action, qty, price, stop_loss, take_profit, trigger, reasoning):
+    """Pair buys with sells to build closed-trade results (win rate by setup)."""
+    try:
+        open_trades = _load_json_file(OPEN_TRADES_FILE, {})
+        now_iso = datetime.now().isoformat()
+        if action == "buy":
+            prev = open_trades.get(ticker)
+            total_qty = qty + (prev["qty"] if prev else 0.0)
+            if prev and prev["qty"] > 0:
+                entry = (prev["entry"] * prev["qty"] + price * qty) / total_qty
+            else:
+                entry = price
+            open_trades[ticker] = {
+                "qty": total_qty,
+                "entry": entry,
+                "opened_at": prev["opened_at"] if prev else now_iso,
+                "setup": prev["setup"] if prev else (reasoning or ""),
+                "stop": prev["stop"] if prev else stop_loss,
+            }
+        elif action == "sell":
+            prev = open_trades.get(ticker)
+            if prev and prev["qty"] > 0:
+                remaining = prev["qty"] - qty
+                pnl_pct = (price - prev["entry"]) / prev["entry"] * 100.0 if prev["entry"] else 0.0
+                pnl_dollars = (price - prev["entry"]) * qty
+                if remaining <= 0.01:
+                    _append_csv(TRADE_RESULTS_FILE, RESULTS_HEADER, {
+                        "closed_at": now_iso,
+                        "opened_at": prev["opened_at"],
+                        "ticker": ticker,
+                        "entry_price": round(prev["entry"], 4),
+                        "exit_price": price,
+                        "qty": prev["qty"],
+                        "pnl_pct": round(pnl_pct, 2),
+                        "pnl_dollars": round(pnl_dollars, 2),
+                        "setup": (prev.get("setup") or "")[:200],
+                        "exit_reason": trigger,
+                    })
+                    open_trades.pop(ticker, None)
+                else:
+                    prev["qty"] = remaining
+        _save_json_file(OPEN_TRADES_FILE, open_trades)
+    except Exception as e:
+        print(f"Could not track open/close positions: {e}")
+
+
+def summarize_trade_results():
+    """Read closed-trade results and summarize win rate by setup type."""
+    if not os.path.exists(TRADE_RESULTS_FILE):
+        return "no closed trades yet"
+    try:
+        with open(TRADE_RESULTS_FILE) as f:
+            rows = list(csv.DictReader(f))
+    except (OSError, csv.Error):
+        return "could not read trade_results.csv"
+    if not rows:
+        return "no closed trades yet"
+
+    by_setup = {}
+    for r in rows:
+        setup = (r.get("setup") or "").lower()
+        if "news" in setup:
+            cat = "news"
+        elif "opening-range" in setup or "breakout" in setup:
+            cat = "breakout"
+        elif "technical" in setup or "score" in setup:
+            cat = "technical"
+        else:
+            cat = "other"
+        by_setup.setdefault(cat, []).append(float(r.get("pnl_pct", 0) or 0))
+    total = [float(r.get("pnl_pct", 0) or 0) for r in rows]
+
+    def _fmt(name, plist):
+        wins = sum(1 for p in plist if p > 0)
+        avg = sum(plist) / max(1, len(plist))
+        return f"{name}: {len(plist)} trades, {wins / max(1, len(plist)) * 100:.0f}% win rate, avg {avg:+.2f}%"
+
+    parts = [_fmt("all", total)]
+    for cat in sorted(by_setup):
+        parts.append(_fmt(cat, by_setup[cat]))
+    return " | ".join(parts)
 
 # ============================================================
 # Second-trader / foreign-activity detection
@@ -704,7 +866,7 @@ def flatten_portfolio(account_snapshot, reason="Circuit breaker: flattening port
             "reasoning": reason,
             "conviction": 10,
         }
-        result = execute_trade(trade, account_snapshot)
+        result = execute_trade(trade, account_snapshot, trigger=trigger)
         result["trigger"] = trigger
         results.append(result)
     return results
@@ -745,6 +907,26 @@ def is_within_trade_window():
         return True
     except Exception:
         return True
+
+def get_time_of_day_multiplier(now_et=None):
+    """
+    Daytrading edge windows: full size in the open power hour and the closing
+    push, reduced size through the lunch lull. Sells are never affected.
+    Returns 1.0 when DAYTRADE_MODE is off. 'now_et' is injectable for tests.
+    """
+    if not DAYTRADE_MODE:
+        return 1.0
+    try:
+        if now_et is None:
+            now_et = datetime.now(pytz.utc).astimezone(_EASTERN)
+        minutes = now_et.hour * 60 + now_et.minute
+        for (sh, sm, eh, em), mult in TIME_OF_DAY_MULTIPLIERS.items():
+            if sh * 60 + sm <= minutes < eh * 60 + em:
+                return mult
+        return 0.8
+    except Exception:
+        return 1.0
+
 
 def _load_cooldowns():
     if not os.path.exists(COOLDOWN_FILE):
@@ -808,23 +990,37 @@ def _clamp_take_profit(entry_price, atr, candidate_tp):
     distance = max(min_dist, min(distance, max_dist))
     return round(entry_price + distance, 2)
 
-def _record_custom_exit(ticker, trade, entry_price):
+def _compute_exit_levels(ticker, trade, entry_price, ind=None):
+    """
+    Compute this trade's stop-loss / take-profit from ITS OWN setup: recent
+    swing high/low clamped to a sane ATR multiple, or Gemini's explicit
+    stop_loss/take_profit when provided (and allowed). Returns
+    (stop_loss, take_profit) -- either may be None if no ATR/history exists.
+
+    'ind' is an optional precomputed get_full_indicators() dict (avoids a
+    duplicate price-history fetch when the caller already has it).
+    """
     atr = None
     swing_low = swing_high = None
-    try:
-        # FIX: get_price_history() returns None unless there are 55+ bars, so
-        # a 30-day fetch ALWAYS came back empty and custom exits were silently
-        # never saved -- Gemini's stop_loss/take_profit values were dead code.
-        # Use the full default lookback so ATR/swing levels can actually be
-        # computed and persisted.
-        history = get_price_history(ticker)
-        if history:
-            atr = ind.compute_atr(history["highs"], history["lows"], history["closes"], period=ATR_PERIOD)
-            window = min(SWING_LOOKBACK_DAYS, len(history["lows"]))
-            swing_low = min(history["lows"][-window:])
-            swing_high = max(history["highs"][-window:])
-    except Exception as e:
-        print(f"Could not compute chart-based exit levels for {ticker}: {e}")
+    if ind is not None:
+        atr = ind.get("atr_14")
+        swing_low = ind.get(f"recent_swing_low_{SWING_LOOKBACK_DAYS}d")
+        swing_high = ind.get(f"recent_swing_high_{SWING_LOOKBACK_DAYS}d")
+    if atr is None or swing_low is None or swing_high is None:
+        try:
+            # FIX: get_price_history() returns None unless there are 55+ bars, so
+            # a 30-day fetch ALWAYS came back empty and custom exits were silently
+            # never saved -- Gemini's stop_loss/take_profit values were dead code.
+            # Use the full default lookback so ATR/swing levels can actually be
+            # computed and persisted.
+            history = get_price_history(ticker)
+            if history:
+                atr = ind.compute_atr(history["highs"], history["lows"], history["closes"], period=ATR_PERIOD)
+                window = min(SWING_LOOKBACK_DAYS, len(history["lows"]))
+                swing_low = min(history["lows"][-window:])
+                swing_high = max(history["highs"][-window:])
+        except Exception as e:
+            print(f"Could not compute chart-based exit levels for {ticker}: {e}")
 
     gemini_stop = trade.get("stop_loss") if ALLOW_GEMINI_CUSTOM_EXITS else None
     gemini_tp = trade.get("take_profit") if ALLOW_GEMINI_CUSTOM_EXITS else None
@@ -839,7 +1035,14 @@ def _record_custom_exit(ticker, trade, entry_price):
         stop_loss = round(entry_price - ATR_STOP_MULTIPLIER * atr, 2)
     if take_profit is None and atr:
         take_profit = round(entry_price + ATR_TAKE_PROFIT_MULTIPLIER * atr, 2)
+    return stop_loss, take_profit
 
+
+def _record_custom_exit(ticker, trade, entry_price, levels=None):
+    """Persist precomputed (or freshly computed) exit levels for a position."""
+    if levels is None:
+        levels = _compute_exit_levels(ticker, trade, entry_price)
+    stop_loss, take_profit = levels
     if stop_loss is None or take_profit is None:
         return None
 
@@ -858,6 +1061,7 @@ def check_atr_stop_take_profit(account_snapshot):
     open_order_tickers = get_tickers_with_open_orders()
     custom_exits = _load_custom_exits()
     holdings = account_snapshot["holdings"]
+    exits_modified = False
 
     for ticker, pos in holdings.items():
         if ticker in open_order_tickers:
@@ -865,13 +1069,14 @@ def check_atr_stop_take_profit(account_snapshot):
         entry = pos["avg_entry_price"]
         current = pos["current_price"]
 
+        indicators_data = get_full_indicators(ticker)
+        atr = indicators_data["atr_14"] if indicators_data else None
+
         custom = custom_exits.get(ticker)
         if custom and custom.get("stop_loss") is not None and custom.get("take_profit") is not None:
             stop_level = custom["stop_loss"]
             target_level = custom["take_profit"]
         else:
-            indicators_data = get_full_indicators(ticker)
-            atr = indicators_data["atr_14"] if indicators_data else None
             if atr is None:
                 # Never let a data hiccup leave a position unprotected: fall
                 # back to a hard %-of-entry loss cap instead of skipping.
@@ -880,6 +1085,26 @@ def check_atr_stop_take_profit(account_snapshot):
             else:
                 stop_level = entry - (ATR_STOP_MULTIPLIER * atr)
                 target_level = entry + (ATR_TAKE_PROFIT_MULTIPLIER * atr)
+
+        # Trailing stop: once the position is up TRAILING_STOP_ACTIVATE_MULT x
+        # ATR from entry, ratchet the stop up to (best price -
+        # TRAILING_STOP_DISTANCE_MULT x ATR). The stop only ever moves up, so
+        # winners are banked instead of given back. Persisted in custom_exits.
+        if atr and atr > 0 and current >= entry + TRAILING_STOP_ACTIVATE_MULT * atr:
+            best_price = max(float(custom.get("best_price", entry)) if custom else entry, current)
+            trail_stop = round(max(stop_level, best_price - TRAILING_STOP_DISTANCE_MULT * atr), 2)
+            if trail_stop > stop_level:
+                if custom is None:
+                    custom = {
+                        "stop_loss": stop_level,
+                        "take_profit": target_level,
+                        "entry_price": entry,
+                    }
+                    custom_exits[ticker] = custom
+                custom["stop_loss"] = trail_stop
+                custom["best_price"] = best_price
+                stop_level = trail_stop
+                exits_modified = True
 
         # Hard per-position loss cap, always enforced regardless of ATR/indicators.
         hard_stop = entry * (1.0 - MAX_POSITION_LOSS_PCT / 100.0)
@@ -894,10 +1119,18 @@ def check_atr_stop_take_profit(account_snapshot):
 
         if reason:
             trade = {"ticker": ticker, "action": "sell", "dollar_amount": 0, "reasoning": reason, "conviction": 10}
-            result = execute_trade(trade, account_snapshot)
-            result["trigger"] = "risk_management"
+            if "Take-profit" in reason:
+                exit_trigger = "take_profit"
+            elif "Hard loss cap" in reason:
+                exit_trigger = "hard_loss_cap"
+            else:
+                exit_trigger = "stop_loss"
+            result = execute_trade(trade, account_snapshot, trigger=exit_trigger)
+            result["trigger"] = exit_trigger
             results.append(result)
 
+    if exits_modified:
+        _save_custom_exits(custom_exits)
     _prune_custom_exits(holdings)
     return results
 
@@ -925,17 +1158,19 @@ def enforce_portfolio_consolidation(account_snapshot):
         if score < CONSOLIDATION_SCORE_THRESHOLD:
             reason = f"Consolidation exit: score {round(score, 1)} < threshold ({CONSOLIDATION_SCORE_THRESHOLD})"
             trade = {"ticker": ticker, "action": "sell", "dollar_amount": 0, "reasoning": reason, "conviction": 10}
-            result = execute_trade(trade, account_snapshot)
+            result = execute_trade(trade, account_snapshot, trigger="portfolio_consolidation")
             result["trigger"] = "portfolio_consolidation"
             results.append(result)
 
     return results
 
-def execute_trade(trade, account_snapshot=None, size_multiplier=1.0):
+def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=None):
     ticker = trade["ticker"]
     action = trade["action"].lower()
     requested_amount = float(trade.get("dollar_amount") or 0)
     conviction = max(1, min(10, int(trade.get("conviction", 5))))
+    if trigger is None:
+        trigger = str(trade.get("trigger", "decision"))
 
     if account_snapshot is None:
         account_snapshot = get_account_snapshot()
@@ -966,6 +1201,32 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0):
                 "reason": f"max open positions reached ({MAX_OPEN_POSITIONS})",
             }
 
+        # Chase filters: skip buys into a name already extended on the day --
+        # buying after a big move is how daytrading profits get given back.
+        # Config value <= 0 disables each filter. Sells are never filtered.
+        try:
+            ind_data = get_full_indicators(ticker)
+        except Exception as e:
+            print(f"Could not fetch indicators for chase filters on {ticker} (continuing without them): {e}")
+            ind_data = None
+        if MAX_BUY_EXTENSION_ABOVE_VWAP_PCT > 0 and ind_data:
+            vwap = ind_data.get("vwap")
+            if vwap and vwap > 0 and price > vwap * (1 + MAX_BUY_EXTENSION_ABOVE_VWAP_PCT / 100.0):
+                pct_above = (price / vwap - 1) * 100.0
+                return {
+                    "ticker": ticker,
+                    "status": "skipped",
+                    "reason": f"chase filter: price {price:.2f} is {pct_above:.1f}% above VWAP {vwap:.2f} (limit {MAX_BUY_EXTENSION_ABOVE_VWAP_PCT}%)",
+                }
+        if MAX_INTRADAY_MOVE_PCT > 0 and ind_data:
+            intraday_move = ind_data.get("intraday_momentum_pct")
+            if intraday_move is not None and intraday_move > MAX_INTRADAY_MOVE_PCT:
+                return {
+                    "ticker": ticker,
+                    "status": "skipped",
+                    "reason": f"chase filter: already up {intraday_move:.1f}% on the session (limit {MAX_INTRADAY_MOVE_PCT}%)",
+                }
+
         max_allowed = total_value * MAX_POSITION_PCT * (conviction / 10.0) * size_multiplier
         target_room = max(0.0, max_allowed - current_position_value)
 
@@ -974,6 +1235,10 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0):
             buy_target = target_room
         else:
             buy_target = min(requested_amount, target_room)
+
+        # Time-of-day sizing: full size in the high-edge windows, smaller
+        # through the lunch lull. Sells are never affected by this.
+        buy_target *= get_time_of_day_multiplier()
 
         base_reserve = total_value * MIN_CASH_RESERVE_PCT
         is_exceptional = conviction >= EXCEPTIONAL_CONVICTION_THRESHOLD
@@ -996,6 +1261,21 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0):
         exposure_room = max(0.0, total_value * MAX_TOTAL_EXPOSURE_PCT - current_exposure)
 
         amount = min(buy_target, available_cash, exposure_room)
+
+        # Risk-based sizing: cap the position so a stop-out costs at most
+        # MAX_RISK_PER_TRADE_PCT of equity, using THIS trade's real stop
+        # distance (tight stop = bigger size, wide stop = smaller size).
+        exit_levels = None
+        if MAX_RISK_PER_TRADE_PCT > 0:
+            exit_levels = _compute_exit_levels(ticker, trade, price, ind=ind_data)
+            stop_for_risk = exit_levels[0] if exit_levels else None
+            risk_budget = total_value * MAX_RISK_PER_TRADE_PCT / 100.0
+            if stop_for_risk is not None and price > stop_for_risk:
+                stop_frac = (price - stop_for_risk) / price
+            else:
+                stop_frac = MAX_POSITION_LOSS_PCT / 100.0  # assume hard-cap distance
+            if stop_frac > 0:
+                amount = min(amount, risk_budget / stop_frac)
 
         if amount < MIN_TRADE_DOLLAR_AMOUNT:
             return {
@@ -1032,10 +1312,11 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0):
 
         # Per-trade custom stop-loss / take-profit: computed from THIS trade's
         # own setup (swing levels clamped by ATR, or Gemini's levels), saved to
-        # custom_exits.json and enforced by check_atr_stop_take_profit.
+        # custom_exits.json and enforced by check_atr_stop_take_profit. Reuses
+        # the levels already computed for risk-based sizing (no second fetch).
         stop_loss = take_profit = None
         if side == OrderSide.BUY:
-            custom = _record_custom_exit(ticker, trade, price)
+            custom = _record_custom_exit(ticker, trade, price, levels=exit_levels)
             if custom:
                 stop_loss = custom.get("stop_loss")
                 take_profit = custom.get("take_profit")
@@ -1049,6 +1330,16 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0):
             "order_id": str(order.id),
             "order_status": str(order.status),
         })
+
+        # Trade journal: record every fill, then pair buys/sells into
+        # closed-trade results so win rate by setup can be measured.
+        _record_trade_journal(
+            ticker=ticker, action=action, qty=qty, price=price,
+            stop_loss=stop_loss, take_profit=take_profit,
+            conviction=conviction, trigger=trigger,
+            reasoning=trade.get("reasoning", ""),
+        )
+        _track_open_close(ticker, action, qty, price, stop_loss, take_profit, trigger, trade.get("reasoning", ""))
 
         return {
             "timestamp": datetime.now().isoformat(),
