@@ -1,0 +1,59 @@
+# Pre-market briefing: gathers scored news + chart setups + earnings calendar
+# and makes exactly ONE Gemini call per day to decide what matters for today.
+# Two scheduled times (12:00 & 13:00 UTC) cover DST shifts so one lands ~1-2h
+# before the 9:30 ET open; morning_prep.py guards so only one Gemini call
+# happens per calendar day regardless of how often the workflow runs.
+name: Morning Prep
+
+on:
+  schedule:
+    - cron: "0 12,13 * * 1-5"
+  workflow_dispatch: {}
+
+concurrency:
+  group: trading-bot-prep
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  morning-prep:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+          cache: "pip"
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run morning prep
+        env:
+          FINNHUB_API_KEY: ${{ secrets.FINNHUB_API_KEY }}
+          GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
+          ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
+          ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+        run: python morning_prep.py
+
+      - name: Commit and push briefing
+        if: always()
+        run: |
+          git config user.name "trading-bot"
+          git config user.email "trading-bot@users.noreply.github.com"
+
+          git add logs/ data/
+
+          if git diff --staged --quiet; then
+            echo "No prep changes to commit."
+          else
+            git commit -m "Update morning briefing and earnings calendar [skip ci]"
+            git pull --rebase --autostash origin main
+            git push
+          fi
