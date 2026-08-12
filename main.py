@@ -63,7 +63,7 @@ def run():
     log_lines = [f"=== Run at {timestamp.isoformat()} ==="]
 
     market_open = is_market_open()
-        log_lines.append(f"Cash: ${account['cash']:,.2f} | Holdings ({len(account['holdings'])}): {holdings_summary or 'none'})")
+            log_lines.append(f"Cash: ${account['cash']:,.2f} | Holdings ({len(account['holdings'])}): {holdings_summary or 'none'}")
     try:
         account = get_account_snapshot()
     except Exception as e:
