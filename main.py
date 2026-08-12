@@ -46,6 +46,7 @@ from trader import (
     reconcile_foreign_activity,
     should_end_of_day_flatten,
     is_within_trade_window,
+    summarize_trade_results,
 )
 from news import get_news_candidates
 from decide import get_trade_decisions
@@ -175,8 +176,9 @@ def run():
             log_lines.append(f"End-of-day flatten step failed (continuing anyway): {e}")
 
     # Step 1d: flatten everything if the deep-drawdown circuit breaker fired.
+    # (Opt-in: MAX_DRAWDOWN_FLATTEN_PCT defaults to 0 = disabled.)
     flatten_exits = 0
-    if drawdown_pct >= MAX_DRAWDOWN_FLATTEN_PCT:
+    if MAX_DRAWDOWN_FLATTEN_PCT > 0 and drawdown_pct >= MAX_DRAWDOWN_FLATTEN_PCT:
         try:
             flatten_sells = flatten_portfolio(account)
             flatten_exits = len(flatten_sells)
@@ -297,6 +299,13 @@ def run():
         log_lines.append(f"Ending portfolio value: ${final_account['total_value']:,.2f}")
     except Exception as e:
         log_lines.append(f"Could not record performance snapshot: {e}")
+
+    # Step 6b: win rate by setup, from the closed-trade journal.
+    try:
+        summary = summarize_trade_results()
+        log_lines.append(f"Trade journal: {summary}")
+    except Exception as e:
+        log_lines.append(f"Could not summarize trade results: {e}")
 
     log_lines.append("")
     _write_log(log_lines, timestamp)
