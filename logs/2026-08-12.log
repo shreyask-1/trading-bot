@@ -11509,3 +11509,19 @@ Ending portfolio value: $99,257.90
 Trade journal: no closed trades yet
 Performance: Total return -0.58% | Max drawdown 12.37% | Daily Sharpe 0.25 | Open positions: 0 | Equity $99,257.90
 
+=== Run at 2026-08-12T23:04:27.069042 ===
+Current time: 2026-08-12 07:04 PM EDT | Market open (per Alpaca): False | Session: EXTENDED
+Account value: $99,257.90
+Cash: $99,257.90 | Holdings (0): none
+Open orders (3): GPN buy 22.4236, COO buy 41.4168, GILD buy 23.3789
+Risk state: peak $99,257.90 | drawdown 0.00% | today +0.00% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 60% incl. circuit breaker 100%)
+News: fetched 60, 1 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 33/46 candidates passed.
+Gemini proposed 1 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 10
+  -> {"timestamp": "2026-08-12T23:04:34.478882", "ticker": "COR", "action": "buy", "qty": 10.109, "conviction": 9, "size_multiplier": 0.6, "order_id": "715a8837-32fd-470a-bb85-33d1d5c423c6", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": 301.69, "take_profit": 333.91, "reasoning": "Strong quant score of 95/100. Despite a gap down, the stock maintains a solid uptrend with high ADX of 29. Buying the dip near support levels for a potential reversal.", "status": "submitted"}
+Ending portfolio value: $99,257.90
+Trade journal: no closed trades yet
+Performance: Total return -0.58% | Max drawdown 12.37% | Daily Sharpe 0.25 | Open positions: 0 | Equity $99,257.90
+
