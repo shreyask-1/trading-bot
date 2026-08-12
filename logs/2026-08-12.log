@@ -5256,3 +5256,27 @@ Ending portfolio value: $99,257.90
 Trade journal: no closed trades yet
 Performance: Total return -0.58% | Max drawdown 12.37% | Daily Sharpe 0.25 | Open positions: 0 | Equity $99,257.90
 
+=== Run at 2026-08-12T13:52:29.350333 ===
+Current time: 2026-08-12 09:52 AM EDT | Market open (per Alpaca): True
+Account value: $99,257.90
+Cash: $99,257.90 | Holdings (0): none
+  !! FOREIGN ACTIVITY: AAPL holds 0.0000 sh but this bot should own 12.8012 sh (diff -12.8012). Someone/something else is trading this account.
+  !! FOREIGN ACTIVITY: AMZN holds 0.0000 sh but this bot should own 25.4179 sh (diff -25.4179). Someone/something else is trading this account.
+  !! FOREIGN ACTIVITY: COP holds 0.0000 sh but this bot should own 63.8341 sh (diff -63.8341). Someone/something else is trading this account.
+  !! FOREIGN ACTIVITY: COST holds 0.0000 sh but this bot should own 7.8517 sh (diff -7.8517). Someone/something else is trading this account.
+  !! FOREIGN ACTIVITY: DIS holds 0.0000 sh but this bot should own 66.8769 sh (diff -66.8769). Someone/something else is trading this account.
+  !! FOREIGN ACTIVITY: GOOGL holds 0.0000 sh but this bot should own 20.8177 sh (diff -20.8177). Someone/something else is trading this account.
+  !! FOREIGN ACTIVITY: HD holds 0.0000 sh but this bot should own 34.1034 sh (diff -34.1034). Someone/something else is trading this account.
+  !! FOREIGN ACTIVITY: LMT holds 0.0000 sh but this bot should own 20.7665 sh (diff -20.7665). Someone/something else is trading this account.
+  !! FOREIGN ACTIVITY: MA holds 0.0000 sh but this bot should own 15.7159 sh (diff -15.7159). Someone/something else is trading this account.
+  !! FOREIGN ACTIVITY: META holds 0.0000 sh but this bot should own 12.7120 sh (diff -12.7120). Someone/something else is trading this account.
+  !! FOREIGN ACTIVITY: MSFT holds 0.0000 sh but this bot should own 14.9990 sh (diff -14.9990). Someone/something else is trading this account.
+  !! FOREIGN ACTIVITY: TSLA holds 0.0000 sh but this bot should own 13.0184 sh (diff -13.0184). Someone/something else is trading this account.
+Risk state: peak $99,809.74 | drawdown 0.55% | today +12.29% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 60% incl. circuit breaker 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Decision step failed, no trades this run: 'conf_min'
+Ending portfolio value: $99,257.90
+Trade journal: no closed trades yet
+Performance: Total return -0.58% | Max drawdown 12.37% | Daily Sharpe 0.25 | Open positions: 0 | Equity $99,257.90
+
