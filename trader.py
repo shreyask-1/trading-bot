@@ -66,6 +66,24 @@ from config import (
     TRAILING_STOP_DISTANCE_MULT,
     MAX_RISK_PER_TRADE_PCT,
     TIME_OF_DAY_MULTIPLIERS,
+    CONFIDENCE_SIZING,
+    CONFIDENCE_MIN_TO_TRADE,
+    ENABLE_MA_BREAKDOWN_EXIT,
+    ENABLE_RSI_EXHAUSTION_EXIT,
+    RSI_EXHAUSTION_LEVEL,
+    ENABLE_NEGATIVE_NEWS_EXIT,
+    NEGATIVE_NEWS_SENTIMENT_THRESHOLD,
+    MARKET_VIX_STRESS_LEVEL,
+    MARKET_VIX_SEVERE_LEVEL,
+    ENABLE_ECONOMIC_CALENDAR,
+    HIGH_IMPACT_EVENT_SIZE_MULT,
+    EARNINGS_PROXIMITY_DAYS,
+    EARNINGS_PROXIMITY_SIZE_MULT,
+    SELF_LEARNING_ENABLED,
+    SETUP_MULT_MIN,
+    SETUP_MULT_MAX,
+    SELF_LEARNING_MIN_SAMPLES,
+    SELF_LEARNING_EDGE_MIN,
 )
 import indicators as ind
 from market_regime import evaluate_market_regime
@@ -82,6 +100,8 @@ RECON_STATE_FILE = os.path.join(os.path.dirname(__file__), "logs", "reconciliati
 TRADES_JOURNAL_FILE = os.path.join(os.path.dirname(__file__), "logs", "trades_journal.csv")
 TRADE_RESULTS_FILE = os.path.join(os.path.dirname(__file__), "logs", "trade_results.csv")
 OPEN_TRADES_FILE = os.path.join(os.path.dirname(__file__), "logs", "open_trades.json")
+NEWS_SENTIMENT_CACHE_FILE = os.path.join(os.path.dirname(__file__), "logs", "news_sentiment_cache.json")
+EARNINGS_CAL_FILE = os.path.join(os.path.dirname(__file__), "logs", "earnings_calendar.json")
 
 _FEED_MAP = {"iex": DataFeed.IEX, "sip": DataFeed.SIP, "otc": DataFeed.OTC}
 DATA_FEED = _FEED_MAP.get(ALPACA_DATA_FEED.lower(), DataFeed.IEX)
@@ -108,18 +128,46 @@ def is_market_open():
         return False
 
 def get_market_regime():
-    history = get_price_history("SPY")
-    if history is None:
-        print("Could not fetch SPY history for market regime check, defaulting to NEUTRAL.")
+    """
+    Broad market regime from SPY + QQQ trend/volatility plus a best-effort
+    VIX check ("VIX" index, then "UVXY" as a proxy). Returns the most
+    defensive regime across the inputs so the bot never buys aggressively
+    into a bear tape. Falls back to NEUTRAL if no data is available.
+    """
+    order = ["BEARISH", "HIGH_VOLATILITY", "NEUTRAL", "BULLISH"]
+    regimes = []
+    for ticker in ("SPY", "QQQ"):
+        history = get_price_history(ticker)
+        if history is None:
+            continue
+        try:
+            regimes.append(
+                evaluate_market_regime(
+                    history["closes"],
+                    high_vol_threshold=MARKET_HIGH_VOLATILITY_THRESHOLD,
+                )
+            )
+        except Exception as e:
+            print(f"Market regime evaluation failed for {ticker}, skipping: {e}")
+    if not regimes:
+        print("Could not fetch SPY/QQQ history for market regime check, defaulting to NEUTRAL.")
         return "NEUTRAL"
-    try:
-        return evaluate_market_regime(
-            history["closes"],
-            high_vol_threshold=MARKET_HIGH_VOLATILITY_THRESHOLD,
-        )
-    except Exception as e:
-        print(f"Market regime evaluation failed, defaulting to NEUTRAL: {e}")
-        return "NEUTRAL"
+
+    vix = None
+    for sym in ("VIX", "UVXY"):
+        vix = get_price(sym)
+        if vix and vix > 0:
+            break
+    if vix:
+        if vix > MARKET_VIX_SEVERE_LEVEL:
+            print(f"VIX {vix:.1f} > severe {MARKET_VIX_SEVERE_LEVEL:.0f} -> BEARISH (defensive).")
+            return "BEARISH"
+        if vix > MARKET_VIX_STRESS_LEVEL:
+            print(f"VIX {vix:.1f} > stress {MARKET_VIX_STRESS_LEVEL:.0f} -> HIGH_VOLATILITY (defensive).")
+            return "HIGH_VOLATILITY"
+
+    defensive = min(regimes, key=lambda r: order.index(r) if r in order else 2)
+    return defensive
 
 def get_price(ticker):
     try:
@@ -231,6 +279,7 @@ def get_intraday_indicators(ticker):
             "intraday_trend": intraday_trend,
             "vwap": round(vwap, 2),
             "vwap_deviation_pct": vwap_deviation_pct,
+            "session_open": round(session_open, 2),
         }
     except Exception as e:
         print(f"Could not get intraday indicators for {ticker}: {e}")
@@ -326,6 +375,11 @@ def get_full_indicators(ticker):
         "trend": ind.classify_trend(closes),
         f"recent_swing_low_{SWING_LOOKBACK_DAYS}d": recent_swing_low,
         f"recent_swing_high_{SWING_LOOKBACK_DAYS}d": recent_swing_high,
+        "support": recent_swing_low,
+        "resistance": recent_swing_high,
+        "macd_cross": ind.compute_macd_crossover(closes),
+        "high_52w": max(highs) if highs else None,
+        "low_52w": min(lows) if lows else None,
     }
 
     intraday = get_intraday_indicators(ticker)
@@ -335,7 +389,37 @@ def get_full_indicators(ticker):
         result.update({
             "intraday_rsi": None, "intraday_momentum_pct": None,
             "intraday_trend": None, "vwap": None, "vwap_deviation_pct": None,
+            "session_open": None,
         })
+
+    # Gap % vs the prior session close (needs today's session open).
+    price_now = result.get("price")
+    if intraday and intraday.get("session_open") and len(closes) >= 2 and closes[-2]:
+        result["gap_pct"] = round((intraday["session_open"] - closes[-2]) / closes[-2] * 100.0, 2)
+    else:
+        result["gap_pct"] = None
+    # Distance from the 52-week high / low (the history fetch is 400 days).
+    high_52w, low_52w = result.get("high_52w"), result.get("low_52w")
+    if price_now and high_52w and high_52w > 0:
+        result["dist_from_52w_high_pct"] = round((high_52w - price_now) / high_52w * 100.0, 2)
+    else:
+        result["dist_from_52w_high_pct"] = None
+    if price_now and low_52w and low_52w > 0:
+        result["dist_from_52w_low_pct"] = round((price_now - low_52w) / low_52w * 100.0, 2)
+    else:
+        result["dist_from_52w_low_pct"] = None
+    # Earnings proximity from the cached earnings calendar (refreshed by
+    # morning_prep.py). Best-effort; None when unavailable.
+    try:
+        cal = _load_json_file(EARNINGS_CAL_FILE, {})
+        edate = cal.get(ticker)
+        if edate:
+            days = (datetime.strptime(edate, "%Y-%m-%d").date() - datetime.now().date()).days
+            result["days_until_earnings"] = days
+        else:
+            result["days_until_earnings"] = None
+    except Exception:
+        result["days_until_earnings"] = None
 
     if DAYTRADE_MODE:
         or_data = get_opening_range_breakout(ticker)
@@ -626,7 +710,7 @@ def notify(message):
 # ============================================================
 JOURNAL_HEADER = [
     "timestamp", "ticker", "action", "qty", "price",
-    "stop_loss", "take_profit", "conviction", "trigger", "reasoning",
+    "stop_loss", "take_profit", "conviction", "confidence", "trigger", "reasoning",
 ]
 RESULTS_HEADER = [
     "closed_at", "opened_at", "ticker", "entry_price", "exit_price",
@@ -644,7 +728,7 @@ def _append_csv(path, header, row):
         writer.writerow(row)
 
 
-def _record_trade_journal(ticker, action, qty, price, stop_loss, take_profit, conviction, trigger, reasoning):
+def _record_trade_journal(ticker, action, qty, price, stop_loss, take_profit, conviction, confidence, trigger, reasoning):
     """Append one row per fill to logs/trades_journal.csv."""
     try:
         _append_csv(TRADES_JOURNAL_FILE, JOURNAL_HEADER, {
@@ -656,6 +740,7 @@ def _record_trade_journal(ticker, action, qty, price, stop_loss, take_profit, co
             "stop_loss": stop_loss if stop_loss is not None else "",
             "take_profit": take_profit if take_profit is not None else "",
             "conviction": conviction,
+            "confidence": confidence if confidence is not None else "",
             "trigger": trigger,
             "reasoning": (reasoning or "")[:200],
         })
@@ -744,6 +829,128 @@ def summarize_trade_results():
     for cat in sorted(by_setup):
         parts.append(_fmt(cat, by_setup[cat]))
     return " | ".join(parts)
+
+# ============================================================
+# Phase 3: self-learning statistics -- weight toward what works
+# ============================================================
+def _setup_category(reasoning):
+    """Map a trade's reasoning/trigger to a coarse setup category."""
+    text = (reasoning or "").lower()
+    if "news" in text or "headline" in text:
+        return "news"
+    if "opening-range" in text or "breakout" in text:
+        return "breakout"
+    if "earnings" in text:
+        return "earnings"
+    if "technical" in text or "score" in text or "rsi" in text or "trend" in text or "macd" in text:
+        return "technical"
+    return "other"
+
+
+def _setup_stats():
+    """
+    Read closed-trade results and return {category: {"n", "wins", "win_rate",
+    "avg_pnl_pct"}} plus the overall totals. Empty file -> {}.
+    """
+    if not os.path.exists(TRADE_RESULTS_FILE):
+        return {}
+    try:
+        with open(TRADE_RESULTS_FILE) as f:
+            rows = list(csv.DictReader(f))
+    except (OSError, csv.Error):
+        return {}
+    stats = {}
+    for r in rows:
+        try:
+            pnl = float(r.get("pnl_pct", 0) or 0)
+        except (TypeError, ValueError):
+            continue
+        cat = _setup_category(r.get("setup"))
+        s = stats.setdefault(cat, {"n": 0, "wins": 0, "sum": 0.0})
+        s["n"] += 1
+        s["sum"] += pnl
+        if pnl > 0:
+            s["wins"] += 1
+    out = {}
+    for cat, s in stats.items():
+        out[cat] = {
+            "n": s["n"],
+            "wins": s["wins"],
+            "win_rate": s["wins"] / s["n"],
+            "avg_pnl_pct": s["sum"] / s["n"],
+        }
+    return out
+
+
+def get_setup_multiplier(setup_category):
+    """
+    Phase 3: size entries of a setup by its DEMONSTRATED edge, learned from
+    the closed-trade journal. A setup that is winning gets sized up (toward
+    SETUP_MULT_MAX); a setup that is losing gets sized down (toward
+    SETUP_MULT_MIN); setups with too few samples get exactly 1.0 (no opinion).
+
+    The mapping: win_rate and avg pnl both count. A setup with win_rate >= 55%
+    AND positive avg pnl is "proven" and gets up to MAX; one with win_rate
+    below 45% OR negative expectancy gets cut toward MIN.
+    """
+    if not SELF_LEARNING_ENABLED:
+        return 1.0
+    stats = _setup_stats()
+    s = stats.get(setup_category)
+    if not s or s["n"] < SELF_LEARNING_MIN_SAMPLES:
+        return 1.0  # not enough data -- no opinion yet
+
+    wr = s["win_rate"]
+    avg = s["avg_pnl_pct"]
+    if wr >= 0.55 and avg > SELF_LEARNING_EDGE_MIN:
+        # Proven edge: scale up proportionally to (win_rate, avg) quality.
+        quality = min(1.0, (wr - 0.55) / 0.25 + min(0.5, avg / 2.0))
+        return round(SETUP_MULT_MIN + (SETUP_MULT_MAX - SETUP_MULT_MIN) * quality, 3)
+    if wr <= 0.45 or avg < 0:
+        # Demonstrated drag: scale down proportionally to how bad it is.
+        badness = min(1.0, (0.45 - wr) / 0.2 + max(0.0, -avg / 2.0))
+        return round(SETUP_MULT_MAX - (SETUP_MULT_MAX - SETUP_MULT_MIN) * badness, 3)
+    return 1.0
+
+
+def build_performance_brief():
+    """
+    "What's working" block for the Gemini prompt (Phase 3): the win rate and
+    average return per setup category, so the LLM favors setups the bot has
+    actually made money on and avoids the ones it keeps losing on.
+    """
+    if not SELF_LEARNING_ENABLED:
+        return "self-learning disabled"
+    stats = _setup_stats()
+    if not stats:
+        return "no closed trades yet -- all setups unproven"
+    parts = []
+    for cat in sorted(stats):
+        s = stats[cat]
+        verdict = "WORKING" if (s["win_rate"] >= 0.55 and s["avg_pnl_pct"] > 0) else ("LOSING" if s["avg_pnl_pct"] < 0 else "neutral")
+        parts.append(
+            f"{cat}: {s['n']} trades, {s['win_rate'] * 100:.0f}% win rate, "
+            f"avg {s['avg_pnl_pct']:+.2f}% ({verdict})"
+        )
+    return " | ".join(parts)
+
+
+def get_economic_event_multiplier():
+    """
+    On a day with an upcoming high-impact economic event (CPI / FOMC / NFP /
+    GDP / PCE), new buys are sized down to HIGH_IMPACT_EVENT_SIZE_MULT.
+    Pure cache read; returns 1.0 on any failure or when disabled.
+    """
+    if not ENABLE_ECONOMIC_CALENDAR:
+        return 1.0
+    try:
+        from data_feeds import high_impact_event_today
+        hit, _desc = high_impact_event_today()
+        return HIGH_IMPACT_EVENT_SIZE_MULT if hit else 1.0
+    except Exception as e:
+        print(f"Economic event check unavailable (continuing at full size): {e}")
+        return 1.0
+
 
 # ============================================================
 # Second-trader / foreign-activity detection
@@ -1061,6 +1268,7 @@ def check_atr_stop_take_profit(account_snapshot):
     open_order_tickers = get_tickers_with_open_orders()
     custom_exits = _load_custom_exits()
     holdings = account_snapshot["holdings"]
+    news_sentiment_cache = _load_json_file(NEWS_SENTIMENT_CACHE_FILE, {})
     exits_modified = False
 
     for ticker, pos in holdings.items():
@@ -1117,12 +1325,32 @@ def check_atr_stop_take_profit(account_snapshot):
         elif current <= hard_stop:
             reason = f"Hard loss cap hit: price {current} <= {round(hard_stop, 2)} (-{MAX_POSITION_LOSS_PCT:.0f}% from entry {entry})"
 
+        # Smarter exits, using the indicator data already fetched above.
+        if reason is None and ENABLE_MA_BREAKDOWN_EXIT and indicators_data:
+            sma20 = indicators_data.get("sma_20")
+            if sma20 and current < sma20:
+                reason = f"Moving-average breakdown: price {current} < SMA-20 {round(sma20, 2)}"
+        if reason is None and ENABLE_RSI_EXHAUSTION_EXIT and indicators_data:
+            rsi = indicators_data.get("rsi_14")
+            if rsi is not None and rsi > RSI_EXHAUSTION_LEVEL:
+                reason = f"RSI exhaustion: RSI {rsi:.1f} > {RSI_EXHAUSTION_LEVEL:.0f}"
+        if reason is None and ENABLE_NEGATIVE_NEWS_EXIT:
+            worst_sent = news_sentiment_cache.get(ticker)
+            if worst_sent is not None and worst_sent <= NEGATIVE_NEWS_SENTIMENT_THRESHOLD:
+                reason = f"Negative news: worst sentiment {worst_sent:+.2f}"
+
         if reason:
             trade = {"ticker": ticker, "action": "sell", "dollar_amount": 0, "reasoning": reason, "conviction": 10}
             if "Take-profit" in reason:
                 exit_trigger = "take_profit"
             elif "Hard loss cap" in reason:
                 exit_trigger = "hard_loss_cap"
+            elif "Moving-average" in reason:
+                exit_trigger = "ma_breakdown"
+            elif "RSI exhaustion" in reason:
+                exit_trigger = "rsi_exhaustion"
+            elif "Negative news" in reason:
+                exit_trigger = "negative_news"
             else:
                 exit_trigger = "stop_loss"
             result = execute_trade(trade, account_snapshot, trigger=exit_trigger)
@@ -1164,6 +1392,22 @@ def enforce_portfolio_consolidation(account_snapshot):
 
     return results
 
+def confidence_to_size_pct(confidence):
+    """
+    Map Gemini confidence (0-100) to a target position size as a fraction of
+    portfolio equity: 90+ -> 8%, 80+ -> 5%, 70+ -> 3%, 60+ -> 2%, below 60
+    -> 0 (not tradeable). Falls back to 0 for missing/invalid input.
+    """
+    try:
+        c = float(confidence)
+    except (TypeError, ValueError):
+        return 0.0
+    for threshold, pct in CONFIDENCE_SIZING:
+        if c >= threshold:
+            return pct
+    return 0.0
+
+
 def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=None):
     ticker = trade["ticker"]
     action = trade["action"].lower()
@@ -1192,6 +1436,18 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
                 "status": "skipped",
                 "reason": f"no-margin rule: cash is negative (${account_snapshot['cash']:,.2f}); de-leveraging first",
             }
+
+        # Confidence-based sizing: when Gemini returns a confidence score, the
+        # code converts it to a % of equity instead of trusting a dollar amount.
+        if trade.get("confidence") is not None:
+            size_pct = confidence_to_size_pct(trade.get("confidence"))
+            if size_pct <= 0:
+                return {
+                    "ticker": ticker,
+                    "status": "skipped",
+                    "reason": f"confidence {trade.get('confidence')} below tradeable bar ({CONFIDENCE_MIN_TO_TRADE})",
+                }
+            requested_amount = total_value * size_pct
 
         is_new_position = current_holding is None
         if is_new_position and len(account_snapshot["holdings"]) >= MAX_OPEN_POSITIONS:
@@ -1239,6 +1495,22 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
         # Time-of-day sizing: full size in the high-edge windows, smaller
         # through the lunch lull. Sells are never affected by this.
         buy_target *= get_time_of_day_multiplier()
+
+        # Phase 3 self-learning: size this setup by its DEMONSTRATED edge from
+        # the closed-trade journal (winning setups bigger, losing setups
+        # smaller). Never affects sells.
+        buy_target *= get_setup_multiplier(_setup_category(trade.get("reasoning")))
+
+        # Phase 2: on high-impact economic event days (CPI/FOMC/NFP...), size
+        # new buys down -- the market reprices hard around those prints.
+        buy_target *= get_economic_event_multiplier()
+
+        # Earnings proximity: buying into a print means carrying overnight gap
+        # risk; shrink the entry when earnings are within the window.
+        if ind_data and ind_data.get("days_until_earnings") is not None:
+            days = ind_data.get("days_until_earnings")
+            if 0 <= days <= EARNINGS_PROXIMITY_DAYS:
+                buy_target *= EARNINGS_PROXIMITY_SIZE_MULT
 
         base_reserve = total_value * MIN_CASH_RESERVE_PCT
         is_exceptional = conviction >= EXCEPTIONAL_CONVICTION_THRESHOLD
@@ -1336,7 +1608,8 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
         _record_trade_journal(
             ticker=ticker, action=action, qty=qty, price=price,
             stop_loss=stop_loss, take_profit=take_profit,
-            conviction=conviction, trigger=trigger,
+            conviction=conviction, confidence=trade.get("confidence"),
+            trigger=trigger,
             reasoning=trade.get("reasoning", ""),
         )
         _track_open_close(ticker, action, qty, price, stop_loss, take_profit, trigger, trade.get("reasoning", ""))
@@ -1396,3 +1669,78 @@ def record_performance_snapshot(account_snapshot, log_dir, **stats):
         if not file_exists:
             writer.writeheader()
         writer.writerow(row)
+
+
+def summarize_performance(account_snapshot=None):
+    """
+    Portfolio stats for the run log, computed from the existing logs:
+    total return, max drawdown, daily Sharpe (from performance.csv) and win
+    rate / avg winner / avg loser (from trade_results.csv).
+    """
+    lines = []
+    values = []
+    daily = {}
+    perf_path = os.path.join(os.path.dirname(__file__), "logs", "performance.csv")
+    if os.path.exists(perf_path):
+        try:
+            with open(perf_path) as f:
+                rows = list(csv.DictReader(f))
+            for r in rows:
+                try:
+                    values.append(float(r["total_value"]))
+                    daily.setdefault(r["timestamp"][:10], []).append(float(r["total_value"]))
+                except (KeyError, ValueError):
+                    continue
+        except (OSError, csv.Error):
+            pass
+
+    if values:
+        total_ret = (values[-1] / values[0] - 1.0) * 100.0 if values[0] else 0.0
+        peak = -1e18
+        max_dd = 0.0
+        for v in values:
+            peak = max(peak, v)
+            if peak > 0:
+                max_dd = max(max_dd, (peak - v) / peak * 100.0)
+        day_rets = []
+        for day in sorted(daily):
+            ds = daily[day]
+            if len(ds) >= 2 and ds[0]:
+                day_rets.append((ds[-1] / ds[0] - 1.0) * 100.0)
+        sharpe = None
+        if len(day_rets) >= 2:
+            mean = sum(day_rets) / len(day_rets)
+            std = (sum((d - mean) ** 2 for d in day_rets) / len(day_rets)) ** 0.5
+            sharpe = (mean / std * (252 ** 0.5)) if std > 0 else 0.0
+        lines.append(f"Total return {total_ret:+.2f}% | Max drawdown {max_dd:.2f}% | Daily Sharpe {sharpe:.2f}" if sharpe is not None
+                     else f"Total return {total_ret:+.2f}% | Max drawdown {max_dd:.2f}%")
+
+    if os.path.exists(TRADE_RESULTS_FILE):
+        try:
+            with open(TRADE_RESULTS_FILE) as f:
+                rows = list(csv.DictReader(f))
+            pcts = []
+            for r in rows:
+                try:
+                    pcts.append(float(r["pnl_pct"]))
+                except (ValueError, KeyError):
+                    continue
+            if pcts:
+                wins = [p for p in pcts if p > 0]
+                losses = [p for p in pcts if p <= 0]
+                wr = len(wins) / len(pcts) * 100.0
+                avg_w = sum(wins) / len(wins) if wins else 0.0
+                avg_l = sum(losses) / len(losses) if losses else 0.0
+                lines.append(
+                    f"{len(pcts)} closed trades | Win rate {wr:.0f}% | "
+                    f"Avg winner {avg_w:+.2f}% | Avg loser {avg_l:+.2f}%"
+                )
+        except (OSError, csv.Error):
+            pass
+
+    if account_snapshot is not None:
+        lines.append(
+            f"Open positions: {len(account_snapshot.get('holdings', {}))} | "
+            f"Equity ${account_snapshot.get('total_value', 0):,.2f}"
+        )
+    return " | ".join(lines) if lines else "no performance history yet"
