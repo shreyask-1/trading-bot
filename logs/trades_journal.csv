@@ -1,3 +1,6 @@
 timestamp,ticker,action,qty,price,stop_loss,take_profit,conviction,confidence,trigger,reasoning
 2026-08-12T07:32:27.312840,HON,sell,49.4672,230.005,,,10,,ma_breakdown,Moving-average breakdown: price 230.5 < SMA-20 238.73
 2026-08-12T13:34:28.579501,META,sell,6.0354,600.165,,,10,,ma_breakdown,Moving-average breakdown: price 599.64 < SMA-20 601.98
+2026-08-12T22:42:33.864094,GILD,buy,23.3789,135.86,128.44,141.66,9,92,decision,Exceptional quant score of 100/100 supported by massive $81M insider buying. Technicals show a strong uptrend with price above the opening range and significant fundamental floor established by recent
+2026-08-12T22:42:34.500254,COO,buy,41.4168,76.69,71.32,79.2,9,90,decision,High quant score of 95/100 with robust uptrend and RSI at 67 indicating strong momentum. Price is holding above support levels with clear technical strength relative to the broader market.
+2026-08-12T22:42:35.208276,GPN,buy,22.4236,88.53,83.93,92.99,8,85,decision,Strong insider support of $31M and solid ADX of 33 confirming a robust trend. Technicals are bullish with price trading above the opening range.

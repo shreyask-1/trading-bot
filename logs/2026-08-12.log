@@ -11372,3 +11372,20 @@ Ending portfolio value: $99,257.90
 Trade journal: no closed trades yet
 Performance: Total return -0.58% | Max drawdown 12.37% | Daily Sharpe 0.25 | Open positions: 0 | Equity $99,257.90
 
+=== Run at 2026-08-12T22:42:16.156607 ===
+Current time: 2026-08-12 06:42 PM EDT | Market open (per Alpaca): False | Session: EXTENDED
+Account value: $99,257.90
+Cash: $99,257.90 | Holdings (0): none
+Risk state: peak $99,257.90 | drawdown 0.00% | today +0.00% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 60% incl. circuit breaker 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 34/46 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 1
+  -> {"timestamp": "2026-08-12T22:42:33.864278", "ticker": "GILD", "action": "buy", "qty": 23.3789, "conviction": 9, "size_multiplier": 0.6, "order_id": "24d80fcd-72d6-4118-884a-b3a423861920", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": 128.44, "take_profit": 141.66, "reasoning": "Exceptional quant score of 100/100 supported by massive $81M insider buying. Technicals show a strong uptrend with price above the opening range and significant fundamental floor established by recent SEC filings.", "status": "submitted"}
+  -> {"timestamp": "2026-08-12T22:42:34.500433", "ticker": "COO", "action": "buy", "qty": 41.4168, "conviction": 9, "size_multiplier": 0.6, "order_id": "b31b5ff1-933a-42c1-9a21-636235131778", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": 71.32, "take_profit": 79.2, "reasoning": "High quant score of 95/100 with robust uptrend and RSI at 67 indicating strong momentum. Price is holding above support levels with clear technical strength relative to the broader market.", "status": "submitted"}
+  -> {"timestamp": "2026-08-12T22:42:35.208430", "ticker": "GPN", "action": "buy", "qty": 22.4236, "conviction": 8, "size_multiplier": 0.6, "order_id": "4af30b0b-cc39-46ec-8c88-7f4ca0dec8d9", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": 83.93, "take_profit": 92.99, "reasoning": "Strong insider support of $31M and solid ADX of 33 confirming a robust trend. Technicals are bullish with price trading above the opening range.", "status": "submitted"}
+Ending portfolio value: $99,257.90
+Trade journal: no closed trades yet
+Performance: Total return -0.58% | Max drawdown 12.37% | Daily Sharpe 0.25 | Open positions: 0 | Equity $99,257.90
+
