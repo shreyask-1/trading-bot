@@ -63,7 +63,8 @@ def run():
     log_lines = [f"=== Run at {timestamp.isoformat()} ==="]
 
     market_open = is_market_open()
-            log_lines.append(f"Cash: ${account['cash']:,.2f} | Holdings ({len(account['holdings'])}): {holdings_summary or 'none'}")
+    log_lines.append(f"Current time: {get_eastern_time_str()} | Market open (per Alpaca): {market_open}")
+
     try:
         account = get_account_snapshot()
     except Exception as e:
@@ -73,7 +74,7 @@ def run():
 
     log_lines.append(f"Account value: ${account['total_value']:,.2f}")
     holdings_summary = {t: f"{p['qty']} sh ({p['unrealized_plpc']:+.2f}%)" for t, p in account["holdings"].items()}
-    log_lines.append(f"Cash: ${account['cash']:,.2f} | Holdings ({len(account['holdings'])}): {holdings_summary or 'none'})")
+    log_lines.append(f"Cash: ${account['cash']:,.2f} | Holdings ({len(account['holdings'])}): {holdings_summary or 'none'}")
 
     # Open-order visibility: queued/pending orders (e.g. de-leveraging sells
     # placed after the close) are why the account may look unchanged at night
