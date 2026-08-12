@@ -673,6 +673,16 @@ def enforce_deleveraging(account_snapshot):
     open_order_tickers = get_tickers_with_open_orders()
     holdings = account_snapshot.get("holdings", {})
 
+    # Sells already queued in the market will free cash when they fill at the
+    # next open; count them toward the target so overnight runs don't stack
+    # MORE sells on top of positions that are already being liquidated. (Each
+    # run used to re-enter the loop with the same negative cash and sell the
+    # next-weakest holding, queuing sells on more positions than needed.)
+    try:
+        _, pending_sell_notional = pending_order_notional()
+    except Exception:
+        pending_sell_notional = 0.0
+
     scored = []
     for ticker in holdings.keys():
         if ticker in open_order_tickers:
@@ -682,7 +692,7 @@ def enforce_deleveraging(account_snapshot):
         scored.append((score, ticker))
     scored.sort(key=lambda x: x[0])  # weakest first
 
-    projected_cash = cash
+    projected_cash = cash + pending_sell_notional
     for score, ticker in scored:
         if projected_cash >= target_cash:
             break
