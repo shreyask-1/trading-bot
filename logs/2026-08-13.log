@@ -6319,3 +6319,26 @@ Trade journal: no closed trades yet
 Performance: Total return -0.57% | Max drawdown 12.37% | Daily Sharpe 0.25 | Open positions: 6 | Equity $99,256.41
 Timings: account: 0.0s | risk: 2.9s | decide: 7.2s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-08-13T13:55:30.167205 ===
+Current time: 2026-08-13 09:55 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,183.34
+Cash: $39,914.11 | Holdings (6): {'LMT': '16.3555 sh (-0.93%)', 'MS': '43.8344 sh (-0.77%)', 'MSI': '21.1281 sh (-0.43%)', 'NUE': '36.5544 sh (-0.50%)', 'NVDA': '44.2888 sh (+0.70%)', 'NWS': '303.7199 sh (+1.20%)'}
+Open orders (3): CHD buy 97.9637, CEG buy 35.6034, NDAQ buy 103.737
+  !! FOREIGN ACTIVITY: LMT position (16.3555 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: MS position (43.8344 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: MSI position (21.1281 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NUE position (36.5544 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NVDA position (44.2888 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NWS position (303.7199 sh) was never created by this bot.
+Risk state: peak $99,352.60 | drawdown 0.17% | today -0.08% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 14/22 candidates passed.
+Gemini proposed 0 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 163
+Dashboard watchlist synced (9 symbols) for news/headlines.
+Ending portfolio value: $99,176.40
+Trade journal: no closed trades yet
+Performance: Total return -0.66% | Max drawdown 12.37% | Daily Sharpe 0.22 | Open positions: 6 | Equity $99,183.34
+Timings: account: 0.0s | risk: 3.2s | decide: 14.3s | watchlist: 0.1s | perf: 0.2s
+
