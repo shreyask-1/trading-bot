@@ -220,6 +220,13 @@ MAX_BUY_EXTENSION_ABOVE_VWAP_PCT = float(os.environ.get("MAX_BUY_EXTENSION_ABOVE
 # Skip buys where the name is already up more than this % on the session
 # (gap + run = reversion risk).
 MAX_INTRADAY_MOVE_PCT = float(os.environ.get("MAX_INTRADAY_MOVE_PCT", 4.0))
+# Chase filters are SOFT: an extended name is still tradeable, but its
+# position is scaled down as the extension grows (60% up to 2x the limit,
+# 35% up to 3x, 15% beyond) instead of being skipped -- momentum IS the
+# trade, it just earns a smaller size. Only past CHASE_HARD_SKIP_MULT x the
+# limit (a truly priced-in move) is the buy refused outright. Set to 0 to
+# remove the hard skip entirely (everything stays tradeable, just smaller).
+CHASE_HARD_SKIP_MULT = float(os.environ.get("CHASE_HARD_SKIP_MULT", 5.0))
 # Trailing stop: once a position is up TRAILING_STOP_ACTIVATE_MULT x ATR from
 # entry, the stop ratchets up to (best price - TRAILING_STOP_DISTANCE_MULT x
 # ATR). The stop only ever moves up, so winners are banked instead of given
