@@ -6207,3 +6207,25 @@ Trade journal: no closed trades yet
 Performance: Total return -0.54% | Max drawdown 12.37% | Daily Sharpe 0.25 | Open positions: 3 | Equity $99,296.42
 Timings: account: 0.0s | risk: 0.9s | decide: 5.5s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-08-13T13:30:32.454788 ===
+Current time: 2026-08-13 09:30 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,276.18
+Cash: $59,580.94 | Holdings (4): {'LMT': '16.3555 sh (+0.04%)', 'MSI': '21.1281 sh (-0.33%)', 'NVDA': '44.2888 sh (+0.09%)', 'NWS': '303.7199 sh (+0.41%)'}
+Open orders (3): CHD buy 97.9637, CEG buy 35.6034, NDAQ buy 103.737
+  !! FOREIGN ACTIVITY: LMT position (16.3555 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: MSI position (21.1281 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NVDA position (44.2888 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NWS position (303.7199 sh) was never created by this bot.
+Risk state: peak $99,320.24 | drawdown 0.04% | today +0.02% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 17/25 candidates passed.
+Gemini proposed 1 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 158
+  -> {"timestamp": "2026-08-13T13:30:37.082987", "ticker": "NUE", "action": "buy", "qty": 36.5544, "conviction": 8, "size_multiplier": 1.0, "order_id": "b8a19795-1858-4d0f-9ab0-5e030eac3192", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": 251.55, "take_profit": 285.0, "reasoning": "", "status": "submitted"}
+Dashboard watchlist synced (8 symbols) for news/headlines.
+Ending portfolio value: $99,282.16
+Trade journal: no closed trades yet
+Performance: Total return -0.55% | Max drawdown 12.37% | Daily Sharpe 0.25 | Open positions: 4 | Equity $99,284.66
+Timings: account: 0.0s | risk: 0.7s | decide: 3.8s | watchlist: 0.1s | perf: 0.2s
+
