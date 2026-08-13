@@ -6365,3 +6365,28 @@ Trade journal: no closed trades yet
 Performance: Total return -0.61% | Max drawdown 12.37% | Daily Sharpe 0.24 | Open positions: 6 | Equity $99,210.26
 Timings: account: 0.0s | risk: 3.7s | decide: 9.5s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-08-13T14:05:31.809337 ===
+Current time: 2026-08-13 10:05 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,318.51
+Cash: $29,990.73 | Holdings (7): {'CEG': '35.6034 sh (-0.02%)', 'LMT': '16.3555 sh (-0.73%)', 'MS': '43.8344 sh (-0.45%)', 'MSI': '21.1281 sh (-0.37%)', 'NUE': '36.5544 sh (+0.04%)', 'NVDA': '44.2888 sh (+0.90%)', 'NWS': '303.7199 sh (+1.26%)'}
+Open orders (2): CHD buy 97.9637, NDAQ buy 103.737
+  !! FOREIGN ACTIVITY: CEG position (35.6034 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: LMT position (16.3555 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: MS position (43.8344 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: MSI position (21.1281 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NUE position (36.5544 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NVDA position (44.2888 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NWS position (303.7199 sh) was never created by this bot.
+Risk state: peak $99,352.60 | drawdown 0.03% | today +0.06% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 60, 1 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 8/10 candidates passed.
+Gemini proposed 1 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 165
+  -> {"timestamp": "2026-08-13T14:05:48.495153", "ticker": "GEHC", "action": "buy", "qty": 0.6136, "conviction": 8, "size_multiplier": 1.0, "order_id": "282164b4-4dee-4e63-9991-3d7ae0800c66", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": 67.16, "take_profit": 76.94, "reasoning": "", "status": "submitted"}
+Dashboard watchlist synced (10 symbols) for news/headlines.
+Ending portfolio value: $99,302.32
+Trade journal: no closed trades yet
+Performance: Total return -0.53% | Max drawdown 12.37% | Daily Sharpe 0.26 | Open positions: 8 | Equity $99,303.45
+Timings: account: 0.0s | risk: 3.1s | decide: 13.5s | watchlist: 0.1s | perf: 0.1s
+
