@@ -1592,3 +1592,17 @@ Trade journal: no closed trades yet
 Performance: Total return -0.58% | Max drawdown 12.37% | Daily Sharpe 0.24 | Open positions: 0 | Equity $99,257.90
 Timings: account: 0.0s | risk: 0.1s | decide: 6.1s | watchlist: 0.1s | perf: 0.1s
 
+=== Run at 2026-08-13T03:23:36.778266 ===
+Current time: 2026-08-12 11:23 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+Account value: $99,257.90
+Cash: $99,257.90 | Holdings (0): none
+Risk state: peak $99,257.90 | drawdown 0.00% | today +0.00% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Decision step failed, no trades this run: 'str' object has no attribute 'get'
+Market closed (overnight): no trade ideas queued this run.
+Ending portfolio value: $99,257.90
+Trade journal: no closed trades yet
+Performance: Total return -0.58% | Max drawdown 12.37% | Daily Sharpe 0.24 | Open positions: 0 | Equity $99,257.90
+Timings: account: 0.0s | risk: 0.0s | decide: 0.2s | watchlist: 0.0s | perf: 0.1s
+
