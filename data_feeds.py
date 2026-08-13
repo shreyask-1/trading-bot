@@ -340,10 +340,12 @@ def fetch_sec_filings(tickers, time_budget=None):
     return store
 
 
-def get_sec_filings(tickers):
-    """Cache-or-fetch wrapper (never raises)."""
+def get_sec_filings(tickers, time_budget=None):
+    """Cache-or-fetch wrapper (never raises).
+    time_budget is forwarded so decide.py's feed-refresh budget actually
+    applies (without it the wrapper dropped the budget entirely)."""
     try:
-        return fetch_sec_filings(tickers)
+        return fetch_sec_filings(tickers, time_budget=time_budget)
     except Exception as e:
         print(f"SEC filings unavailable: {e}")
         return {}
