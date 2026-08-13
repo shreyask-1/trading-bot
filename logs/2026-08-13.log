@@ -1781,3 +1781,38 @@ Trade journal: no closed trades yet
 Performance: Total return -0.58% | Max drawdown 12.37% | Daily Sharpe 0.24 | Open positions: 0 | Equity $99,257.90
 Timings: account: 0.0s | risk: 0.0s | decide: 2.4s | watchlist: 0.1s | perf: 0.1s
 
+=== Run at 2026-08-13T03:40:31.083937 ===
+Current time: 2026-08-12 11:40 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+Account value: $99,257.90
+Cash: $99,257.90 | Holdings (0): none
+Risk state: peak $99,257.90 | drawdown 0.00% | today +0.00% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 18/26 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 18 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 1
+Market closed (overnight): queued 19 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued GILD buy (conf None, stop 128.44, tp 137.8)
+  -> queued GPN buy (conf None, stop 83.93, tp 90.48)
+  -> queued GPC buy (conf None, stop 123.76, tp 137.08)
+  -> queued HBAN buy (conf None, stop 16.845, tp 17.9)
+  -> queued HSIC buy (conf None, stop 83.67, tp 92.18)
+  -> queued HAS buy (conf None, stop 89.34, tp 97.865)
+  -> queued CF buy (conf None, stop 109.82, tp 127.03)
+  -> queued CFG buy (conf None, stop 70.605, tp 74.5)
+  -> queued CHD buy (conf None, stop 95.66, tp 104.14)
+  -> queued CHTR buy (conf None, stop 136.79, tp 158.575)
+  -> queued CIEN buy (conf None, stop 355.69, tp 446.07)
+  -> queued CL buy (conf None, stop 89.32, tp 93.83)
+  -> queued CLX buy (conf None, stop 94.415, tp 108.56)
+  -> queued CMCSA buy (conf None, stop 23.28, tp 25.675)
+  -> queued CME buy (conf None, stop 257.195, tp 269.89)
+  -> queued CNC buy (conf None, stop 59.875, tp 68.37)
+  -> queued COF buy (conf None, stop 205.14, tp 223.565)
+  -> queued COHR buy (conf None, stop 239.37, tp 391.365)
+Dashboard watchlist synced (18 symbols) for news/headlines.
+Ending portfolio value: $99,257.90
+Trade journal: no closed trades yet
+Performance: Total return -0.58% | Max drawdown 12.37% | Daily Sharpe 0.24 | Open positions: 0 | Equity $99,257.90
+Timings: account: 0.0s | risk: 0.1s | decide: 2.6s | watchlist: 0.1s | perf: 0.2s
+
