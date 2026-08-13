@@ -1169,6 +1169,8 @@ Timings: account: 0.0s | risk: 0.1s | decide: 5.8s | watchlist: 0.1s | perf: 0.2
 
 === Run at 2026-08-13T02:50:29.121140 ===
 Current time: 2026-08-12 10:50 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+=== Run at 2026-08-13T02:53:13.917865 ===
+Current time: 2026-08-12 10:53 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,257.90
 Cash: $99,257.90 | Holdings (0): none
 Risk state: peak $99,257.90 | drawdown 0.00% | today +0.00% | halted: False
@@ -1182,4 +1184,14 @@ Ending portfolio value: $99,257.90
 Trade journal: no closed trades yet
 Performance: Total return -0.58% | Max drawdown 12.37% | Daily Sharpe 0.24 | Open positions: 0 | Equity $99,257.90
 Timings: account: 0.0s | risk: 0.1s | decide: 136.5s | watchlist: 0.0s | perf: 0.2s
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 4
+Market closed (overnight): queued 4 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued GILD buy (conf 92, stop 128.44, tp 137.8)
+  -> queued GPN buy (conf 85, stop 83.93, tp 90.48)
+Dashboard watchlist synced (2 symbols) for news/headlines.
+Ending portfolio value: $99,257.90
+Trade journal: no closed trades yet
+Performance: Total return -0.58% | Max drawdown 12.37% | Daily Sharpe 0.24 | Open positions: 0 | Equity $99,257.90
+Timings: account: 0.0s | risk: 0.1s | decide: 2.9s | watchlist: 0.1s | perf: 0.2s
 
