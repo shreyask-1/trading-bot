@@ -68,6 +68,8 @@ from config import (
     TRAILING_STOP_ACTIVATE_MULT,
     TRAILING_STOP_DISTANCE_MULT,
     MAX_RISK_PER_TRADE_PCT,
+    RISK_PARITY_SIZING,
+    MAX_SECTOR_EXPOSURE_PCT,
     TIME_OF_DAY_MULTIPLIERS,
     CONFIDENCE_SIZING,
     CONFIDENCE_MIN_TO_TRADE,
@@ -1783,6 +1785,39 @@ def confidence_to_size_pct(confidence):
     return 0.0
 
 
+def _sector_exposure_block(account_snapshot, ticker, proposed_amount, total_value):
+    """
+    Returns a skip-reason string if buying `proposed_amount` of `ticker` would
+    push that ticker's GICS sector past MAX_SECTOR_EXPOSURE_PCT of the
+    portfolio, else None. Lazy-imports data_feeds (avoids the import cycle:
+    data_feeds does not import trader). Sector data is the free Finnhub
+    profile2 feed, cached 24h, so this is a cache read in the hot loop.
+    """
+    from data_feeds import get_sector_profiles
+
+    holdings = account_snapshot.get("holdings", {}) or {}
+    sectors = get_sector_profiles(list(holdings.keys()) + [ticker])
+    target_sector = (sectors.get(ticker) or {}).get("sector")
+    if not target_sector:
+        return None  # sector unknown -> don't block on a data gap
+
+    sector_value = 0.0
+    for t, pos in holdings.items():
+        if t == ticker:
+            continue
+        sec = (sectors.get(t) or {}).get("sector")
+        if sec == target_sector:
+            sector_value += float(pos.get("qty", 0.0)) * float(pos.get("current_price", 0.0))
+    cap_value = total_value * MAX_SECTOR_EXPOSURE_PCT
+    if sector_value + proposed_amount > cap_value:
+        return (
+            f"sector cap: {target_sector} would reach "
+            f"${sector_value + proposed_amount:,.0f} / ${cap_value:,.0f} "
+            f"({MAX_SECTOR_EXPOSURE_PCT:.0%} max per sector)"
+        )
+    return None
+
+
 def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=None):
     ticker = trade["ticker"]
     action = trade["action"].lower()
@@ -1935,12 +1970,35 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
 
         amount = min(buy_target, available_cash, exposure_room)
 
-        # Risk-based sizing (tiered mode only; flat mode sizes uniformly -- the
-        # per-position stop and hard loss cap still bound the loss): cap the
-        # position so a stop-out costs at most MAX_RISK_PER_TRADE_PCT of
-        # equity, using THIS trade's real stop distance (tight stop = bigger
-        # size, wide stop = smaller size).
-        if not FLAT_SIZING and MAX_RISK_PER_TRADE_PCT > 0:
+        # Sector concentration cap: never let one GICS sector exceed
+        # MAX_SECTOR_EXPOSURE_PCT of the portfolio (14+ positions can quietly
+        # become 5 names in Energy, and a sector shock then hits them all at
+        # once). Existing positions are never force-sold -- new buys into an
+        # already-heavy sector are skipped. Data comes from the cached sector
+        # profiles (free Finnhub, 24h cache) so this is nearly free; when the
+        # sector lookup fails the buy is allowed through rather than blocked
+        # on a data hiccup.
+        if MAX_SECTOR_EXPOSURE_PCT > 0:
+            try:
+                sector_block = _sector_exposure_block(
+                    account_snapshot, ticker, amount, total_value
+                )
+                if sector_block:
+                    return {
+                        "ticker": ticker,
+                        "status": "skipped",
+                        "reason": sector_block,
+                    }
+            except Exception as e:
+                print(f"Sector cap check failed on {ticker} (continuing without it): {e}")
+
+        # Risk-based sizing: cap the position so a stop-out costs at most
+        # MAX_RISK_PER_TRADE_PCT of equity, using THIS trade's real stop
+        # distance (tight stop = bigger size, wide stop = smaller size).
+        # Applies in tiered mode AND -- with RISK_PARITY_SIZING (default on) --
+        # in flat mode too, so EVERY trade risks the same dollar amount
+        # regardless of the stock's volatility (volatility-scaled sizing).
+        if MAX_RISK_PER_TRADE_PCT > 0 and (not FLAT_SIZING or RISK_PARITY_SIZING):
             exit_levels = _compute_exit_levels(ticker, trade, price, ind=ind_data)
             stop_for_risk = exit_levels[0] if exit_levels else None
             risk_budget = total_value * MAX_RISK_PER_TRADE_PCT / 100.0
