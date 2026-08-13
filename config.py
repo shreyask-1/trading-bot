@@ -234,6 +234,30 @@ TRAILING_STOP_DISTANCE_MULT = float(os.environ.get("TRAILING_STOP_DISTANCE_MULT"
 # what lets compounding work. If no stop is known, the hard
 # MAX_POSITION_LOSS_PCT distance is assumed. 0 disables.
 MAX_RISK_PER_TRADE_PCT = float(os.environ.get("MAX_RISK_PER_TRADE_PCT", 0.75))
+# Volatility-scaled (risk-parity) sizing: ON by default. Even in FLAT sizing
+# mode, each buy is additionally capped so a stop-out costs at most
+# MAX_RISK_PER_TRADE_PCT of equity -- a tight-stop name gets a bigger
+# position, a wide-stop name gets a smaller one, so EVERY trade risks the
+# SAME dollar amount regardless of the stock's volatility. Set false to
+# revert to pure uniform dollar sizing.
+RISK_PARITY_SIZING = os.environ.get("RISK_PARITY_SIZING", "true").lower() == "true"
+
+# --- Sector concentration caps (loss protection) ---
+# The bot never holds more than this fraction of portfolio equity in any ONE
+# GICS sector. 14+ positions can quietly become 5 names in Energy and a
+# sector shock then hits them all at once; this caps that correlated risk.
+# New buys into an already-heavy sector are skipped (existing positions are
+# left alone -- no forced selling of winners). Set 0 to disable.
+MAX_SECTOR_EXPOSURE_PCT = float(os.environ.get("MAX_SECTOR_EXPOSURE_PCT", 0.25))
+
+# --- Free RSS news feeds (profit lever) ---
+# Beyond Finnhub's general market wire, the bot pulls headline RSS feeds that
+# cost nothing: Google News US top stories + Yahoo Finance index headlines.
+# They are parsed with the stdlib (no new dependency) and piped through the
+# same ticker-matching + importance-scoring pipeline, so more catalysts reach
+# Gemini without spending a single Finnhub quota call.
+ENABLE_RSS_NEWS = os.environ.get("ENABLE_RSS_NEWS", "true").lower() == "true"
+RSS_FETCH_TIMEOUT_SECONDS = 8.0
 
 # --- Time-of-day size multipliers (daytrading edge windows) ---
 # New buys are multiplied by the factor for the current ET window; the lunch
