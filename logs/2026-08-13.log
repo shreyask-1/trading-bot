@@ -6556,3 +6556,29 @@ Trade journal: no closed trades yet
 Performance: Total return -0.42% | Max drawdown 12.37% | Daily Sharpe 0.28 | Open positions: 8 | Equity $99,387.44
 Timings: account: 0.0s | risk: 2.8s | decide: 70.1s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-08-13T14:45:27.729178 ===
+Current time: 2026-08-13 10:45 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,271.71
+Cash: $29,945.39 | Holdings (8): {'CEG': '35.6034 sh (+0.33%)', 'GEHC': '0.6136 sh (-0.90%)', 'LMT': '16.3555 sh (-0.77%)', 'MS': '43.8344 sh (-0.04%)', 'MSI': '21.1281 sh (-1.02%)', 'NUE': '36.5544 sh (-0.39%)', 'NVDA': '44.2888 sh (+0.68%)', 'NWS': '303.7199 sh (+1.38%)'}
+Open orders (2): CHD buy 97.9637, NDAQ buy 103.737
+  !! FOREIGN ACTIVITY: CEG position (35.6034 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: GEHC position (0.6136 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: LMT position (16.3555 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: MS position (43.8344 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: MSI position (21.1281 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NUE position (36.5544 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NVDA position (44.2888 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NWS position (303.7199 sh) was never created by this bot.
+Risk state: peak $99,443.44 | drawdown 0.17% | today +0.01% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 17/22 candidates passed.
+Gemini proposed 1 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 172
+  -> {"timestamp": "2026-08-13T14:45:36.550237", "ticker": "HAS", "action": "buy", "qty": 1.1333, "conviction": 8, "size_multiplier": 1.0, "order_id": "9878d2fc-e995-4db8-9d7b-6649537aa026", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": 89.34, "take_profit": 99.5, "reasoning": "Strong quant score (84/100), uptrend, solid insider buying ($47.8M), and favorable price action near the upper range.", "status": "submitted"}
+Dashboard watchlist synced (11 symbols) for news/headlines.
+Ending portfolio value: $99,262.67
+Trade journal: no closed trades yet
+Performance: Total return -0.57% | Max drawdown 12.37% | Daily Sharpe 0.25 | Open positions: 8 | Equity $99,262.67
+Timings: account: 0.0s | risk: 1.8s | decide: 7.0s | watchlist: 0.0s | perf: 0.1s
+
