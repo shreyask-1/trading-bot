@@ -401,8 +401,7 @@ def _generate_with_rotation(prompt, tracker, model_list, schema=None):
             continue
 
     raise last_error if last_error else RuntimeError("No Gemini models had remaining quota.")
-
-
+    
 # ============================================================
 # Pure-technical fallback (when Gemini is throttled/unavailable)
 # ============================================================
@@ -580,7 +579,7 @@ def _score_candidates_cached(tickers, **kwargs):
             merged[t] = entry
         else:
             need.append(t)
-        if need:
+    if need:
         fresh = {}
         deadline = time.monotonic() + SCAN_REFRESH_BUDGET_SECONDS
         for t in need:
@@ -602,7 +601,8 @@ def _score_candidates_cached(tickers, **kwargs):
             _save_scan_cache(cache)
         merged.update(fresh)
     return merged
-    
+
+
 # Hard wall-clock budget for the per-run data-feeds refresh. On a warm cache
 # this is nearly free; on a cold cache (first run after a fresh checkout) the
 # per-ticker insider/SEC loops could otherwise burn 40+ sequential HTTP calls
@@ -662,8 +662,7 @@ def _refresh_data_feeds(candidate_tickers):
             )
         except Exception as e:
             print(f"SEC filings refresh failed: {e}")
-
-
+            
 def _build_fundamental_block(tickers):
     """Phase 2 context block for the Gemini prompt (pure cache reads)."""
     from data_feeds import get_context_block
