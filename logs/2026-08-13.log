@@ -2197,3 +2197,23 @@ Trade journal: no closed trades yet
 Performance: Total return -0.58% | Max drawdown 12.37% | Daily Sharpe 0.24 | Open positions: 0 | Equity $99,257.90
 Timings: account: 0.0s | risk: 0.1s | decide: 3.9s | watchlist: 0.2s | perf: 0.3s
 
+=== Run at 2026-08-13T04:44:32.993993 ===
+Current time: 2026-08-13 12:44 AM EDT | Market open (per Alpaca): False | Session: CLOSED
+Account value: $99,257.90
+Cash: $99,257.90 | Holdings (0): none
+Risk state: peak $99,257.90 | drawdown 0.00% | today +0.00% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 19/28 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 22
+Market closed (overnight): queued 25 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued MSI buy (conf 92, stop 448.0, tp 510.00509999999997)
+  -> queued NVDA buy (conf 81, stop 208.5, tp 239.5)
+  -> queued LMT buy (conf 80, stop 585.0, tp 635.0)
+Dashboard watchlist synced (3 symbols) for news/headlines.
+Ending portfolio value: $99,257.90
+Trade journal: no closed trades yet
+Performance: Total return -0.58% | Max drawdown 12.37% | Daily Sharpe 0.24 | Open positions: 0 | Equity $99,257.90
+Timings: account: 0.0s | risk: 0.1s | decide: 124.6s | watchlist: 0.3s | perf: 0.2s
+
