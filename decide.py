@@ -602,7 +602,9 @@ def _score_candidates_cached(tickers, **kwargs):
             _save_scan_cache(cache)
         merged.update(fresh)
     return merged
-    # Hard wall-clock budget for the per-run data-feeds refresh. On a warm cache
+
+
+# Hard wall-clock budget for the per-run data-feeds refresh. On a warm cache
 # this is nearly free; on a cold cache (first run after a fresh checkout) the
 # per-ticker insider/SEC loops could otherwise burn 40+ sequential HTTP calls
 # (~2-4 min). The budget guarantees feeds can never dominate a run: whatever
@@ -617,32 +619,36 @@ def _refresh_data_feeds(candidate_tickers):
     """
     Phase 2: populate the cached market-wide feeds (economic calendar,
     analyst actions, Reddit) and per-ticker feeds (insider, SEC) for the
-    current candidate set. All feeds are TTL-cached and fail-soft; the
-    whole refresh is capped by FEED_REFRESH_BUDGET_SECONDS so a cold cache
-    can never stall a run.
+    current candidate set. Everything is TTL-cached and fail-soft, so this
+    is cheap on the hot loop and never breaks a run. Config flags gate each
+    feed (each defaults to enabled). A hard wall-clock budget bounds the
+    whole refresh so a cold cache can never stall a run.
     """
+    from data_feeds import (
+        fetch_economic_calendar,
+        fetch_analyst_actions,
+        get_insider_activity,
+        get_sec_filings,
+        get_reddit_sentiment,
+    )
     deadline = time.monotonic() + FEED_REFRESH_BUDGET_SECONDS
     if ENABLE_ECONOMIC_CALENDAR and time.monotonic() < deadline:
         try:
-            from data_feeds import fetch_economic_calendar
             fetch_economic_calendar()
         except Exception as e:
             print(f"Economic calendar refresh failed: {e}")
     if ENABLE_ANALYST_ACTIONS and time.monotonic() < deadline:
         try:
-            from data_feeds import fetch_analyst_actions
             fetch_analyst_actions()
         except Exception as e:
             print(f"Analyst actions refresh failed: {e}")
     if ENABLE_REDDIT_SENTIMENT and time.monotonic() < deadline:
         try:
-            from data_feeds import get_reddit_sentiment
             get_reddit_sentiment()
         except Exception as e:
             print(f"Reddit sentiment refresh failed: {e}")
     if ENABLE_INSIDER_ACTIVITY and time.monotonic() < deadline:
         try:
-            from data_feeds import get_insider_activity
             get_insider_activity(
                 candidate_tickers[:MAX_FUNDAMENTAL_TICKERS],
                 time_budget=max(0.0, deadline - time.monotonic()),
@@ -651,7 +657,6 @@ def _refresh_data_feeds(candidate_tickers):
             print(f"Insider activity refresh failed: {e}")
     if ENABLE_SEC_FILINGS and time.monotonic() < deadline:
         try:
-            from data_feeds import get_sec_filings
             get_sec_filings(
                 candidate_tickers[:MAX_FUNDAMENTAL_TICKERS],
                 time_budget=max(0.0, deadline - time.monotonic()),
@@ -805,7 +810,7 @@ def _fmt_news_block(candidates, scored_news, sentiment, fundamental=None):
     """
     parts = []
     for t, info in scored_news.items():
-        articles = [a for a in candidates.get(t, []) if a.get("score") is not None]
+        articles = [a for a in candidates.get(t, []) if isinstance(a, dict) and a.get("score") is not None]
         articles.sort(key=lambda a: a.get("score", 0), reverse=True)
         heads = " / ".join((a.get("headline", "") or "")[:100] for a in articles[:2]) or "none"
         ascore = articles[0].get("score") if articles else None
@@ -829,41 +834,83 @@ def _fmt_pending_block(pending):
         return "none"
     parts = []
     for t in pending:
+        if not isinstance(t, dict):  # never crash on a malformed queue entry
+            continue
         parts.append(
             f"{t.get('ticker')} {t.get('action', 'buy')} (conf {t.get('confidence')}, "
             f"conv {t.get('conviction')}, stop {t.get('stop_loss')}, "
             f"tp {t.get('take_profit')}): {(t.get('reasoning') or '')[:80]}"
         )
-    return "; ".join(parts)
+    return "; ".join(parts) or "none"
 
 
-def get_trade_decisions(account_snapshot, new_candidates, pending_trades):
-    """
-    Main decision entry point: scores the universe, builds the Gemini prompt
-    with ALL the context (news, chart setups, fundamentals, market pulse,
-    performance brief), calls Gemini with model rotation + quota tracking,
-    and filters its proposals against the safety gates.
-    """
+def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL", pending_trades=None):
     holdings = account_snapshot.get("holdings", {})
-    cash = float(account_snapshot.get("cash", 0.0))
-    total_value = float(account_snapshot.get("total_value", cash))
-    unavailable = get_tickers_with_open_orders() | get_tickers_on_cooldown()
+    cash = account_snapshot.get("cash", 0)
+    total_value = account_snapshot.get("total_value", cash)
 
-    # Rotating universe slice: deterministic per calendar hour, seeded by the
-    # date+hour so the slice advances naturally through the S&P 500 over the
-    # day. Full coverage of WATCHLIST (all 500 names) over the trading day.
-    import random
-    seed = int(datetime.now(pytz.timezone("America/New_York")).strftime("%Y%m%d%H"))
-    watchlist_tickers = list(WATCHLIST)
-    random.Random(seed).shuffle(watchlist_tickers)
-    watchlist_tickers = watchlist_tickers[:UNIVERSE_SCAN_PER_RUN]
+    open_orders = get_tickers_with_open_orders()
+    cooldowns = get_tickers_on_cooldown()
+    unavailable = open_orders | cooldowns
+
+    new_candidates = {t: a for t, a in candidates.items() if t not in holdings}
+
+    # Morning prep briefing (morning_prep.py): pre-analyzed names from the
+    # overnight/early-morning Gemini call are injected as candidates so the
+    # open trades on the prepared context, not just whatever news just hit.
+    try:
+        prep_path = os.path.join(os.path.dirname(__file__), "data", "morning_candidates.json")
+        if os.path.exists(prep_path):
+            with open(prep_path) as f:
+                prep = json.load(f)
+            # Bulletproof: morning_prep saves a list of dicts, but Gemini's
+            # JSON can come back as an object {ticker: {...}} or even a list
+            # of strings -- handle every shape so a format hiccup can never
+            # crash the run ('str' object has no attribute 'get').
+            items = []
+            if isinstance(prep, dict):
+                for t, v in prep.items():
+                    if isinstance(v, dict):
+                        items.append({"ticker": t, **v})
+            elif isinstance(prep, list):
+                items = [i for i in prep if isinstance(i, dict)]
+            for item in items:
+                t = item.get("ticker")
+                if not t or t in holdings or t in new_candidates:
+                    continue
+                new_candidates.setdefault(t, []).append({
+                    "headline": item.get("notes") or item.get("stance") or "morning prep pick",
+                    "summary": "",
+                    "source": "morning-brief",
+                    "url": "",
+                    "sentiment": 0.0,
+                    "score": float(item.get("priority", 5) or 5),
+                })
+    except Exception as e:
+        print(f"Could not load morning candidates: {e}")
+
+    # Rotate through the FULL S&P 500 universe: every name gets scanned over
+    # the day, but each run only scores UNIVERSE_SCAN_PER_RUN non-news names
+    # (deterministic per hour, so the same run-hour reuses the same slice).
+    watchlist_tickers = [t for t in WATCHLIST if t not in holdings and t not in new_candidates]
+    if UNIVERSE_SCAN_PER_RUN > 0 and len(watchlist_tickers) > UNIVERSE_SCAN_PER_RUN:
+        watchlist_tickers = sorted(watchlist_tickers)
+        seed = int(datetime.now(pytz.timezone("America/New_York")).strftime("%Y%m%d%H"))
+        start = seed % len(watchlist_tickers)
+        watchlist_tickers = (watchlist_tickers[start:] + watchlist_tickers[:start])[:UNIVERSE_SCAN_PER_RUN]
 
     # Dual focus: average headline sentiment per news candidate feeds the
     # quant score so a real catalyst moves the needle alongside the chart.
     news_sentiment = {}
     for t, articles in new_candidates.items():
-        if articles:
-            news_sentiment[t] = sum(headline_sentiment(a) for a in articles) / len(articles)
+        # Bulletproof against a malformed candidates value (e.g. a float or
+        # string instead of a list of article dicts) so one bad article can
+        # never crash the run.
+        if not isinstance(articles, list) or not articles:
+            continue
+        valid = [a for a in articles if isinstance(a, dict)]
+        if valid:
+            news_sentiment[t] = sum(headline_sentiment(a) for a in valid) / len(valid)
 
     # Phase 2: refresh the cached market-wide + per-ticker feeds, then build
     # cache-only fundamental signals (analyst / insider / reddit / earnings /
