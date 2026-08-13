@@ -6669,3 +6669,33 @@ Trade journal: no closed trades yet
 Performance: Total return -0.64% | Max drawdown 12.37% | Daily Sharpe 0.23 | Open positions: 11 | Equity $99,168.96
 Timings: account: 0.0s | risk: 7.6s | decide: 30.1s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-08-13T15:05:33.410546 ===
+Current time: 2026-08-13 11:05 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,130.93
+Cash: $19,865.51 | Holdings (11): {'CEG': '35.6034 sh (+0.14%)', 'GEHC': '0.6136 sh (-0.83%)', 'HAS': '1.1333 sh (-0.01%)', 'IVZ': '1.4577 sh (+0.03%)', 'LMT': '16.3555 sh (-0.94%)', 'MS': '43.8344 sh (-0.53%)', 'MSI': '21.1281 sh (-1.31%)', 'NDAQ': '103.7371 sh (+0.11%)', 'NUE': '36.5544 sh (-0.23%)', 'NVDA': '44.2888 sh (+0.28%)', 'NWS': '303.7199 sh (+1.23%)'}
+Open orders (1): CHD buy 97.9637
+  !! FOREIGN ACTIVITY: CEG position (35.6034 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: GEHC position (0.6136 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: HAS position (1.1333 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: IVZ position (1.4577 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: LMT position (16.3555 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: MS position (43.8344 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: MSI position (21.1281 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NDAQ position (103.7371 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NUE position (36.5544 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NVDA position (44.2888 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NWS position (303.7199 sh) was never created by this bot.
+Risk state: peak $99,443.44 | drawdown 0.31% | today -0.13% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 14/17 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 176
+  -> {"ticker": "STLD", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,869.64), room ($9,913.09), regime multiplier (100%), and cash reserve ($4,956.55 kept of $19,865.51 cash)"}
+  -> {"ticker": "STT", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,869.64), room ($9,913.09), regime multiplier (100%), and cash reserve ($4,956.55 kept of $19,865.51 cash)"}
+Dashboard watchlist synced (14 symbols) for news/headlines.
+Ending portfolio value: $99,142.67
+Trade journal: no closed trades yet
+Performance: Total return -0.69% | Max drawdown 12.37% | Daily Sharpe 0.22 | Open positions: 11 | Equity $99,130.93
+Timings: account: 0.0s | risk: 5.6s | decide: 17.1s | watchlist: 0.2s | perf: 0.3s
+
