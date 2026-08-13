@@ -1058,6 +1058,8 @@ Performance: Total return -0.58% | Max drawdown 12.37% | Daily Sharpe 0.24 | Ope
 
 === Run at 2026-08-13T02:38:27.956654 ===
 Current time: 2026-08-12 10:38 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+=== Run at 2026-08-13T02:39:02.637152 ===
+Current time: 2026-08-12 10:39 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,257.90
 Cash: $99,257.90 | Holdings (0): none
 Risk state: peak $99,257.90 | drawdown 0.00% | today +0.00% | halted: False
@@ -1069,10 +1071,13 @@ Gemini calls used today (all models combined): 86
 Market closed (overnight): queued 6 trade idea(s) for next-morning verification -- nothing submitted yet.
   -> queued GILD buy (conf 95, stop 128.44, tp 137.8)
   -> queued GPN buy (conf 90, stop 83.93, tp 90.48)
+  -> queued GILD buy (conf 90, stop 128.44, tp 137.8)
+  -> queued GPN buy (conf 85, stop 83.93, tp 90.48)
   -> queued GPC buy (conf 90, stop 123.76, tp 137.08)
 Dashboard watchlist synced (3 symbols) for news/headlines.
 Ending portfolio value: $99,257.90
 Trade journal: no closed trades yet
 Performance: Total return -0.58% | Max drawdown 12.37% | Daily Sharpe 0.24 | Open positions: 0 | Equity $99,257.90
 Timings: account: 0.0s | risk: 0.1s | decide: 6.8s | watchlist: 0.1s | perf: 0.2s
+Timings: account: 0.0s | risk: 0.1s | decide: 162.5s | watchlist: 0.4s | perf: 0.2s
 
