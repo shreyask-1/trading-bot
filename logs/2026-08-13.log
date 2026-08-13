@@ -8127,6 +8127,10 @@ Timings: account: 0.0s | risk: 11.5s | decide: 14.6s | watchlist: 0.1s | perf: 0
 Current time: 2026-08-13 02:51 PM EDT | Market open (per Alpaca): True | Session: REGULAR
 Account value: $99,171.22
 Cash: $9,882.09 | Holdings (14): {'CEG': '35.6034 sh (-0.25%)', 'CHD': '97.9637 sh (-0.10%)', 'GEHC': '0.6136 sh (-0.42%)', 'HAS': '1.1333 sh (+0.69%)', 'IVZ': '1.4577 sh (+0.20%)', 'LMT': '16.3555 sh (-1.27%)', 'MS': '43.8344 sh (-0.98%)', 'MSI': '21.1281 sh (-0.90%)', 'NDAQ': '103.7371 sh (+1.01%)', 'NUE': '36.5544 sh (+0.17%)', 'NVDA': '44.2888 sh (+0.67%)', 'NWS': '303.7199 sh (+0.77%)', 'STLD': '0.1352 sh (+0.11%)', 'WSM': '0.1026 sh (-0.53%)'}
+=== Run at 2026-08-13T18:50:16.645330 ===
+Current time: 2026-08-13 02:50 PM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,144.71
+Cash: $9,882.09 | Holdings (14): {'CEG': '35.6034 sh (-0.27%)', 'CHD': '97.9637 sh (-0.06%)', 'GEHC': '0.6136 sh (-0.43%)', 'HAS': '1.1333 sh (+0.66%)', 'IVZ': '1.4577 sh (+0.11%)', 'LMT': '16.3555 sh (-1.26%)', 'MS': '43.8344 sh (-1.00%)', 'MSI': '21.1281 sh (-0.89%)', 'NDAQ': '103.7371 sh (+0.91%)', 'NUE': '36.5544 sh (+0.10%)', 'NVDA': '44.2888 sh (+0.66%)', 'NWS': '303.7199 sh (+0.68%)', 'STLD': '0.1352 sh (+0.14%)', 'WSM': '0.1026 sh (-0.57%)'}
   !! FOREIGN ACTIVITY: CEG position (35.6034 sh) was never created by this bot.
   !! FOREIGN ACTIVITY: CHD position (97.9637 sh) was never created by this bot.
   !! FOREIGN ACTIVITY: GEHC position (0.6136 sh) was never created by this bot.
@@ -8142,6 +8146,7 @@ Cash: $9,882.09 | Holdings (14): {'CEG': '35.6034 sh (-0.25%)', 'CHD': '97.9637 
   !! FOREIGN ACTIVITY: STLD position (0.1352 sh) was never created by this bot.
   !! FOREIGN ACTIVITY: WSM position (0.1026 sh) was never created by this bot.
 Risk state: peak $99,443.44 | drawdown 0.27% | today -0.09% | halted: False
+Risk state: peak $99,443.44 | drawdown 0.30% | today -0.11% | halted: False
 Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
 News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
 Quant pre-screen: 12/22 candidates passed.
@@ -8154,4 +8159,11 @@ Ending portfolio value: $99,171.52
 Trade journal: no closed trades yet
 Performance: Total return -0.66% | Max drawdown 12.37% | Daily Sharpe 0.22 | Open positions: 14 | Equity $99,171.22
 Timings: account: 0.0s | risk: 10.3s | decide: 14.3s | watchlist: 0.1s | perf: 0.2s
+  -> {"ticker": "MNST", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,871.71), room ($9,914.47), regime multiplier (100%), and cash reserve ($4,957.24 kept of $9,882.09 cash)"}
+  -> {"ticker": "DAL", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,871.71), room ($9,914.47), regime multiplier (100%), and cash reserve ($2,478.62 kept of $9,882.09 cash)"}
+Dashboard watchlist synced (16 symbols) for news/headlines.
+Ending portfolio value: $99,168.79
+Trade journal: no closed trades yet
+Performance: Total return -0.66% | Max drawdown 12.37% | Daily Sharpe 0.22 | Open positions: 14 | Equity $99,144.71
+Timings: account: 0.0s | risk: 9.7s | decide: 13.4s | watchlist: 0.1s | perf: 0.1s
 
