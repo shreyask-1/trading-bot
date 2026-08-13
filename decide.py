@@ -580,11 +580,26 @@ def _score_candidates_cached(tickers, **kwargs):
             merged[t] = entry
         else:
             need.append(t)
-    if need:
-        fresh = _score_candidates(need, **kwargs)
+        if need:
+        fresh = {}
+        deadline = time.monotonic() + SCAN_REFRESH_BUDGET_SECONDS
+        for t in need:
+            if len(fresh) >= MAX_FRESH_SCANS_PER_RUN or time.monotonic() >= deadline:
+                break
+            try:
+                data = get_full_indicators(t)
+                score = calculate_signal_score(
+                    data,
+                    news_sentiment=(kwargs.get("sentiment") or {}).get(t, 0.0),
+                    extras=(kwargs.get("extras") or {}).get(t),
+                )
+                fresh[t] = {"indicators": data, "score": score}
+            except Exception:
+                continue
         for t, info in fresh.items():
             cache[f"{t}|{hour}"] = info
-        _save_scan_cache(cache)
+        if fresh:
+            _save_scan_cache(cache)
         merged.update(fresh)
     return merged
     
