@@ -6273,3 +6273,26 @@ Trade journal: no closed trades yet
 Performance: Total return -0.51% | Max drawdown 12.37% | Daily Sharpe 0.26 | Open positions: 5 | Equity $99,317.10
 Timings: account: 0.0s | risk: 2.7s | decide: 70.6s | watchlist: 0.2s | perf: 0.3s
 
+=== Run at 2026-08-13T13:45:34.685774 ===
+Current time: 2026-08-13 09:45 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,311.11
+Cash: $49,599.76 | Holdings (5): {'LMT': '16.3555 sh (-0.43%)', 'MSI': '21.1281 sh (-0.16%)', 'NUE': '36.5544 sh (-0.17%)', 'NVDA': '44.2888 sh (+0.59%)', 'NWS': '303.7199 sh (+0.74%)'}
+Open orders (3): CHD buy 97.9637, CEG buy 35.6034, NDAQ buy 103.737
+  !! FOREIGN ACTIVITY: LMT position (16.3555 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: MSI position (21.1281 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NUE position (36.5544 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NVDA position (44.2888 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NWS position (303.7199 sh) was never created by this bot.
+Risk state: peak $99,352.60 | drawdown 0.04% | today +0.05% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 15/23 candidates passed.
+Gemini proposed 1 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 161
+  -> {"timestamp": "2026-08-13T13:46:45.137418", "ticker": "MS", "action": "buy", "qty": 43.8344, "conviction": 8, "size_multiplier": 1.0, "order_id": "4ba7da06-0740-467a-94f0-8f39318ebdbb", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": 208.19, "take_profit": 229.09, "reasoning": "", "status": "submitted"}
+Dashboard watchlist synced (9 symbols) for news/headlines.
+Ending portfolio value: $99,307.16
+Trade journal: no closed trades yet
+Performance: Total return -0.53% | Max drawdown 12.37% | Daily Sharpe 0.26 | Open positions: 5 | Equity $99,308.72
+Timings: account: 0.0s | risk: 2.9s | decide: 67.3s | watchlist: 0.1s | perf: 0.2s
+
