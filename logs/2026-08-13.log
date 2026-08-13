@@ -9240,3 +9240,24 @@ Trade journal: no closed trades yet
 Performance: Total return -0.71% | Max drawdown 12.37% | Daily Sharpe 0.21 | Open positions: 14 | Equity $99,128.91
 Timings: account: 0.0s | risk: 3.7s | decide: 7.7s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-08-13T21:24:24.334400 ===
+Current time: 2026-08-13 05:24 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+Account value: $99,129.92
+Cash: $9,882.09 | Holdings (14): {'CEG': '35.6034 sh (-0.01%)', 'CHD': '97.9637 sh (+0.03%)', 'GEHC': '0.6136 sh (-0.20%)', 'HAS': '1.1333 sh (+0.99%)', 'IVZ': '1.4577 sh (+0.44%)', 'LMT': '16.3555 sh (-1.34%)', 'MS': '43.8344 sh (-1.35%)', 'MSI': '21.1281 sh (-1.00%)', 'NDAQ': '103.7371 sh (+0.92%)', 'NUE': '36.5544 sh (-0.16%)', 'NVDA': '44.2888 sh (+0.61%)', 'NWS': '303.7199 sh (+1.01%)', 'STLD': '0.1352 sh (-0.74%)', 'WSM': '0.1026 sh (-1.26%)'}
+  !! FIRST RUN BASELINE: these holdings existed before this deploy (no order history on record): CEG x35.6034, CHD x97.9637, GEHC x0.6136, HAS x1.1333, IVZ x1.4577, LMT x16.3555, MS x43.8344, MSI x21.1281, NDAQ x103.7371, NUE x36.5544, NVDA x44.2888, NWS x303.7199, STLD x0.1352, WSM x0.1026. Verify them in the Alpaca dashboard Activity log.
+  -> Order ledger started fresh. Holdings are now the baseline; future deviations from the ledger are flagged.
+Risk state: peak $99,443.44 | drawdown 0.32% | today -0.13% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 15/22 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 255
+Market closed (overnight): queued 5 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued CVX buy (conf 85, stop 185.93, tp 208.0)
+  -> queued DASH buy (conf 80, stop 193.71, tp 235.0)
+Dashboard watchlist synced (16 symbols) for news/headlines.
+Ending portfolio value: $99,131.69
+Trade journal: no closed trades yet
+Performance: Total return -0.70% | Max drawdown 12.37% | Daily Sharpe 0.21 | Open positions: 14 | Equity $99,129.92
+Timings: account: 0.0s | risk: 1.9s | decide: 4.6s | watchlist: 0.1s | perf: 0.1s
+
