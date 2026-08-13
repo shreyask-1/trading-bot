@@ -59,7 +59,7 @@ from news import headline_sentiment
 # bounded, and each individual attempt now fails fast instead of hanging.
 _client = genai.Client(
     api_key=GEMINI_API_KEY,
-    http_options=types.HttpOptions(timeout=60),
+    http_options=types.HttpOptions(timeout=60_000),
 )
 
 _CALL_TRACKER_FILE = os.path.join(
