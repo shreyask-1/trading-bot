@@ -7,6 +7,8 @@ import re
 import os
 import json
 import hashlib
+import html as html_lib
+import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
 import requests
 
@@ -15,6 +17,8 @@ from config import (
     MAX_NEWS_ITEMS,
     NEWS_DEDUP_MAX_AGE_HOURS,
     NEWS_MIN_SCORE_TO_CONSIDER,
+    ENABLE_RSS_NEWS,
+    RSS_FETCH_TIMEOUT_SECONDS,
 )
 from sp500_data import SP500
 
@@ -195,6 +199,57 @@ def find_mentioned_tickers(articles, seen_news):
     return mentions, newly_seen, sentiment_by_ticker
 
 
+def fetch_rss_news(timeout=8.0):
+    """
+    Free RSS headline feeds (no API key, no Finnhub quota): Google News US
+    top stories + Yahoo Finance index headlines. Parsed with the stdlib
+    ElementTree; each item is normalized to the same article shape the
+    Finnhub pipeline expects ({headline, summary, source, url, datetime}) so
+    the ticker-matcher and importance scorer treat them identically.
+    Fail-soft: returns [] on any error -- Finnhub coverage still runs.
+    """
+    feeds = [
+        "https://news.google.com/rss?hl=en-US&gl=US&ceid=US:en",
+        "https://feeds.finance.yahoo.com/rss/2.0/headline?s=%5EGSPC%2C%5EIXIC%2C%5EDJI&region=US&lang=en-US",
+    ]
+    articles = []
+    for url in feeds:
+        try:
+            resp = requests.get(url, timeout=timeout, headers={"User-Agent": "Mozilla/5.0"})
+            resp.raise_for_status()
+            root = ET.fromstring(resp.content)
+        except Exception as e:
+            print(f"RSS feed {url} failed (continuing): {e}")
+            continue
+        for item in root.iter("item"):
+            title = ""
+            desc = ""
+            link = ""
+            pub = ""
+            for child in item:
+                tag = child.tag.split("}")[-1]  # strip namespace
+                if tag == "title":
+                    title = child.text or ""
+                elif tag == "description":
+                    desc = child.text or ""
+                elif tag == "link":
+                    link = child.text or ""
+                elif tag == "pubDate":
+                    pub = child.text or ""
+            title = html_lib.unescape(re.sub(r"<[^>]+>", "", title)).strip()
+            desc = html_lib.unescape(re.sub(r"<[^>]+>", "", desc)).strip()
+            if not title:
+                continue
+            articles.append({
+                "headline": title[:300],
+                "summary": desc[:300],
+                "source": "rss",
+                "url": link,
+                "datetime": pub,
+            })
+    return articles
+
+
 def get_news_candidates(time_budget=None):
     """
     Returns (mentions, stats, sentiment_by_ticker). time_budget (wall-clock
@@ -212,6 +267,16 @@ def get_news_candidates(time_budget=None):
     if time_budget is not None:
         fetch_timeout = max(2.0, min(15.0, time_budget))
     articles = fetch_market_news(timeout=fetch_timeout)
+    # Free RSS feeds broaden coverage without spending Finnhub quota; any RSS
+    # item that survives the same dedup/score pipeline just adds a candidate.
+    if ENABLE_RSS_NEWS:
+        rss_timeout = min(RSS_FETCH_TIMEOUT_SECONDS, fetch_timeout)
+        try:
+            rss_articles = fetch_rss_news(timeout=rss_timeout)
+            if rss_articles:
+                articles = articles + rss_articles
+        except Exception as e:
+            print(f"RSS news fetch failed (continuing with Finnhub only): {e}")
     mentions, newly_seen, sentiment_by_ticker = find_mentioned_tickers(articles, seen)
 
     # Cache per-ticker WORST sentiment (from ALL matched articles, even ones
