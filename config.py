@@ -99,7 +99,11 @@ OVERNIGHT_QUEUE_ENABLED = (
 # Hard ceiling on TOTAL invested (holdings + pending buys) as a fraction of
 # portfolio value. 15% per position x 20 positions mathematically allows ~3x
 # leverage; this caps gross exposure so the account can never sit in margin.
-MAX_TOTAL_EXPOSURE_PCT = float(os.environ.get("MAX_TOTAL_EXPOSURE_PCT", 0.90))
+# 0.95 lets the bot deploy the usable cash beyond the 5% MIN_CASH_RESERVE_PCT
+# (at 0.90 the account gets stuck 'full' with ~$5k cash idle and every buy
+# skipped as below minimum size -- exactly the 2026-08-13 log); the reserve
+# still guarantees cash is never fully spent.
+MAX_TOTAL_EXPOSURE_PCT = float(os.environ.get("MAX_TOTAL_EXPOSURE_PCT", 0.95))
 # Hard per-position loss cap (%): if a position is ever down this much from
 # its average entry, it is force-sold even if ATR/indicator data is unavailable.
 MAX_POSITION_LOSS_PCT = float(os.environ.get("MAX_POSITION_LOSS_PCT", 8.0))
