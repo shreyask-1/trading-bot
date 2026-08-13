@@ -74,11 +74,11 @@ LOG_DIR = os.path.join(os.path.dirname(__file__), "logs")
 # and threaded into every expensive step -- news fetch, the decision engine
 # (feeds / scans / Gemini), watchlist sync, the performance snapshot -- each
 # of which consumes at most the remaining time and skips cleanly when the
-# deadline is spent. This is what guarantees a run can never blow past ~1
-# minute regardless of slow APIs: before this, decide.py had its own fixed
-# 40s budget but news + account + risk calls + the log commit stacked on
-# top of it, which is exactly the intermittent 60-90s+ runs.
-RUN_BUDGET_SECONDS = float(os.environ.get("RUN_BUDGET_SECONDS", 50))
+# deadline is spent. This is what guarantees a run can never blow past the
+# 60s shell cap (`timeout 60` in run-bot.yml): 55 leaves ~5s of headroom for
+# Python startup / SDK imports, so the whole python process finishes inside
+# the 60s window while still spending nearly all of it on real work.
+RUN_BUDGET_SECONDS = float(os.environ.get("RUN_BUDGET_SECONDS", 55))
 
 # Keep the committed daily log bounded. Every 2-min run appends its full
 # output, so without this the log grows without limit and the per-run
