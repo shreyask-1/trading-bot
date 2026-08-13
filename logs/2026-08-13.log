@@ -5800,6 +5800,9 @@ Trade journal: no closed trades yet
 Performance: Total return -0.61% | Max drawdown 12.37% | Daily Sharpe 0.24 | Open positions: 3 | Equity $99,228.16
 Timings: account: 0.0s | risk: 0.2s | decide: 35.6s | watchlist: 0.0s | perf: 0.1s
 
+=== Run at 2026-08-13T12:14:07.833280 ===
+Current time: 2026-08-13 08:14 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
+Account value: $99,227.93
 === Run at 2026-08-13T12:10:53.804007 ===
 Current time: 2026-08-13 08:10 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
 Account value: $99,228.38
@@ -5816,6 +5819,10 @@ Gemini proposed 1 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 140
   -> {"ticker": "NUE", "status": "failed", "reason": "{\"code\":42210000,\"message\":\"invalid limit_price 271.585. sub-penny increment does not fulfill minimum pricing criteria\"}"}
 Dashboard watchlist synced (8 symbols) for news/headlines.
+Ending portfolio value: $99,227.93
+Trade journal: no closed trades yet
+Performance: Total return -0.61% | Max drawdown 12.37% | Daily Sharpe 0.24 | Open positions: 3 | Equity $99,227.93
+Timings: account: 0.0s | risk: 1.1s | decide: 7.9s | watchlist: 0.1s | perf: 0.2s
 Ending portfolio value: $99,227.49
 Trade journal: no closed trades yet
 Performance: Total return -0.61% | Max drawdown 12.37% | Daily Sharpe 0.24 | Open positions: 3 | Equity $99,228.38
