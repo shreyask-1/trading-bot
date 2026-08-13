@@ -286,10 +286,12 @@ def fetch_insider_activity(tickers, time_budget=None):
     return store
 
 
-def get_insider_activity(tickers):
-    """Cache-or-fetch wrapper used by the scoring engine (never raises)."""
+def get_insider_activity(tickers, time_budget=None):
+    """Cache-or-fetch wrapper used by the scoring engine (never raises).
+    time_budget is forwarded so decide.py's feed-refresh budget actually
+    applies (without it the wrapper dropped the budget entirely)."""
     try:
-        return fetch_insider_activity(tickers)
+        return fetch_insider_activity(tickers, time_budget=time_budget)
     except Exception as e:
         print(f"Insider activity unavailable: {e}")
         return {}
