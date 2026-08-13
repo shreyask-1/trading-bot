@@ -569,8 +569,7 @@ def _score_candidates_cached(tickers, **kwargs):
         _save_scan_cache(cache)
         merged.update(fresh)
     return merged
-
-
+    
 # Hard wall-clock budget for the per-run data-feeds refresh. On a warm cache
 # this is nearly free; on a cold cache (first run after a fresh checkout) the
 # per-ticker insider/SEC loops could otherwise burn 40+ sequential HTTP calls
