@@ -520,17 +520,20 @@ def _scan_movers():
 # Per-ticker sector + market cap from Finnhub /stock/profile2 (free tier),
 # cached 24h. Gives Gemini the crucial "this ticker lives in the strongest /
 # weakest sector today" link. Budgeted + capped so a cold cache can't stall
-# a run: at most 8 NEW tickers per call within an 8s wall-clock budget.
-SECTOR_PROFILE_BUDGET_SECONDS = 8.0
+# a run: at most 12 NEW tickers per call within a 12s wall-clock budget (the
+# 60s run cap now affords deeper per-run coverage).
+SECTOR_PROFILE_BUDGET_SECONDS = 12.0
+SECTOR_PROFILE_MAX_FRESH = 12
 
 
 # Per-ticker analyst consensus + price targets from Finnhub /stock/metrics
 # (free tier -- recommendationBuy/Hold/Sell counts and the street's mean/high/
 # low price targets), cached 24h. This is the "what does Wall Street think"
 # number Gemini can't get from a chart. Same budgeted+capped lazy pattern as
-# sector profiles so a cold cache can never stall a run: at most 8 NEW tickers
-# per call within an 8s wall-clock budget.
-ANALYST_CONSENSUS_BUDGET_SECONDS = 8.0
+# sector profiles so a cold cache can never stall a run: at most 12 NEW
+# tickers per call within a 12s wall-clock budget.
+ANALYST_CONSENSUS_BUDGET_SECONDS = 12.0
+ANALYST_CONSENSUS_MAX_FRESH = 12
 
 
 def _consensus_from_recommendation_trends(t):
@@ -588,7 +591,7 @@ def get_analyst_consensus(tickers):
     store = dict(cached.get("by_ticker", {})) if cached else {}
     need = [t for t in tickers if t and t not in store]
     _loop_start = time.monotonic()
-    for t in need[:8]:
+    for t in need[:ANALYST_CONSENSUS_MAX_FRESH]:
         if time.monotonic() - _loop_start >= ANALYST_CONSENSUS_BUDGET_SECONDS:
             break
         entry = {}
@@ -625,6 +628,7 @@ def get_analyst_consensus(tickers):
     _save_cache("analyst_consensus.json", {"by_ticker": store})
     return store
 
+
 def get_sector_profiles(tickers):
     """
     {ticker: {"sector": str, "market_cap": float}} from Finnhub
@@ -636,7 +640,7 @@ def get_sector_profiles(tickers):
     store = dict(cached.get("by_ticker", {})) if cached else {}
     need = [t for t in tickers if t and t not in store]
     _loop_start = time.monotonic()
-    for t in need[:8]:
+    for t in need[:SECTOR_PROFILE_MAX_FRESH]:
         if time.monotonic() - _loop_start >= SECTOR_PROFILE_BUDGET_SECONDS:
             break
         try:
