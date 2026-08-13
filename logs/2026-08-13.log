@@ -3583,3 +3583,25 @@ Trade journal: no closed trades yet
 Performance: Total return -0.58% | Max drawdown 12.37% | Daily Sharpe 0.24 | Open positions: 0 | Equity $99,255.67
 Timings: account: 0.0s | risk: 0.0s | decide: 1.8s | watchlist: 0.0s | perf: 0.1s
 
+=== Run at 2026-08-13T08:00:41.443652 ===
+Current time: 2026-08-13 04:00 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
+Account value: $99,255.67
+Cash: $99,255.67 | Holdings (0): none
+Risk state: peak $99,257.90 | drawdown 0.00% | today -0.00% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+Morning verification: 25 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 11/16 candidates passed.
+Gemini proposed 4 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 28
+  -> {"timestamp": "2026-08-13T08:00:51.995857", "ticker": "MSI", "action": "buy", "qty": 21.1281, "conviction": 9, "size_multiplier": 1.0, "order_id": "2cb258eb-ba2b-4bb4-9ad8-3d622b993a51", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": 445.0, "take_profit": 510.0, "reasoning": "", "status": "submitted"}
+  -> {"timestamp": "2026-08-13T08:00:53.036187", "ticker": "NWS", "action": "buy", "qty": 303.7199, "conviction": 9, "size_multiplier": 1.0, "order_id": "310edac2-c81c-4911-bb78-44a4cc232e87", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": 31.0, "take_profit": 35.5, "reasoning": "", "status": "submitted"}
+  -> {"timestamp": "2026-08-13T08:00:53.991111", "ticker": "NVDA", "action": "buy", "qty": 44.2888, "conviction": 8, "size_multiplier": 1.0, "order_id": "e0f5a5f0-ad18-4a40-ad28-06bb14ec298b", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": 208.0, "take_profit": 235.29, "reasoning": "", "status": "submitted"}
+  -> {"timestamp": "2026-08-13T08:00:54.844785", "ticker": "NDAQ", "action": "buy", "qty": 103.7371, "conviction": 8, "size_multiplier": 1.0, "order_id": "57a5d3a5-280c-4a41-9bcd-f852dd1f2c42", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": 93.0, "take_profit": 99.0, "reasoning": "", "status": "submitted"}
+Overnight queue cleared after verification.
+Dashboard watchlist synced (4 symbols) for news/headlines.
+Ending portfolio value: $99,255.67
+Trade journal: no closed trades yet
+Performance: Total return -0.58% | Max drawdown 12.37% | Daily Sharpe 0.24 | Open positions: 0 | Equity $99,255.67
+Timings: account: 0.0s | risk: 0.1s | decide: 13.0s | watchlist: 0.1s | perf: 0.2s
+
