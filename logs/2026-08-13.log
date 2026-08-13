@@ -5547,6 +5547,10 @@ Trade journal: no closed trades yet
 Performance: Total return -0.58% | Max drawdown 12.37% | Daily Sharpe 0.24 | Open positions: 3 | Equity $99,256.28
 Timings: account: 0.0s | risk: 0.9s | decide: 125.4s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-08-13T11:44:36.229410 ===
+Current time: 2026-08-13 07:44 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
+Account value: $99,251.85
+Cash: $69,482.21 | Holdings (3): {'LMT': '16.3555 sh (+0.00%)', 'MSI': '21.1281 sh (+0.00%)', 'NVDA': '44.2888 sh (-0.04%)'}
 === Run at 2026-08-13T11:42:41.311327 ===
 Current time: 2026-08-13 07:42 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
 Account value: $99,248.75
@@ -5555,6 +5559,18 @@ Open orders (4): CHD buy 97.9637, CEG buy 35.6034, NDAQ buy 103.737, NWS buy 303
   !! FOREIGN ACTIVITY: LMT position (16.3555 sh) was never created by this bot.
   !! FOREIGN ACTIVITY: MSI position (21.1281 sh) was never created by this bot.
   !! FOREIGN ACTIVITY: NVDA position (44.2888 sh) was never created by this bot.
+Risk state: peak $99,303.99 | drawdown 0.05% | today -0.01% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 19/26 candidates passed.
+Gemini proposed 1 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 131
+  -> {"ticker": "NUE", "status": "failed", "reason": "{\"code\":42210000,\"message\":\"invalid limit_price 271.585. sub-penny increment does not fulfill minimum pricing criteria\"}"}
+Dashboard watchlist synced (8 symbols) for news/headlines.
+Ending portfolio value: $99,252.91
+Trade journal: no closed trades yet
+Performance: Total return -0.58% | Max drawdown 12.37% | Daily Sharpe 0.24 | Open positions: 3 | Equity $99,251.85
+Timings: account: 0.0s | risk: 0.8s | decide: 124.2s | watchlist: 0.1s | perf: 0.1s
 Risk state: peak $99,303.99 | drawdown 0.06% | today -0.01% | halted: False
 Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
 News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
