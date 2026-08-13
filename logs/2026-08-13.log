@@ -10462,3 +10462,22 @@ Trade journal: no closed trades yet
 Performance: Total return -0.54% | Max drawdown 12.37% | Daily Sharpe 0.25 | Open positions: 15 | Equity $99,293.36
 Timings: account: 0.0s | risk: 4.8s | decide: 12.2s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-08-13T23:38:26.021961 ===
+Current time: 2026-08-13 07:38 PM EDT | Market open (per Alpaca): False | Session: EXTENDED
+Account value: $99,292.68
+Cash: $4,962.85 | Holdings (15): {'CEG': '35.6034 sh (+0.42%)', 'CHD': '97.9637 sh (+0.03%)', 'CVX': '24.8836 sh (+0.06%)', 'GEHC': '0.6136 sh (-0.15%)', 'HAS': '1.1333 sh (+0.99%)', 'IVZ': '1.4577 sh (+0.72%)', 'LMT': '16.3555 sh (-1.28%)', 'MS': '43.8344 sh (-0.90%)', 'MSI': '21.1281 sh (-1.00%)', 'NDAQ': '103.7371 sh (+1.62%)', 'NUE': '36.5544 sh (-0.28%)', 'NVDA': '44.2888 sh (+0.70%)', 'NWS': '303.7199 sh (+1.01%)', 'STLD': '0.1352 sh (-0.74%)', 'WSM': '0.1026 sh (-1.26%)'}
+  !! FOREIGN ACTIVITY: CVX position (24.8836 sh) was never created by this bot.
+Risk state: peak $99,443.44 | drawdown 0.15% | today +0.04% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 120, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 46/62 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 318
+  -> {"ticker": "MNST", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,893.90), room ($9,929.27), regime multiplier (100%), and cash reserve ($4,964.63 kept of $4,962.85 cash)"}
+  -> {"ticker": "MDLZ", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,893.90), room ($9,929.27), regime multiplier (100%), and cash reserve ($2,482.32 kept of $4,962.85 cash)"}
+Dashboard watchlist synced (17 symbols) for news/headlines.
+Ending portfolio value: $99,290.43
+Trade journal: no closed trades yet
+Performance: Total return -0.54% | Max drawdown 12.37% | Daily Sharpe 0.25 | Open positions: 15 | Equity $99,292.68
+Timings: account: 0.0s | risk: 1.1s | decide: 31.7s | watchlist: 0.0s | perf: 0.1s
+
