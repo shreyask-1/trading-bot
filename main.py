@@ -30,6 +30,7 @@ Flow (in order):
 
 import json
 import os
+import time
 from datetime import datetime
 
 from config import (
@@ -68,6 +69,20 @@ from decide import get_trade_decisions
 
 LOG_DIR = os.path.join(os.path.dirname(__file__), "logs")
 
+# Per-section run timing: _mark() records the wall-clock seconds since the
+# previous mark, and run() prints a "Timings:" line at the end so it's obvious
+# at a glance where each run spends its time (and what to look at if a run
+# ever stalls). Production runs call run() once per process, so the marks are
+# clean per run.
+_marks = {}
+
+
+def _mark(section):
+    now = time.monotonic()
+    _t0 = _marks.pop("_t0", None)
+    _marks[section] = (now - _t0) if _t0 is not None else 0.0
+    _marks["_t0"] = now
+
 
 def run():
     os.makedirs(LOG_DIR, exist_ok=True)
@@ -98,6 +113,7 @@ def run():
     log_lines.append(f"Account value: ${account['total_value']:,.2f}")
     holdings_summary = {t: f"{p['qty']} sh ({p['unrealized_plpc']:+.2f}%)" for t, p in account["holdings"].items()}
     log_lines.append(f"Cash: ${account['cash']:,.2f} | Holdings ({len(account['holdings'])}): {holdings_summary or 'none'}")
+    _mark("account")
 
     # Open-order visibility: queued/pending orders (e.g. de-leveraging sells
     # placed after the close) are why the account may look unchanged at night
@@ -230,6 +246,7 @@ def run():
         except Exception as e:
             log_lines.append(f"Flatten step failed (continuing anyway): {e}")
 
+    _mark("risk")
     # Step 2: market regime -> position-sizing multiplier
     try:
         regime = get_market_regime()
@@ -368,6 +385,7 @@ def run():
         else:
             log_lines.append("Market closed (overnight): no trade ideas queued this run.")
 
+    _mark("decide")
     # Step 5b: keep the Alpaca dashboard watchlist in sync so the app shows
     # news/headlines for the bot's active names even while the account is
     # flat. Best-effort -- a cosmetic failure never stops the run.
@@ -382,6 +400,7 @@ def run():
     except Exception as e:
         log_lines.append(f"Dashboard watchlist sync skipped: {e}")
 
+    _mark("watchlist")
     # Step 6: performance tracking
     try:
         final_account = get_account_snapshot()
@@ -426,6 +445,9 @@ def run():
     except Exception as e:
         log_lines.append(f"Could not summarize performance: {e}")
 
+    _mark("perf")
+    timings = " | ".join(f"{k}: {v:.1f}s" for k, v in _marks.items() if k != "_t0")
+    log_lines.append(f"Timings: {timings}")
     log_lines.append("")
     _write_log(log_lines, timestamp)
     print("\n".join(log_lines))
