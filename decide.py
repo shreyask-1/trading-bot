@@ -52,7 +52,15 @@ from trader import (
 from signal_score import calculate_signal_score
 from news import headline_sentiment
 
-_client = genai.Client(api_key=GEMINI_API_KEY)
+# Bound each Gemini attempt with an explicit HTTP timeout: the SDK has no
+# default timeout, so without this a slow/hung Google response could stall a
+# run indefinitely (the random run that blows past 2 minutes). 60s is ample
+# for the largest prompt; with up to 3 model fallbacks the worst case is
+# bounded, and each individual attempt now fails fast instead of hanging.
+_client = genai.Client(
+    api_key=GEMINI_API_KEY,
+    http_options=types.HttpOptions(timeout=60),
+)
 
 _CALL_TRACKER_FILE = os.path.join(
     os.path.dirname(__file__), "data", "gemini_call_tracker.json"
