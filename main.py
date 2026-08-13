@@ -69,6 +69,26 @@ from decide import get_trade_decisions
 
 LOG_DIR = os.path.join(os.path.dirname(__file__), "logs")
 
+# Hard wall-clock budget for the ENTIRE run() (override with the
+# RUN_BUDGET_SECONDS env var). The deadline is set once at the top of run()
+# and threaded into every expensive step -- news fetch, the decision engine
+# (feeds / scans / Gemini), watchlist sync, the performance snapshot -- each
+# of which consumes at most the remaining time and skips cleanly when the
+# deadline is spent. This is what guarantees a run can never blow past ~1
+# minute regardless of slow APIs: before this, decide.py had its own fixed
+# 40s budget but news + account + risk calls + the log commit stacked on
+# top of it, which is exactly the intermittent 60-90s+ runs.
+RUN_BUDGET_SECONDS = float(os.environ.get("RUN_BUDGET_SECONDS", 50))
+
+# Keep the committed daily log bounded. Every 2-min run appends its full
+# output, so without this the log grows without limit and the per-run
+# git commit/push of a multi-MB file gets slower run after run. Once a day's
+# log exceeds LOG_MAX_BYTES it is truncated to its most recent
+# LOG_KEEP_BYTES (pure tail-keep; the newest entries are the ones that
+# matter for debugging).
+LOG_MAX_BYTES = int(os.environ.get("LOG_MAX_BYTES", 1_500_000))
+LOG_KEEP_BYTES = int(os.environ.get("LOG_KEEP_BYTES", 500_000))
+
 # Per-section run timing: _mark() records the wall-clock seconds since the
 # previous mark, and run() prints a "Timings:" line at the end so it's obvious
 # at a glance where each run spends its time (and what to look at if a run
@@ -88,6 +108,14 @@ def run():
     os.makedirs(LOG_DIR, exist_ok=True)
     timestamp = datetime.now()
     log_lines = [f"=== Run at {timestamp.isoformat()} ==="]
+
+    # One deadline for the whole run -- see RUN_BUDGET_SECONDS above. Every
+    # budgeted step receives the remaining time; cosmetic steps are skipped
+    # once it's spent.
+    _run_deadline = time.monotonic() + RUN_BUDGET_SECONDS
+
+    def _remaining_run():
+        return max(0.0, _run_deadline - time.monotonic())
 
     market_open = is_market_open()
     # A live "trading session" is the regular session, plus the Alpaca extended
@@ -292,7 +320,7 @@ def run():
 
         # Step 3: news
         try:
-            candidates, news_stats, news_sentiment = get_news_candidates()
+            candidates, news_stats, news_sentiment = get_news_candidates(time_budget=_remaining_run())
             # news_sentiment ({ticker: -1..+1}) is folded into the quant
             # scores inside decide.py; surfaced here for the log only.
             log_lines.append(
@@ -306,7 +334,7 @@ def run():
 
         # Step 4: decisions (quant pre-screen inside get_trade_decisions)
         try:
-            trades, decision_meta = get_trade_decisions(candidates, account, regime, pending_trades=pending)
+            trades, decision_meta = get_trade_decisions(candidates, account, regime, pending_trades=pending, time_budget=_remaining_run())
             log_lines.append(
                 f"Quant pre-screen: {decision_meta['candidates_passed_prescreen']}/"
                 f"{decision_meta['candidates_considered']} candidates passed."
@@ -347,7 +375,7 @@ def run():
         # is submitted now -- the first live-session run re-verifies them with
         # Gemini before placing anything.
         try:
-            candidates, news_stats, news_sentiment = get_news_candidates()
+            candidates, news_stats, news_sentiment = get_news_candidates(time_budget=_remaining_run())
             log_lines.append(
                 f"News: fetched {news_stats['articles_fetched']}, "
                 f"{news_stats['articles_new_after_dedup']} new after dedup, "
@@ -358,7 +386,7 @@ def run():
             candidates = {}
 
         try:
-            trades, decision_meta = get_trade_decisions(candidates, account, regime)
+            trades, decision_meta = get_trade_decisions(candidates, account, regime, time_budget=_remaining_run())
             log_lines.append(
                 f"Quant pre-screen: {decision_meta['candidates_passed_prescreen']}/"
                 f"{decision_meta['candidates_considered']} candidates passed."
@@ -388,23 +416,34 @@ def run():
     _mark("decide")
     # Step 5b: keep the Alpaca dashboard watchlist in sync so the app shows
     # news/headlines for the bot's active names even while the account is
-    # flat. Best-effort -- a cosmetic failure never stops the run.
-    try:
-        watchlist_tickers = set(account["holdings"].keys())
-        watchlist_tickers.update(o["symbol"] for o in open_orders)
-        watchlist_tickers.update(candidates.keys())
-        watchlist_tickers.update(t["ticker"] for t in trades)
-        synced = sync_dashboard_watchlist(watchlist_tickers)
-        if synced:
-            log_lines.append(f"Dashboard watchlist synced ({synced} symbols) for news/headlines.")
-    except Exception as e:
-        log_lines.append(f"Dashboard watchlist sync skipped: {e}")
+    # flat. Best-effort -- a cosmetic failure never stops the run. Skipped
+    # entirely if the run deadline is already spent (one more API call would
+    # push the run past the cap for zero trading value).
+    if _remaining_run() <= 0:
+        log_lines.append("Run budget spent -- skipping dashboard watchlist sync.")
+    else:
+        try:
+            watchlist_tickers = set(account["holdings"].keys())
+            watchlist_tickers.update(o["symbol"] for o in open_orders)
+            watchlist_tickers.update(candidates.keys())
+            watchlist_tickers.update(t["ticker"] for t in trades)
+            synced = sync_dashboard_watchlist(watchlist_tickers)
+            if synced:
+                log_lines.append(f"Dashboard watchlist synced ({synced} symbols) for news/headlines.")
+        except Exception as e:
+            log_lines.append(f"Dashboard watchlist sync skipped: {e}")
 
     _mark("watchlist")
-    # Step 6: performance tracking
-    try:
-        final_account = get_account_snapshot()
-        record_performance_snapshot(
+    # Step 6: performance tracking. Skipped if the run deadline is spent:
+    # the snapshot needs one more Alpaca call, and trading correctness (the
+    # steps above) matters more than this cosmetic record.
+    if _remaining_run() <= 0:
+        log_lines.append("Run budget spent -- skipping performance snapshot.")
+        final_account = account
+    else:
+        try:
+            final_account = get_account_snapshot()
+            record_performance_snapshot(
             final_account,
             LOG_DIR,
             market_regime=regime,
@@ -418,9 +457,9 @@ def run():
             risk_exits=risk_exits,
             consolidation_exits=consolidation_exits,
         )
-        log_lines.append(f"Ending portfolio value: ${final_account['total_value']:,.2f}")
-    except Exception as e:
-        log_lines.append(f"Could not record performance snapshot: {e}")
+            log_lines.append(f"Ending portfolio value: ${final_account['total_value']:,.2f}")
+        except Exception as e:
+            log_lines.append(f"Could not record performance snapshot: {e}")
 
     # Step 6b: win rate by setup, from the closed-trade journal.
     try:
@@ -455,8 +494,20 @@ def run():
 
 def _write_log(log_lines, timestamp):
     log_path = os.path.join(LOG_DIR, f"{timestamp.strftime('%Y-%m-%d')}.log")
+    block = "\n".join(log_lines) + "\n"
     with open(log_path, "a") as f:
-        f.write("\n".join(log_lines) + "\n")
+        f.write(block)
+    # Rotate: once today's log exceeds LOG_MAX_BYTES, keep only its tail so
+    # the per-run git commit/push of logs/ stays fast forever (an unbounded
+    # log was dragging every run's commit step slower and slower).
+    try:
+        if os.path.getsize(log_path) > LOG_MAX_BYTES:
+            with open(log_path) as f:
+                content = f.read()
+            with open(log_path, "w") as f:
+                f.write(content[-LOG_KEEP_BYTES:])
+    except OSError:
+        pass
 
 
 if __name__ == "__main__":
