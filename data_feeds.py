@@ -533,11 +533,55 @@ SECTOR_PROFILE_BUDGET_SECONDS = 8.0
 ANALYST_CONSENSUS_BUDGET_SECONDS = 8.0
 
 
+def _consensus_from_recommendation_trends(t):
+    """
+    Fallback for get_analyst_consensus: Finnhub /stock/recommendation-trends
+    (documented FREE endpoint) returns the raw buy/hold/sell analyst counts.
+    Returns (buy, hold, sell) or (None, None, None) on any failure.
+    """
+    try:
+        resp = requests.get(
+            "https://finnhub.io/api/v1/stock/recommendation-trends",
+            params={"symbol": t, "token": FINNHUB_API_KEY},
+            timeout=10,
+        )
+        resp.raise_for_status()
+        rows = resp.json() or []
+        if not rows:
+            return None, None, None
+        r = rows[0]
+        return r.get("strongBuy") + (r.get("buy") or 0), r.get("hold"), r.get("sell") + (r.get("strongSell") or 0)
+    except Exception:
+        return None, None, None
+
+
+def _consensus_from_price_target(t):
+    """
+    Fallback for get_analyst_consensus: Finnhub /stock/price-target
+    (documented FREE endpoint) returns the street's mean/high/low targets.
+    Returns (mean, high, low) or (None, None, None) on any failure.
+    """
+    try:
+        resp = requests.get(
+            "https://finnhub.io/api/v1/stock/price-target",
+            params={"symbol": t, "token": FINNHUB_API_KEY},
+            timeout=10,
+        )
+        resp.raise_for_status()
+        d = resp.json() or {}
+        return d.get("targetMean"), d.get("targetHigh"), d.get("targetLow")
+    except Exception:
+        return None, None, None
+
+
 def get_analyst_consensus(tickers):
     """
     {ticker: {"buy": int, "hold": int, "sell": int, "target_mean": float,
-    "target_high": float, "target_low": float}} from Finnhub /stock/metrics
-    (free tier), cached 24h. Only tickers not already cached are fetched.
+    "target_high": float, "target_low": float}} -- primary source Finnhub
+    /stock/metrics (free tier), with automatic fallback to the two endpoints
+    that are DOCUMENTED free (/stock/recommendation-trends +
+    /stock/price-target) when the primary returns an empty/invalid body (as
+    some free keys do). Cached 24h, only uncached tickers fetched.
     Fail-soft: returns {} on any error -- the run continues without it.
     """
     cached = _load_cache("analyst_consensus.json", 24)
@@ -547,6 +591,7 @@ def get_analyst_consensus(tickers):
     for t in need[:8]:
         if time.monotonic() - _loop_start >= ANALYST_CONSENSUS_BUDGET_SECONDS:
             break
+        entry = {}
         try:
             resp = requests.get(
                 "https://finnhub.io/api/v1/stock/metrics",
@@ -555,7 +600,7 @@ def get_analyst_consensus(tickers):
             )
             resp.raise_for_status()
             data = (resp.json() or {}).get("metric") or {}
-            store[t] = {
+            entry = {
                 "buy": data.get("recommendationBuy"),
                 "hold": data.get("recommendationHold"),
                 "sell": data.get("recommendationSell"),
@@ -564,11 +609,21 @@ def get_analyst_consensus(tickers):
                 "target_low": data.get("targetLowPrice"),
             }
         except Exception as e:
-            print(f"Analyst consensus fetch failed for {t} (continuing): {e}")
-            store.setdefault(t, {})
+            # Primary endpoint failed (often an empty body on free keys).
+            # Fall back to the documented-free endpoints so the feature
+            # still works instead of silently producing nothing.
+            print(f"Analyst metrics failed for {t} (falling back to free endpoints): {e}")
+            b, h, s = _consensus_from_recommendation_trends(t)
+            m, hi, lo = _consensus_from_price_target(t)
+            entry = {
+                "buy": b, "hold": h, "sell": s,
+                "target_mean": m, "target_high": hi, "target_low": lo,
+            }
+        if not any(v is not None for v in entry.values()):
+            entry = {}
+        store[t] = entry
     _save_cache("analyst_consensus.json", {"by_ticker": store})
     return store
-
 
 def get_sector_profiles(tickers):
     """
