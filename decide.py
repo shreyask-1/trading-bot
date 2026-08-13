@@ -14,6 +14,7 @@ the discovery call itself fails (e.g. no network).
 import json
 import os
 import re
+import time
 from datetime import datetime, timedelta
 import pytz
 
@@ -513,13 +514,82 @@ def _score_candidates(tickers, sentiment=None, extras=None):
     return scored
 
 
+_SCAN_CACHE_FILE = os.path.join(os.path.dirname(__file__), "data", "scan_cache.json")
+
+
+def _load_scan_cache():
+    try:
+        with open(_SCAN_CACHE_FILE) as f:
+            return json.load(f)
+    except Exception:
+        return {}
+
+
+def _save_scan_cache(cache):
+    try:
+        tmp = _SCAN_CACHE_FILE + ".tmp"
+        with open(tmp, "w") as f:
+            json.dump(cache, f)
+        os.replace(tmp, _SCAN_CACHE_FILE)
+    except Exception:
+        pass
+
+
+def _score_candidates_cached(tickers, **kwargs):
+    """
+    Hour-scoped cache wrapper around _score_candidates for the ROTATING
+    universe scan. The scan slice is deterministic per calendar hour, so the
+    same ~20-40 tickers were being FULLY re-scored (price history fetch +
+    indicator math + intraday momentum, ~2-3 API calls each) on every 2-min
+    run -- ~30 redundant full scans per hour, which is what pushed runs from
+    20-50s to 2+ minutes. Each ticker is now computed at most once per hour;
+    every other run reuses the cached score (pure disk read). News-matched
+    candidates and holdings are still scored fresh -- they are small sets
+    and time-sensitive. Returns {ticker: {"indicators", "score"}}.
+    """
+    if not tickers:
+        return {}
+    cache = _load_scan_cache()
+    hour = datetime.now(pytz.timezone("America/New_York")).strftime("%Y%m%d%H")
+    today = hour[:8]
+    # drop entries from previous days so the cache stays bounded
+    cache = {k: v for k, v in cache.items() if k.split("|")[-1].startswith(today)}
+    merged = {}
+    need = []
+    for t in tickers:
+        entry = cache.get(f"{t}|{hour}")
+        if entry is not None and isinstance(entry, dict):
+            merged[t] = entry
+        else:
+            need.append(t)
+    if need:
+        fresh = _score_candidates(need, **kwargs)
+        for t, info in fresh.items():
+            cache[f"{t}|{hour}"] = info
+        _save_scan_cache(cache)
+        merged.update(fresh)
+    return merged
+
+
+# Hard wall-clock budget for the per-run data-feeds refresh. On a warm cache
+# this is nearly free; on a cold cache (first run after a fresh checkout) the
+# per-ticker insider/SEC loops could otherwise burn 40+ sequential HTTP calls
+# (~2-4 min). The budget guarantees feeds can never dominate a run: whatever
+# didn't get refreshed this run simply falls back to the TTL cache from the
+# last successful refresh (all feeds are fail-soft by design).
+FEED_REFRESH_BUDGET_SECONDS = float(
+    os.environ.get("FEED_REFRESH_BUDGET_SECONDS", 20)
+)
+
+
 def _refresh_data_feeds(candidate_tickers):
     """
     Phase 2: populate the cached market-wide feeds (economic calendar,
     analyst actions, Reddit) and per-ticker feeds (insider, SEC) for the
     current candidate set. Everything is TTL-cached and fail-soft, so this
     is cheap on the hot loop and never breaks a run. Config flags gate each
-    feed (each defaults to enabled).
+    feed (each defaults to enabled). A hard wall-clock budget bounds the
+    whole refresh so a cold cache can never stall a run.
     """
     from data_feeds import (
         fetch_economic_calendar,
@@ -528,29 +598,36 @@ def _refresh_data_feeds(candidate_tickers):
         get_sec_filings,
         get_reddit_sentiment,
     )
-    if ENABLE_ECONOMIC_CALENDAR:
+    deadline = time.monotonic() + FEED_REFRESH_BUDGET_SECONDS
+    if ENABLE_ECONOMIC_CALENDAR and time.monotonic() < deadline:
         try:
             fetch_economic_calendar()
         except Exception as e:
             print(f"Economic calendar refresh failed: {e}")
-    if ENABLE_ANALYST_ACTIONS:
+    if ENABLE_ANALYST_ACTIONS and time.monotonic() < deadline:
         try:
             fetch_analyst_actions()
         except Exception as e:
             print(f"Analyst actions refresh failed: {e}")
-    if ENABLE_REDDIT_SENTIMENT:
+    if ENABLE_REDDIT_SENTIMENT and time.monotonic() < deadline:
         try:
             get_reddit_sentiment()
         except Exception as e:
             print(f"Reddit sentiment refresh failed: {e}")
-    if ENABLE_INSIDER_ACTIVITY:
+    if ENABLE_INSIDER_ACTIVITY and time.monotonic() < deadline:
         try:
-            get_insider_activity(candidate_tickers[:MAX_FUNDAMENTAL_TICKERS])
+            get_insider_activity(
+                candidate_tickers[:MAX_FUNDAMENTAL_TICKERS],
+                time_budget=max(0.0, deadline - time.monotonic()),
+            )
         except Exception as e:
             print(f"Insider activity refresh failed: {e}")
-    if ENABLE_SEC_FILINGS:
+    if ENABLE_SEC_FILINGS and time.monotonic() < deadline:
         try:
-            get_sec_filings(candidate_tickers[:MAX_FUNDAMENTAL_TICKERS])
+            get_sec_filings(
+                candidate_tickers[:MAX_FUNDAMENTAL_TICKERS],
+                time_budget=max(0.0, deadline - time.monotonic()),
+            )
         except Exception as e:
             print(f"SEC filings refresh failed: {e}")
 
@@ -728,7 +805,9 @@ def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL", pending_
 
     scored_holdings = _score_candidates(list(holdings.keys()))
     scored_news = _score_candidates(list(new_candidates.keys()), sentiment=news_sentiment, extras=fundamental)
-    scored_watchlist = _score_candidates(watchlist_tickers, extras=fundamental)
+    # The rotating universe slice is cached per hour -- see
+    # _score_candidates_cached (this was the dominant per-run cost).
+    scored_watchlist = _score_candidates_cached(watchlist_tickers, extras=fundamental)
 
     # News + technical confluence: a news candidate only reaches the LLM if
     # its pure technical score (without the sentiment boost) clears the bar.
