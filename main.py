@@ -58,6 +58,7 @@ from trader import (
     load_pending_trades,
     save_pending_trades,
     clear_pending_trades,
+    sync_dashboard_watchlist,
     summarize_trade_results,
     summarize_performance,
     build_performance_brief,
@@ -102,6 +103,7 @@ def run():
     # placed after the close) are why the account may look unchanged at night
     # -- they fill at the next open. Log them so a night run never looks like
     # it "did nothing".
+    open_orders = []
     try:
         open_orders = get_open_orders_with_side()
         if open_orders:
@@ -248,6 +250,7 @@ def run():
     #     data/pending_trades.json for the next morning's verification.
     # Risk management / de-leveraging above always run, regardless of session.
     trades = []
+    candidates = {}
     decision_meta = {
         "candidates_considered": 0,
         "candidates_passed_prescreen": 0,
@@ -364,6 +367,20 @@ def run():
                 )
         else:
             log_lines.append("Market closed (overnight): no trade ideas queued this run.")
+
+    # Step 5b: keep the Alpaca dashboard watchlist in sync so the app shows
+    # news/headlines for the bot's active names even while the account is
+    # flat. Best-effort -- a cosmetic failure never stops the run.
+    try:
+        watchlist_tickers = set(account["holdings"].keys())
+        watchlist_tickers.update(o["symbol"] for o in open_orders)
+        watchlist_tickers.update(candidates.keys())
+        watchlist_tickers.update(t["ticker"] for t in trades)
+        synced = sync_dashboard_watchlist(watchlist_tickers)
+        if synced:
+            log_lines.append(f"Dashboard watchlist synced ({synced} symbols) for news/headlines.")
+    except Exception as e:
+        log_lines.append(f"Dashboard watchlist sync skipped: {e}")
 
     # Step 6: performance tracking
     try:
