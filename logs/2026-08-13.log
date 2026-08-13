@@ -5832,6 +5832,10 @@ Timings: account: 0.0s | risk: 0.4s | decide: 127.0s | watchlist: 0.0s | perf: 0
 Current time: 2026-08-13 08:18 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
 Account value: $99,214.21
 Cash: $69,482.21 | Holdings (3): {'LMT': '16.3555 sh (+0.00%)', 'MSI': '21.1281 sh (+0.00%)', 'NVDA': '44.2888 sh (-0.42%)'}
+=== Run at 2026-08-13T12:15:10.503871 ===
+Current time: 2026-08-13 08:15 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
+Account value: $99,225.28
+Cash: $69,482.21 | Holdings (3): {'LMT': '16.3555 sh (+0.00%)', 'MSI': '21.1281 sh (+0.00%)', 'NVDA': '44.2888 sh (-0.31%)'}
 Open orders (4): CHD buy 97.9637, CEG buy 35.6034, NDAQ buy 103.737, NWS buy 303.72
   !! FOREIGN ACTIVITY: LMT position (16.3555 sh) was never created by this bot.
   !! FOREIGN ACTIVITY: MSI position (21.1281 sh) was never created by this bot.
@@ -5847,4 +5851,16 @@ Ending portfolio value: $99,211.11
 Trade journal: no closed trades yet
 Performance: Total return -0.62% | Max drawdown 12.37% | Daily Sharpe 0.23 | Open positions: 3 | Equity $99,214.21
 Timings: account: 0.0s | risk: 1.0s | decide: 41.6s | watchlist: 0.1s | perf: 0.2s
+Risk state: peak $99,303.99 | drawdown 0.08% | today -0.03% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 18/26 candidates passed.
+Gemini proposed 1 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 141
+  -> {"ticker": "NUE", "status": "failed", "reason": "{\"code\":42210000,\"message\":\"invalid limit_price 271.585. sub-penny increment does not fulfill minimum pricing criteria\"}"}
+Dashboard watchlist synced (8 symbols) for news/headlines.
+Ending portfolio value: $99,220.82
+Trade journal: no closed trades yet
+Performance: Total return -0.61% | Max drawdown 12.37% | Daily Sharpe 0.23 | Open positions: 3 | Equity $99,225.28
+Timings: account: 0.0s | risk: 0.2s | decide: 129.6s | watchlist: 0.0s | perf: 0.1s
 
