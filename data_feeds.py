@@ -399,7 +399,9 @@ def get_reddit_sentiment():
         return fetch_reddit_sentiment()
     except Exception:
         return {}
-      # ============================================================
+
+
+# ============================================================
 # Market pulse: indexes + sector rotation + scan movers (Gemini context)
 # ============================================================
 # 11 sector SPDR ETFs, used for today's sector-rotation read.
@@ -668,7 +670,7 @@ def get_context_block(tickers, include_econ=True):
     """
     lines = []
 
-    # Market pulse: indexes + sector rotation (cached hourly, ~18 calls once
+    # Market pulse: indexes + sector rotation (cached hourly, ~15 calls once
     # per hour) plus movers/breadth from today's scan cache (zero API cost).
     pulse = get_market_pulse()
     if pulse:
