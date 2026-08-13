@@ -6912,3 +6912,34 @@ Trade journal: no closed trades yet
 Performance: Total return -0.98% | Max drawdown 12.37% | Daily Sharpe 0.14 | Open positions: 13 | Equity $98,863.65
 Timings: account: 0.0s | risk: 5.3s | decide: 30.1s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-08-13T15:45:39.234005 ===
+Current time: 2026-08-13 11:45 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $98,854.23
+Cash: $9,907.28 | Holdings (13): {'CEG': '35.6034 sh (-0.26%)', 'CHD': '97.9637 sh (-0.02%)', 'GEHC': '0.6136 sh (-0.76%)', 'HAS': '1.1333 sh (-0.06%)', 'IVZ': '1.4577 sh (-0.61%)', 'LMT': '16.3555 sh (-1.21%)', 'MS': '43.8344 sh (-0.79%)', 'MSI': '21.1281 sh (-1.67%)', 'NDAQ': '103.7371 sh (-0.28%)', 'NUE': '36.5544 sh (-0.41%)', 'NVDA': '44.2888 sh (+0.22%)', 'NWS': '303.7199 sh (+0.37%)', 'STLD': '0.1352 sh (+0.01%)'}
+  !! FOREIGN ACTIVITY: CEG position (35.6034 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: CHD position (97.9637 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: GEHC position (0.6136 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: HAS position (1.1333 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: IVZ position (1.4577 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: LMT position (16.3555 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: MS position (43.8344 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: MSI position (21.1281 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NDAQ position (103.7371 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NUE position (36.5544 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NVDA position (44.2888 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NWS position (303.7199 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: STLD position (0.1352 sh) was never created by this bot.
+Risk state: peak $99,443.44 | drawdown 0.59% | today -0.41% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News fetch failed, proceeding with watchlist only: HTTPSConnectionPool(host='finnhub.io', port=443): Read timed out. (read timeout=15)
+Quant pre-screen: 13/21 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 184
+  -> {"ticker": "WSM", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,828.13), room ($9,885.42), regime multiplier (100%), and cash reserve ($2,471.36 kept of $9,907.28 cash)"}
+  -> {"ticker": "WST", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,828.13), room ($9,885.42), regime multiplier (100%), and cash reserve ($4,942.71 kept of $9,907.28 cash)"}
+Dashboard watchlist synced (15 symbols) for news/headlines.
+Ending portfolio value: $98,846.02
+Trade journal: no closed trades yet
+Performance: Total return -0.99% | Max drawdown 12.37% | Daily Sharpe 0.14 | Open positions: 13 | Equity $98,854.23
+Timings: account: 0.0s | risk: 7.4s | decide: 27.5s | watchlist: 0.1s | perf: 0.2s
+
