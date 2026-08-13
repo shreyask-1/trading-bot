@@ -1,8 +1,8 @@
-# Preserve all append-only log entries across concurrent branch updates
+# Append-only log files: on conflict, combine both runs' lines.
 logs/*.log merge=union
-logs/*.csv merge=union
 logs/*.txt merge=union
 
-# Preserve continuous trade memory and state tracking across bot runs
-data/*.json merge=union
-data/*.csv merge=union
+# Everything else (JSON/CSV state snapshots) is latest-write-wins: the
+# workflows resolve conflicts with `-X ours` (keep THIS run's freshly written
+# state). JSON must NEVER use merge=union -- concatenating two JSON documents
+# corrupts the file (this was causing the merge-conflict failures).
