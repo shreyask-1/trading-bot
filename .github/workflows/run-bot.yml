@@ -4,6 +4,11 @@ on:
   schedule:
     # Fallback hourly safety net in case external cron (e.g. cron-job.org) drops
     - cron: "0 * * * *"
+  # For real daytrading cadence, point cron-job.org at the workflow_dispatch
+  # URL every 2-5 min during market hours (9:30-16:00 ET weekdays). The
+  # concurrency group above prevents overlapping runs. Requires a PAT secret
+  # (GH_PAT) if the repo is private. The pre-market briefing runs in its own
+  # workflow (morning-prep.yml) so it makes exactly one Gemini call per day.
   workflow_dispatch: {}
 
 concurrency:
@@ -36,8 +41,17 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
+          # Optional: ping you on margin warnings / halts / flattens.
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-        run: python main.py
+          # Optional risk-tuning overrides (see config.py for all options):
+          # TRADE_ONLY_DURING_MARKET_HOURS, MAX_TOTAL_EXPOSURE_PCT,
+          # DAILY_LOSS_HALT_PCT, MAX_DRAWDOWN_DELEVERAGE_PCT,
+          # MAX_DRAWDOWN_FLATTEN_PCT, RESET_EQUITY_PEAK_ON_START
+        # Hard shell backstop: main.py already budgets itself to ~50s, but
+        # `timeout` guarantees the python step can NEVER exceed 60s even if
+        # some API hangs past every internal budget (exit 124 = killed). The
+        # commit step below still runs via `if: always()`.
+        run: timeout 60 python main.py
 
       - name: Commit and push updated logs and trade memory
         if: always()
