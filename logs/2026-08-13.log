@@ -7963,3 +7963,36 @@ Trade journal: no closed trades yet
 Performance: Total return -0.80% | Max drawdown 12.37% | Daily Sharpe 0.19 | Open positions: 14 | Equity $99,041.20
 Timings: account: 0.0s | risk: 15.2s | decide: 18.2s | watchlist: 0.0s | perf: 0.1s
 
+=== Run at 2026-08-13T18:25:33.112680 ===
+Current time: 2026-08-13 02:25 PM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,041.39
+Cash: $9,882.09 | Holdings (14): {'CEG': '35.6034 sh (-0.34%)', 'CHD': '97.9637 sh (-0.09%)', 'GEHC': '0.6136 sh (-0.57%)', 'HAS': '1.1333 sh (+0.38%)', 'IVZ': '1.4577 sh (+0.00%)', 'LMT': '16.3555 sh (-1.25%)', 'MS': '43.8344 sh (-0.99%)', 'MSI': '21.1281 sh (-1.41%)', 'NDAQ': '103.7371 sh (+0.71%)', 'NUE': '36.5544 sh (+0.11%)', 'NVDA': '44.2888 sh (+0.57%)', 'NWS': '303.7199 sh (+0.51%)', 'STLD': '0.1352 sh (+0.11%)', 'WSM': '0.1026 sh (-0.84%)'}
+  !! FOREIGN ACTIVITY: CEG position (35.6034 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: CHD position (97.9637 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: GEHC position (0.6136 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: HAS position (1.1333 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: IVZ position (1.4577 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: LMT position (16.3555 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: MS position (43.8344 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: MSI position (21.1281 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NDAQ position (103.7371 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NUE position (36.5544 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NVDA position (44.2888 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NWS position (303.7199 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: STLD position (0.1352 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: WSM position (0.1026 sh) was never created by this bot.
+Risk state: peak $99,443.44 | drawdown 0.40% | today -0.22% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 12/22 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 216
+  -> {"ticker": "DAL", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,856.21), room ($9,904.14), regime multiplier (100%), and cash reserve ($2,476.03 kept of $9,882.09 cash)"}
+  -> {"ticker": "DASH", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,856.21), room ($9,904.14), regime multiplier (100%), and cash reserve ($4,952.07 kept of $9,882.09 cash)"}
+  -> {"ticker": "CSGP", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,856.21), room ($9,904.14), regime multiplier (100%), and cash reserve ($4,952.07 kept of $9,882.09 cash)"}
+Dashboard watchlist synced (17 symbols) for news/headlines.
+Ending portfolio value: $99,032.53
+Trade journal: no closed trades yet
+Performance: Total return -0.80% | Max drawdown 12.37% | Daily Sharpe 0.19 | Open positions: 14 | Equity $99,041.39
+Timings: account: 0.0s | risk: 14.5s | decide: 13.8s | watchlist: 0.2s | perf: 0.3s
+
