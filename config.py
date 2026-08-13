@@ -36,7 +36,10 @@ MAX_NEWS_ITEMS = 15  # headlines considered per run
 # News-matched tickers are ALWAYS scored regardless of the slice.
 WATCHLIST = [ticker for ticker, _ in SP500]
 # How many non-news universe tickers are scanned per run (rotating window).
-UNIVERSE_SCAN_PER_RUN = int(os.environ.get("UNIVERSE_SCAN_PER_RUN", 40))
+# 20 keeps full S&P 500 coverage over the day while halving the per-run scan
+# cost; the scan result is additionally cached per hour (see decide.py), so
+# after the first run of each hour every other run is a pure cache read.
+UNIVERSE_SCAN_PER_RUN = int(os.environ.get("UNIVERSE_SCAN_PER_RUN", 20))
 
 # --- Data feed ---
 ALPACA_DATA_FEED = os.environ.get("ALPACA_DATA_FEED", "iex")
@@ -355,7 +358,11 @@ ENABLE_SEC_FILINGS = os.environ.get("ENABLE_SEC_FILINGS", "true").lower() == "tr
 ENABLE_REDDIT_SENTIMENT = os.environ.get("ENABLE_REDDIT_SENTIMENT", "true").lower() == "true"
 # Per-ticker feeds (insider/SEC) are limited so a run never makes dozens of
 # API calls: only the top N candidates get the deep look, cached for 24h.
-MAX_FUNDAMENTAL_TICKERS = int(os.environ.get("MAX_FUNDAMENTAL_TICKERS", 12))
+# Per-run cap on how many tickers get fresh per-ticker fundamental fetches
+# (insider transactions / SEC filings). Lowered so a cold cache can't stall a
+# run; combined with the FEED_REFRESH_BUDGET_SECONDS wall-clock cap, feeds are
+# guaranteed to never dominate runtime. Still covers all news-matched names.
+MAX_FUNDAMENTAL_TICKERS = int(os.environ.get("MAX_FUNDAMENTAL_TICKERS", 8))
 # On a day with a high-impact economic event (CPI/FOMC/NFP/GDP...), new buys
 # are sized down to this fraction of normal (event uncertainty is real).
 HIGH_IMPACT_EVENT_SIZE_MULT = float(os.environ.get("HIGH_IMPACT_EVENT_SIZE_MULT", 0.5))
