@@ -75,10 +75,10 @@ def score_article(article):
     score -= 0.5 * sum(1 for w in _LOW_IMPACT_NEG if w in text)
     return round(max(0.0, min(10.0, score)), 1)
 
-def fetch_market_news():
+def fetch_market_news(timeout=15.0):
     url = "https://finnhub.io/api/v1/news"
     params = {"category": "general", "token": FINNHUB_API_KEY}
-    resp = requests.get(url, params=params, timeout=15)
+    resp = requests.get(url, params=params, timeout=timeout)
     resp.raise_for_status()
     articles = resp.json()
     return articles[: MAX_NEWS_ITEMS * 4]
@@ -195,9 +195,23 @@ def find_mentioned_tickers(articles, seen_news):
     return mentions, newly_seen, sentiment_by_ticker
 
 
-def get_news_candidates():
+def get_news_candidates(time_budget=None):
+    """
+    Returns (mentions, stats, sentiment_by_ticker). time_budget (wall-clock
+    seconds) is an optional cap from main.py's run deadline: if the budget is
+    already spent the fetch is skipped entirely, and the Finnhub HTTP call
+    itself is capped to fit whatever time remains, so a slow news API can
+    never push a run past the 1-minute cap.
+    """
+    if time_budget is not None and time_budget <= 0:
+        return {}, {"articles_fetched": 0, "articles_new_after_dedup": 0, "tickers_matched": 0}, {}
     seen = _prune_old_entries(_load_seen_news())
-    articles = fetch_market_news()
+    # Cap the single HTTP call to the remaining budget (min 2s so a healthy
+    # fetch still has a real chance) instead of always allowing the full 15s.
+    fetch_timeout = 15.0
+    if time_budget is not None:
+        fetch_timeout = max(2.0, min(15.0, time_budget))
+    articles = fetch_market_news(timeout=fetch_timeout)
     mentions, newly_seen, sentiment_by_ticker = find_mentioned_tickers(articles, seen)
 
     # Cache per-ticker WORST sentiment (from ALL matched articles, even ones
