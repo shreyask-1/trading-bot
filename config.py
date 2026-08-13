@@ -28,7 +28,10 @@ ALPACA_API_KEY = os.environ["ALPACA_API_KEY"]
 ALPACA_SECRET_KEY = os.environ["ALPACA_SECRET_KEY"]
 
 # --- Universe ---
-MAX_NEWS_ITEMS = 15  # headlines considered per run
+# More headlines per run (still one Finnhub call; the fetch returns up to
+# MAX_NEWS_ITEMS * 4 and we keep the top scored). The 60s run cap gives the
+# matcher room to chew through more articles for better coverage.
+MAX_NEWS_ITEMS = 25  # headlines considered per run
 
 # The technical universe is now the ENTIRE S&P 500. Every name gets scanned
 # over the course of the day via a rotating slice (UNIVERSE_SCAN_PER_RUN per
@@ -36,10 +39,11 @@ MAX_NEWS_ITEMS = 15  # headlines considered per run
 # News-matched tickers are ALWAYS scored regardless of the slice.
 WATCHLIST = [ticker for ticker, _ in SP500]
 # How many non-news universe tickers are scanned per run (rotating window).
-# 20 keeps full S&P 500 coverage over the day while halving the per-run scan
-# cost; the scan result is additionally cached per hour (see decide.py), so
-# after the first run of each hour every other run is a pure cache read.
-UNIVERSE_SCAN_PER_RUN = int(os.environ.get("UNIVERSE_SCAN_PER_RUN", 20))
+# 40 keeps full S&P 500 coverage over the day while staying inside the 60s
+# run budget (the rotating slice is cached per hour -- see decide.py -- so
+# only the first run of each hour pays the fresh-scan cost, and that is
+# capped by SCAN_REFRESH_BUDGET_SECONDS).
+UNIVERSE_SCAN_PER_RUN = int(os.environ.get("UNIVERSE_SCAN_PER_RUN", 40))
 
 # --- Data feed ---
 ALPACA_DATA_FEED = os.environ.get("ALPACA_DATA_FEED", "iex")
@@ -359,10 +363,10 @@ ENABLE_REDDIT_SENTIMENT = os.environ.get("ENABLE_REDDIT_SENTIMENT", "true").lowe
 # Per-ticker feeds (insider/SEC) are limited so a run never makes dozens of
 # API calls: only the top N candidates get the deep look, cached for 24h.
 # Per-run cap on how many tickers get fresh per-ticker fundamental fetches
-# (insider transactions / SEC filings). Lowered so a cold cache can't stall a
-# run; combined with the FEED_REFRESH_BUDGET_SECONDS wall-clock cap, feeds are
-# guaranteed to never dominate runtime. Still covers all news-matched names.
-MAX_FUNDAMENTAL_TICKERS = int(os.environ.get("MAX_FUNDAMENTAL_TICKERS", 8))
+# (insider transactions / SEC filings). 12 + the FEED_REFRESH_BUDGET_SECONDS
+# wall-clock cap keeps more candidates covered now that the run has a 60s
+# budget, while still guaranteeing feeds never dominate runtime.
+MAX_FUNDAMENTAL_TICKERS = int(os.environ.get("MAX_FUNDAMENTAL_TICKERS", 12))
 # On a day with a high-impact economic event (CPI/FOMC/NFP/GDP...), new buys
 # are sized down to this fraction of normal (event uncertainty is real).
 HIGH_IMPACT_EVENT_SIZE_MULT = float(os.environ.get("HIGH_IMPACT_EVENT_SIZE_MULT", 0.5))
