@@ -5803,6 +5803,9 @@ Timings: account: 0.0s | risk: 0.2s | decide: 35.6s | watchlist: 0.0s | perf: 0.
 === Run at 2026-08-13T12:14:07.833280 ===
 Current time: 2026-08-13 08:14 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
 Account value: $99,227.93
+=== Run at 2026-08-13T12:10:53.804007 ===
+Current time: 2026-08-13 08:10 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
+Account value: $99,228.38
 Cash: $69,482.21 | Holdings (3): {'LMT': '16.3555 sh (+0.00%)', 'MSI': '21.1281 sh (+0.00%)', 'NVDA': '44.2888 sh (-0.28%)'}
 Open orders (4): CHD buy 97.9637, CEG buy 35.6034, NDAQ buy 103.737, NWS buy 303.72
   !! FOREIGN ACTIVITY: LMT position (16.3555 sh) was never created by this bot.
@@ -5820,4 +5823,8 @@ Ending portfolio value: $99,227.93
 Trade journal: no closed trades yet
 Performance: Total return -0.61% | Max drawdown 12.37% | Daily Sharpe 0.24 | Open positions: 3 | Equity $99,227.93
 Timings: account: 0.0s | risk: 1.1s | decide: 7.9s | watchlist: 0.1s | perf: 0.2s
+Ending portfolio value: $99,227.49
+Trade journal: no closed trades yet
+Performance: Total return -0.61% | Max drawdown 12.37% | Daily Sharpe 0.24 | Open positions: 3 | Equity $99,228.38
+Timings: account: 0.0s | risk: 0.4s | decide: 127.0s | watchlist: 0.0s | perf: 0.1s
 
