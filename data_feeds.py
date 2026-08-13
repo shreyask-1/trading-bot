@@ -26,6 +26,7 @@ Cache files (all under logs/):
 import os
 import json
 import re
+import time
 from datetime import datetime, timedelta
 
 import requests
@@ -236,16 +237,21 @@ def fetch_analyst_actions():
 # ============================================================
 # Insider buying / selling (per-ticker, cached daily)
 # ============================================================
-def fetch_insider_activity(tickers):
+def fetch_insider_activity(tickers, time_budget=None):
     """
     For each ticker, the last ~90 days of insider transactions, summarized as
     {ticker: {"net_buy_value": $, "buy_count": n, "sell_count": n}}.
     Only fetches tickers not already in the daily cache. Best-effort.
+    time_budget: optional wall-clock seconds cap for the WHOLE loop, so a
+    cold cache can't stall a run (decide.py passes its feed-refresh budget).
     """
     cached = _load_cache("insider_activity.json", 24)
     store = dict(cached.get("by_ticker", {})) if cached else {}
     need = [t for t in tickers if t and t not in store]
+    _loop_start = time.monotonic()
     for t in need[:20]:
+        if time_budget is not None and time.monotonic() - _loop_start >= time_budget:
+            break
         try:
             resp = requests.get(
                 "https://finnhub.io/api/v1/stock/insider-transactions",
@@ -292,17 +298,22 @@ def get_insider_activity(tickers):
 # ============================================================
 # SEC filings (per-ticker, cached daily)
 # ============================================================
-def fetch_sec_filings(tickers):
+def fetch_sec_filings(tickers, time_budget=None):
     """
     Recent SEC filings per ticker: {ticker: [{"form", "date", "title"}...]},
     keeping only forms that actually matter for a trade decision
     (8-K current events, 10-Q/10-K earnings, Form 4 insider trades).
+    time_budget: optional wall-clock seconds cap for the WHOLE loop, so a
+    cold cache can't stall a run (decide.py passes its feed-refresh budget).
     """
     cached = _load_cache("sec_filings.json", 24)
     store = dict(cached.get("by_ticker", {})) if cached else {}
     relevant = ("8-K", "10-Q", "10-K", "4")
     need = [t for t in tickers if t and t not in store]
+    _loop_start = time.monotonic()
     for t in need[:20]:
+        if time_budget is not None and time.monotonic() - _loop_start >= time_budget:
+            break
         try:
             resp = requests.get(
                 "https://finnhub.io/api/v1/stock/filings",
