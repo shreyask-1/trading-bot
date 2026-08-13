@@ -524,6 +524,16 @@ def _score_candidates(tickers, sentiment=None, extras=None):
 
 _SCAN_CACHE_FILE = os.path.join(os.path.dirname(__file__), "data", "scan_cache.json")
 
+# Bounds for the rotating-scan cache miss. The FIRST run of each hour re-scans
+# from scratch (cache is keyed by hour); without these caps, a slow Alpaca
+# minute -- each data call can take up to the SDK's ~5s -- multiplied by 20+
+# tickers is exactly the intermittent 2+ minute run. Now at most
+# MAX_FRESH_SCANS_PER_RUN tickers and SCAN_REFRESH_BUDGET_SECONDS of wall-clock
+# time are spent per run; anything not scored this run gets scored by the next
+# run within the same hour, so the cache still fills in a few runs.
+SCAN_REFRESH_BUDGET_SECONDS = float(os.environ.get("SCAN_REFRESH_BUDGET_SECONDS", 25))
+MAX_FRESH_SCANS_PER_RUN = int(os.environ.get("MAX_FRESH_SCANS_PER_RUN", 8))
+
 
 def _load_scan_cache():
     try:
