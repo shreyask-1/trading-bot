@@ -504,7 +504,61 @@ def get_full_indicators(ticker):
             })
     return result
 
+# Unfilled extended-hours GTC limit orders older than this many hours are
+# considered stale and get canceled automatically each run (see
+# cancel_stale_extended_orders). GTC lets evening orders survive overnight to
+# fill in pre-market, but an order that has not filled for days carries a stale
+# price and stale conviction -- it would also permanently block that ticker
+# from being re-proposed (the open-order dedup). 96h covers long holiday
+# weekends while still clearing genuinely dead orders.
+STALE_GTC_MAX_AGE_HOURS = 96
+
+
+def cancel_stale_extended_orders():
+    """
+    Best-effort: cancels open GTC orders older than STALE_GTC_MAX_AGE_HOURS.
+    Only extended-hours limit orders are ever submitted as GTC, so any open
+    GTC order is by construction an overnight/after-hours entry waiting to
+    fill. Returns the number canceled. Never raises.
+    """
+    try:
+        request = GetOrdersRequest(status=QueryOrderStatus.OPEN)
+        orders = trading_client.get_orders(request)
+    except Exception as e:
+        print(f"Could not fetch open orders for stale cleanup: {e}")
+        return 0
+    now = datetime.now(pytz.utc)
+    canceled = 0
+    for o in orders:
+        tif = str(getattr(o, "time_in_force", "")).lower()
+        if "gtc" not in tif:
+            continue
+        try:
+            submitted = o.submitted_at
+            if submitted.tzinfo is None:
+                submitted = submitted.replace(tzinfo=pytz.utc)
+            age_hours = (now - submitted).total_seconds() / 3600.0
+        except Exception:
+            continue
+        if age_hours > STALE_GTC_MAX_AGE_HOURS:
+            try:
+                trading_client.cancel_order_by_id(o.id)
+                canceled += 1
+            except Exception as e:
+                print(f"Could not cancel stale order {o.id}: {e}")
+    if canceled:
+        print(f"Canceled {canceled} stale extended-hours order(s) older than {STALE_GTC_MAX_AGE_HOURS}h.")
+    return canceled
+
+
 def get_account_snapshot():
+    # Clear stale unfilled GTC orders first so tickers become eligible for
+    # fresh re-verification instead of being blocked by an old order. Never
+    # lets cleanup break the run.
+    try:
+        cancel_stale_extended_orders()
+    except Exception:
+        pass
     account = trading_client.get_account()
     positions = trading_client.get_all_positions()
     holdings = {}
@@ -1928,6 +1982,17 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
         # the last traded price. Outside any session Alpaca holds it and
         # enters it at the next eligible session (4 AM) instead of queueing a
         # market order to the 9:30 open (the 2026-08-07 failure mode).
+        #
+        # These extended-hours limit orders use GTC (good-til-canceled), NOT
+        # DAY: a DAY order placed in the 4-8 PM extended session expires at
+        # 8 PM without ever seeing the overnight/pre-market liquidity, which
+        # is exactly the 'orders expired' behavior the user hit. GTC keeps
+        # the order live across sessions so it can fill during pre-market
+        # (4 AM onward) or the regular session, and is explicitly supported
+        # by Alpaca for extended-hours limit orders (docs: 'Only limit
+        # orders with time_in_force set to day or gtc orders are accepted as
+        # extended hours eligible'). The bot's open-order dedup prevents
+        # duplicates, and open orders are cleared by the account-switch reset.
         use_extended = False
         try:
             use_extended = bool(ALLOW_EXTENDED_HOURS) and not bool(trading_client.get_clock().is_open)
@@ -1938,7 +2003,7 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
                 symbol=ticker,
                 qty=qty,
                 side=side,
-                time_in_force=TimeInForce.DAY,
+                time_in_force=TimeInForce.GTC,
                 limit_price=price,
                 extended_hours=True,
             )
