@@ -7109,3 +7109,34 @@ Trade journal: no closed trades yet
 Performance: Total return -0.99% | Max drawdown 12.37% | Daily Sharpe 0.14 | Open positions: 13 | Equity $98,835.67
 Timings: account: 0.0s | risk: 6.1s | decide: 11.6s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-08-13T16:15:30.544005 ===
+Current time: 2026-08-13 12:15 PM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $98,820.77
+Cash: $9,907.28 | Holdings (13): {'CEG': '35.6034 sh (-0.34%)', 'CHD': '97.9637 sh (-0.13%)', 'GEHC': '0.6136 sh (-1.15%)', 'HAS': '1.1333 sh (+0.03%)', 'IVZ': '1.4577 sh (-0.56%)', 'LMT': '16.3555 sh (-1.66%)', 'MS': '43.8344 sh (-1.05%)', 'MSI': '21.1281 sh (-1.59%)', 'NDAQ': '103.7371 sh (-0.14%)', 'NUE': '36.5544 sh (-0.22%)', 'NVDA': '44.2888 sh (+0.35%)', 'NWS': '303.7199 sh (+0.38%)', 'STLD': '0.1352 sh (+0.24%)'}
+  !! FOREIGN ACTIVITY: CEG position (35.6034 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: CHD position (97.9637 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: GEHC position (0.6136 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: HAS position (1.1333 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: IVZ position (1.4577 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: LMT position (16.3555 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: MS position (43.8344 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: MSI position (21.1281 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NDAQ position (103.7371 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NUE position (36.5544 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NVDA position (44.2888 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NWS position (303.7199 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: STLD position (0.1352 sh) was never created by this bot.
+Risk state: peak $99,443.44 | drawdown 0.63% | today -0.44% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 15/21 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 190
+  -> {"timestamp": "2026-08-13T16:15:45.711598", "ticker": "WSM", "action": "buy", "qty": 0.1026, "conviction": 8, "size_multiplier": 1.0, "order_id": "518f45c9-1f6f-434e-a23e-f46d075e5e17", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": 235.0, "take_profit": 254.69, "reasoning": "", "status": "submitted"}
+  -> {"ticker": "WMT", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,823.78), room ($9,882.52), regime multiplier (100%), and cash reserve ($4,941.26 kept of $9,882.09 cash)"}
+Dashboard watchlist synced (15 symbols) for news/headlines.
+Ending portfolio value: $98,825.17
+Trade journal: no closed trades yet
+Performance: Total return -1.01% | Max drawdown 12.37% | Daily Sharpe 0.14 | Open positions: 14 | Equity $98,825.17
+Timings: account: 0.0s | risk: 6.7s | decide: 8.8s | watchlist: 0.1s | perf: 0.1s
+
