@@ -55,16 +55,16 @@ from news import headline_sentiment
 # Bound each Gemini attempt with an explicit HTTP timeout so a slow/hung
 # Google response can't stall a run indefinitely. CRITICAL: the genai SDK's
 # HttpOptions.timeout is in MILLISECONDS (verified in types.py -- "Timeout
-# for the request in milliseconds"), so 15_000 = 15 seconds. The previous
+# for the request in milliseconds"), so 20_000 = 20 seconds. The previous
 # value (60) was interpreted as 60ms = 0.06s, which made EVERY Gemini call
-# fail instantly with 'Read timed out. (read timeout=0.06)'. 15s is ample
-# for the largest prompt (normal responses take 2-5s), and
-# _generate_with_rotation additionally stops the whole fallback rotation
-# once the run's time budget is spent -- together they cap Gemini at ~20s
-# per run instead of a 60s hang per model (the intermittent 60-90s+ runs).
+# fail instantly with 'Read timed out. (read timeout=0.06)'. 20s gives the
+# now-larger prompt (more candidates + more fields) a comfortable per-attempt
+# window, and _generate_with_rotation additionally stops the whole fallback
+# rotation once the run's time budget is spent -- so the worst case is the
+# rotation budget (~45s), never 20s x every model.
 _client = genai.Client(
     api_key=GEMINI_API_KEY,
-    http_options=types.HttpOptions(timeout=15_000),
+    http_options=types.HttpOptions(timeout=20_000),
 )
 
 _CALL_TRACKER_FILE = os.path.join(
@@ -555,8 +555,8 @@ _SCAN_CACHE_FILE = os.path.join(os.path.dirname(__file__), "data", "scan_cache.j
 # MAX_FRESH_SCANS_PER_RUN tickers and SCAN_REFRESH_BUDGET_SECONDS of wall-clock
 # time are spent per run; anything not scored this run gets scored by the next
 # run within the same hour, so the cache still fills in a few runs.
-SCAN_REFRESH_BUDGET_SECONDS = float(os.environ.get("SCAN_REFRESH_BUDGET_SECONDS", 25))
-MAX_FRESH_SCANS_PER_RUN = int(os.environ.get("MAX_FRESH_SCANS_PER_RUN", 8))
+SCAN_REFRESH_BUDGET_SECONDS = float(os.environ.get("SCAN_REFRESH_BUDGET_SECONDS", 40))
+MAX_FRESH_SCANS_PER_RUN = int(os.environ.get("MAX_FRESH_SCANS_PER_RUN", 12))
 
 
 def _load_scan_cache():
@@ -638,7 +638,7 @@ def _score_candidates_cached(tickers, time_budget=None, **kwargs):
 # didn't get refreshed this run simply falls back to the TTL cache from the
 # last successful refresh (all feeds are fail-soft by design).
 FEED_REFRESH_BUDGET_SECONDS = float(
-    os.environ.get("FEED_REFRESH_BUDGET_SECONDS", 20)
+    os.environ.get("FEED_REFRESH_BUDGET_SECONDS", 30)
 )
 
 
@@ -723,6 +723,8 @@ def _fmt_setup(d):
     stoch = d.get("stochastic") or {}
     if stoch.get("percent_k") is not None:
         parts.append(f"stochK {stoch['percent_k']:.0f}")
+    if stoch.get("percent_d") is not None:
+        parts.append(f"stochD {stoch['percent_d']:.0f}")
     if d.get("atr_14") is not None:
         parts.append(f"ATR {d['atr_14']:.2f}")
     if d.get("adx_14") is not None:
@@ -734,35 +736,59 @@ def _fmt_setup(d):
     if d.get("macd_cross"):
         parts.append(f"MACD {d['macd_cross']}")
     macd = d.get("macd") or {}
+    if macd.get("macd") is not None:
+        parts.append(f"macd {macd['macd']:.3f}")
+    if macd.get("signal") is not None:
+        parts.append(f"macdSig {macd['signal']:.3f}")
     if macd.get("histogram") is not None:
         parts.append(f"macd_hist {macd['histogram']:.3f}")
     bb = d.get("bollinger") or {}
     if bb.get("percent_b") is not None:
         parts.append(f"%B {bb['percent_b']:.2f}")
+    if bb.get("bandwidth") is not None:
+        parts.append(f"BBwidth {bb['bandwidth']:.3f}")
     if d.get("momentum_10d") is not None:
         parts.append(f"mom10 {d['momentum_10d']:+.1f}%")
     if d.get("volatility_20d") is not None:
         parts.append(f"vol20 {d['volatility_20d']:.0f}%")
     if d.get("relative_volume_pct") is not None:
         parts.append(f"relVol {d['relative_volume_pct']:+.0f}%")
+    if d.get("volume_trend"):
+        parts.append(f"volTrend {d['volume_trend']}")
     if d.get("gap_pct") is not None:
         parts.append(f"gap {d['gap_pct']:+.1f}%")
+    if d.get("vwap") is not None:
+        parts.append(f"VWAP ${d['vwap']:.2f}")
     if d.get("vwap_deviation_pct") is not None:
         parts.append(f"vsVWAP {d['vwap_deviation_pct']:+.1f}%")
+    if d.get("session_open") is not None:
+        parts.append(f"open ${d['session_open']:.2f}")
+    if d.get("intraday_rsi") is not None:
+        parts.append(f"iRSI {d['intraday_rsi']:.0f}")
+    if d.get("intraday_trend"):
+        parts.append(f"iTrend {d['intraday_trend']}")
+    if d.get("intraday_momentum_pct") is not None:
+        parts.append(f"{d['intraday_momentum_pct']:+.1f}% vs open")
+    if d.get("opening_range_status"):
+        parts.append(f"OR {d['opening_range_status']}")
+    if d.get("opening_range_high") is not None:
+        parts.append(f"ORH ${d['opening_range_high']:.2f}")
+    if d.get("opening_range_low") is not None:
+        parts.append(f"ORL ${d['opening_range_low']:.2f}")
     if d.get("dist_from_52w_high_pct") is not None:
         parts.append(f"{d['dist_from_52w_high_pct']:.0f}% off 52wH")
     if d.get("dist_from_52w_low_pct") is not None:
         parts.append(f"{d['dist_from_52w_low_pct']:.0f}% off 52wL")
+    if d.get("high_52w") is not None:
+        parts.append(f"52wH ${d['high_52w']:.2f}")
+    if d.get("low_52w") is not None:
+        parts.append(f"52wL ${d['low_52w']:.2f}")
     if d.get("days_until_earnings") is not None:
         parts.append(f"earnings in {d['days_until_earnings']}d")
     if d.get("support") is not None:
         parts.append(f"sup {d['support']:.2f}")
     if d.get("resistance") is not None:
         parts.append(f"res {d['resistance']:.2f}")
-    if d.get("intraday_momentum_pct") is not None:
-        parts.append(f"{d['intraday_momentum_pct']:+.1f}% vs open")
-    if d.get("opening_range_status"):
-        parts.append(f"OR {d['opening_range_status']}")
     return " | ".join(parts)
 
 
@@ -844,7 +870,7 @@ def _fmt_news_block(candidates, scored_news, sentiment, fundamental=None):
     for t, info in scored_news.items():
         articles = [a for a in candidates.get(t, []) if isinstance(a, dict) and a.get("score") is not None]
         articles.sort(key=lambda a: a.get("score", 0), reverse=True)
-        heads = " / ".join((a.get("headline", "") or "")[:100] for a in articles[:2]) or "none"
+        heads = " / ".join((a.get("headline", "") or "")[:100] for a in articles[:3]) or "none"
         ascore = articles[0].get("score") if articles else None
         parts.append(
             f"{t} (quant {info['score']:.0f}/100 | {_fmt_setup(info.get('indicators'))} | "
