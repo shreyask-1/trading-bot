@@ -399,6 +399,87 @@ def get_reddit_sentiment():
         return fetch_reddit_sentiment()
     except Exception:
         return {}
+      
+# ============================================================
+# Market pulse: indexes + sector rotation + scan movers (Gemini context)
+# ============================================================
+# 11 sector SPDR ETFs, used for today's sector-rotation read.
+_SECTOR_ETFS = {
+    "XLK": "Technology", "XLF": "Financials", "XLE": "Energy",
+    "XLV": "Health Care", "XLY": "Consumer Discretionary", "XLP": "Consumer Staples",
+    "XLI": "Industrials", "XLU": "Utilities", "XLB": "Materials",
+    "XLRE": "Real Estate", "XLC": "Communication",
+}
+
+
+def get_market_pulse():
+    """
+    Today's % change for SPY/QQQ/IWM/DIA plus the 11 sector ETFs, cached for
+    1 hour (data/scan cache dir). At most ~15 lightweight data calls once per
+    hour, then pure cache reads -- this is what fills the freed-up run time
+    with real context instead of network calls. Fail-soft: returns {} on any
+    error so the run (and Gemini prompt) continues without it.
+    """
+    cached = _load_cache("market_pulse.json", 1)
+    if cached:
+        return cached.get("pulse", {})
+    from trader import get_price_history  # local import avoids a cycle
+    symbols = ["SPY", "QQQ", "IWM", "DIA"] + list(_SECTOR_ETFS.keys())
+    pulse = {}
+    for s in symbols:
+        try:
+            bars = get_price_history(s, days=2)
+            if bars is None or len(bars) < 2:
+                continue
+            closes = [float(b.close) for b in bars]
+            prev = closes[-2]
+            if prev:
+                pulse[s] = round((closes[-1] / prev - 1) * 100, 2)
+        except Exception:
+            continue
+    if pulse:
+        _save_cache("market_pulse.json", {"pulse": pulse})
+    return pulse
+
+
+def _scan_movers():
+    """
+    Top upside/downside movers among TODAY's scanned candidates, read from
+    decide.py's hourly scan cache (data/scan_cache.json). Zero API cost -- it
+    reuses work the scan already did. Returns (up_list, down_list, up_count,
+    down_count): up/down lists are (ticker, pct) pairs sorted by |move|.
+    """
+    try:
+        path = os.path.join(BASE_DIR, "data", "scan_cache.json")
+        with open(path) as f:
+            cache = json.load(f)
+    except Exception:
+        return [], [], 0, 0
+    today = datetime.now().strftime("%Y%m%d")
+    rows = []
+    for key, info in cache.items():
+        try:
+            hour = str(key).split("|")[-1]
+        except Exception:
+            continue
+        if not hour.startswith(today):
+            continue
+        ind = (info or {}).get("indicators") or {}
+        pct = ind.get("intraday_momentum_pct")
+        if pct is None:
+            pct = ind.get("gap_pct")
+        if pct is None:
+            continue
+        try:
+            rows.append((str(key).split("|")[0], float(pct)))
+        except (TypeError, ValueError):
+            continue
+    if not rows:
+        return [], [], 0, 0
+    rows.sort(key=lambda x: x[1], reverse=True)
+    ups = [r for r in rows if r[1] > 0]
+    downs = [r for r in rows if r[1] < 0]
+    return rows[:5], (rows[-5:][::-1] if rows else []), len(ups), len(downs)
 
 
 # ============================================================
@@ -456,10 +537,31 @@ def get_fundamental_signals(tickers):
 def get_context_block(tickers, include_econ=True):
     """
     Human-readable Phase 2 context for the Gemini prompt:
-    high-impact economic events, analyst actions, insider buys, reddit
-    sentiment, and SEC filings for the given tickers. Pure cache reads.
+    market pulse (indexes/sectors/movers), high-impact economic events,
+    analyst actions, insider buys, reddit sentiment, and SEC filings for the
+    given tickers. Pure cache reads except the hourly market-pulse refresh.
     """
     lines = []
+
+    # Market pulse: indexes + sector rotation (cached hourly, ~15 calls once
+    # per hour) plus movers/breadth from today's scan cache (zero API cost).
+    pulse = get_market_pulse()
+    if pulse:
+        idx = [f"{k} {v:+.2f}%" for k in ("SPY", "QQQ", "IWM", "DIA") if pulse.get(k) is not None]
+        if idx:
+            lines.append("Market pulse - indexes: " + ", ".join(idx))
+        sectors = [(name, pulse[s]) for s, name in _SECTOR_ETFS.items() if pulse.get(s) is not None]
+        sectors.sort(key=lambda x: x[1], reverse=True)
+        if sectors:
+            lines.append("Sector rotation: strong " + ", ".join(f"{n} {p:+.1f}%" for n, p in sectors[:3]))
+            lines.append("Sector rotation: weak " + ", ".join(f"{n} {p:+.1f}%" for n, p in sectors[-3:]))
+    up, down, up_count, down_count = _scan_movers()
+    if up:
+        lines.append("Scan movers UP today: " + ", ".join(f"{t} {p:+.1f}%" for t, p in up))
+    if down:
+        lines.append("Scan movers DOWN today: " + ", ".join(f"{t} {p:+.1f}%" for t, p in down))
+    if up_count or down_count:
+        lines.append(f"Scan breadth: {up_count} up / {down_count} down ({up_count + down_count} scanned)")
 
     if include_econ:
         cal = _load_cache("eco_calendar.json", 6)
