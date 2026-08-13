@@ -586,36 +586,52 @@ def get_analyst_consensus(tickers):
     /stock/price-target) when the primary returns an empty/invalid body (as
     some free keys do). Cached 24h, only uncached tickers fetched.
     Fail-soft: returns {} on any error -- the run continues without it.
+
+    Tickers whose PRIMARY endpoint proved broken on this key are memoized in
+    the cache ("no_primary" set) so subsequent runs skip the doomed call and
+    go straight to the documented-free endpoints -- that was the per-run
+    'Analyst metrics failed for X: Expecting value: line 1 column 1 (char 0)'
+    spam on free keys, plus 2 wasted API calls per ticker every morning.
     """
     cached = _load_cache("analyst_consensus.json", 24)
     store = dict(cached.get("by_ticker", {})) if cached else {}
+    no_primary = set(cached.get("no_primary", [])) if cached else set()
     need = [t for t in tickers if t and t not in store]
     _loop_start = time.monotonic()
     for t in need[:ANALYST_CONSENSUS_MAX_FRESH]:
         if time.monotonic() - _loop_start >= ANALYST_CONSENSUS_BUDGET_SECONDS:
             break
         entry = {}
-        try:
-            resp = requests.get(
-                "https://finnhub.io/api/v1/stock/metrics",
-                params={"symbol": t, "metric": "all", "token": FINNHUB_API_KEY},
-                timeout=10,
-            )
-            resp.raise_for_status()
-            data = (resp.json() or {}).get("metric") or {}
-            entry = {
-                "buy": data.get("recommendationBuy"),
-                "hold": data.get("recommendationHold"),
-                "sell": data.get("recommendationSell"),
-                "target_mean": data.get("targetMeanPrice"),
-                "target_high": data.get("targetHighPrice"),
-                "target_low": data.get("targetLowPrice"),
-            }
-        except Exception as e:
-            # Primary endpoint failed (often an empty body on free keys).
-            # Fall back to the documented-free endpoints so the feature
-            # still works instead of silently producing nothing.
-            print(f"Analyst metrics failed for {t} (falling back to free endpoints): {e}")
+        primary_failed = False
+        if t not in no_primary:
+            try:
+                resp = requests.get(
+                    "https://finnhub.io/api/v1/stock/metrics",
+                    params={"symbol": t, "metric": "all", "token": FINNHUB_API_KEY},
+                    timeout=10,
+                )
+                resp.raise_for_status()
+                data = (resp.json() or {}).get("metric") or {}
+                entry = {
+                    "buy": data.get("recommendationBuy"),
+                    "hold": data.get("recommendationHold"),
+                    "sell": data.get("recommendationSell"),
+                    "target_mean": data.get("targetMeanPrice"),
+                    "target_high": data.get("targetHighPrice"),
+                    "target_low": data.get("targetLowPrice"),
+                }
+                if not any(v is not None for v in entry.values()):
+                    # Primary responded but with no usable metrics -- same
+                    # as a failure; remember it and use the fallback.
+                    primary_failed = True
+            except Exception as e:
+                # Primary endpoint failed (often an empty body on free keys).
+                # Remember it so we never waste the call again this week,
+                # then fall back to the documented-free endpoints.
+                print(f"Analyst metrics failed for {t} (falling back to free endpoints): {e}")
+                primary_failed = True
+        if primary_failed or t in no_primary:
+            no_primary.add(t)
             b, h, s = _consensus_from_recommendation_trends(t)
             m, hi, lo = _consensus_from_price_target(t)
             entry = {
@@ -625,7 +641,7 @@ def get_analyst_consensus(tickers):
         if not any(v is not None for v in entry.values()):
             entry = {}
         store[t] = entry
-    _save_cache("analyst_consensus.json", {"by_ticker": store})
+    _save_cache("analyst_consensus.json", {"by_ticker": store, "no_primary": sorted(no_primary)})
     return store
 
 
