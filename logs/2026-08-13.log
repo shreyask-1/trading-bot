@@ -6531,3 +6531,28 @@ Trade journal: no closed trades yet
 Performance: Total return -0.43% | Max drawdown 12.37% | Daily Sharpe 0.28 | Open positions: 8 | Equity $99,415.58
 Timings: account: 0.0s | risk: 3.0s | decide: 9.6s | watchlist: 0.2s | perf: 0.3s
 
+=== Run at 2026-08-13T14:35:31.983806 ===
+Current time: 2026-08-13 10:35 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,387.44
+Cash: $29,945.39 | Holdings (8): {'CEG': '35.6034 sh (+0.79%)', 'GEHC': '0.6136 sh (-0.50%)', 'LMT': '16.3555 sh (-0.85%)', 'MS': '43.8344 sh (+0.31%)', 'MSI': '21.1281 sh (-0.78%)', 'NUE': '36.5544 sh (-0.54%)', 'NVDA': '44.2888 sh (+0.91%)', 'NWS': '303.7199 sh (+1.50%)'}
+Open orders (2): CHD buy 97.9637, NDAQ buy 103.737
+  !! FOREIGN ACTIVITY: CEG position (35.6034 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: GEHC position (0.6136 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: LMT position (16.3555 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: MS position (43.8344 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: MSI position (21.1281 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NUE position (36.5544 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NVDA position (44.2888 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NWS position (303.7199 sh) was never created by this bot.
+Risk state: peak $99,443.44 | drawdown 0.06% | today +0.13% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 60, 1 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 17/22 candidates passed.
+Gemini proposed 0 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 171
+Dashboard watchlist synced (10 symbols) for news/headlines.
+Ending portfolio value: $99,417.83
+Trade journal: no closed trades yet
+Performance: Total return -0.42% | Max drawdown 12.37% | Daily Sharpe 0.28 | Open positions: 8 | Equity $99,387.44
+Timings: account: 0.0s | risk: 2.8s | decide: 70.1s | watchlist: 0.1s | perf: 0.2s
+
