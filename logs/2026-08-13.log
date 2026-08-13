@@ -3425,3 +3425,23 @@ Trade journal: no closed trades yet
 Performance: Total return -0.58% | Max drawdown 12.37% | Daily Sharpe 0.24 | Open positions: 0 | Equity $99,255.67
 Timings: account: 0.0s | risk: 0.1s | decide: 3.4s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-08-13T07:44:23.456653 ===
+Current time: 2026-08-13 03:44 AM EDT | Market open (per Alpaca): False | Session: CLOSED
+Account value: $99,255.67
+Cash: $99,255.67 | Holdings (0): none
+Risk state: peak $99,257.90 | drawdown 0.00% | today -0.00% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 20/28 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 20
+Market closed (overnight): queued 25 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued MSI buy (conf 92, stop 445.0, tp 510.0)
+  -> queued NWS buy (conf 90, stop 31.0, tp 35.5)
+  -> queued KKR buy (conf 85, stop 105.0, tp 118.0)
+Dashboard watchlist synced (3 symbols) for news/headlines.
+Ending portfolio value: $99,255.67
+Trade journal: no closed trades yet
+Performance: Total return -0.58% | Max drawdown 12.37% | Daily Sharpe 0.24 | Open positions: 0 | Equity $99,255.67
+Timings: account: 0.0s | risk: 0.0s | decide: 1.7s | watchlist: 0.0s | perf: 0.1s
+
