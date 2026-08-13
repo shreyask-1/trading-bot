@@ -31,7 +31,7 @@ ALPACA_SECRET_KEY = os.environ["ALPACA_SECRET_KEY"]
 # More headlines per run (still one Finnhub call; the fetch returns up to
 # MAX_NEWS_ITEMS * 4 and we keep the top scored). The 60s run cap gives the
 # matcher room to chew through more articles for better coverage.
-MAX_NEWS_ITEMS = 25  # headlines considered per run
+MAX_NEWS_ITEMS = 40  # headlines considered per run
 
 # The technical universe is now the ENTIRE S&P 500. Every name gets scanned
 # over the course of the day via a rotating slice (UNIVERSE_SCAN_PER_RUN per
@@ -39,11 +39,11 @@ MAX_NEWS_ITEMS = 25  # headlines considered per run
 # News-matched tickers are ALWAYS scored regardless of the slice.
 WATCHLIST = [ticker for ticker, _ in SP500]
 # How many non-news universe tickers are scanned per run (rotating window).
-# 40 keeps full S&P 500 coverage over the day while staying inside the 60s
-# run budget (the rotating slice is cached per hour -- see decide.py -- so
-# only the first run of each hour pays the fresh-scan cost, and that is
-# capped by SCAN_REFRESH_BUDGET_SECONDS).
-UNIVERSE_SCAN_PER_RUN = int(os.environ.get("UNIVERSE_SCAN_PER_RUN", 40))
+# 60 gives Gemini a bigger slice of the S&P 500 every call while staying
+# inside the 60s run budget (the rotating slice is cached per hour -- see
+# decide.py -- so only the first run of each hour pays the fresh-scan cost,
+# and that is capped by SCAN_REFRESH_BUDGET_SECONDS).
+UNIVERSE_SCAN_PER_RUN = int(os.environ.get("UNIVERSE_SCAN_PER_RUN", 60))
 
 # --- Data feed ---
 ALPACA_DATA_FEED = os.environ.get("ALPACA_DATA_FEED", "iex")
