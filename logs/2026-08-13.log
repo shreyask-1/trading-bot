@@ -8090,3 +8090,36 @@ Trade journal: no closed trades yet
 Performance: Total return -0.76% | Max drawdown 12.37% | Daily Sharpe 0.20 | Open positions: 14 | Equity $99,057.65
 Timings: account: 0.0s | risk: 11.6s | decide: 15.4s | watchlist: 0.2s | perf: 0.4s
 
+=== Run at 2026-08-13T18:45:30.760597 ===
+Current time: 2026-08-13 02:45 PM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,129.67
+Cash: $9,882.09 | Holdings (14): {'CEG': '35.6034 sh (-0.62%)', 'CHD': '97.9637 sh (-0.02%)', 'GEHC': '0.6136 sh (-0.57%)', 'HAS': '1.1333 sh (+0.67%)', 'IVZ': '1.4577 sh (+0.17%)', 'LMT': '16.3555 sh (-1.37%)', 'MS': '43.8344 sh (-1.02%)', 'MSI': '21.1281 sh (-0.89%)', 'NDAQ': '103.7371 sh (+1.20%)', 'NUE': '36.5544 sh (+0.08%)', 'NVDA': '44.2888 sh (+0.63%)', 'NWS': '303.7199 sh (+0.71%)', 'STLD': '0.1352 sh (+0.09%)', 'WSM': '0.1026 sh (-0.58%)'}
+  !! FOREIGN ACTIVITY: CEG position (35.6034 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: CHD position (97.9637 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: GEHC position (0.6136 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: HAS position (1.1333 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: IVZ position (1.4577 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: LMT position (16.3555 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: MS position (43.8344 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: MSI position (21.1281 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NDAQ position (103.7371 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NUE position (36.5544 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NVDA position (44.2888 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: NWS position (303.7199 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: STLD position (0.1352 sh) was never created by this bot.
+  !! FOREIGN ACTIVITY: WSM position (0.1026 sh) was never created by this bot.
+Risk state: peak $99,443.44 | drawdown 0.32% | today -0.13% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 12/22 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 220
+  -> {"ticker": "CVX", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,869.45), room ($9,912.97), regime multiplier (100%), and cash reserve ($4,956.48 kept of $9,882.09 cash)"}
+  -> {"ticker": "DAL", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,869.45), room ($9,912.97), regime multiplier (100%), and cash reserve ($2,478.24 kept of $9,882.09 cash)"}
+  -> {"ticker": "MNST", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,869.45), room ($9,912.97), regime multiplier (100%), and cash reserve ($4,956.48 kept of $9,882.09 cash)"}
+Dashboard watchlist synced (17 symbols) for news/headlines.
+Ending portfolio value: $99,124.02
+Trade journal: no closed trades yet
+Performance: Total return -0.71% | Max drawdown 12.37% | Daily Sharpe 0.21 | Open positions: 14 | Equity $99,129.67
+Timings: account: 0.0s | risk: 11.5s | decide: 14.6s | watchlist: 0.1s | perf: 0.2s
+
