@@ -1363,13 +1363,14 @@ def _heal_ledger_from_orders(holdings, expected):
     if not missing:
         return 0
     try:
-        # Query ONLY the unexplained symbols (not the 50 most-recent default),
-        # with a high limit -- on a long-lived account the lost order could
-        # otherwise sit beyond the default window and the heal would silently
-        # find nothing.
+        # Scan ALL recent orders (no symbol filter). A symbols-scoped query is
+        # tempting but has proven unreliable for recovery -- the order for a
+        # position sitting in the account can fail to come back under
+        # status=all+symbols while the same order IS returned unfiltered (the
+        # exact query _refresh_ledger_statuses uses successfully). limit=500
+        # also beats the 50-order default so the lost entry can't hide.
         orders = trading_client.get_orders(GetOrdersRequest(
             status=QueryOrderStatus.ALL,
-            symbols=list(missing.keys()),
             limit=500,
         ))
     except Exception as e:
@@ -1378,11 +1379,14 @@ def _heal_ledger_from_orders(holdings, expected):
     ledger = _load_json_file(ORDER_LEDGER_FILE, [])
     existing_ids = {str(e.get("order_id", "") or "").strip() for e in ledger}
     added = 0
+    seen = {t: [] for t in missing}
     for o in orders:
         symbol = str(getattr(o, "symbol", "") or "").upper()
         side = str(getattr(o, "side", "") or "").lower()
         status = str(getattr(o, "status", "") or "").lower()
-        if status != "filled" or side != "buy" or symbol not in missing:
+        if symbol in seen:
+            seen[symbol].append(f"{side}/{status}")
+        if status not in ("filled", "partially_filled") or side != "buy" or symbol not in missing:
             continue
         oid = str(getattr(o, "id", "") or "").strip()
         if not oid or oid == "x" or oid in existing_ids:
@@ -1408,7 +1412,10 @@ def _heal_ledger_from_orders(holdings, expected):
         _save_json_file(ORDER_LEDGER_FILE, ledger)
         print(f"Order ledger self-healed: {added} filled order(s) recovered from Alpaca order history (this bot's own fills whose ledger entries were lost).")
     else:
-        print(f"Ledger self-heal: NO filled order found in Alpaca history for {sorted(missing)} -- if this position is not yours, that is REAL foreign activity.")
+        detail = "; ".join(
+            f"{t}: {', '.join(v) if v else 'NO ORDERS AT ALL'}" for t, v in seen.items()
+        )
+        print(f"Ledger self-heal: no buy fill found in Alpaca order history for {sorted(missing)} [{detail}] -- if these positions are not yours, that is REAL foreign activity.")
     return added
 
 
