@@ -52,14 +52,19 @@ from trader import (
 from signal_score import calculate_signal_score
 from news import headline_sentiment
 
-# Bound each Gemini attempt with an explicit HTTP timeout: the SDK has no
-# default timeout, so without this a slow/hung Google response could stall a
-# run indefinitely (the random run that blows past 2 minutes). 60s is ample
-# for the largest prompt; with up to 3 model fallbacks the worst case is
-# bounded, and each individual attempt now fails fast instead of hanging.
+# Bound each Gemini attempt with an explicit HTTP timeout so a slow/hung
+# Google response can't stall a run indefinitely. CRITICAL: the genai SDK's
+# HttpOptions.timeout is in MILLISECONDS (verified in types.py -- "Timeout
+# for the request in milliseconds"), so 15_000 = 15 seconds. The previous
+# value (60) was interpreted as 60ms = 0.06s, which made EVERY Gemini call
+# fail instantly with 'Read timed out. (read timeout=0.06)'. 15s is ample
+# for the largest prompt (normal responses take 2-5s), and
+# _generate_with_rotation additionally stops the whole fallback rotation
+# once the run's time budget is spent -- together they cap Gemini at ~20s
+# per run instead of a 60s hang per model (the intermittent 60-90s+ runs).
 _client = genai.Client(
     api_key=GEMINI_API_KEY,
-    http_options=types.HttpOptions(timeout=60_000),
+    http_options=types.HttpOptions(timeout=15_000),
 )
 
 _CALL_TRACKER_FILE = os.path.join(
@@ -344,9 +349,20 @@ def _should_attempt_call(tracker, model_list):
     return True, None
 
 
-def _generate_with_rotation(prompt, tracker, model_list, schema=None):
+def _generate_with_rotation(prompt, tracker, model_list, schema=None, time_budget=None):
+    """
+    Try models in order until one responds or all are exhausted. When
+    time_budget (wall-clock seconds) is given, the whole rotation stops as
+    soon as it is spent -- a slow/hung Google response can therefore never
+    push a run past its deadline; the caller falls back to the technical
+    engine. (morning_prep.py calls without a budget -- it runs once a day
+    and is allowed more time.)
+    """
     last_error = None
+    deadline = (time.monotonic() + time_budget) if time_budget is not None else None
     for model_name in model_list:
+        if deadline is not None and time.monotonic() >= deadline:
+            break  # run budget spent -- stop trying, raise last_error below
         if _remaining_rpd(tracker, model_name) <= 0:
             continue
         if not _has_rpm_room(tracker, model_name):
@@ -400,7 +416,9 @@ def _generate_with_rotation(prompt, tracker, model_list, schema=None):
                 print(f"Model '{model_name}' call failed (will retry next run): {e}")
             continue
 
-    raise last_error if last_error else RuntimeError("No Gemini models had remaining quota.")
+    if last_error is None:
+        last_error = RuntimeError("No Gemini models had remaining quota or the time budget was exhausted.")
+    raise last_error
 
 
 # ============================================================
@@ -502,16 +520,22 @@ def get_technical_trade_decisions(scored_holdings, scored_watchlist, account_sna
     return trades, meta
 
 
-def _score_candidates(tickers, sentiment=None, extras=None):
+def _score_candidates(tickers, sentiment=None, extras=None, time_budget=None):
     """
     Scores tickers on technicals PLUS an optional news-sentiment boost (the
     dual-focus half of the bot) PLUS Phase 2 fundamental signals (analyst
     actions, insider activity, Reddit sentiment, earnings proximity, SEC
     filings). sentiment: {ticker: -1..+1}; extras: {ticker: signal-dict}
-    from data_feeds.get_fundamental_signals().
+    from data_feeds.get_fundamental_signals(). time_budget (wall-clock
+    seconds) stops the loop once spent -- each get_full_indicators call can
+    take multiple seconds, so without this the holdings/news scoring could
+    blow a run's deadline on its own.
     """
     scored = {}
+    deadline = (time.monotonic() + time_budget) if time_budget is not None else None
     for t in tickers:
+        if deadline is not None and time.monotonic() >= deadline:
+            break
         data = get_full_indicators(t)
         score = calculate_signal_score(
             data,
@@ -553,7 +577,7 @@ def _save_scan_cache(cache):
         pass
 
 
-def _score_candidates_cached(tickers, **kwargs):
+def _score_candidates_cached(tickers, time_budget=None, **kwargs):
     """
     Hour-scoped cache wrapper around _score_candidates for the ROTATING
     universe scan. The scan slice is deterministic per calendar hour, so the
@@ -582,7 +606,10 @@ def _score_candidates_cached(tickers, **kwargs):
             need.append(t)
     if need:
         fresh = {}
-        deadline = time.monotonic() + SCAN_REFRESH_BUDGET_SECONDS
+        budget = SCAN_REFRESH_BUDGET_SECONDS
+        if time_budget is not None:
+            budget = min(budget, max(0.0, time_budget))
+        deadline = time.monotonic() + budget
         for t in need:
             if len(fresh) >= MAX_FRESH_SCANS_PER_RUN or time.monotonic() >= deadline:
                 break
@@ -615,14 +642,16 @@ FEED_REFRESH_BUDGET_SECONDS = float(
 )
 
 
-def _refresh_data_feeds(candidate_tickers):
+def _refresh_data_feeds(candidate_tickers, time_budget=None):
     """
     Phase 2: populate the cached market-wide feeds (economic calendar,
     analyst actions, Reddit) and per-ticker feeds (insider, SEC) for the
     current candidate set. Everything is TTL-cached and fail-soft, so this
     is cheap on the hot loop and never breaks a run. Config flags gate each
     feed (each defaults to enabled). A hard wall-clock budget bounds the
-    whole refresh so a cold cache can never stall a run.
+    whole refresh so a cold cache can never stall a run; time_budget (from
+    get_trade_decisions) further shrinks that budget to whatever the run
+    has left.
     """
     from data_feeds import (
         fetch_economic_calendar,
@@ -631,7 +660,10 @@ def _refresh_data_feeds(candidate_tickers):
         get_sec_filings,
         get_reddit_sentiment,
     )
-    deadline = time.monotonic() + FEED_REFRESH_BUDGET_SECONDS
+    budget = FEED_REFRESH_BUDGET_SECONDS
+    if time_budget is not None:
+        budget = min(budget, max(0.0, time_budget))
+    deadline = time.monotonic() + budget
     if ENABLE_ECONOMIC_CALENDAR and time.monotonic() < deadline:
         try:
             fetch_economic_calendar()
@@ -844,8 +876,17 @@ def _fmt_pending_block(pending):
     return "; ".join(parts) or "none"
 
 
-def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL", pending_trades=None):
+def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL", pending_trades=None, time_budget=None):
     holdings = account_snapshot.get("holdings", {})
+    # Hard wall-clock budget for the whole decision step (threaded from
+    # main.py's run deadline). Feeds, scans and Gemini each consume at most
+    # the remaining budget, so the decision step -- and therefore the whole
+    # run -- can never blow past ~1 minute. Whatever isn't finished falls
+    # back to cache or the technical engine.
+    _decide_deadline = time.monotonic() + (time_budget if time_budget is not None else 40.0)
+
+    def _remaining():
+        return max(0.0, _decide_deadline - time.monotonic())
     cash = account_snapshot.get("cash", 0)
     total_value = account_snapshot.get("total_value", cash)
 
@@ -918,7 +959,7 @@ def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL", pending_
     all_candidate_tickers = list(dict.fromkeys(
         list(new_candidates.keys()) + list(watchlist_tickers)
     ))
-    _refresh_data_feeds(all_candidate_tickers)
+    _refresh_data_feeds(all_candidate_tickers, time_budget=_remaining())
     fundamental = {}
     try:
         from data_feeds import get_fundamental_signals
@@ -926,11 +967,16 @@ def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL", pending_
     except Exception as e:
         print(f"Fundamental signals unavailable (continuing without them): {e}")
 
-    scored_holdings = _score_candidates(list(holdings.keys()))
-    scored_news = _score_candidates(list(new_candidates.keys()), sentiment=news_sentiment, extras=fundamental)
+    scored_holdings = _score_candidates(list(holdings.keys()), time_budget=_remaining())
+    scored_news = _score_candidates(
+        list(new_candidates.keys()),
+        sentiment=news_sentiment,
+        extras=fundamental,
+        time_budget=_remaining(),
+    )
     # The rotating universe slice is cached per hour -- see
     # _score_candidates_cached (this was the dominant per-run cost).
-    scored_watchlist = _score_candidates_cached(watchlist_tickers, extras=fundamental)
+    scored_watchlist = _score_candidates_cached(watchlist_tickers, extras=fundamental, time_budget=_remaining())
 
     # News + technical confluence: a news candidate only reaches the LLM if
     # its pure technical score (without the sentiment boost) clears the bar.
@@ -991,7 +1037,7 @@ def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL", pending_
     )
 
     try:
-        response = _generate_with_rotation(prompt, tracker, model_list)
+        response = _generate_with_rotation(prompt, tracker, model_list, time_budget=_remaining())
         _save_tracker(tracker)
         meta["gemini_calls_today"] = sum(tracker["models"].get(m, {}).get("count", 0) for m in model_list)
     except Exception as e:
