@@ -1363,7 +1363,15 @@ def _heal_ledger_from_orders(holdings, expected):
     if not missing:
         return 0
     try:
-        orders = trading_client.get_orders(GetOrdersRequest(status=QueryOrderStatus.ALL))
+        # Query ONLY the unexplained symbols (not the 50 most-recent default),
+        # with a high limit -- on a long-lived account the lost order could
+        # otherwise sit beyond the default window and the heal would silently
+        # find nothing.
+        orders = trading_client.get_orders(GetOrdersRequest(
+            status=QueryOrderStatus.ALL,
+            symbols=list(missing.keys()),
+            limit=500,
+        ))
     except Exception as e:
         print(f"Ledger self-heal skipped (order history unavailable): {e}")
         return 0
@@ -1399,6 +1407,8 @@ def _heal_ledger_from_orders(holdings, expected):
     if added:
         _save_json_file(ORDER_LEDGER_FILE, ledger)
         print(f"Order ledger self-healed: {added} filled order(s) recovered from Alpaca order history (this bot's own fills whose ledger entries were lost).")
+    else:
+        print(f"Ledger self-heal: NO filled order found in Alpaca history for {sorted(missing)} -- if this position is not yours, that is REAL foreign activity.")
     return added
 
 
