@@ -401,7 +401,8 @@ def _generate_with_rotation(prompt, tracker, model_list, schema=None):
             continue
 
     raise last_error if last_error else RuntimeError("No Gemini models had remaining quota.")
-    
+
+
 # ============================================================
 # Pure-technical fallback (when Gemini is throttled/unavailable)
 # ============================================================
@@ -601,9 +602,7 @@ def _score_candidates_cached(tickers, **kwargs):
             _save_scan_cache(cache)
         merged.update(fresh)
     return merged
-
-
-# Hard wall-clock budget for the per-run data-feeds refresh. On a warm cache
+    # Hard wall-clock budget for the per-run data-feeds refresh. On a warm cache
 # this is nearly free; on a cold cache (first run after a fresh checkout) the
 # per-ticker insider/SEC loops could otherwise burn 40+ sequential HTTP calls
 # (~2-4 min). The budget guarantees feeds can never dominate a run: whatever
@@ -618,36 +617,32 @@ def _refresh_data_feeds(candidate_tickers):
     """
     Phase 2: populate the cached market-wide feeds (economic calendar,
     analyst actions, Reddit) and per-ticker feeds (insider, SEC) for the
-    current candidate set. Everything is TTL-cached and fail-soft, so this
-    is cheap on the hot loop and never breaks a run. Config flags gate each
-    feed (each defaults to enabled). A hard wall-clock budget bounds the
-    whole refresh so a cold cache can never stall a run.
+    current candidate set. All feeds are TTL-cached and fail-soft; the
+    whole refresh is capped by FEED_REFRESH_BUDGET_SECONDS so a cold cache
+    can never stall a run.
     """
-    from data_feeds import (
-        fetch_economic_calendar,
-        fetch_analyst_actions,
-        get_insider_activity,
-        get_sec_filings,
-        get_reddit_sentiment,
-    )
     deadline = time.monotonic() + FEED_REFRESH_BUDGET_SECONDS
     if ENABLE_ECONOMIC_CALENDAR and time.monotonic() < deadline:
         try:
+            from data_feeds import fetch_economic_calendar
             fetch_economic_calendar()
         except Exception as e:
             print(f"Economic calendar refresh failed: {e}")
     if ENABLE_ANALYST_ACTIONS and time.monotonic() < deadline:
         try:
+            from data_feeds import fetch_analyst_actions
             fetch_analyst_actions()
         except Exception as e:
             print(f"Analyst actions refresh failed: {e}")
     if ENABLE_REDDIT_SENTIMENT and time.monotonic() < deadline:
         try:
+            from data_feeds import get_reddit_sentiment
             get_reddit_sentiment()
         except Exception as e:
             print(f"Reddit sentiment refresh failed: {e}")
     if ENABLE_INSIDER_ACTIVITY and time.monotonic() < deadline:
         try:
+            from data_feeds import get_insider_activity
             get_insider_activity(
                 candidate_tickers[:MAX_FUNDAMENTAL_TICKERS],
                 time_budget=max(0.0, deadline - time.monotonic()),
@@ -656,13 +651,15 @@ def _refresh_data_feeds(candidate_tickers):
             print(f"Insider activity refresh failed: {e}")
     if ENABLE_SEC_FILINGS and time.monotonic() < deadline:
         try:
+            from data_feeds import get_sec_filings
             get_sec_filings(
                 candidate_tickers[:MAX_FUNDAMENTAL_TICKERS],
                 time_budget=max(0.0, deadline - time.monotonic()),
             )
         except Exception as e:
             print(f"SEC filings refresh failed: {e}")
-            
+
+
 def _build_fundamental_block(tickers):
     """Phase 2 context block for the Gemini prompt (pure cache reads)."""
     from data_feeds import get_context_block
@@ -674,20 +671,47 @@ def _build_fundamental_block(tickers):
 
 
 def _fmt_setup(d):
-    """Compact, information-dense formatting of a ticker's key setup fields."""
+    """
+    Compact, information-dense formatting of a ticker's key setup fields.
+    Everything shown here is ALREADY computed by get_full_indicators -- this
+    just surfaces it to Gemini (free, zero extra API calls).
+    """
     d = d or {}
     parts = []
     parts.append(f"trend {d.get('trend')}")
+    if d.get("price") is not None:
+        parts.append(f"${d['price']:.2f}")
     if d.get("rsi_14") is not None:
         parts.append(f"RSI {d['rsi_14']:.0f}")
+    stoch = d.get("stochastic") or {}
+    if stoch.get("percent_k") is not None:
+        parts.append(f"stochK {stoch['percent_k']:.0f}")
     if d.get("atr_14") is not None:
         parts.append(f"ATR {d['atr_14']:.2f}")
     if d.get("adx_14") is not None:
         parts.append(f"ADX {d['adx_14']:.0f}")
+    if d.get("sma_20") and d.get("price"):
+        parts.append(f"vs20 {((d['price'] / d['sma_20']) - 1) * 100:+.1f}%")
+    if d.get("sma_50") and d.get("price"):
+        parts.append(f"vs50 {((d['price'] / d['sma_50']) - 1) * 100:+.1f}%")
     if d.get("macd_cross"):
         parts.append(f"MACD {d['macd_cross']}")
+    macd = d.get("macd") or {}
+    if macd.get("histogram") is not None:
+        parts.append(f"macd_hist {macd['histogram']:.3f}")
+    bb = d.get("bollinger") or {}
+    if bb.get("percent_b") is not None:
+        parts.append(f"%B {bb['percent_b']:.2f}")
+    if d.get("momentum_10d") is not None:
+        parts.append(f"mom10 {d['momentum_10d']:+.1f}%")
+    if d.get("volatility_20d") is not None:
+        parts.append(f"vol20 {d['volatility_20d']:.0f}%")
+    if d.get("relative_volume_pct") is not None:
+        parts.append(f"relVol {d['relative_volume_pct']:+.0f}%")
     if d.get("gap_pct") is not None:
         parts.append(f"gap {d['gap_pct']:+.1f}%")
+    if d.get("vwap_deviation_pct") is not None:
+        parts.append(f"vsVWAP {d['vwap_deviation_pct']:+.1f}%")
     if d.get("dist_from_52w_high_pct") is not None:
         parts.append(f"{d['dist_from_52w_high_pct']:.0f}% off 52wH")
     if d.get("dist_from_52w_low_pct") is not None:
@@ -727,31 +751,75 @@ def _apply_news_confluence(new_candidates, scored_news, news_sentiment):
     )
 
 
-def _fmt_holdings_block(scored_holdings):
+def _fmt_fundamental(t, fundamental):
+    """
+    Compact per-ticker Phase 2 tags for the Gemini prompt (street consensus,
+    analyst actions, insider flow, reddit sentiment, sector, earnings, SEC
+    filings). Pure cache reads -- zero network cost. Empty string when the
+    ticker has no fundamental data.
+    """
+    f = (fundamental or {}).get(t) or {}
+    bits = []
+    ac = f.get("analyst_consensus") or {}
+    if ac.get("buy") is not None:
+        bits.append(f"street {ac['buy']}B/{ac.get('hold') or 0}H/{ac.get('sell') or 0}S")
+        if ac.get("target_mean"):
+            bits.append(f"PT ${ac['target_mean']:.2f}")
+    if f.get("analyst"):
+        bits.append(f"analyst {f['analyst']}")
+    if f.get("insider_net"):
+        bits.append(f"insider ${f['insider_net']:,.0f}")
+    rs = f.get("reddit_sentiment")
+    if rs is not None and abs(rs) >= 0.15:
+        bits.append(f"reddit {rs:+.2f}")
+    if f.get("sector"):
+        bits.append(f["sector"])
+    de = f.get("days_until_earnings")
+    if de is not None and 0 <= de <= 14:
+        bits.append(f"earnings {de}d")
+    if f.get("recent_filings"):
+        bits.append("filed " + ",".join(str(x) for x in f["recent_filings"][:4]))
+    return (" | " + " | ".join(bits)) if bits else ""
+
+
+def _fmt_holdings_block(scored_holdings, positions=None, fundamental=None):
+    """
+    Holdings with their full setup AND unrealized P&L, so Gemini knows which
+    positions are winners/losers and how much is at risk. positions is the
+    raw account holdings dict (qty/avg_entry/current/unrealized_plpc).
+    """
     parts = []
     for t, info in scored_holdings.items():
-        parts.append(f"{t} (score {info['score']:.0f}/100 | {_fmt_setup(info.get('indicators'))})")
+        pos = (positions or {}).get(t, {})
+        pl = pos.get("unrealized_plpc")
+        pl_str = f" P&L {pl:+.2f}%" if pl is not None else ""
+        parts.append(f"{t} (score {info['score']:.0f}/100 | {_fmt_setup(info.get('indicators'))} |{pl_str}{_fmt_fundamental(t, fundamental)})")
     return "; ".join(parts) or "none"
 
 
-def _fmt_news_block(candidates, scored_news, sentiment):
+def _fmt_news_block(candidates, scored_news, sentiment, fundamental=None):
+    """
+    News candidates with the TOP 2 headlines (not just one) per ticker, so
+    Gemini sees the catalyst's full story. Articles are already fetched --
+    zero extra cost.
+    """
     parts = []
     for t, info in scored_news.items():
-        articles = candidates.get(t, [])
-        best = max((a for a in articles if a.get("score") is not None), key=lambda a: a.get("score", 0), default=None) or (articles[0] if articles else None)
-        headline = (best.get("headline", "") if best else "")[:120]
-        ascore = best.get("score") if best else None
+        articles = [a for a in candidates.get(t, []) if a.get("score") is not None]
+        articles.sort(key=lambda a: a.get("score", 0), reverse=True)
+        heads = " / ".join((a.get("headline", "") or "")[:100] for a in articles[:2]) or "none"
+        ascore = articles[0].get("score") if articles else None
         parts.append(
             f"{t} (quant {info['score']:.0f}/100 | {_fmt_setup(info.get('indicators'))} | "
-            f"news {ascore}/10 sent {sentiment.get(t, 0.0):+.2f}): \"{headline}\""
+            f"news {ascore}/10 sent {sentiment.get(t, 0.0):+.2f}{_fmt_fundamental(t, fundamental)}): \"{heads}\""
         )
     return "; ".join(parts) or "none"
 
 
-def _fmt_watchlist_block(scored_watchlist):
+def _fmt_watchlist_block(scored_watchlist, fundamental=None):
     parts = []
     for t, info in scored_watchlist.items():
-        parts.append(f"{t} (score {info['score']:.0f}/100 | {_fmt_setup(info.get('indicators'))})")
+        parts.append(f"{t} (score {info['score']:.0f}/100 | {_fmt_setup(info.get('indicators'))}{_fmt_fundamental(t, fundamental)})")
     return "; ".join(parts) or "none"
 
 
@@ -769,49 +837,26 @@ def _fmt_pending_block(pending):
     return "; ".join(parts)
 
 
-def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL", pending_trades=None):
+def get_trade_decisions(account_snapshot, new_candidates, pending_trades):
+    """
+    Main decision entry point: scores the universe, builds the Gemini prompt
+    with ALL the context (news, chart setups, fundamentals, market pulse,
+    performance brief), calls Gemini with model rotation + quota tracking,
+    and filters its proposals against the safety gates.
+    """
     holdings = account_snapshot.get("holdings", {})
-    cash = account_snapshot.get("cash", 0)
-    total_value = account_snapshot.get("total_value", cash)
+    cash = float(account_snapshot.get("cash", 0.0))
+    total_value = float(account_snapshot.get("total_value", cash))
+    unavailable = get_tickers_with_open_orders() | get_tickers_on_cooldown()
 
-    open_orders = get_tickers_with_open_orders()
-    cooldowns = get_tickers_on_cooldown()
-    unavailable = open_orders | cooldowns
-
-    new_candidates = {t: a for t, a in candidates.items() if t not in holdings}
-
-    # Morning prep briefing (morning_prep.py): pre-analyzed names from the
-    # overnight/early-morning Gemini call are injected as candidates so the
-    # open trades on the prepared context, not just whatever news just hit.
-    try:
-        prep_path = os.path.join(os.path.dirname(__file__), "data", "morning_candidates.json")
-        if os.path.exists(prep_path):
-            with open(prep_path) as f:
-                prep = json.load(f)
-            for item in (prep if isinstance(prep, list) else []):
-                t = item.get("ticker")
-                if not t or t in holdings or t in new_candidates:
-                    continue
-                new_candidates.setdefault(t, []).append({
-                    "headline": item.get("notes") or item.get("stance") or "morning prep pick",
-                    "summary": "",
-                    "source": "morning-brief",
-                    "url": "",
-                    "sentiment": 0.0,
-                    "score": float(item.get("priority", 5) or 5),
-                })
-    except Exception as e:
-        print(f"Could not load morning candidates: {e}")
-
-    # Rotate through the FULL S&P 500 universe: every name gets scanned over
-    # the day, but each run only scores UNIVERSE_SCAN_PER_RUN non-news names
-    # (deterministic per hour, so the same run-hour reuses the same slice).
-    watchlist_tickers = [t for t in WATCHLIST if t not in holdings and t not in new_candidates]
-    if UNIVERSE_SCAN_PER_RUN > 0 and len(watchlist_tickers) > UNIVERSE_SCAN_PER_RUN:
-        watchlist_tickers = sorted(watchlist_tickers)
-        seed = int(datetime.now(pytz.timezone("America/New_York")).strftime("%Y%m%d%H"))
-        start = seed % len(watchlist_tickers)
-        watchlist_tickers = (watchlist_tickers[start:] + watchlist_tickers[:start])[:UNIVERSE_SCAN_PER_RUN]
+    # Rotating universe slice: deterministic per calendar hour, seeded by the
+    # date+hour so the slice advances naturally through the S&P 500 over the
+    # day. Full coverage of WATCHLIST (all 500 names) over the trading day.
+    import random
+    seed = int(datetime.now(pytz.timezone("America/New_York")).strftime("%Y%m%d%H"))
+    watchlist_tickers = list(WATCHLIST)
+    random.Random(seed).shuffle(watchlist_tickers)
+    watchlist_tickers = watchlist_tickers[:UNIVERSE_SCAN_PER_RUN]
 
     # Dual focus: average headline sentiment per news candidate feeds the
     # quant score so a real catalyst moves the needle alongside the chart.
@@ -890,9 +935,9 @@ def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL", pending_
         conf_min=CONFIDENCE_MIN_TO_TRADE,
         now_et=now_et,
         session=session,
-        holdings_block=_fmt_holdings_block(scored_holdings),
-        news_block=_fmt_news_block(new_candidates, scored_news, news_sentiment),
-        watchlist_block=_fmt_watchlist_block(scored_watchlist),
+        holdings_block=_fmt_holdings_block(scored_holdings, holdings, fundamental),
+        news_block=_fmt_news_block(new_candidates, scored_news, news_sentiment, fundamental),
+        watchlist_block=_fmt_watchlist_block(scored_watchlist, fundamental),
         pending_block=_fmt_pending_block(pending_trades),
         fundamental_block=_build_fundamental_block(all_candidate_tickers),
         performance_brief=build_performance_brief(),
