@@ -4,7 +4,7 @@ on:
   schedule:
     # Fallback hourly safety net in case external cron (e.g. cron-job.org) drops
     - cron: "0 * * * *"
-  workflow_dispatch: {} # Manual trigger or external 2-min API trigger
+  workflow_dispatch: {}
 
 concurrency:
   group: trading-bot-run
@@ -36,12 +36,7 @@ jobs:
           GEMINI_API_KEY: ${{ secrets.GEMINI_API_KEY }}
           ALPACA_API_KEY: ${{ secrets.ALPACA_API_KEY }}
           ALPACA_SECRET_KEY: ${{ secrets.ALPACA_SECRET_KEY }}
-          # Optional: ping you on margin warnings / halts / flattens.
           DISCORD_WEBHOOK_URL: ${{ secrets.DISCORD_WEBHOOK_URL }}
-          # Optional risk-tuning overrides (see config.py for all options):
-          # TRADE_ONLY_DURING_MARKET_HOURS, MAX_TOTAL_EXPOSURE_PCT,
-          # DAILY_LOSS_HALT_PCT, MAX_DRAWDOWN_DELEVERAGE_PCT,
-          # MAX_DRAWDOWN_FLATTEN_PCT, RESET_EQUITY_PEAK_ON_START
         run: python main.py
 
       - name: Commit and push updated logs and trade memory
@@ -56,6 +51,12 @@ jobs:
             echo "No log or memory changes to commit."
           else
             git commit -m "Update operational logs and trade memory [skip ci]"
-            git pull --rebase --autostash origin main
+            # Merge (NOT rebase) so a concurrent run's push can never leave the
+            # repo stuck in a broken rebase state. `-X ours` auto-resolves any
+            # log/state conflict in favor of THIS run's freshly written files
+            # (JSON/CSV snapshots are latest-write-wins); append-only .log/.txt
+            # files still combine via merge=union in .gitattributes.
+            git fetch origin main
+            git merge -X ours -m "Sync bot state, keep local logs [skip ci]" origin/main
             git push
           fi
