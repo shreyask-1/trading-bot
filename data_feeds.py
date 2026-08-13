@@ -534,6 +534,10 @@ SECTOR_PROFILE_MAX_FRESH = 12
 # tickers per call within a 12s wall-clock budget.
 ANALYST_CONSENSUS_BUDGET_SECONDS = 12.0
 ANALYST_CONSENSUS_MAX_FRESH = 12
+# After this many consecutive /stock/metrics primary failures, declare the
+# primary endpoint broken on this key and use the documented-free fallbacks
+# for every ticker for the rest of the 24h cache window.
+PRIMARY_BROKEN_THRESHOLD = 5
 
 
 def _consensus_from_recommendation_trends(t):
@@ -589,13 +593,20 @@ def get_analyst_consensus(tickers):
 
     Tickers whose PRIMARY endpoint proved broken on this key are memoized in
     the cache ("no_primary" set) so subsequent runs skip the doomed call and
-    go straight to the documented-free endpoints -- that was the per-run
+    go straight to the documented-free endpoints. Additionally, after
+    PRIMARY_BROKEN_THRESHOLD consecutive primary failures the whole endpoint
+    is declared broken for this key ("primary_broken" flag) and EVERY ticker
+    skips the primary call for the rest of the 24h cache window -- with a
+    rotating 60-name universe, per-ticker memoization alone still burned one
+    doomed /stock/metrics call per NEW ticker every run (the per-run
     'Analyst metrics failed for X: Expecting value: line 1 column 1 (char 0)'
-    spam on free keys, plus 2 wasted API calls per ticker every morning.
+    spam on free keys).
     """
     cached = _load_cache("analyst_consensus.json", 24)
     store = dict(cached.get("by_ticker", {})) if cached else {}
     no_primary = set(cached.get("no_primary", [])) if cached else set()
+    primary_broken = bool(cached.get("primary_broken", False)) if cached else False
+    consecutive_failures = int(cached.get("consecutive_failures", 0) or 0) if cached else 0
     need = [t for t in tickers if t and t not in store]
     _loop_start = time.monotonic()
     for t in need[:ANALYST_CONSENSUS_MAX_FRESH]:
@@ -603,7 +614,7 @@ def get_analyst_consensus(tickers):
             break
         entry = {}
         primary_failed = False
-        if t not in no_primary:
+        if t not in no_primary and not primary_broken:
             try:
                 resp = requests.get(
                     "https://finnhub.io/api/v1/stock/metrics",
@@ -632,16 +643,29 @@ def get_analyst_consensus(tickers):
                 primary_failed = True
         if primary_failed or t in no_primary:
             no_primary.add(t)
+            consecutive_failures += 1
+            if consecutive_failures >= PRIMARY_BROKEN_THRESHOLD:
+                primary_broken = True
+                print("Analyst /stock/metrics primary endpoint consistently failing on this key -- "
+                      "switching all analyst lookups to the documented-free endpoints for today.")
             b, h, s = _consensus_from_recommendation_trends(t)
             m, hi, lo = _consensus_from_price_target(t)
             entry = {
                 "buy": b, "hold": h, "sell": s,
                 "target_mean": m, "target_high": hi, "target_low": lo,
             }
+        else:
+            # A genuine primary success resets the streak.
+            consecutive_failures = 0
         if not any(v is not None for v in entry.values()):
             entry = {}
         store[t] = entry
-    _save_cache("analyst_consensus.json", {"by_ticker": store, "no_primary": sorted(no_primary)})
+    _save_cache("analyst_consensus.json", {
+        "by_ticker": store,
+        "no_primary": sorted(no_primary),
+        "primary_broken": primary_broken,
+        "consecutive_failures": consecutive_failures,
+    })
     return store
 
 
