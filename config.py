@@ -65,6 +65,7 @@ from config import (
     STOP_NEW_BUYS_AFTER,
     MAX_BUY_EXTENSION_ABOVE_VWAP_PCT,
     MAX_INTRADAY_MOVE_PCT,
+    CHASE_HARD_SKIP_MULT,
     TRAILING_STOP_ACTIVATE_MULT,
     TRAILING_STOP_DISTANCE_MULT,
     MAX_RISK_PER_TRADE_PCT,
@@ -1335,6 +1336,72 @@ def get_expected_holdings():
             expected[t] = expected.get(t, 0.0) - qty
     return {t: q for t, q in expected.items() if abs(q) > 0.0001}
 
+def _heal_ledger_from_orders(holdings, expected):
+    """
+    Recover bot orders whose ledger entries were lost.
+
+    The order ledger is the source of truth for "what this bot owns", but its
+    persistence depends on the per-run git commit succeeding. If that step
+    fails (e.g. a merge conflict in the shared state files), a filled order
+    submitted that run never reaches GitHub -- and the next run's
+    reconciliation accuses the bot of its OWN fill:
+
+        FOREIGN ACTIVITY: CVX position (24.88 sh) was never created by this bot.
+
+    Before declaring a position foreign, cross-check Alpaca's own order
+    history: a filled buy on this account was placed by this bot (it is the
+    only automated trader on these keys). Re-add it to the ledger so the
+    reconciliation matches reality. Only positions with NO ledger/baseline
+    explanation are healed -- partial quantity mismatches still flag normally.
+    Returns the number of orders recovered.
+    """
+    missing = {}
+    for t, p in holdings.items():
+        held = p.get("qty", 0.0) if isinstance(p, dict) else 0.0
+        if held > 0.0001 and abs(expected.get(t, 0.0)) <= 0.0001:
+            missing[t] = held
+    if not missing:
+        return 0
+    try:
+        orders = trading_client.get_orders(GetOrdersRequest(status=QueryOrderStatus.ALL))
+    except Exception as e:
+        print(f"Ledger self-heal skipped (order history unavailable): {e}")
+        return 0
+    ledger = _load_json_file(ORDER_LEDGER_FILE, [])
+    existing_ids = {str(e.get("order_id", "") or "").strip() for e in ledger}
+    added = 0
+    for o in orders:
+        symbol = str(getattr(o, "symbol", "") or "").upper()
+        side = str(getattr(o, "side", "") or "").lower()
+        status = str(getattr(o, "status", "") or "").lower()
+        if status != "filled" or side != "buy" or symbol not in missing:
+            continue
+        oid = str(getattr(o, "id", "") or "").strip()
+        if not oid or oid == "x" or oid in existing_ids:
+            continue
+        try:
+            qty = float(getattr(o, "filled_qty", None) or getattr(o, "qty", 0.0) or 0.0)
+        except (TypeError, ValueError):
+            continue
+        if qty <= 0:
+            continue
+        ledger.append({
+            "timestamp": str(getattr(o, "submitted_at", "") or datetime.now().isoformat()),
+            "ticker": symbol,
+            "action": "buy",
+            "qty": qty,
+            "order_id": oid,
+            "order_status": "filled",
+            "healed_from_order_history": True,
+        })
+        existing_ids.add(oid)
+        added += 1
+    if added:
+        _save_json_file(ORDER_LEDGER_FILE, ledger)
+        print(f"Order ledger self-healed: {added} filled order(s) recovered from Alpaca order history (this bot's own fills whose ledger entries were lost).")
+    return added
+
+
 def reconcile_foreign_activity(account_snapshot):
     """
     Compare actual account holdings against what the bot's own order ledger
@@ -1402,6 +1469,14 @@ def reconcile_foreign_activity(account_snapshot):
     expected = dict(baseline)
     for t, q in get_expected_holdings().items():
         expected[t] = expected.get(t, 0.0) + q
+
+    # Self-heal: a holding entirely unexplained by the ledger + baseline is
+    # usually this bot's own fill whose ledger entry was lost (failed git
+    # commit). Recover it from Alpaca's order history before flagging it.
+    if _heal_ledger_from_orders(holdings, expected):
+        expected = dict(baseline)
+        for t, q in get_expected_holdings().items():
+            expected[t] = expected.get(t, 0.0) + q
 
     for t, q in expected.items():
         if abs(q) <= 0.0001:
@@ -1818,6 +1893,31 @@ def _sector_exposure_block(account_snapshot, ticker, proposed_amount, total_valu
     return None
 
 
+def _chase_size_multiplier(extension_pct, limit_pct):
+    """
+    Soft chase filter: how much of a full position an extended name earns.
+
+    extension <= limit                -> 1.0  (full size)
+    up to 2x the limit                -> 0.60
+    up to 3x the limit                -> 0.35
+    beyond, up to CHASE_HARD_SKIP_MULT x -> 0.15
+    beyond CHASE_HARD_SKIP_MULT x     -> 0.0  (hard skip: truly priced in)
+
+    With CHASE_HARD_SKIP_MULT <= 0 the hard skip is disabled and the worst
+    case is 0.15 -- a very extended name is still tradeable, just small.
+    """
+    if limit_pct <= 0 or extension_pct <= limit_pct:
+        return 1.0
+    if CHASE_HARD_SKIP_MULT and CHASE_HARD_SKIP_MULT > 0 and extension_pct > limit_pct * CHASE_HARD_SKIP_MULT:
+        return 0.0
+    ratio = extension_pct / limit_pct
+    if ratio <= 2.0:
+        return 0.60
+    if ratio <= 3.0:
+        return 0.35
+    return 0.15
+
+
 def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=None):
     ticker = trade["ticker"]
     action = trade["action"].lower()
@@ -1878,31 +1978,44 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
                 "reason": f"max open positions reached ({MAX_OPEN_POSITIONS})",
             }
 
-        # Chase filters: skip buys into a name already extended on the day --
-        # buying after a big move is how daytrading profits get given back.
-        # Config value <= 0 disables each filter. Sells are never filtered.
+        # Chase filters -> SOFT filters: buying into a name already extended
+        # on the day is where momentum profits get given back, but momentum IS
+        # the trade. So instead of skipping, the position is scaled DOWN as the
+        # extension grows (full size near the limit, 60% / 35% / 15% further
+        # out) and refused only past CHASE_HARD_SKIP_MULT x the limit (a truly
+        # priced-in move). Config value <= 0 disables each filter entirely;
+        # CHASE_HARD_SKIP_MULT <= 0 removes the hard skip. Sells never scaled.
+        chase_multiplier = 1.0
+        chase_note = None
         try:
             ind_data = get_full_indicators(ticker)
         except Exception as e:
             print(f"Could not fetch indicators for chase filters on {ticker} (continuing without them): {e}")
             ind_data = None
-        if MAX_BUY_EXTENSION_ABOVE_VWAP_PCT > 0 and ind_data:
-            vwap = ind_data.get("vwap")
-            if vwap and vwap > 0 and price > vwap * (1 + MAX_BUY_EXTENSION_ABOVE_VWAP_PCT / 100.0):
-                pct_above = (price / vwap - 1) * 100.0
-                return {
-                    "ticker": ticker,
-                    "status": "skipped",
-                    "reason": f"chase filter: price {price:.2f} is {pct_above:.1f}% above VWAP {vwap:.2f} (limit {MAX_BUY_EXTENSION_ABOVE_VWAP_PCT}%)",
-                }
-        if MAX_INTRADAY_MOVE_PCT > 0 and ind_data:
-            intraday_move = ind_data.get("intraday_momentum_pct")
-            if intraday_move is not None and intraday_move > MAX_INTRADAY_MOVE_PCT:
-                return {
-                    "ticker": ticker,
-                    "status": "skipped",
-                    "reason": f"chase filter: already up {intraday_move:.1f}% on the session (limit {MAX_INTRADAY_MOVE_PCT}%)",
-                }
+        if ind_data:
+            if MAX_BUY_EXTENSION_ABOVE_VWAP_PCT > 0:
+                vwap = ind_data.get("vwap")
+                if vwap and vwap > 0 and price > vwap * (1 + MAX_BUY_EXTENSION_ABOVE_VWAP_PCT / 100.0):
+                    pct_above = (price / vwap - 1) * 100.0
+                    mult = _chase_size_multiplier(pct_above, MAX_BUY_EXTENSION_ABOVE_VWAP_PCT)
+                    if mult < chase_multiplier:
+                        chase_multiplier = mult
+                        chase_note = f"price {pct_above:.1f}% above VWAP (limit {MAX_BUY_EXTENSION_ABOVE_VWAP_PCT}%)"
+            if MAX_INTRADAY_MOVE_PCT > 0:
+                intraday_move = ind_data.get("intraday_momentum_pct")
+                if intraday_move is not None and intraday_move > MAX_INTRADAY_MOVE_PCT:
+                    mult = _chase_size_multiplier(intraday_move, MAX_INTRADAY_MOVE_PCT)
+                    if mult < chase_multiplier:
+                        chase_multiplier = mult
+                        chase_note = f"already up {intraday_move:.1f}% on the session (limit {MAX_INTRADAY_MOVE_PCT}%)"
+        if chase_multiplier <= 0:
+            return {
+                "ticker": ticker,
+                "status": "skipped",
+                "reason": f"chase filter: {chase_note or 'name extended'} -- hard skip beyond {CHASE_HARD_SKIP_MULT:.1f}x the limit",
+            }
+        if chase_multiplier < 1.0:
+            print(f"chase filter: {ticker} {chase_note} -> position scaled to {chase_multiplier:.0%}")
 
         # FLAT sizing (default): every trade gets the SAME FLAT_TRADE_SIZE_PCT
         # of equity, capped only by the per-position ceiling and the
@@ -1967,6 +2080,11 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
         # lever itself into margin even with many positions.
         current_exposure = get_gross_exposure(account_snapshot) + buy_pending
         exposure_room = max(0.0, total_value * MAX_TOTAL_EXPOSURE_PCT - current_exposure)
+
+        # Soft chase filter: extended names get smaller positions (momentum is
+        # tradeable, but the snapback risk grows with the extension). Applies
+        # to both flat and confidence-sized paths.
+        buy_target *= chase_multiplier
 
         amount = min(buy_target, available_cash, exposure_room)
 
