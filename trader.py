@@ -11,7 +11,7 @@ import pytz
 import requests
 
 from alpaca.trading.client import TradingClient
-from alpaca.trading.requests import MarketOrderRequest, LimitOrderRequest, GetOrdersRequest
+from alpaca.trading.requests import MarketOrderRequest, LimitOrderRequest, GetOrdersRequest, CreateWatchlistRequest, UpdateWatchlistRequest
 from alpaca.trading.enums import OrderSide, TimeInForce, QueryOrderStatus
 from alpaca.data.historical import StockHistoricalDataClient
 from alpaca.data.requests import StockLatestTradeRequest, StockBarsRequest
@@ -108,6 +108,11 @@ EARNINGS_CAL_FILE = os.path.join(os.path.dirname(__file__), "logs", "earnings_ca
 # Overnight queue: trade ideas proposed while no session could fill, re-verified
 # by Gemini at the next live-session run before anything is placed.
 PENDING_TRADES_FILE = os.path.join(os.path.dirname(__file__), "data", "pending_trades.json")
+# Dashboard watchlist: the Alpaca dashboard renders news/headlines from your
+# watchlist, so even a flat cash account shows content for the names the bot
+# is actively watching. Kept in sync by sync_dashboard_watchlist() each run.
+DASHBOARD_WATCHLIST_NAME = "Bot Universe"
+WATCHLIST_MAX_SYMBOLS = 60
 
 _FEED_MAP = {"iex": DataFeed.IEX, "sip": DataFeed.SIP, "otc": DataFeed.OTC}
 DATA_FEED = _FEED_MAP.get(ALPACA_DATA_FEED.lower(), DataFeed.IEX)
@@ -592,6 +597,52 @@ def get_gross_exposure(account_snapshot):
     """Dollar value of all held long positions (short exposure unsupported)."""
     holdings = account_snapshot.get("holdings", {})
     return sum(p["qty"] * p["current_price"] for p in holdings.values())
+
+# ============================================================
+# Dashboard watchlist sync (news/headlines for the Alpaca app)
+# ============================================================
+def sync_dashboard_watchlist(tickers):
+    """
+    Keep the Alpaca dashboard watchlist ("Bot Universe") in sync with the
+    tickers the bot cares about: holdings, open orders, and today's scan
+    candidates. The Alpaca dashboard's news/headlines feed follows your
+    watchlist, so a brand-new all-cash account otherwise renders "no data"
+    for headlines/news even while the bot is working.
+
+    One update call replaces the whole list (no per-symbol churn), capped at
+    WATCHLIST_MAX_SYMBOLS. Best-effort: any failure is swallowed (returns
+    None) so a dashboard cosmetic can never break a trading run. Returns the
+    number of symbols synced, or None when there was nothing to sync / it
+    failed.
+    """
+    try:
+        desired = [t for t in dict.fromkeys(str(t).strip().upper() for t in tickers) if t]
+        desired = desired[:WATCHLIST_MAX_SYMBOLS]
+        if not desired:
+            return None
+        watchlists = trading_client.get_watchlists()
+        ours = None
+        for wl in watchlists:
+            if str(getattr(wl, "name", "") or "").strip() == DASHBOARD_WATCHLIST_NAME:
+                ours = wl
+                break
+        if ours is None:
+            trading_client.create_watchlist(
+                CreateWatchlistRequest(name=DASHBOARD_WATCHLIST_NAME, symbols=desired)
+            )
+            print(f"Dashboard watchlist '{DASHBOARD_WATCHLIST_NAME}' created ({len(desired)} symbols).")
+            return len(desired)
+        wl_id = str(getattr(ours, "id", "") or "")
+        if wl_id:
+            # update_watchlist_by_id replaces the full symbol list in one call.
+            trading_client.update_watchlist_by_id(
+                wl_id, UpdateWatchlistRequest(symbols=desired)
+            )
+            return len(desired)
+        return None
+    except Exception as e:
+        print(f"Dashboard watchlist sync failed (continuing without it): {e}")
+        return None
 
 # ============================================================
 # Overnight trade queue (24/7 flow: queue at night, verify at the open)
