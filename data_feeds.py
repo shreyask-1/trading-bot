@@ -399,8 +399,7 @@ def get_reddit_sentiment():
         return fetch_reddit_sentiment()
     except Exception:
         return {}
-      
-# ============================================================
+      # ============================================================
 # Market pulse: indexes + sector rotation + scan movers (Gemini context)
 # ============================================================
 # 11 sector SPDR ETFs, used for today's sector-rotation read.
@@ -411,34 +410,64 @@ _SECTOR_ETFS = {
     "XLRE": "Real Estate", "XLC": "Communication",
 }
 
+# Macro ETFs: cheap, tradeable proxies for the big-picture backdrop every
+# daytrader checks first -- rates (TLT moves INVERSELY to yields, so a falling
+# TLT = rising rates), the dollar (UUP), and gold (GLD, the fear trade).
+_MACRO_ETFS = {
+    "TLT": "rates (TLT, down=rising yields)",
+    "UUP": "dollar",
+    "GLD": "gold",
+}
+
 
 def get_market_pulse():
     """
-    Today's % change for SPY/QQQ/IWM/DIA plus the 11 sector ETFs, cached for
-    1 hour (data/scan cache dir). At most ~15 lightweight data calls once per
-    hour, then pure cache reads -- this is what fills the freed-up run time
-    with real context instead of network calls. Fail-soft: returns {} on any
-    error so the run (and Gemini prompt) continues without it.
+    Market backdrop for the Gemini prompt, cached for 1 hour:
+      - <SYM>_today  : today's % change for SPY/QQQ/IWM/DIA, the 11 sector
+                       ETFs, and the 3 macro ETFs (TLT/UUP/GLD)
+      - <SYM>_mom5   : 5-trading-day momentum for the 4 indexes
+      - <SYM>_vol20  : 20-day realized (annualized) volatility for SPY/QQQ
+    At most 18 price-history calls ONCE per hour, then pure cache reads.
+    Fail-soft: returns {} on any error so the run continues without it.
     """
-    cached = _load_cache("market_pulse.json", 1)
+    cached = _load_cache("market_pulse2.json", 1)
     if cached:
         return cached.get("pulse", {})
     from trader import get_price_history  # local import avoids a cycle
-    symbols = ["SPY", "QQQ", "IWM", "DIA"] + list(_SECTOR_ETFS.keys())
+    symbols = (
+        ["SPY", "QQQ", "IWM", "DIA"]
+        + list(_SECTOR_ETFS.keys())
+        + list(_MACRO_ETFS.keys())
+    )
+    # Hard wall-clock budget so a slow Alpaca minute can never stall a run:
+    # at most 12s total, then we keep whatever we already have (partial pulse
+    # still beats a hung run; the rest fills in next hour's first run).
     pulse = {}
+    _deadline = time.monotonic() + 12.0
     for s in symbols:
+        if time.monotonic() >= _deadline:
+            break
         try:
-            bars = get_price_history(s, days=2)
-            if bars is None or len(bars) < 2:
+            bars = get_price_history(s, days=90)  # needs >=55 bars to return
+            if bars is None:
                 continue
-            closes = [float(b.close) for b in bars]
+            closes = [float(c) for c in bars.get("closes", [])]
+            if len(closes) < 2:
+                continue
             prev = closes[-2]
             if prev:
-                pulse[s] = round((closes[-1] / prev - 1) * 100, 2)
+                pulse[f"{s}_today"] = round((closes[-1] / prev - 1) * 100, 2)
+            if len(closes) >= 6 and closes[-6]:
+                pulse[f"{s}_mom5"] = round((closes[-1] / closes[-6] - 1) * 100, 2)
+            if len(closes) >= 22:
+                rets = [closes[i] / closes[i - 1] - 1 for i in range(1, len(closes))][-20:]
+                mean = sum(rets) / len(rets)
+                var = sum((r - mean) ** 2 for r in rets) / (len(rets) - 1)
+                pulse[f"{s}_vol20"] = round((var ** 0.5) * (252 ** 0.5) * 100, 1)
         except Exception:
             continue
     if pulse:
-        _save_cache("market_pulse.json", {"pulse": pulse})
+        _save_cache("market_pulse2.json", {"pulse": pulse})
     return pulse
 
 
@@ -482,6 +511,93 @@ def _scan_movers():
     return rows[:5], (rows[-5:][::-1] if rows else []), len(ups), len(downs)
 
 
+# Per-ticker sector + market cap from Finnhub /stock/profile2 (free tier),
+# cached 24h. Gives Gemini the crucial "this ticker lives in the strongest /
+# weakest sector today" link. Budgeted + capped so a cold cache can't stall
+# a run: at most 8 NEW tickers per call within an 8s wall-clock budget.
+SECTOR_PROFILE_BUDGET_SECONDS = 8.0
+
+
+# Per-ticker analyst consensus + price targets from Finnhub /stock/metrics
+# (free tier -- recommendationBuy/Hold/Sell counts and the street's mean/high/
+# low price targets), cached 24h. This is the "what does Wall Street think"
+# number Gemini can't get from a chart. Same budgeted+capped lazy pattern as
+# sector profiles so a cold cache can never stall a run: at most 8 NEW tickers
+# per call within an 8s wall-clock budget.
+ANALYST_CONSENSUS_BUDGET_SECONDS = 8.0
+
+
+def get_analyst_consensus(tickers):
+    """
+    {ticker: {"buy": int, "hold": int, "sell": int, "target_mean": float,
+    "target_high": float, "target_low": float}} from Finnhub /stock/metrics
+    (free tier), cached 24h. Only tickers not already cached are fetched.
+    Fail-soft: returns {} on any error -- the run continues without it.
+    """
+    cached = _load_cache("analyst_consensus.json", 24)
+    store = dict(cached.get("by_ticker", {})) if cached else {}
+    need = [t for t in tickers if t and t not in store]
+    _loop_start = time.monotonic()
+    for t in need[:8]:
+        if time.monotonic() - _loop_start >= ANALYST_CONSENSUS_BUDGET_SECONDS:
+            break
+        try:
+            resp = requests.get(
+                "https://finnhub.io/api/v1/stock/metrics",
+                params={"symbol": t, "metric": "all", "token": FINNHUB_API_KEY},
+                timeout=10,
+            )
+            resp.raise_for_status()
+            data = (resp.json() or {}).get("metric") or {}
+            store[t] = {
+                "buy": data.get("recommendationBuy"),
+                "hold": data.get("recommendationHold"),
+                "sell": data.get("recommendationSell"),
+                "target_mean": data.get("targetMeanPrice"),
+                "target_high": data.get("targetHighPrice"),
+                "target_low": data.get("targetLowPrice"),
+            }
+        except Exception as e:
+            print(f"Analyst consensus fetch failed for {t} (continuing): {e}")
+            store.setdefault(t, {})
+    _save_cache("analyst_consensus.json", {"by_ticker": store})
+    return store
+
+
+def get_sector_profiles(tickers):
+    """
+    {ticker: {"sector": str, "market_cap": float}} from Finnhub
+    /stock/profile2 (free tier), cached 24h. Only tickers not already cached
+    are fetched. Fail-soft: returns {} on any error -- the run continues
+    without the sector link.
+    """
+    cached = _load_cache("sector_profiles.json", 24)
+    store = dict(cached.get("by_ticker", {})) if cached else {}
+    need = [t for t in tickers if t and t not in store]
+    _loop_start = time.monotonic()
+    for t in need[:8]:
+        if time.monotonic() - _loop_start >= SECTOR_PROFILE_BUDGET_SECONDS:
+            break
+        try:
+            resp = requests.get(
+                "https://finnhub.io/api/v1/stock/profile2",
+                params={"symbol": t, "token": FINNHUB_API_KEY},
+                timeout=10,
+            )
+            resp.raise_for_status()
+            data = resp.json() or {}
+            sector = (data.get("sector") or "").strip()
+            store[t] = {
+                "sector": sector or None,
+                "market_cap": data.get("marketCapitalization"),
+            }
+        except Exception as e:
+            print(f"Sector profile fetch failed for {t} (continuing): {e}")
+            store.setdefault(t, {"sector": None, "market_cap": None})
+    _save_cache("sector_profiles.json", {"by_ticker": store})
+    return store
+
+
 # ============================================================
 # Assembled blocks for prompts / scoring
 # ============================================================
@@ -490,8 +606,11 @@ def get_fundamental_signals(tickers):
     Everything Phase 2 knows about the given tickers right now, as a compact
     dict: {ticker: {"analyst": "upgrade"/"downgrade"/None, "insider_net": $,
     "reddit_sentiment": -1..+1, "recent_filings": ["8-K", ...],
-    "days_until_earnings": int/None}}. Uses caches only -- never blocks on
-    network inside the hot scoring path.
+    "days_until_earnings": int/None, "sector": str/None, "market_cap":
+    float/None, "analyst_consensus": {buy/hold/sell/target_*}}}. Uses caches
+    only -- never blocks on network inside the hot scoring path (the two
+    per-ticker lazy refreshes, sector profiles + analyst consensus, are
+    budgeted to ~8s each on cold caches).
     """
     from trader import EARNINGS_CAL_FILE  # local import avoids a cycle
     earnings = {}
@@ -507,6 +626,8 @@ def get_fundamental_signals(tickers):
     insider = _load_cache("insider_activity.json", 24) or {"by_ticker": {}}
     sec = _load_cache("sec_filings.json", 24) or {"by_ticker": {}}
     reddit = _load_cache("reddit_sentiment.json", 6) or {"by_ticker": {}}
+    sectors = get_sector_profiles(tickers)
+    consensus = get_analyst_consensus(tickers)
 
     by_analyst = {}
     for a in analyst.get("actions", []):
@@ -524,12 +645,16 @@ def get_fundamental_signals(tickers):
                 days = (datetime.strptime(edate, "%Y-%m-%d").date() - today).days
             except ValueError:
                 days = None
+        sp = sectors.get(t, {}) or {}
         signals[t] = {
             "analyst": by_analyst.get(t),
             "insider_net": (insider.get("by_ticker", {}).get(t) or {}).get("net_buy_value", 0.0),
             "reddit_sentiment": reddit.get("by_ticker", {}).get(t),
             "recent_filings": [f.get("form") for f in sec.get("by_ticker", {}).get(t, [])],
             "days_until_earnings": days,
+            "sector": sp.get("sector"),
+            "market_cap": sp.get("market_cap"),
+            "analyst_consensus": consensus.get(t, {}),
         }
     return signals
 
@@ -543,14 +668,23 @@ def get_context_block(tickers, include_econ=True):
     """
     lines = []
 
-    # Market pulse: indexes + sector rotation (cached hourly, ~15 calls once
+    # Market pulse: indexes + sector rotation (cached hourly, ~18 calls once
     # per hour) plus movers/breadth from today's scan cache (zero API cost).
     pulse = get_market_pulse()
     if pulse:
-        idx = [f"{k} {v:+.2f}%" for k in ("SPY", "QQQ", "IWM", "DIA") if pulse.get(k) is not None]
+        idx = [f"{k} {pulse[f'{k}_today']:+.2f}%" for k in ("SPY", "QQQ", "IWM", "DIA") if pulse.get(f"{k}_today") is not None]
         if idx:
-            lines.append("Market pulse - indexes: " + ", ".join(idx))
-        sectors = [(name, pulse[s]) for s, name in _SECTOR_ETFS.items() if pulse.get(s) is not None]
+            lines.append("Market pulse - indexes today: " + ", ".join(idx))
+        mom = [f"{k} {pulse[f'{k}_mom5']:+.1f}%" for k in ("SPY", "QQQ", "IWM", "DIA") if pulse.get(f"{k}_mom5") is not None]
+        if mom:
+            lines.append("Index momentum (5d): " + ", ".join(mom))
+        macro = [f"{label} {pulse[f'{s}_today']:+.2f}%" for s, label in _MACRO_ETFS.items() if pulse.get(f"{s}_today") is not None]
+        if macro:
+            lines.append("Macro: " + ", ".join(macro))
+        vol_parts = [f"{k} {pulse[f'{k}_vol20']:.0f}% 20d vol" for k in ("SPY", "QQQ") if pulse.get(f"{k}_vol20") is not None]
+        if vol_parts:
+            lines.append("Market volatility: " + ", ".join(vol_parts))
+        sectors = [(name, pulse[f"{s}_today"]) for s, name in _SECTOR_ETFS.items() if pulse.get(f"{s}_today") is not None]
         sectors.sort(key=lambda x: x[1], reverse=True)
         if sectors:
             lines.append("Sector rotation: strong " + ", ".join(f"{n} {p:+.1f}%" for n, p in sectors[:3]))
@@ -615,6 +749,45 @@ def get_context_block(tickers, include_econ=True):
             sec_parts.append(f"{t} filed {','.join(forms)}")
     if sec_parts:
         lines.append("Recent SEC filings: " + "; ".join(sec_parts[:8]))
+
+    # Per-ticker sector + market cap, so Gemini can tie each candidate to the
+    # sector rotation read above. Pure cache read (refresh happens lazily in
+    # get_sector_profiles, budgeted at 8s / 8 tickers, 24h cache).
+    sp = _load_cache("sector_profiles.json", 24) or {"by_ticker": {}}
+    sp_parts = []
+    for t in tickers:
+        info = sp.get("by_ticker", {}).get(t)
+        if info and info.get("sector"):
+            mc = info.get("market_cap")
+            mc_s = ""
+            if isinstance(mc, (int, float)) and mc:
+                if mc >= 1_000_000:
+                    mc_s = f" ${mc / 1_000_000:.2f}T"
+                elif mc >= 1_000:
+                    mc_s = f" ${mc / 1_000:.0f}B"
+                else:
+                    mc_s = f" ${mc:.0f}M"
+            sp_parts.append(f"{t}: {info['sector']}{mc_s}")
+    if sp_parts:
+        lines.append("Sector/market cap: " + ", ".join(sp_parts[:10]))
+
+    # Street consensus + price targets per candidate (Finnhub /stock/metrics,
+    # free tier, cached 24h, budgeted) -- the "what does Wall Street think"
+    # read. Target vs the candidate's current price is computed by Gemini,
+    # which sees both in the prompt.
+    cons = _load_cache("analyst_consensus.json", 24) or {"by_ticker": {}}
+    cons_parts = []
+    for t in tickers:
+        c = cons.get("by_ticker", {}).get(t) or {}
+        if c.get("buy") is None:
+            continue
+        cons_parts.append(
+            f"{t} {c['buy']}B/{c.get('hold') or 0}H/{c.get('sell') or 0}S"
+            + (f" PT ${c['target_mean']:.2f}" if c.get("target_mean") else "")
+            + (f" (hi ${c['target_high']:.2f}/lo ${c['target_low']:.2f})" if c.get("target_high") and c.get("target_low") else "")
+        )
+    if cons_parts:
+        lines.append("Street consensus/targets: " + ", ".join(cons_parts[:10]))
 
     if not lines:
         return "none"
