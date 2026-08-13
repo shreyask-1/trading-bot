@@ -3804,3 +3804,21 @@ Trade journal: no closed trades yet
 Performance: Total return -0.60% | Max drawdown 12.37% | Daily Sharpe 0.24 | Open positions: 1 | Equity $99,238.39
 Timings: account: 0.0s | risk: 0.6s | decide: 4.6s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-08-13T08:22:29.424484 ===
+Current time: 2026-08-13 04:22 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
+Account value: $99,245.04
+Cash: $89,330.99 | Holdings (1): {'NVDA': '44.2888 sh (-0.11%)'}
+Open orders (4): LMT buy 16.3555, NDAQ buy 103.737, NWS buy 303.72, MSI buy 21.1281
+  !! FOREIGN ACTIVITY: NVDA position (44.2888 sh) was never created by this bot.
+Risk state: peak $99,257.90 | drawdown 0.01% | today -0.01% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 60, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 19/27 candidates passed.
+Gemini proposed 0 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 40
+Dashboard watchlist synced (5 symbols) for news/headlines.
+Ending portfolio value: $99,242.82
+Trade journal: no closed trades yet
+Performance: Total return -0.59% | Max drawdown 12.37% | Daily Sharpe 0.24 | Open positions: 1 | Equity $99,245.04
+Timings: account: 0.0s | risk: 0.4s | decide: 62.7s | watchlist: 0.1s | perf: 0.1s
+
