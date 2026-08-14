@@ -9741,3 +9741,23 @@ Trade journal: no closed trades yet
 Performance: Total return -0.41% | Max drawdown 12.37% | Daily Sharpe 0.28 | Open positions: 15 | Equity $99,421.53
 Timings: account: 0.0s | risk: 8.3s | decide: 1.6s | watchlist: 0.2s | perf: 0.3s
 
+=== Run at 2026-08-14T14:24:25.086382 ===
+Current time: 2026-08-14 10:24 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,371.62
+Cash: $2,242.38 | Holdings (15): {'CEG': '35.6034 sh (+2.00%)', 'CHD': '97.9637 sh (-0.55%)', 'COHR': '7.9896 sh (-1.61%)', 'CVX': '24.8836 sh (+1.51%)', 'GEHC': '0.6136 sh (-0.13%)', 'HAS': '1.1333 sh (+2.09%)', 'IVZ': '306.9138 sh (-0.29%)', 'LMT': '16.3555 sh (-0.20%)', 'MS': '43.8344 sh (-1.70%)', 'MSI': '21.1281 sh (-1.41%)', 'NUE': '36.5544 sh (-0.05%)', 'NVDA': '44.2888 sh (+0.39%)', 'NWS': '303.7199 sh (+1.44%)', 'STLD': '0.9216 sh (-0.56%)', 'WSM': '0.1026 sh (-1.44%)'}
+Risk state: peak $99,703.60 | drawdown 0.33% | today +0.12% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 39/60 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 204
+  -> {"ticker": "DAL", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,905.74), room ($9,937.16), regime multiplier (100%), and cash reserve ($2,484.29 kept of $2,242.38 cash)"}
+  -> {"ticker": "DASH", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,905.74), room ($9,937.16), regime multiplier (100%), and cash reserve ($4,968.58 kept of $2,242.38 cash)"}
+  -> {"ticker": "CVNA", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,905.74), room ($9,937.16), regime multiplier (100%), and cash reserve ($4,968.58 kept of $2,242.38 cash)"}
+Overnight queue cleared after verification.
+Dashboard watchlist synced (18 symbols) for news/headlines.
+Ending portfolio value: $99,372.49
+Trade journal: no closed trades yet
+Performance: Total return -0.46% | Max drawdown 12.37% | Daily Sharpe 0.26 | Open positions: 15 | Equity $99,371.62
+Timings: account: 0.0s | risk: 4.2s | decide: 2.2s | watchlist: 0.0s | perf: 0.1s
+
