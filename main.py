@@ -257,6 +257,8 @@ def run():
             for q_ in quality_sells:
                 log_lines.append(f"  -> {json.dumps(q_)}")
             account = get_account_snapshot()
+        else:
+            log_lines.append("Quality trim: no legacy holdings failed the technical screens this run (nothing to sell).")
     except Exception as e:
         log_lines.append(f"Quality trim step failed (continuing anyway): {e}")
 
