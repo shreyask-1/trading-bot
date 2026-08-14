@@ -1813,14 +1813,20 @@ def _compute_exit_levels(ticker, trade, entry_price, ind=None):
         swing_high = ind.get(f"recent_swing_high_{SWING_LOOKBACK_DAYS}d")
     if atr is None or swing_low is None or swing_high is None:
         try:
-            # FIX: get_price_history() returns None unless there are 55+ bars, so
-            # a 30-day fetch ALWAYS came back empty and custom exits were silently
-            # never saved -- Gemini's stop_loss/take_profit values were dead code.
-            # Use the full default lookback so ATR/swing levels can actually be
-            # computed and persisted.
+            # FIX (real): the `ind` parameter here is a DICT (the
+            # get_full_indicators() result) -- it shadows the `indicators as
+            # ind` MODULE import at the top of this file, so the old
+            # `ind.compute_atr(...)` raised 'dict' object has no attribute
+            # 'compute_atr' and chart-based exit levels were silently NEVER
+            # computed (Gemini's stop_loss/take_profit stayed dead code for
+            # any ticker whose dict lacked ATR/swings). Use the module under
+            # an unambiguous name. Also use the full default lookback so
+            # get_price_history() actually returns bars (a 30-day fetch
+            # returns None -- Alpaca needs 55+ bars).
             history = get_price_history(ticker)
             if history:
-                atr = ind.compute_atr(history["highs"], history["lows"], history["closes"], period=ATR_PERIOD)
+                import indicators as _ind_mod
+                atr = _ind_mod.compute_atr(history["highs"], history["lows"], history["closes"], period=ATR_PERIOD)
                 window = min(SWING_LOOKBACK_DAYS, len(history["lows"]))
                 swing_low = min(history["lows"][-window:])
                 swing_high = max(history["highs"][-window:])
@@ -2293,6 +2299,21 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
                 "ticker": ticker,
                 "status": "skipped",
                 "reason": f"max open positions reached ({MAX_OPEN_POSITIONS})",
+            }
+
+        # Daytrading entry window (only for NEW buys, never sells, never
+        # existing positions being topped up): skip the first
+        # TRADE_START_MINUTES_AFTER_OPEN minutes after the 9:30 open
+        # (auction chop) and skip new entries after STOP_NEW_BUYS_AFTER ET.
+        # Config defaults (0 / "23:59") keep this open 24/7 -- the knobs
+        # exist for a stricter daytrading schedule, and they must actually
+        # gate (this was dead code: is_within_trade_window() was never
+        # called, so those documented config values silently did nothing).
+        if is_new_position and not is_within_trade_window():
+            return {
+                "ticker": ticker,
+                "status": "skipped",
+                "reason": "outside the daytrading entry window (open-auction chop or after STOP_NEW_BUYS_AFTER)",
             }
 
         # Chase filters -> SOFT filters: buying into a name already extended
