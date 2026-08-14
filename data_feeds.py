@@ -490,7 +490,14 @@ def _scan_movers():
             cache = json.load(f)
     except Exception:
         return [], [], 0, 0
-    today = datetime.now().strftime("%Y%m%d")
+    # Scan cache keys are stamped in Eastern time (see decide.py's hourly
+    # cache key); match them in ET too, or the movers block goes empty for
+    # the hours when UTC date != ET date (midnight-4am UTC).
+    try:
+        import pytz
+        today = datetime.now(pytz.timezone("America/New_York")).strftime("%Y%m%d")
+    except Exception:
+        today = datetime.now().strftime("%Y%m%d")
     rows = []
     for key, info in cache.items():
         try:
