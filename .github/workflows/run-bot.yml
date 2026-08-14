@@ -53,10 +53,18 @@ jobs:
           # burst stacking, never normal runs. Set to 0 to disable pacing
           # (Gemini burns Google's limit mid-day, technical engine after).
           GEMINI_DAILY_BUDGET: 1000
-        # Hard shell backstop: main.py already budgets itself to ~50s, but
-        # `timeout` guarantees the python step can NEVER exceed 60s even if
-        # some API hangs past every internal budget (exit 124 = killed). The
-        # commit step below still runs via `if: always()`.
+          # Internal wall-clock budget for the whole run. 30s (not 50s)
+          # because imports + account fetch + reconciliation + regime run
+          # BEFORE the deadline starts; on a slow GitHub runner that
+          # overhead is ~10-20s, and 50s + 20s = 70s > the 60s shell cap =
+          # exit 124. With 30s the worst case is ~30s + 20s = ~50s -- always
+          # inside `timeout 60`. Normal runs (8-34s) are unaffected; the
+          # budget only binds when something hangs.
+          RUN_BUDGET_SECONDS: 30
+        # Hard shell backstop: main.py already budgets itself (RUN_BUDGET_SECONDS
+        # above), but `timeout` guarantees the python step can NEVER exceed 60s
+        # even if some API hangs past every internal budget (exit 124 = killed).
+        # The commit step below still runs via `if: always()`.
         run: timeout 60 python main.py
 
       - name: Commit and push updated logs and trade memory
