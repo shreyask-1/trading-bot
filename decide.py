@@ -67,9 +67,24 @@ from news import headline_sentiment
 # window, and _generate_with_rotation additionally stops the whole fallback
 # rotation once the run's time budget is spent -- so the worst case is the
 # rotation budget (~45s), never 20s x every model.
+# Per-attempt HTTP timeout (seconds). CRITICAL for the 60s shell cap: a
+# single hung Google response runs the FULL timeout PAST the run's deadline
+# (the rotation checks the deadline only BEFORE each attempt), so 3 hung
+# attempts in a row = 20s x 3 = the process is killed at `timeout 60`
+# (exit 124). _generate_with_rotation now builds a fresh client per attempt
+# whose timeout is capped at the REMAINING run budget (with a small floor),
+# so the worst case is the budget + the floor -- never 20s x every model.
+GEMINI_ATTEMPT_TIMEOUT_SECONDS = float(os.environ.get("GEMINI_ATTEMPT_TIMEOUT_SECONDS", 20))
+# Never start an attempt with less than this much budget left -- at that
+# point the technical engine is a better use of the remaining time.
+GEMINI_ATTEMPT_MIN_SECONDS = float(os.environ.get("GEMINI_ATTEMPT_MIN_SECONDS", 3))
+# The once-per-day ListModels discovery call also hits Google's network; cap
+# it below the attempt timeout so even the daily first run stays fast.
+GEMINI_DISCOVERY_TIMEOUT_SECONDS = float(os.environ.get("GEMINI_DISCOVERY_TIMEOUT_SECONDS", 10))
+
 _client = genai.Client(
     api_key=GEMINI_API_KEY,
-    http_options=types.HttpOptions(timeout=20_000),
+    http_options=types.HttpOptions(timeout=int(GEMINI_ATTEMPT_TIMEOUT_SECONDS * 1000)),
 )
 
 _CALL_TRACKER_FILE = os.path.join(
@@ -166,7 +181,10 @@ def _discover_live_models():
     static config list in that case only.
     """
     try:
-        models_iter = _client.models.list()
+        models_iter = genai.Client(
+            api_key=GEMINI_API_KEY,
+            http_options=types.HttpOptions(timeout=int(GEMINI_DISCOVERY_TIMEOUT_SECONDS * 1000)),
+        ).models.list()
     except Exception as e:
         print(f"Could not list live Gemini models (using static fallback list): {e}")
         return None
@@ -394,15 +412,29 @@ def _generate_with_rotation(prompt, tracker, model_list, schema=None, time_budge
     last_error = None
     deadline = (time.monotonic() + time_budget) if time_budget is not None else None
     for model_name in model_list:
-        if deadline is not None and time.monotonic() >= deadline:
-            break  # run budget spent -- stop trying, raise last_error below
+        # Adaptive per-attempt timeout: cap each attempt at the time actually
+        # left in the run (floor GEMINI_ATTEMPT_MIN_SECONDS), so a hung
+        # Google response can never push the run past its deadline -- the
+        # worst case is the budget + one floor, not 20s x every model.
+        if deadline is not None:
+            remaining = deadline - time.monotonic()
+            if remaining < GEMINI_ATTEMPT_MIN_SECONDS:
+                break  # not enough time left for even one bounded attempt
+            attempt_timeout_ms = int(min(GEMINI_ATTEMPT_TIMEOUT_SECONDS, remaining) * 1000)
+        else:
+            # No budget (e.g. morning_prep's once-a-day call): full timeout.
+            attempt_timeout_ms = int(GEMINI_ATTEMPT_TIMEOUT_SECONDS * 1000)
         if _remaining_rpd(tracker, model_name) <= 0:
             continue
         if not _has_rpm_room(tracker, model_name):
             continue
 
         try:
-            response = _client.models.generate_content(
+            client = genai.Client(
+                api_key=GEMINI_API_KEY,
+                http_options=types.HttpOptions(timeout=attempt_timeout_ms),
+            )
+            response = client.models.generate_content(
                 model=model_name,
                 contents=prompt,
                 config=types.GenerateContentConfig(
