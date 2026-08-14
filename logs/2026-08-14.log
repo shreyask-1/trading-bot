@@ -1418,6 +1418,7 @@ Performance: Total return -0.57% | Max drawdown 12.37% | Daily Sharpe 0.24 | Ope
 Timings: account: 0.0s | risk: 8.5s | decide: 9.4s | watchlist: 0.2s | perf: 0.2s
 
 === Run at 2026-08-14T02:16:54.657552 ===
+=== Run at 2026-08-14T02:16:12.358007 ===
 Current time: 2026-08-13 10:16 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,262.90
 Cash: $4,962.85 | Holdings (15): {'CEG': '35.6034 sh (+0.33%)', 'CHD': '97.9637 sh (+0.03%)', 'CVX': '24.8836 sh (-0.10%)', 'GEHC': '0.6136 sh (-0.15%)', 'HAS': '1.1333 sh (+0.99%)', 'IVZ': '1.4577 sh (+0.72%)', 'LMT': '16.3555 sh (-1.28%)', 'MS': '43.8344 sh (-0.90%)', 'MSI': '21.1281 sh (-1.00%)', 'NDAQ': '103.7371 sh (+1.65%)', 'NUE': '36.5544 sh (-0.28%)', 'NVDA': '44.2888 sh (+0.53%)', 'NWS': '303.7199 sh (+1.01%)', 'STLD': '0.1352 sh (-0.74%)', 'WSM': '0.1026 sh (-1.26%)'}
@@ -1432,9 +1433,13 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued GDDY buy (conf 94, stop 94.5, tp 108.0)
   -> queued NWSA buy (conf 95, stop 27.3, tp 31.5)
   -> queued OTIS buy (conf 85, stop 70.8, tp 76.5)
+  -> queued GDDY buy (conf 94, stop 91.91, tp 105.0)
+  -> queued NWSA buy (conf 95, stop 27.41, tp 31.6)
+  -> queued MNST buy (conf 85, stop 45.0, tp 52.0)
 Dashboard watchlist synced (18 symbols) for news/headlines.
 Ending portfolio value: $99,262.90
 Trade journal: no closed trades yet
 Performance: Total return -0.57% | Max drawdown 12.37% | Daily Sharpe 0.24 | Open positions: 15 | Equity $99,262.90
 Timings: account: 0.0s | risk: 3.5s | decide: 8.3s | watchlist: 0.1s | perf: 0.1s
+Timings: account: 0.0s | risk: 7.0s | decide: 9.5s | watchlist: 0.1s | perf: 0.2s
 
