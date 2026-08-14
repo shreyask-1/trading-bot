@@ -20,3 +20,7 @@ timestamp,ticker,action,qty,price,stop_loss,take_profit,conviction,confidence,tr
 2026-08-13T15:20:36.664195,STLD,buy,0.1352,262.395,245.76,319.79,8,85,decision,
 2026-08-13T16:15:45.711113,WSM,buy,0.1026,245.57,235.0,254.69,8,85,decision,
 2026-08-13T21:56:05.761097,CVX,buy,24.8836,197.72,185.93,210.0,9,89,decision,
+2026-08-14T14:08:30.648773,NDAQ,sell,103.7371,96.845,,,10,,negative_news,Negative news: worst sentiment -0.67
+2026-08-14T14:08:56.431576,IVZ,buy,305.4561,32.145,29.7,35.81,7,,decision,"technical score 80/100, strong setup, adding to position on opening-range breakout (above)."
+2026-08-14T14:08:56.621003,STLD,buy,0.7864,262.055,245.76,286.5,6,,decision,"technical score 80/100, strong setup, adding to position."
+2026-08-14T14:08:57.203996,COHR,buy,7.9896,342.35,248.88,482.56,7,,decision,"technical score 70/100, strong signal on technicals alone with opening-range breakout (above)."
