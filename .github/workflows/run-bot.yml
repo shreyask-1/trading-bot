@@ -47,6 +47,12 @@ jobs:
           # TRADE_ONLY_DURING_MARKET_HOURS, MAX_TOTAL_EXPOSURE_PCT,
           # DAILY_LOSS_HALT_PCT, MAX_DRAWDOWN_DELEVERAGE_PCT,
           # MAX_DRAWDOWN_FLATTEN_PCT, RESET_EQUITY_PEAK_ON_START
+          # Gemini quota: 0 = normal/unlimited (Google's own daily limit
+          # stops it; the quota runs out after the morning-prep call).
+          # Set to a number (e.g. 1000) to re-enable day-long pacing so
+          # calls are spread across the whole day instead of burning out
+          # by midday.
+          GEMINI_DAILY_BUDGET: 0
         # Hard shell backstop: main.py already budgets itself to ~50s, but
         # `timeout` guarantees the python step can NEVER exceed 60s even if
         # some API hangs past every internal budget (exit 124 = killed). The
