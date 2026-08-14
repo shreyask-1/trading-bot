@@ -41,6 +41,7 @@ from config import (
     QUALITY_TRIM_SCORE_THRESHOLD,
     QUALITY_TRIM_MAX_PER_RUN,
     QUALITY_TRIM_LOSS_GUARD_PCT,
+    QUALITY_TRIM_PROFIT_TAKE_PCT,
     WALKFORWARD_LIVE_LEARNING,
     WALKFORWARD_MIN_SAMPLES,
     WALKFORWARD_PROVEN_MULT,
@@ -2055,14 +2056,17 @@ def enforce_quality_trim(account_snapshot):
     """
     Conservative quality-trim of LEGACY holdings -- the pre-baseline positions
     recorded in reconciliation_state.json's baseline that predate this bot and
-    were never screened by this strategy (the ~$89K drag). Sells only positions
-    that FAIL the current technical screens (signal score below
-    QUALITY_TRIM_SCORE_THRESHOLD), at most QUALITY_TRIM_MAX_PER_RUN per run,
-    skipping tickers with open orders and positions already within
-    QUALITY_TRIM_LOSS_GUARD_PCT of their entry (never sell into the hole --
-    let the stop take those out naturally). Winners and non-legacy positions
-    are never touched. Returns the executed trade results (empty when nothing
-    qualifies).
+    were never screened by this strategy (the ~$89K drag). Two passes, sharing
+    the QUALITY_TRIM_MAX_PER_RUN cap:
+      1. Profit-take: any legacy position up >= QUALITY_TRIM_PROFIT_TAKE_PCT
+         since its avg entry price is sold to bank the gain (score ignored).
+      2. Score-based: legacy positions that FAIL the current technical screens
+         (signal score below QUALITY_TRIM_SCORE_THRESHOLD), worst first, but
+         ONLY when the position is not down overall (current >= entry) -- a
+         legacy loser is held long until it recovers to the +5% profit-take
+         mark instead of being sold into weakness (never sell into the hole).
+    Skips tickers with open orders. Non-legacy positions are never touched.
+    Returns the executed trade results (empty when nothing qualifies).
     """
     if not ENABLE_QUALITY_TRIM:
         print("Quality trim: disabled via ENABLE_QUALITY_TRIM=false -- skipping.")
@@ -2088,14 +2092,62 @@ def enforce_quality_trim(account_snapshot):
             continue
         scored.append((score, t))
     scored.sort(key=lambda x: x[0])  # worst first
+
     results = []
+    slots_left = QUALITY_TRIM_MAX_PER_RUN
     loss_guard_skips = 0
-    for score, t in scored[:QUALITY_TRIM_MAX_PER_RUN]:
-        if score >= QUALITY_TRIM_SCORE_THRESHOLD:
-            break  # sorted ascending -- the rest are even better
+
+    def _sell_legacy(t, reason):
+        nonlocal slots_left
+        trade = {"ticker": t, "action": "sell", "dollar_amount": 0, "reasoning": reason, "conviction": 10}
+        result = execute_trade(trade, account_snapshot, trigger="quality_trim")
+        result["trigger"] = "quality_trim"
+        results.append(result)
+        slots_left -= 1
+
+    # Pass 1: profit-take on legacy winners -- any legacy position up
+    # QUALITY_TRIM_PROFIT_TAKE_PCT or more since its avg entry price is sold
+    # to bank the gain. Score is ignored here (a winner is a winner).
+    profit_takers = []
+    for t in candidates:
         pos = holdings.get(t, {})
         entry = float(pos.get("avg_entry_price", 0) or 0)
         current = float(pos.get("current_price", 0) or 0)
+        if entry > 0 and current > 0 and (current / entry - 1.0) * 100.0 >= QUALITY_TRIM_PROFIT_TAKE_PCT:
+            profit_takers.append(t)
+    for t in sorted(profit_takers):
+        if slots_left <= 0:
+            break
+        pos = holdings.get(t, {})
+        entry = float(pos.get("avg_entry_price", 0) or 0)
+        current = float(pos.get("current_price", 0) or 0)
+        gain_pct = (current / entry - 1.0) * 100.0 if entry else 0.0
+        reason = (
+            f"Quality trim profit-take: legacy pre-baseline holding {t} is up "
+            f"{round(gain_pct, 1)}% since entry >= {QUALITY_TRIM_PROFIT_TAKE_PCT}%; "
+            "banking the gain"
+        )
+        _sell_legacy(t, reason)
+
+    # Pass 2: score-based trim of legacy positions failing the technical
+    # screens (signal score below QUALITY_TRIM_SCORE_THRESHOLD), worst first,
+    # but ONLY for positions that are not down overall (current >= entry): a
+    # legacy loser is held long until it recovers to the +5% profit-take
+    # mark instead of being sold into weakness. Never sells into the hole.
+    # Uses whatever per-run slots remain.
+    for score, t in scored:
+        if slots_left <= 0:
+            break
+        if score >= QUALITY_TRIM_SCORE_THRESHOLD:
+            break  # sorted ascending -- the rest are even better
+        if t in profit_takers:
+            continue  # already handled (or already sold) in pass 1
+        pos = holdings.get(t, {})
+        entry = float(pos.get("avg_entry_price", 0) or 0)
+        current = float(pos.get("current_price", 0) or 0)
+        if entry > 0 and current > 0 and current < entry:
+            loss_guard_skips += 1
+            continue  # legacy loser -- hold long until it recovers to +5%
         if entry > 0 and current > 0 and current <= entry * (1.0 - QUALITY_TRIM_LOSS_GUARD_PCT / 100.0):
             loss_guard_skips += 1
             continue  # already near the loss guard -- don't sell into the hole
@@ -2104,17 +2156,15 @@ def enforce_quality_trim(account_snapshot):
             f"(signal score {round(score, 1)} < {QUALITY_TRIM_SCORE_THRESHOLD}); freeing "
             "capital for higher-conviction entries"
         )
-        trade = {"ticker": t, "action": "sell", "dollar_amount": 0, "reasoning": reason, "conviction": 10}
-        result = execute_trade(trade, account_snapshot, trigger="quality_trim")
-        result["trigger"] = "quality_trim"
-        results.append(result)
+        _sell_legacy(t, reason)
+
     if not results and scored:
         worst_score = scored[0][0]
         if worst_score >= QUALITY_TRIM_SCORE_THRESHOLD:
             why = f"worst legacy score {round(worst_score, 1)} >= threshold {QUALITY_TRIM_SCORE_THRESHOLD}"
         else:
             why = (f"worst legacy score {round(worst_score, 1)} < threshold {QUALITY_TRIM_SCORE_THRESHOLD} "
-                   f"but {loss_guard_skips} held back by the loss guard")
+                   f"but {loss_guard_skips} held back (down overall or near entry)")
         print(f"Quality trim: checked {len(scored)} legacy position(s); {why} -- nothing sold this run.")
     return results
 
