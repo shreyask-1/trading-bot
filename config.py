@@ -391,11 +391,15 @@ GEMINI_MODEL_LIMITS = {
 # budget's share of the day's runs elapsed so far -- so calls stay available
 # all day and the quota never dies early.
 #
-# DEFAULT IS 0 = DISABLED (normal operation): the bot calls Gemini freely
-# and Google's own per-model daily limit stops it whenever it runs out
-# (the quota naturally exhausts after the morning-prep call has run). Set
-# to a number (e.g. 1000) to re-enable day-long pacing instead.
-GEMINI_DAILY_BUDGET = int(os.environ.get("GEMINI_DAILY_BUDGET", 0))
+# 24/7 operation: with a 2-minute cadence (~720 runs/day) and a 1000-call
+# budget, EVERY run gets its Gemini call (720 used < 1000 budget) and the
+# quota never runs out mid-day -- the pacing only steps in when a run burns
+# multiple attempts (timeouts / model rotation) so a slow-Google period can
+# never stack up and empty the day early. The morning queue re-verification
+# is exempted from pacing (decide._should_attempt_call allow_despite_pacing)
+# so the open is always Gemini-verified. Set to 0 to disable pacing and let
+# Google's own limit stop the day.
+GEMINI_DAILY_BUDGET = int(os.environ.get("GEMINI_DAILY_BUDGET", 1000))
 # Expected runs per day, used to compute the per-run share of the daily
 # budget (every-2-min cadence = 720). The pacing adapts automatically: the
 # more runs that have elapsed, the larger the share of the budget you may
