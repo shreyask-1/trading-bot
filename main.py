@@ -75,12 +75,13 @@ LOG_DIR = os.path.join(os.path.dirname(__file__), "logs")
 # and threaded into every expensive step -- news fetch, the decision engine
 # (feeds / scans / Gemini), watchlist sync, the performance snapshot -- each
 # of which consumes at most the remaining time and skips cleanly when the
-# deadline is spent. 50 (not 55) leaves ~10s of headroom for Python startup /
-# SDK imports -- which happen BEFORE run() sets the deadline and therefore
-# outside the budget -- so the whole process stays inside the 60s shell cap
-# (`timeout 60` in run-bot.yml) even when the Gemini rotation burns its full
-# budget plus the per-attempt floor (see decide.GEMINI_ATTEMPT_MIN_SECONDS).
-RUN_BUDGET_SECONDS = float(os.environ.get("RUN_BUDGET_SECONDS", 50))
+# deadline is spent. 30 (not 50): imports + account fetch + reconciliation +
+# regime all run BEFORE the deadline starts, so on a slow GitHub runner that
+# overhead alone is ~10-20s -- 50s budget + 20s overhead = 70s > the 60s
+# shell cap (`timeout 60` in run-bot.yml) = exit 124. With 30s the worst
+# case is ~30s + 20s = ~50s, always inside the cap. Normal runs (8-34s) are
+# unaffected; the budget only binds when something hangs.
+RUN_BUDGET_SECONDS = float(os.environ.get("RUN_BUDGET_SECONDS", 30))
 
 # Keep the committed daily log bounded. Every 2-min run appends its full
 # output, so without this the log grows without limit and the per-run
