@@ -9969,3 +9969,39 @@ Trade journal: no closed trades yet
 Performance: Total return -0.44% | Max drawdown 12.37% | Daily Sharpe 0.27 | Open positions: 15 | Equity $99,392.28
 Timings: account: 0.0s | risk: 5.1s | decide: 24.2s | watchlist: 0.0s | perf: 0.1s
 
+=== Run at 2026-08-14T14:44:24.896475 ===
+Current time: 2026-08-14 10:44 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,363.28
+Cash: $2,242.38 | Holdings (15): {'CEG': '35.6034 sh (+1.80%)', 'CHD': '97.9637 sh (-0.84%)', 'COHR': '7.9896 sh (-2.84%)', 'CVX': '24.8836 sh (+1.61%)', 'GEHC': '0.6136 sh (-0.39%)', 'HAS': '1.1333 sh (+1.58%)', 'IVZ': '306.9138 sh (+0.56%)', 'LMT': '16.3555 sh (-0.34%)', 'MS': '43.8344 sh (-1.76%)', 'MSI': '21.1281 sh (-1.56%)', 'NUE': '36.5544 sh (-0.10%)', 'NVDA': '44.2888 sh (+0.95%)', 'NWS': '303.7199 sh (+1.15%)', 'STLD': '0.9216 sh (-0.42%)', 'WSM': '0.1026 sh (-1.10%)'}
+Risk state: peak $99,703.60 | drawdown 0.34% | today +0.11% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 119, 2 new after dedup, 2 ticker(s) matched.
+Quant pre-screen: 15/23 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 19 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 212
+  -> {"ticker": "IVZ", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,904.49), room ($10.74), regime multiplier (100%), and cash reserve ($4,968.16 kept of $2,242.38 cash)"}
+  -> {"ticker": "LMT", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,904.49), room ($30.95), regime multiplier (100%), and cash reserve ($4,968.16 kept of $2,242.38 cash)"}
+  -> {"ticker": "NWS", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,904.49), room ($0.00), regime multiplier (100%), and cash reserve ($4,968.16 kept of $2,242.38 cash)"}
+  -> {"ticker": "STLD", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,904.49), room ($9,695.63), regime multiplier (100%), and cash reserve ($4,968.16 kept of $2,242.38 cash)"}
+  -> {"ticker": "ON", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,904.49), room ($9,936.33), regime multiplier (100%), and cash reserve ($4,968.16 kept of $2,242.38 cash)"}
+  -> {"ticker": "DOW", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,904.49), room ($9,936.33), regime multiplier (100%), and cash reserve ($4,968.16 kept of $2,242.38 cash)"}
+  -> {"ticker": "CPRT", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,904.49), room ($9,936.33), regime multiplier (100%), and cash reserve ($4,968.16 kept of $2,242.38 cash)"}
+  -> {"ticker": "HAL", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,904.49), room ($9,936.33), regime multiplier (100%), and cash reserve ($4,968.16 kept of $2,242.38 cash)"}
+  -> {"ticker": "HLT", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,904.49), room ($9,936.33), regime multiplier (100%), and cash reserve ($4,968.16 kept of $2,242.38 cash)"}
+  -> {"ticker": "SBAC", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,904.49), room ($9,936.33), regime multiplier (100%), and cash reserve ($4,968.16 kept of $2,242.38 cash)"}
+  -> {"ticker": "SBUX", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,904.49), room ($9,936.33), regime multiplier (100%), and cash reserve ($4,968.16 kept of $2,242.38 cash)"}
+  -> {"ticker": "SCHW", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,904.49), room ($9,936.33), regime multiplier (100%), and cash reserve ($4,968.16 kept of $2,242.38 cash)"}
+  -> {"ticker": "SHW", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,904.49), room ($9,936.33), regime multiplier (100%), and cash reserve ($4,968.16 kept of $2,242.38 cash)"}
+  -> {"ticker": "SJM", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,904.49), room ($9,936.33), regime multiplier (100%), and cash reserve ($4,968.16 kept of $2,242.38 cash)"}
+  -> {"ticker": "SLB", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,904.49), room ($9,936.33), regime multiplier (100%), and cash reserve ($4,968.16 kept of $2,242.38 cash)"}
+  -> {"ticker": "SNDK", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,904.49), room ($9,936.33), regime multiplier (100%), and cash reserve ($4,968.16 kept of $2,242.38 cash)"}
+  -> {"ticker": "SNPS", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,904.49), room ($9,936.33), regime multiplier (100%), and cash reserve ($4,968.16 kept of $2,242.38 cash)"}
+  -> {"ticker": "SOLV", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,904.49), room ($9,936.33), regime multiplier (100%), and cash reserve ($4,968.16 kept of $2,242.38 cash)"}
+  -> {"ticker": "STE", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,904.49), room ($9,936.33), regime multiplier (100%), and cash reserve ($4,968.16 kept of $2,242.38 cash)"}
+Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); will re-verify when available.
+Run budget spent -- skipping dashboard watchlist sync.
+Run budget spent -- skipping performance snapshot.
+Trade journal: no closed trades yet
+Performance: Total return -0.44% | Max drawdown 12.37% | Daily Sharpe 0.27 | Open positions: 15 | Equity $99,363.28
+Timings: account: 0.0s | risk: 6.3s | decide: 24.5s | watchlist: 0.0s | perf: 0.0s
+
