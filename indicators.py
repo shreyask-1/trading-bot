@@ -24,6 +24,7 @@ __all__ = [
     "compute_relative_volume",
     "classify_trend",
     "compute_macd",
+    "compute_macd_crossover",
     "compute_bollinger_bands",
     "compute_stochastic",
     "compute_momentum",
