@@ -10005,3 +10005,22 @@ Trade journal: no closed trades yet
 Performance: Total return -0.44% | Max drawdown 12.37% | Daily Sharpe 0.27 | Open positions: 15 | Equity $99,363.28
 Timings: account: 0.0s | risk: 6.3s | decide: 24.5s | watchlist: 0.0s | perf: 0.0s
 
+=== Run at 2026-08-14T14:46:28.462556 ===
+Current time: 2026-08-14 10:46 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,421.09
+Cash: $2,242.38 | Holdings (15): {'CEG': '35.6034 sh (+1.84%)', 'CHD': '97.9637 sh (-0.74%)', 'COHR': '7.9896 sh (-2.87%)', 'CVX': '24.8836 sh (+1.48%)', 'GEHC': '0.6136 sh (-0.34%)', 'HAS': '1.1333 sh (+1.66%)', 'IVZ': '306.9138 sh (+0.59%)', 'LMT': '16.3555 sh (-0.31%)', 'MS': '43.8344 sh (-1.69%)', 'MSI': '21.1281 sh (-1.50%)', 'NUE': '36.5544 sh (-0.07%)', 'NVDA': '44.2888 sh (+1.10%)', 'NWS': '303.7199 sh (+1.29%)', 'STLD': '0.9216 sh (-0.47%)', 'WSM': '0.1026 sh (-0.99%)'}
+Risk state: peak $99,703.60 | drawdown 0.28% | today +0.17% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 157, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 40/60 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 213
+  -> {"ticker": "HAL", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,913.16), room ($9,942.11), regime multiplier (100%), and cash reserve ($4,971.05 kept of $2,242.38 cash)"}
+  -> {"ticker": "SOLV", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,913.16), room ($9,942.11), regime multiplier (100%), and cash reserve ($4,971.05 kept of $2,242.38 cash)"}
+Overnight queue cleared after verification.
+Dashboard watchlist synced (17 symbols) for news/headlines.
+Ending portfolio value: $99,389.97
+Trade journal: no closed trades yet
+Performance: Total return -0.44% | Max drawdown 12.37% | Daily Sharpe 0.27 | Open positions: 15 | Equity $99,421.09
+Timings: account: 0.0s | risk: 11.2s | decide: 5.5s | watchlist: 0.1s | perf: 0.2s
+
