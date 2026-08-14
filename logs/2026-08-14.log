@@ -12586,6 +12586,11 @@ Current time: 2026-08-14 02:41 PM EDT | Market open (per Alpaca): True | Session
 Account value: $99,506.68
 Cash: $2,352.38 | Holdings (14): {'CEG': '35.6034 sh (+1.74%)', 'CHD': '97.9637 sh (-0.43%)', 'COHR': '7.9896 sh (-4.72%)', 'CVX': '24.8836 sh (+1.53%)', 'GEHC': '0.6136 sh (-0.08%)', 'IVZ': '306.9138 sh (+1.29%)', 'LMT': '16.3555 sh (+0.14%)', 'MS': '43.8344 sh (-1.57%)', 'MSI': '21.1281 sh (-0.49%)', 'NUE': '36.5544 sh (-0.96%)', 'NVDA': '44.2888 sh (+0.52%)', 'NWS': '303.7199 sh (+1.66%)', 'STLD': '0.9216 sh (-1.79%)', 'WSM': '0.1026 sh (-1.35%)'}
 Risk state: peak $99,703.60 | drawdown 0.20% | today +0.25% | halted: False
+=== Run at 2026-08-14T18:40:27.910001 ===
+Current time: 2026-08-14 02:40 PM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,494.15
+Cash: $2,352.38 | Holdings (14): {'CEG': '35.6034 sh (+1.74%)', 'CHD': '97.9637 sh (-0.43%)', 'COHR': '7.9896 sh (-4.75%)', 'CVX': '24.8836 sh (+1.51%)', 'GEHC': '0.6136 sh (-0.05%)', 'IVZ': '306.9138 sh (+1.24%)', 'LMT': '16.3555 sh (+0.11%)', 'MS': '43.8344 sh (-1.56%)', 'MSI': '21.1281 sh (-0.50%)', 'NUE': '36.5544 sh (-0.94%)', 'NVDA': '44.2888 sh (+0.47%)', 'NWS': '303.7199 sh (+1.66%)', 'STLD': '0.9216 sh (-1.85%)', 'WSM': '0.1026 sh (-1.35%)'}
+Risk state: peak $99,703.60 | drawdown 0.21% | today +0.24% | halted: False
 Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
 News: fetched 158, 1 new after dedup, 0 ticker(s) matched.
 Quant pre-screen: 41/60 candidates passed.
@@ -12599,4 +12604,12 @@ Ending portfolio value: $99,506.04
 Trade journal: no closed trades yet
 Performance: Total return -0.33% | Max drawdown 12.37% | Daily Sharpe 0.29 | Open positions: 14 | Equity $99,506.68
 Timings: account: 0.0s | risk: 4.0s | decide: 2.4s | watchlist: 0.1s | perf: 0.1s
+  -> {"ticker": "TEL", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,924.12), room ($9,949.42), regime multiplier (100%), and cash reserve ($4,974.71 kept of $2,352.38 cash)"}
+  -> {"ticker": "TDY", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,924.12), room ($9,949.42), regime multiplier (100%), and cash reserve ($4,974.71 kept of $2,352.38 cash)"}
+Overnight queue cleared after verification.
+Dashboard watchlist synced (16 symbols) for news/headlines.
+Ending portfolio value: $99,496.80
+Trade journal: no closed trades yet
+Performance: Total return -0.34% | Max drawdown 12.37% | Daily Sharpe 0.29 | Open positions: 14 | Equity $99,494.15
+Timings: account: 0.0s | risk: 3.8s | decide: 3.0s | watchlist: 0.0s | perf: 0.1s
 
