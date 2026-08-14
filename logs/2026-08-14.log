@@ -9932,3 +9932,20 @@ Trade journal: no closed trades yet
 Performance: Total return -0.46% | Max drawdown 12.37% | Daily Sharpe 0.26 | Open positions: 15 | Equity $99,376.87
 Timings: account: 0.0s | risk: 5.3s | decide: 1.8s | watchlist: 0.0s | perf: 0.1s
 
+=== Run at 2026-08-14T14:40:33.991373 ===
+Current time: 2026-08-14 10:40 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,392.81
+Cash: $2,242.38 | Holdings (15): {'CEG': '35.6034 sh (+2.00%)', 'CHD': '97.9637 sh (-0.85%)', 'COHR': '7.9896 sh (-2.09%)', 'CVX': '24.8836 sh (+1.63%)', 'GEHC': '0.6136 sh (-0.25%)', 'HAS': '1.1333 sh (+1.65%)', 'IVZ': '306.9138 sh (+0.40%)', 'LMT': '16.3555 sh (-0.19%)', 'MS': '43.8344 sh (-1.82%)', 'MSI': '21.1281 sh (-1.31%)', 'NUE': '36.5544 sh (-0.08%)', 'NVDA': '44.2888 sh (+0.63%)', 'NWS': '303.7199 sh (+1.14%)', 'STLD': '0.9216 sh (-0.38%)', 'WSM': '0.1026 sh (-1.07%)'}
+Risk state: peak $99,703.60 | drawdown 0.31% | today +0.14% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 157, 1 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 39/60 candidates passed.
+Gemini proposed 0 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 211
+Overnight queue cleared after verification.
+Dashboard watchlist synced (15 symbols) for news/headlines.
+Ending portfolio value: $99,394.53
+Trade journal: no closed trades yet
+Performance: Total return -0.44% | Max drawdown 12.37% | Daily Sharpe 0.27 | Open positions: 15 | Equity $99,392.81
+Timings: account: 0.0s | risk: 12.1s | decide: 2.1s | watchlist: 0.2s | perf: 0.3s
+
