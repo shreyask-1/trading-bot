@@ -2089,6 +2089,7 @@ def enforce_quality_trim(account_snapshot):
         scored.append((score, t))
     scored.sort(key=lambda x: x[0])  # worst first
     results = []
+    loss_guard_skips = 0
     for score, t in scored[:QUALITY_TRIM_MAX_PER_RUN]:
         if score >= QUALITY_TRIM_SCORE_THRESHOLD:
             break  # sorted ascending -- the rest are even better
@@ -2096,6 +2097,7 @@ def enforce_quality_trim(account_snapshot):
         entry = float(pos.get("avg_entry_price", 0) or 0)
         current = float(pos.get("current_price", 0) or 0)
         if entry > 0 and current > 0 and current <= entry * (1.0 - QUALITY_TRIM_LOSS_GUARD_PCT / 100.0):
+            loss_guard_skips += 1
             continue  # already near the loss guard -- don't sell into the hole
         reason = (
             f"Quality trim: legacy pre-baseline holding {t} fails technical screens "
@@ -2106,6 +2108,14 @@ def enforce_quality_trim(account_snapshot):
         result = execute_trade(trade, account_snapshot, trigger="quality_trim")
         result["trigger"] = "quality_trim"
         results.append(result)
+    if not results and scored:
+        worst_score = scored[0][0]
+        if worst_score >= QUALITY_TRIM_SCORE_THRESHOLD:
+            why = f"worst legacy score {round(worst_score, 1)} >= threshold {QUALITY_TRIM_SCORE_THRESHOLD}"
+        else:
+            why = (f"worst legacy score {round(worst_score, 1)} < threshold {QUALITY_TRIM_SCORE_THRESHOLD} "
+                   f"but {loss_guard_skips} held back by the loss guard")
+        print(f"Quality trim: checked {len(scored)} legacy position(s); {why} -- nothing sold this run.")
     return results
 
 def confidence_to_size_pct(confidence):
