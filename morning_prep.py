@@ -200,7 +200,6 @@ def run():
     # Analyze the top news names + a slice of the universe.
     news_tickers = list(mentions.keys())[:MAX_NEWS_CANDIDATES]
     scored_news = _score_candidates(news_tickers)
-    scored_charts = _score_candidates([])  # populated below with a universe slice
     # Universe slice: everything else worth a look beyond news names.
     from sp500_data import SP500
     universe = [t for t, _ in SP500 if t not in set(news_tickers)]
