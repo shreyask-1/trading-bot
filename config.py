@@ -262,6 +262,14 @@ WALKFORWARD_LIVE_LEARNING = os.environ.get("WALKFORWARD_LIVE_LEARNING", "true").
 WALKFORWARD_MIN_SAMPLES = int(os.environ.get("WALKFORWARD_MIN_SAMPLES", 8))
 WALKFORWARD_PROVEN_MULT = float(os.environ.get("WALKFORWARD_PROVEN_MULT", 1.1))
 
+# --- Overnight queue cap ---
+# Overnight runs queue trade ideas every cycle; without a cap the queue grows
+# unbounded (40+ ideas) and the morning verification prompt bloats while most
+# get skipped anyway at execution (cash/exposure caps). Keep only the top
+# MAX_PENDING_TRADES by conviction/confidence when saving; the queue refreshes
+# fresh every night, so dropping the tail costs nothing. Set 0 for no cap.
+MAX_PENDING_TRADES = int(os.environ.get("MAX_PENDING_TRADES", 12))
+
 ALLOW_GEMINI_CUSTOM_EXITS = (
     os.environ.get("ALLOW_GEMINI_CUSTOM_EXITS", "true").lower() == "true"
 )
