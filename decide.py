@@ -462,6 +462,17 @@ def get_technical_trade_decisions(scored_holdings, scored_watchlist, account_sna
         score = info.get("score", 0.0)
 
         if score < MIN_SIGNAL_SCORE_TO_CONSIDER:
+            # Never dump a position that is DOWN overall (current < entry):
+            # the user's policy is to hold losers long until they recover to
+            # the +5% profit-take mark instead of selling into weakness. The
+            # quality-trim already enforces this for legacy names; this
+            # fallback (Gemini down) must not contradict it -- let the hard
+            # per-position loss cap (-MAX_POSITION_LOSS_PCT) be the only
+            # forced exit for a losing hold.
+            entry = float(pos.get("avg_entry_price", 0) or 0)
+            current = float(pos.get("current_price", 0) or 0)
+            if entry > 0 and current > 0 and current < entry:
+                continue
             conviction = max(1, int(10 - (score / 10)))
             trades.append({
                 "ticker": ticker,
