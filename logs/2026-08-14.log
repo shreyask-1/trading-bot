@@ -15985,3 +15985,32 @@ Trade journal: no closed trades yet
 Performance: Total return -0.38% | Max drawdown 12.37% | Daily Sharpe 0.28 | Open positions: 14 | Equity $99,453.84
 Timings: account: 0.0s | risk: 3.8s | decide: 9.9s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-08-14T22:52:23.944209 ===
+Current time: 2026-08-14 06:52 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+Account value: $99,457.43
+Cash: $2,352.38 | Holdings (14): {'CEG': '35.6034 sh (+1.70%)', 'CHD': '97.9637 sh (+0.01%)', 'COHR': '7.9896 sh (-4.72%)', 'CVX': '24.8836 sh (+1.34%)', 'GEHC': '0.6136 sh (-0.39%)', 'IVZ': '306.9138 sh (+1.21%)', 'LMT': '16.3555 sh (+0.32%)', 'MS': '43.8344 sh (-1.63%)', 'MSI': '21.1281 sh (-0.69%)', 'NUE': '36.5544 sh (-1.52%)', 'NVDA': '44.2888 sh (+0.38%)', 'NWS': '303.7199 sh (+1.75%)', 'STLD': '0.9216 sh (-2.54%)', 'WSM': '0.1026 sh (-1.61%)'}
+Risk state: peak $99,703.60 | drawdown 0.25% | today +0.20% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 53/67 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 426
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued TTWO buy (conf 85, stop 228.4, tp 270.0)
+  -> queued TYL buy (conf 90, stop 300.28, tp 360.0)
+  -> queued HUM buy (conf None, stop 354.57, tp 392.49)
+  -> queued TDY buy (conf 91, stop 654.41, tp 720.0)
+  -> queued WFC buy (conf 80, stop 86.06, tp 92.0)
+  -> queued HBAN buy (conf None, stop 17.095, tp 18.03)
+  -> queued IVZ buy (conf None, stop 29.7, tp 32.65)
+  -> queued TEL buy (conf None, stop 200.81, tp 221.8)
+  -> queued TPR buy (conf None, stop 126.59, tp 164.76)
+  -> queued TRMB buy (conf None, stop 54.75, tp 61.75)
+  -> queued CPRT buy (conf None, stop 28.555, tp 31.735)
+  -> queued GILD buy (conf None, stop 129.03, tp 138.41)
+Dashboard watchlist synced (16 symbols) for news/headlines.
+Ending portfolio value: $99,457.43
+Trade journal: no closed trades yet
+Performance: Total return -0.38% | Max drawdown 12.37% | Daily Sharpe 0.28 | Open positions: 14 | Equity $99,457.43
+Timings: account: 0.0s | risk: 2.0s | decide: 3.6s | watchlist: 0.0s | perf: 0.1s
+
