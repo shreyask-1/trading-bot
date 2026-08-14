@@ -33,6 +33,17 @@ from config import (
     MAX_STOP_DISTANCE_ATR_MULT,
     MIN_TAKE_PROFIT_DISTANCE_ATR_MULT,
     MAX_TAKE_PROFIT_DISTANCE_ATR_MULT,
+    MIN_REWARD_RISK_RATIO,
+    ENABLE_SCALE_OUT,
+    SCALE_OUT_AT_RR_FRAC,
+    SCALE_OUT_FRAC,
+    ENABLE_QUALITY_TRIM,
+    QUALITY_TRIM_SCORE_THRESHOLD,
+    QUALITY_TRIM_MAX_PER_RUN,
+    QUALITY_TRIM_LOSS_GUARD_PCT,
+    WALKFORWARD_LIVE_LEARNING,
+    WALKFORWARD_MIN_SAMPLES,
+    WALKFORWARD_PROVEN_MULT,
     ALLOW_GEMINI_CUSTOM_EXITS,
     ENABLE_INTRADAY_ANALYSIS,
     INTRADAY_BAR_MINUTES,
@@ -103,6 +114,7 @@ CUSTOM_EXITS_FILE = os.path.join(os.path.dirname(__file__), "logs", "custom_exit
 RISK_STATE_FILE = os.path.join(os.path.dirname(__file__), "logs", "risk_state.json")
 ORDER_LEDGER_FILE = os.path.join(os.path.dirname(__file__), "logs", "bot_order_ledger.json")
 RECON_STATE_FILE = os.path.join(os.path.dirname(__file__), "logs", "reconciliation_state.json")
+SETUP_GATE_FILE = os.path.join(os.path.dirname(__file__), "data", "setup_gate.json")
 TRADES_JOURNAL_FILE = os.path.join(os.path.dirname(__file__), "logs", "trades_journal.csv")
 TRADE_RESULTS_FILE = os.path.join(os.path.dirname(__file__), "logs", "trade_results.csv")
 OPEN_TRADES_FILE = os.path.join(os.path.dirname(__file__), "logs", "open_trades.json")
@@ -533,8 +545,8 @@ def cancel_stale_extended_orders():
     now = datetime.now(pytz.utc)
     canceled = 0
     for o in orders:
-        tif = str(getattr(o, "time_in_force", "")).lower()
-        if "gtc" not in tif:
+        tif = _status_val(getattr(o, "time_in_force", ""))
+        if tif != "gtc":
             continue
         try:
             submitted = o.submitted_at
@@ -606,12 +618,8 @@ def get_open_orders_with_side():
         return []
     out = []
     for o in orders:
-        side_str = str(o.side).lower()
-        if "buy" in side_str:
-            side = "buy"
-        elif "sell" in side_str:
-            side = "sell"
-        else:
+        side = _status_val(getattr(o, "side", ""))
+        if side not in ("buy", "sell"):
             continue
         try:
             qty = float(o.qty) if o.qty else 0.0
@@ -1147,6 +1155,89 @@ def get_setup_multiplier(setup_category):
         badness = min(1.0, (0.45 - wr) / 0.2 + max(0.0, -avg / 2.0))
         return round(SETUP_MULT_MAX - (SETUP_MULT_MAX - SETUP_MULT_MIN) * badness, 3)
     return 1.0
+
+
+def _live_setup_string(ind_data):
+    """
+    Build the walk-forward-style indicator-regime setup string from a live
+    get_full_indicators() dict. MUST match backtest.py's build_setup_string()
+    exactly (same fields, same thresholds) -- this is what lets the live bot
+    consult the same gate the backtest learned. Returns None when the data is
+    unusable.
+    """
+    if not ind_data:
+        return None
+    trend = ind_data.get("trend") or "sideways"
+    rsi = ind_data.get("rsi_14")
+    if rsi is None:
+        rsi_zone = "n/a"
+    elif rsi < 30:
+        rsi_zone = "oversold"
+    elif rsi > 70:
+        rsi_zone = "overbought"
+    else:
+        rsi_zone = "neutral"
+    macd = ind_data.get("macd_cross") or "none"
+    mom = ind_data.get("momentum_10d")
+    mom_zone = "pos" if (mom is not None and mom > 0) else ("neg" if (mom is not None and mom < 0) else "flat")
+    vol = ind_data.get("volatility_20d")
+    vol_zone = "hi" if (vol is not None and vol >= 2.0) else "lo"
+    return f"{trend}|{rsi_zone}|{macd}|{mom_zone}|{vol_zone}"
+
+
+def _walkforward_gate():
+    """
+    Load data/setup_gate.json (written by backtest.py --walkforward). Returns
+    (gate_set, stats): gate_set is the set of setups proven in the final train
+    window, stats is {setup: {n, wins, win_rate, avg_pnl_pct}} from ALL
+    closed walk-forward trades. ({}, {}) when absent or unreadable.
+    """
+    try:
+        with open(SETUP_GATE_FILE) as f:
+            data = json.load(f) or {}
+        return set(data.get("gate") or []), data.get("stats") or {}
+    except Exception:
+        return set(), {}
+
+
+def get_walkforward_multiplier(ind_data):
+    """
+    Phase 3b: live application of the walk-forward learned gate. Computes the
+    same indicator-regime setup string the backtest learns on, then sizes the
+    entry by that setup's demonstrated edge: a setup that won gets sized toward
+    SETUP_MULT_MAX, a proven drag toward SETUP_MULT_MIN, unknown stays 1.0.
+    Only kicks in when the gate file exists and has enough samples; never
+    raises. The live closed-trade journal (get_setup_multiplier) takes
+    precedence once IT has samples -- this fills the gap before then.
+    """
+    if not WALKFORWARD_LIVE_LEARNING:
+        return 1.0
+    try:
+        gate, stats = _walkforward_gate()
+        if not gate and not stats:
+            return 1.0
+        setup = _live_setup_string(ind_data)
+        if not setup:
+            return 1.0
+        s = stats.get(setup)
+        if not s or s.get("n", 0) < WALKFORWARD_MIN_SAMPLES:
+            # No reliable stats for this exact setup -- but if the final gate
+            # proved it with >= MIN samples in the train window, give it a
+            # mild boost rather than no opinion.
+            if setup in gate:
+                return WALKFORWARD_PROVEN_MULT
+            return 1.0
+        wr = float(s.get("win_rate", 0.0))
+        avg = float(s.get("avg_pnl_pct", 0.0))
+        if wr >= 0.55 and avg > 0:
+            quality = min(1.0, (wr - 0.55) / 0.25 + min(0.5, avg / 2.0))
+            return round(SETUP_MULT_MIN + (SETUP_MULT_MAX - SETUP_MULT_MIN) * quality, 3)
+        if wr <= 0.45 or avg < 0:
+            badness = min(1.0, (0.45 - wr) / 0.2 + max(0.0, -avg / 2.0))
+            return round(SETUP_MULT_MAX - (SETUP_MULT_MAX - SETUP_MULT_MIN) * badness, 3)
+        return 1.0
+    except Exception:
+        return 1.0
 
 
 def build_performance_brief():
@@ -1735,6 +1826,27 @@ def _compute_exit_levels(ticker, trade, entry_price, ind=None):
         stop_loss = round(entry_price - ATR_STOP_MULTIPLIER * atr, 2)
     if take_profit is None and atr:
         take_profit = round(entry_price + ATR_TAKE_PROFIT_MULTIPLIER * atr, 2)
+
+    # Sell-side risk parity: a tight target on a wide stop is a losing
+    # proposition -- the winner can't pay for the losers. If both levels exist
+    # and the take-profit is closer than MIN_REWARD_RISK_RATIO x the stop
+    # distance, push the target out to that ratio (still capped at the max
+    # ATR take-profit distance so the level stays sane).
+    if (
+        MIN_REWARD_RISK_RATIO > 0
+        and stop_loss is not None
+        and take_profit is not None
+        and atr
+        and atr > 0
+    ):
+        risk = entry_price - stop_loss
+        if risk > 0:
+            current_rr = (take_profit - entry_price) / risk
+            if current_rr < MIN_REWARD_RISK_RATIO:
+                tp = entry_price + MIN_REWARD_RISK_RATIO * risk
+                tp = min(tp, entry_price + MAX_TAKE_PROFIT_DISTANCE_ATR_MULT * atr)
+                if tp > entry_price:
+                    take_profit = round(tp, 2)
     return stop_loss, take_profit
 
 
@@ -1806,6 +1918,47 @@ def check_atr_stop_take_profit(account_snapshot):
                 custom["best_price"] = best_price
                 stop_level = trail_stop
                 exits_modified = True
+
+        # Scale-out (partial profit taking): when a winner reaches a fraction
+        # of the way to its take-profit, bank a slice of the position -- locked
+        # gains can't be given back, and the trailing stop keeps ratcheting on
+        # the remainder (which exits at the target or on stop). One-shot per
+        # position, flagged in custom_exits so it never double-fires. Only
+        # when a target exists and the position is big enough to split.
+        if (
+            ENABLE_SCALE_OUT
+            and target_level is not None
+            and target_level > entry
+            and current >= entry + SCALE_OUT_AT_RR_FRAC * (target_level - entry)
+            and not (custom and custom.get("scaled_out_1"))
+        ):
+            qty_owned = float(pos.get("qty", 0.0))
+            sell_qty = round(qty_owned * SCALE_OUT_FRAC, 4)
+            if sell_qty >= 0.01:
+                if custom is None:
+                    custom = {
+                        "stop_loss": stop_level,
+                        "take_profit": target_level,
+                        "entry_price": entry,
+                    }
+                    custom_exits[ticker] = custom
+                custom["scaled_out_1"] = True
+                exits_modified = True
+                trade = {
+                    "ticker": ticker,
+                    "action": "sell",
+                    # dollar_amount = qty * price so execute_trade sells EXACTLY
+                    # this many shares (its sell path divides by price).
+                    "dollar_amount": sell_qty * current,
+                    "reasoning": (
+                        f"Scale-out: banked {SCALE_OUT_FRAC:.0%} at {round(current, 2)} "
+                        f"({SCALE_OUT_AT_RR_FRAC:.0%} of the way to target {round(target_level, 2)})"
+                    ),
+                    "conviction": 10,
+                }
+                result = execute_trade(trade, account_snapshot, trigger="scale_out")
+                result["trigger"] = "scale_out"
+                results.append(result)
 
         # Hard per-position loss cap, always enforced regardless of ATR/indicators.
         hard_stop = entry * (1.0 - MAX_POSITION_LOSS_PCT / 100.0)
@@ -1885,6 +2038,60 @@ def enforce_portfolio_consolidation(account_snapshot):
 
     return results
 
+def enforce_quality_trim(account_snapshot):
+    """
+    Conservative quality-trim of LEGACY holdings -- the pre-baseline positions
+    recorded in reconciliation_state.json's baseline that predate this bot and
+    were never screened by this strategy (the ~$89K drag). Sells only positions
+    that FAIL the current technical screens (signal score below
+    QUALITY_TRIM_SCORE_THRESHOLD), at most QUALITY_TRIM_MAX_PER_RUN per run,
+    skipping tickers with open orders and positions already within
+    QUALITY_TRIM_LOSS_GUARD_PCT of their entry (never sell into the hole --
+    let the stop take those out naturally). Winners and non-legacy positions
+    are never touched. Returns the executed trade results (empty when nothing
+    qualifies).
+    """
+    if not ENABLE_QUALITY_TRIM:
+        return []
+    recon = _load_json_file(RECON_STATE_FILE, {})
+    baseline = recon.get("baseline") or {}
+    if not baseline:
+        return []  # no legacy positions recorded on this account
+    holdings = account_snapshot.get("holdings", {})
+    open_orders = get_tickers_with_open_orders()
+    candidates = [t for t in holdings if t in baseline and t not in open_orders]
+    if not candidates:
+        return []
+    scored = []
+    for t in candidates:
+        try:
+            ind_data = get_full_indicators(t)
+            score = calculate_signal_score(ind_data)
+        except Exception as e:
+            print(f"Quality trim: could not score {t} (skipping it): {e}")
+            continue
+        scored.append((score, t))
+    scored.sort(key=lambda x: x[0])  # worst first
+    results = []
+    for score, t in scored[:QUALITY_TRIM_MAX_PER_RUN]:
+        if score >= QUALITY_TRIM_SCORE_THRESHOLD:
+            break  # sorted ascending -- the rest are even better
+        pos = holdings.get(t, {})
+        entry = float(pos.get("avg_entry_price", 0) or 0)
+        current = float(pos.get("current_price", 0) or 0)
+        if entry > 0 and current > 0 and current <= entry * (1.0 - QUALITY_TRIM_LOSS_GUARD_PCT / 100.0):
+            continue  # already near the loss guard -- don't sell into the hole
+        reason = (
+            f"Quality trim: legacy pre-baseline holding {t} fails technical screens "
+            f"(signal score {round(score, 1)} < {QUALITY_TRIM_SCORE_THRESHOLD}); freeing "
+            "capital for higher-conviction entries"
+        )
+        trade = {"ticker": t, "action": "sell", "dollar_amount": 0, "reasoning": reason, "conviction": 10}
+        result = execute_trade(trade, account_snapshot, trigger="quality_trim")
+        result["trigger"] = "quality_trim"
+        results.append(result)
+    return results
+
 def confidence_to_size_pct(confidence):
     """
     Map Gemini confidence (0-100) to a target position size as a fraction of
@@ -1901,13 +2108,12 @@ def confidence_to_size_pct(confidence):
     return 0.0
 
 
-def _sector_exposure_block(account_snapshot, ticker, proposed_amount, total_value):
+def _sector_room_for(account_snapshot, ticker, total_value):
     """
-    Returns a skip-reason string if buying `proposed_amount` of `ticker` would
-    push that ticker's GICS sector past MAX_SECTOR_EXPOSURE_PCT of the
-    portfolio, else None. Lazy-imports data_feeds (avoids the import cycle:
-    data_feeds does not import trader). Sector data is the free Finnhub
-    profile2 feed, cached 24h, so this is a cache read in the hot loop.
+    How many MORE dollars of `ticker`'s GICS sector the account can still buy
+    before MAX_SECTOR_EXPOSURE_PCT, ignoring this ticker's own pending amount.
+    Returns (room, sector_name): room >= 0; sector_name None when the sector
+    is unknown (no cap applies). Cache read (free Finnhub profile2, 24h).
     """
     from data_feeds import get_sector_profiles
 
@@ -1915,7 +2121,7 @@ def _sector_exposure_block(account_snapshot, ticker, proposed_amount, total_valu
     sectors = get_sector_profiles(list(holdings.keys()) + [ticker])
     target_sector = (sectors.get(ticker) or {}).get("sector")
     if not target_sector:
-        return None  # sector unknown -> don't block on a data gap
+        return float("inf"), None
 
     sector_value = 0.0
     for t, pos in holdings.items():
@@ -1924,14 +2130,8 @@ def _sector_exposure_block(account_snapshot, ticker, proposed_amount, total_valu
         sec = (sectors.get(t) or {}).get("sector")
         if sec == target_sector:
             sector_value += float(pos.get("qty", 0.0)) * float(pos.get("current_price", 0.0))
-    cap_value = total_value * MAX_SECTOR_EXPOSURE_PCT
-    if sector_value + proposed_amount > cap_value:
-        return (
-            f"sector cap: {target_sector} would reach "
-            f"${sector_value + proposed_amount:,.0f} / ${cap_value:,.0f} "
-            f"({MAX_SECTOR_EXPOSURE_PCT:.0%} max per sector)"
-        )
-    return None
+    room = total_value * MAX_SECTOR_EXPOSURE_PCT - sector_value
+    return max(0.0, room), target_sector
 
 
 def _chase_size_multiplier(extension_pct, limit_pct):
@@ -2091,6 +2291,14 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
             # smaller). Never affects sells.
             buy_target *= get_setup_multiplier(_setup_category(trade.get("reasoning")))
 
+            # Phase 3b: walk-forward learned gate (backtest.py --walkforward)
+            # fills the gap before the live journal has samples -- size by the
+            # indicator-regime setup's demonstrated edge from history. Same
+            # guardrails as the other multipliers: never affects sells, and
+            # FLAT_SIZING keeps its uniform size by design.
+            if ind_data:
+                buy_target *= get_walkforward_multiplier(ind_data)
+
             # Phase 2: on high-impact economic event days (CPI/FOMC/NFP...), size
             # new buys down -- the market reprices hard around those prints.
             buy_target *= get_economic_event_multiplier()
@@ -2132,22 +2340,24 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
         # Sector concentration cap: never let one GICS sector exceed
         # MAX_SECTOR_EXPOSURE_PCT of the portfolio (14+ positions can quietly
         # become 5 names in Energy, and a sector shock then hits them all at
-        # once). Existing positions are never force-sold -- new buys into an
-        # already-heavy sector are skipped. Data comes from the cached sector
-        # profiles (free Finnhub, 24h cache) so this is nearly free; when the
-        # sector lookup fails the buy is allowed through rather than blocked
-        # on a data hiccup.
+        # once). Instead of skipping the buy outright, the position is capped
+        # at the ROOM left in that sector -- capital stuck at the exposure
+        # ceiling still deploys into the under-exposed slice, and a genuinely
+        # full sector leaves nothing to buy (the min-size check below skips
+        # it). Existing positions are never force-sold. Data comes from the
+        # cached sector profiles (free Finnhub, 24h cache) so this is nearly
+        # free; when the sector lookup fails the buy is allowed through rather
+        # than blocked on a data hiccup.
+        sector_room = None
+        sector_was_binding = False
         if MAX_SECTOR_EXPOSURE_PCT > 0:
             try:
-                sector_block = _sector_exposure_block(
-                    account_snapshot, ticker, amount, total_value
+                sector_room, _sector_name = _sector_room_for(
+                    account_snapshot, ticker, total_value
                 )
-                if sector_block:
-                    return {
-                        "ticker": ticker,
-                        "status": "skipped",
-                        "reason": sector_block,
-                    }
+                if sector_room < amount:
+                    sector_was_binding = True
+                    amount = sector_room
             except Exception as e:
                 print(f"Sector cap check failed on {ticker} (continuing without it): {e}")
 
@@ -2169,10 +2379,18 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
                 amount = min(amount, risk_budget / stop_frac)
 
         if amount < MIN_TRADE_DOLLAR_AMOUNT:
+            reason = (
+                f"below minimum trade size (${MIN_TRADE_DOLLAR_AMOUNT}) after position cap "
+                f"(${max_allowed:,.2f}), room (${target_room:,.2f}), regime multiplier "
+                f"({size_multiplier:.0%}), and cash reserve "
+                f"(${reserve_kept:,.2f} kept of ${account_snapshot['cash']:,.2f} cash)"
+            )
+            if sector_was_binding and sector_room is not None:
+                reason += f", and sector room (${sector_room:,.2f})"
             return {
                 "ticker": ticker,
                 "status": "skipped",
-                "reason": f"below minimum trade size (${MIN_TRADE_DOLLAR_AMOUNT}) after position cap (${max_allowed:,.2f}), room (${target_room:,.2f}), regime multiplier ({size_multiplier:.0%}), and cash reserve (${reserve_kept:,.2f} kept of ${account_snapshot['cash']:,.2f} cash)",
+                "reason": reason,
             }
 
         qty = round(amount / price, 4)
