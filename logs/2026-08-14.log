@@ -11364,3 +11364,21 @@ Trade journal: no closed trades yet
 Performance: Total return -0.37% | Max drawdown 12.37% | Daily Sharpe 0.28 | Open positions: 14 | Equity $99,491.17
 Timings: account: 0.0s | risk: 5.6s | decide: 51.2s | watchlist: 0.0s | perf: 0.0s
 
+=== Run at 2026-08-14T16:38:25.181546 ===
+Current time: 2026-08-14 12:38 PM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,487.47
+Cash: $2,352.38 | Holdings (14): {'CEG': '35.6034 sh (+2.09%)', 'CHD': '97.9637 sh (-0.30%)', 'COHR': '7.9896 sh (-4.54%)', 'CVX': '24.8836 sh (+1.56%)', 'GEHC': '0.6136 sh (-0.23%)', 'IVZ': '306.9138 sh (+1.06%)', 'LMT': '16.3555 sh (+0.10%)', 'MS': '43.8344 sh (-2.10%)', 'MSI': '21.1281 sh (-0.34%)', 'NUE': '36.5544 sh (-0.99%)', 'NVDA': '44.2888 sh (+0.51%)', 'NWS': '303.7199 sh (+1.61%)', 'STLD': '0.9216 sh (-1.68%)', 'WSM': '0.1026 sh (-1.44%)'}
+Risk state: peak $99,703.60 | drawdown 0.22% | today +0.23% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 45/60 candidates passed.
+Gemini proposed 1 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 259
+  -> {"ticker": "SLB", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,923.12), room ($9,948.75), regime multiplier (100%), and cash reserve ($4,974.37 kept of $2,352.38 cash)"}
+Overnight queue cleared after verification.
+Dashboard watchlist synced (15 symbols) for news/headlines.
+Ending portfolio value: $99,483.42
+Trade journal: no closed trades yet
+Performance: Total return -0.35% | Max drawdown 12.37% | Daily Sharpe 0.29 | Open positions: 14 | Equity $99,487.47
+Timings: account: 0.0s | risk: 4.7s | decide: 3.6s | watchlist: 0.1s | perf: 0.2s
+
