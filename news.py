@@ -85,6 +85,12 @@ def fetch_market_news(timeout=15.0):
     resp = requests.get(url, params=params, timeout=timeout)
     resp.raise_for_status()
     articles = resp.json()
+    # Bulletproof against a 200 with a non-list body (an empty dict or a
+    # rate-limit page instead of a JSON array): slicing a dict raises
+    # TypeError and kills the whole news step. Empty list = no news this
+    # run; the watchlist scan still covers the universe.
+    if not isinstance(articles, list):
+        return []
     return articles[: MAX_NEWS_ITEMS * 4]
 
 def _clean_company_name(name):
@@ -117,7 +123,16 @@ def _save_seen_news(seen):
 
 def _prune_old_entries(seen):
     cutoff = datetime.now() - timedelta(hours=NEWS_DEDUP_MAX_AGE_HOURS)
-    return {aid: ts for aid, ts in seen.items() if datetime.fromisoformat(ts) > cutoff}
+    out = {}
+    for aid, ts in seen.items():
+        try:
+            if datetime.fromisoformat(ts) > cutoff:
+                out[aid] = ts
+        except (TypeError, ValueError):
+            # A malformed timestamp (corrupt file / partial write) must never
+            # crash the whole news step -- drop the entry and move on.
+            continue
+    return out
 
 # Lightweight lexicon for headline sentiment (-1 .. +1). This is a crude
 # directional proxy, not a model: it only needs to nudge the quant score for
@@ -273,7 +288,7 @@ def get_news_candidates(time_budget=None):
         rss_timeout = min(RSS_FETCH_TIMEOUT_SECONDS, fetch_timeout)
         try:
             rss_articles = fetch_rss_news(timeout=rss_timeout)
-            if rss_articles:
+            if rss_articles and isinstance(rss_articles, list):
                 articles = articles + rss_articles
         except Exception as e:
             print(f"RSS news fetch failed (continuing with Finnhub only): {e}")
