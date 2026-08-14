@@ -240,6 +240,11 @@ ENABLE_QUALITY_TRIM = os.environ.get("ENABLE_QUALITY_TRIM", "true").lower() == "
 QUALITY_TRIM_SCORE_THRESHOLD = float(os.environ.get("QUALITY_TRIM_SCORE_THRESHOLD", 55.0))
 QUALITY_TRIM_MAX_PER_RUN = int(os.environ.get("QUALITY_TRIM_MAX_PER_RUN", 2))
 QUALITY_TRIM_LOSS_GUARD_PCT = float(os.environ.get("QUALITY_TRIM_LOSS_GUARD_PCT", 3.0))
+# Profit-take on legacy winners: any LEGACY pre-baseline position that is up
+# QUALITY_TRIM_PROFIT_TAKE_PCT or more since its avg entry price gets sold to
+# bank the gain (score ignored -- a winner is a winner). Profit-takers are
+# sold before score-failures and share the same QUALITY_TRIM_MAX_PER_RUN cap.
+QUALITY_TRIM_PROFIT_TAKE_PCT = float(os.environ.get("QUALITY_TRIM_PROFIT_TAKE_PCT", 5.0))
 
 # --- Momentum pre-filter on the universe scan (concentrate on movers) ---
 # Instead of scanning a blind rotating slice of the S&P 500, each run first
