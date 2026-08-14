@@ -47,12 +47,12 @@ jobs:
           # TRADE_ONLY_DURING_MARKET_HOURS, MAX_TOTAL_EXPOSURE_PCT,
           # DAILY_LOSS_HALT_PCT, MAX_DRAWDOWN_DELEVERAGE_PCT,
           # MAX_DRAWDOWN_FLATTEN_PCT, RESET_EQUITY_PEAK_ON_START
-          # Gemini quota: 0 = normal/unlimited (Google's own daily limit
-          # stops it; the quota runs out after the morning-prep call).
-          # Set to a number (e.g. 1000) to re-enable day-long pacing so
-          # calls are spread across the whole day instead of burning out
-          # by midday.
-          GEMINI_DAILY_BUDGET: 0
+          # Gemini quota for 24/7 operation: with a 2-min cadence (~720
+          # runs/day) and budget 1000, every run gets its Gemini call and
+          # the quota lasts all day (720 < 1000) -- the pacing only stops
+          # burst stacking, never normal runs. Set to 0 to disable pacing
+          # (Gemini burns Google's limit mid-day, technical engine after).
+          GEMINI_DAILY_BUDGET: 1000
         # Hard shell backstop: main.py already budgets itself to ~50s, but
         # `timeout` guarantees the python step can NEVER exceed 60s even if
         # some API hangs past every internal budget (exit 124 = killed). The
