@@ -2784,6 +2784,7 @@ Performance: Total return -0.57% | Max drawdown 12.37% | Daily Sharpe 0.24 | Ope
 Timings: account: 0.0s | risk: 4.3s | decide: 7.6s | watchlist: 0.2s | perf: 0.3s
 
 === Run at 2026-08-14T04:56:37.065865 ===
+=== Run at 2026-08-14T04:56:06.111183 ===
 Current time: 2026-08-14 12:56 AM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,264.55
 Cash: $4,962.85 | Holdings (15): {'CEG': '35.6034 sh (+0.31%)', 'CHD': '97.9637 sh (+0.03%)', 'CVX': '24.8836 sh (-0.10%)', 'GEHC': '0.6136 sh (-0.15%)', 'HAS': '1.1333 sh (+0.99%)', 'IVZ': '1.4577 sh (+0.72%)', 'LMT': '16.3555 sh (-1.14%)', 'MS': '43.8344 sh (-0.90%)', 'MSI': '21.1281 sh (-1.00%)', 'NDAQ': '103.7371 sh (+1.65%)', 'NUE': '36.5544 sh (-0.28%)', 'NVDA': '44.2888 sh (+0.43%)', 'NWS': '303.7199 sh (+1.01%)', 'STLD': '0.1352 sh (-0.74%)', 'WSM': '0.1026 sh (-1.26%)'}
@@ -2802,4 +2803,12 @@ Ending portfolio value: $99,262.78
 Trade journal: no closed trades yet
 Performance: Total return -0.57% | Max drawdown 12.37% | Daily Sharpe 0.24 | Open positions: 15 | Equity $99,264.55
 Timings: account: 0.0s | risk: 0.8s | decide: 5.2s | watchlist: 0.0s | perf: 0.1s
+  -> queued RSG buy (conf 89, stop 205.07, tp 224.5)
+  -> queued MNST buy (conf 74, stop 45.09, tp 49.5)
+  -> queued STZ buy (conf 86, stop 128.99, tp 142.5)
+Dashboard watchlist synced (18 symbols) for news/headlines.
+Ending portfolio value: $99,264.55
+Trade journal: no closed trades yet
+Performance: Total return -0.57% | Max drawdown 12.37% | Daily Sharpe 0.24 | Open positions: 15 | Equity $99,264.55
+Timings: account: 0.0s | risk: 4.1s | decide: 3.0s | watchlist: 0.2s | perf: 0.3s
 
