@@ -7901,3 +7901,21 @@ Trade journal: no closed trades yet
 Performance: Total return -0.49% | Max drawdown 12.37% | Daily Sharpe 0.26 | Open positions: 15 | Equity $99,349.44
 Timings: account: 0.0s | risk: 1.2s | decide: 1.9s | watchlist: 0.0s | perf: 0.1s
 
+=== Run at 2026-08-14T11:52:27.516622 ===
+Current time: 2026-08-14 07:52 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
+Account value: $99,346.46
+Cash: $4,962.84 | Holdings (15): {'CEG': '35.6034 sh (+0.42%)', 'CHD': '97.9637 sh (+0.03%)', 'CVX': '24.8836 sh (+0.19%)', 'GEHC': '0.6136 sh (-0.16%)', 'HAS': '1.1333 sh (+0.99%)', 'IVZ': '1.4577 sh (+0.44%)', 'LMT': '16.3555 sh (-1.36%)', 'MS': '43.8344 sh (-0.92%)', 'MSI': '21.1281 sh (-1.00%)', 'NDAQ': '103.7371 sh (+2.05%)', 'NUE': '36.5544 sh (-0.28%)', 'NVDA': '44.2888 sh (+0.83%)', 'NWS': '303.7199 sh (+1.01%)', 'STLD': '0.1352 sh (-0.74%)', 'WSM': '0.1026 sh (-1.26%)'}
+Risk state: peak $99,443.44 | drawdown 0.10% | today +0.09% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 3 new after dedup, 2 ticker(s) matched.
+Quant pre-screen: 40/55 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 141
+  -> {"ticker": "NOW", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,901.97), room ($9,934.65), regime multiplier (100%), and cash reserve ($2,483.66 kept of $4,962.84 cash)"}
+  -> {"ticker": "RSG", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,901.97), room ($9,934.65), regime multiplier (100%), and cash reserve ($2,483.66 kept of $4,962.84 cash)"}
+Dashboard watchlist synced (18 symbols) for news/headlines.
+Ending portfolio value: $99,346.01
+Trade journal: no closed trades yet
+Performance: Total return -0.49% | Max drawdown 12.37% | Daily Sharpe 0.26 | Open positions: 15 | Equity $99,346.46
+Timings: account: 0.0s | risk: 4.2s | decide: 6.6s | watchlist: 0.2s | perf: 0.3s
+
