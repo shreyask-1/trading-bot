@@ -12,6 +12,7 @@ the discovery call itself fails (e.g. no network).
 """
 
 import json
+import math
 import os
 import re
 import time
@@ -1181,5 +1182,37 @@ def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL", pending_
         if conviction < MIN_CONVICTION_TO_TRADE:
             continue
         t["conviction"] = conviction
+
+        # Boundary validation of Gemini's exit levels: the model occasionally
+        # emits garbage prices (e.g. take_profit=1.4e-12, negatives, or a
+        # take-profit BELOW the stop). Trusting those would queue nonsense
+        # levels and could record an exit that fires the instant a buy fills
+        # (current >= target when target ~ 0). Drop any non-finite / non-
+        # positive / inverted level and let _compute_exit_levels derive sane
+        # ATR/swing levels at execution instead.
+        stop = _sane_price(t.get("stop_loss"))
+        tp = _sane_price(t.get("take_profit"))
+        if stop is not None and tp is not None and tp <= stop:
+            stop = None
+            tp = None
+        t["stop_loss"] = stop
+        t["take_profit"] = tp
         filtered.append(t)
     return filtered, meta
+
+
+def _sane_price(value):
+    """
+    Returns value as a finite, positive float, or None when it is missing,
+    unparseable, NaN/inf, or not positive -- anything the exit machinery
+    should never be asked to record.
+    """
+    if value is None:
+        return None
+    try:
+        v = float(value)
+    except (TypeError, ValueError):
+        return None
+    if not math.isfinite(v) or v <= 0:
+        return None
+    return v
