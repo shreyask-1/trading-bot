@@ -361,7 +361,15 @@ def _extract_quota_value(error_str, marker):
     return int(m.group(1)) if m else None
 
 
-def _should_attempt_call(tracker, model_list):
+def _should_attempt_call(tracker, model_list, allow_despite_pacing=False):
+    """
+    allow_despite_pacing: when True, the bot-side daily pacing curve is
+    skipped (the morning queue re-verification -- the user's spec is that
+    queued ideas are NEVER executed blind, so verifying them is worth one
+    call even when pacing would skip). Google's own quota checks still
+    apply: if every model is genuinely exhausted at the source, nothing
+    is attempted.
+    """
     total_remaining = _total_remaining(tracker, model_list)
     if total_remaining <= 0:
         return False, "all available models have exhausted their daily free-tier quota"
@@ -372,7 +380,7 @@ def _should_attempt_call(tracker, model_list):
     # rotation), the following runs skip Gemini until the share catches up,
     # so a slow-Google period can never empty the day's quota early.
     budget = GEMINI_DAILY_BUDGET
-    if budget > 0:
+    if budget > 0 and not allow_despite_pacing:
         used = _total_used(tracker)
         if used >= budget:
             return False, f"daily Gemini budget spent ({used}/{budget}) -- resets at midnight"
@@ -1168,7 +1176,13 @@ def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL", pending_
         "gemini_calls_today": calls_today,
     }
 
-    should_call, reason = _should_attempt_call(tracker, model_list)
+    # The overnight queue MUST be Gemini-verified before anything executes
+    # (never blind) -- so when there are queued trades, the pacing curve is
+    # bypassed for this one call (Google's own quota checks still apply).
+    should_call, reason = _should_attempt_call(tracker, model_list, allow_despite_pacing=bool(pending_trades))
+    if pending_trades and not should_call:
+        print(f"Morning verification: {len(pending_trades)} queued trade(s) need Gemini "
+              f"(will not execute blind); skipping verification this run: {reason}")
     if not should_call:
         print(f"Skipping Gemini call this run: {reason}")
         print("Falling back to pure-technical decision engine instead.")
