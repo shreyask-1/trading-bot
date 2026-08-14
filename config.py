@@ -207,6 +207,61 @@ MAX_STOP_DISTANCE_ATR_MULT = 5.0
 MIN_TAKE_PROFIT_DISTANCE_ATR_MULT = 1.5
 MAX_TAKE_PROFIT_DISTANCE_ATR_MULT = 8.0
 
+# --- Sell-side risk parity (minimum reward:risk) ---
+# Every trade's take-profit must be at least this many times its stop
+# distance, so a wide stop + tight target pair (R:R < 1) can never ship --
+# otherwise the winners can't pay for the losers. Applied in
+# _compute_exit_levels whenever both levels exist; the target is pushed out
+# to this ratio (still capped by MAX_TAKE_PROFIT_DISTANCE_ATR_MULT). Set 0 to
+# disable and let each level clamp independently.
+MIN_REWARD_RISK_RATIO = float(os.environ.get("MIN_REWARD_RISK_RATIO", 1.5))
+
+# --- Scale-out (partial profit taking) ---
+# When a winner reaches this fraction of the way to its take-profit, bank
+# SCALE_OUT_FRAC of the position (lock the gains, leave the runner). The
+# trailing stop keeps ratcheting on the remainder, and the rest exits at the
+# target or on stop. One-shot per position. Set ENABLE_SCALE_OUT=false to
+# exit everything at the target as before.
+ENABLE_SCALE_OUT = os.environ.get("ENABLE_SCALE_OUT", "true").lower() == "true"
+SCALE_OUT_AT_RR_FRAC = float(os.environ.get("SCALE_OUT_AT_RR_FRAC", 0.6))
+SCALE_OUT_FRAC = float(os.environ.get("SCALE_OUT_FRAC", 0.33))
+
+# --- Conservative quality-trim (legacy pre-baseline holdings) ---
+# The baseline positions recorded in reconciliation_state.json predate this
+# bot -- they existed before the deploy and were never screened by this
+# strategy (the ~$89K drag). ENABLE_QUALITY_TRIM sells only LEGACY positions
+# that FAIL the current technical screens (signal score <
+# QUALITY_TRIM_SCORE_THRESHOLD), at most QUALITY_TRIM_MAX_PER_RUN per run,
+# skipping tickers with open orders and positions already within
+# QUALITY_TRIM_LOSS_GUARD_PCT of their entry (never sell into the hole).
+# Winners and non-legacy positions are never touched. Set false to leave
+# legacy holdings alone.
+ENABLE_QUALITY_TRIM = os.environ.get("ENABLE_QUALITY_TRIM", "true").lower() == "true"
+QUALITY_TRIM_SCORE_THRESHOLD = float(os.environ.get("QUALITY_TRIM_SCORE_THRESHOLD", 55.0))
+QUALITY_TRIM_MAX_PER_RUN = int(os.environ.get("QUALITY_TRIM_MAX_PER_RUN", 2))
+QUALITY_TRIM_LOSS_GUARD_PCT = float(os.environ.get("QUALITY_TRIM_LOSS_GUARD_PCT", 3.0))
+
+# --- Momentum pre-filter on the universe scan (concentrate on movers) ---
+# Instead of scanning a blind rotating slice of the S&P 500, each run first
+# includes today's top movers (reused from the scan cache -- zero extra API
+# cost) so Gemini's attention lands on names already showing relative
+# strength; the rest of the quota backfills with rotation so the full
+# universe is still covered over the day. Set MOMENTUM_PREFILTER=false for
+# pure rotation.
+MOMENTUM_PREFILTER = os.environ.get("MOMENTUM_PREFILTER", "true").lower() == "true"
+MOMENTUM_PREFILTER_MAX = int(os.environ.get("MOMENTUM_PREFILTER_MAX", 5))
+
+# --- Walk-forward learning into live sizing (Phase 3b) ---
+# backtest.py --walkforward writes data/setup_gate.json: the indicator-regime
+# setups that demonstrably won in the prior train window. When that file
+# exists, the live bot computes the SAME setup string from its own indicators
+# at entry time and sizes by that setup's demonstrated edge (proven setups
+# toward SETUP_MULT_MAX, proven drags toward SETUP_MULT_MIN, unknown = 1.0).
+# The live closed-trade journal still takes precedence once it has samples.
+WALKFORWARD_LIVE_LEARNING = os.environ.get("WALKFORWARD_LIVE_LEARNING", "true").lower() == "true"
+WALKFORWARD_MIN_SAMPLES = int(os.environ.get("WALKFORWARD_MIN_SAMPLES", 8))
+WALKFORWARD_PROVEN_MULT = float(os.environ.get("WALKFORWARD_PROVEN_MULT", 1.1))
+
 ALLOW_GEMINI_CUSTOM_EXITS = (
     os.environ.get("ALLOW_GEMINI_CUSTOM_EXITS", "true").lower() == "true"
 )
