@@ -5957,3 +5957,32 @@ Trade journal: no closed trades yet
 Performance: Total return -0.39% | Max drawdown 12.37% | Daily Sharpe 0.28 | Open positions: 14 | Equity $99,438.73
 Timings: account: 0.0s | risk: 2.0s | decide: 6.6s | watchlist: 0.0s | perf: 0.1s
 
+=== Run at 2026-08-14T23:26:35.500707 ===
+Current time: 2026-08-14 07:26 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+Account value: $99,389.70
+Cash: $2,352.38 | Holdings (14): {'CEG': '35.6034 sh (+1.51%)', 'CHD': '97.9637 sh (+0.01%)', 'COHR': '7.9896 sh (-4.60%)', 'CVX': '24.8836 sh (+1.25%)', 'GEHC': '0.6136 sh (-0.04%)', 'IVZ': '306.9138 sh (+1.21%)', 'LMT': '16.3555 sh (+0.30%)', 'MS': '43.8344 sh (-2.12%)', 'MSI': '21.1281 sh (-0.69%)', 'NUE': '36.5544 sh (-1.52%)', 'NVDA': '44.2888 sh (+0.38%)', 'NWS': '303.7199 sh (+1.75%)', 'STLD': '0.9216 sh (-2.54%)', 'WSM': '0.1026 sh (-1.61%)'}
+Risk state: peak $99,703.60 | drawdown 0.31% | today +0.14% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 2 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 52/67 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 56 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 441
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued WDC buy (conf 92, stop 485.0, tp 560.0)
+  -> queued TTWO buy (conf None, stop 228.4, tp 256.285)
+  -> queued TDY buy (conf None, stop 654.41, tp 697.61)
+  -> queued HUM buy (conf None, stop 354.57, tp 392.49)
+  -> queued WDAY buy (conf 85, stop 188.0, tp 220.0)
+  -> queued WFC buy (conf 80, stop 86.06, tp 92.0)
+  -> queued HBAN buy (conf None, stop 17.095, tp 18.03)
+  -> queued CPRT buy (conf None, stop 28.555, tp 31.735)
+  -> queued IVZ buy (conf None, stop 29.7, tp 32.65)
+  -> queued TEL buy (conf None, stop 200.81, tp 221.8)
+  -> queued TPR buy (conf None, stop 126.59, tp 164.76)
+  -> queued TRMB buy (conf None, stop 54.75, tp 61.75)
+Run budget spent -- skipping dashboard watchlist sync.
+Run budget spent -- skipping performance snapshot.
+Trade journal: no closed trades yet
+Performance: Total return -0.39% | Max drawdown 12.37% | Daily Sharpe 0.28 | Open positions: 14 | Equity $99,389.70
+Timings: account: 0.0s | risk: 2.9s | decide: 26.8s | watchlist: 0.0s | perf: 0.0s
+
