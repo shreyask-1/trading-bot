@@ -6,6 +6,7 @@ Handles position sizing, chart-based stops/targets, risk limits, and order submi
 import os
 import json
 import csv
+import time
 from datetime import datetime, timedelta
 import pytz
 import requests
@@ -135,6 +136,32 @@ _FEED_MAP = {"iex": DataFeed.IEX, "sip": DataFeed.SIP, "otc": DataFeed.OTC}
 DATA_FEED = _FEED_MAP.get(ALPACA_DATA_FEED.lower(), DataFeed.IEX)
 
 _EASTERN = pytz.timezone("America/New_York")
+
+# Short-TTL in-memory cache for the expensive indicator / price-history
+# fetches. The pre-decision risk steps (ATR exits, de-leveraging, portfolio
+# consolidation, quality trim) each score the SAME holdings, and runs happen
+# every ~2 minutes -- without a cache the same tickers get fetched 2-4x per
+# run (15 holdings x up to 3 sequential IEX calls each), and on a slow or
+# throttled data-feed day a single run can blow past the 60s shell cap
+# (`timeout 60` -> exit 124, which is what intermittently kills runs). A
+# ~3-minute TTL dedupes within a run AND across consecutive runs, turning the
+# worst case from "30+ fresh fetches" into "a handful of expired ones".
+# Stop-loss/target levels are built from slow-moving daily ATR plus the
+# always-fresh snapshot current price, so 3-minute staleness is negligible.
+FULL_INDICATOR_CACHE_TTL = float(os.environ.get("FULL_INDICATOR_CACHE_TTL", 180))
+_INDICATOR_CACHE = {}  # key -> (expires_at_monotonic, value)
+
+
+def _cache_get(key):
+    hit = _INDICATOR_CACHE.get(key)
+    if hit and hit[0] > time.monotonic():
+        return hit[1]
+    return None
+
+
+def _cache_put(key, value):
+    _INDICATOR_CACHE[key] = (time.monotonic() + FULL_INDICATOR_CACHE_TTL, value)
+
 
 PERFORMANCE_CSV_HEADER = [
     "timestamp", "total_value", "cash", "num_holdings", "market_regime",
@@ -268,6 +295,19 @@ def get_price(ticker):
         return None
 
 def get_price_history(ticker, days=PRICE_HISTORY_DAYS):
+    # Cached: the risk steps, market regime check and scans all fetch daily
+    # bars for the same tickers every run. See _INDICATOR_CACHE above.
+    key = ("bars", ticker, days)
+    cached = _cache_get(key)
+    if cached is not None:
+        return cached
+    result = _fetch_price_history(ticker, days)
+    if result is not None:
+        _cache_put(key, result)
+    return result
+
+
+def _fetch_price_history(ticker, days=PRICE_HISTORY_DAYS):
     try:
         end = datetime.now()
         start = end - timedelta(days=days + 10)
@@ -434,6 +474,19 @@ def get_opening_range_breakout(ticker):
 
 
 def get_full_indicators(ticker):
+    # Cached: ATR exits, de-leveraging, consolidation and the quality trim all
+    # score the same holdings each run -- see _INDICATOR_CACHE above.
+    key = ("full_ind", ticker)
+    cached = _cache_get(key)
+    if cached is not None:
+        return cached
+    result = _compute_full_indicators(ticker)
+    if result is not None:
+        _cache_put(key, result)
+    return result
+
+
+def _compute_full_indicators(ticker):
     history = get_price_history(ticker)
     if history is None:
         return None
@@ -883,7 +936,7 @@ def evaluate_circuit_breakers(account_snapshot):
     save_risk_state(state)
     return halted, state.get("halt_reason", ""), size_multiplier, drawdown_pct, daily_pl_pct, peak, messages
 
-def enforce_deleveraging(account_snapshot):
+def enforce_deleveraging(account_snapshot, time_budget=None):
     """
     Margin healing: if cash is below DELEVERAGE_TARGET_CASH_PCT of equity
     (almost always negative), sell the weakest-scored holdings until projected
@@ -899,6 +952,7 @@ def enforce_deleveraging(account_snapshot):
 
     open_order_tickers = get_tickers_with_open_orders()
     holdings = account_snapshot.get("holdings", {})
+    deadline = time.monotonic() + time_budget if time_budget is not None else None
 
     # Sells already queued in the market will free cash when they fill at the
     # next open; count them toward the target so overnight runs don't stack
@@ -912,6 +966,8 @@ def enforce_deleveraging(account_snapshot):
 
     scored = []
     for ticker in holdings.keys():
+        if deadline is not None and time.monotonic() >= deadline:
+            break  # run budget spent -- never stall the run on margin healing
         if ticker in open_order_tickers:
             continue
         indicators_data = get_full_indicators(ticker)
@@ -1888,13 +1944,21 @@ def _record_custom_exit(ticker, trade, entry_price, levels=None):
     _save_custom_exits(exits)
     return exits[ticker]
 
-def check_atr_stop_take_profit(account_snapshot):
+def check_atr_stop_take_profit(account_snapshot, time_budget=None):
+    """
+    time_budget (wall-clock seconds, optional): when given, the step stops
+    fetching fresh indicators once it's spent (the TTL cache usually makes
+    them instant anyway). The hard per-position loss cap -- computed from the
+    always-fresh snapshot entry/current prices -- is NEVER skipped, so no
+    position is ever left unprotected by a budget cutoff.
+    """
     results = []
     open_order_tickers = get_tickers_with_open_orders()
     custom_exits = _load_custom_exits()
     holdings = account_snapshot["holdings"]
     news_sentiment_cache = _load_json_file(NEWS_SENTIMENT_CACHE_FILE, {})
     exits_modified = False
+    deadline = time.monotonic() + time_budget if time_budget is not None else None
 
     for ticker, pos in holdings.items():
         if ticker in open_order_tickers:
@@ -1902,8 +1966,13 @@ def check_atr_stop_take_profit(account_snapshot):
         entry = pos["avg_entry_price"]
         current = pos["current_price"]
 
-        indicators_data = get_full_indicators(ticker)
-        atr = indicators_data["atr_14"] if indicators_data else None
+        indicators_data = None
+        atr = None
+        if deadline is None or time.monotonic() < deadline:
+            indicators_data = get_full_indicators(ticker)
+            atr = indicators_data["atr_14"] if indicators_data else None
+        # (else: budget spent -- skip the fetch; the hard loss cap below still
+        # protects every position using snapshot prices alone)
 
         custom = custom_exits.get(ticker)
         if custom and custom.get("stop_loss") is not None and custom.get("take_profit") is not None:
@@ -2028,7 +2097,7 @@ def check_atr_stop_take_profit(account_snapshot):
     _prune_custom_exits(holdings)
     return results
 
-def enforce_portfolio_consolidation(account_snapshot):
+def enforce_portfolio_consolidation(account_snapshot, time_budget=None):
     results = []
     holdings = account_snapshot.get("holdings", {})
     if len(holdings) <= MAX_OPEN_POSITIONS:
@@ -2036,9 +2105,12 @@ def enforce_portfolio_consolidation(account_snapshot):
 
     open_order_tickers = get_tickers_with_open_orders()
     excess_count = len(holdings) - MAX_OPEN_POSITIONS
+    deadline = time.monotonic() + time_budget if time_budget is not None else None
 
     scored_holdings = []
     for ticker in holdings.keys():
+        if deadline is not None and time.monotonic() >= deadline:
+            break  # run budget spent -- leave the rest untouched
         if ticker in open_order_tickers:
             continue
         indicators_data = get_full_indicators(ticker)
@@ -2058,7 +2130,7 @@ def enforce_portfolio_consolidation(account_snapshot):
 
     return results
 
-def enforce_quality_trim(account_snapshot):
+def enforce_quality_trim(account_snapshot, time_budget=None):
     """
     Conservative quality-trim of LEGACY holdings -- the pre-baseline positions
     recorded in reconciliation_state.json's baseline that predate this bot and
@@ -2073,6 +2145,8 @@ def enforce_quality_trim(account_snapshot):
          mark instead of being sold into weakness (never sell into the hole).
     Skips tickers with open orders. Non-legacy positions are never touched.
     Returns the executed trade results (empty when nothing qualifies).
+    time_budget (wall-clock seconds, optional): stops scoring new holdings
+    once the run's deadline is spent (never stalls a run on a cosmetic step).
     """
     if not ENABLE_QUALITY_TRIM:
         print("Quality trim: disabled via ENABLE_QUALITY_TRIM=false -- skipping.")
@@ -2088,8 +2162,12 @@ def enforce_quality_trim(account_snapshot):
     if not candidates:
         print(f"Quality trim: {len(holdings)} holdings, none are legacy baseline names (or all have open orders) -- nothing to trim.")
         return []
+    deadline = time.monotonic() + time_budget if time_budget is not None else None
     scored = []
     for t in candidates:
+        if deadline is not None and time.monotonic() >= deadline:
+            print("Quality trim: run budget spent -- skipped scoring remaining legacy holdings this run.")
+            break
         try:
             ind_data = get_full_indicators(t)
             score = calculate_signal_score(ind_data)
