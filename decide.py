@@ -36,6 +36,8 @@ from config import (
     NEWS_CONFLUENCE_MIN_TECH_SCORE,
     CONFIDENCE_MIN_TO_TRADE,
     UNIVERSE_SCAN_PER_RUN,
+    MOMENTUM_PREFILTER,
+    MOMENTUM_PREFILTER_MAX,
     ENABLE_ECONOMIC_CALENDAR,
     ENABLE_ANALYST_ACTIONS,
     ENABLE_INSIDER_ACTIVITY,
@@ -902,6 +904,23 @@ def _fmt_pending_block(pending):
     return "; ".join(parts) or "none"
 
 
+def _pick_universe_slice(watchlist_tickers, prioritized, scan_per_run):
+    """
+    Order the eligible universe for this run: today's top movers first
+    (`prioritized`), then a deterministic per-hour rotating slice to fill the
+    quota (`scan_per_run`). Returns the final list to scan this run -- the
+    full list when the quota is not binding.
+    """
+    if scan_per_run <= 0 or len(watchlist_tickers) <= scan_per_run:
+        return list(watchlist_tickers)
+    ordered = sorted(watchlist_tickers)
+    seed = int(datetime.now(pytz.timezone("America/New_York")).strftime("%Y%m%d%H"))
+    start = seed % len(ordered)
+    rotated = ordered[start:] + ordered[:start]
+    remaining = [t for t in rotated if t not in prioritized]
+    return (list(prioritized) + remaining)[:scan_per_run]
+
+
 def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL", pending_trades=None, time_budget=None):
     holdings = account_snapshot.get("holdings", {})
     # Hard wall-clock budget for the whole decision step (threaded from
@@ -943,16 +962,51 @@ def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL", pending_
                 items = [i for i in prep if isinstance(i, dict)]
             for item in items:
                 t = item.get("ticker")
-                if not t or t in holdings or t in new_candidates:
+                if not t or t in holdings:
                     continue
-                new_candidates.setdefault(t, []).append({
-                    "headline": item.get("notes") or item.get("stance") or "morning prep pick",
-                    "summary": "",
-                    "source": "morning-brief",
-                    "url": "",
-                    "sentiment": 0.0,
-                    "score": float(item.get("priority", 5) or 5),
-                })
+                stance = str(item.get("stance") or "buy").lower()
+                if pending_trades is not None:
+                    # UNIFIED MORNING PLAN: fold morning-prep "buy" picks into
+                    # the same queue Gemini re-verifies at the open, so one
+                    # list covers both the overnight queue AND this morning's
+                    # prep picks -- Gemini sees them together and re-checks
+                    # each against fresh data (a pick whose setup broke
+                    # overnight is dropped just like a stale queued idea).
+                    # "watch" / "avoid" / "sell" stances are context, not
+                    # orders; only "buy" becomes a trade idea.
+                    if stance != "buy" or t in new_candidates:
+                        continue
+                    already = any(
+                        isinstance(p, dict)
+                        and p.get("ticker") == t
+                        and str(p.get("action", "buy")).lower() == "buy"
+                        for p in pending_trades
+                    )
+                    if already:
+                        continue
+                    pending_trades.append({
+                        "ticker": t,
+                        "action": "buy",
+                        "confidence": float(item.get("priority", 7) or 7) * 10.0,
+                        "conviction": max(1, min(10, int(item.get("priority", 7) or 7))),
+                        "stop_loss": None,
+                        "take_profit": None,
+                        "reasoning": f"morning prep pick (stance buy): {(item.get('notes') or item.get('key_levels') or '')[:120]}",
+                    })
+                else:
+                    # Overnight dead zone (no live queue yet): inject as a
+                    # normal candidate so it can be scored and queued like any
+                    # other idea.
+                    if t in new_candidates:
+                        continue
+                    new_candidates.setdefault(t, []).append({
+                        "headline": item.get("notes") or item.get("stance") or "morning prep pick",
+                        "summary": "",
+                        "source": "morning-brief",
+                        "url": "",
+                        "sentiment": 0.0,
+                        "score": float(item.get("priority", 5) or 5),
+                    })
     except Exception as e:
         print(f"Could not load morning candidates: {e}")
 
@@ -960,11 +1014,23 @@ def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL", pending_
     # the day, but each run only scores UNIVERSE_SCAN_PER_RUN non-news names
     # (deterministic per hour, so the same run-hour reuses the same slice).
     watchlist_tickers = [t for t in WATCHLIST if t not in holdings and t not in new_candidates]
-    if UNIVERSE_SCAN_PER_RUN > 0 and len(watchlist_tickers) > UNIVERSE_SCAN_PER_RUN:
-        watchlist_tickers = sorted(watchlist_tickers)
-        seed = int(datetime.now(pytz.timezone("America/New_York")).strftime("%Y%m%d%H"))
-        start = seed % len(watchlist_tickers)
-        watchlist_tickers = (watchlist_tickers[start:] + watchlist_tickers[:start])[:UNIVERSE_SCAN_PER_RUN]
+    # Momentum pre-filter: today's top movers (reused from the scan cache via
+    # data_feeds._scan_movers -- zero extra API cost) are scanned FIRST, so
+    # Gemini's attention lands on the names already showing relative strength
+    # instead of a blind rotation. The rest of the quota backfills with the
+    # rotating slice, so the full universe is still covered over the day.
+    prioritized = []
+    if MOMENTUM_PREFILTER:
+        try:
+            from data_feeds import _scan_movers
+            ups, _downs, _up_count, _down_count = _scan_movers()
+            for t, _pct in ups[:MOMENTUM_PREFILTER_MAX]:
+                t = str(t).strip().upper()
+                if t in watchlist_tickers and t not in prioritized:
+                    prioritized.append(t)
+        except Exception:
+            prioritized = []
+    watchlist_tickers = _pick_universe_slice(watchlist_tickers, prioritized, UNIVERSE_SCAN_PER_RUN)
 
     # Dual focus: average headline sentiment per news candidate feeds the
     # quant score so a real catalyst moves the needle alongside the chart.
