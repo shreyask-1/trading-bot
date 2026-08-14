@@ -11089,3 +11089,22 @@ Trade journal: no closed trades yet
 Performance: Total return -0.41% | Max drawdown 12.37% | Daily Sharpe 0.28 | Open positions: 14 | Equity $99,411.36
 Timings: account: 0.0s | risk: 15.5s | decide: 2.8s | watchlist: 0.2s | perf: 0.3s
 
+=== Run at 2026-08-14T16:14:25.818118 ===
+Current time: 2026-08-14 12:14 PM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,425.30
+Cash: $2,352.38 | Holdings (14): {'CEG': '35.6034 sh (+2.18%)', 'CHD': '97.9637 sh (-0.44%)', 'COHR': '7.9896 sh (-5.17%)', 'CVX': '24.8836 sh (+1.68%)', 'GEHC': '0.6136 sh (-0.35%)', 'IVZ': '306.9138 sh (+0.92%)', 'LMT': '16.3555 sh (+0.17%)', 'MS': '43.8344 sh (-1.92%)', 'MSI': '21.1281 sh (-0.63%)', 'NUE': '36.5544 sh (-1.28%)', 'NVDA': '44.2888 sh (+0.65%)', 'NWS': '303.7199 sh (+1.50%)', 'STLD': '0.9216 sh (-2.06%)', 'WSM': '0.1026 sh (-1.54%)'}
+Risk state: peak $99,703.60 | drawdown 0.28% | today +0.17% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 156, 1 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 45/60 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 248
+  -> {"ticker": "SLB", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,913.80), room ($9,942.53), regime multiplier (100%), and cash reserve ($4,971.27 kept of $2,352.38 cash)"}
+  -> {"ticker": "TEL", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,913.80), room ($9,942.53), regime multiplier (100%), and cash reserve ($4,971.27 kept of $2,352.38 cash)"}
+Overnight queue cleared after verification.
+Dashboard watchlist synced (16 symbols) for news/headlines.
+Ending portfolio value: $99,429.42
+Trade journal: no closed trades yet
+Performance: Total return -0.40% | Max drawdown 12.37% | Daily Sharpe 0.28 | Open positions: 14 | Equity $99,425.30
+Timings: account: 0.0s | risk: 12.4s | decide: 5.6s | watchlist: 0.1s | perf: 0.2s
+
