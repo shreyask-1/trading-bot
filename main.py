@@ -435,7 +435,11 @@ def run():
                 f"Market closed (overnight): queued {queued} trade idea(s) for "
                 "next-morning verification -- nothing submitted yet."
             )
-            for trade in trades:
+            # Print the ACTUAL saved queue (the merge dedups + caps at
+            # MAX_PENDING_TRADES), not every raw proposal -- the technical
+            # fallback can propose 50 ideas while only the top 12 are kept,
+            # and dumping all 50 made the log claim more than was queued.
+            for trade in load_pending_trades():
                 log_lines.append(
                     f"  -> queued {trade.get('ticker')} {trade.get('action')} "
                     f"(conf {trade.get('confidence')}, stop {trade.get('stop_loss')}, "
