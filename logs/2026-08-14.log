@@ -3092,3 +3092,72 @@ Trade journal: no closed trades yet
 Performance: Total return -0.58% | Max drawdown 12.37% | Daily Sharpe 0.24 | Open positions: 15 | Equity $99,256.14
 Timings: account: 0.0s | risk: 1.3s | decide: 0.5s | watchlist: 0.0s | perf: 0.1s
 
+=== Run at 2026-08-14T05:15:03.670133 ===
+Current time: 2026-08-14 01:15 AM EDT | Market open (per Alpaca): False | Session: CLOSED
+Account value: $99,262.78
+Cash: $4,962.85 | Holdings (15): {'CEG': '35.6034 sh (+0.31%)', 'CHD': '97.9637 sh (+0.03%)', 'CVX': '24.8836 sh (-0.10%)', 'GEHC': '0.6136 sh (-0.15%)', 'HAS': '1.1333 sh (+0.99%)', 'IVZ': '1.4577 sh (+0.72%)', 'LMT': '16.3555 sh (-1.14%)', 'MS': '43.8344 sh (-0.90%)', 'MSI': '21.1281 sh (-1.00%)', 'NDAQ': '103.7371 sh (+1.65%)', 'NUE': '36.5544 sh (-0.28%)', 'NVDA': '44.2888 sh (+0.41%)', 'NWS': '303.7199 sh (+1.01%)', 'STLD': '0.1352 sh (-0.74%)', 'WSM': '0.1026 sh (-1.26%)'}
+Risk state: peak $99,443.44 | drawdown 0.18% | today +0.01% | halted: False
+Risk management triggered 1 forced sell(s):
+  -> {"ticker": "NDAQ", "status": "failed", "reason": "{\"code\":42210000,\"message\":\"invalid limit_price 97.605. sub-penny increment does not fulfill minimum pricing criteria\"}", "trigger": "negative_news"}
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 45/62 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 50 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 456
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued MSI buy (conf None, stop 429.38, tp 493.11)
+  -> queued NUE buy (conf None, stop 251.55, tp 279.98)
+  -> queued NWS buy (conf None, stop 31.015, tp 35.305)
+  -> queued STLD buy (conf None, stop 245.76, tp 273.25)
+  -> queued WSM buy (conf None, stop 228.56, tp 254.86)
+  -> queued NTAP buy (conf None, stop 174.195, tp 208.88)
+  -> queued MNST buy (conf None, stop 45.095, tp 97.4)
+  -> queued RJF buy (conf None, stop 175.26, tp 182.29)
+  -> queued RL buy (conf None, stop 373.48, tp 410.81)
+  -> queued RMD buy (conf None, stop 202.11, tp 227.575)
+  -> queued ROP buy (conf None, stop 383.955, tp 405.59)
+  -> queued ROST buy (conf None, stop 242.26, tp 256.64)
+  -> queued RSG buy (conf None, stop 205.07, tp 219.16)
+  -> queued RTX buy (conf None, stop 212.05, tp 226.82)
+  -> queued RVTY buy (conf None, stop 107.73, tp 118.14)
+  -> queued SBAC buy (conf None, stop 171.45, tp 188.19)
+  -> queued SBUX buy (conf None, stop 101.885, tp 110.445)
+  -> queued SCHW buy (conf None, stop 104.18, tp 110.185)
+  -> queued SHW buy (conf None, stop 337.57, tp 372.035)
+  -> queued SJM buy (conf None, stop 115.73, tp 121.345)
+  -> queued SLB buy (conf None, stop 48.32, tp 53.985)
+  -> queued SMCI buy (conf None, stop 27.21, tp 42.31)
+  -> queued SNDK buy (conf None, stop 1122.23, tp 1580.8)
+  -> queued SNPS buy (conf None, stop 377.315, tp 421.1)
+  -> queued SOLV buy (conf None, stop 81.65, tp 89.265)
+  -> queued SPGI buy (conf None, stop 403.73, tp 424.26)
+  -> queued STE buy (conf None, stop 220.94, tp 241.14)
+  -> queued STT buy (conf None, stop 180.96, tp 191.47)
+  -> queued STX buy (conf None, stop 761.91, tp 934.38)
+  -> queued STZ buy (conf None, stop 128.99, tp 137.48)
+  -> queued SW buy (conf None, stop 45.29, tp 50.185)
+  -> queued SWK buy (conf None, stop 93.97, tp 104.64)
+  -> queued SWKS buy (conf None, stop 59.915, tp 70.655)
+  -> queued SYF buy (conf None, stop 75.76, tp 80.5)
+  -> queued SYK buy (conf None, stop 317.635, tp 349.57)
+  -> queued T buy (conf None, stop 22.545, tp 24.68)
+  -> queued TAP buy (conf None, stop 40.99, tp 44.43)
+  -> queued TDY buy (conf None, stop 648.46, tp 697.61)
+  -> queued TEL buy (conf None, stop 200.81, tp 221.8)
+  -> queued TER buy (conf None, stop 349.59, tp 422.1)
+  -> queued TFC buy (conf None, stop 51.225, tp 53.46)
+  -> queued TGT buy (conf None, stop 141.11, tp 156.47)
+  -> queued TKO buy (conf None, stop 179.415, tp 199.745)
+  -> queued TMO buy (conf None, stop 563.0, tp 606.17)
+  -> queued TMUS buy (conf None, stop 169.9, tp 183.58)
+  -> queued TPR buy (conf None, stop 127.8, tp 164.76)
+  -> queued TRMB buy (conf None, stop 54.75, tp 61.75)
+  -> queued TSCO buy (conf None, stop 29.99, tp 36.885)
+  -> queued TSLA buy (conf None, stop 301.98, tp 341.62)
+  -> queued TT buy (conf None, stop 450.51, tp 492.39)
+Dashboard watchlist synced (60 symbols) for news/headlines.
+Ending portfolio value: $99,262.78
+Trade journal: no closed trades yet
+Performance: Total return -0.57% | Max drawdown 12.37% | Daily Sharpe 0.24 | Open positions: 15 | Equity $99,262.78
+Timings: account: 0.0s | risk: 4.4s | decide: 1.3s | watchlist: 0.2s | perf: 0.2s
+
