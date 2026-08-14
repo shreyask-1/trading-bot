@@ -6509,3 +6509,66 @@ Trade journal: no closed trades yet
 Performance: Total return -0.52% | Max drawdown 12.37% | Daily Sharpe 0.25 | Open positions: 15 | Equity $99,314.31
 Timings: account: 0.0s | risk: 4.0s | decide: 2.9s | watchlist: 0.2s | perf: 0.3s
 
+=== Run at 2026-08-14T09:30:31.182971 ===
+Current time: 2026-08-14 05:30 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
+Account value: $99,312.22
+Cash: $4,962.84 | Holdings (15): {'CEG': '35.6034 sh (+0.24%)', 'CHD': '97.9637 sh (+0.03%)', 'CVX': '24.8836 sh (+0.41%)', 'GEHC': '0.6136 sh (-0.16%)', 'HAS': '1.1333 sh (+0.99%)', 'IVZ': '1.4577 sh (+0.72%)', 'LMT': '16.3555 sh (-1.32%)', 'MS': '43.8344 sh (-1.11%)', 'MSI': '21.1281 sh (-1.00%)', 'NDAQ': '103.7371 sh (+1.91%)', 'NUE': '36.5544 sh (-0.28%)', 'NVDA': '44.2888 sh (+0.85%)', 'NWS': '303.7199 sh (+1.01%)', 'STLD': '0.1352 sh (-0.74%)', 'WSM': '0.1026 sh (-1.26%)'}
+Risk state: peak $99,443.44 | drawdown 0.13% | today +0.06% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 42/60 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 47 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 72
+  -> {"ticker": "MSI", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($92.08), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "NUE", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($0.00), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "NWS", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($0.00), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "STLD", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,896.00), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "WSM", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,906.36), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "RJF", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "RL", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "RMD", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "CASY", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "CB", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "CBOE", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "CBRE", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "CCI", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "CCL", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "CDW", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "CF", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "CHTR", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "CIEN", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "CL", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "CLX", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "CMCSA", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "CME", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "CMI", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "CNC", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "COF", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "COHR", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "COO", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "COP", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "COR", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "COST", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "CPAY", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "CPB", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "CPRT", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "CRL", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "CRM", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "CRWD", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "CSCO", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "CSGP", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "CTAS", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "CTSH", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "CTVA", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "CVNA", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "CVS", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "DAL", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "DASH", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "DD", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+  -> {"ticker": "DE", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.83), room ($9,931.22), regime multiplier (100%), and cash reserve ($4,965.61 kept of $4,962.84 cash)"}
+Run budget spent -- skipping dashboard watchlist sync.
+Run budget spent -- skipping performance snapshot.
+Trade journal: no closed trades yet
+Performance: Total return -0.52% | Max drawdown 12.37% | Daily Sharpe 0.25 | Open positions: 15 | Equity $99,312.22
+Timings: account: 0.0s | risk: 1.3s | decide: 53.9s | watchlist: 0.0s | perf: 0.0s
+
