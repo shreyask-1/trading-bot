@@ -1231,7 +1231,7 @@ def _detect_account_change(account_snapshot):
     if any(t in holdings for t in baseline):
         return False  # still holds baseline names -> same account
     ledger = _load_json_file(ORDER_LEDGER_FILE, [])
-    if any(str(o.get("order_status", "")).lower() == "filled" for o in ledger):
+    if any(_status_val(o.get("order_status", "")) == "filled" for o in ledger):
         return False  # bot has filled orders on this account -> same account
     return True
 
@@ -1244,6 +1244,30 @@ def _append_order_to_ledger(entry):
         _save_json_file(ORDER_LEDGER_FILE, ledger)
     except Exception as e:
         print(f"Could not write order ledger: {e}")
+
+def _status_val(v):
+    """
+    Return the plain lowercase value of an Alpaca status/side field.
+
+    alpaca-py returns ENUM objects (OrderStatus.FILLED), and str() of those is
+    'OrderStatus.FILLED' -- while every comparison in this module uses plain
+    strings like 'filled'. Storing str(order.status) in the ledger and then
+    comparing against 'filled' silently NEVER matched (the 2026-08-13 CVX
+    false-alarm root cause: the heal FOUND the filled order and rejected it
+    because 'orderstatus.filled' != 'filled'). This normalizes all three
+    shapes the field can arrive in:
+
+        OrderStatus.FILLED  (enum)     -> 'filled'
+        'OrderStatus.FILLED' (string)  -> 'filled'   (old ledger entries)
+        'filled'            (string)   -> 'filled'
+    """
+    if hasattr(v, "value"):
+        v = v.value
+    s = str(v or "").lower()
+    if "." in s:
+        s = s.split(".")[-1]
+    return s
+
 
 _LEDGER_IN_FLIGHT_STATUSES = {
     "accepted", "pending_new", "pending_replace", "new",
@@ -1275,7 +1299,7 @@ def _refresh_ledger_statuses():
             return 0
         needs_refresh = [
             e for e in ledger
-            if str(e.get("order_status", "")).lower() in _LEDGER_IN_FLIGHT_STATUSES
+            if _status_val(e.get("order_status", "")) in _LEDGER_IN_FLIGHT_STATUSES
         ]
         if not needs_refresh:
             return 0
@@ -1283,13 +1307,13 @@ def _refresh_ledger_statuses():
         by_id = {}
         for o in orders:
             oid = str(getattr(o, "id", "") or "").strip()
-            status = str(getattr(o, "status", "") or "").lower()
+            status = _status_val(getattr(o, "status", ""))
             if oid:
                 by_id[oid] = status
         changed = 0
         for entry in ledger:
             oid = str(entry.get("order_id", "") or "").strip()
-            status = str(entry.get("order_status", "")).lower()
+            status = _status_val(entry.get("order_status", ""))
             if status not in _LEDGER_IN_FLIGHT_STATUSES or not oid or oid == "x":
                 continue
             resolved = by_id.get(oid)
@@ -1321,7 +1345,7 @@ def get_expected_holdings():
     for o in ledger:
         t = o.get("ticker")
         side = str(o.get("action", "")).lower()
-        status = str(o.get("order_status", "")).lower()
+        status = _status_val(o.get("order_status", ""))
         if status and status != "filled":
             # Pending (PENDING_NEW / new / submitted), canceled, expired,
             # rejected orders haven't changed holdings (yet).
@@ -1382,8 +1406,8 @@ def _heal_ledger_from_orders(holdings, expected):
     seen = {t: [] for t in missing}
     for o in orders:
         symbol = str(getattr(o, "symbol", "") or "").upper()
-        side = str(getattr(o, "side", "") or "").lower()
-        status = str(getattr(o, "status", "") or "").lower()
+        side = _status_val(getattr(o, "side", ""))
+        status = _status_val(getattr(o, "status", ""))
         if symbol in seen:
             seen[symbol].append(f"{side}/{status}")
         if status not in ("filled", "partially_filled") or side != "buy" or symbol not in missing:
@@ -2222,13 +2246,17 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
                 take_profit = custom.get("take_profit")
 
         # Second-trader detection ledger: every order this bot submits.
+        # NOTE: _status_val() -- storing str(order.status) would write
+        # 'OrderStatus.PENDING_NEW', which no plain-string comparison in the
+        # reconciliation pipeline could ever match (the root cause of the
+        # 2026-08-13 CVX false alarm). Store the plain value.
         _append_order_to_ledger({
             "timestamp": datetime.now().isoformat(),
             "ticker": ticker,
             "action": action,
             "qty": qty,
             "order_id": str(order.id),
-            "order_status": str(order.status),
+            "order_status": _status_val(order.status),
         })
 
         # Trade journal: record every fill, then pair buys/sells into
