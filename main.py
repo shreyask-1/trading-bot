@@ -44,6 +44,7 @@ from trader import (
     execute_trade,
     check_atr_stop_take_profit,
     enforce_portfolio_consolidation,
+    enforce_quality_trim,
     enforce_deleveraging,
     flatten_portfolio,
     evaluate_circuit_breakers,
@@ -242,6 +243,23 @@ def run():
     except Exception as e:
         log_lines.append(f"De-leveraging step failed (continuing anyway): {e}")
 
+    # Step 1c.4: conservative quality-trim of legacy pre-baseline holdings
+    # (recorded in reconciliation_state.json's baseline). Only legacy positions
+    # that FAIL the current technical screens get sold, a few per run, never
+    # into the hole -- the rest of the account's capital flows back into the
+    # risk-parity-sized, sector-capped entries.
+    quality_trim_exits = 0
+    try:
+        quality_sells = enforce_quality_trim(account)
+        quality_trim_exits = len(quality_sells)
+        if quality_sells:
+            log_lines.append(f"Quality trim freed {quality_trim_exits} legacy position(s):")
+            for q_ in quality_sells:
+                log_lines.append(f"  -> {json.dumps(q_)}")
+            account = get_account_snapshot()
+    except Exception as e:
+        log_lines.append(f"Quality trim step failed (continuing anyway): {e}")
+
     # Step 1c.5: daytrading discipline -- flatten everything back to cash at
     # END_OF_DAY_FLATTEN_TIME ET so no position ever survives overnight (the
     # 2026-08-11 3:30 AM ET liquidation hit an overnight position).
@@ -333,8 +351,10 @@ def run():
             candidates = {}
 
         # Step 4: decisions (quant pre-screen inside get_trade_decisions)
+        decision_ok = False
         try:
             trades, decision_meta = get_trade_decisions(candidates, account, regime, pending_trades=pending, time_budget=_remaining_run())
+            decision_ok = True
             log_lines.append(
                 f"Quant pre-screen: {decision_meta['candidates_passed_prescreen']}/"
                 f"{decision_meta['candidates_considered']} candidates passed."
@@ -367,9 +387,19 @@ def run():
 
         # Gemini re-verified the queue this round: whatever it re-approved is
         # in `trades` (executed above); everything it dropped is discarded.
-        if pending:
+        # Only clear when Gemini ACTUALLY verified it -- if the decision step
+        # failed or fell back to the technical engine (Gemini throttled /
+        # quota-exhausted / network error), the queue was never re-checked, so
+        # wiping it would silently discard every overnight idea. Keep it and
+        # the next live-session run re-verifies instead.
+        if pending and decision_ok and not decision_meta.get("technical_fallback"):
             clear_pending_trades()
             log_lines.append("Overnight queue cleared after verification.")
+        elif pending:
+            log_lines.append(
+                "Overnight queue KEPT for next run (Gemini did not verify this round "
+                "-- technical fallback or decision failure); will re-verify when available."
+            )
     else:
         # Overnight dead zone: analyze and QUEUE ideas for the morning. Nothing
         # is submitted now -- the first live-session run re-verifies them with
