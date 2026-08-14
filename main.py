@@ -204,7 +204,7 @@ def run():
     # Step 1: hard ATR-based risk management (always allowed, any regime)
     risk_exits = 0
     try:
-        risk_sells = check_atr_stop_take_profit(account)
+        risk_sells = check_atr_stop_take_profit(account, time_budget=_remaining_run())
         risk_exits = len(risk_sells)
         if risk_sells:
             log_lines.append(f"Risk management triggered {risk_exits} forced sell(s):")
@@ -217,7 +217,7 @@ def run():
     # Step 1b: portfolio consolidation (purges worst excess holdings below threshold)
     consolidation_exits = 0
     try:
-        consolidation_sells = enforce_portfolio_consolidation(account)
+        consolidation_sells = enforce_portfolio_consolidation(account, time_budget=_remaining_run())
         consolidation_exits = len(consolidation_sells)
         if consolidation_sells:
             log_lines.append(f"Consolidation engine triggered {consolidation_exits} forced cleanup sell(s):")
@@ -232,7 +232,7 @@ def run():
     # instead of leaving it in margin for days.
     deleverage_exits = 0
     try:
-        deleverage_sells = enforce_deleveraging(account)
+        deleverage_sells = enforce_deleveraging(account, time_budget=_remaining_run())
         deleverage_exits = len(deleverage_sells)
         if deleverage_sells:
             log_lines.append(f"De-leveraging triggered {deleverage_exits} sell(s) to restore cash:")
@@ -250,7 +250,7 @@ def run():
     # risk-parity-sized, sector-capped entries.
     quality_trim_exits = 0
     try:
-        quality_sells = enforce_quality_trim(account)
+        quality_sells = enforce_quality_trim(account, time_budget=_remaining_run())
         quality_trim_exits = len(quality_sells)
         if quality_sells:
             log_lines.append(f"Quality trim freed {quality_trim_exits} legacy position(s):")
