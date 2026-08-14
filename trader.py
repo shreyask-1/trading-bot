@@ -6,6 +6,7 @@ Handles position sizing, chart-based stops/targets, risk limits, and order submi
 import os
 import json
 import csv
+import math
 import time
 from datetime import datetime, timedelta
 import pytz
@@ -769,7 +770,37 @@ def sync_dashboard_watchlist(tickers):
 # ============================================================
 def load_pending_trades():
     """Overnight queue: trade ideas proposed while no session could fill."""
-    return _load_json_file(PENDING_TRADES_FILE, [])
+    pending = _load_json_file(PENDING_TRADES_FILE, [])
+    if not isinstance(pending, list):
+        return []
+    # Sanitize levels on load too: anything queued before the exit-level
+    # validation landed (or by an older version) could carry a garbage
+    # take-profit (e.g. 1.4e-12) that would confuse the morning prompt.
+    # Non-finite / non-positive levels become None; inverted pairs are both
+    # dropped so the code derives sane ATR/swing levels at execution.
+    for t in pending:
+        if not isinstance(t, dict):
+            continue
+        stop = _sane_level(t.get("stop_loss"))
+        tp = _sane_level(t.get("take_profit"))
+        if stop is not None and tp is not None and tp <= stop:
+            stop = tp = None
+        t["stop_loss"] = stop
+        t["take_profit"] = tp
+    return pending
+
+
+def _sane_level(value):
+    """Finite, positive price or None (mirrors decide._sane_price)."""
+    if value is None:
+        return None
+    try:
+        v = float(value)
+    except (TypeError, ValueError):
+        return None
+    if not math.isfinite(v) or v <= 0:
+        return None
+    return v
 
 
 def save_pending_trades(trades):
@@ -1834,7 +1865,9 @@ def _prune_custom_exits(holdings):
         _save_custom_exits(pruned)
 
 def _clamp_stop_loss(entry_price, atr, candidate_stop):
-    if candidate_stop is None or atr is None or atr <= 0:
+    if candidate_stop is None or atr is None or not math.isfinite(atr) or atr <= 0:
+        return None
+    if not math.isfinite(float(entry_price)) or not math.isfinite(float(candidate_stop)):
         return None
     distance = entry_price - candidate_stop
     min_dist = MIN_STOP_DISTANCE_ATR_MULT * atr
@@ -1843,7 +1876,9 @@ def _clamp_stop_loss(entry_price, atr, candidate_stop):
     return round(entry_price - distance, 2)
 
 def _clamp_take_profit(entry_price, atr, candidate_tp):
-    if candidate_tp is None or atr is None or atr <= 0:
+    if candidate_tp is None or atr is None or not math.isfinite(atr) or atr <= 0:
+        return None
+    if not math.isfinite(float(entry_price)) or not math.isfinite(float(candidate_tp)):
         return None
     distance = candidate_tp - entry_price
     min_dist = MIN_TAKE_PROFIT_DISTANCE_ATR_MULT * atr
@@ -1931,7 +1966,20 @@ def _record_custom_exit(ticker, trade, entry_price, levels=None):
     if levels is None:
         levels = _compute_exit_levels(ticker, trade, entry_price)
     stop_loss, take_profit = levels
-    if stop_loss is None or take_profit is None:
+    # Never persist garbage levels: a NaN/inf or an inverted pair (take-profit
+    # at/below the stop) would mis-fire the exit engine the moment a position
+    # exists. Refuse to record; the ATR fallback in check_atr_stop_take_profit
+    # (and the hard loss cap) still protects the position.
+    try:
+        if (
+            stop_loss is None
+            or take_profit is None
+            or not math.isfinite(float(stop_loss))
+            or not math.isfinite(float(take_profit))
+            or take_profit <= stop_loss
+        ):
+            return None
+    except (TypeError, ValueError):
         return None
 
     exits = _load_custom_exits()
@@ -1975,6 +2023,28 @@ def check_atr_stop_take_profit(account_snapshot, time_budget=None):
         # protects every position using snapshot prices alone)
 
         custom = custom_exits.get(ticker)
+        # Only trust a recorded exit when its levels are internally sane for a
+        # long position -- a take-profit at/below the entry (e.g. a garbage
+        # 1.4e-12 from Gemini) or an inverted pair would fire an instant exit
+        # on a fresh fill. NOTE: the stop may legitimately sit ABOVE the entry
+        # -- the trailing stop ratchets it up past entry to bank gains -- so
+        # only the take-profit side is required to clear the entry. Bad
+        # recorded levels are ignored; the ATR / hard-cap fallback below still
+        # protects the position.
+        if custom and custom.get("stop_loss") is not None and custom.get("take_profit") is not None:
+            _rec_stop = custom.get("stop_loss")
+            _rec_tp = custom.get("take_profit")
+            try:
+                _rec_ok = (
+                    math.isfinite(float(_rec_stop))
+                    and math.isfinite(float(_rec_tp))
+                    and float(_rec_tp) > float(_rec_stop)
+                    and float(_rec_tp) > float(entry)
+                )
+            except (TypeError, ValueError):
+                _rec_ok = False
+            if not _rec_ok:
+                custom = None
         if custom and custom.get("stop_loss") is not None and custom.get("take_profit") is not None:
             stop_level = custom["stop_loss"]
             target_level = custom["take_profit"]
