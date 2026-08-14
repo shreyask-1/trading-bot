@@ -2065,15 +2065,18 @@ def enforce_quality_trim(account_snapshot):
     qualifies).
     """
     if not ENABLE_QUALITY_TRIM:
+        print("Quality trim: disabled via ENABLE_QUALITY_TRIM=false -- skipping.")
         return []
     recon = _load_json_file(RECON_STATE_FILE, {})
     baseline = recon.get("baseline") or {}
     if not baseline:
+        print("Quality trim: no legacy baseline recorded yet (reconciliation_state.json empty) -- nothing to trim.")
         return []  # no legacy positions recorded on this account
     holdings = account_snapshot.get("holdings", {})
     open_orders = get_tickers_with_open_orders()
     candidates = [t for t in holdings if t in baseline and t not in open_orders]
     if not candidates:
+        print(f"Quality trim: {len(holdings)} holdings, none are legacy baseline names (or all have open orders) -- nothing to trim.")
         return []
     scored = []
     for t in candidates:
