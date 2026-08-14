@@ -2684,7 +2684,13 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
                 qty=qty,
                 side=side,
                 time_in_force=TimeInForce.GTC,
-                limit_price=price,
+                # Alpaca rejects sub-penny limit prices for stocks ('sub-penny
+                # increment does not fulfill minimum pricing criteria'); the
+                # IEX last-trade price can carry 3+ decimals (e.g. 97.605), so
+                # round to the nearest cent before submitting. This was a real
+                # failure: the negative-news exit on NDAQ could not place its
+                # sell and retried/failed every run.
+                limit_price=round(float(price), 2),
                 extended_hours=True,
             )
         else:
