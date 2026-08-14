@@ -26,6 +26,8 @@ from config import (
     GEMINI_API_KEY,
     GEMINI_MODEL_FALLBACKS,
     GEMINI_MODEL_LIMITS,
+    GEMINI_DAILY_BUDGET,
+    GEMINI_RUNS_PER_DAY,
     GEMINI_QUOTA_RESET_TIMEZONE,
     MIN_CONVICTION_TO_TRADE,
     WATCHLIST,
@@ -238,6 +240,7 @@ def _default_tracker():
         "discovered_date": None,
         "discovered_models": None,
         "invalid_models": [],
+        "runs_today": 0,
     }
 
 
@@ -263,6 +266,7 @@ def _load_tracker():
     data.setdefault("discovered_date", None)
     data.setdefault("discovered_models", None)
     data.setdefault("invalid_models", [])
+    data.setdefault("runs_today", 0)
     return data
 
 
@@ -319,6 +323,12 @@ def _total_remaining(tracker, model_list):
     return sum(_remaining_rpd(tracker, name) for name in model_list)
 
 
+def _total_used(tracker):
+    """Total Gemini attempts today across every model (not just the current
+    list) -- the counter pacing spreads the daily budget against."""
+    return sum(int(st.get("count", 0)) for st in tracker.get("models", {}).values())
+
+
 def _is_daily_quota_error(error_str):
     return "PerDay" in error_str or "GenerateRequestsPerDayPerProjectPerModel" in error_str or "RESOURCE_EXHAUSTED" in error_str
 
@@ -337,6 +347,26 @@ def _should_attempt_call(tracker, model_list):
     total_remaining = _total_remaining(tracker, model_list)
     if total_remaining <= 0:
         return False, "all available models have exhausted their daily free-tier quota"
+    # Daily budget pacing: at any run you may spend only the share of the
+    # daily budget that the day's runs have 'earned' so far. This spreads
+    # Gemini calls across the WHOLE day instead of front-loading them in the
+    # early hours -- and if a run burns several attempts (timeouts / model
+    # rotation), the following runs skip Gemini until the share catches up,
+    # so a slow-Google period can never empty the day's quota early.
+    budget = GEMINI_DAILY_BUDGET
+    if budget > 0:
+        used = _total_used(tracker)
+        if used >= budget:
+            return False, f"daily Gemini budget spent ({used}/{budget}) -- resets at midnight"
+        runs_done = int(tracker.get("runs_today", 0))
+        runs_per_day = max(1, GEMINI_RUNS_PER_DAY)
+        share = int(budget * runs_done / runs_per_day)
+        if used >= share:
+            return False, (
+                f"Gemini budget pacing: {used}/{budget} calls used across "
+                f"{runs_done} runs (share earned by now: {share}) -- skipping "
+                "this run to keep calls available all day"
+            )
     if tracker.get("last_call") is None:
         return True, None
     try:
@@ -1089,6 +1119,9 @@ def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL", pending_
     )
 
     tracker = _load_tracker()
+    # Count this run toward today's pacing share (incremented BEFORE the
+    # budget check so the first run of the day already has its share).
+    tracker["runs_today"] = int(tracker.get("runs_today", 0)) + 1
     model_list = _get_effective_model_list(tracker)
     calls_today = sum(tracker["models"].get(m, {}).get("count", 0) for m in model_list)
 
