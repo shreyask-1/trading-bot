@@ -5750,6 +5750,9 @@ Timings: account: 0.0s | risk: 3.0s | decide: 18.6s | watchlist: 0.1s | perf: 0.
 === Run at 2026-08-14T23:13:14.090763 ===
 Current time: 2026-08-14 07:13 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,423.77
+=== Run at 2026-08-14T23:12:28.497599 ===
+Current time: 2026-08-14 07:12 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+Account value: $99,423.76
 Cash: $2,352.38 | Holdings (14): {'CEG': '35.6034 sh (+1.39%)', 'CHD': '97.9637 sh (+0.01%)', 'COHR': '7.9896 sh (-4.62%)', 'CVX': '24.8836 sh (+1.25%)', 'GEHC': '0.6136 sh (-0.04%)', 'IVZ': '306.9138 sh (+1.21%)', 'LMT': '16.3555 sh (+0.32%)', 'MS': '43.8344 sh (-1.63%)', 'MSI': '21.1281 sh (-0.69%)', 'NUE': '36.5544 sh (-1.52%)', 'NVDA': '44.2888 sh (+0.36%)', 'NWS': '303.7199 sh (+1.75%)', 'STLD': '0.9216 sh (-2.54%)', 'WSM': '0.1026 sh (-1.61%)'}
 Risk state: peak $99,703.60 | drawdown 0.28% | today +0.17% | halted: False
 Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
@@ -5775,4 +5778,8 @@ Ending portfolio value: $99,423.77
 Trade journal: no closed trades yet
 Performance: Total return -0.41% | Max drawdown 12.37% | Daily Sharpe 0.28 | Open positions: 14 | Equity $99,423.77
 Timings: account: 0.0s | risk: 2.8s | decide: 5.4s | watchlist: 0.1s | perf: 0.1s
+Ending portfolio value: $99,423.76
+Trade journal: no closed trades yet
+Performance: Total return -0.41% | Max drawdown 12.37% | Daily Sharpe 0.28 | Open positions: 14 | Equity $99,423.76
+Timings: account: 0.0s | risk: 4.3s | decide: 17.3s | watchlist: 0.2s | perf: 0.3s
 
