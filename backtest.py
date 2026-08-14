@@ -224,12 +224,13 @@ def run_backtest(start, end, capital, max_positions, tickers):
     return equity_curve, closed_trades, final_equity, bars["SPY"]
 
 
-def _setup_category(snap):
+def build_setup_string(snap):
     """
-    Classify a candidate's setup into a coarse regime bucket so the
-    walk-forward can learn WHICH setups demonstrably won in the past and
-    only trade those in the next window. Deterministic (no lookahead):
-    built purely from the indicator snapshot available on the entry day.
+    Indicator-regime setup string from an indicator snapshot. MUST match
+    trader.py's _live_setup_string() exactly (same fields, same thresholds)
+    -- this is the shared taxonomy that lets the live bot consult the gate
+    the walk-forward learns. Deterministic (no lookahead): built purely from
+    the snapshot available on the entry day.
     """
     trend = snap.get("trend") or "sideways"
     rsi = snap.get("rsi_14")
@@ -400,7 +401,7 @@ def run_walk_forward(start, end, capital, max_positions, train_days, test_days, 
                 score = calculate_signal_score(snap)
                 if score < MIN_SIGNAL_SCORE_TO_CONSIDER:
                     continue
-                setup = _setup_category(snap)
+                setup = build_setup_string(snap)
                 if setup_gate is not None and setup not in setup_gate:
                     continue  # setup did not prove itself in the train window
                 candidates.append((score, ticker, bar.close, snap["atr_14"], setup))
@@ -436,6 +437,43 @@ def run_walk_forward(start, end, capital, max_positions, train_days, test_days, 
             "exit_reason": "end_of_backtest", "score_at_entry": pos["score_at_entry"],
             "regime_at_entry": pos["regime_at_entry"], "setup": pos.get("setup"),
         })
+
+    # Persist the learned gate for the LIVE bot (Phase 3b): data/setup_gate.json
+    # carries the final proven-setup gate plus win stats per setup from ALL
+    # closed walk-forward trades. trader.get_walkforward_multiplier() computes
+    # the same setup string from live indicators and sizes by this edge until
+    # the live journal has its own samples.
+    try:
+        import json as _json
+        stats = {}
+        for s, p in outcome_history:
+            st = stats.setdefault(s, {"n": 0, "wins": 0, "sum": 0.0})
+            st["n"] += 1
+            st["sum"] += p
+            if p > 0:
+                st["wins"] += 1
+        stats_out = {}
+        for s, st in stats.items():
+            stats_out[s] = {
+                "n": st["n"],
+                "wins": st["wins"],
+                "win_rate": round(st["wins"] / st["n"], 4) if st["n"] else 0.0,
+                "avg_pnl_pct": round(st["sum"] / st["n"], 4) if st["n"] else 0.0,
+            }
+        gate_path = os.path.join(os.path.dirname(__file__), "data", "setup_gate.json")
+        os.makedirs(os.path.dirname(gate_path), exist_ok=True)
+        with open(gate_path, "w") as f:
+            _json.dump({
+                "generated_at": datetime.now().isoformat(),
+                "train_days": train_days,
+                "test_days": test_days,
+                "n_closed_trades": len(closed_trades),
+                "gate": sorted(setup_gate or []),
+                "stats": stats_out,
+            }, f, indent=2)
+        print(f"Learned setup gate saved to {gate_path} ({len(setup_gate or [])} proven setups) -- the live bot will size entries by it (Phase 3b).")
+    except Exception as e:
+        print(f"Could not persist setup gate for live use: {e}")
 
     return equity_curve, closed_trades, cash, bars["SPY"], gate_log
 
