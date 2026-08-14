@@ -10690,3 +10690,22 @@ Trade journal: no closed trades yet
 Performance: Total return -0.45% | Max drawdown 12.37% | Daily Sharpe 0.27 | Open positions: 14 | Equity $99,382.69
 Timings: account: 0.0s | risk: 9.9s | decide: 2.7s | watchlist: 0.0s | perf: 0.2s
 
+=== Run at 2026-08-14T15:40:29.328762 ===
+Current time: 2026-08-14 11:40 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,364.89
+Cash: $2,352.38 | Holdings (14): {'CEG': '35.6034 sh (+1.86%)', 'CHD': '97.9637 sh (-0.40%)', 'COHR': '7.9896 sh (-5.50%)', 'CVX': '24.8836 sh (+1.52%)', 'GEHC': '0.6136 sh (-0.36%)', 'IVZ': '306.9138 sh (+0.70%)', 'LMT': '16.3555 sh (+0.23%)', 'MS': '43.8344 sh (-2.00%)', 'MSI': '21.1281 sh (-0.78%)', 'NUE': '36.5544 sh (-0.92%)', 'NVDA': '44.2888 sh (+0.29%)', 'NWS': '303.7199 sh (+1.69%)', 'STLD': '0.9216 sh (-1.56%)', 'WSM': '0.1026 sh (-1.03%)'}
+Risk state: peak $99,703.60 | drawdown 0.34% | today +0.11% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 156, 3 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 44/60 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 233
+  -> {"ticker": "TDY", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,904.73), room ($9,936.49), regime multiplier (100%), and cash reserve ($2,484.12 kept of $2,352.38 cash)"}
+  -> {"ticker": "TEL", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,904.73), room ($9,936.49), regime multiplier (100%), and cash reserve ($4,968.24 kept of $2,352.38 cash)"}
+Overnight queue cleared after verification.
+Dashboard watchlist synced (16 symbols) for news/headlines.
+Ending portfolio value: $99,353.84
+Trade journal: no closed trades yet
+Performance: Total return -0.48% | Max drawdown 12.37% | Daily Sharpe 0.26 | Open positions: 14 | Equity $99,364.89
+Timings: account: 0.0s | risk: 11.4s | decide: 2.2s | watchlist: 0.1s | perf: 0.1s
+
