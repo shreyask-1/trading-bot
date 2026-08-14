@@ -383,6 +383,21 @@ GEMINI_MODEL_LIMITS = {
     "gemini-2.0-flash-lite": {"rpd": int(os.environ.get("GEMINI_RPD_20_FLASH_LITE", 1500)), "rpm": int(os.environ.get("GEMINI_RPM_20_FLASH_LITE", 15))},
 }
 
+# Daily Gemini budget pacing: cap total Gemini ATTEMPTS per day and spread
+# them across the day's runs instead of front-loading them. The bot runs
+# every ~2 minutes around the clock, so without pacing it can burn the free
+# tier's daily quota by midday (and a slow-Google night with model-rotation
+# timeouts inflates the counter even faster). At any run you may call only
+# the budget's share of the day's runs elapsed so far -- so calls stay
+# available all day and the quota never dies early. Set to 0 to disable
+# (current behavior: unlimited attempts until Google's own limit stops you).
+GEMINI_DAILY_BUDGET = int(os.environ.get("GEMINI_DAILY_BUDGET", 1000))
+# Expected runs per day, used to compute the per-run share of the daily
+# budget (every-2-min cadence = 720). The pacing adapts automatically: the
+# more runs that have elapsed, the larger the share of the budget you may
+# have spent -- so a burst of retries thins out the following runs.
+GEMINI_RUNS_PER_DAY = int(os.environ.get("GEMINI_RUNS_PER_DAY", 720))
+
 GEMINI_QUOTA_RESET_TIMEZONE = "America/Los_Angeles"
 # ~52 weeks of daily bars so 52-week high/low distances are available in the
 # same fetch as all other indicators (same API cost).
