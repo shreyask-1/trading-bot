@@ -6828,3 +6828,22 @@ Trade journal: no closed trades yet
 Performance: Total return -0.53% | Max drawdown 12.37% | Daily Sharpe 0.25 | Open positions: 15 | Equity $99,306.91
 Timings: account: 0.0s | risk: 3.6s | decide: 36.9s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-08-14T10:00:33.449313 ===
+Current time: 2026-08-14 06:00 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
+Account value: $99,308.68
+Cash: $4,962.84 | Holdings (15): {'CEG': '35.6034 sh (+0.24%)', 'CHD': '97.9637 sh (+0.03%)', 'CVX': '24.8836 sh (+0.41%)', 'GEHC': '0.6136 sh (-0.16%)', 'HAS': '1.1333 sh (+0.99%)', 'IVZ': '1.4577 sh (+0.72%)', 'LMT': '16.3555 sh (-1.32%)', 'MS': '43.8344 sh (-1.11%)', 'MSI': '21.1281 sh (-1.00%)', 'NDAQ': '103.7371 sh (+1.91%)', 'NUE': '36.5544 sh (-0.28%)', 'NVDA': '44.2888 sh (+0.82%)', 'NWS': '303.7199 sh (+1.01%)', 'STLD': '0.1352 sh (-0.74%)', 'WSM': '0.1026 sh (-1.26%)'}
+Risk state: peak $99,443.44 | drawdown 0.14% | today +0.05% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 1 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 8/12 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 87
+  -> {"ticker": "CBRE", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.30), room ($9,930.87), regime multiplier (100%), and cash reserve ($4,965.43 kept of $4,962.84 cash)"}
+  -> {"ticker": "RMD", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.30), room ($9,930.87), regime multiplier (100%), and cash reserve ($4,965.43 kept of $4,962.84 cash)"}
+  -> {"ticker": "RL", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,896.30), room ($9,930.87), regime multiplier (100%), and cash reserve ($4,965.43 kept of $4,962.84 cash)"}
+Dashboard watchlist synced (18 symbols) for news/headlines.
+Ending portfolio value: $99,313.55
+Trade journal: no closed trades yet
+Performance: Total return -0.52% | Max drawdown 12.37% | Daily Sharpe 0.25 | Open positions: 15 | Equity $99,308.68
+Timings: account: 0.0s | risk: 1.3s | decide: 42.9s | watchlist: 0.0s | perf: 0.1s
+
