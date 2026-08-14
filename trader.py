@@ -44,6 +44,7 @@ from config import (
     WALKFORWARD_LIVE_LEARNING,
     WALKFORWARD_MIN_SAMPLES,
     WALKFORWARD_PROVEN_MULT,
+    MAX_PENDING_TRADES,
     ALLOW_GEMINI_CUSTOM_EXITS,
     ENABLE_INTRADAY_ANALYSIS,
     INTRADAY_BAR_MINUTES,
@@ -721,7 +722,10 @@ def save_pending_trades(trades):
     """
     Merge `trades` into the overnight queue (dedup by ticker+action; newer
     entries win, so a later run's fresher analysis replaces an older idea for
-    the same name). Returns the total number queued.
+    the same name). Keeps only the top MAX_PENDING_TRADES by conviction then
+    confidence, so the morning verification prompt stays tight instead of
+    bloating across a long night (the queue refreshes fresh every night).
+    Returns the total number queued.
     """
     existing = load_pending_trades()
     merged = {}
@@ -729,6 +733,15 @@ def save_pending_trades(trades):
         key = (t.get("ticker"), str(t.get("action", "buy")).lower())
         merged[key] = t
     out = list(merged.values())
+    if MAX_PENDING_TRADES > 0 and len(out) > MAX_PENDING_TRADES:
+        out.sort(
+            key=lambda t: (
+                float(t.get("conviction", 0) or 0),
+                float(t.get("confidence", 0) or 0),
+            ),
+            reverse=True,
+        )
+        out = out[:MAX_PENDING_TRADES]
     _save_json_file(PENDING_TRADES_FILE, out)
     return len(out)
 
