@@ -654,3 +654,56 @@ Trade journal: no closed trades yet
 Performance: Total return -0.58% | Max drawdown 12.37% | Daily Sharpe 0.23 | Open positions: 15 | Equity $99,250.17
 Timings: account: 0.0s | risk: 8.8s | decide: 18.1s | watchlist: 0.2s | perf: 0.3s
 
+=== Run at 2026-08-14T01:06:30.569234 ===
+Current time: 2026-08-13 09:06 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+Account value: $99,251.50
+Cash: $4,962.85 | Holdings (15): {'CEG': '35.6034 sh (+0.33%)', 'CHD': '97.9637 sh (+0.03%)', 'CVX': '24.8836 sh (+0.06%)', 'GEHC': '0.6136 sh (-0.15%)', 'HAS': '1.1333 sh (+0.99%)', 'IVZ': '1.4577 sh (+0.72%)', 'LMT': '16.3555 sh (-1.28%)', 'MS': '43.8344 sh (-0.90%)', 'MSI': '21.1281 sh (-1.00%)', 'NDAQ': '103.7371 sh (+1.62%)', 'NUE': '36.5544 sh (-0.28%)', 'NVDA': '44.2888 sh (+0.38%)', 'NWS': '303.7199 sh (+1.01%)', 'STLD': '0.1352 sh (-0.74%)', 'WSM': '0.1026 sh (-1.26%)'}
+Risk state: peak $99,443.44 | drawdown 0.19% | today -0.01% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 1 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 28/38 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 36 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 361
+Market closed (overnight): queued 42 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued CVX buy (conf None, stop 185.93, tp 198.06)
+  -> queued GEHC buy (conf None, stop 67.155, tp 73.95)
+  -> queued HAS buy (conf None, stop 89.34, tp 97.865)
+  -> queued IVZ buy (conf None, stop 29.325, tp 32.55)
+  -> queued NDAQ buy (conf None, stop 93.23, tp 97.725)
+  -> queued NUE buy (conf None, stop 251.55, tp 279.98)
+  -> queued NWS buy (conf None, stop 31.015, tp 35.305)
+  -> queued WSM buy (conf None, stop 228.56, tp 254.86)
+  -> queued NTAP buy (conf None, stop 174.195, tp 208.88)
+  -> queued MNST buy (conf None, stop 45.095, tp 97.4)
+  -> queued GDDY buy (conf None, stop 74.49, tp 100.71)
+  -> queued GPN buy (conf None, stop 83.93, tp 95.53)
+  -> queued MDT buy (conf None, stop 83.835, tp 91.59)
+  -> queued MET buy (conf None, stop 94.17, tp 100.86)
+  -> queued MKC buy (conf None, stop 50.49, tp 54.73)
+  -> queued MLM buy (conf None, stop 523.63, tp 561.49)
+  -> queued MMM buy (conf None, stop 175.0, tp 184.46)
+  -> queued MPC buy (conf None, stop 290.5, tp 357.195)
+  -> queued MPWR buy (conf None, stop 1306.0, tp 1568.21)
+  -> queued MRK buy (conf None, stop 126.4, tp 135.665)
+  -> queued MRNA buy (conf None, stop 52.8, tp 65.31)
+  -> queued MRSH buy (conf None, stop 187.075, tp 193.84)
+  -> queued MSCI buy (conf None, stop 556.155, tp 582.195)
+  -> queued MSFT buy (conf None, stop 449.87, tp 513.72)
+  -> queued MTD buy (conf None, stop 1370.92, tp 1456.085)
+  -> queued MU buy (conf None, stop 770.42, tp 978.0)
+  -> queued NCLH buy (conf None, stop 18.315, tp 20.605)
+  -> queued NDSN buy (conf None, stop 294.14, tp 313.93)
+  -> queued NEE buy (conf None, stop 83.49, tp 88.05)
+  -> queued NEM buy (conf None, stop 91.85, tp 120.16)
+  -> queued NFLX buy (conf None, stop 71.11, tp 78.38)
+  -> queued NOC buy (conf None, stop 530.38, tp 580.75)
+  -> queued NOW buy (conf None, stop 106.72, tp 129.645)
+  -> queued NTRS buy (conf None, stop 179.96, tp 192.46)
+  -> queued NVR buy (conf None, stop 6127.86, tp 6478.22)
+  -> queued NWSA buy (conf None, stop 27.415, tp 30.79)
+Run budget spent -- skipping dashboard watchlist sync.
+Run budget spent -- skipping performance snapshot.
+Trade journal: no closed trades yet
+Performance: Total return -0.58% | Max drawdown 12.37% | Daily Sharpe 0.23 | Open positions: 15 | Equity $99,251.50
+Timings: account: 0.0s | risk: 8.5s | decide: 48.5s | watchlist: 0.0s | perf: 0.0s
+
