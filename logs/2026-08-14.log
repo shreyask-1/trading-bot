@@ -2197,3 +2197,45 @@ Trade journal: no closed trades yet
 Performance: Total return -0.58% | Max drawdown 12.37% | Daily Sharpe 0.23 | Open positions: 15 | Equity $99,254.88
 Timings: account: 0.0s | risk: 9.0s | decide: 10.6s | watchlist: 0.2s | perf: 0.3s
 
+=== Run at 2026-08-14T04:02:25.792857 ===
+Current time: 2026-08-14 12:02 AM EDT | Market open (per Alpaca): False | Session: CLOSED
+Account value: $99,253.11
+Cash: $4,962.85 | Holdings (15): {'CEG': '35.6034 sh (+0.32%)', 'CHD': '97.9637 sh (+0.03%)', 'CVX': '24.8836 sh (-0.10%)', 'GEHC': '0.6136 sh (-0.15%)', 'HAS': '1.1333 sh (+0.99%)', 'IVZ': '1.4577 sh (+0.72%)', 'LMT': '16.3555 sh (-1.27%)', 'MS': '43.8344 sh (-0.90%)', 'MSI': '21.1281 sh (-1.00%)', 'NDAQ': '103.7371 sh (+1.65%)', 'NUE': '36.5544 sh (-0.28%)', 'NVDA': '44.2888 sh (+0.45%)', 'NWS': '303.7199 sh (+1.01%)', 'STLD': '0.1352 sh (-0.74%)', 'WSM': '0.1026 sh (-1.26%)'}
+Risk state: peak $99,443.44 | drawdown 0.19% | today -0.00% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 58, 1 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 20/26 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 25 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 427
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued MSI buy (conf None, stop 429.38, tp 493.11)
+  -> queued NUE buy (conf None, stop 251.55, tp 279.98)
+  -> queued NWS buy (conf None, stop 31.015, tp 35.305)
+  -> queued STLD buy (conf None, stop 245.76, tp 273.25)
+  -> queued WSM buy (conf None, stop 228.56, tp 254.86)
+  -> queued NTAP buy (conf None, stop 174.195, tp 208.88)
+  -> queued MNST buy (conf None, stop 45.095, tp 97.4)
+  -> queued RJF buy (conf None, stop 175.26, tp 182.29)
+  -> queued RL buy (conf None, stop 373.48, tp 410.81)
+  -> queued RMD buy (conf None, stop 202.11, tp 227.575)
+  -> queued ROP buy (conf None, stop 383.955, tp 405.59)
+  -> queued ROST buy (conf None, stop 242.26, tp 256.64)
+  -> queued RSG buy (conf None, stop 205.07, tp 219.16)
+  -> queued RTX buy (conf None, stop 212.05, tp 226.82)
+  -> queued RVTY buy (conf None, stop 107.73, tp 118.14)
+  -> queued SBAC buy (conf None, stop 171.45, tp 188.19)
+  -> queued SBUX buy (conf None, stop 101.885, tp 110.445)
+  -> queued SCHW buy (conf None, stop 104.18, tp 110.185)
+  -> queued SHW buy (conf None, stop 337.57, tp 372.035)
+  -> queued SJM buy (conf None, stop 115.73, tp 121.345)
+  -> queued SLB buy (conf None, stop 48.32, tp 53.985)
+  -> queued SMCI buy (conf None, stop 27.21, tp 42.31)
+  -> queued SNDK buy (conf None, stop 1122.23, tp 1580.8)
+  -> queued SNPS buy (conf None, stop 377.315, tp 421.1)
+  -> queued SOLV buy (conf None, stop 81.65, tp 89.265)
+Run budget spent -- skipping dashboard watchlist sync.
+Run budget spent -- skipping performance snapshot.
+Trade journal: no closed trades yet
+Performance: Total return -0.58% | Max drawdown 12.37% | Daily Sharpe 0.23 | Open positions: 15 | Equity $99,253.11
+Timings: account: 0.0s | risk: 7.5s | decide: 50.5s | watchlist: 0.0s | perf: 0.0s
+
