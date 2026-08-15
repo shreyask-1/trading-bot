@@ -70,6 +70,22 @@ CONSOLIDATION_SCORE_THRESHOLD = 70  # Force-sell excess positions scoring below 
 EXCEPTIONAL_CONVICTION_THRESHOLD = 9
 EXCEPTIONAL_TRADE_RESERVE_ACCESS_PCT = 0.5
 
+# --- High-conviction swaps ---
+# When a genuinely outstanding new idea (Gemini confidence >= SWAP_MIN_CONFIDENCE
+# OR conviction >= SWAP_MIN_CONVICTION) can't fund because the account is fully
+# deployed (cash/room below the min trade size), the bot may SELL its smallest
+# existing winner -- a holding already up at least SWAP_MIN_WINNER_PCT -- to
+# free capital for the better setup. Deterministic and conservative: the
+# SMALLEST qualifying winner is sold first (banks a modest gain, keeps the big
+# winners compounding), the sale never targets a position that is down, and a
+# per-run cap stops churn. If the freed capital is still below the min trade
+# size, the new idea is skipped with the swap noted in the reason.
+ENABLE_HIGH_CONVICTION_SWAPS = os.environ.get("ENABLE_HIGH_CONVICTION_SWAPS", "true").lower() == "true"
+SWAP_MIN_CONFIDENCE = float(os.environ.get("SWAP_MIN_CONFIDENCE", 90))
+SWAP_MIN_CONVICTION = int(os.environ.get("SWAP_MIN_CONVICTION", 9))
+SWAP_MIN_WINNER_PCT = float(os.environ.get("SWAP_MIN_WINNER_PCT", 3.0))
+SWAP_MAX_PER_RUN = int(os.environ.get("SWAP_MAX_PER_RUN", 2))
+
 # --- Trading sessions: 24/7 with an overnight queue ---
 # The bot runs 24/7 and never idles:
 #   * Regular session (9:30-16:00 ET): trades execute immediately.
