@@ -8565,6 +8565,7 @@ Performance: Total return -0.41% | Max drawdown 12.37% | Daily Sharpe 0.26 | Ope
 Timings: account: 0.0s | risk: 3.0s | decide: 23.7s | watchlist: 0.1s | perf: 0.2s
 
 === Run at 2026-08-16T09:18:39.100071 ===
+=== Run at 2026-08-16T09:18:12.420813 ===
 Current time: 2026-08-16 05:18 AM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,425.43
 Cash: $2,352.13 | Holdings (14): {'CEG': '35.6034 sh (+1.36%)', 'CHD': '97.9637 sh (+0.01%)', 'COHR': '7.9896 sh (-4.69%)', 'CVX': '24.8836 sh (+1.17%)', 'GEHC': '0.6136 sh (-0.28%)', 'IVZ': '306.9138 sh (+1.21%)', 'LMT': '16.3555 sh (+0.32%)', 'MS': '43.8344 sh (-1.63%)', 'MSI': '21.1281 sh (-0.69%)', 'NUE': '36.5544 sh (-1.52%)', 'NVDA': '44.2888 sh (+0.48%)', 'NWS': '303.7199 sh (+1.75%)', 'STLD': '0.9216 sh (-2.54%)', 'WSM': '0.1026 sh (-1.61%)'}
@@ -8574,6 +8575,7 @@ Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100
 News: fetched 157, 0 new after dedup, 0 ticker(s) matched.
 Quant pre-screen: 47/67 candidates passed.
 Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini proposed 2 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 68
 Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
   -> queued WDC buy (conf 92, stop 485.0, tp 560.0)
@@ -8593,4 +8595,13 @@ Ending portfolio value: $99,425.43
 Trade journal: no closed trades yet
 Performance: Total return -0.41% | Max drawdown 12.37% | Daily Sharpe 0.26 | Open positions: 14 | Equity $99,425.43
 Timings: account: 0.0s | risk: 0.8s | decide: 2.0s | watchlist: 0.0s | perf: 0.1s
+  -> queued TYL buy (conf 92, stop 315.0, tp 355.00000000000006)
+  -> queued SHW buy (conf 90, stop 347.41, tp 372.04)
+  -> queued TTWO buy (conf 91, stop 235.0, tp 270.0)
+  -> queued RSG buy (conf 84, stop 207.0, tp 225.0)
+Dashboard watchlist synced (16 symbols) for news/headlines.
+Ending portfolio value: $99,425.43
+Trade journal: no closed trades yet
+Performance: Total return -0.41% | Max drawdown 12.37% | Daily Sharpe 0.26 | Open positions: 14 | Equity $99,425.43
+Timings: account: 0.0s | risk: 2.1s | decide: 2.9s | watchlist: 0.1s | perf: 0.1s
 
