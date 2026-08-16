@@ -2608,3 +2608,33 @@ Trade journal: no closed trades yet
 Performance: Total return -0.41% | Max drawdown 12.37% | Daily Sharpe 0.26 | Open positions: 14 | Equity $99,425.43
 Timings: account: 0.0s | risk: 3.4s | decide: 7.6s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-08-16T02:50:28.293990 ===
+Current time: 2026-08-15 10:50 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+Account value: $99,425.43
+Cash: $2,352.13 | Holdings (14): {'CEG': '35.6034 sh (+1.36%)', 'CHD': '97.9637 sh (+0.01%)', 'COHR': '7.9896 sh (-4.69%)', 'CVX': '24.8836 sh (+1.17%)', 'GEHC': '0.6136 sh (-0.28%)', 'IVZ': '306.9138 sh (+1.21%)', 'LMT': '16.3555 sh (+0.32%)', 'MS': '43.8344 sh (-1.63%)', 'MSI': '21.1281 sh (-0.69%)', 'NUE': '36.5544 sh (-1.52%)', 'NVDA': '44.2888 sh (+0.48%)', 'NWS': '303.7199 sh (+1.75%)', 'STLD': '0.9216 sh (-2.54%)', 'WSM': '0.1026 sh (-1.61%)'}
+Open orders (1): NVDA sell 44.2888
+Risk state: peak $99,703.60 | drawdown 0.28% | today -0.00% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 1 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 47/67 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 50 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 566
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued WDC buy (conf 92, stop 485.0, tp 560.0)
+  -> queued WFC buy (conf 91, stop 86.06, tp 97.76)
+  -> queued HAS buy (conf 90, stop 89.34, tp 106.82)
+  -> queued HUM buy (conf None, stop 354.57, tp 392.49)
+  -> queued WDAY buy (conf 85, stop 188.0, tp 220.0)
+  -> queued BAC buy (conf 85, stop 62.5, tp 67.5)
+  -> queued HBAN buy (conf 85, stop 17.09, tp 19.45)
+  -> queued TDY buy (conf None, stop 654.41, tp 697.61)
+  -> queued NDAQ buy (conf None, stop 93.23, tp 97.755)
+  -> queued TTWO buy (conf None, stop 228.4, tp 256.285)
+  -> queued TYL buy (conf None, stop 300.28, tp 334.89)
+  -> queued TEL buy (conf None, stop 200.81, tp 221.8)
+Run budget spent -- skipping dashboard watchlist sync.
+Run budget spent -- skipping performance snapshot.
+Trade journal: no closed trades yet
+Performance: Total return -0.41% | Max drawdown 12.37% | Daily Sharpe 0.26 | Open positions: 14 | Equity $99,425.43
+Timings: account: 0.0s | risk: 1.7s | decide: 28.3s | watchlist: 0.0s | perf: 0.0s
+
