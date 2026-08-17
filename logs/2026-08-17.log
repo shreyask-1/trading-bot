@@ -10654,3 +10654,39 @@ Self-learning: technical: 1 trades, 0% win rate, avg -3.50% (LOSING)
 Performance: Total return -0.63% | Max drawdown 12.37% | Daily Sharpe 0.21 | 1 closed trades | Win rate 0% | Avg winner +0.00% | Avg loser -3.50% | Open positions: 13 | Equity $99,212.79
 Timings: account: 0.0s | risk: 1.7s | decide: 3.8s | watchlist: 0.1s | perf: 0.1s
 
+=== Run at 2026-08-17T13:34:26.480717 ===
+Current time: 2026-08-17 09:34 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,125.35
+Cash: $22,155.90 | Holdings (12): {'CEG': '35.6034 sh (+1.79%)', 'COHR': '7.9896 sh (-0.37%)', 'CVX': '24.8836 sh (+1.15%)', 'ERIE': '0.7641 sh (-2.25%)', 'GEHC': '0.6136 sh (-1.00%)', 'IVZ': '306.9138 sh (+0.72%)', 'LMT': '16.3555 sh (-0.12%)', 'MS': '43.8344 sh (-1.35%)', 'MSI': '21.1281 sh (-1.05%)', 'NUE': '36.5544 sh (-3.48%)', 'NWS': '303.7199 sh (+1.46%)', 'WSM': '0.1026 sh (-2.50%)'}
+Open orders (1): MPC buy 20.6725
+Risk state: peak $99,703.60 | drawdown 0.58% | today -0.32% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 3 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 16/23 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 17 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 195
+  -> {"ticker": "NWS", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,868.80), room ($0.00), regime multiplier (100%), and cash reserve ($4,956.27 kept of $22,155.90 cash)"}
+  -> {"timestamp": "2026-08-17T13:34:56.281307", "ticker": "EOG", "action": "buy", "qty": 68.7237, "conviction": 5, "size_multiplier": 1.0, "order_id": "ad139e8b-fba8-4873-9058-9a93a6ba64be", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": 133.65, "take_profit": 155.34, "reasoning": "technical score 61/100, strong signal on technicals alone.", "status": "submitted"}
+  -> {"ticker": "EPAM", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,871.58), room ($9,914.39), regime multiplier (100%), and cash reserve ($4,957.19 kept of $22,155.90 cash)"}
+  -> {"ticker": "EQIX", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,871.58), room ($9,914.39), regime multiplier (100%), and cash reserve ($4,957.19 kept of $22,155.90 cash)"}
+  -> {"ticker": "EQT", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,871.58), room ($9,914.39), regime multiplier (100%), and cash reserve ($4,957.19 kept of $22,155.90 cash)"}
+  -> {"ticker": "ESS", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,871.58), room ($9,914.39), regime multiplier (100%), and cash reserve ($4,957.19 kept of $22,155.90 cash)"}
+  -> {"ticker": "ETN", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,871.58), room ($9,914.39), regime multiplier (100%), and cash reserve ($4,957.19 kept of $22,155.90 cash)"}
+  -> {"ticker": "EW", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,871.58), room ($9,914.39), regime multiplier (100%), and cash reserve ($4,957.19 kept of $22,155.90 cash)"}
+  -> {"ticker": "EMR", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,871.58), room ($9,914.39), regime multiplier (100%), and cash reserve ($4,957.19 kept of $22,155.90 cash)"}
+  -> {"ticker": "EXE", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,871.58), room ($9,914.39), regime multiplier (100%), and cash reserve ($4,957.19 kept of $22,155.90 cash)"}
+  -> {"ticker": "EXPD", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,871.58), room ($9,914.39), regime multiplier (100%), and cash reserve ($4,957.19 kept of $22,155.90 cash)"}
+  -> {"ticker": "EXPE", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,871.58), room ($9,914.39), regime multiplier (100%), and cash reserve ($4,957.19 kept of $22,155.90 cash)"}
+  -> {"ticker": "FANG", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,871.58), room ($9,914.39), regime multiplier (100%), and cash reserve ($4,957.19 kept of $22,155.90 cash)"}
+  -> {"ticker": "FAST", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,871.58), room ($9,914.39), regime multiplier (100%), and cash reserve ($4,957.19 kept of $22,155.90 cash)"}
+  -> {"ticker": "FCX", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,871.58), room ($9,914.39), regime multiplier (100%), and cash reserve ($4,957.19 kept of $22,155.90 cash)"}
+  -> {"ticker": "FDS", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,871.58), room ($9,914.39), regime multiplier (100%), and cash reserve ($4,957.19 kept of $22,155.90 cash)"}
+  -> {"ticker": "FDX", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,871.58), room ($9,914.39), regime multiplier (100%), and cash reserve ($4,957.19 kept of $22,155.90 cash)"}
+Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); will re-verify when available.
+Run budget spent -- skipping dashboard watchlist sync.
+Run budget spent -- skipping performance snapshot.
+Trade journal: all: 1 trades, 0% win rate, avg -3.50% | technical: 1 trades, 0% win rate, avg -3.50%
+Self-learning: technical: 1 trades, 0% win rate, avg -3.50% (LOSING)
+Performance: Total return -0.65% | Max drawdown 12.37% | Daily Sharpe 0.21 | 1 closed trades | Win rate 0% | Avg winner +0.00% | Avg loser -3.50% | Open positions: 12 | Equity $99,143.85
+Timings: account: 0.0s | risk: 0.8s | decide: 30.1s | watchlist: 0.0s | perf: 0.0s
+
