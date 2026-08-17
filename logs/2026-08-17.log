@@ -12186,3 +12186,25 @@ Self-learning: technical: 1 trades, 0% win rate, avg -3.50% (LOSING)
 Performance: Total return -0.75% | Max drawdown 12.37% | Daily Sharpe 0.18 | 1 closed trades | Win rate 0% | Avg winner +0.00% | Avg loser -3.50% | Open positions: 13 | Equity $99,073.84
 Timings: account: 0.0s | risk: 4.7s | decide: 3.6s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-08-17T15:58:26.967721 ===
+Current time: 2026-08-17 11:58 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,057.39
+Cash: $12,337.34 | Holdings (13): {'CEG': '35.6034 sh (-0.98%)', 'COHR': '7.9896 sh (+4.54%)', 'CVX': '24.8836 sh (+1.93%)', 'EOG': '68.7237 sh (+0.64%)', 'ERIE': '0.7641 sh (-2.94%)', 'GEHC': '0.6136 sh (-2.11%)', 'IVZ': '306.9138 sh (+1.32%)', 'LMT': '16.3555 sh (-1.72%)', 'MS': '43.8344 sh (-0.96%)', 'MSI': '21.1281 sh (-1.91%)', 'NUE': '36.5544 sh (-0.92%)', 'NWS': '303.7199 sh (+0.09%)', 'WSM': '0.1026 sh (-2.68%)'}
+Open orders (1): MPC buy 20.6725
+Risk state: peak $99,703.60 | drawdown 0.65% | today -0.39% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 33/60 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 250
+  -> {"ticker": "NVDA", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,858.61), room ($9,905.74), regime multiplier (100%), and cash reserve ($4,952.87 kept of $12,337.34 cash)"}
+  -> {"ticker": "APH", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,858.61), room ($9,905.74), regime multiplier (100%), and cash reserve ($4,952.87 kept of $12,337.34 cash)"}
+  -> {"ticker": "PLTR", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,858.61), room ($9,905.74), regime multiplier (100%), and cash reserve ($4,952.87 kept of $12,337.34 cash)"}
+Overnight queue cleared after verification.
+Dashboard watchlist synced (17 symbols) for news/headlines.
+Ending portfolio value: $99,064.03
+Trade journal: all: 1 trades, 0% win rate, avg -3.50% | technical: 1 trades, 0% win rate, avg -3.50%
+Self-learning: technical: 1 trades, 0% win rate, avg -3.50% (LOSING)
+Performance: Total return -0.77% | Max drawdown 12.37% | Daily Sharpe 0.18 | 1 closed trades | Win rate 0% | Avg winner +0.00% | Avg loser -3.50% | Open positions: 13 | Equity $99,057.39
+Timings: account: 0.0s | risk: 3.5s | decide: 16.0s | watchlist: 0.1s | perf: 0.1s
+
