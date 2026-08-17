@@ -13591,3 +13591,22 @@ Self-learning: technical: 1 trades, 0% win rate, avg -3.50% (LOSING)
 Performance: Total return -0.48% | Max drawdown 12.37% | Daily Sharpe 0.24 | 1 closed trades | Win rate 0% | Avg winner +0.00% | Avg loser -3.50% | Open positions: 13 | Equity $99,353.24
 Timings: account: 0.0s | risk: 5.1s | decide: 3.7s | watchlist: 0.0s | perf: 0.1s
 
+=== Run at 2026-08-17T18:34:30.799786 ===
+Current time: 2026-08-17 02:34 PM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,330.19
+Cash: $12,337.34 | Holdings (13): {'CEG': '35.6034 sh (-0.17%)', 'COHR': '7.9896 sh (+4.57%)', 'CVX': '24.8836 sh (+2.87%)', 'EOG': '68.7237 sh (+1.63%)', 'ERIE': '0.7641 sh (-3.10%)', 'GEHC': '0.6136 sh (-2.15%)', 'IVZ': '306.9138 sh (+1.42%)', 'LMT': '16.3555 sh (-1.64%)', 'MS': '43.8344 sh (-0.89%)', 'MSI': '21.1281 sh (-2.19%)', 'NUE': '36.5544 sh (-0.61%)', 'NWS': '303.7199 sh (+0.32%)', 'WSM': '0.1026 sh (-2.08%)'}
+Open orders (1): MPC buy 20.6725
+Risk state: peak $99,703.60 | drawdown 0.37% | today -0.12% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 157, 2 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 35/60 candidates passed.
+Gemini proposed 0 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 302
+Overnight queue cleared after verification.
+Dashboard watchlist synced (14 symbols) for news/headlines.
+Ending portfolio value: $99,324.58
+Trade journal: all: 1 trades, 0% win rate, avg -3.50% | technical: 1 trades, 0% win rate, avg -3.50%
+Self-learning: technical: 1 trades, 0% win rate, avg -3.50% (LOSING)
+Performance: Total return -0.51% | Max drawdown 12.37% | Daily Sharpe 0.24 | 1 closed trades | Win rate 0% | Avg winner +0.00% | Avg loser -3.50% | Open positions: 13 | Equity $99,330.19
+Timings: account: 0.0s | risk: 4.5s | decide: 21.8s | watchlist: 0.1s | perf: 0.1s
+
