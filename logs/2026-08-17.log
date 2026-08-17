@@ -7171,3 +7171,23 @@ Trade journal: no closed trades yet
 Performance: Total return -0.27% | Max drawdown 12.37% | Daily Sharpe 0.29 | Open positions: 13 | Equity $99,561.52
 Timings: account: 0.0s | risk: 0.8s | decide: 3.0s | watchlist: 0.0s | perf: 0.1s
 
+=== Run at 2026-08-17T08:10:29.396150 ===
+Current time: 2026-08-17 04:10 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
+Account value: $99,533.16
+Cash: $12,324.20 | Holdings (13): {'CEG': '35.6034 sh (+1.70%)', 'CHD': '97.9637 sh (+0.01%)', 'COHR': '7.9896 sh (-1.56%)', 'CVX': '24.8836 sh (+1.10%)', 'GEHC': '0.6136 sh (-0.04%)', 'IVZ': '306.9138 sh (+1.21%)', 'LMT': '16.3555 sh (+0.21%)', 'MS': '43.8344 sh (-1.70%)', 'MSI': '21.1281 sh (-0.69%)', 'NUE': '36.5544 sh (-1.52%)', 'NWS': '303.7199 sh (+1.84%)', 'STLD': '0.9216 sh (-2.54%)', 'WSM': '0.1026 sh (-1.61%)'}
+Open orders (1): MPC buy 20.6725
+Risk state: peak $99,703.60 | drawdown 0.17% | today +0.09% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 39/60 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 32
+  -> {"ticker": "MPWR", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,929.97), room ($9,953.32), regime multiplier (100%), and cash reserve ($2,488.33 kept of $12,324.20 cash)"}
+  -> {"ticker": "MRK", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,929.97), room ($9,953.32), regime multiplier (100%), and cash reserve ($4,976.66 kept of $12,324.20 cash)"}
+Overnight queue cleared after verification.
+Dashboard watchlist synced (16 symbols) for news/headlines.
+Ending portfolio value: $99,533.16
+Trade journal: no closed trades yet
+Performance: Total return -0.30% | Max drawdown 12.37% | Daily Sharpe 0.28 | Open positions: 13 | Equity $99,533.16
+Timings: account: 0.0s | risk: 1.3s | decide: 2.0s | watchlist: 0.1s | perf: 0.1s
+
