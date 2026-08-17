@@ -4007,6 +4007,7 @@ Performance: Total return -0.37% | Max drawdown 12.37% | Daily Sharpe 0.27 | Ope
 Timings: account: 0.0s | risk: 1.9s | decide: 3.6s | watchlist: 0.1s | perf: 0.1s
 
 === Run at 2026-08-17T04:32:42.756270 ===
+=== Run at 2026-08-17T04:32:15.445021 ===
 Current time: 2026-08-17 12:32 AM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,458.97
 Cash: $12,324.20 | Holdings (13): {'CEG': '35.6034 sh (+1.71%)', 'CHD': '97.9637 sh (+0.01%)', 'COHR': '7.9896 sh (-2.83%)', 'CVX': '24.8836 sh (+1.13%)', 'GEHC': '0.6136 sh (-0.04%)', 'IVZ': '306.9138 sh (+1.21%)', 'LMT': '16.3555 sh (+0.29%)', 'MS': '43.8344 sh (-2.12%)', 'MSI': '21.1281 sh (-0.69%)', 'NUE': '36.5544 sh (-1.52%)', 'NWS': '303.7199 sh (+1.75%)', 'STLD': '0.9216 sh (-2.54%)', 'WSM': '0.1026 sh (-1.61%)'}
@@ -4029,9 +4030,13 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued TDY buy (conf 91, stop 654.41, tp 697.61)
   -> queued TTWO buy (conf 92, stop 228.4, tp 265.49)
   -> queued TYL buy (conf 90, stop 300.28, tp 334.89)
+  -> queued TDY buy (conf 85, stop 654.41, tp 715.0)
+  -> queued TTWO buy (conf 90, stop 228.4, tp 265.49)
+  -> queued TYL buy (conf 92, stop 300.28, tp 355.00000000000006)
 Dashboard watchlist synced (16 symbols) for news/headlines.
 Ending portfolio value: $99,458.97
 Trade journal: no closed trades yet
 Performance: Total return -0.37% | Max drawdown 12.37% | Daily Sharpe 0.27 | Open positions: 13 | Equity $99,458.97
 Timings: account: 0.0s | risk: 0.8s | decide: 2.2s | watchlist: 0.0s | perf: 0.1s
+Timings: account: 0.0s | risk: 0.9s | decide: 2.2s | watchlist: 0.0s | perf: 0.1s
 
