@@ -26,3 +26,4 @@ timestamp,ticker,action,qty,price,stop_loss,take_profit,conviction,confidence,tr
 2026-08-14T14:08:57.203996,COHR,buy,7.9896,342.35,248.88,482.56,7,,decision,"technical score 70/100, strong signal on technicals alone with opening-range breakout (above)."
 2026-08-14T15:10:37.118184,HAS,sell,1.1333,97.13,,,10,,negative_news,Negative news: worst sentiment -1.00
 2026-08-15T18:14:28.282379,NVDA,sell,44.2888,225.16,,,10,,negative_news,Negative news: worst sentiment -1.00
+2026-08-17T08:01:07.210536,MPC,buy,20.6725,355.48,335.0,386.2,9,85,decision,"Strong quant score of 69/100, significant insider accumulation of $5.8M, and strong momentum in the energy sector with RSI at 74 and bullish MACD histogram."
