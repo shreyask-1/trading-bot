@@ -11376,3 +11376,36 @@ Self-learning: technical: 1 trades, 0% win rate, avg -3.50% (LOSING)
 Performance: Total return -0.69% | Max drawdown 12.37% | Daily Sharpe 0.20 | 1 closed trades | Win rate 0% | Avg winner +0.00% | Avg loser -3.50% | Open positions: 13 | Equity $99,140.93
 Timings: account: 0.0s | risk: 6.0s | decide: 48.3s | watchlist: 0.0s | perf: 0.0s
 
+=== Run at 2026-08-17T14:34:30.559633 ===
+Current time: 2026-08-17 10:34 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,161.16
+Cash: $12,337.34 | Holdings (13): {'CEG': '35.6034 sh (-1.13%)', 'COHR': '7.9896 sh (+1.53%)', 'CVX': '24.8836 sh (+2.19%)', 'EOG': '68.7237 sh (+0.75%)', 'ERIE': '0.7641 sh (-0.93%)', 'GEHC': '0.6136 sh (-1.53%)', 'IVZ': '306.9138 sh (+1.37%)', 'LMT': '16.3555 sh (-0.48%)', 'MS': '43.8344 sh (-1.25%)', 'MSI': '21.1281 sh (-1.44%)', 'NUE': '36.5544 sh (-1.38%)', 'NWS': '303.7199 sh (+0.84%)', 'WSM': '0.1026 sh (-2.27%)'}
+Open orders (1): MPC buy 20.6725
+Risk state: peak $99,703.60 | drawdown 0.54% | today -0.29% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 6 new after dedup, 3 ticker(s) matched.
+Quant pre-screen: 13/15 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 14 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 223
+  -> {"ticker": "NWS", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,874.17), room ($0.00), regime multiplier (100%), and cash reserve ($4,958.06 kept of $12,337.34 cash)"}
+  -> {"ticker": "ON", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,874.17), room ($9,916.12), regime multiplier (100%), and cash reserve ($4,958.06 kept of $12,337.34 cash)"}
+  -> {"ticker": "INTC", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,874.17), room ($9,916.12), regime multiplier (100%), and cash reserve ($4,958.06 kept of $12,337.34 cash)"}
+  -> {"ticker": "NVDA", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,874.17), room ($9,916.12), regime multiplier (100%), and cash reserve ($4,958.06 kept of $12,337.34 cash)"}
+  -> {"ticker": "AMD", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,874.17), room ($9,916.12), regime multiplier (100%), and cash reserve ($4,958.06 kept of $12,337.34 cash)"}
+  -> {"ticker": "AME", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,874.17), room ($9,916.12), regime multiplier (100%), and cash reserve ($4,958.06 kept of $12,337.34 cash)"}
+  -> {"ticker": "AMGN", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,874.17), room ($9,916.12), regime multiplier (100%), and cash reserve ($4,958.06 kept of $12,337.34 cash)"}
+  -> {"ticker": "AMP", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,874.17), room ($9,916.12), regime multiplier (100%), and cash reserve ($4,958.06 kept of $12,337.34 cash)"}
+  -> {"ticker": "AMT", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,874.17), room ($9,916.12), regime multiplier (100%), and cash reserve ($4,958.06 kept of $12,337.34 cash)"}
+  -> {"ticker": "AMZN", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,874.17), room ($9,916.12), regime multiplier (100%), and cash reserve ($4,958.06 kept of $12,337.34 cash)"}
+  -> {"ticker": "ANET", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,874.17), room ($9,916.12), regime multiplier (100%), and cash reserve ($4,958.06 kept of $12,337.34 cash)"}
+  -> {"ticker": "APA", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,874.17), room ($9,916.12), regime multiplier (100%), and cash reserve ($4,958.06 kept of $12,337.34 cash)"}
+  -> {"ticker": "APD", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,874.17), room ($9,916.12), regime multiplier (100%), and cash reserve ($4,958.06 kept of $12,337.34 cash)"}
+  -> {"ticker": "APH", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,874.17), room ($9,916.12), regime multiplier (100%), and cash reserve ($4,958.06 kept of $12,337.34 cash)"}
+Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); will re-verify when available.
+Run budget spent -- skipping dashboard watchlist sync.
+Run budget spent -- skipping performance snapshot.
+Trade journal: all: 1 trades, 0% win rate, avg -3.50% | technical: 1 trades, 0% win rate, avg -3.50%
+Self-learning: technical: 1 trades, 0% win rate, avg -3.50% (LOSING)
+Performance: Total return -0.69% | Max drawdown 12.37% | Daily Sharpe 0.20 | 1 closed trades | Win rate 0% | Avg winner +0.00% | Avg loser -3.50% | Open positions: 13 | Equity $99,161.16
+Timings: account: 0.0s | risk: 4.5s | decide: 28.0s | watchlist: 0.0s | perf: 0.0s
+
