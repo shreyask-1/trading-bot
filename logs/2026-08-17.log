@@ -15463,3 +15463,34 @@ Self-learning: technical: 1 trades, 0% win rate, avg -3.50% (LOSING)
 Performance: Total return -0.59% | Max drawdown 12.37% | Daily Sharpe 0.22 | 1 closed trades | Win rate 0% | Avg winner +0.00% | Avg loser -3.50% | Open positions: 13 | Equity $99,243.96
 Timings: account: 0.0s | risk: 1.1s | decide: 3.1s | watchlist: 0.0s | perf: 0.1s
 
+=== Run at 2026-08-17T20:48:32.458523 ===
+Current time: 2026-08-17 04:48 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+Account value: $99,244.31
+Cash: $12,337.34 | Holdings (13): {'CEG': '35.6034 sh (-0.09%)', 'COHR': '7.9896 sh (+3.11%)', 'CVX': '24.8836 sh (+2.69%)', 'EOG': '68.7237 sh (+2.19%)', 'ERIE': '0.7641 sh (-4.38%)', 'GEHC': '0.6136 sh (-2.10%)', 'IVZ': '306.9138 sh (+1.27%)', 'LMT': '16.3555 sh (-2.06%)', 'MS': '43.8344 sh (-1.23%)', 'MSI': '21.1281 sh (-2.70%)', 'NUE': '36.5544 sh (-0.14%)', 'NWS': '303.7199 sh (+0.24%)', 'WSM': '0.1026 sh (-2.08%)'}
+Open orders (1): MPC buy 20.6725
+Risk state: peak $99,703.60 | drawdown 0.46% | today -0.20% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 42/67 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 355
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued IEX buy (conf None, stop 232.965, tp 242.08)
+  -> queued CLX buy (conf 85, stop 98.56, tp 108.56)
+  -> queued HSIC buy (conf None, stop 87.51, tp 92.18)
+  -> queued CIEN buy (conf None, stop 384.645, tp 462.665)
+  -> queued COP buy (conf None, stop 114.75, tp 127.84)
+  -> queued GS buy (conf None, stop 1027.63, tp 1077.11)
+  -> queued HSY buy (conf 92, stop 173.67, tp 186.63)
+  -> queued HPE buy (conf 88, stop 54.5, tp 63.44)
+  -> queued CVX buy (conf None, stop 185.93, tp 203.635)
+  -> queued EOG buy (conf None, stop 133.645, tp 146.18)
+  -> queued ERIE buy (conf None, stop 233.21, tp 260.515)
+  -> queued LMT buy (conf None, stop 577.22, tp 610.36)
+Dashboard watchlist synced (17 symbols) for news/headlines.
+Ending portfolio value: $99,240.47
+Trade journal: all: 1 trades, 0% win rate, avg -3.50% | technical: 1 trades, 0% win rate, avg -3.50%
+Self-learning: technical: 1 trades, 0% win rate, avg -3.50% (LOSING)
+Performance: Total return -0.59% | Max drawdown 12.37% | Daily Sharpe 0.22 | 1 closed trades | Win rate 0% | Avg winner +0.00% | Avg loser -3.50% | Open positions: 13 | Equity $99,244.31
+Timings: account: 0.0s | risk: 3.7s | decide: 4.4s | watchlist: 0.1s | perf: 0.2s
+
