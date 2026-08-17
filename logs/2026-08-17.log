@@ -10551,3 +10551,23 @@ Trade journal: no closed trades yet
 Performance: Total return -0.33% | Max drawdown 12.37% | Daily Sharpe 0.28 | Open positions: 13 | Equity $99,504.17
 Timings: account: 0.0s | risk: 2.8s | decide: 3.9s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-08-17T13:26:26.681699 ===
+Current time: 2026-08-17 09:26 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
+Account value: $99,481.63
+Cash: $12,324.20 | Holdings (13): {'CEG': '35.6034 sh (+2.25%)', 'CHD': '97.9637 sh (+0.01%)', 'COHR': '7.9896 sh (-3.03%)', 'CVX': '24.8836 sh (+1.27%)', 'GEHC': '0.6136 sh (-0.54%)', 'IVZ': '306.9138 sh (+1.21%)', 'LMT': '16.3555 sh (-0.29%)', 'MS': '43.8344 sh (-1.61%)', 'MSI': '21.1281 sh (-0.69%)', 'NUE': '36.5544 sh (-1.85%)', 'NWS': '303.7199 sh (+1.84%)', 'STLD': '0.9216 sh (-2.54%)', 'WSM': '0.1026 sh (-1.61%)'}
+Open orders (1): MPC buy 20.6725
+Risk state: peak $99,703.60 | drawdown 0.22% | today +0.03% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 40/60 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 192
+  -> {"ticker": "NDAQ", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,922.24), room ($9,948.16), regime multiplier (100%), and cash reserve ($2,487.04 kept of $12,324.20 cash)"}
+  -> {"ticker": "NWSA", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,922.24), room ($9,948.16), regime multiplier (100%), and cash reserve ($2,487.04 kept of $12,324.20 cash)"}
+Overnight queue cleared after verification.
+Dashboard watchlist synced (16 symbols) for news/headlines.
+Ending portfolio value: $99,483.56
+Trade journal: no closed trades yet
+Performance: Total return -0.35% | Max drawdown 12.37% | Daily Sharpe 0.27 | Open positions: 13 | Equity $99,481.63
+Timings: account: 0.0s | risk: 1.8s | decide: 2.7s | watchlist: 0.1s | perf: 0.2s
+
