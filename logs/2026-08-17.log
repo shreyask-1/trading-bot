@@ -14610,3 +14610,24 @@ Self-learning: technical: 1 trades, 0% win rate, avg -3.50% (LOSING)
 Performance: Total return -0.52% | Max drawdown 12.37% | Daily Sharpe 0.23 | 1 closed trades | Win rate 0% | Avg winner +0.00% | Avg loser -3.50% | Open positions: 13 | Equity $99,318.23
 Timings: account: 0.0s | risk: 2.3s | decide: 6.2s | watchlist: 0.0s | perf: 0.1s
 
+=== Run at 2026-08-17T19:52:28.528115 ===
+Current time: 2026-08-17 03:52 PM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,294.89
+Cash: $12,337.34 | Holdings (13): {'CEG': '35.6034 sh (-0.31%)', 'COHR': '7.9896 sh (+2.93%)', 'CVX': '24.8836 sh (+2.60%)', 'EOG': '68.7237 sh (+2.16%)', 'ERIE': '0.7641 sh (-4.37%)', 'GEHC': '0.6136 sh (-1.95%)', 'IVZ': '306.9138 sh (+1.54%)', 'LMT': '16.3555 sh (-2.04%)', 'MS': '43.8344 sh (-1.04%)', 'MSI': '21.1281 sh (-2.35%)', 'NUE': '36.5544 sh (-0.16%)', 'NWS': '303.7199 sh (+0.31%)', 'WSM': '0.1026 sh (-2.46%)'}
+Open orders (1): MPC buy 20.6725
+Risk state: peak $99,703.60 | drawdown 0.41% | today -0.15% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 2 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 30/60 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 334
+  -> {"ticker": "SNDK", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,894.23), room ($9,929.49), regime multiplier (100%), and cash reserve ($2,482.37 kept of $12,337.34 cash)"}
+  -> {"ticker": "NEM", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,894.23), room ($9,929.49), regime multiplier (100%), and cash reserve ($4,964.74 kept of $12,337.34 cash)"}
+Overnight queue cleared after verification.
+Dashboard watchlist synced (16 symbols) for news/headlines.
+Ending portfolio value: $99,262.60
+Trade journal: all: 1 trades, 0% win rate, avg -3.50% | technical: 1 trades, 0% win rate, avg -3.50%
+Self-learning: technical: 1 trades, 0% win rate, avg -3.50% (LOSING)
+Performance: Total return -0.57% | Max drawdown 12.37% | Daily Sharpe 0.22 | 1 closed trades | Win rate 0% | Avg winner +0.00% | Avg loser -3.50% | Open positions: 13 | Equity $99,294.89
+Timings: account: 0.0s | risk: 1.9s | decide: 22.2s | watchlist: 0.0s | perf: 0.1s
+
