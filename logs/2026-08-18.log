@@ -14618,3 +14618,23 @@ Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 1 t
 Performance: Total return -0.54% | Max drawdown 12.37% | Daily Sharpe 0.22 | 3 closed trades | Win rate 33% | Avg winner +2.53% | Avg loser -6.05% | Open positions: 13 | Equity $99,297.96
 Timings: account: 0.0s | risk: 7.3s | decide: 6.4s | watchlist: 0.0s | perf: 0.1s
 
+=== Run at 2026-08-18T18:02:28.869148 ===
+Current time: 2026-08-18 02:02 PM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,282.23
+Cash: $7,978.50 | Holdings (13): {'COO': '101.9321 sh (-0.09%)', 'EOG': '68.7237 sh (+3.93%)', 'ERIE': '0.7641 sh (-0.14%)', 'GEHC': '0.6136 sh (-1.45%)', 'ICE': '15.5354 sh (+0.80%)', 'IVZ': '306.9138 sh (+0.76%)', 'KKR': '16.7039 sh (-0.07%)', 'LMT': '16.3555 sh (+0.72%)', 'MS': '43.8344 sh (-1.98%)', 'MSI': '21.1281 sh (+0.37%)', 'NUE': '36.5544 sh (-3.25%)', 'NWS': '303.7199 sh (+3.28%)', 'T': '380.3291 sh (-0.14%)'}
+Open orders (3): EQT buy 61.4173, MS sell 43.8344, MPC buy 20.6725
+Risk state: peak $99,703.60 | drawdown 0.42% | today +0.16% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 10/15 candidates passed.
+Gemini proposed 1 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 299
+  -> {"ticker": "ULTA", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,892.33), room ($9,928.22), regime multiplier (100%), and cash reserve ($4,964.11 kept of $7,978.50 cash)"}
+Overnight queue cleared after verification.
+Dashboard watchlist synced (16 symbols) for news/headlines.
+Ending portfolio value: $99,290.90
+Trade journal: all: 3 trades, 33% win rate, avg -3.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 1 trades, 100% win rate, avg +2.53% | technical: 1 trades, 0% win rate, avg -3.50%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 1 trades, 100% win rate, avg +2.53% (WORKING) | technical: 1 trades, 0% win rate, avg -3.50% (LOSING)
+Performance: Total return -0.54% | Max drawdown 12.37% | Daily Sharpe 0.22 | 3 closed trades | Win rate 33% | Avg winner +2.53% | Avg loser -6.05% | Open positions: 13 | Equity $99,282.23
+Timings: account: 0.0s | risk: 9.3s | decide: 8.7s | watchlist: 0.2s | perf: 0.3s
+
