@@ -11287,3 +11287,22 @@ Self-learning: other: 1 trades, 100% win rate, avg +2.53% (WORKING) | technical:
 Performance: Total return -0.80% | Max drawdown 12.37% | Daily Sharpe 0.17 | 2 closed trades | Win rate 50% | Avg winner +2.53% | Avg loser -3.50% | Open positions: 13 | Equity $99,037.87
 Timings: account: 0.0s | risk: 3.4s | decide: 9.9s | watchlist: 0.2s | perf: 0.3s
 
+=== Run at 2026-08-18T13:06:31.797602 ===
+Current time: 2026-08-18 09:06 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
+Account value: $99,060.67
+Cash: $15,625.96 | Holdings (13): {'CEG': '35.6034 sh (-1.07%)', 'COHR': '7.9896 sh (-4.32%)', 'EOG': '68.7237 sh (+3.72%)', 'ERIE': '0.7641 sh (-4.38%)', 'GEHC': '0.6136 sh (-1.47%)', 'IVZ': '306.9138 sh (+0.34%)', 'KKR': '16.7039 sh (-0.06%)', 'LMT': '16.3555 sh (-1.28%)', 'MS': '43.8344 sh (-1.60%)', 'MSI': '21.1281 sh (-2.70%)', 'NUE': '36.5544 sh (-0.75%)', 'NWS': '303.7199 sh (+0.64%)', 'WSM': '0.1026 sh (-2.08%)'}
+Open orders (3): EQT buy 61.4173, MS sell 43.8344, MPC buy 20.6725
+Risk state: peak $99,703.60 | drawdown 0.64% | today -0.06% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 2 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 31/48 candidates passed.
+Gemini proposed 0 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 158
+Overnight queue cleared after verification.
+Dashboard watchlist synced (15 symbols) for news/headlines.
+Ending portfolio value: $99,060.72
+Trade journal: all: 2 trades, 50% win rate, avg -0.49% | other: 1 trades, 100% win rate, avg +2.53% | technical: 1 trades, 0% win rate, avg -3.50%
+Self-learning: other: 1 trades, 100% win rate, avg +2.53% (WORKING) | technical: 1 trades, 0% win rate, avg -3.50% (LOSING)
+Performance: Total return -0.77% | Max drawdown 12.37% | Daily Sharpe 0.17 | 2 closed trades | Win rate 50% | Avg winner +2.53% | Avg loser -3.50% | Open positions: 13 | Equity $99,060.67
+Timings: account: 0.0s | risk: 3.5s | decide: 9.5s | watchlist: 0.1s | perf: 0.3s
+
