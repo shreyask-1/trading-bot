@@ -36,3 +36,5 @@ timestamp,ticker,action,qty,price,stop_loss,take_profit,conviction,confidence,tr
 2026-08-18T12:50:41.790921,EQT,buy,61.4173,53.03,51.08,55.96,10,95,decision,
 2026-08-18T12:52:27.595396,KKR,buy,16.7039,108.835,101.23,120.24,9,90,decision,"Exceptional quant score 99, solid uptrend, increasing volume trend, and heavy insider net buying of $50.9M."
 2026-08-18T13:32:31.556382,WSM,sell,0.1026,240.4,,,10,,ma_breakdown,Moving-average breakdown: price 237.62 < SMA-20 238.1
+2026-08-18T13:56:26.881685,COHR,sell,7.9896,312.86,,,10,,hard_loss_cap,Hard loss cap hit: price 312.8375 <= 314.51 (-8% from entry 341.86)
+2026-08-18T13:56:31.629079,ICE,buy,15.5354,156.305,151.0,165.0,8,84,decision,
