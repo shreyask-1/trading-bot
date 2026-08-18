@@ -14888,3 +14888,59 @@ Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 2 t
 Performance: Total return -0.47% | Max drawdown 12.37% | Daily Sharpe 0.24 | 4 closed trades | Win rate 50% | Avg winner +1.79% | Avg loser -6.05% | Open positions: 12 | Equity $99,328.81
 Timings: account: 0.0s | risk: 6.6s | decide: 47.1s | watchlist: 0.0s | perf: 0.0s
 
+=== Run at 2026-08-18T18:22:31.208107 ===
+Current time: 2026-08-18 02:22 PM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,321.00
+Cash: $10,432.16 | Holdings (12): {'COO': '101.9321 sh (+0.06%)', 'EOG': '68.7237 sh (+3.93%)', 'ERIE': '0.7641 sh (-0.01%)', 'GEHC': '0.6136 sh (-1.23%)', 'IVZ': '306.9138 sh (+0.95%)', 'KKR': '16.7039 sh (-0.08%)', 'LMT': '16.3555 sh (+0.41%)', 'MS': '43.8344 sh (-1.96%)', 'MSI': '21.1281 sh (+0.41%)', 'NUE': '36.5544 sh (-3.17%)', 'NWS': '303.7199 sh (+3.31%)', 'T': '380.3291 sh (+0.06%)'}
+Open orders (3): EQT buy 61.4173, MS sell 43.8344, MPC buy 20.6725
+Risk state: peak $99,703.60 | drawdown 0.38% | today +0.20% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 1 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 34/60 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 37 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 306
+  -> {"ticker": "IVZ", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($0.00), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "LMT", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($0.00), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "MSI", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($0.00), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "NWS", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($0.00), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "ULTA", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "LULU", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "KMI", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "KO", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "KVUE", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "LDOS", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "LEN", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "LHX", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "LITE", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "LLY", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "LOW", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "LRCX", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "LYB", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "MA", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "MCK", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "MCO", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "MDLZ", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "MDT", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "MET", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "MKC", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "MMM", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "MNST", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "MRK", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "MRNA", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "MRSH", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "MSFT", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "MTB", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "MTD", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "MU", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "NDAQ", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "NDSN", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "NEM", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+  -> {"ticker": "NFLX", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,898.15), room ($9,932.10), regime multiplier (100%), and cash reserve ($4,966.05 kept of $10,432.16 cash)"}
+Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); will re-verify when available.
+Run budget spent -- skipping dashboard watchlist sync.
+Run budget spent -- skipping performance snapshot.
+Trade journal: all: 4 trades, 50% win rate, avg -2.13% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 2 trades, 100% win rate, avg +1.79% | technical: 1 trades, 0% win rate, avg -3.50%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 2 trades, 100% win rate, avg +1.79% (WORKING) | technical: 1 trades, 0% win rate, avg -3.50% (LOSING)
+Performance: Total return -0.47% | Max drawdown 12.37% | Daily Sharpe 0.24 | 4 closed trades | Win rate 50% | Avg winner +1.79% | Avg loser -6.05% | Open positions: 12 | Equity $99,321.00
+Timings: account: 0.0s | risk: 4.0s | decide: 50.8s | watchlist: 0.0s | perf: 0.0s
+
