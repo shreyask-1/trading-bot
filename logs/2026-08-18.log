@@ -14575,3 +14575,26 @@ Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 1 t
 Performance: Total return -0.45% | Max drawdown 12.37% | Daily Sharpe 0.24 | 3 closed trades | Win rate 33% | Avg winner +2.53% | Avg loser -6.05% | Open positions: 12 | Equity $99,390.79
 Timings: account: 0.0s | risk: 2.4s | decide: 2.0s | watchlist: 0.0s | perf: 0.1s
 
+=== Run at 2026-08-18T17:58:28.843402 ===
+Current time: 2026-08-18 01:58 PM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,303.84
+Cash: $15,717.18 | Holdings (12): {'CEG': '35.6034 sh (-3.13%)', 'EOG': '68.7237 sh (+3.82%)', 'ERIE': '0.7641 sh (-0.15%)', 'GEHC': '0.6136 sh (-1.35%)', 'ICE': '15.5354 sh (+0.77%)', 'IVZ': '306.9138 sh (+0.90%)', 'KKR': '16.7039 sh (-0.23%)', 'LMT': '16.3555 sh (+0.65%)', 'MS': '43.8344 sh (-1.95%)', 'MSI': '21.1281 sh (+0.34%)', 'NUE': '36.5544 sh (-3.36%)', 'NWS': '303.7199 sh (+3.40%)'}
+Open orders (3): EQT buy 61.4173, MS sell 43.8344, MPC buy 20.6725
+Risk state: peak $99,703.60 | drawdown 0.40% | today +0.18% | halted: False
+Risk management triggered 1 forced sell(s):
+  -> {"timestamp": "2026-08-18T17:58:30.464353", "ticker": "CEG", "action": "sell", "qty": 35.6034, "conviction": 10, "size_multiplier": 1.0, "order_id": "c37a8356-ec94-4b90-b045-d58e940ebf99", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": null, "take_profit": null, "reasoning": "Moving-average breakdown: price 270.0 < SMA-20 270.64", "status": "submitted", "trigger": "ma_breakdown"}
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 2 new after dedup, 1 ticker(s) matched.
+Quant pre-screen: 21/40 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 297
+  -> {"timestamp": "2026-08-18T17:58:42.698378", "ticker": "COO", "action": "buy", "qty": 101.9321, "conviction": 9, "size_multiplier": 1.0, "order_id": "eec26288-7321-42ee-b6af-8ea411a4a774", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": 74.0, "take_profit": 80.5, "reasoning": "", "status": "submitted"}
+  -> {"timestamp": "2026-08-18T17:58:43.761463", "ticker": "T", "action": "buy", "qty": 380.3291, "conviction": 8, "size_multiplier": 1.0, "order_id": "51a3a20e-bf40-4bcc-a3b9-0e25a73f6070", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": 24.4, "take_profit": 26.5, "reasoning": "", "status": "submitted"}
+Overnight queue cleared after verification.
+Dashboard watchlist synced (15 symbols) for news/headlines.
+Ending portfolio value: $99,292.90
+Trade journal: all: 3 trades, 33% win rate, avg -3.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 1 trades, 100% win rate, avg +2.53% | technical: 1 trades, 0% win rate, avg -3.50%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 1 trades, 100% win rate, avg +2.53% (WORKING) | technical: 1 trades, 0% win rate, avg -3.50% (LOSING)
+Performance: Total return -0.54% | Max drawdown 12.37% | Daily Sharpe 0.22 | 3 closed trades | Win rate 33% | Avg winner +2.53% | Avg loser -6.05% | Open positions: 12 | Equity $99,292.90
+Timings: account: 0.0s | risk: 5.0s | decide: 9.7s | watchlist: 0.2s | perf: 0.3s
+
