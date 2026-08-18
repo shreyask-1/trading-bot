@@ -11974,3 +11974,24 @@ Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 1 t
 Performance: Total return -0.49% | Max drawdown 12.37% | Daily Sharpe 0.23 | 3 closed trades | Win rate 33% | Avg winner +2.53% | Avg loser -6.05% | Open positions: 12 | Equity $99,339.35
 Timings: account: 0.0s | risk: 4.3s | decide: 3.8s | watchlist: 0.1s | perf: 0.3s
 
+=== Run at 2026-08-18T14:00:38.492384 ===
+Current time: 2026-08-18 10:00 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,293.96
+Cash: $15,717.18 | Holdings (12): {'CEG': '35.6034 sh (+0.05%)', 'EOG': '68.7237 sh (+3.38%)', 'ERIE': '0.7641 sh (-1.98%)', 'GEHC': '0.6136 sh (-0.70%)', 'ICE': '15.5354 sh (+0.18%)', 'IVZ': '306.9138 sh (+0.17%)', 'KKR': '16.7039 sh (-0.24%)', 'LMT': '16.3555 sh (-0.01%)', 'MS': '43.8344 sh (-2.09%)', 'MSI': '21.1281 sh (-0.27%)', 'NUE': '36.5544 sh (-2.14%)', 'NWS': '303.7199 sh (+1.66%)'}
+Open orders (3): EQT buy 61.4173, MS sell 43.8344, MPC buy 20.6725
+Risk state: peak $99,703.60 | drawdown 0.41% | today +0.17% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 3 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 7/12 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 181
+  -> {"ticker": "HPE", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,894.09), room ($9,929.40), regime multiplier (100%), and cash reserve ($4,964.70 kept of $15,717.18 cash)"}
+  -> {"ticker": "KLAC", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,894.09), room ($9,929.40), regime multiplier (100%), and cash reserve ($4,964.70 kept of $15,717.18 cash)"}
+Overnight queue cleared after verification.
+Dashboard watchlist synced (16 symbols) for news/headlines.
+Ending portfolio value: $99,283.77
+Trade journal: all: 3 trades, 33% win rate, avg -3.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 1 trades, 100% win rate, avg +2.53% | technical: 1 trades, 0% win rate, avg -3.50%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 1 trades, 100% win rate, avg +2.53% (WORKING) | technical: 1 trades, 0% win rate, avg -3.50% (LOSING)
+Performance: Total return -0.55% | Max drawdown 12.37% | Daily Sharpe 0.22 | 3 closed trades | Win rate 33% | Avg winner +2.53% | Avg loser -6.05% | Open positions: 12 | Equity $99,293.96
+Timings: account: 0.0s | risk: 8.1s | decide: 11.1s | watchlist: 0.2s | perf: 0.4s
+
