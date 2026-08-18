@@ -9828,3 +9828,34 @@ Self-learning: technical: 1 trades, 0% win rate, avg -3.50% (LOSING)
 Performance: Total return -0.86% | Max drawdown 12.37% | Daily Sharpe 0.15 | 1 closed trades | Win rate 0% | Avg winner +0.00% | Avg loser -3.50% | Open positions: 13 | Equity $98,968.78
 Timings: account: 0.0s | risk: 3.1s | decide: 7.2s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-08-18T11:00:37.919096 ===
+Current time: 2026-08-18 07:00 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
+Account value: $98,974.46
+Cash: $12,336.88 | Holdings (13): {'CEG': '35.6034 sh (-0.99%)', 'COHR': '7.9896 sh (-2.94%)', 'CVX': '24.8836 sh (+3.16%)', 'EOG': '68.7237 sh (+3.31%)', 'ERIE': '0.7641 sh (-4.38%)', 'GEHC': '0.6136 sh (-3.09%)', 'IVZ': '306.9138 sh (+0.34%)', 'LMT': '16.3555 sh (-1.80%)', 'MS': '43.8344 sh (-1.44%)', 'MSI': '21.1281 sh (-2.70%)', 'NUE': '36.5544 sh (-0.75%)', 'NWS': '303.7199 sh (+0.24%)', 'WSM': '0.1026 sh (-2.08%)'}
+Open orders (1): MPC buy 20.6725
+Risk state: peak $99,703.60 | drawdown 0.73% | today -0.15% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 1 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 8/12 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 12 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 97
+  -> {"ticker": "CEG", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,846.17), room ($0.00), regime multiplier (100%), and cash reserve ($4,948.72 kept of $12,336.88 cash)"}
+  -> {"ticker": "ERIE", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,846.17), room ($9,708.37), regime multiplier (100%), and cash reserve ($4,948.72 kept of $12,336.88 cash)"}
+  -> {"ticker": "LMT", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,846.17), room ($174.92), regime multiplier (100%), and cash reserve ($4,948.72 kept of $12,336.88 cash)"}
+  -> {"ticker": "MSI", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,846.17), room ($238.00), regime multiplier (100%), and cash reserve ($4,948.72 kept of $12,336.88 cash)"}
+  -> {"ticker": "EQIX", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,846.17), room ($9,897.45), regime multiplier (100%), and cash reserve ($4,948.72 kept of $12,336.88 cash)"}
+  -> {"ticker": "EQT", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,846.17), room ($9,897.45), regime multiplier (100%), and cash reserve ($4,948.72 kept of $12,336.88 cash)"}
+  -> {"ticker": "STZ", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,846.17), room ($9,897.45), regime multiplier (100%), and cash reserve ($4,948.72 kept of $12,336.88 cash)"}
+  -> {"ticker": "SW", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,846.17), room ($9,897.45), regime multiplier (100%), and cash reserve ($4,948.72 kept of $12,336.88 cash)"}
+  -> {"ticker": "SWK", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,846.17), room ($9,897.45), regime multiplier (100%), and cash reserve ($4,948.72 kept of $12,336.88 cash)"}
+  -> {"ticker": "SWKS", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,846.17), room ($9,897.45), regime multiplier (100%), and cash reserve ($4,948.72 kept of $12,336.88 cash)"}
+  -> {"ticker": "SYF", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,846.17), room ($9,897.45), regime multiplier (100%), and cash reserve ($4,948.72 kept of $12,336.88 cash)"}
+  -> {"ticker": "SYK", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,846.17), room ($9,897.45), regime multiplier (100%), and cash reserve ($4,948.72 kept of $12,336.88 cash)"}
+Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); will re-verify when available.
+Run budget spent -- skipping dashboard watchlist sync.
+Run budget spent -- skipping performance snapshot.
+Trade journal: all: 1 trades, 0% win rate, avg -3.50% | technical: 1 trades, 0% win rate, avg -3.50%
+Self-learning: technical: 1 trades, 0% win rate, avg -3.50% (LOSING)
+Performance: Total return -0.86% | Max drawdown 12.37% | Daily Sharpe 0.15 | 1 closed trades | Win rate 0% | Avg winner +0.00% | Avg loser -3.50% | Open positions: 13 | Equity $98,974.46
+Timings: account: 0.0s | risk: 3.2s | decide: 27.0s | watchlist: 0.0s | perf: 0.0s
+
