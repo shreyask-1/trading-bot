@@ -31,3 +31,4 @@ timestamp,ticker,action,qty,price,stop_loss,take_profit,conviction,confidence,tr
 2026-08-17T13:30:41.781175,STLD,sell,0.9216,252.87,,,10,,ma_breakdown,Moving-average breakdown: price 253.88 < SMA-20 254.02
 2026-08-17T13:30:57.246916,ERIE,buy,0.7641,255.48,233.21,288.88,9,86,decision,
 2026-08-17T13:34:56.280937,EOG,buy,68.7237,142.325,133.65,155.34,5,,decision,"technical score 61/100, strong signal on technicals alone."
+2026-08-18T11:08:38.739534,MS,sell,43.8344,218.19,,,10,,negative_news,Negative news: worst sentiment -1.00

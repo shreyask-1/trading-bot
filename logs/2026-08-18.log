@@ -9921,3 +9921,24 @@ Self-learning: technical: 1 trades, 0% win rate, avg -3.50% (LOSING)
 Performance: Total return -0.79% | Max drawdown 12.37% | Daily Sharpe 0.17 | 1 closed trades | Win rate 0% | Avg winner +0.00% | Avg loser -3.50% | Open positions: 13 | Equity $99,039.19
 Timings: account: 0.0s | risk: 1.9s | decide: 3.8s | watchlist: 0.1s | perf: 0.1s
 
+=== Run at 2026-08-18T11:08:35.751489 ===
+Current time: 2026-08-18 07:08 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
+Account value: $99,043.74
+Cash: $12,336.88 | Holdings (13): {'CEG': '35.6034 sh (-0.88%)', 'COHR': '7.9896 sh (-2.72%)', 'CVX': '24.8836 sh (+3.34%)', 'EOG': '68.7237 sh (+3.31%)', 'ERIE': '0.7641 sh (-4.38%)', 'GEHC': '0.6136 sh (-3.09%)', 'IVZ': '306.9138 sh (+0.34%)', 'LMT': '16.3555 sh (-1.73%)', 'MS': '43.8344 sh (-1.44%)', 'MSI': '21.1281 sh (-2.70%)', 'NUE': '36.5544 sh (-0.75%)', 'NWS': '303.7199 sh (+0.61%)', 'WSM': '0.1026 sh (-2.08%)'}
+Open orders (1): MPC buy 20.6725
+Risk state: peak $99,703.60 | drawdown 0.66% | today -0.08% | halted: False
+Risk management triggered 1 forced sell(s):
+  -> {"timestamp": "2026-08-18T11:08:38.739748", "ticker": "MS", "action": "sell", "qty": 43.8344, "conviction": 10, "size_multiplier": 1.0, "order_id": "b9f499d1-ab30-4d5f-b7e2-8ab22dc416ab", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": null, "take_profit": null, "reasoning": "Negative news: worst sentiment -1.00", "status": "submitted", "trigger": "negative_news"}
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 1 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 30/48 candidates passed.
+Gemini proposed 0 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 101
+Overnight queue cleared after verification.
+Dashboard watchlist synced (14 symbols) for news/headlines.
+Ending portfolio value: $99,043.74
+Trade journal: all: 1 trades, 0% win rate, avg -3.50% | technical: 1 trades, 0% win rate, avg -3.50%
+Self-learning: technical: 1 trades, 0% win rate, avg -3.50% (LOSING)
+Performance: Total return -0.79% | Max drawdown 12.37% | Daily Sharpe 0.17 | 1 closed trades | Win rate 0% | Avg winner +0.00% | Avg loser -3.50% | Open positions: 13 | Equity $99,043.74
+Timings: account: 0.0s | risk: 3.7s | decide: 4.0s | watchlist: 0.1s | perf: 0.2s
+
