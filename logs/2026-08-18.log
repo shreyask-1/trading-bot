@@ -4535,3 +4535,22 @@ Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 2 t
 Performance: Total return -0.69% | Max drawdown 12.37% | Daily Sharpe 0.19 | 4 closed trades | Win rate 50% | Avg winner +1.79% | Avg loser -6.05% | Open positions: 13 | Equity $99,142.56
 Timings: account: 0.0s | risk: 6.5s | decide: 2.8s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-08-18T19:58:25.977609 ===
+Current time: 2026-08-18 03:58 PM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,112.01
+Cash: $12,514.61 | Holdings (13): {'COO': '101.9321 sh (-0.78%)', 'EOG': '68.7237 sh (+4.09%)', 'EQT': '61.4173 sh (+0.27%)', 'ERIE': '0.7641 sh (-0.78%)', 'GEHC': '0.6136 sh (-1.76%)', 'IVZ': '306.9138 sh (+0.87%)', 'KKR': '16.7039 sh (-0.69%)', 'LLY': '3.7597 sh (+0.39%)', 'MS': '43.8344 sh (-1.62%)', 'MSI': '21.1281 sh (-0.17%)', 'NUE': '36.5544 sh (-3.09%)', 'NWS': '303.7199 sh (+2.81%)', 'T': '380.3291 sh (-0.66%)'}
+Open orders (2): MS sell 43.8344, MPC buy 20.6725
+Risk state: peak $99,703.60 | drawdown 0.59% | today -0.01% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 34/60 candidates passed.
+Gemini proposed 0 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 353
+Overnight queue cleared after verification.
+Dashboard watchlist synced (14 symbols) for news/headlines.
+Ending portfolio value: $99,135.18
+Trade journal: all: 4 trades, 50% win rate, avg -2.13% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 2 trades, 100% win rate, avg +1.79% | technical: 1 trades, 0% win rate, avg -3.50%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 2 trades, 100% win rate, avg +1.79% (WORKING) | technical: 1 trades, 0% win rate, avg -3.50% (LOSING)
+Performance: Total return -0.70% | Max drawdown 12.37% | Daily Sharpe 0.19 | 4 closed trades | Win rate 50% | Avg winner +1.79% | Avg loser -6.05% | Open positions: 13 | Equity $99,112.01
+Timings: account: 0.0s | risk: 3.3s | decide: 2.1s | watchlist: 0.1s | perf: 0.2s
+
