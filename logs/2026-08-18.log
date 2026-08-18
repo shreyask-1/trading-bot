@@ -608,3 +608,34 @@ Self-learning: technical: 1 trades, 0% win rate, avg -3.50% (LOSING)
 Performance: Total return -0.60% | Max drawdown 12.37% | Daily Sharpe 0.21 | 1 closed trades | Win rate 0% | Avg winner +0.00% | Avg loser -3.50% | Open positions: 13 | Equity $99,229.60
 Timings: account: 0.0s | risk: 0.7s | decide: 2.3s | watchlist: 0.0s | perf: 0.1s
 
+=== Run at 2026-08-18T00:41:09.091533 ===
+Current time: 2026-08-17 08:41 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+Account value: $99,228.16
+Cash: $12,337.34 | Holdings (13): {'CEG': '35.6034 sh (-0.17%)', 'COHR': '7.9896 sh (+3.49%)', 'CVX': '24.8836 sh (+2.81%)', 'EOG': '68.7237 sh (+2.30%)', 'ERIE': '0.7641 sh (-4.38%)', 'GEHC': '0.6136 sh (-2.10%)', 'IVZ': '306.9138 sh (+1.27%)', 'LMT': '16.3555 sh (-2.15%)', 'MS': '43.8344 sh (-1.24%)', 'MSI': '21.1281 sh (-2.70%)', 'NUE': '36.5544 sh (-0.75%)', 'NWS': '303.7199 sh (+0.61%)', 'WSM': '0.1026 sh (-2.08%)'}
+Open orders (1): MPC buy 20.6725
+Risk state: peak $99,703.60 | drawdown 0.48% | today -0.22% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 1 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 42/67 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 461
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued HSY buy (conf 92, stop 173.67, tp 195.0)
+  -> queued IEX buy (conf 90, stop 232.97, tp 255.0)
+  -> queued CLX buy (conf 90, stop 101.5, tp 113.0)
+  -> queued HPE buy (conf 90, stop 49.13, tp 63.44)
+  -> queued HSIC buy (conf 85, stop 87.51, tp 92.18)
+  -> queued DELL buy (conf 82, stop 417.56, tp 513.35)
+  -> queued CIEN buy (conf None, stop 384.645, tp 462.665)
+  -> queued COP buy (conf None, stop 114.75, tp 127.84)
+  -> queued CVX buy (conf None, stop 185.93, tp 203.635)
+  -> queued EOG buy (conf None, stop 133.645, tp 146.18)
+  -> queued ERIE buy (conf None, stop 233.21, tp 260.515)
+  -> queued LMT buy (conf None, stop 577.22, tp 610.36)
+Dashboard watchlist synced (16 symbols) for news/headlines.
+Ending portfolio value: $99,228.16
+Trade journal: all: 1 trades, 0% win rate, avg -3.50% | technical: 1 trades, 0% win rate, avg -3.50%
+Self-learning: technical: 1 trades, 0% win rate, avg -3.50% (LOSING)
+Performance: Total return -0.61% | Max drawdown 12.37% | Daily Sharpe 0.21 | 1 closed trades | Win rate 0% | Avg winner +0.00% | Avg loser -3.50% | Open positions: 13 | Equity $99,228.16
+Timings: account: 0.0s | risk: 1.0s | decide: 22.0s | watchlist: 0.0s | perf: 0.1s
+
