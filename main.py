@@ -433,6 +433,10 @@ def run():
             # Gemini call count so quota usage is visible at a glance.
             engine_label = "Technical fallback (Gemini throttled/unavailable)" if decision_meta.get("technical_fallback") else "Gemini"
             log_lines.append(f"{engine_label} proposed {len(trades)} trade(s) meeting the conviction bar.")
+            if decision_meta.get("technical_fallback_capped"):
+                log_lines.append(
+                    f"Technical fallback cap omitted {decision_meta['technical_fallback_capped']} weaker idea(s) this run."
+                )
             if decision_meta.get("engine_gate_blocked"):
                 log_lines.append(f"Engine-quality gate: {decision_meta.get('engine_gate_reason')}")
             log_lines.append(f"Gemini calls used today (all models combined): {decision_meta.get('gemini_calls_today', 0)}")
@@ -524,6 +528,10 @@ def run():
             )
             engine_label = "Technical fallback (Gemini throttled/unavailable)" if decision_meta.get("technical_fallback") else "Gemini"
             log_lines.append(f"{engine_label} proposed {len(trades)} trade(s) meeting the conviction bar.")
+            if decision_meta.get("technical_fallback_capped"):
+                log_lines.append(
+                    f"Technical fallback cap omitted {decision_meta['technical_fallback_capped']} weaker idea(s) this run."
+                )
             if decision_meta.get("engine_gate_blocked"):
                 log_lines.append(f"Engine-quality gate: {decision_meta.get('engine_gate_reason')}")
             log_lines.append(f"Gemini calls used today (all models combined): {decision_meta.get('gemini_calls_today', 0)}")
