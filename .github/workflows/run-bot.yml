@@ -65,6 +65,7 @@ jobs:
           MAX_PENDING_TRADES: 12
           PENDING_TRADE_MAX_AGE_HOURS: 24
           PENDING_TRADE_MAX_ATTEMPTS: 6
+          STALE_QUEUE_RETRY_COOLDOWN_MINUTES: 30
           # Data quality, liquidity, execution, and operator controls.
           ENABLE_MARKET_DATA_GUARDS: true
           MAX_QUOTE_AGE_SECONDS: 180
