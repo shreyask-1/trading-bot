@@ -530,6 +530,10 @@ MA_BREAKDOWN_REQUIRE_DOWNTREND = os.environ.get("MA_BREAKDOWN_REQUIRE_DOWNTREND"
 TECHNICAL_FALLBACK_MIN_SCORE = float(os.environ.get("TECHNICAL_FALLBACK_MIN_SCORE", 65.0))
 TECHNICAL_FALLBACK_REQUIRE_UPTREND = os.environ.get("TECHNICAL_FALLBACK_REQUIRE_UPTREND", "true").lower() == "true"
 TECHNICAL_FALLBACK_MAX_POSITION_PCT = float(os.environ.get("TECHNICAL_FALLBACK_MAX_POSITION_PCT", 0.05))
+# A fallback run is a degraded mode, not permission to submit dozens of
+# low-information orders. Keep only the strongest few ideas so stale-data
+# checks and protective reporting still finish inside the run budget.
+TECHNICAL_FALLBACK_MAX_TRADES_PER_RUN = int(os.environ.get("TECHNICAL_FALLBACK_MAX_TRADES_PER_RUN", 8))
 
 # --- Better news filtering ---
 # Every article is scored 0-10 (news.score_article: earnings beats and

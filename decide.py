@@ -48,6 +48,7 @@ from config import (
     ENABLE_REDDIT_SENTIMENT,
     MAX_FUNDAMENTAL_TICKERS,
     TECHNICAL_FALLBACK_MIN_SCORE,
+    TECHNICAL_FALLBACK_MAX_TRADES_PER_RUN,
     TECHNICAL_FALLBACK_REQUIRE_UPTREND,
     BUY_REQUIRE_SMA20_ALIGNMENT,
     ENABLE_MULTI_TIMEFRAME,
@@ -572,6 +573,7 @@ def get_technical_trade_decisions(scored_holdings, scored_watchlist, account_sna
                 "action": "sell",
                 "dollar_amount": 0,
                 "conviction": conviction,
+                "signal_score": round(float(score), 2),
                 "reasoning": f"technical score {score:.0f}/100 below threshold ({MIN_SIGNAL_SCORE_TO_CONSIDER}), exiting to consolidate.",
             })
         elif score >= 80:
@@ -588,6 +590,7 @@ def get_technical_trade_decisions(scored_holdings, scored_watchlist, account_sna
                         "action": "buy",
                         "dollar_amount": 0,
                         "conviction": int(conviction),
+                        "signal_score": round(float(score), 2),
                         "engine": "technical_fallback",
                         "reasoning": f"technical score {score:.0f}/100, strong setup, adding to position"
                                      + (f" on opening-range breakout ({or_status})." if or_status else "."),
@@ -624,12 +627,29 @@ def get_technical_trade_decisions(scored_holdings, scored_watchlist, account_sna
                 "action": "buy",
                 "dollar_amount": 0,
                 "conviction": int(conviction),
+                "signal_score": round(float(score), 2),
                 "engine": "technical_fallback",
                 "reasoning": f"technical score {score:.0f}/100, strict fallback setup on technicals alone"
                              + (f" with opening-range breakout ({or_status})." if or_status else "."),
                 "stop_loss": data.get(_SWING_LOW_KEY),
                 "take_profit": data.get(_SWING_HIGH_KEY),
             })
+
+    fallback_capped = 0
+    if TECHNICAL_FALLBACK_MAX_TRADES_PER_RUN > 0 and len(trades) > TECHNICAL_FALLBACK_MAX_TRADES_PER_RUN:
+        fallback_capped = len(trades) - TECHNICAL_FALLBACK_MAX_TRADES_PER_RUN
+        trades.sort(
+            key=lambda t: (
+                float(t.get("signal_score", 0) or 0),
+                float(t.get("conviction", 0) or 0),
+            ),
+            reverse=True,
+        )
+        trades = trades[:TECHNICAL_FALLBACK_MAX_TRADES_PER_RUN]
+        print(
+            f"Technical fallback capped at {TECHNICAL_FALLBACK_MAX_TRADES_PER_RUN} "
+            f"strongest trade(s); {fallback_capped} weaker idea(s) omitted."
+        )
 
     meta = {
         "candidates_considered": len(scored_watchlist),
@@ -638,6 +658,7 @@ def get_technical_trade_decisions(scored_holdings, scored_watchlist, account_sna
         ),
         "throttled": False,
         "technical_fallback": True,
+        "technical_fallback_capped": fallback_capped,
         "gemini_calls_today": 0,
     }
     return trades, meta
