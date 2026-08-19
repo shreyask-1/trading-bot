@@ -3285,7 +3285,13 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
         if guard_reason:
             print(f"Buy rejected: {guard_reason}")
             _record_shadow_trade(trade, guard_reason, price)
-            return {"ticker": ticker, "status": "skipped", "reason": guard_reason, "shadow": True}
+            return {
+                "ticker": ticker,
+                "status": "skipped",
+                "reason": guard_reason,
+                "shadow": bool(SHADOW_MODE),
+                "data_guard": True,
+            }
 
         # FLAT sizing (default): every trade gets the SAME FLAT_TRADE_SIZE_PCT
         # of equity, capped only by the per-position ceiling and the
