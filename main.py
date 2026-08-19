@@ -68,6 +68,7 @@ from trader import (
     build_performance_brief,
     record_engine_performance_snapshot,
     record_periodic_performance_reports,
+    record_shadow_report,
 )
 from news import get_news_candidates
 from decide import get_trade_decisions
@@ -387,6 +388,8 @@ def run():
             # Gemini call count so quota usage is visible at a glance.
             engine_label = "Technical fallback (Gemini throttled/unavailable)" if decision_meta.get("technical_fallback") else "Gemini"
             log_lines.append(f"{engine_label} proposed {len(trades)} trade(s) meeting the conviction bar.")
+            if decision_meta.get("engine_gate_blocked"):
+                log_lines.append(f"Engine-quality gate: {decision_meta.get('engine_gate_reason')}")
             log_lines.append(f"Gemini calls used today (all models combined): {decision_meta.get('gemini_calls_today', 0)}")
         except Exception as e:
             log_lines.append(f"Decision step failed, no trades this run: {e}")
@@ -464,6 +467,8 @@ def run():
             )
             engine_label = "Technical fallback (Gemini throttled/unavailable)" if decision_meta.get("technical_fallback") else "Gemini"
             log_lines.append(f"{engine_label} proposed {len(trades)} trade(s) meeting the conviction bar.")
+            if decision_meta.get("engine_gate_blocked"):
+                log_lines.append(f"Engine-quality gate: {decision_meta.get('engine_gate_reason')}")
             log_lines.append(f"Gemini calls used today (all models combined): {decision_meta.get('gemini_calls_today', 0)}")
         except Exception as e:
             log_lines.append(f"Decision step failed, no trades this run: {e}")
@@ -568,6 +573,7 @@ def run():
         engine_perf = record_engine_performance_snapshot(final_account, LOG_DIR)
         log_lines.append(f"Engine P&L: {engine_perf}")
         log_lines.append(f"Reports: {record_periodic_performance_reports(final_account)}")
+        log_lines.append(f"Shadow report: {record_shadow_report()}")
     except Exception as e:
         log_lines.append(f"Could not record engine P&L: {e}")
 
