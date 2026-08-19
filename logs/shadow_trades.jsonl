@@ -113,3 +113,6 @@
 {"timestamp": "2026-08-19T23:08:46.808999", "ticker": "MSI", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 480.6, "reason": "stale quote for MSI (11318.644471s old; limit 180s)"}
 {"timestamp": "2026-08-19T23:08:46.809211", "ticker": "WDAY", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 198.46, "reason": "stale quote for WDAY (11329.532012s old; limit 180s)"}
 {"timestamp": "2026-08-19T23:08:47.076890", "ticker": "TRGP", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 297.14, "reason": "stale quote for TRGP (11329.857956s old; limit 180s)"}
+{"timestamp": "2026-08-19T23:10:41.680568", "ticker": "TRGP", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 297.14, "reason": "stale quote for TRGP (11444.552436s old; limit 180s)"}
+{"timestamp": "2026-08-19T23:10:41.930255", "ticker": "WDAY", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 198.46, "reason": "stale quote for WDAY (11448.373345s old; limit 180s)"}
+{"timestamp": "2026-08-19T23:10:41.930386", "ticker": "MSI", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 480.6, "reason": "stale quote for MSI (11440.268376s old; limit 180s)"}
