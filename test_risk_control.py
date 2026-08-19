@@ -417,7 +417,35 @@ def test_ledger_status_refresh_stops_false_second_trader():
             os.remove(f)
 
 
-# --- 7c. account switch (new keys / new paper account) resets stale state ----
+# --- 7c. bot-created reductions are drift, not foreign activity -----------
+def test_bot_reduction_is_adopted_once():
+    print("\\n[7c] Bot-created position reduction is adopted without foreign spam")
+    ledger_file = trader.ORDER_LEDGER_FILE
+    recon_file = trader.RECON_STATE_FILE
+    old_client = trader.trading_client
+    old_open_orders = trader.get_tickers_with_open_orders
+    try:
+        trader._save_json_file(recon_file, {"account_id": "paper-1", "baseline": {}})
+        trader._save_json_file(ledger_file, [{
+            "ticker": "LLY", "action": "buy", "qty": 1.241,
+            "order_id": "lly-buy", "order_status": "filled",
+        }])
+        trader.trading_client = type("FakeClient", (), {
+            "get_orders": lambda *a, **k: [],
+        })()
+        trader.get_tickers_with_open_orders = lambda: set()
+        account = {"account_id": "paper-1", "holdings": {}}
+        flags, baseline_created = trader.reconcile_foreign_activity(account)
+        check("reduction is reported as account drift", any("ACCOUNT DRIFT" in f for f in flags), str(flags))
+        check("reduction is not called foreign activity", not any("FOREIGN ACTIVITY" in f for f in flags), str(flags))
+        flags, baseline_created = trader.reconcile_foreign_activity(account)
+        check("same reduction is quiet on next run", flags == [], str(flags))
+    finally:
+        trader.trading_client = old_client
+        trader.get_tickers_with_open_orders = old_open_orders
+
+
+# --- 7d. account switch (new keys / new paper account) resets stale state ----
 def test_account_change_resets_stale_state():
     print("\n[7c] Account switch: stale baseline/risk state reset, no false 'second trader'")
     ledger_file = trader.ORDER_LEDGER_FILE
@@ -750,9 +778,9 @@ def test_scale_out():
     trader.ENABLE_SCALE_OUT = old_enable
 
 
-# --- 10c. conservative quality trim of legacy holdings ------------------------
+# --- 10c. uniform portfolio quality review -------------------------------
 def test_quality_trim():
-    print("\n[10c] Conservative quality trim of legacy holdings")
+    print("\n[10c] Uniform portfolio quality review")
     import tempfile
     recon_tmp = tempfile.mkdtemp()
     old_recon = trader.RECON_STATE_FILE
@@ -790,7 +818,16 @@ def test_quality_trim():
     check("holds legacy loser AAA (down 2%, score 30) long", "AAA" not in sold, str(sold))
     check("holds legacy loser CCC (down 2.5%, score 40) long", "CCC" not in sold, str(sold))
     check("never sells winners (BBB)", "BBB" not in sold, str(sold))
-    check("never touches non-legacy (EEE)", "EEE" not in sold, str(sold))
+    check("non-baseline loser is also protected from churn", "EEE" not in sold, str(sold))
+
+    # A non-baseline position with the same weak score and no loss is eligible
+    # under exactly the same rule as a baseline position.
+    scores["EEE"] = 20.0
+    account["holdings"]["EEE"]["current_price"] = 10.0
+    trader.get_price = lambda s: {"AAA": 98.0, "BBB": 52.0, "CCC": 195.0, "DDD": 11.0, "EEE": 10.0, "GGG": 50.0}[s]
+    results = trader.enforce_quality_trim(account)
+    sold = {r.get("ticker") for r in results if r.get("status") == "submitted"}
+    check("non-baseline position receives the same quality rule", "EEE" in sold, str(sold))
 
     # Same run with GGG in the hole (47 vs entry 50 = -6%): the guard skips it
     # even though it is the WORST-scoring candidate. DDD (entry 10 -> 11) is up
@@ -1725,6 +1762,15 @@ def test_operational_safety_controls():
         r = trader.enforce_stagnant_positions(held_account)
         check("maximum holding-time exit fires", len(r) == 1 and r[0].get("trigger") == "max_holding_time", str(r))
 
+        trader._save_json_file(trader.OPEN_TRADES_FILE, {
+            "LEGACY": {"qty": 10, "entry": 100.0, "opened_at": (_dt.now() - _td(hours=2)).isoformat(), "engine": "legacy/unknown", "book": "legacy"}
+        })
+        legacy_account = {"cash": 50000.0, "total_value": 100000.0, "holdings": {
+            "LEGACY": {"qty": 10, "avg_entry_price": 100.0, "current_price": 100.0}
+        }}
+        r = trader.enforce_stagnant_positions(legacy_account)
+        check("baseline position receives the same stagnation exit", len(r) == 1 and r[0].get("trigger") == "max_holding_time", str(r))
+
         fake_filled = SimpleNamespace(id="fill-1", status="filled", filled_qty=10.0, filled_avg_price=101.0)
         trader._save_json_file(trader.OPEN_TRADES_FILE, {})
         trader._save_json_file(trader.ORDER_LEDGER_FILE, [{
@@ -1830,6 +1876,7 @@ if __name__ == "__main__":
     test_gross_exposure()
     test_order_ledger_and_reconciliation()
     test_ledger_status_refresh_stops_false_second_trader()
+    test_bot_reduction_is_adopted_once()
     test_account_change_resets_stale_state()
     test_ledger_self_heal_recovers_lost_entries()
     test_technical_fallback_holds_losers()
