@@ -1397,7 +1397,38 @@ def test_pending_trade_queue():
             os.remove(path)
 
 
-# --- 25. dashboard watchlist sync -----------------------------------------------
+# --- 25. overnight queue expiration ---------------------------------------------
+def test_pending_trade_expiration():
+    print("\n[25] Overnight queue expiration and retry limits")
+    from datetime import datetime as _dt, timedelta as _td
+    old_path = trader.PENDING_TRADES_FILE
+    old_age = trader.PENDING_TRADE_MAX_AGE_HOURS
+    old_attempts = trader.PENDING_TRADE_MAX_ATTEMPTS
+    temp = tempfile.mkdtemp()
+    trader.PENDING_TRADES_FILE = os.path.join(temp, "pending.json")
+    trader.PENDING_TRADE_MAX_AGE_HOURS = 24.0
+    trader.PENDING_TRADE_MAX_ATTEMPTS = 3
+    now = _dt.utcnow()
+    try:
+        trader._save_json_file(trader.PENDING_TRADES_FILE, [
+            {"ticker": "OLD", "action": "buy", "queued_at": (now - _td(hours=25)).isoformat(), "verification_attempts": 0},
+            {"ticker": "RETRY", "action": "buy", "queued_at": now.isoformat(), "verification_attempts": 2},
+            {"ticker": "FRESH", "action": "buy", "queued_at": now.isoformat(), "verification_attempts": 0},
+        ])
+        fresh, expired = trader.prune_pending_trades()
+        check("expired queue entries are removed", expired == 1 and {x["ticker"] for x in fresh} == {"RETRY", "FRESH"}, str((fresh, expired)))
+        marked = trader.mark_pending_verification_attempts(fresh)
+        check("verification attempts increment without resetting age", marked[0].get("verification_attempts") == 3 and marked[0].get("queued_at"), str(marked))
+        remaining, expired = trader.prune_pending_trades()
+        check("retry limit removes exhausted ideas", expired == 1 and [x["ticker"] for x in remaining] == ["FRESH"], str((remaining, expired)))
+    finally:
+        trader.PENDING_TRADES_FILE = old_path
+        trader.PENDING_TRADE_MAX_AGE_HOURS = old_age
+        trader.PENDING_TRADE_MAX_ATTEMPTS = old_attempts
+        shutil.rmtree(temp, ignore_errors=True)
+
+
+# --- 26. dashboard watchlist sync -----------------------------------------------
 def test_dashboard_watchlist_sync():
     print("\n[25] Dashboard watchlist sync: create when missing, update in place")
     calls = {"created": None, "updated": None}
@@ -1971,6 +2002,7 @@ if __name__ == "__main__":
     test_extended_hours_session()
     test_flat_sizing_uniform()
     test_pending_trade_queue()
+    test_pending_trade_expiration()
     test_dashboard_watchlist_sync()
     test_sane_price_rejects_garbage_levels()
     test_inverted_pair_dropped_and_exit_refuses_garbage()
