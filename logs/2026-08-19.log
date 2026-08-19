@@ -11757,3 +11757,25 @@ Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 3 t
 Performance: Total return -0.44% | Max drawdown 12.37% | Daily Sharpe 0.24 | 8 closed trades | Win rate 38% | Avg winner +1.30% | Avg loser -4.02% | Open positions: 17 | Equity $99,396.15
 Timings: account: 0.0s | risk: 7.0s | decide: 3.2s | watchlist: 0.2s | perf: 0.3s
 
+=== Run at 2026-08-19T14:30:34.840138 ===
+Current time: 2026-08-19 10:30 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,286.34
+Cash: $4,954.81 | Holdings (17): {'AMCR': '95.5314 sh (+0.11%)', 'AMT': '14.8145 sh (+0.15%)', 'COO': '131.0648 sh (+1.08%)', 'EOG': '45.9769 sh (+5.47%)', 'EQT': '83.0647 sh (+0.96%)', 'ERIE': '0.7641 sh (+4.27%)', 'GEHC': '0.6136 sh (+1.59%)', 'ICE': '13.6893 sh (+0.67%)', 'INTU': '23.0293 sh (+0.27%)', 'IVZ': '306.9138 sh (+1.09%)', 'KKR': '16.7039 sh (+3.47%)', 'MS': '43.8344 sh (-2.30%)', 'MSI': '21.1281 sh (+2.64%)', 'NWS': '303.7199 sh (+2.67%)', 'SNDK': '1.5721 sh (-4.51%)', 'T': '380.3291 sh (+0.92%)', 'TRMB': '19.6689 sh (+0.49%)'}
+Open orders (1): MS sell 43.8344
+  !! FOREIGN ACTIVITY: LLY holds 0.0000 sh but this bot should own 1.2410 sh (diff -1.2410). Someone/something else is trading this account.
+Risk state: peak $99,703.60 | drawdown 0.42% | today +0.14% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 33/60 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 220
+  -> {"ticker": "TRGP", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,892.95), room ($9,928.63), regime multiplier (100%), and cash reserve ($4,964.32 kept of $4,954.81 cash)"}
+  -> {"ticker": "TSCO", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,892.95), room ($9,928.63), regime multiplier (100%), and cash reserve ($4,964.32 kept of $4,954.81 cash)"}
+Overnight queue cleared after verification.
+Dashboard watchlist synced (19 symbols) for news/headlines.
+Ending portfolio value: $99,311.21
+Trade journal: all: 8 trades, 38% win rate, avg -2.03% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 3 trades, 67% win rate, avg -0.90% | technical: 4 trades, 25% win rate, avg -1.23%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 3 trades, 67% win rate, avg -0.90% (LOSING) | technical: 4 trades, 25% win rate, avg -1.23% (LOSING)
+Performance: Total return -0.52% | Max drawdown 12.37% | Daily Sharpe 0.22 | 8 closed trades | Win rate 38% | Avg winner +1.30% | Avg loser -4.02% | Open positions: 17 | Equity $99,286.34
+Timings: account: 0.0s | risk: 8.8s | decide: 4.3s | watchlist: 0.1s | perf: 0.1s
+
