@@ -38,6 +38,7 @@ from config import (
     ENABLE_SEC_FILINGS,
     ENABLE_REDDIT_SENTIMENT,
 )
+from sector_fallback import SECTOR_FALLBACK
 
 BASE_DIR = os.path.dirname(__file__)
 LOG_DIR = os.path.join(BASE_DIR, "logs")
@@ -684,14 +685,36 @@ def get_analyst_consensus(tickers):
 
 def get_sector_profiles(tickers):
     """
-    {ticker: {"sector": str, "market_cap": float}} from Finnhub
-    /stock/profile2 (free tier), cached 24h. Only tickers not already cached
-    are fetched. Fail-soft: returns {} on any error -- the run continues
-    without the sector link.
+    {ticker: {"sector": str, "market_cap": float, "source": str}}.
+
+    Live Finnhub /stock/profile2 metadata wins when available. For symbols
+    whose free endpoint is empty, blocked, or rate-limited, a deterministic
+    local map supplies a sector without spending another API call. Unknown
+    symbols remain explicitly unavailable rather than being guessed.
     """
     cached = _load_cache("sector_profiles.json", 24)
     store = dict(cached.get("by_ticker", {})) if cached else {}
-    need = [t for t in tickers if t and t not in store]
+
+    # Apply known local classifications before deciding what needs network
+    # work. This also repairs old cache rows that contain sector=None.
+    for ticker in tickers:
+        if not ticker:
+            continue
+        fallback_sector = SECTOR_FALLBACK.get(ticker)
+        current = store.get(ticker) or {}
+        if fallback_sector and not current.get("sector"):
+            store[ticker] = {
+                "sector": fallback_sector,
+                "market_cap": current.get("market_cap"),
+                "source": "local_fallback",
+            }
+
+    # Do not repeatedly spend the free-tier budget on symbols we can classify
+    # locally. Unknown symbols still get a bounded live lookup.
+    need = [
+        t for t in tickers
+        if t and not (store.get(t) or {}).get("sector") and t not in SECTOR_FALLBACK
+    ]
     _loop_start = time.monotonic()
     for t in need[:SECTOR_PROFILE_MAX_FRESH]:
         if time.monotonic() - _loop_start >= SECTOR_PROFILE_BUDGET_SECONDS:
@@ -708,10 +731,18 @@ def get_sector_profiles(tickers):
             store[t] = {
                 "sector": sector or None,
                 "market_cap": data.get("marketCapitalization"),
+                "source": "finnhub" if sector else "unavailable",
             }
         except Exception as e:
             print(f"Sector profile fetch failed for {t} (continuing): {e}")
-            store.setdefault(t, {"sector": None, "market_cap": None})
+            store[t] = {
+                "sector": SECTOR_FALLBACK.get(t),
+                "market_cap": None,
+                "source": "local_fallback" if t in SECTOR_FALLBACK else "unavailable",
+            }
+
+    # Persist the fallback rows too, so trader.py's read-only exposure monitor
+    # sees the same classifications without issuing a second request.
     _save_cache("sector_profiles.json", {"by_ticker": store})
     return store
 
