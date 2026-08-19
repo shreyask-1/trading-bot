@@ -336,6 +336,10 @@ PENDING_TRADE_MAX_ATTEMPTS = int(os.environ.get("PENDING_TRADE_MAX_ATTEMPTS", 6)
 # hours quote is known to be stale. The idea remains queued and is retried
 # after this cooldown or as soon as a fresh quote is available.
 STALE_QUEUE_RETRY_COOLDOWN_MINUTES = float(os.environ.get("STALE_QUEUE_RETRY_COOLDOWN_MINUTES", 30.0))
+# Reserve a few seconds at the end of every run for the dashboard watchlist,
+# final Alpaca snapshot, and performance files. Decision/news work must yield
+# before this reserve rather than starving the app update path.
+RUN_FINALIZATION_RESERVE_SECONDS = float(os.environ.get("RUN_FINALIZATION_RESERVE_SECONDS", 5.0))
 
 ALLOW_GEMINI_CUSTOM_EXITS = (
     os.environ.get("ALLOW_GEMINI_CUSTOM_EXITS", "true").lower() == "true"
@@ -494,6 +498,10 @@ GEMINI_DAILY_BUDGET = int(os.environ.get("GEMINI_DAILY_BUDGET", 1000))
 # more runs that have elapsed, the larger the share of the budget you may
 # have spent -- so a burst of retries thins out the following runs.
 GEMINI_RUNS_PER_DAY = int(os.environ.get("GEMINI_RUNS_PER_DAY", 720))
+# A transient provider timeout should not trigger a long model-rotation storm.
+# Two attempts preserve one fallback model while leaving time for execution and
+# final dashboard/performance writes.
+GEMINI_MAX_ATTEMPTS_PER_RUN = int(os.environ.get("GEMINI_MAX_ATTEMPTS_PER_RUN", 2))
 
 GEMINI_QUOTA_RESET_TIMEZONE = "America/Los_Angeles"
 # ~52 weeks of daily bars so 52-week high/low distances are available in the
