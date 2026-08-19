@@ -327,6 +327,11 @@ WALKFORWARD_PROVEN_MULT = float(os.environ.get("WALKFORWARD_PROVEN_MULT", 1.1))
 # MAX_PENDING_TRADES by conviction/confidence when saving; the queue refreshes
 # fresh every night, so dropping the tail costs nothing. Set 0 for no cap.
 MAX_PENDING_TRADES = int(os.environ.get("MAX_PENDING_TRADES", 12))
+# A queued idea is a snapshot, not a permanent order. Expire it if it has
+# remained unverified too long or has been handed back for verification too
+# many times; the next overnight scan can create a fresh idea instead.
+PENDING_TRADE_MAX_AGE_HOURS = float(os.environ.get("PENDING_TRADE_MAX_AGE_HOURS", 24.0))
+PENDING_TRADE_MAX_ATTEMPTS = int(os.environ.get("PENDING_TRADE_MAX_ATTEMPTS", 6))
 
 ALLOW_GEMINI_CUSTOM_EXITS = (
     os.environ.get("ALLOW_GEMINI_CUSTOM_EXITS", "true").lower() == "true"
