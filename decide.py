@@ -59,6 +59,7 @@ from trader import (
     get_tickers_on_cooldown,
     build_performance_brief,
     get_multi_timeframe_indicators,
+    engine_quality_gate,
 )
 from signal_score import calculate_signal_score
 from news import headline_sentiment
@@ -525,6 +526,20 @@ def _technical_conviction_from_score(quant_score):
 
 
 def get_technical_trade_decisions(scored_holdings, scored_watchlist, account_snapshot):
+    allowed, gate_reason = engine_quality_gate("technical_fallback")
+    if not allowed:
+        print(f"Technical fallback blocked by engine-quality gate: {gate_reason}")
+        return [], {
+            "candidates_considered": len(scored_watchlist),
+            "candidates_passed_prescreen": sum(
+                1 for info in scored_watchlist.values() if info.get("score", 0) >= MIN_SIGNAL_SCORE_TO_CONSIDER
+            ),
+            "throttled": True,
+            "technical_fallback": True,
+            "engine_gate_blocked": True,
+            "engine_gate_reason": gate_reason,
+            "gemini_calls_today": 0,
+        }
     holdings = account_snapshot.get("holdings", {})
     open_orders = get_tickers_with_open_orders()
     cooldowns = get_tickers_on_cooldown()
