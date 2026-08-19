@@ -47,12 +47,18 @@ from config import (
     ENABLE_SEC_FILINGS,
     ENABLE_REDDIT_SENTIMENT,
     MAX_FUNDAMENTAL_TICKERS,
+    TECHNICAL_FALLBACK_MIN_SCORE,
+    TECHNICAL_FALLBACK_REQUIRE_UPTREND,
+    BUY_REQUIRE_SMA20_ALIGNMENT,
+    ENABLE_MULTI_TIMEFRAME,
+    MULTI_TIMEFRAME_MAX_TICKERS,
 )
 from trader import (
     get_full_indicators,
     get_tickers_with_open_orders,
     get_tickers_on_cooldown,
     build_performance_brief,
+    get_multi_timeframe_indicators,
 )
 from signal_score import calculate_signal_score
 from news import headline_sentiment
@@ -129,13 +135,14 @@ _RESPONSE_SCHEMA = types.Schema(
 
 PROMPT_TEMPLATE = """You are a disciplined news+technical trader with a DUAL focus for a SIMULATED paper-trading portfolio (no real money): you trade NEWS CATALYSTS (headlines scored 0-10 with sentiment -1..+1) AND CHART/TECHNICAL setups (trend, RSI, ATR, ADX, MACD crossover, support/resistance, gap %, 52-week position, VWAP, opening-range breakouts). You trade short-term AND longer-term: daytrades and multi-day holds are both fine. It is now {now_et} Eastern time, session: {session}.
 
-Every trade idea MUST include a "confidence" score from 0-100 -- your honest probability-weighted conviction in this setup. The code converts it to size: 90+ -> 8% of equity, 80+ -> 5%, 70+ -> 3%, 60+ -> 2%, below {conf_min} -> skipped. A raw "dollar_amount" is optional and IGNORED whenever confidence is present. Also include a "conviction" 1-10 as a secondary gate.
+Every trade idea MUST include a "confidence" score from 0-100 -- your honest probability-weighted conviction in this setup. In the default flat-sizing mode, confidence is an eligibility gate, not permission to oversize; risk, cash, exposure, sector, and stop-distance caps still control the final amount. Below {conf_min} is skipped. A raw "dollar_amount" is optional and IGNORED whenever confidence is present. Also include a "conviction" 1-10 as a secondary gate.
 
 HARD CONSTRAINTS (enforced by code, but respect them anyway):
 - CASH-ONLY: never recommend buys that need margin; total size stays well under available cash.
 - NEVER recommend buying when cash is negative or near zero.
 - Be selective: only the best 2-4 ideas per run. No filler trades just because a name is on screen.
 - Every BUY should carry a stop_loss and take_profit price from the setup (opening-range high/low, VWAP, swing levels); if you have no opinion, omit them and the code will derive them from ATR/swings.
+- Prefer price above SMA-20 and agreement across the 1-minute, 5-minute, 1-hour, and daily context. Do not buy a setup already below SMA-20 unless the fresh catalyst is exceptional and the chart is reclaiming it.
 - Respect the session: in the regular session avoid chasing big moves and late-session entries. In the EXTENDED session (thin liquidity, wide spreads) only take high-confidence setups and expect fills near the last price. Positions may be HELD OVERNIGHT if the setup is still intact -- your stop_loss/take_profit (plus the code's trailing stop and hard loss cap) protect them around the clock, so longer-term winners are encouraged.
 
 Current portfolio: - Cash available: ${cash:,.2f} - Total portfolio value: ${total_value:,.2f}
@@ -566,6 +573,7 @@ def get_technical_trade_decisions(scored_holdings, scored_watchlist, account_sna
                         "action": "buy",
                         "dollar_amount": 0,
                         "conviction": int(conviction),
+                        "engine": "technical_fallback",
                         "reasoning": f"technical score {score:.0f}/100, strong setup, adding to position"
                                      + (f" on opening-range breakout ({or_status})." if or_status else "."),
                         "stop_loss": data.get(_SWING_LOW_KEY),
@@ -576,9 +584,24 @@ def get_technical_trade_decisions(scored_holdings, scored_watchlist, account_sna
         if ticker in unavailable or ticker in holdings:
             continue
         score = info.get("score", 0.0)
+        data = info.get("indicators") or {}
+        # The fallback is deliberately stricter than the normal pre-screen:
+        # when Gemini is unavailable, do not turn every borderline 55-64 score
+        # into a full-size trade. Require a genuine uptrend and price above
+        # SMA-20 when those fields are available.
+        if score < TECHNICAL_FALLBACK_MIN_SCORE:
+            continue
+        if TECHNICAL_FALLBACK_REQUIRE_UPTREND and data.get("trend") not in (None, "uptrend"):
+            continue
+        if (
+            BUY_REQUIRE_SMA20_ALIGNMENT
+            and data.get("sma_20") is not None
+            and data.get("price") is not None
+            and data["price"] <= data["sma_20"]
+        ):
+            continue
         conviction = _technical_conviction_from_score(score)
         if conviction >= TECHNICAL_MIN_CONVICTION:
-            data = info.get("indicators") or {}
             or_status = data.get("opening_range_status")
             conviction = min(9, conviction + (1 if or_status == "above" else 0))
             trades.append({
@@ -586,7 +609,8 @@ def get_technical_trade_decisions(scored_holdings, scored_watchlist, account_sna
                 "action": "buy",
                 "dollar_amount": 0,
                 "conviction": int(conviction),
-                "reasoning": f"technical score {score:.0f}/100, strong signal on technicals alone"
+                "engine": "technical_fallback",
+                "reasoning": f"technical score {score:.0f}/100, strict fallback setup on technicals alone"
                              + (f" with opening-range breakout ({or_status})." if or_status else "."),
                 "stop_loss": data.get(_SWING_LOW_KEY),
                 "take_profit": data.get(_SWING_HIGH_KEY),
@@ -723,6 +747,12 @@ def _score_candidates_cached(tickers, time_budget=None, **kwargs):
 # last successful refresh (all feeds are fail-soft by design).
 FEED_REFRESH_BUDGET_SECONDS = float(
     os.environ.get("FEED_REFRESH_BUDGET_SECONDS", 30)
+)
+# Reserve time for Gemini before optional feeds and scans consume the decision
+# budget. This is not quota pacing: it prevents a slow cold-cache refresh from
+# starving the LLM and forcing an unnecessary technical fallback.
+GEMINI_TIME_RESERVE_SECONDS = float(
+    os.environ.get("GEMINI_TIME_RESERVE_SECONDS", 10)
 )
 
 
@@ -867,6 +897,15 @@ def _fmt_setup(d):
         parts.append(f"52wH ${d['high_52w']:.2f}")
     if d.get("low_52w") is not None:
         parts.append(f"52wL ${d['low_52w']:.2f}")
+    timeframes = d.get("timeframes") or {}
+    for label in ("1m", "5m", "1h"):
+        tf = timeframes.get(label) or {}
+        if tf.get("trend"):
+            parts.append(f"{label}Trend {tf['trend']}")
+        if tf.get("rsi") is not None:
+            parts.append(f"{label}RSI {tf['rsi']:.0f}")
+        if tf.get("momentum_pct") is not None:
+            parts.append(f"{label}Mom {tf['momentum_pct']:+.1f}%")
     if d.get("days_until_earnings") is not None:
         parts.append(f"earnings in {d['days_until_earnings']}d")
     if d.get("support") is not None:
@@ -874,6 +913,33 @@ def _fmt_setup(d):
     if d.get("resistance") is not None:
         parts.append(f"res {d['resistance']:.2f}")
     return " | ".join(parts)
+
+
+def _enrich_multi_timeframe(scored_news, scored_watchlist, sentiment, fundamental, time_budget=None):
+    """Add 1m/5m/1h context to the highest-ranked candidates only."""
+    if not ENABLE_MULTI_TIMEFRAME or MULTI_TIMEFRAME_MAX_TICKERS <= 0:
+        return
+    ranked = []
+    for group in (scored_news, scored_watchlist):
+        ranked.extend((float(info.get("score", 0.0)), ticker, info) for ticker, info in group.items())
+    ranked.sort(reverse=True)
+    deadline = time.monotonic() + time_budget if time_budget is not None else None
+    for _score, ticker, info in ranked[:MULTI_TIMEFRAME_MAX_TICKERS]:
+        if deadline is not None and time.monotonic() >= deadline:
+            break
+        try:
+            mtf = get_multi_timeframe_indicators(ticker)
+            if mtf:
+                indicators = info.get("indicators") or {}
+                indicators["timeframes"] = mtf
+                info["indicators"] = indicators
+                info["score"] = calculate_signal_score(
+                    indicators,
+                    news_sentiment=(sentiment or {}).get(ticker, 0.0),
+                    extras=(fundamental or {}).get(ticker),
+                )
+        except Exception as e:
+            print(f"Multi-timeframe enrichment failed for {ticker} (continuing): {e}")
 
 
 def _apply_news_confluence(new_candidates, scored_news, news_sentiment):
@@ -907,6 +973,10 @@ def _fmt_fundamental(t, fundamental):
     """
     f = (fundamental or {}).get(t) or {}
     bits = []
+    availability = f.get("availability") or {}
+    unavailable = [name for name, state in availability.items() if state == "unavailable"]
+    if unavailable:
+        bits.append("unavailable:" + ",".join(unavailable))
     ac = f.get("analyst_consensus") or {}
     if ac.get("buy") is not None:
         bits.append(f"street {ac['buy']}B/{ac.get('hold') or 0}H/{ac.get('sell') or 0}S")
@@ -1133,7 +1203,11 @@ def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL", pending_
     all_candidate_tickers = list(dict.fromkeys(
         list(new_candidates.keys()) + list(watchlist_tickers)
     ))
-    _refresh_data_feeds(all_candidate_tickers, time_budget=_remaining())
+    def _analysis_remaining():
+        # Preserve a Gemini slice while optional feeds/scans degrade to cache.
+        return max(0.0, _remaining() - GEMINI_TIME_RESERVE_SECONDS)
+
+    _refresh_data_feeds(all_candidate_tickers, time_budget=_analysis_remaining())
     fundamental = {}
     try:
         from data_feeds import get_fundamental_signals
@@ -1141,16 +1215,27 @@ def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL", pending_
     except Exception as e:
         print(f"Fundamental signals unavailable (continuing without them): {e}")
 
-    scored_holdings = _score_candidates(list(holdings.keys()), time_budget=_remaining())
+    scored_holdings = _score_candidates(list(holdings.keys()), time_budget=_analysis_remaining())
     scored_news = _score_candidates(
         list(new_candidates.keys()),
         sentiment=news_sentiment,
         extras=fundamental,
-        time_budget=_remaining(),
+        time_budget=_analysis_remaining(),
     )
     # The rotating universe slice is cached per hour -- see
     # _score_candidates_cached (this was the dominant per-run cost).
-    scored_watchlist = _score_candidates_cached(watchlist_tickers, extras=fundamental, time_budget=_remaining())
+    scored_watchlist = _score_candidates_cached(watchlist_tickers, extras=fundamental, time_budget=_analysis_remaining())
+
+    # Enrich only the best candidates with actual 1-minute, 5-minute, and
+    # 1-hour bars. This keeps the quant screen broad while making Gemini's
+    # final decisions multi-timeframe rather than daily-only.
+    _enrich_multi_timeframe(
+        scored_news,
+        scored_watchlist,
+        news_sentiment,
+        fundamental,
+        time_budget=_analysis_remaining(),
+    )
 
     # News + technical confluence: a news candidate only reaches the LLM if
     # its pure technical score (without the sentiment boost) clears the bar.
