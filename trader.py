@@ -183,6 +183,20 @@ _FEED_MAP = {"iex": DataFeed.IEX, "sip": DataFeed.SIP, "otc": DataFeed.OTC}
 DATA_FEED = _FEED_MAP.get(ALPACA_DATA_FEED.lower(), DataFeed.IEX)
 
 _EASTERN = pytz.timezone("America/New_York")
+_CLOCK_CACHE_TTL_SECONDS = 10.0
+_CLOCK_CACHE = (0.0, None)
+
+
+def _get_clock():
+    """Share one short-lived Alpaca clock response across session checks."""
+    global _CLOCK_CACHE
+    now = time.monotonic()
+    if _CLOCK_CACHE[1] is not None and _CLOCK_CACHE[0] > now:
+        return _CLOCK_CACHE[1]
+    clock = trading_client.get_clock()
+    _CLOCK_CACHE = (now + _CLOCK_CACHE_TTL_SECONDS, clock)
+    return clock
+
 
 # Short-TTL in-memory cache for the expensive indicator / price-history
 # fetches. The pre-decision risk steps (ATR exits, de-leveraging, portfolio
@@ -224,7 +238,7 @@ def get_eastern_time_str():
 
 def is_market_open():
     try:
-        return bool(trading_client.get_clock().is_open)
+        return bool(_get_clock().is_open)
     except Exception as e:
         print(f"Could not fetch market clock, assuming closed: {e}")
         return False
@@ -257,7 +271,7 @@ def is_trading_session():
     and the next regular open is more than 16h away, no session is live.
     """
     try:
-        clock = trading_client.get_clock()
+        clock = _get_clock()
         if clock.is_open:
             return True
         if not ALLOW_EXTENDED_HOURS:
@@ -746,6 +760,8 @@ def _compute_full_indicators(ticker):
 # from being re-proposed (the open-order dedup). 96h covers long holiday
 # weekends while still clearing genuinely dead orders.
 STALE_GTC_MAX_AGE_HOURS = 96
+STALE_ORDER_CLEANUP_INTERVAL_SECONDS = float(os.environ.get("STALE_ORDER_CLEANUP_INTERVAL_SECONDS", 900))
+_LAST_STALE_ORDER_CLEANUP = 0.0
 
 
 def cancel_stale_extended_orders():
@@ -786,13 +802,10 @@ def cancel_stale_extended_orders():
 
 
 def get_account_snapshot():
-    # Clear stale unfilled GTC orders first so tickers become eligible for
-    # fresh re-verification instead of being blocked by an old order. Never
-    # lets cleanup break the run.
-    try:
-        cancel_stale_extended_orders()
-    except Exception:
-        pass
+    # Account snapshots are also taken after each submitted order. Do not
+    # perform a full open-order cleanup here: that added one extra Alpaca API
+    # call to every snapshot and was a major source of intermittent 60-second
+    # timeouts. Stale-order cleanup remains available as an explicit helper.
     account = trading_client.get_account()
     positions = trading_client.get_all_positions()
     holdings = {}
@@ -3885,7 +3898,7 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
         # duplicates, and open orders are cleared by the account-switch reset.
         use_extended = False
         try:
-            use_extended = bool(ALLOW_EXTENDED_HOURS) and not bool(trading_client.get_clock().is_open)
+            use_extended = bool(ALLOW_EXTENDED_HOURS) and not bool(_get_clock().is_open)
         except Exception:
             use_extended = False
         if use_extended:
