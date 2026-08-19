@@ -370,13 +370,26 @@ MAX_RISK_PER_TRADE_PCT = float(os.environ.get("MAX_RISK_PER_TRADE_PCT", 0.75))
 # revert to pure uniform dollar sizing.
 RISK_PARITY_SIZING = os.environ.get("RISK_PARITY_SIZING", "true").lower() == "true"
 
-# --- Sector concentration caps (loss protection) ---
-# The bot never holds more than this fraction of portfolio equity in any ONE
-# GICS sector. 14+ positions can quietly become 5 names in Energy and a
-# sector shock then hits them all at once; this caps that correlated risk.
-# New buys into an already-heavy sector are skipped (existing positions are
-# left alone -- no forced selling of winners). Set 0 to disable.
+# --- Sector and correlation concentration caps (loss protection) ---
+# The bot never holds more than this fraction of portfolio equity in one GICS
+# sector. A second cap catches different tickers moving as the same factor:
+# candidate/holding pairs with rolling daily-return correlation above the
+# threshold share one exposure bucket. Missing history never blocks a trade;
+# it simply leaves the correlation cap unapplied for that candidate.
 MAX_SECTOR_EXPOSURE_PCT = float(os.environ.get("MAX_SECTOR_EXPOSURE_PCT", 0.25))
+ENABLE_CORRELATION_CAP = os.environ.get("ENABLE_CORRELATION_CAP", "true").lower() == "true"
+CORRELATION_THRESHOLD = float(os.environ.get("CORRELATION_THRESHOLD", 0.75))
+MAX_CORRELATED_EXPOSURE_PCT = float(os.environ.get("MAX_CORRELATED_EXPOSURE_PCT", 0.35))
+CORRELATION_LOOKBACK_DAYS = int(os.environ.get("CORRELATION_LOOKBACK_DAYS", 60))
+CORRELATION_MAX_HOLDINGS_CHECKED = int(os.environ.get("CORRELATION_MAX_HOLDINGS_CHECKED", 12))
+
+# --- Turnover / friction budget ---
+# Limit submitted buy and non-protective-sell notional per Eastern day. This
+# prevents a noisy signal from repeatedly paying spread/slippage. Protective
+# exits bypass the cap. 0 disables the budget.
+MAX_DAILY_TURNOVER_PCT = float(os.environ.get("MAX_DAILY_TURNOVER_PCT", 0.50))
+MAX_DAILY_TURNOVER_DOLLARS = float(os.environ.get("MAX_DAILY_TURNOVER_DOLLARS", 0.0))
+TURNOVER_PROTECTIVE_SELLS_BYPASS = os.environ.get("TURNOVER_PROTECTIVE_SELLS_BYPASS", "true").lower() == "true"
 
 # --- Free RSS news feeds (profit lever) ---
 # Beyond Finnhub's general market wire, the bot pulls headline RSS feeds that
@@ -420,6 +433,15 @@ MULTI_TIMEFRAME_MAX_TICKERS = int(os.environ.get("MULTI_TIMEFRAME_MAX_TICKERS", 
 # --- Cooldown & dedup ---
 TRADE_COOLDOWN_MINUTES = 30
 NEWS_DEDUP_MAX_AGE_HOURS = 48
+
+# --- Engine-quality gate ---
+# Do not let a fallback engine with a demonstrated negative edge keep trading
+# indefinitely. The gate is inactive until enough clean, engine-attributed
+# closed trades exist; historical unattributed rows do not count.
+ENGINE_QUALITY_GATE_ENABLED = os.environ.get("ENGINE_QUALITY_GATE_ENABLED", "true").lower() == "true"
+ENGINE_QUALITY_GATE_MIN_SAMPLES = int(os.environ.get("ENGINE_QUALITY_GATE_MIN_SAMPLES", 30))
+ENGINE_QUALITY_GATE_MIN_WIN_RATE_PCT = float(os.environ.get("ENGINE_QUALITY_GATE_MIN_WIN_RATE_PCT", 45.0))
+ENGINE_QUALITY_GATE_MAX_AVG_PNL_PCT = float(os.environ.get("ENGINE_QUALITY_GATE_MAX_AVG_PNL_PCT", -0.25))
 
 # --- Model & quota ---
 # NOTE: decide.py now discovers live, currently-valid model IDs from
