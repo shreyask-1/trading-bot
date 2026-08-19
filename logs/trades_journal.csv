@@ -60,3 +60,6 @@ timestamp,ticker,action,qty,price,stop_loss,take_profit,conviction,confidence,tr
 2026-08-19T13:49:29.126664,IBKR,sell,50.3871,89.93,,,10,,ma_breakdown,Moving-average breakdown: price 89.555 < SMA-20 90.04
 2026-08-19T13:49:29.824550,LLY,sell,1.6873,1288.975,,,10,,take_profit,Take-profit hit: price 1288.975 >= target 1284.5
 2026-08-19T13:49:45.560487,ICE,buy,13.6893,157.29,147.5,171.97,9,89,decision,
+2026-08-19T14:10:34.706416,ANET,sell,6.2335,186.35,,,10,,ma_breakdown,Moving-average breakdown: price 186.36 < SMA-20 186.89
+2026-08-19T14:11:03.268613,EQT,buy,21.6474,53.85,51.12,57.95,7,,decision,"technical score 80/100, strong setup, adding to position on opening-range breakout (above)."
+2026-08-19T14:11:05.590926,TRMB,buy,19.6689,59.27,54.75,66.05,6,,decision,"technical score 66/100, strong signal on technicals alone with opening-range breakout (above)."
