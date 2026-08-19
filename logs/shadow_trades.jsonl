@@ -92,3 +92,5 @@
 {"timestamp": "2026-08-19T22:59:46.886533", "ticker": "TRGP", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 297.14, "reason": "stale quote for TRGP (10789.657398s old; limit 180s)"}
 {"timestamp": "2026-08-19T22:59:47.221658", "ticker": "WAT", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 415.58, "reason": "stale quote for WAT (10797.371812s old; limit 180s)"}
 {"timestamp": "2026-08-19T22:59:47.512311", "ticker": "TYL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 346.76, "reason": "stale quote for TYL (10795.173344s old; limit 180s)"}
+{"timestamp": "2026-08-19T23:00:58.489988", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 127.17, "reason": "stale quote for NOW (10850.966181s old; limit 180s)"}
+{"timestamp": "2026-08-19T23:00:58.490181", "ticker": "SYF", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 79.61, "reason": "stale quote for SYF (10855.037049s old; limit 180s)"}
