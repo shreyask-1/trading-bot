@@ -53,6 +53,28 @@ jobs:
           # burst stacking, never normal runs. Set to 0 to disable pacing
           # (Gemini burns Google's limit mid-day, technical engine after).
           GEMINI_DAILY_BUDGET: 1000
+          GEMINI_RUNS_PER_DAY: 720
+          GEMINI_TIME_RESERVE_SECONDS: 10
+          # Risk defaults are explicit here so a workflow environment cannot
+          # accidentally restore the old high-exposure/churn configuration.
+          MAX_TOTAL_EXPOSURE_PCT: 0.90
+          MIN_CASH_RESERVE_PCT: 0.10
+          DAILY_LOSS_HALT_PCT: 3.0
+          TECHNICAL_FALLBACK_MIN_SCORE: 65
+          TECHNICAL_FALLBACK_MAX_POSITION_PCT: 0.05
+          # Data quality, liquidity, execution, and operator controls.
+          ENABLE_MARKET_DATA_GUARDS: true
+          MAX_QUOTE_AGE_SECONDS: 180
+          MAX_CANDLE_AGE_MINUTES: 30
+          MAX_BID_ASK_SPREAD_PCT: 0.75
+          MIN_AVG_DAILY_VOLUME: 500000
+          RECORD_ONLY_FILLED_ORDERS: true
+          ESTIMATED_SLIPPAGE_BPS: 5
+          MANUAL_BUY_KILL_SWITCH: false
+          SHADOW_MODE: false
+          MAX_HOLDING_HOURS: 120
+          STAGNATION_MAX_HOURS: 24
+          STAGNATION_MIN_PROGRESS_PCT: 0.5
           # Internal wall-clock budget for the whole run. 30s (not 50s)
           # because imports + account fetch + reconciliation + regime run
           # BEFORE the deadline starts; on a slow GitHub runner that
