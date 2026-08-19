@@ -1407,11 +1407,13 @@ def test_pending_trade_expiration():
     print("\n[25] Overnight queue expiration and retry limits")
     from datetime import datetime as _dt, timedelta as _td
     old_path = trader.PENDING_TRADES_FILE
+    old_state_path = trader.STALE_QUEUE_STATE_FILE
     old_age = trader.PENDING_TRADE_MAX_AGE_HOURS
     old_attempts = trader.PENDING_TRADE_MAX_ATTEMPTS
     old_cooldown = trader.STALE_QUEUE_RETRY_COOLDOWN_MINUTES
     temp = tempfile.mkdtemp()
     trader.PENDING_TRADES_FILE = os.path.join(temp, "pending.json")
+    trader.STALE_QUEUE_STATE_FILE = os.path.join(temp, "cooldowns.json")
     trader.PENDING_TRADE_MAX_AGE_HOURS = 24.0
     trader.PENDING_TRADE_MAX_ATTEMPTS = 3
     trader.STALE_QUEUE_RETRY_COOLDOWN_MINUTES = 30.0
@@ -1432,8 +1434,11 @@ def test_pending_trade_expiration():
         old_stale = {"last_stale_at": (_dt.utcnow() - _td(minutes=31)).isoformat()}
         check("recent stale item is deferred", trader.pending_trade_in_stale_cooldown(recent_stale) is True, str(recent_stale))
         check("stale cooldown eventually permits retry", trader.pending_trade_in_stale_cooldown(old_stale) is False, str(old_stale))
+        trader.mark_pending_stale([{"ticker": "TRGP", "action": "buy"}])
+        check("dedicated cooldown state survives queue metadata changes", trader.pending_trade_in_stale_cooldown({"ticker": "TRGP", "action": "buy"}) is True, str(trader._load_json_file(trader.STALE_QUEUE_STATE_FILE, {})))
     finally:
         trader.PENDING_TRADES_FILE = old_path
+        trader.STALE_QUEUE_STATE_FILE = old_state_path
         trader.PENDING_TRADE_MAX_AGE_HOURS = old_age
         trader.PENDING_TRADE_MAX_ATTEMPTS = old_attempts
         trader.STALE_QUEUE_RETRY_COOLDOWN_MINUTES = old_cooldown
@@ -1991,6 +1996,7 @@ if __name__ == "__main__":
         "NEWS_SENTIMENT_CACHE_FILE": "news_sentiment_cache.json",
         "EARNINGS_CAL_FILE": "earnings_calendar.json",
         "PENDING_TRADES_FILE": "pending_trades.json",
+        "STALE_QUEUE_STATE_FILE": "stale_queue_cooldowns.json",
         "ENGINE_PERFORMANCE_FILE": "engine_performance.csv",
         "SHADOW_TRADES_FILE": "shadow_trades.jsonl",
         "OPERATIONS_STATE_FILE": "operations_state.json",
