@@ -62,6 +62,9 @@ jobs:
           DAILY_LOSS_HALT_PCT: 3.0
           TECHNICAL_FALLBACK_MIN_SCORE: 65
           TECHNICAL_FALLBACK_MAX_POSITION_PCT: 0.05
+          MAX_PENDING_TRADES: 12
+          PENDING_TRADE_MAX_AGE_HOURS: 24
+          PENDING_TRADE_MAX_ATTEMPTS: 6
           # Data quality, liquidity, execution, and operator controls.
           ENABLE_MARKET_DATA_GUARDS: true
           MAX_QUOTE_AGE_SECONDS: 180
