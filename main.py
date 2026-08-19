@@ -38,6 +38,7 @@ from config import (
     TRADE_ONLY_DURING_MARKET_HOURS,
     MAX_DRAWDOWN_FLATTEN_PCT,
     OVERNIGHT_QUEUE_ENABLED,
+    STALE_QUEUE_RETRY_COOLDOWN_MINUTES,
 )
 from trader import (
     get_account_snapshot,
@@ -62,7 +63,10 @@ from trader import (
     load_pending_trades,
     prune_pending_trades,
     mark_pending_verification_attempts,
+    mark_pending_stale,
+    pending_trade_in_stale_cooldown,
     save_pending_trades,
+    replace_pending_trades,
     clear_pending_trades,
     get_sector_exposure_summary,
     sync_dashboard_watchlist,
@@ -362,6 +366,7 @@ def run():
         # Gemini re-approves comes back in `trades` and is executed below;
         # everything it omits is dropped when the queue is cleared.
         pending = []
+        deferred_pending = []
         if OVERNIGHT_QUEUE_ENABLED:
             pending, expired_count = prune_pending_trades()
             if expired_count:
@@ -370,13 +375,20 @@ def run():
                     "fresh analysis will replace them."
                 )
             if pending:
-                # Count only live-session verification attempts. Overnight
-                # scans refresh an idea's analysis but do not consume retries.
-                pending = mark_pending_verification_attempts(pending)
-                log_lines.append(
-                    f"Morning verification: {len(pending)} overnight-queued trade(s) "
-                    "handed to Gemini for re-verification against fresh data."
-                )
+                deferred_pending = [p for p in pending if pending_trade_in_stale_cooldown(p)]
+                pending = [p for p in pending if not pending_trade_in_stale_cooldown(p)]
+                if deferred_pending:
+                    log_lines.append(
+                        f"Overnight queue deferred {len(deferred_pending)} known-stale idea(s) "
+                        f"for {STALE_QUEUE_RETRY_COOLDOWN_MINUTES:.0f} minutes to preserve Gemini quota."
+                    )
+                if pending:
+                    # Do not consume retry attempts here. A stale quote is a
+                    # data availability problem, not a failed verification.
+                    log_lines.append(
+                        f"Morning verification: {len(pending)} overnight-queued trade(s) "
+                        "handed to Gemini for re-verification against fresh data."
+                    )
 
         # Step 3: news
         try:
@@ -448,18 +460,30 @@ def run():
         # the next live-session run re-verifies instead.
         if decision_ok and not decision_meta.get("technical_fallback"):
             if requeue_trades and OVERNIGHT_QUEUE_ENABLED:
-                queued_retry = save_pending_trades(requeue_trades)
+                queued_retry = save_pending_trades(mark_pending_stale(requeue_trades))
                 log_lines.append(
                     f"Overnight queue kept {queued_retry} idea(s) whose market data was stale; "
                     "they will be retried after fresh quotes arrive."
                 )
             elif pending:
-                clear_pending_trades()
+                # Clear only ideas actually handed to Gemini. Items deferred
+                # because they were already known-stale remain queued.
+                replace_pending_trades(deferred_pending)
                 log_lines.append("Overnight queue cleared after verification.")
+                if deferred_pending:
+                    log_lines.append(
+                        f"Overnight queue retained {len(deferred_pending)} deferred stale idea(s)."
+                    )
         elif pending:
+            # A fallback or decision failure is a genuine retryable verification
+            # failure. Unlike stale market data, count it against the retry cap
+            # so a broken provider cannot preserve an old queue forever.
+            retryable_pending = mark_pending_verification_attempts(pending)
+            replace_pending_trades(deferred_pending + retryable_pending)
             log_lines.append(
-                "Overnight queue KEPT for next run (Gemini did not verify this round "
-                "-- technical fallback or decision failure); will re-verify when available."
+                f"Overnight queue KEPT for next run (Gemini did not verify this round "
+                f"-- technical fallback or decision failure); {len(retryable_pending)} "
+                "idea(s) remain subject to the retry cap."
             )
     else:
         # Overnight dead zone: analyze and QUEUE ideas for the morning. Nothing
