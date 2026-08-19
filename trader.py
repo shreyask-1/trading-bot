@@ -52,6 +52,7 @@ from config import (
     ENABLE_INTRADAY_ANALYSIS,
     INTRADAY_BAR_MINUTES,
     INTRADAY_LOOKBACK_DAYS,
+    ENABLE_MULTI_TIMEFRAME,
     PRICE_HISTORY_DAYS,
     TRADE_COOLDOWN_MINUTES,
     MARKET_HIGH_VOLATILITY_THRESHOLD,
@@ -61,6 +62,11 @@ from config import (
     MAX_OPEN_POSITIONS,
     EXCEPTIONAL_CONVICTION_THRESHOLD,
     EXCEPTIONAL_TRADE_RESERVE_ACCESS_PCT,
+    ENABLE_HIGH_CONVICTION_SWAPS,
+    SWAP_MIN_CONFIDENCE,
+    SWAP_MIN_CONVICTION,
+    SWAP_MIN_WINNER_PCT,
+    SWAP_MAX_PER_RUN,
     CONSOLIDATION_SCORE_THRESHOLD,
     MAX_TOTAL_EXPOSURE_PCT,
     MAX_POSITION_LOSS_PCT,
@@ -71,6 +77,21 @@ from config import (
     DELEVERAGE_SIZE_MULTIPLIER,
     RESET_EQUITY_PEAK_ON_START,
     DISCORD_WEBHOOK_URL,
+    ENABLE_MARKET_DATA_GUARDS,
+    ALLOW_STALE_DATA_FOR_EXITS,
+    MAX_QUOTE_AGE_SECONDS,
+    MAX_CANDLE_AGE_MINUTES,
+    MAX_BID_ASK_SPREAD_PCT,
+    MIN_AVG_DAILY_VOLUME,
+    SHADOW_MODE,
+    MANUAL_BUY_KILL_SWITCH,
+    RECORD_ONLY_FILLED_ORDERS,
+    COMMISSION_PER_SHARE,
+    ESTIMATED_SLIPPAGE_BPS,
+    MAX_HOLDING_HOURS,
+    STAGNATION_MAX_HOURS,
+    STAGNATION_MIN_PROGRESS_PCT,
+    ENABLE_PERFORMANCE_REPORTS,
     ENABLE_FOREIGN_ACTIVITY_DETECTION,
     DAYTRADE_MODE,
     END_OF_DAY_FLATTEN,
@@ -94,6 +115,11 @@ from config import (
     RSI_EXHAUSTION_LEVEL,
     ENABLE_NEGATIVE_NEWS_EXIT,
     NEGATIVE_NEWS_SENTIMENT_THRESHOLD,
+    NEGATIVE_NEWS_MIN_ARTICLES,
+    NEGATIVE_NEWS_EMERGENCY_THRESHOLD,
+    BUY_REQUIRE_SMA20_ALIGNMENT,
+    MA_BREAKDOWN_REQUIRE_DOWNTREND,
+    TECHNICAL_FALLBACK_MAX_POSITION_PCT,
     MARKET_VIX_STRESS_LEVEL,
     MARKET_VIX_SEVERE_LEVEL,
     ENABLE_ECONOMIC_CALENDAR,
@@ -167,7 +193,7 @@ def _cache_put(key, value):
 PERFORMANCE_CSV_HEADER = [
     "timestamp", "total_value", "cash", "num_holdings", "market_regime",
     "size_multiplier", "candidates_considered", "candidates_passed_prescreen",
-    "trades_proposed", "trades_executed", "trades_skipped", "trades_failed",
+    "trades_proposed", "trades_executed", "trades_skipped", "trades_failed", "trades_shadowed",
     "risk_exits", "consolidation_exits",
 ]
 
@@ -286,14 +312,47 @@ def get_market_regime():
     defensive = min(regimes, key=lambda r: order.index(r) if r in order else 2)
     return defensive
 
-def get_price(ticker):
+_QUOTE_CACHE = {}
+QUOTE_CACHE_TTL_SECONDS = 20.0
+
+
+def get_quote(ticker):
+    """Return price, bid/ask, timestamp, and age for one symbol."""
+    cached = _QUOTE_CACHE.get(ticker)
+    if cached and cached["expires_at"] > time.monotonic():
+        return cached["quote"]
     try:
         request = StockLatestTradeRequest(symbol_or_symbols=ticker, feed=DATA_FEED)
-        trade = data_client.get_stock_latest_trade(request)
-        return float(trade[ticker].price)
+        trade = data_client.get_stock_latest_trade(request)[ticker]
+        price = float(getattr(trade, "price", 0) or 0)
+        timestamp = getattr(trade, "timestamp", None)
+        if timestamp is not None:
+            if timestamp.tzinfo is None:
+                timestamp = pytz.utc.localize(timestamp)
+            age = max(0.0, (datetime.now(pytz.utc) - timestamp.astimezone(pytz.utc)).total_seconds())
+            timestamp_iso = timestamp.isoformat()
+        else:
+            age = None
+            timestamp_iso = None
+        bid = getattr(trade, "bid_price", None)
+        ask = getattr(trade, "ask_price", None)
+        bid = float(bid) if bid is not None and float(bid) > 0 else None
+        ask = float(ask) if ask is not None and float(ask) > 0 else None
+        quote = {"price": price, "bid": bid, "ask": ask, "age_seconds": age, "timestamp": timestamp_iso}
+        _QUOTE_CACHE[ticker] = {"expires_at": time.monotonic() + QUOTE_CACHE_TTL_SECONDS, "quote": quote}
+        return quote
     except Exception as e:
-        print(f"Could not get price for {ticker}: {e}")
+        message = f"quote unavailable for {ticker}: {e}"
+        print(message)
+        record_operational_event("api_failure", message)
         return None
+
+
+def get_price(ticker):
+    quote = get_quote(ticker)
+    if quote and quote.get("price", 0) > 0:
+        return float(quote["price"])
+    return None
 
 def get_price_history(ticker, days=PRICE_HISTORY_DAYS):
     # Cached: the risk steps, market regime check and scans all fetch daily
@@ -322,11 +381,16 @@ def _fetch_price_history(ticker, days=PRICE_HISTORY_DAYS):
         bars = list(data_client.get_stock_bars(request)[ticker])
         if len(bars) < 55:
             return None
+        last_timestamp = getattr(bars[-1], "timestamp", None)
+        if last_timestamp is not None and last_timestamp.tzinfo is None:
+            last_timestamp = pytz.utc.localize(last_timestamp)
         return {
             "closes": [b.close for b in bars],
             "highs": [b.high for b in bars],
             "lows": [b.low for b in bars],
             "volumes": [b.volume for b in bars],
+            "last_bar_timestamp": last_timestamp.isoformat() if last_timestamp is not None else None,
+            "avg_volume_20": sum(float(b.volume or 0) for b in bars[-20:]) / min(20, len(bars)),
         }
     except Exception as e:
         print(f"Could not get price history for {ticker}: {e}")
@@ -403,10 +467,14 @@ def get_intraday_indicators(ticker):
         else:
             intraday_trend = None
 
+        last_intraday_timestamp = getattr(bars[-1], "timestamp", None)
+        if last_intraday_timestamp is not None and last_intraday_timestamp.tzinfo is None:
+            last_intraday_timestamp = pytz.utc.localize(last_intraday_timestamp)
         return {
             "intraday_rsi": intraday_rsi,
             "intraday_momentum_pct": intraday_momentum_pct,
             "intraday_trend": intraday_trend,
+            "last_intraday_timestamp": last_intraday_timestamp.isoformat() if last_intraday_timestamp is not None else None,
             "vwap": round(vwap, 2),
             "vwap_deviation_pct": vwap_deviation_pct,
             "session_open": round(session_open, 2),
@@ -414,6 +482,61 @@ def get_intraday_indicators(ticker):
     except Exception as e:
         print(f"Could not get intraday indicators for {ticker}: {e}")
         return None
+
+def get_multi_timeframe_indicators(ticker):
+    """Return compact 1-minute, 5-minute, and 1-hour context for a ticker.
+
+    This is intentionally called only for the top screened candidates by
+    decide.py. Fetching all three timeframes for every S&P 500 name would be
+    slower and would not improve decisions proportionally.
+    """
+    if not ENABLE_MULTI_TIMEFRAME:
+        return {}
+    key = ("mtf", ticker)
+    cached = _cache_get(key)
+    if cached is not None:
+        return cached
+
+    now = datetime.now()
+    specs = {
+        "1m": (TimeFrame(1, TimeFrameUnit.Minute), now - timedelta(days=1)),
+        "5m": (TimeFrame(5, TimeFrameUnit.Minute), now - timedelta(days=2)),
+        "1h": (TimeFrame.Hour, now - timedelta(days=30)),
+    }
+    result = {}
+    for label, (timeframe, start) in specs.items():
+        try:
+            request = StockBarsRequest(
+                symbol_or_symbols=ticker,
+                timeframe=timeframe,
+                start=start,
+                end=now,
+                feed=DATA_FEED,
+            )
+            bars = list(data_client.get_stock_bars(request)[ticker])
+            if len(bars) < 20:
+                continue
+            closes = [b.close for b in bars]
+            highs = [b.high for b in bars]
+            lows = [b.low for b in bars]
+            volumes = [b.volume for b in bars]
+            result[label] = {
+                "trend": ind.classify_trend(closes, 8, 21) if len(closes) >= 21 else None,
+                "rsi": ind.compute_rsi(closes, 14) if len(closes) >= 15 else None,
+                "momentum_pct": ind.compute_momentum(closes, min(10, len(closes) - 1)),
+                "atr": ind.compute_atr(highs, lows, closes, period=14) if len(closes) >= 15 else None,
+                "relative_volume_pct": ind.compute_relative_volume(volumes, min(20, len(volumes) - 1)),
+                "last_price": closes[-1],
+                "bars": len(bars),
+            }
+        except Exception as e:
+            # A missing timeframe must not discard the other timeframes or
+            # prevent the daily/5-minute strategy from running.
+            print(f"Could not get {label} timeframe for {ticker}: {e}")
+    if result:
+        _cache_put(key, result)
+    return result
+
 
 def get_opening_range_breakout(ticker):
     """
@@ -503,6 +626,8 @@ def _compute_full_indicators(ticker):
 
     result = {
         "price": closes[-1],
+        "avg_volume_20": history.get("avg_volume_20"),
+        "last_bar_timestamp": history.get("last_bar_timestamp"),
         "sma_20": ind.compute_sma(closes, 20),
         "sma_50": ind.compute_sma(closes, 50),
         "rsi_14": ind.compute_rsi(closes),
@@ -525,13 +650,31 @@ def _compute_full_indicators(ticker):
         "low_52w": min(lows) if lows else None,
     }
 
+    if ENABLE_MARKET_DATA_GUARDS:
+        quote = get_quote(ticker)
+        if quote:
+            result.update({
+                "quote_available": True,
+                "quote_age_seconds": quote.get("age_seconds"),
+                "quote_timestamp": quote.get("timestamp"),
+                "bid": quote.get("bid"),
+                "ask": quote.get("ask"),
+                "spread_pct": (
+                    (quote["ask"] - quote["bid"]) / ((quote["ask"] + quote["bid"]) / 2) * 100.0
+                    if quote.get("bid") and quote.get("ask") and quote["ask"] >= quote["bid"] else None
+                ),
+            })
+        else:
+            result.update({"quote_available": False, "quote_age_seconds": None, "quote_timestamp": None, "bid": None, "ask": None, "spread_pct": None})
+
     intraday = get_intraday_indicators(ticker)
     if intraday:
         result.update(intraday)
     else:
         result.update({
             "intraday_rsi": None, "intraday_momentum_pct": None,
-            "intraday_trend": None, "vwap": None, "vwap_deviation_pct": None,
+            "intraday_trend": None, "last_intraday_timestamp": None,
+            "vwap": None, "vwap_deviation_pct": None,
             "session_open": None,
         })
 
@@ -1050,30 +1193,139 @@ def notify(message):
     except Exception as e:
         print(f"Could not send alert: {e}")
 
+
+def record_operational_event(kind, message, alert_after=3):
+    """Count recurring operational failures and alert only after repetition."""
+    try:
+        state = _load_json_file(OPERATIONS_STATE_FILE, {})
+        day = datetime.now(_EASTERN).strftime("%Y-%m-%d")
+        if state.get("day") != day:
+            state = {"day": day, "events": {}}
+        events = state.setdefault("events", {})
+        item = events.setdefault(kind, {"count": 0, "last": ""})
+        item["count"] = int(item.get("count", 0)) + 1
+        item["last"] = message[:300]
+        _save_json_file(OPERATIONS_STATE_FILE, state)
+        if item["count"] == alert_after or item["count"] % 10 == 0:
+            notify(f"REPEATED {kind.upper()} ({item['count']} today): {message}")
+    except Exception:
+        pass
+
+
+def _record_shadow_trade(trade, reason, price=None):
+    try:
+        os.makedirs(os.path.dirname(SHADOW_TRADES_FILE), exist_ok=True)
+        with open(SHADOW_TRADES_FILE, "a") as f:
+            json.dump({
+                "timestamp": datetime.now().isoformat(),
+                "ticker": trade.get("ticker"),
+                "action": trade.get("action"),
+                "engine": trade.get("engine", "gemini"),
+                "confidence": trade.get("confidence"),
+                "conviction": trade.get("conviction"),
+                "price": price,
+                "reason": reason,
+            }, f)
+            f.write("\n")
+    except Exception as e:
+        print(f"Could not write shadow trade: {e}")
+
 # ============================================================
 # Trade journal & results (win rate by setup)
 # ============================================================
 JOURNAL_HEADER = [
     "timestamp", "ticker", "action", "qty", "price",
-    "stop_loss", "take_profit", "conviction", "confidence", "trigger", "reasoning",
+    "stop_loss", "take_profit", "conviction", "confidence", "trigger", "engine", "book", "transaction_costs_dollars", "reasoning",
 ]
 RESULTS_HEADER = [
     "closed_at", "opened_at", "ticker", "entry_price", "exit_price",
-    "qty", "pnl_pct", "pnl_dollars", "setup", "exit_reason",
+    "qty", "pnl_pct", "pnl_dollars", "gross_pnl_dollars", "transaction_costs_dollars", "setup", "exit_reason", "engine", "book",
+]
+ENGINE_PERFORMANCE_FILE = os.path.join(os.path.dirname(__file__), "logs", "engine_performance.csv")
+SHADOW_TRADES_FILE = os.path.join(os.path.dirname(__file__), "logs", "shadow_trades.jsonl")
+OPERATIONS_STATE_FILE = os.path.join(os.path.dirname(__file__), "logs", "operations_state.json")
+DAILY_REPORT_FILE = os.path.join(os.path.dirname(__file__), "logs", "daily_report.csv")
+WEEKLY_REPORT_FILE = os.path.join(os.path.dirname(__file__), "logs", "weekly_report.csv")
+BOOK_PERFORMANCE_FILE = os.path.join(os.path.dirname(__file__), "logs", "book_performance.csv")
+BOOK_PERFORMANCE_HEADER = [
+    "timestamp", "book", "realized_pnl_dollars", "closed_trades", "wins",
+    "win_rate_pct", "avg_realized_pnl_pct", "unrealized_pnl_dollars",
+    "open_positions", "gross_exposure_dollars",
+]
+ENGINE_PERFORMANCE_HEADER = [
+    "timestamp", "engine", "realized_pnl_dollars", "closed_trades",
+    "wins", "win_rate_pct", "avg_realized_pnl_pct", "unrealized_pnl_dollars",
+    "open_positions", "gross_exposure_dollars",
 ]
 
 
 def _append_csv(path, header, row):
+    """Append a CSV row and migrate older headers when new columns are added."""
     os.makedirs(os.path.dirname(path), exist_ok=True)
     new = not os.path.exists(path)
+    if not new:
+        try:
+            with open(path, newline="") as f:
+                reader = csv.DictReader(f)
+                existing_header = reader.fieldnames or []
+                rows = list(reader)
+            if existing_header != list(header):
+                # Preserve old data while adding columns such as `engine`.
+                merged_header = list(header) + [c for c in existing_header if c not in header]
+                tmp = path + ".tmp"
+                with open(tmp, "w", newline="") as f:
+                    writer = csv.DictWriter(f, fieldnames=merged_header)
+                    writer.writeheader()
+                    writer.writerows(rows)
+                os.replace(tmp, path)
+                header = merged_header
+        except (OSError, csv.Error):
+            # If a partially written historical file is unreadable, do not
+            # destroy it; the append below will surface a normal write error.
+            pass
     with open(path, "a", newline="") as f:
-        writer = csv.DictWriter(f, fieldnames=header)
+        writer = csv.DictWriter(f, fieldnames=header, extrasaction="ignore")
         if new:
             writer.writeheader()
         writer.writerow(row)
 
 
-def _record_trade_journal(ticker, action, qty, price, stop_loss, take_profit, conviction, confidence, trigger, reasoning):
+def _infer_engine(engine=None, reasoning="", trigger="", previous=None):
+    """Normalize engine labels for attribution, including older journal rows."""
+    if engine:
+        value = str(engine).strip().lower()
+        if value in {"gemini", "technical_fallback", "legacy/unknown"}:
+            return value
+    if previous and previous.get("engine"):
+        return _infer_engine(previous.get("engine"))
+    text = f"{reasoning} {trigger}".lower()
+    if "technical_fallback" in text or "technical fallback" in text:
+        return "technical_fallback"
+    if "legacy" in text or "baseline" in text:
+        return "legacy/unknown"
+    if "confidence" in text or "gemini" in text or trigger in {"decision", "morning_verification"}:
+        return "gemini"
+    return "legacy/unknown"
+
+
+def _estimate_transaction_cost(price, qty):
+    """Estimate commission plus two-sided slippage for one filled leg."""
+    notional = abs(float(price or 0)) * abs(float(qty or 0))
+    return abs(float(qty or 0)) * COMMISSION_PER_SHARE + notional * ESTIMATED_SLIPPAGE_BPS / 10000.0
+
+
+def _classify_book(engine, reasoning="", trigger="", holding_hours=None):
+    if engine == "legacy/unknown":
+        return "legacy"
+    text = f"{reasoning} {trigger}".lower()
+    if any(term in text for term in ("daytrade", "intraday", "opening-range", "vwap", "1m", "5m")):
+        return "daytrade"
+    if holding_hours is not None and holding_hours <= 24:
+        return "daytrade"
+    return "swing"
+
+
+def _record_trade_journal(ticker, action, qty, price, stop_loss, take_profit, conviction, confidence, trigger, reasoning, engine=None, transaction_costs=None, book=None):
     """Append one row per fill to logs/trades_journal.csv."""
     try:
         _append_csv(TRADES_JOURNAL_FILE, JOURNAL_HEADER, {
@@ -1087,14 +1339,17 @@ def _record_trade_journal(ticker, action, qty, price, stop_loss, take_profit, co
             "conviction": conviction,
             "confidence": confidence if confidence is not None else "",
             "trigger": trigger,
+            "engine": _infer_engine(engine, reasoning, trigger),
+            "book": book or _classify_book(_infer_engine(engine, reasoning, trigger), reasoning, trigger),
+            "transaction_costs_dollars": round(transaction_costs or _estimate_transaction_cost(price, qty), 4),
             "reasoning": (reasoning or "")[:200],
         })
     except Exception as e:
         print(f"Could not write trade journal: {e}")
 
 
-def _track_open_close(ticker, action, qty, price, stop_loss, take_profit, trigger, reasoning):
-    """Pair buys with sells to build closed-trade results (win rate by setup)."""
+def _track_open_close(ticker, action, qty, price, stop_loss, take_profit, trigger, reasoning, engine=None):
+    """Pair buys with sells to build closed-trade results (win rate by engine)."""
     try:
         open_trades = _load_json_file(OPEN_TRADES_FILE, {})
         now_iso = datetime.now().isoformat()
@@ -1105,19 +1360,28 @@ def _track_open_close(ticker, action, qty, price, stop_loss, take_profit, trigge
                 entry = (prev["entry"] * prev["qty"] + price * qty) / total_qty
             else:
                 entry = price
+            normalized_engine = _infer_engine(engine, reasoning, trigger, previous=prev)
+            entry_cost = _estimate_transaction_cost(price, qty)
             open_trades[ticker] = {
                 "qty": total_qty,
                 "entry": entry,
                 "opened_at": prev["opened_at"] if prev else now_iso,
                 "setup": prev["setup"] if prev else (reasoning or ""),
                 "stop": prev["stop"] if prev else stop_loss,
+                "engine": normalized_engine,
+                "book": prev.get("book") if prev else _classify_book(normalized_engine, reasoning, trigger),
+                "entry_costs": float(prev.get("entry_costs", 0.0)) if prev else entry_cost,
             }
         elif action == "sell":
             prev = open_trades.get(ticker)
             if prev and prev["qty"] > 0:
                 remaining = prev["qty"] - qty
-                pnl_pct = (price - prev["entry"]) / prev["entry"] * 100.0 if prev["entry"] else 0.0
-                pnl_dollars = (price - prev["entry"]) * qty
+                gross_pnl_dollars = (price - prev["entry"]) * qty
+                exit_costs = _estimate_transaction_cost(price, qty)
+                allocated_entry_costs = float(prev.get("entry_costs", 0.0)) * min(1.0, qty / max(prev["qty"], 0.0001))
+                transaction_costs = allocated_entry_costs + exit_costs
+                pnl_dollars = gross_pnl_dollars - transaction_costs
+                pnl_pct = (pnl_dollars / (prev["entry"] * qty) * 100.0) if prev["entry"] and qty else 0.0
                 if remaining <= 0.01:
                     _append_csv(TRADE_RESULTS_FILE, RESULTS_HEADER, {
                         "closed_at": now_iso,
@@ -1128,15 +1392,211 @@ def _track_open_close(ticker, action, qty, price, stop_loss, take_profit, trigge
                         "qty": prev["qty"],
                         "pnl_pct": round(pnl_pct, 2),
                         "pnl_dollars": round(pnl_dollars, 2),
+                        "gross_pnl_dollars": round(gross_pnl_dollars, 2),
+                        "transaction_costs_dollars": round(transaction_costs, 2),
                         "setup": (prev.get("setup") or "")[:200],
                         "exit_reason": trigger,
+                        "engine": _infer_engine(prev.get("engine"), prev.get("setup", ""), trigger),
+                        "book": prev.get("book") or _classify_book(prev.get("engine"), prev.get("setup", ""), trigger),
                     })
                     open_trades.pop(ticker, None)
                 else:
                     prev["qty"] = remaining
+                    prev["entry_costs"] = max(0.0, float(prev.get("entry_costs", 0.0)) - allocated_entry_costs)
         _save_json_file(OPEN_TRADES_FILE, open_trades)
     except Exception as e:
         print(f"Could not track open/close positions: {e}")
+
+
+def _read_trade_results():
+    """Read closed trades while tolerating pre-engine historical CSV rows."""
+    if not os.path.exists(TRADE_RESULTS_FILE):
+        return []
+    try:
+        with open(TRADE_RESULTS_FILE, newline="") as f:
+            return list(csv.DictReader(f))
+    except (OSError, csv.Error):
+        return []
+
+
+def _read_open_trade_engine_map():
+    try:
+        data = _load_json_file(OPEN_TRADES_FILE, {})
+        return data if isinstance(data, dict) else {}
+    except Exception:
+        return {}
+
+
+def _engine_performance(account_snapshot):
+    """Return realized and unrealized P&L grouped by Gemini/fallback/legacy."""
+    groups = {}
+    for row in _read_trade_results():
+        try:
+            pnl_dollars = float(row.get("pnl_dollars", 0) or 0)
+            pnl_pct = float(row.get("pnl_pct", 0) or 0)
+        except (TypeError, ValueError):
+            continue
+        engine = _infer_engine(row.get("engine"), row.get("setup", ""), row.get("exit_reason", ""))
+        g = groups.setdefault(engine, {"realized": 0.0, "closed": 0, "wins": 0, "pnl_pcts": [], "unrealized": 0.0, "open": 0, "exposure": 0.0})
+        g["realized"] += pnl_dollars
+        g["closed"] += 1
+        g["wins"] += 1 if pnl_dollars > 0 else 0
+        g["pnl_pcts"].append(pnl_pct)
+
+    open_map = _read_open_trade_engine_map()
+    for ticker, position in (account_snapshot.get("holdings") or {}).items():
+        record = open_map.get(ticker) or {}
+        engine = _infer_engine(record.get("engine"), record.get("setup", ""), previous=record)
+        g = groups.setdefault(engine, {"realized": 0.0, "closed": 0, "wins": 0, "pnl_pcts": [], "unrealized": 0.0, "open": 0, "exposure": 0.0})
+        g["unrealized"] += float(position.get("unrealized_pl", 0) or 0)
+        g["open"] += 1
+        g["exposure"] += float(position.get("qty", 0) or 0) * float(position.get("current_price", 0) or 0)
+    return groups
+
+
+def record_periodic_performance_reports(account_snapshot):
+    """Write compact daily/weekly loss reports by symbol, setup, and engine."""
+    if not ENABLE_PERFORMANCE_REPORTS:
+        return "performance reports disabled"
+    rows = _read_trade_results()
+    now = datetime.now(_EASTERN)
+    reports = []
+    for period, path, start in (
+        ("daily", DAILY_REPORT_FILE, now.date()),
+        ("weekly", WEEKLY_REPORT_FILE, now.date() - timedelta(days=6)),
+    ):
+        selected = []
+        for row in rows:
+            try:
+                closed = datetime.fromisoformat(row.get("closed_at", "")).date()
+                if closed >= start:
+                    selected.append(row)
+            except (TypeError, ValueError):
+                continue
+        by_symbol = {}
+        by_setup = {}
+        by_engine = {}
+        total = 0.0
+        for row in selected:
+            try:
+                pnl = float(row.get("pnl_dollars", 0) or 0)
+            except (TypeError, ValueError):
+                continue
+            total += pnl
+            if pnl < 0:
+                by_symbol[row.get("ticker", "unknown")] = by_symbol.get(row.get("ticker", "unknown"), 0.0) + pnl
+                setup = _setup_category(row.get("setup", ""))
+                by_setup[setup] = by_setup.get(setup, 0.0) + pnl
+                engine = _infer_engine(row.get("engine"), row.get("setup", ""), row.get("exit_reason", ""))
+                by_engine[engine] = by_engine.get(engine, 0.0) + pnl
+        open_losers = sorted(
+            ((t, float(p.get("unrealized_pl", 0) or 0)) for t, p in (account_snapshot.get("holdings") or {}).items() if float(p.get("unrealized_pl", 0) or 0) < 0),
+            key=lambda x: x[1],
+        )[:5]
+        row = {
+            "report_date": now.date().isoformat(),
+            "period": period,
+            "realized_pnl_dollars": round(total, 2),
+            "closed_trades": len(selected),
+            "losing_symbols": "; ".join(f"{k}:{v:+.2f}" for k, v in sorted(by_symbol.items(), key=lambda x: x[1])[:5]) or "none",
+            "losing_setups": "; ".join(f"{k}:{v:+.2f}" for k, v in sorted(by_setup.items(), key=lambda x: x[1])) or "none",
+            "losing_engines": "; ".join(f"{k}:{v:+.2f}" for k, v in sorted(by_engine.items(), key=lambda x: x[1])) or "none",
+            "open_losers": "; ".join(f"{k}:{v:+.2f}" for k, v in open_losers) or "none",
+        }
+        existing = []
+        if os.path.exists(path):
+            try:
+                with open(path, newline="") as f:
+                    existing = list(csv.DictReader(f))
+            except (OSError, csv.Error):
+                existing = []
+        existing = [r for r in existing if not (r.get("report_date") == row["report_date"] and r.get("period") == period)]
+        existing.append(row)
+        with open(path, "w", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=list(row.keys()))
+            writer.writeheader()
+            writer.writerows(existing)
+        reports.append(f"{period} realized ${total:+,.2f}; worst symbols {row['losing_symbols']}")
+    return " | ".join(reports)
+
+
+def _book_performance(account_snapshot):
+    groups = {}
+    for row in _read_trade_results():
+        try:
+            pnl_dollars = float(row.get("pnl_dollars", 0) or 0)
+            pnl_pct = float(row.get("pnl_pct", 0) or 0)
+        except (TypeError, ValueError):
+            continue
+        engine = _infer_engine(row.get("engine"), row.get("setup", ""), row.get("exit_reason", ""))
+        book = row.get("book") or _classify_book(engine, row.get("setup", ""), row.get("exit_reason", ""))
+        g = groups.setdefault(book, {"realized": 0.0, "closed": 0, "wins": 0, "pnl_pcts": [], "unrealized": 0.0, "open": 0, "exposure": 0.0})
+        g["realized"] += pnl_dollars
+        g["closed"] += 1
+        g["wins"] += 1 if pnl_dollars > 0 else 0
+        g["pnl_pcts"].append(pnl_pct)
+    open_map = _read_open_trade_engine_map()
+    for ticker, position in (account_snapshot.get("holdings") or {}).items():
+        record = open_map.get(ticker) or {}
+        engine = _infer_engine(record.get("engine"), record.get("setup", ""), previous=record)
+        book = record.get("book") or _classify_book(engine, record.get("setup", ""))
+        g = groups.setdefault(book, {"realized": 0.0, "closed": 0, "wins": 0, "pnl_pcts": [], "unrealized": 0.0, "open": 0, "exposure": 0.0})
+        g["unrealized"] += float(position.get("unrealized_pl", 0) or 0)
+        g["open"] += 1
+        g["exposure"] += float(position.get("qty", 0) or 0) * float(position.get("current_price", 0) or 0)
+    return groups
+
+
+def record_engine_performance_snapshot(account_snapshot, log_dir):
+    """Persist and format engine/book-level realized and unrealized P&L."""
+    groups = _engine_performance(account_snapshot)
+    books = _book_performance(account_snapshot)
+    timestamp = datetime.now().isoformat()
+    for engine, data in sorted(groups.items()):
+        closed = data["closed"]
+        avg_pct = sum(data["pnl_pcts"]) / closed if closed else 0.0
+        _append_csv(ENGINE_PERFORMANCE_FILE, ENGINE_PERFORMANCE_HEADER, {
+            "timestamp": timestamp,
+            "engine": engine,
+            "realized_pnl_dollars": round(data["realized"], 2),
+            "closed_trades": closed,
+            "wins": data["wins"],
+            "win_rate_pct": round(data["wins"] / closed * 100.0, 2) if closed else "",
+            "avg_realized_pnl_pct": round(avg_pct, 2) if closed else "",
+            "unrealized_pnl_dollars": round(data["unrealized"], 2),
+            "open_positions": data["open"],
+            "gross_exposure_dollars": round(data["exposure"], 2),
+        })
+    for book, data in sorted(books.items()):
+        closed = data["closed"]
+        avg_pct = sum(data["pnl_pcts"]) / closed if closed else 0.0
+        _append_csv(BOOK_PERFORMANCE_FILE, BOOK_PERFORMANCE_HEADER, {
+            "timestamp": timestamp,
+            "book": book,
+            "realized_pnl_dollars": round(data["realized"], 2),
+            "closed_trades": closed,
+            "wins": data["wins"],
+            "win_rate_pct": round(data["wins"] / closed * 100.0, 2) if closed else "",
+            "avg_realized_pnl_pct": round(avg_pct, 2) if closed else "",
+            "unrealized_pnl_dollars": round(data["unrealized"], 2),
+            "open_positions": data["open"],
+            "gross_exposure_dollars": round(data["exposure"], 2),
+        })
+    if not groups:
+        return "no engine-attributed trades yet"
+    parts = []
+    for engine, data in sorted(groups.items()):
+        closed = data["closed"]
+        win_text = f", {data['wins'] / closed * 100:.0f}% wins" if closed else ""
+        parts.append(
+            f"{engine}: realized ${data['realized']:+,.2f} ({closed} closed{win_text}), "
+            f"unrealized ${data['unrealized']:+,.2f} ({data['open']} open)"
+        )
+    book_parts = []
+    for book, data in sorted(books.items()):
+        book_parts.append(f"{book}: realized ${data['realized']:+,.2f}, unrealized ${data['unrealized']:+,.2f}")
+    return " | ".join(parts) + (" | Books: " + " | ".join(book_parts) if book_parts else "")
+
 
 
 def summarize_trade_results():
@@ -1521,6 +1981,73 @@ def _refresh_ledger_statuses():
         return 0
 
 
+def reconcile_filled_orders():
+    """Account for only actual fills and alert on partial/rejected orders."""
+    ledger = _load_json_file(ORDER_LEDGER_FILE, [])
+    if not ledger:
+        return {"filled": 0, "partial": 0, "rejected": 0}
+    try:
+        orders = trading_client.get_orders(GetOrdersRequest(status=QueryOrderStatus.ALL, limit=500))
+    except Exception as e:
+        record_operational_event("api_failure", f"order fill reconciliation unavailable: {e}")
+        return {"filled": 0, "partial": 0, "rejected": 0}
+    by_id = {str(getattr(o, "id", "")): o for o in orders if getattr(o, "id", None)}
+    counts = {"filled": 0, "partial": 0, "rejected": 0}
+    changed = False
+    for entry in ledger:
+        order = by_id.get(str(entry.get("order_id", "")))
+        if order is None:
+            continue
+        status = _status_val(getattr(order, "status", entry.get("order_status", "")))
+        entry["order_status"] = status
+        filled_qty = getattr(order, "filled_qty", None)
+        try:
+            filled_qty = float(filled_qty) if filled_qty is not None else (float(entry.get("qty", 0)) if status == "filled" else 0.0)
+        except (TypeError, ValueError):
+            filled_qty = 0.0
+        accounted = float(entry.get("accounted_filled_qty", 0.0) or 0.0)
+        delta = max(0.0, filled_qty - accounted)
+        if status == "partially_filled":
+            counts["partial"] += 1
+            record_operational_event("partial_fill", f"{entry.get('ticker')} order {entry.get('order_id')} filled {filled_qty:g}/{entry.get('qty')}")
+        elif status in {"rejected", "canceled", "expired"}:
+            counts["rejected"] += 1
+            if status in {"rejected", "expired"}:
+                record_operational_event("order_rejection", f"{entry.get('ticker')} order {entry.get('order_id')} ended {status}")
+        if delta > 0.0001 and RECORD_ONLY_FILLED_ORDERS:
+            fill_price = getattr(order, "filled_avg_price", None) or entry.get("submitted_price")
+            try:
+                fill_price = float(fill_price)
+            except (TypeError, ValueError):
+                fill_price = 0.0
+            if fill_price > 0:
+                engine = _infer_engine(entry.get("engine"), entry.get("reasoning", ""), entry.get("trigger", ""))
+                _record_trade_journal(
+                    entry.get("ticker"), entry.get("action", "buy"), delta, fill_price,
+                    entry.get("stop_loss"), entry.get("take_profit"),
+                    entry.get("conviction", 5), entry.get("confidence"),
+                    entry.get("trigger", "reconciled_fill"), entry.get("reasoning", ""),
+                    engine=engine,
+                    transaction_costs=_estimate_transaction_cost(fill_price, delta),
+                    book=_classify_book(engine, entry.get("reasoning", ""), entry.get("trigger", "")),
+                )
+                _track_open_close(
+                    entry.get("ticker"), entry.get("action", "buy"), delta, fill_price,
+                    entry.get("stop_loss"), entry.get("take_profit"),
+                    entry.get("trigger", "reconciled_fill"), entry.get("reasoning", ""), engine=engine,
+                )
+                entry["accounted_filled_qty"] = filled_qty
+                entry["filled_avg_price"] = fill_price
+                counts["filled"] += 1
+                changed = True
+        elif delta > 0.0001:
+            entry["accounted_filled_qty"] = filled_qty
+            changed = True
+    if changed:
+        _save_json_file(ORDER_LEDGER_FILE, ledger)
+    return counts
+
+
 def get_expected_holdings():
     """
     Recompute the quantities this bot should own from its order ledger:
@@ -1538,14 +2065,20 @@ def get_expected_holdings():
         t = o.get("ticker")
         side = str(o.get("action", "")).lower()
         status = _status_val(o.get("order_status", ""))
-        if status and status != "filled":
-            # Pending (PENDING_NEW / new / submitted), canceled, expired,
-            # rejected orders haven't changed holdings (yet).
-            continue
-        try:
-            qty = float(o.get("qty", 0.0))
-        except (TypeError, ValueError):
-            continue
+        if status == "partially_filled":
+            try:
+                qty = float(o.get("accounted_filled_qty", 0.0) or 0.0)
+            except (TypeError, ValueError):
+                qty = 0.0
+        else:
+            if status and status != "filled":
+                # Pending (PENDING_NEW / new / submitted), canceled, expired,
+                # rejected orders haven't changed holdings (yet).
+                continue
+            try:
+                qty = float(o.get("qty", 0.0))
+            except (TypeError, ValueError):
+                continue
         if side == "buy":
             expected[t] = expected.get(t, 0.0) + qty
         elif side == "sell":
@@ -1698,17 +2231,49 @@ def reconcile_foreign_activity(account_snapshot):
             )
         return flags, True
 
-    baseline = recon["baseline"]
+    baseline = dict(recon["baseline"] or {})
+    bot_expected = get_expected_holdings()
     expected = dict(baseline)
-    for t, q in get_expected_holdings().items():
+    for t, q in bot_expected.items():
         expected[t] = expected.get(t, 0.0) + q
+
+    # A broker liquidation, manual reduction, or corporate adjustment can
+    # reduce a baseline position without a bot sell in the ledger. Treating
+    # that reduction as a permanent FOREIGN ACTIVITY alert caused hundreds of
+    # repeated false alarms after the 2026 force-liquidation. New/unexplained
+    # increases remain hard alerts; reductions are adopted into the baseline
+    # once and recorded as a one-time drift event.
+    baseline_changed = False
+    drift_ack = recon.setdefault("baseline_drift_ack", {})
+    for t, base_qty in list(baseline.items()):
+        actual = float(holdings.get(t, {}).get("qty", 0.0) or 0.0)
+        bot_qty = float(bot_expected.get(t, 0.0) or 0.0)
+        expected_qty = base_qty + bot_qty
+        if actual < expected_qty - 0.01:
+            new_base = max(0.0, actual - bot_qty)
+            event_key = f"{new_base:.4f}"
+            baseline[t] = new_base
+            expected[t] = new_base + bot_qty
+            baseline_changed = True
+            if drift_ack.get(t) != event_key:
+                flags.append(
+                    f"BASELINE DRIFT: {t} fell from expected {expected_qty:.4f} sh "
+                    f"to {actual:.4f} sh without a matching bot sell; "
+                    "adopted the broker/account reduction and will not repeat this alert."
+                )
+                drift_ack[t] = event_key
+    if baseline_changed:
+        recon["baseline"] = baseline
+        recon["baseline_drift_ack"] = drift_ack
+        _save_json_file(RECON_STATE_FILE, recon)
 
     # Self-heal: a holding entirely unexplained by the ledger + baseline is
     # usually this bot's own fill whose ledger entry was lost (failed git
     # commit). Recover it from Alpaca's order history before flagging it.
     if _heal_ledger_from_orders(holdings, expected):
+        bot_expected = get_expected_holdings()
         expected = dict(baseline)
-        for t, q in get_expected_holdings().items():
+        for t, q in bot_expected.items():
             expected[t] = expected.get(t, 0.0) + q
 
     for t, q in expected.items():
@@ -2118,6 +2683,13 @@ def check_atr_stop_take_profit(account_snapshot, time_budget=None):
                 result = execute_trade(trade, account_snapshot, trigger="scale_out")
                 result["trigger"] = "scale_out"
                 results.append(result)
+                # Do not evaluate a full-position target/stop against the
+                # pre-scale-out quantity in this same pass. The partial order
+                # is now pending; the remaining shares are evaluated on the
+                # next run after Alpaca refreshes the account. This prevents a
+                # 33% scale-out plus an accidental 100% sell in one cycle.
+                if result.get("status") == "submitted":
+                    continue
 
         # Hard per-position loss cap, always enforced regardless of ATR/indicators.
         hard_stop = entry * (1.0 - MAX_POSITION_LOSS_PCT / 100.0)
@@ -2133,16 +2705,42 @@ def check_atr_stop_take_profit(account_snapshot, time_budget=None):
         # Smarter exits, using the indicator data already fetched above.
         if reason is None and ENABLE_MA_BREAKDOWN_EXIT and indicators_data:
             sma20 = indicators_data.get("sma_20")
-            if sma20 and current < sma20:
+            trend_confirms_breakdown = (
+                not MA_BREAKDOWN_REQUIRE_DOWNTREND
+                or indicators_data.get("trend") == "downtrend"
+            )
+            if sma20 and current < sma20 and trend_confirms_breakdown:
                 reason = f"Moving-average breakdown: price {current} < SMA-20 {round(sma20, 2)}"
         if reason is None and ENABLE_RSI_EXHAUSTION_EXIT and indicators_data:
             rsi = indicators_data.get("rsi_14")
             if rsi is not None and rsi > RSI_EXHAUSTION_LEVEL:
                 reason = f"RSI exhaustion: RSI {rsi:.1f} > {RSI_EXHAUSTION_LEVEL:.0f}"
         if reason is None and ENABLE_NEGATIVE_NEWS_EXIT:
-            worst_sent = news_sentiment_cache.get(ticker)
-            if worst_sent is not None and worst_sent <= NEGATIVE_NEWS_SENTIMENT_THRESHOLD:
-                reason = f"Negative news: worst sentiment {worst_sent:+.2f}"
+            cached_news = news_sentiment_cache.get(ticker)
+            negative_count = 1
+            if isinstance(cached_news, dict):
+                worst_sent = cached_news.get("worst_sentiment")
+                negative_count = int(cached_news.get("negative_article_count", 0) or 0)
+            else:
+                # Backward compatibility with the old float-only cache. New
+                # cache entries are structured and require corroboration;
+                # old entries are treated as one already-observed signal.
+                worst_sent = cached_news
+            try:
+                worst_sent = float(worst_sent) if worst_sent is not None else None
+            except (TypeError, ValueError):
+                worst_sent = None
+            corroborated = negative_count >= NEGATIVE_NEWS_MIN_ARTICLES
+            emergency = worst_sent is not None and worst_sent <= NEGATIVE_NEWS_EMERGENCY_THRESHOLD
+            if (
+                worst_sent is not None
+                and worst_sent <= NEGATIVE_NEWS_SENTIMENT_THRESHOLD
+                and (corroborated or emergency)
+            ):
+                reason = (
+                    f"Negative news: worst sentiment {worst_sent:+.2f} "
+                    f"({negative_count} negative article(s))"
+                )
 
         if reason:
             trade = {"ticker": ticker, "action": "sell", "dollar_amount": 0, "reasoning": reason, "conviction": 10}
@@ -2166,6 +2764,48 @@ def check_atr_stop_take_profit(account_snapshot, time_budget=None):
         _save_custom_exits(custom_exits)
     _prune_custom_exits(holdings)
     return results
+
+def enforce_stagnant_positions(account_snapshot, time_budget=None):
+    """Exit bot positions that exceed their hold limit without progressing."""
+    results = []
+    if MAX_HOLDING_HOURS <= 0 and STAGNATION_MAX_HOURS <= 0:
+        return results
+    open_map = _read_open_trade_engine_map()
+    open_orders = get_tickers_with_open_orders()
+    now = datetime.now()
+    deadline = time.monotonic() + time_budget if time_budget is not None else None
+    for ticker, record in open_map.items():
+        if deadline is not None and time.monotonic() >= deadline:
+            break
+        pos = (account_snapshot.get("holdings") or {}).get(ticker)
+        if not pos or ticker in open_orders:
+            continue
+        try:
+            opened = datetime.fromisoformat(record.get("opened_at", ""))
+            age_hours = (now - opened.replace(tzinfo=None)).total_seconds() / 3600.0
+            entry = float(record.get("entry", 0) or 0)
+            current = float(pos.get("current_price", 0) or 0)
+        except (TypeError, ValueError):
+            continue
+        progress_pct = (current / entry - 1.0) * 100.0 if entry > 0 and current > 0 else 0.0
+        reason = None
+        trigger = None
+        if MAX_HOLDING_HOURS > 0 and age_hours >= MAX_HOLDING_HOURS:
+            reason = f"Maximum holding time: {age_hours:.1f}h >= {MAX_HOLDING_HOURS:.1f}h"
+            trigger = "max_holding_time"
+        elif STAGNATION_MAX_HOURS > 0 and age_hours >= STAGNATION_MAX_HOURS and progress_pct < STAGNATION_MIN_PROGRESS_PCT:
+            reason = f"Stagnation exit: {age_hours:.1f}h held, progress {progress_pct:+.2f}% < {STAGNATION_MIN_PROGRESS_PCT:.2f}%"
+            trigger = "stagnation_exit"
+        if reason:
+            result = execute_trade({
+                "ticker": ticker, "action": "sell", "dollar_amount": 0,
+                "reasoning": reason, "conviction": 10,
+                "engine": record.get("engine", ""),
+            }, account_snapshot, trigger=trigger)
+            result["trigger"] = trigger
+            results.append(result)
+    return results
+
 
 def enforce_portfolio_consolidation(account_snapshot, time_budget=None):
     results = []
@@ -2364,6 +3004,40 @@ def _sector_room_for(account_snapshot, ticker, total_value):
     return max(0.0, room), target_sector
 
 
+def _market_data_guard_reason(ticker, indicators_data):
+    """Return a buy rejection reason when quote/candle/liquidity data is unsafe."""
+    if not ENABLE_MARKET_DATA_GUARDS:
+        return None
+    if not indicators_data or not indicators_data.get("quote_available"):
+        return f"market data unavailable for {ticker} (quote missing)"
+    age = indicators_data.get("quote_age_seconds")
+    if age is None or age > MAX_QUOTE_AGE_SECONDS:
+        return f"stale quote for {ticker} ({age if age is not None else 'unknown'}s old; limit {MAX_QUOTE_AGE_SECONDS:.0f}s)"
+    bar_ts = indicators_data.get("last_intraday_timestamp") or indicators_data.get("last_bar_timestamp")
+    if not bar_ts:
+        return f"market data unavailable for {ticker} (candle timestamp missing)"
+    try:
+        parsed = datetime.fromisoformat(bar_ts)
+        if parsed.tzinfo is None:
+            parsed = pytz.utc.localize(parsed)
+        candle_age = (datetime.now(pytz.utc) - parsed.astimezone(pytz.utc)).total_seconds() / 60.0
+    except (TypeError, ValueError):
+        return f"market data unavailable for {ticker} (invalid candle timestamp)"
+    if candle_age > MAX_CANDLE_AGE_MINUTES:
+        return f"stale candle for {ticker} ({candle_age:.1f}m old; limit {MAX_CANDLE_AGE_MINUTES:.1f}m)"
+    avg_volume = indicators_data.get("avg_volume_20")
+    if avg_volume is None:
+        return f"market data unavailable for {ticker} (average volume missing)"
+    if float(avg_volume) < MIN_AVG_DAILY_VOLUME:
+        return f"liquidity filter: {ticker} average volume {float(avg_volume):,.0f} < {MIN_AVG_DAILY_VOLUME:,.0f}"
+    spread = indicators_data.get("spread_pct")
+    if spread is None:
+        return f"market data unavailable for {ticker} (bid/ask spread missing)"
+    if spread > MAX_BID_ASK_SPREAD_PCT:
+        return f"spread filter: {ticker} bid/ask spread {spread:.2f}% > {MAX_BID_ASK_SPREAD_PCT:.2f}%"
+    return None
+
+
 def _chase_size_multiplier(extension_pct, limit_pct):
     """
     Soft chase filter: how much of a full position an extended name earns.
@@ -2389,6 +3063,51 @@ def _chase_size_multiplier(extension_pct, limit_pct):
     return 0.15
 
 
+# Per-process swap counter: main.py runs once per process (one GitHub run),
+# so this is effectively per-run and is what enforces SWAP_MAX_PER_RUN.
+_SWAPS_THIS_RUN = 0
+
+
+def _is_swap_worthy(trade, conviction):
+    """A proposed buy qualifies for a high-conviction swap when it carries a
+    90+ Gemini confidence OR a 9-10 conviction -- i.e. a setup genuinely
+    better than the current basket, not a marginal idea."""
+    if not ENABLE_HIGH_CONVICTION_SWAPS:
+        return False
+    conf = trade.get("confidence")
+    try:
+        conf_ok = conf is not None and float(conf) >= SWAP_MIN_CONFIDENCE
+    except (TypeError, ValueError):
+        conf_ok = False
+    return conf_ok or conviction >= SWAP_MIN_CONVICTION
+
+
+def _pick_swap_candidate(account_snapshot, exclude_ticker):
+    """
+    Deterministic choice of which winner to sell to fund a 90+ setup: the
+    SMALLEST holding already up >= SWAP_MIN_WINNER_PCT (banks a modest gain,
+    keeps the big winners compounding, never touches a loser). Returns the
+    ticker, or None when no qualifying winner exists.
+    """
+    best = None
+    for t, p in account_snapshot.get("holdings", {}).items():
+        if t == exclude_ticker:
+            continue
+        try:
+            # Alpaca reports unrealized_plpc as a FRACTION (0.0526 = 5.26%).
+            plpc_pct = float(p.get("unrealized_plpc") or 0) * 100.0
+            qty = float(p.get("qty") or 0)
+            price = float(p.get("current_price") or 0)
+        except (TypeError, ValueError):
+            continue
+        if plpc_pct < SWAP_MIN_WINNER_PCT:
+            continue
+        value = qty * price
+        if best is None or value < best[1]:
+            best = (t, value)
+    return best[0] if best else None
+
+
 def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=None):
     ticker = trade["ticker"]
     action = trade["action"].lower()
@@ -2409,6 +3128,12 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
     current_position_value = (current_holding["qty"] * price) if current_holding else 0.0
 
     if action == "buy":
+        if MANUAL_BUY_KILL_SWITCH:
+            reason = "manual buy kill switch is ON; protective sells remain enabled"
+            if SHADOW_MODE:
+                _record_shadow_trade(trade, reason, price)
+            return {"ticker": ticker, "status": "skipped", "reason": reason, "shadow": SHADOW_MODE}
+
         # Hard no-margin rule: never buy into a negative-cash account. This is
         # the direct consequence of the 2026-08-07 overnight order stacking.
         if account_snapshot.get("cash", 0.0) < 0:
@@ -2478,6 +3203,15 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
         except Exception as e:
             print(f"Could not fetch indicators for chase filters on {ticker} (continuing without them): {e}")
             ind_data = None
+        if is_new_position and BUY_REQUIRE_SMA20_ALIGNMENT and ind_data:
+            sma20 = ind_data.get("sma_20")
+            if sma20 is not None and price <= sma20:
+                return {
+                    "ticker": ticker,
+                    "status": "skipped",
+                    "reason": f"entry alignment: price ${price:.2f} is not above SMA-20 ${sma20:.2f}",
+                }
+
         if ind_data:
             if MAX_BUY_EXTENSION_ABOVE_VWAP_PCT > 0:
                 vwap = ind_data.get("vwap")
@@ -2503,6 +3237,12 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
         if chase_multiplier < 1.0:
             print(f"chase filter: {ticker} {chase_note} -> position scaled to {chase_multiplier:.0%}")
 
+        guard_reason = _market_data_guard_reason(ticker, ind_data)
+        if guard_reason:
+            print(f"Buy rejected: {guard_reason}")
+            _record_shadow_trade(trade, guard_reason, price)
+            return {"ticker": ticker, "status": "skipped", "reason": guard_reason, "shadow": True}
+
         # FLAT sizing (default): every trade gets the SAME FLAT_TRADE_SIZE_PCT
         # of equity, capped only by the per-position ceiling and the
         # regime/breaker multiplier. Confidence/conviction/time-of-day/
@@ -2513,12 +3253,22 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
         if FLAT_SIZING:
             max_allowed = total_value * MAX_POSITION_PCT
             flat_target = total_value * FLAT_TRADE_SIZE_PCT * size_multiplier
+            if trade.get("engine") == "technical_fallback":
+                flat_target = min(
+                    flat_target,
+                    total_value * TECHNICAL_FALLBACK_MAX_POSITION_PCT,
+                )
             flat_target = min(flat_target, max_allowed)
             target_room = max(0.0, flat_target - current_position_value)
             buy_target = target_room
             exit_levels = _compute_exit_levels(ticker, trade, price, ind=ind_data)
         else:
             max_allowed = total_value * MAX_POSITION_PCT * (conviction / 10.0) * size_multiplier
+            if trade.get("engine") == "technical_fallback":
+                max_allowed = min(
+                    max_allowed,
+                    total_value * TECHNICAL_FALLBACK_MAX_POSITION_PCT,
+                )
             target_room = max(0.0, max_allowed - current_position_value)
 
             # Fix: If requested_amount is 0/unspecified, default to remaining target position room
@@ -2602,7 +3352,6 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
                 )
                 if sector_room < amount:
                     sector_was_binding = True
-                    amount = sector_room
             except Exception as e:
                 print(f"Sector cap check failed on {ticker} (continuing without it): {e}")
 
@@ -2612,6 +3361,7 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
         # Applies in tiered mode AND -- with RISK_PARITY_SIZING (default on) --
         # in flat mode too, so EVERY trade risks the same dollar amount
         # regardless of the stock's volatility (volatility-scaled sizing).
+        risk_cap_amount = None
         if MAX_RISK_PER_TRADE_PCT > 0 and (not FLAT_SIZING or RISK_PARITY_SIZING):
             exit_levels = _compute_exit_levels(ticker, trade, price, ind=ind_data)
             stop_for_risk = exit_levels[0] if exit_levels else None
@@ -2621,7 +3371,60 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
             else:
                 stop_frac = MAX_POSITION_LOSS_PCT / 100.0  # assume hard-cap distance
             if stop_frac > 0:
-                amount = min(amount, risk_budget / stop_frac)
+                risk_cap_amount = risk_budget / stop_frac
+
+        # All the non-cash caps (exposure, sector, risk) are constant for this
+        # trade; only available_cash can change (when a high-conviction swap
+        # places a pending sell that frees cash). Fold them into one hard cap
+        # so the post-swap recompute below is a single min().
+        _caps = [exposure_room]
+        if sector_room is not None:
+            _caps.append(sector_room)
+        if risk_cap_amount is not None:
+            _caps.append(risk_cap_amount)
+        hard_cap = min(_caps)
+        amount = min(buy_target, available_cash, hard_cap)
+
+        swap_result = None
+        if amount < MIN_TRADE_DOLLAR_AMOUNT:
+            # High-conviction swap: a 90+ setup that can't fund because the
+            # account is fully deployed sells its smallest winner to free
+            # capital (user request: replace a holding already up a decent
+            # amount with a potentially-great new idea). The pending sell
+            # credits cash immediately via pending_order_notional, so the
+            # buy funds THIS run as a pending order too; both fill at the
+            # next eligible session. Per-run cap prevents churn.
+            global _SWAPS_THIS_RUN
+            if (
+                _is_swap_worthy(trade, conviction)
+                and _SWAPS_THIS_RUN < SWAP_MAX_PER_RUN
+            ):
+                swap_ticker = _pick_swap_candidate(account_snapshot, ticker)
+                if swap_ticker:
+                    _SWAPS_THIS_RUN += 1
+                    swap_result = execute_trade(
+                        {
+                            "ticker": swap_ticker,
+                            "action": "sell",
+                            "dollar_amount": 0,
+                            "conviction": 5,
+                            "reasoning": f"high-conviction swap to fund {ticker} (confidence {trade.get('confidence')}, conviction {conviction})",
+                        },
+                        account_snapshot=account_snapshot,
+                        size_multiplier=1.0,
+                        trigger="high_conviction_swap",
+                    )
+                    if swap_result and swap_result.get("status") == "submitted":
+                        # Recompute cash with the swap sell now pending, then
+                        # re-apply the same hard cap. Everything else is
+                        # unchanged (target, exposure, sector, risk caps).
+                        try:
+                            buy_pending, sell_pending = pending_order_notional()
+                        except Exception as e:
+                            print(f"Could not recompute pending notional after swap (continuing): {e}")
+                            buy_pending, sell_pending = 0.0, 0.0
+                        available_cash = max(0.0, account_snapshot["cash"] - reserve_kept - buy_pending + sell_pending)
+                        amount = min(buy_target, available_cash, hard_cap)
 
         if amount < MIN_TRADE_DOLLAR_AMOUNT:
             reason = (
@@ -2630,6 +3433,8 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
                 f"({size_multiplier:.0%}), and cash reserve "
                 f"(${reserve_kept:,.2f} kept of ${account_snapshot['cash']:,.2f} cash)"
             )
+            if swap_result and swap_result.get("status") == "submitted":
+                reason += f" (high-conviction swap sold {swap_result.get('ticker')}, fill pending)"
             if sector_was_binding and sector_room is not None:
                 reason += f", and sector room (${sector_room:,.2f})"
             return {
@@ -2700,6 +3505,19 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
                 side=side,
                 time_in_force=TimeInForce.DAY,
             )
+        if SHADOW_MODE and action == "buy":
+            reason = "shadow mode: order evaluated successfully but not submitted"
+            _record_shadow_trade(trade, reason, price)
+            return {
+                "timestamp": datetime.now().isoformat(),
+                "ticker": ticker,
+                "action": action,
+                "qty": qty,
+                "engine": trade.get("engine", "gemini"),
+                "status": "shadow",
+                "reason": reason,
+            }
+
         order = trading_client.submit_order(order_request)
         _record_cooldown(ticker)
 
@@ -2726,18 +3544,45 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
             "qty": qty,
             "order_id": str(order.id),
             "order_status": _status_val(order.status),
+            "engine": trade.get("engine", ""),
+            "reasoning": trade.get("reasoning", ""),
+            "trigger": trigger,
+            "confidence": trade.get("confidence"),
+            "conviction": conviction,
+            "stop_loss": stop_loss,
+            "take_profit": take_profit,
+            "submitted_price": price,
+            "accounted_filled_qty": 0.0,
         })
 
-        # Trade journal: record every fill, then pair buys/sells into
-        # closed-trade results so win rate by setup can be measured.
-        _record_trade_journal(
-            ticker=ticker, action=action, qty=qty, price=price,
-            stop_loss=stop_loss, take_profit=take_profit,
-            conviction=conviction, confidence=trade.get("confidence"),
-            trigger=trigger,
-            reasoning=trade.get("reasoning", ""),
+        # Attribute the fill to the decision engine. For exits, preserve the
+        # engine that opened the position; legacy holdings without an open-trade
+        # record remain explicitly labeled legacy/unknown rather than being
+        # incorrectly credited to Gemini or the fallback.
+        previous_open = _load_json_file(OPEN_TRADES_FILE, {}).get(ticker, {})
+        engine = _infer_engine(
+            trade.get("engine") or previous_open.get("engine"),
+            trade.get("reasoning", ""),
+            trigger,
+            previous=previous_open,
         )
-        _track_open_close(ticker, action, qty, price, stop_loss, take_profit, trigger, trade.get("reasoning", ""))
+
+        # Fill-based accounting: pending/accepted orders are journaled only
+        # after Alpaca reports actual filled quantity and average price. The
+        # reconciliation step at the next run handles partials and final fills.
+        if not RECORD_ONLY_FILLED_ORDERS:
+            _record_trade_journal(
+                ticker=ticker, action=action, qty=qty, price=price,
+                stop_loss=stop_loss, take_profit=take_profit,
+                conviction=conviction, confidence=trade.get("confidence"),
+                trigger=trigger, reasoning=trade.get("reasoning", ""), engine=engine,
+                transaction_costs=_estimate_transaction_cost(price, qty),
+                book=_classify_book(engine, trade.get("reasoning", ""), trigger),
+            )
+            _track_open_close(
+                ticker, action, qty, price, stop_loss, take_profit, trigger,
+                trade.get("reasoning", ""), engine=engine,
+            )
 
         return {
             "timestamp": datetime.now().isoformat(),
@@ -2745,6 +3590,7 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
             "action": action,
             "qty": qty,
             "conviction": conviction,
+            "engine": engine,
             "size_multiplier": size_multiplier,
             "order_id": str(order.id),
             "order_status": str(order.status),
@@ -2754,6 +3600,8 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
             "status": "submitted",
         }
     except Exception as e:
+        message = f"{ticker} {action} order failed/rejected: {e}"
+        record_operational_event("order_rejection", message)
         return {"ticker": ticker, "status": "failed", "reason": str(e)}
 
 def record_performance_snapshot(account_snapshot, log_dir, **stats):
@@ -2785,6 +3633,7 @@ def record_performance_snapshot(account_snapshot, log_dir, **stats):
         "trades_executed": stats.get("trades_executed", 0),
         "trades_skipped": stats.get("trades_skipped", 0),
         "trades_failed": stats.get("trades_failed", 0),
+        "trades_shadowed": stats.get("trades_shadowed", 0),
         "risk_exits": stats.get("risk_exits", 0),
         "consolidation_exits": stats.get("consolidation_exits", 0),
     }
