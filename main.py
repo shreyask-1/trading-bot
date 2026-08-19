@@ -60,8 +60,11 @@ from trader import (
     get_open_orders_with_side,
     should_end_of_day_flatten,
     load_pending_trades,
+    prune_pending_trades,
+    mark_pending_verification_attempts,
     save_pending_trades,
     clear_pending_trades,
+    get_sector_exposure_summary,
     sync_dashboard_watchlist,
     summarize_trade_results,
     summarize_performance,
@@ -149,6 +152,10 @@ def run():
     log_lines.append(f"Account value: ${account['total_value']:,.2f}")
     holdings_summary = {t: f"{p['qty']} sh ({p['unrealized_plpc']:+.2f}%)" for t, p in account["holdings"].items()}
     log_lines.append(f"Cash: ${account['cash']:,.2f} | Holdings ({len(account['holdings'])}): {holdings_summary or 'none'}")
+    try:
+        log_lines.append(f"Sector exposure (cached): {get_sector_exposure_summary(account)}")
+    except Exception as e:
+        log_lines.append(f"Sector exposure monitor unavailable: {e}")
     try:
         fill_counts = reconcile_filled_orders()
         if any(fill_counts.values()):
@@ -354,12 +361,22 @@ def run():
         # re-checks them against fresh data BEFORE anything executes. Whatever
         # Gemini re-approves comes back in `trades` and is executed below;
         # everything it omits is dropped when the queue is cleared.
-        pending = load_pending_trades() if OVERNIGHT_QUEUE_ENABLED else []
-        if pending:
-            log_lines.append(
-                f"Morning verification: {len(pending)} overnight-queued trade(s) "
-                "handed to Gemini for re-verification against fresh data."
-            )
+        pending = []
+        if OVERNIGHT_QUEUE_ENABLED:
+            pending, expired_count = prune_pending_trades()
+            if expired_count:
+                log_lines.append(
+                    f"Overnight queue expired {expired_count} stale/over-retried idea(s); "
+                    "fresh analysis will replace them."
+                )
+            if pending:
+                # Count only live-session verification attempts. Overnight
+                # scans refresh an idea's analysis but do not consume retries.
+                pending = mark_pending_verification_attempts(pending)
+                log_lines.append(
+                    f"Morning verification: {len(pending)} overnight-queued trade(s) "
+                    "handed to Gemini for re-verification against fresh data."
+                )
 
         # Step 3: news
         try:
