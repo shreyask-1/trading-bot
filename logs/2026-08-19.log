@@ -11064,3 +11064,25 @@ Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 2 t
 Performance: Total return -0.54% | Max drawdown 12.37% | Daily Sharpe 0.22 | 4 closed trades | Win rate 50% | Avg winner +1.79% | Avg loser -6.05% | Open positions: 14 | Equity $99,282.63
 Timings: account: 0.0s | risk: 10.0s | decide: 3.9s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-08-19T13:38:39.050641 ===
+Current time: 2026-08-19 09:38 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,317.58
+Cash: $16,142.66 | Holdings (13): {'COO': '101.9321 sh (+0.84%)', 'EOG': '68.7237 sh (+4.72%)', 'EQT': '61.4173 sh (+1.07%)', 'ERIE': '0.7641 sh (+0.95%)', 'GEHC': '0.6136 sh (+0.19%)', 'HPE': '135.7673 sh (-1.90%)', 'IVZ': '306.9138 sh (+1.21%)', 'KKR': '16.7039 sh (+1.61%)', 'LLY': '2.5187 sh (+4.10%)', 'MS': '43.8344 sh (-2.69%)', 'MSI': '21.1281 sh (+0.45%)', 'NWS': '303.7199 sh (+2.33%)', 'T': '380.3291 sh (-0.26%)'}
+Open orders (1): MS sell 43.8344
+  !! FOREIGN ACTIVITY: LLY holds 2.5187 sh but this bot should own 3.7597 sh (diff -1.2410). Someone/something else is trading this account.
+Risk state: peak $99,703.60 | drawdown 0.39% | today +0.18% | halted: False
+Risk management triggered 1 forced sell(s):
+  -> {"timestamp": "2026-08-19T13:38:42.605419", "ticker": "LLY", "action": "sell", "qty": 0.8314, "conviction": 10, "size_multiplier": 1.0, "order_id": "5cfc3070-d45c-4a78-b5fe-3eb8dc7dc3e9", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": null, "take_profit": null, "reasoning": "Scale-out: banked 33% at 1272.46 (60% of the way to target 1284.5)", "status": "submitted", "trigger": "scale_out"}
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 10/17 candidates passed.
+Gemini proposed 0 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 200
+Overnight queue cleared after verification.
+Dashboard watchlist synced (13 symbols) for news/headlines.
+Ending portfolio value: $99,336.43
+Trade journal: all: 4 trades, 50% win rate, avg -2.13% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 2 trades, 100% win rate, avg +1.79% | technical: 1 trades, 0% win rate, avg -3.50%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 2 trades, 100% win rate, avg +1.79% (WORKING) | technical: 1 trades, 0% win rate, avg -3.50% (LOSING)
+Performance: Total return -0.50% | Max drawdown 12.37% | Daily Sharpe 0.23 | 4 closed trades | Win rate 50% | Avg winner +1.79% | Avg loser -6.05% | Open positions: 13 | Equity $99,321.28
+Timings: account: 0.0s | risk: 3.8s | decide: 2.1s | watchlist: 0.0s | perf: 0.1s
+
