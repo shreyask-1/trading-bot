@@ -54,11 +54,11 @@ _HIGH_IMPACT_NEG = {
     "downgrade", "criminal", "probe", "warns", "warning", "halted", "restated",
 }
 _MEDIUM_IMPACT_NEG = {
-    "cuts", "cut", "below", "weak", "weaker", "decline",
+    "cuts", "cut", "weak", "weaker", "decline",
     "declines", "drop", "drops", "fall", "falls", "loss", "losses",
     "layoff", "layoffs", "underperform", "sell rating", "misses estimates",
 }
-_LOW_IMPACT_NEG = {"delay", "delays", "halt", "negative", "uncertainty", "probe"}
+_LOW_IMPACT_NEG = {"delay", "delays", "negative", "uncertainty", "probe"}
 
 
 def score_article(article):
@@ -147,29 +147,49 @@ _POSITIVE_WORDS = {
 }
 _NEGATIVE_WORDS = {
     "miss", "misses", "plunge", "plunges", "drop", "drops", "fall", "falls",
-    "decline", "declines", "downgrade", "downgraded", "sell", "bearish",
+    "decline", "declines", "downgrade", "downgraded", "bearish",
     "loss", "losses", "weak", "weaker", "cut", "cuts", "lawsuit", "probe",
     "investigation", "fraud", "recall", "recalls", "warning", "warns",
-    "layoff", "layoffs", "bankrupt", "bankruptcy", "guidance", "below",
-    "underperform", "negative", "halt", "halted", "delay", "delays",
+    "layoff", "layoffs", "bankrupt", "bankruptcy", "underperform",
+    "negative", "delay", "delays",
 }
+# Phrases are safer than treating generic words such as "guidance", "below",
+# "sell", or "halt" as negative by themselves. For example, "reaffirms
+# guidance" and "below-average volume" are not automatically bad news.
+_NEGATIVE_PHRASES = {
+    "misses guidance", "cuts guidance", "weak guidance", "below expectations",
+    "below estimates", "sell rating", "trading halt", "halted trading",
+}
+_NEGATION_WORDS = {"not", "no", "never", "without", "reaffirms", "reaffirmed"}
+
+
+def _term_count(text, terms):
+    """Count whole-word/phrase matches, with simple local negation handling."""
+    count = 0
+    for term in terms:
+        pattern = r"(?<!\w)" + re.escape(term) + r"(?!\w)"
+        for match in re.finditer(pattern, text):
+            prefix = text[max(0, match.start() - 35):match.start()]
+            if any(re.search(r"(?<!\w)" + re.escape(n) + r"(?!\w)", prefix) for n in _NEGATION_WORDS):
+                continue
+            count += 1
+    return count
 
 
 def headline_sentiment(article):
     """
     Crude -1..+1 sentiment for a single article's headline+summary.
-    0.0 means neutral or no signal. Deterministic keyword match only.
+    Uses whole-word matching, phrase-specific negatives, and a small
+    negation guard so generic words do not trigger forced exits by themselves.
     """
     text = f"{article.get('headline', '')} {article.get('summary', '')}".lower()
     if not text.strip():
         return 0.0
-    pos = sum(1 for w in _POSITIVE_WORDS if w in text)
-    neg = sum(1 for w in _NEGATIVE_WORDS if w in text)
+    pos = _term_count(text, _POSITIVE_WORDS)
+    neg = _term_count(text, _NEGATIVE_WORDS | _NEGATIVE_PHRASES)
     if pos == 0 and neg == 0:
         return 0.0
     raw = (pos - neg) / (pos + neg)
-    # Scale hits so a single strong word is ~+/-0.5, multiple corroborating
-    # words push toward +/-1.0.
     return max(-1.0, min(1.0, raw * 0.5 + (0.5 if pos > neg else (-0.5 if neg > pos else 0.0))))
 
 
@@ -276,16 +296,17 @@ def get_news_candidates(time_budget=None):
     if time_budget is not None and time_budget <= 0:
         return {}, {"articles_fetched": 0, "articles_new_after_dedup": 0, "tickers_matched": 0}, {}
     seen = _prune_old_entries(_load_seen_news())
-    # Cap the single HTTP call to the remaining budget (min 2s so a healthy
-    # fetch still has a real chance) instead of always allowing the full 15s.
-    fetch_timeout = 15.0
-    if time_budget is not None:
-        fetch_timeout = max(2.0, min(15.0, time_budget))
+    # Treat the budget as a TOTAL budget for Finnhub plus RSS, not a separate
+    # timeout for each request. The old code could spend 15s on Finnhub and
+    # another 8s on RSS even when the caller had only a few seconds left.
+    started = time.monotonic()
+    deadline = started + time_budget if time_budget is not None else None
+    fetch_timeout = 15.0 if deadline is None else max(0.5, min(15.0, deadline - time.monotonic()))
     articles = fetch_market_news(timeout=fetch_timeout)
-    # Free RSS feeds broaden coverage without spending Finnhub quota; any RSS
-    # item that survives the same dedup/score pipeline just adds a candidate.
-    if ENABLE_RSS_NEWS:
-        rss_timeout = min(RSS_FETCH_TIMEOUT_SECONDS, fetch_timeout)
+    # Free RSS feeds broaden coverage without spending Finnhub quota; only
+    # start the second request when the shared deadline still has time.
+    if ENABLE_RSS_NEWS and (deadline is None or deadline - time.monotonic() > 0.5):
+        rss_timeout = RSS_FETCH_TIMEOUT_SECONDS if deadline is None else max(0.5, min(RSS_FETCH_TIMEOUT_SECONDS, deadline - time.monotonic()))
         try:
             rss_articles = fetch_rss_news(timeout=rss_timeout)
             if rss_articles and isinstance(rss_articles, list):
@@ -300,8 +321,12 @@ def get_news_candidates(time_budget=None):
         os.makedirs(os.path.dirname(NEWS_SENTIMENT_CACHE_FILE), exist_ok=True)
         worst = {}
         for t, arts in mentions.items():
-            sents = [a.get("sentiment", 0.0) for a in arts]
-            worst[t] = min(sents) if sents else 0.0
+            sents = [float(a.get("sentiment", 0.0) or 0.0) for a in arts]
+            worst[t] = {
+                "worst_sentiment": min(sents) if sents else 0.0,
+                "negative_article_count": sum(1 for s in sents if s <= -0.4),
+                "updated_at": datetime.now().isoformat(),
+            }
         with open(NEWS_SENTIMENT_CACHE_FILE, "w") as f:
             json.dump(worst, f)
     except Exception as e:
