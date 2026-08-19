@@ -7,6 +7,7 @@ import re
 import os
 import json
 import hashlib
+import time
 import html as html_lib
 import xml.etree.ElementTree as ET
 from datetime import datetime, timedelta
