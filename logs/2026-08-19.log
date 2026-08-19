@@ -14126,3 +14126,24 @@ Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 4 t
 Performance: Total return -0.72% | Max drawdown 12.37% | Daily Sharpe 0.18 | 10 closed trades | Win rate 30% | Avg winner +1.30% | Avg loser -3.38% | Open positions: 17 | Equity $99,111.40
 Timings: account: 0.0s | risk: 5.5s | decide: 4.3s | watchlist: 0.1s | perf: 0.1s
 
+=== Run at 2026-08-19T17:32:34.636241 ===
+Current time: 2026-08-19 01:32 PM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,060.33
+Cash: $4,957.37 | Holdings (17): {'AMCR': '95.5314 sh (-0.20%)', 'AMT': '14.8145 sh (-0.65%)', 'COO': '131.0648 sh (+0.27%)', 'EOG': '45.9769 sh (+4.75%)', 'EQT': '112.293 sh (+0.14%)', 'ERIE': '0.7641 sh (+3.64%)', 'GEHC': '0.6136 sh (+0.90%)', 'ICE': '13.6893 sh (+0.71%)', 'INTU': '23.0293 sh (+0.70%)', 'IVZ': '306.9138 sh (+0.89%)', 'KKR': '16.7039 sh (+2.97%)', 'MS': '43.8344 sh (-2.72%)', 'MSI': '21.1281 sh (+2.67%)', 'NWS': '303.7199 sh (+3.27%)', 'T': '380.3291 sh (+0.06%)', 'TRMB': '19.6689 sh (+0.40%)', 'TSCO': '25.552 sh (+0.35%)'}
+Open orders (1): MS sell 43.8344
+  !! FOREIGN ACTIVITY: LLY holds 0.0000 sh but this bot should own 1.2410 sh (diff -1.2410). Someone/something else is trading this account.
+Risk state: peak $99,703.60 | drawdown 0.65% | today -0.08% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 3 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 30/60 candidates passed.
+Gemini proposed 1 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 300
+  -> {"ticker": "TRGP", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,859.05), room ($9,906.03), regime multiplier (100%), and cash reserve ($4,953.02 kept of $4,957.37 cash)"}
+Overnight queue cleared after verification.
+Dashboard watchlist synced (18 symbols) for news/headlines.
+Ending portfolio value: $99,061.99
+Trade journal: all: 10 trades, 30% win rate, avg -1.98% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 4 trades, 50% win rate, avg -0.81% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 4 trades, 50% win rate, avg -0.81% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return -0.77% | Max drawdown 12.37% | Daily Sharpe 0.17 | 10 closed trades | Win rate 30% | Avg winner +1.30% | Avg loser -3.38% | Open positions: 17 | Equity $99,060.33
+Timings: account: 0.0s | risk: 4.6s | decide: 1.7s | watchlist: 0.0s | perf: 0.1s
+
