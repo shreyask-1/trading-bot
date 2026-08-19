@@ -178,9 +178,21 @@ environment variables (set them as repo secrets / Actions env).
   `logs/custom_exits.json`.
 - **Risk-based sizing** (`MAX_RISK_PER_TRADE_PCT`, default 0.75%): each
   buy is sized so a stop-out costs at most 0.75% of equity, computed from
-  the trade's actual stop distance (tight stop = bigger size, wide stop =
+  the trade's actual stop distance (tight stop = bigger position, wide stop =
   smaller). Uniform per-trade pain is what lets compounding work. Set `0`
   to disable.
+- **Correlation/factor cap** (`MAX_CORRELATED_EXPOSURE_PCT`, default 35%):
+  rolling daily-return correlation prevents several different tickers from
+  silently becoming one concentrated factor bet. Missing history leaves the
+  candidate eligible rather than blocking on a data outage.
+- **Turnover/friction budget** (`MAX_DAILY_TURNOVER_PCT`, default 50%):
+  limits submitted buy and non-protective-sell notional per Eastern day so
+  churn cannot spend the edge on spread/slippage. Stops, hard loss caps,
+  negative-news exits, take-profits, and de-leveraging bypass the budget.
+- **Engine-quality gate** (`ENGINE_QUALITY_GATE_MIN_SAMPLES`, default 30):
+  once an engine has enough clean attributed closed trades, a persistently
+  negative fallback engine is blocked while protective sells continue. Old
+  unattributed history never activates the gate.
 - **Time-of-day sizing** (`TIME_OF_DAY_MULTIPLIERS`): new buys trade full
   size in the open power hour (9:30-11:00) and closing push (15:00-16:00),
   are cut to 50% through the lunch lull (11:30-13:30 ET), and 70-80% in
@@ -212,7 +224,8 @@ environment variables (set them as repo secrets / Actions env).
   instead of being silently discarded, and is not mislabeled as shadow mode.
 - **Operator controls**: `MANUAL_BUY_KILL_SWITCH=true` blocks new buys while
   protective sells continue; `SHADOW_MODE=true` evaluates and logs buys to
-  `logs/shadow_trades.jsonl` without submitting them.
+  `logs/shadow_trades.jsonl` without submitting them. Rejected/dry-run
+  candidates are summarized by reason in `logs/shadow_report.csv`.
 - **Stagnation exits and reports**: every position that exceeds the
   holding-time/progress limits is eligible for the same exit rules, while
   `logs/daily_report.csv` and `logs/weekly_report.csv` identify the symbols,
