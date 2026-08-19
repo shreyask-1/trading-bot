@@ -3266,3 +3266,34 @@ Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 2 t
 Performance: Total return -0.69% | Max drawdown 12.37% | Daily Sharpe 0.19 | 4 closed trades | Win rate 50% | Avg winner +1.79% | Avg loser -6.05% | Open positions: 13 | Equity $99,144.03
 Timings: account: 0.0s | risk: 2.8s | decide: 3.8s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-08-19T03:30:32.775425 ===
+Current time: 2026-08-18 11:30 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+Account value: $99,144.03
+Cash: $12,514.61 | Holdings (13): {'COO': '101.9321 sh (-0.89%)', 'EOG': '68.7237 sh (+4.14%)', 'EQT': '61.4173 sh (+0.62%)', 'ERIE': '0.7641 sh (-0.82%)', 'GEHC': '0.6136 sh (-1.89%)', 'IVZ': '306.9138 sh (+0.69%)', 'KKR': '16.7039 sh (-0.69%)', 'LLY': '3.7597 sh (+0.21%)', 'MS': '43.8344 sh (-1.54%)', 'MSI': '21.1281 sh (+0.00%)', 'NUE': '36.5544 sh (-3.25%)', 'NWS': '303.7199 sh (+3.28%)', 'T': '380.3291 sh (-0.72%)'}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.56% | today +0.02% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 157, 3 new after dedup, 1 ticker(s) matched.
+Quant pre-screen: 17/20 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 559
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued MSI buy (conf 95, stop 437.35, tp 493.11)
+  -> queued IT buy (conf 94, stop 172.89, tp 194.48)
+  -> queued OMC buy (conf 92, stop 81.14, tp 88.39)
+  -> queued HSY buy (conf 90, stop 177.83, tp 186.63)
+  -> queued OXY buy (conf 90, stop 53.66, tp 60.15)
+  -> queued GILD buy (conf 89, stop 135.5, tp 155.0)
+  -> queued DLR buy (conf 80, stop 190.26, tp 208.03)
+  -> queued LLY buy (conf None, stop 1139.285, tp 1236.62)
+  -> queued EXE buy (conf None, stop 90.58, tp 98.845)
+  -> queued EMR buy (conf None, stop 156.01, tp 166.14)
+  -> queued DRI buy (conf None, stop 205.92, tp 229.46)
+  -> queued NTRS buy (conf None, stop 182.435, tp 193.81)
+Dashboard watchlist synced (15 symbols) for news/headlines.
+Ending portfolio value: $99,144.03
+Trade journal: all: 4 trades, 50% win rate, avg -2.13% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 2 trades, 100% win rate, avg +1.79% | technical: 1 trades, 0% win rate, avg -3.50%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 2 trades, 100% win rate, avg +1.79% (WORKING) | technical: 1 trades, 0% win rate, avg -3.50% (LOSING)
+Performance: Total return -0.69% | Max drawdown 12.37% | Daily Sharpe 0.19 | 4 closed trades | Win rate 50% | Avg winner +1.79% | Avg loser -6.05% | Open positions: 13 | Equity $99,144.03
+Timings: account: 0.0s | risk: 3.1s | decide: 6.9s | watchlist: 0.1s | perf: 0.2s
+
