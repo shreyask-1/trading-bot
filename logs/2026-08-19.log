@@ -13718,3 +13718,31 @@ Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 4 t
 Performance: Total return -0.69% | Max drawdown 12.37% | Daily Sharpe 0.19 | 10 closed trades | Win rate 30% | Avg winner +1.30% | Avg loser -3.38% | Open positions: 17 | Equity $99,143.71
 Timings: account: 0.0s | risk: 4.5s | decide: 1.9s | watchlist: 0.0s | perf: 0.1s
 
+=== Run at 2026-08-19T17:00:37.091334 ===
+Current time: 2026-08-19 01:00 PM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,164.19
+Cash: $6,528.98 | Holdings (17): {'AMCR': '95.5314 sh (-0.30%)', 'AMT': '14.8145 sh (-0.13%)', 'COO': '131.0648 sh (+0.35%)', 'EOG': '45.9769 sh (+5.55%)', 'EQT': '83.0647 sh (+0.96%)', 'ERIE': '0.7641 sh (+3.27%)', 'GEHC': '0.6136 sh (+1.11%)', 'ICE': '13.6893 sh (+0.76%)', 'INTU': '23.0293 sh (+0.77%)', 'IVZ': '306.9138 sh (+1.32%)', 'KKR': '16.7039 sh (+3.30%)', 'MS': '43.8344 sh (-2.79%)', 'MSI': '21.1281 sh (+2.23%)', 'NWS': '303.7199 sh (+3.13%)', 'T': '380.3291 sh (+0.18%)', 'TRMB': '19.6689 sh (+0.46%)', 'TSCO': '25.552 sh (-0.03%)'}
+Open orders (1): MS sell 43.8344
+  !! FOREIGN ACTIVITY: LLY holds 0.0000 sh but this bot should own 1.2410 sh (diff -1.2410). Someone/something else is trading this account.
+Risk state: peak $99,703.60 | drawdown 0.54% | today +0.02% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News fetch failed, proceeding with watchlist only: HTTPSConnectionPool(host='finnhub.io', port=443): Read timed out. (read timeout=15.0)
+Quant pre-screen: 3/5 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 285
+  -> {"timestamp": "2026-08-19T17:01:07.760165", "ticker": "EQT", "action": "buy", "qty": 29.2283, "conviction": 7, "size_multiplier": 1.0, "order_id": "ec20c7cb-d812-4903-8cde-07f8d28192db", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": 51.12, "take_profit": 57.73, "reasoning": "technical score 80/100, strong setup, adding to position on opening-range breakout (above).", "status": "submitted"}
+  -> {"ticker": "GEHC", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,877.13), room ($9,872.24), regime multiplier (100%), and cash reserve ($4,959.05 kept of $6,528.98 cash)"}
+  -> {"ticker": "INTU", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,877.13), room ($1,548.78), regime multiplier (100%), and cash reserve ($4,959.05 kept of $6,528.98 cash)"}
+  -> {"ticker": "MSI", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,877.13), room ($0.00), regime multiplier (100%), and cash reserve ($4,959.05 kept of $6,528.98 cash)"}
+  -> {"ticker": "NWS", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,877.13), room ($0.00), regime multiplier (100%), and cash reserve ($4,959.05 kept of $6,528.98 cash)"}
+  -> {"ticker": "T", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,877.13), room ($345.21), regime multiplier (100%), and cash reserve ($4,959.05 kept of $6,528.98 cash)"}
+  -> {"ticker": "TGT", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,877.13), room ($9,918.09), regime multiplier (100%), and cash reserve ($4,959.05 kept of $6,528.98 cash)"}
+  -> {"ticker": "STT", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,877.13), room ($9,918.09), regime multiplier (100%), and cash reserve ($4,959.05 kept of $6,528.98 cash)"}
+Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); will re-verify when available.
+Run budget spent -- skipping dashboard watchlist sync.
+Run budget spent -- skipping performance snapshot.
+Trade journal: all: 10 trades, 30% win rate, avg -1.98% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 4 trades, 50% win rate, avg -0.81% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 4 trades, 50% win rate, avg -0.81% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return -0.69% | Max drawdown 12.37% | Daily Sharpe 0.19 | 10 closed trades | Win rate 30% | Avg winner +1.30% | Avg loser -3.38% | Open positions: 17 | Equity $99,180.90
+Timings: account: 0.0s | risk: 9.3s | decide: 22.9s | watchlist: 0.0s | perf: 0.0s
+
