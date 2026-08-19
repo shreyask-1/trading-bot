@@ -12143,3 +12143,39 @@ Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 3 t
 Performance: Total return -0.51% | Max drawdown 12.37% | Daily Sharpe 0.22 | 8 closed trades | Win rate 38% | Avg winner +1.30% | Avg loser -4.02% | Open positions: 17 | Equity $99,387.11
 Timings: account: 0.0s | risk: 14.0s | decide: 15.6s | watchlist: 0.0s | perf: 0.0s
 
+=== Run at 2026-08-19T15:02:28.350653 ===
+Current time: 2026-08-19 11:02 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,515.46
+Cash: $4,954.81 | Holdings (17): {'AMCR': '95.5314 sh (+0.04%)', 'AMT': '14.8145 sh (+0.32%)', 'COO': '131.0648 sh (+1.01%)', 'EOG': '45.9769 sh (+5.87%)', 'EQT': '83.0647 sh (+0.52%)', 'ERIE': '0.7641 sh (+3.95%)', 'GEHC': '0.6136 sh (+1.57%)', 'ICE': '13.6893 sh (+1.24%)', 'INTU': '23.0293 sh (+1.19%)', 'IVZ': '306.9138 sh (+1.52%)', 'KKR': '16.7039 sh (+4.56%)', 'MS': '43.8344 sh (-2.55%)', 'MSI': '21.1281 sh (+2.53%)', 'NWS': '303.7199 sh (+3.13%)', 'SNDK': '1.5721 sh (-3.68%)', 'T': '380.3291 sh (+1.31%)', 'TRMB': '19.6689 sh (+1.21%)'}
+Open orders (1): MS sell 43.8344
+  !! FOREIGN ACTIVITY: LLY holds 0.0000 sh but this bot should own 1.2410 sh (diff -1.2410). Someone/something else is trading this account.
+Risk state: peak $99,703.60 | drawdown 0.19% | today +0.37% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 155, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 11/17 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 16 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 233
+  -> {"ticker": "GEHC", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,927.32), room ($9,905.48), regime multiplier (100%), and cash reserve ($4,975.77 kept of $4,954.81 cash)"}
+  -> {"ticker": "INTU", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,927.32), room ($1,546.31), regime multiplier (100%), and cash reserve ($4,975.77 kept of $4,954.81 cash)"}
+  -> {"ticker": "MSI", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,927.32), room ($0.00), regime multiplier (100%), and cash reserve ($4,975.77 kept of $4,954.81 cash)"}
+  -> {"ticker": "NWS", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,927.32), room ($0.00), regime multiplier (100%), and cash reserve ($4,975.77 kept of $4,954.81 cash)"}
+  -> {"ticker": "T", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,927.32), room ($268.37), regime multiplier (100%), and cash reserve ($4,975.77 kept of $4,954.81 cash)"}
+  -> {"ticker": "TGT", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,927.32), room ($9,951.55), regime multiplier (100%), and cash reserve ($4,975.77 kept of $4,954.81 cash)"}
+  -> {"ticker": "NOW", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,927.32), room ($9,951.55), regime multiplier (100%), and cash reserve ($4,975.77 kept of $4,954.81 cash)"}
+  -> {"ticker": "JKHY", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,927.32), room ($9,951.55), regime multiplier (100%), and cash reserve ($4,975.77 kept of $4,954.81 cash)"}
+  -> {"ticker": "SRE", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,927.32), room ($9,951.55), regime multiplier (100%), and cash reserve ($4,975.77 kept of $4,954.81 cash)"}
+  -> {"ticker": "STT", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,927.32), room ($9,951.55), regime multiplier (100%), and cash reserve ($4,975.77 kept of $4,954.81 cash)"}
+  -> {"ticker": "SW", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,927.32), room ($9,951.55), regime multiplier (100%), and cash reserve ($4,975.77 kept of $4,954.81 cash)"}
+  -> {"ticker": "SWK", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,927.32), room ($9,951.55), regime multiplier (100%), and cash reserve ($4,975.77 kept of $4,954.81 cash)"}
+  -> {"ticker": "SWKS", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,927.32), room ($9,951.55), regime multiplier (100%), and cash reserve ($4,975.77 kept of $4,954.81 cash)"}
+  -> {"ticker": "SYF", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,927.32), room ($9,951.55), regime multiplier (100%), and cash reserve ($4,975.77 kept of $4,954.81 cash)"}
+  -> {"ticker": "SYK", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,927.32), room ($9,951.55), regime multiplier (100%), and cash reserve ($4,975.77 kept of $4,954.81 cash)"}
+  -> {"ticker": "SYY", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,927.32), room ($9,951.55), regime multiplier (100%), and cash reserve ($4,975.77 kept of $4,954.81 cash)"}
+Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); will re-verify when available.
+Run budget spent -- skipping dashboard watchlist sync.
+Run budget spent -- skipping performance snapshot.
+Trade journal: all: 8 trades, 38% win rate, avg -2.03% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 3 trades, 67% win rate, avg -0.90% | technical: 4 trades, 25% win rate, avg -1.23%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 3 trades, 67% win rate, avg -0.90% (LOSING) | technical: 4 trades, 25% win rate, avg -1.23% (LOSING)
+Performance: Total return -0.51% | Max drawdown 12.37% | Daily Sharpe 0.22 | 8 closed trades | Win rate 38% | Avg winner +1.30% | Avg loser -4.02% | Open positions: 17 | Equity $99,515.46
+Timings: account: 0.0s | risk: 11.2s | decide: 23.2s | watchlist: 0.0s | perf: 0.0s
+
