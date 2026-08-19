@@ -75,6 +75,18 @@ jobs:
           MAX_HOLDING_HOURS: 120
           STAGNATION_MAX_HOURS: 24
           STAGNATION_MIN_PROGRESS_PCT: 0.5
+          STAGNATION_MAX_EXITS_PER_RUN: 2
+          ENABLE_CORRELATION_CAP: true
+          CORRELATION_THRESHOLD: 0.75
+          MAX_CORRELATED_EXPOSURE_PCT: 0.35
+          CORRELATION_LOOKBACK_DAYS: 60
+          CORRELATION_MAX_HOLDINGS_CHECKED: 12
+          MAX_DAILY_TURNOVER_PCT: 0.50
+          TURNOVER_PROTECTIVE_SELLS_BYPASS: true
+          ENGINE_QUALITY_GATE_ENABLED: true
+          ENGINE_QUALITY_GATE_MIN_SAMPLES: 30
+          ENGINE_QUALITY_GATE_MIN_WIN_RATE_PCT: 45
+          ENGINE_QUALITY_GATE_MAX_AVG_PNL_PCT: -0.25
           # Internal wall-clock budget for the whole run. 30s (not 50s)
           # because imports + account fetch + reconciliation + regime run
           # BEFORE the deadline starts; on a slow GitHub runner that
