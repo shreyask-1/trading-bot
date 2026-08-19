@@ -1739,6 +1739,7 @@ def test_operational_safety_controls():
         trader.get_full_indicators = lambda _s: stale
         r = trader.execute_trade({"ticker": "AAA", "action": "buy", "conviction": 8}, account)
         check("stale quote rejected", r.get("status") == "skipped" and "stale quote" in r.get("reason", ""), str(r))
+        check("stale-data rejection is not mislabeled shadow mode", r.get("shadow") is False and r.get("data_guard") is True, str(r))
 
         trader.MANUAL_BUY_KILL_SWITCH = True
         r = trader.execute_trade({"ticker": "AAA", "action": "buy", "conviction": 8}, account)
