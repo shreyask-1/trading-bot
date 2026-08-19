@@ -543,7 +543,7 @@ def get_technical_trade_decisions(scored_holdings, scored_watchlist, account_sna
             # Never dump a position that is DOWN overall (current < entry):
             # the user's policy is to hold losers long until they recover to
             # the +5% profit-take mark instead of selling into weakness. The
-            # quality-trim already enforces this for legacy names; this
+            # the uniform quality review already enforces this for all names; this
             # fallback (Gemini down) must not contradict it -- let the hard
             # per-position loss cap (-MAX_POSITION_LOSS_PCT) be the only
             # forced exit for a losing hold.
