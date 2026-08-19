@@ -332,6 +332,10 @@ MAX_PENDING_TRADES = int(os.environ.get("MAX_PENDING_TRADES", 12))
 # many times; the next overnight scan can create a fresh idea instead.
 PENDING_TRADE_MAX_AGE_HOURS = float(os.environ.get("PENDING_TRADE_MAX_AGE_HOURS", 24.0))
 PENDING_TRADE_MAX_ATTEMPTS = int(os.environ.get("PENDING_TRADE_MAX_ATTEMPTS", 6))
+# Do not spend a Gemini verification call every cron cycle when an extended-
+# hours quote is known to be stale. The idea remains queued and is retried
+# after this cooldown or as soon as a fresh quote is available.
+STALE_QUEUE_RETRY_COOLDOWN_MINUTES = float(os.environ.get("STALE_QUEUE_RETRY_COOLDOWN_MINUTES", 30.0))
 
 ALLOW_GEMINI_CUSTOM_EXITS = (
     os.environ.get("ALLOW_GEMINI_CUSTOM_EXITS", "true").lower() == "true"
