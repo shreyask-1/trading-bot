@@ -10997,3 +10997,25 @@ Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 2 t
 Performance: Total return -0.68% | Max drawdown 12.37% | Daily Sharpe 0.19 | 4 closed trades | Win rate 50% | Avg winner +1.79% | Avg loser -6.05% | Open positions: 14 | Equity $99,158.31
 Timings: account: 0.0s | risk: 1.8s | decide: 16.8s | watchlist: 0.1s | perf: 0.1s
 
+=== Run at 2026-08-19T13:28:25.466467 ===
+Current time: 2026-08-19 09:28 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
+Account value: $99,192.00
+Cash: $4,954.45 | Holdings (14): {'COO': '101.9321 sh (-0.97%)', 'EOG': '68.7237 sh (+2.90%)', 'EQT': '61.4173 sh (+0.70%)', 'ERIE': '0.7641 sh (-0.82%)', 'GEHC': '0.6136 sh (-1.09%)', 'HPE': '135.7673 sh (-0.52%)', 'IVZ': '306.9138 sh (+0.69%)', 'KKR': '16.7039 sh (+0.99%)', 'LLY': '3.7597 sh (+1.84%)', 'MS': '43.8344 sh (-1.04%)', 'MSI': '21.1281 sh (+0.00%)', 'NUE': '36.5544 sh (-2.14%)', 'NWS': '303.7199 sh (+2.61%)', 'T': '380.3291 sh (-0.56%)'}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.51% | today +0.05% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 2 new after dedup, 2 ticker(s) matched.
+Quant pre-screen: 33/42 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 196
+  -> {"ticker": "HSY", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,878.80), room ($9,919.20), regime multiplier (100%), and cash reserve ($2,479.80 kept of $4,954.45 cash)"}
+  -> {"ticker": "ICE", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,878.80), room ($9,919.20), regime multiplier (100%), and cash reserve ($2,479.80 kept of $4,954.45 cash)"}
+  -> {"ticker": "HSIC", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,878.80), room ($9,919.20), regime multiplier (100%), and cash reserve ($4,959.60 kept of $4,954.45 cash)"}
+Overnight queue cleared after verification.
+Dashboard watchlist synced (19 symbols) for news/headlines.
+Ending portfolio value: $99,192.00
+Trade journal: all: 4 trades, 50% win rate, avg -2.13% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 2 trades, 100% win rate, avg +1.79% | technical: 1 trades, 0% win rate, avg -3.50%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 2 trades, 100% win rate, avg +1.79% (WORKING) | technical: 1 trades, 0% win rate, avg -3.50% (LOSING)
+Performance: Total return -0.64% | Max drawdown 12.37% | Daily Sharpe 0.20 | 4 closed trades | Win rate 50% | Avg winner +1.79% | Avg loser -6.05% | Open positions: 14 | Equity $99,192.00
+Timings: account: 0.0s | risk: 1.4s | decide: 3.8s | watchlist: 0.1s | perf: 0.1s
+
