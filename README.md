@@ -196,7 +196,9 @@ environment variables (set them as repo secrets / Actions env).
   removed and replaced by fresh analysis instead of living in the morning
   prompt indefinitely. Known-stale ideas also use a 30-minute retry cooldown
   (`STALE_QUEUE_RETRY_COOLDOWN_MINUTES`) so repeated after-hours data gaps do
-  not burn Gemini calls every two minutes.
+  not burn Gemini calls every two minutes. Cooldown timestamps are stored
+  separately in `data/stale_queue_cooldowns.json`, and each run prints a
+  source build fingerprint for deployment verification.
 - **Turnover/friction budget** (`MAX_DAILY_TURNOVER_PCT`, default 50%):
   limits submitted buy and non-protective-sell notional per Eastern day so
   churn cannot spend the edge on spread/slippage. Stops, hard loss caps,
