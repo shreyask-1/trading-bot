@@ -152,3 +152,6 @@
 {"timestamp": "2026-08-19T23:28:30.173274", "ticker": "WDAY", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 198.46, "reason": "stale quote for WDAY (12516.802815s old; limit 180s)"}
 {"timestamp": "2026-08-19T23:28:30.257217", "ticker": "TRGP", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 297.14, "reason": "stale quote for TRGP (12513.190449s old; limit 180s)"}
 {"timestamp": "2026-08-19T23:28:30.257340", "ticker": "GEHC", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 74.635, "reason": "stale quote for GEHC (12507.096734s old; limit 180s)"}
+{"timestamp": "2026-08-19T23:30:52.557991", "ticker": "TYL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 346.76, "reason": "stale quote for TYL (12660.225009s old; limit 180s)"}
+{"timestamp": "2026-08-19T23:30:52.877073", "ticker": "TRGP", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 297.14, "reason": "stale quote for TRGP (12655.605185s old; limit 180s)"}
+{"timestamp": "2026-08-19T23:30:53.155166", "ticker": "WDAY", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 198.46, "reason": "stale quote for WDAY (12659.621649s old; limit 180s)"}
