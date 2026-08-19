@@ -1409,10 +1409,12 @@ def test_pending_trade_expiration():
     old_path = trader.PENDING_TRADES_FILE
     old_age = trader.PENDING_TRADE_MAX_AGE_HOURS
     old_attempts = trader.PENDING_TRADE_MAX_ATTEMPTS
+    old_cooldown = trader.STALE_QUEUE_RETRY_COOLDOWN_MINUTES
     temp = tempfile.mkdtemp()
     trader.PENDING_TRADES_FILE = os.path.join(temp, "pending.json")
     trader.PENDING_TRADE_MAX_AGE_HOURS = 24.0
     trader.PENDING_TRADE_MAX_ATTEMPTS = 3
+    trader.STALE_QUEUE_RETRY_COOLDOWN_MINUTES = 30.0
     now = _dt.utcnow()
     try:
         trader._save_json_file(trader.PENDING_TRADES_FILE, [
@@ -1426,10 +1428,15 @@ def test_pending_trade_expiration():
         check("verification attempts increment without resetting age", marked[0].get("verification_attempts") == 3 and marked[0].get("queued_at"), str(marked))
         remaining, expired = trader.prune_pending_trades()
         check("retry limit removes exhausted ideas", expired == 1 and [x["ticker"] for x in remaining] == ["FRESH"], str((remaining, expired)))
+        recent_stale = {"last_stale_at": _dt.utcnow().isoformat()}
+        old_stale = {"last_stale_at": (_dt.utcnow() - _td(minutes=31)).isoformat()}
+        check("recent stale item is deferred", trader.pending_trade_in_stale_cooldown(recent_stale) is True, str(recent_stale))
+        check("stale cooldown eventually permits retry", trader.pending_trade_in_stale_cooldown(old_stale) is False, str(old_stale))
     finally:
         trader.PENDING_TRADES_FILE = old_path
         trader.PENDING_TRADE_MAX_AGE_HOURS = old_age
         trader.PENDING_TRADE_MAX_ATTEMPTS = old_attempts
+        trader.STALE_QUEUE_RETRY_COOLDOWN_MINUTES = old_cooldown
         shutil.rmtree(temp, ignore_errors=True)
 
 
