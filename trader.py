@@ -50,6 +50,7 @@ from config import (
     MAX_PENDING_TRADES,
     PENDING_TRADE_MAX_AGE_HOURS,
     PENDING_TRADE_MAX_ATTEMPTS,
+    STALE_QUEUE_RETRY_COOLDOWN_MINUTES,
     ALLOW_GEMINI_CUSTOM_EXITS,
     ENABLE_INTRADAY_ANALYSIS,
     INTRADAY_BAR_MINUTES,
@@ -1015,6 +1016,35 @@ def mark_pending_verification_attempts(trades):
     return marked
 
 
+def pending_trade_in_stale_cooldown(trade, now=None):
+    """Whether a known-stale queue item should skip this verification cycle."""
+    if STALE_QUEUE_RETRY_COOLDOWN_MINUTES <= 0:
+        return False
+    now = now or datetime.now(pytz.utc)
+    last_stale = trade.get("last_stale_at") if isinstance(trade, dict) else None
+    if not last_stale:
+        return False
+    age_minutes = (now - _queue_timestamp(last_stale, now)).total_seconds() / 60.0
+    return 0 <= age_minutes < STALE_QUEUE_RETRY_COOLDOWN_MINUTES
+
+
+def mark_pending_stale(trades):
+    """Stamp data-guard rejections without consuming verification attempts."""
+    now = datetime.now(pytz.utc).isoformat()
+    marked = []
+    for trade in trades or []:
+        item = dict(trade)
+        item["last_stale_at"] = now
+        marked.append(item)
+    return marked
+
+
+def replace_pending_trades(trades):
+    """Replace the queue exactly, preserving only explicitly retained items."""
+    _save_json_file(PENDING_TRADES_FILE, [dict(t) for t in (trades or []) if isinstance(t, dict)])
+    return len(trades or [])
+
+
 def _sane_level(value):
     """Finite, positive price or None (mirrors decide._sane_price)."""
     if value is None:
@@ -1052,6 +1082,8 @@ def save_pending_trades(trades):
         if previous:
             t["queued_at"] = previous.get("queued_at", now)
             t["verification_attempts"] = previous.get("verification_attempts", 0)
+            if previous.get("last_stale_at") and not t.get("last_stale_at"):
+                t["last_stale_at"] = previous["last_stale_at"]
         else:
             t.setdefault("queued_at", now)
             t.setdefault("verification_attempts", 0)
