@@ -55,6 +55,10 @@ jobs:
           GEMINI_DAILY_BUDGET: 1000
           GEMINI_RUNS_PER_DAY: 720
           GEMINI_TIME_RESERVE_SECONDS: 10
+          GEMINI_MAX_ATTEMPTS_PER_RUN: 2
+          GEMINI_ATTEMPT_TIMEOUT_SECONDS: 20
+          FEED_REFRESH_BUDGET_SECONDS: 8
+          SCAN_REFRESH_BUDGET_SECONDS: 8
           # Risk defaults are explicit here so a workflow environment cannot
           # accidentally restore the old high-exposure/churn configuration.
           MAX_TOTAL_EXPOSURE_PCT: 0.90
@@ -63,6 +67,7 @@ jobs:
           TECHNICAL_FALLBACK_MIN_SCORE: 65
           TECHNICAL_FALLBACK_MAX_POSITION_PCT: 0.05
           TECHNICAL_FALLBACK_MAX_TRADES_PER_RUN: 8
+          RUN_FINALIZATION_RESERVE_SECONDS: 5
           MAX_PENDING_TRADES: 12
           PENDING_TRADE_MAX_AGE_HOURS: 24
           PENDING_TRADE_MAX_ATTEMPTS: 6
