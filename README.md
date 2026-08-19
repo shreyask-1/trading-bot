@@ -186,7 +186,10 @@ environment variables (set them as repo secrets / Actions env).
   silently becoming one concentrated factor bet. Missing history leaves the
   candidate eligible rather than blocking on a data outage. Each run also
   prints a cached sector-exposure monitor so concentration is visible even
-  when no new candidate is being evaluated.
+  when no new candidate is being evaluated. `sector_fallback.py` supplies
+  deterministic classifications for recent portfolio/watchlist names when
+  the free profile endpoint returns empty data; unknown symbols remain marked
+  unavailable instead of being guessed.
 - **Overnight queue expiry** (`PENDING_TRADE_MAX_AGE_HOURS`, default 24h;
   `PENDING_TRADE_MAX_ATTEMPTS`, default 6): queued ideas retain their original
   age and retry count when refreshed. Stale or repeatedly unverified ideas are
