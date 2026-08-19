@@ -132,3 +132,6 @@
 {"timestamp": "2026-08-19T23:19:12.315990", "ticker": "WAT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 415.58, "reason": "stale quote for WAT (11962.49774s old; limit 180s)"}
 {"timestamp": "2026-08-19T23:19:12.370748", "ticker": "GEHC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 74.635, "reason": "stale quote for GEHC (11930.337496s old; limit 180s)"}
 {"timestamp": "2026-08-19T23:19:12.431241", "ticker": "ICE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 157.23, "reason": "stale quote for ICE (11929.972189s old; limit 180s)"}
+{"timestamp": "2026-08-19T23:20:50.018140", "ticker": "WDAY", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 198.46, "reason": "stale quote for WDAY (12056.483333s old; limit 180s)"}
+{"timestamp": "2026-08-19T23:20:50.279022", "ticker": "TRGP", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 297.14, "reason": "stale quote for TRGP (12053.070978s old; limit 180s)"}
+{"timestamp": "2026-08-19T23:20:50.279163", "ticker": "GEHC", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 74.635, "reason": "stale quote for GEHC (12036.70427s old; limit 180s)"}
