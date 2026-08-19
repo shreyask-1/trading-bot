@@ -53,3 +53,7 @@ timestamp,ticker,action,qty,price,stop_loss,take_profit,conviction,confidence,tr
 2026-08-19T13:41:09.336166,INTC,buy,51.5371,94.3,87.46,107.56,5,,decision,"technical score 59/100, strong signal on technicals alone."
 2026-08-19T13:41:12.268624,AMT,buy,14.8145,173.8,167.65,183.03,6,,decision,"technical score 74/100, strong signal on technicals alone."
 2026-08-19T13:41:15.545431,ANET,buy,6.2335,189.5,179.94,211.4,6,,decision,"technical score 71/100, strong signal on technicals alone."
+2026-08-19T13:42:36.462281,EOG,sell,22.7468,150.07,,,10,,scale_out,Scale-out: banked 33% at 150.52 (60% of the way to target 155.34)
+2026-08-19T13:42:38.864506,INTC,sell,51.5371,94.245,,,10,,ma_breakdown,Moving-average breakdown: price 94.205 < SMA-20 96.29
+2026-08-19T13:43:00.846162,AMCR,buy,95.5314,47.23,44.81,50.86,6,,decision,"technical score 69/100, strong signal on technicals alone."
+2026-08-19T13:43:04.274550,IBKR,buy,50.3871,89.64,85.43,95.95,6,,decision,"technical score 74/100, strong signal on technicals alone."
