@@ -140,6 +140,10 @@ def test_pending_order_aware_cash():
 
 def test_exposure_cap():
     print("\n[3] Total exposure cap blocks over-extension")
+    # This test isolates the total-exposure calculation; sector concentration
+    # has its own dedicated production guard and test.
+    old_sector_cap = trader.MAX_SECTOR_EXPOSURE_PCT
+    trader.MAX_SECTOR_EXPOSURE_PCT = 0.0
     account = {
         "cash": 50000.0,
         "total_value": 100000.0,
@@ -177,6 +181,7 @@ def test_exposure_cap():
         check("exposure cap trims to remaining room (qty 1)", abs(result["qty"] - 1.0) < 0.01, json.dumps(result))
     else:
         check("exposure cap trims to remaining room (qty 51)", False, json.dumps(result))
+    trader.MAX_SECTOR_EXPOSURE_PCT = old_sector_cap
 
 
 # --- 4. circuit breakers ----------------------------------------------------
@@ -1428,7 +1433,32 @@ def test_pending_trade_expiration():
         shutil.rmtree(temp, ignore_errors=True)
 
 
-# --- 26. dashboard watchlist sync -----------------------------------------------
+# --- 26. sector metadata fallback ----------------------------------------------
+def test_sector_metadata_fallback():
+    print("\n[26] Sector metadata fallback during free-endpoint outage")
+    import data_feeds
+    old_load = data_feeds._load_cache
+    old_save = data_feeds._save_cache
+    old_get = data_feeds.requests.get
+    calls = {"n": 0}
+    try:
+        data_feeds._load_cache = lambda *args, **kwargs: None
+        data_feeds._save_cache = lambda *args, **kwargs: None
+        def unavailable(*args, **kwargs):
+            calls["n"] += 1
+            raise RuntimeError("simulated free endpoint outage")
+        data_feeds.requests.get = unavailable
+        result = data_feeds.get_sector_profiles(["AMCR", "TRGP", "ZZZ"])
+        check("known holdings receive local sector fallback", result["AMCR"]["sector"] == "Materials" and result["AMCR"]["source"] == "local_fallback", str(result))
+        check("known candidate avoids extra profile request", result["TRGP"]["sector"] == "Energy" and calls["n"] == 1, str((result, calls)))
+        check("unknown symbol remains explicitly unavailable", result["ZZZ"]["sector"] is None and result["ZZZ"]["source"] == "unavailable", str(result))
+    finally:
+        data_feeds._load_cache = old_load
+        data_feeds._save_cache = old_save
+        data_feeds.requests.get = old_get
+
+
+# --- 27. dashboard watchlist sync -----------------------------------------------
 def test_dashboard_watchlist_sync():
     print("\n[25] Dashboard watchlist sync: create when missing, update in place")
     calls = {"created": None, "updated": None}
@@ -1656,6 +1686,8 @@ def test_high_conviction_swap():
     old_ph = trader.get_price_history
     old_tod = trader.get_time_of_day_multiplier
     old_fi = trader.get_full_indicators
+    old_sector_cap = trader.MAX_SECTOR_EXPOSURE_PCT
+    trader.MAX_SECTOR_EXPOSURE_PCT = 0.0
     # Earlier tests replace trader.pending_order_notional with a stub and
     # never restore it -- so this test provides its own, mirroring the real
     # logic (sum open orders at $100) against the fake client's order list.
@@ -1721,6 +1753,7 @@ def test_high_conviction_swap():
         check("low-conviction idea skips without swapping",
               r2["status"] == "skipped" and placed == [], json.dumps(r2) + " | " + str(placed))
     finally:
+        trader.MAX_SECTOR_EXPOSURE_PCT = old_sector_cap
         trader.trading_client = old_client
         trader.get_price = old_price
         trader.get_price_history = old_ph
@@ -2003,6 +2036,7 @@ if __name__ == "__main__":
     test_flat_sizing_uniform()
     test_pending_trade_queue()
     test_pending_trade_expiration()
+    test_sector_metadata_fallback()
     test_dashboard_watchlist_sync()
     test_sane_price_rejects_garbage_levels()
     test_inverted_pair_dropped_and_exit_refuses_garbage()
