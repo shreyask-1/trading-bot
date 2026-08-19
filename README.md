@@ -115,18 +115,14 @@ Everything below is enforced in code, independent of what Gemini says:
   while the market is closed. Orders can no longer queue overnight and all
   fill at the open.
 - **No margin, ever** (`execute_trade`): buys are rejected when cash is
-  negative, when open buy orders already consume the available cash, or when
-  total exposure would exceed `MAX_TOTAL_EXPOSURE_PCT` (default 90%).
+  negative, when open buy orders already consume the available cash, or when       total exposure would exceed `MAX_TOTAL_EXPOSURE_PCT` (default 90%). A 10%
+       cash reserve is also enforced independently.
 - **Automatic de-leveraging** (`enforce_deleveraging`): if cash is below
   target, the weakest holdings are sold until cash is restored.
-- **The bot never stops trading for the day** (as requested):
-  `DAILY_LOSS_HALT_PCT` and `MAX_DRAWDOWN_FLATTEN_PCT` default to `0` =
-  disabled. The bot buys, sells, and trades all day regardless of how the
-  day is going. Both are still available as opt-in guards -- set a positive
-  value (e.g. `DAILY_LOSS_HALT_PCT=3.0`) to re-enable. Note the 2026-08-11
-  loss was NOT a bad trading day; it was margin from overnight order
-  stacking, which the market-hours gate, no-margin rule, and de-leveraging
-  below prevent regardless of the breakers.
+- **Daily-loss protection**: `DAILY_LOSS_HALT_PCT` defaults to 3%. It blocks
+  new buys for the rest of the Eastern day after a 3% daily loss, while stops,
+  sells, and de-leveraging continue. `MAX_DRAWDOWN_FLATTEN_PCT` remains 0 by
+  default, so the bot does not automatically flatten the whole account.
 - **Drawdown sizing cut** (`MAX_DRAWDOWN_DELEVERAGE_PCT`, default 5%): while
   drawdown from peak exceeds 5%, new buys are sized at 25%. This only
   shrinks new entries -- it does not stop trading. Set to `0` to disable.
@@ -141,15 +137,12 @@ Everything below is enforced in code, independent of what Gemini says:
 All knobs live at the top of `config.py` and can be overridden with
 environment variables (set them as repo secrets / Actions env).
 
-## Daytrading mode (dual focus: news + charts) & per-trade exits
-
-- **Dual focus** (`DAYTRADE_MODE`, default on): every news headline is
+## Daytrading mode (dual focus: news + charts) & per-trade exits  - **Dual focus** (`DAYTRADE_MODE`, default on): every news headline is
   scored -1..+1 with a deterministic lexicon (`news.headline_sentiment`),
   and that sentiment is folded into the quant signal score
   (`NEWS_SENTIMENT_WEIGHT`) so a real catalyst matters alongside the chart.
-  Gemini now also sees intraday momentum vs session open, VWAP deviation,
-  and the opening-range status (above/below/inside the first 15 minutes)
-  for every candidate.
+  The final top candidates receive cached 1-minute, 5-minute, and 1-hour
+  context in addition to daily indicators, VWAP, and opening-range data.
 - **Opening-range breakout** (`get_opening_range_breakout`): price breaking
   above the first `OPENING_RANGE_BARS` 5-minute bars is scored as a bullish
   breakout and boosts the signal; breaking below is penalized. The technical
@@ -157,10 +150,9 @@ environment variables (set them as repo secrets / Actions env).
 - **Entry window discipline**: no new buys in the first
   `TRADE_START_MINUTES_AFTER_OPEN` minutes (auction chop) and none after
   `STOP_NEW_BUYS_AFTER` ET. Sells are never restricted.
-- **End-of-day flatten** (`END_OF_DAY_FLATTEN`, default on): everything is
-  sold back to cash at `END_OF_DAY_FLATTEN_TIME` (15:50 ET) so no position
-  survives overnight -- the 2026-08-11 liquidation hit an overnight position
-  at 3:30 AM ET.
+- **Overnight holds**: `END_OF_DAY_FLATTEN` defaults to false. Positions may
+  remain open across sessions, protected by custom exits, trailing stops, the
+  hard loss cap, and the daily-loss buy halt.
 - **Per-trade stop-loss / take-profit** (`_record_custom_exit`): every buy
   gets a stop and target computed from THAT trade's setup -- recent swing
   high/low clamped to a sane multiple of ATR, or Gemini's explicit
@@ -171,10 +163,14 @@ environment variables (set them as repo secrets / Actions env).
 
 ## Profit levers (implemented)
 
+- **Entry alignment**: new buys are rejected when current price is below
+  SMA-20 (when daily data is available), matching the MA-breakdown exit and
+  preventing immediate buy-then-sell whipsaws. The technical fallback also
+  requires a 65+ score and an uptrend by default.
 - **Chase filters** (`MAX_BUY_EXTENSION_ABOVE_VWAP_PCT`, default 2.5%, and
-  `MAX_INTRADAY_MOVE_PCT`, default 4%): the bot refuses to buy a name already
-  extended above VWAP or already up big on the session. Chasing is the #1
-  way daytraders give back gains. Set either to `0` to disable.
+  `MAX_INTRADAY_MOVE_PCT`, default 4%): the bot scales extended buys down and
+  hard-skips extreme extensions. Chasing is a common way daytraders give back
+  gains. Set either to `0` to disable.
 - **Trailing stop** (`TRAILING_STOP_ACTIVATE_MULT`, default 1.5x ATR, and
   `TRAILING_STOP_DISTANCE_MULT`, default 2x ATR): once a position is up, the
   stop ratchets up to (best price - 2 ATR) and only ever moves up, so
@@ -194,9 +190,31 @@ environment variables (set them as repo secrets / Actions env).
   score (before the sentiment boost) clears the bar -- headline alone is not
   a setup, the chart must agree. Set `0` to disable.
 - **Trade journal** (`logs/trades_journal.csv` + `logs/trade_results.csv`):
-  every fill is recorded with its confidence and exit reason, buys are paired
-  with sells, and each run prints a win-rate summary by setup type (news /
-  breakout / technical / other) so you can measure what actually works.
+  every fill is recorded with its confidence, engine, and exit reason, buys are
+  paired with sells, and each run prints a win-rate summary by setup type
+  (news / breakout / technical / other) so you can measure what actually works.
+- **Engine-level P&L report** (`logs/engine_performance.csv`): each run separates
+  cumulative realized P&L and current unrealized P&L for `gemini`,
+  `technical_fallback`, and `legacy/unknown` holdings. The run log also prints
+  an `Engine P&L:` line. Older trades without an engine field remain visible as
+  `legacy/unknown` rather than being misattributed.
+- **Separate books** (`logs/book_performance.csv`): reports `daytrade`, `swing`,
+  and `legacy` realized/unrealized P&L independently.
+- **Fill-accurate accounting**: accepted/pending orders are not treated as
+  trades until Alpaca reports an actual fill. Partial fills are reconciled on
+  the next run, and estimated commission/slippage are deducted from realized
+  P&L.
+- **Data-quality and liquidity gates**: new buys require fresh quotes/candles,
+  a maximum bid/ask spread, and minimum average volume. Missing news, analyst,
+  insider, Reddit, or SEC data is shown as `unavailable`, not silently treated
+  as neutral.
+- **Operator controls**: `MANUAL_BUY_KILL_SWITCH=true` blocks new buys while
+  protective sells continue; `SHADOW_MODE=true` evaluates and logs buys to
+  `logs/shadow_trades.jsonl` without submitting them.
+- **Stagnation exits and reports**: bot-attributed positions that exceed the
+  holding-time/progress limits are exited, while `logs/daily_report.csv` and
+  `logs/weekly_report.csv` identify the symbols, setups, and engines causing
+  realized losses.
 - **Better news filtering** (`NEWS_MIN_SCORE_TO_CONSIDER`, default 5): every
   article is scored 0-10; only the important ones (earnings beats,
   partnerships, upgrades) reach Gemini. Interviews and filler don't.
@@ -248,9 +266,11 @@ of the slice.
   MACD crossover direction, support/resistance (10-day swings), gap %, % off
   the 52-week high/low, relative volume, days until earnings, VWAP, and
   opening-range status.
-- **Confidence-based sizing** — Gemini returns a `confidence` 0-100 and the
-  code converts it: 90+ → 8% of equity, 80+ → 5%, 70+ → 3%, 60+ → 2%, below
-  60 → skipped. Raw dollar amounts are ignored when confidence is present.
+- **Confidence gating** — Gemini returns a `confidence` 0-100. In the
+  default flat-sizing mode, confidence gates eligibility but does not make a
+  high-confidence trade larger. Risk-parity and exposure caps can still make
+  the final amount smaller; raw dollar amounts are never allowed to bypass
+  those controls.
 
 ## Smarter exits (in addition to per-trade stops)
 
@@ -358,4 +378,6 @@ not trade this account manually, you should never see these flags.
 `python test_risk_controls.py` runs mocked unit tests for the risk layer,
 the daytrading helpers, the ledger/reconciliation, the news scorer,
 confidence sizing, the smarter exits, Phase 2 feeds, and Phase 3
-self-learning (no network calls). 86 checks.
+self-learning (no network calls). Keep test state isolated from `logs/` and
+`data/` before running it against a checkout that contains live operational
+memory.
