@@ -208,7 +208,8 @@ environment variables (set them as repo secrets / Actions env).
 - **Data-quality and liquidity gates**: new buys require fresh quotes/candles,
   a maximum bid/ask spread, and minimum average volume. Missing news, analyst,
   insider, Reddit, or SEC data is shown as `unavailable`, not silently treated
-  as neutral.
+  as neutral. A stale-data rejection is retained for a later fresh-data retry
+  instead of being silently discarded, and is not mislabeled as shadow mode.
 - **Operator controls**: `MANUAL_BUY_KILL_SWITCH=true` blocks new buys while
   protective sells continue; `SHADOW_MODE=true` evaluates and logs buys to
   `logs/shadow_trades.jsonl` without submitting them.
