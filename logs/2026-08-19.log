@@ -6161,3 +6161,32 @@ Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 4 t
 Performance: Total return -0.96% | Max drawdown 12.37% | Daily Sharpe 0.13 | 10 closed trades | Win rate 30% | Avg winner +1.30% | Avg loser -3.38% | Open positions: 17 | Equity $98,873.11
 Timings: account: 0.0s | risk: 2.9s | decide: 2.3s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-08-19T21:45:12.261007 ===
+Current time: 2026-08-19 05:45 PM EDT | Market open (per Alpaca): False | Session: EXTENDED
+Account value: $98,873.11
+Cash: $4,957.37 | Holdings (17): {'AMCR': '95.5314 sh (+0.06%)', 'AMT': '14.8145 sh (+0.26%)', 'COO': '131.0648 sh (+0.13%)', 'EOG': '45.9769 sh (+4.63%)', 'EQT': '112.293 sh (+0.49%)', 'ERIE': '0.7641 sh (+3.20%)', 'GEHC': '0.6136 sh (+0.75%)', 'ICE': '13.6893 sh (-0.12%)', 'INTU': '23.0293 sh (+0.42%)', 'IVZ': '306.9138 sh (+0.16%)', 'KKR': '16.7039 sh (+2.34%)', 'MS': '43.8344 sh (-2.98%)', 'MSI': '21.1281 sh (+2.40%)', 'NWS': '303.7199 sh (+2.85%)', 'T': '380.3291 sh (+0.00%)', 'TRMB': '19.6689 sh (+1.06%)', 'TSCO': '25.552 sh (-0.06%)'}
+Fill reconciliation: {'filled': 49, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+  !! FOREIGN ACTIVITY: LLY holds 0.0000 sh but this bot should own 1.2410 sh (diff -1.2410). Someone/something else is trading this account.
+Risk state: peak $99,703.60 | drawdown 0.83% | today -0.27% | halted: False
+Stagnation/holding-time exits: 4
+  -> {"timestamp": "2026-08-19T21:45:18.632236", "ticker": "IVZ", "action": "sell", "qty": 306.9138, "conviction": 10, "engine": "legacy/unknown", "size_multiplier": 1.0, "order_id": "3146ee8a-e26d-4772-8cf1-de64af4611bd", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": null, "take_profit": null, "reasoning": "Maximum holding time: 127.6h >= 120.0h", "status": "submitted", "trigger": "max_holding_time"}
+  -> {"timestamp": "2026-08-19T21:45:18.759945", "ticker": "EQT", "action": "sell", "qty": 112.293, "conviction": 10, "engine": "legacy/unknown", "size_multiplier": 1.0, "order_id": "9894426a-a527-4af6-9658-e449868e5eb0", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": null, "take_profit": null, "reasoning": "Stagnation exit: 32.9h held, progress +0.49% < 0.50%", "status": "submitted", "trigger": "stagnation_exit"}
+  -> {"timestamp": "2026-08-19T21:45:18.889917", "ticker": "COO", "action": "sell", "qty": 131.0648, "conviction": 10, "engine": "legacy/unknown", "size_multiplier": 1.0, "order_id": "d2370f57-a1ad-46d2-bd04-629937248829", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": null, "take_profit": null, "reasoning": "Stagnation exit: 27.8h held, progress +0.46% < 0.50%", "status": "submitted", "trigger": "stagnation_exit"}
+  -> {"timestamp": "2026-08-19T21:45:19.018197", "ticker": "T", "action": "sell", "qty": 380.3291, "conviction": 10, "engine": "legacy/unknown", "size_multiplier": 1.0, "order_id": "7c77d557-6d4c-4b16-a8d0-1ba58d562db8", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": null, "take_profit": null, "reasoning": "Stagnation exit: 27.8h held, progress +0.01% < 0.50%", "status": "submitted", "trigger": "stagnation_exit"}
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 1 new after dedup, 2 ticker(s) matched.
+Quant pre-screen: 14/16 candidates passed.
+Gemini proposed 1 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 422
+  -> {"ticker": "MRNA", "status": "skipped", "reason": "chase filter: price 23.3% above VWAP (limit 2.5%) -- hard skip beyond 5.0x the limit"}
+Overnight queue cleared after verification.
+Dashboard watchlist synced (20 symbols) for news/headlines.
+Ending portfolio value: $98,868.25
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.00% | Max drawdown 0.00% | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 17 | Equity $98,868.25
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+690.97 (17 open) | Books: legacy: realized $-1,705.68, unrealized $+690.97
+Reports: daily realized $-1,611.99; worst symbols HPE:-1286.89; COHR:-235.59; SNDK:-159.07; ANET:-45.31; NOW:-30.35 | weekly realized $-1,705.68; worst symbols HPE:-1286.89; COHR:-471.20; SNDK:-159.07; ANET:-45.31; NOW:-30.35
+Timings: account: 0.0s | risk: 6.2s | decide: 7.9s | watchlist: 0.1s | perf: 0.2s
+

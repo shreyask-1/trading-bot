@@ -1,72 +1,121 @@
-timestamp,ticker,action,qty,price,stop_loss,take_profit,conviction,confidence,trigger,reasoning
-2026-08-12T07:32:27.312840,HON,sell,49.4672,230.005,,,10,,ma_breakdown,Moving-average breakdown: price 230.5 < SMA-20 238.73
-2026-08-12T13:34:28.579501,META,sell,6.0354,600.165,,,10,,ma_breakdown,Moving-average breakdown: price 599.64 < SMA-20 601.98
-2026-08-12T22:42:33.864094,GILD,buy,23.3789,135.86,128.44,141.66,9,92,decision,Exceptional quant score of 100/100 supported by massive $81M insider buying. Technicals show a strong uptrend with price above the opening range and significant fundamental floor established by recent
-2026-08-12T22:42:34.500254,COO,buy,41.4168,76.69,71.32,79.2,9,90,decision,High quant score of 95/100 with robust uptrend and RSI at 67 indicating strong momentum. Price is holding above support levels with clear technical strength relative to the broader market.
-2026-08-12T22:42:35.208276,GPN,buy,22.4236,88.53,83.93,92.99,8,85,decision,Strong insider support of $31M and solid ADX of 33 confirming a robust trend. Technicals are bullish with price trading above the opening range.
-2026-08-12T23:04:34.478534,COR,buy,10.109,314.2,301.69,333.91,9,90,decision,"Strong quant score of 95/100. Despite a gap down, the stock maintains a solid uptrend with high ADX of 29. Buying the dip near support levels for a potential reversal."
-2026-08-13T08:00:51.995552,MSI,buy,21.1281,469.78,445.0,510.0,9,92,decision,
-2026-08-13T08:00:53.035935,NWS,buy,303.7199,32.68,31.0,35.5,9,90,decision,
-2026-08-13T08:00:53.990847,NVDA,buy,44.2888,224.11,208.0,235.29,8,85,decision,
-2026-08-13T08:00:54.844521,NDAQ,buy,103.7371,95.68,93.0,99.0,8,81,decision,
-2026-08-13T08:20:38.937076,LMT,buy,16.3555,606.76,585.0,640.0,8,81,decision,
-2026-08-13T09:40:40.128365,CEG,buy,35.6034,278.73,264.0,300.0,8,85,decision,
-2026-08-13T09:54:56.593264,CHD,buy,97.9637,101.31,97.0,104.58,8,85,decision,"High quant score (88) with an established uptrend, supportive ADX, and positive insider backing."
-2026-08-13T13:30:37.082721,NUE,buy,36.5544,271.585,251.55,285.0,8,85,decision,
-2026-08-13T13:46:45.137113,MS,buy,43.8344,220.855,208.19,229.09,8,85,decision,
-2026-08-13T14:05:48.494940,GEHC,buy,0.6136,73.855,67.16,76.94,8,80,decision,
-2026-08-13T14:45:36.549796,HAS,buy,1.1333,95.645,89.34,99.5,8,80,decision,"Strong quant score (84/100), uptrend, solid insider buying ($47.8M), and favorable price action near the upper range."
-2026-08-13T14:51:01.075625,IVZ,buy,1.4577,32.13,29.32,33.5,8,82,decision,
-2026-08-13T15:20:36.664195,STLD,buy,0.1352,262.395,245.76,319.79,8,85,decision,
-2026-08-13T16:15:45.711113,WSM,buy,0.1026,245.57,235.0,254.69,8,85,decision,
-2026-08-13T21:56:05.761097,CVX,buy,24.8836,197.72,185.93,210.0,9,89,decision,
-2026-08-14T14:08:30.648773,NDAQ,sell,103.7371,96.845,,,10,,negative_news,Negative news: worst sentiment -0.67
-2026-08-14T14:08:56.431576,IVZ,buy,305.4561,32.145,29.7,35.81,7,,decision,"technical score 80/100, strong setup, adding to position on opening-range breakout (above)."
-2026-08-14T14:08:56.621003,STLD,buy,0.7864,262.055,245.76,286.5,6,,decision,"technical score 80/100, strong setup, adding to position."
-2026-08-14T14:08:57.203996,COHR,buy,7.9896,342.35,248.88,482.56,7,,decision,"technical score 70/100, strong signal on technicals alone with opening-range breakout (above)."
-2026-08-14T15:10:37.118184,HAS,sell,1.1333,97.13,,,10,,negative_news,Negative news: worst sentiment -1.00
-2026-08-15T18:14:28.282379,NVDA,sell,44.2888,225.16,,,10,,negative_news,Negative news: worst sentiment -1.00
-2026-08-17T08:01:07.210536,MPC,buy,20.6725,355.48,335.0,386.2,9,85,decision,"Strong quant score of 69/100, significant insider accumulation of $5.8M, and strong momentum in the energy sector with RSI at 74 and bullish MACD histogram."
-2026-08-17T13:30:37.843871,CHD,sell,97.9637,101.295,,,10,,ma_breakdown,Moving-average breakdown: price 100.0 < SMA-20 100.15
-2026-08-17T13:30:41.781175,STLD,sell,0.9216,252.87,,,10,,ma_breakdown,Moving-average breakdown: price 253.88 < SMA-20 254.02
-2026-08-17T13:30:57.246916,ERIE,buy,0.7641,255.48,233.21,288.88,9,86,decision,
-2026-08-17T13:34:56.280937,EOG,buy,68.7237,142.325,133.65,155.34,5,,decision,"technical score 61/100, strong signal on technicals alone."
-2026-08-18T11:08:38.739534,MS,sell,43.8344,218.19,,,10,,negative_news,Negative news: worst sentiment -1.00
-2026-08-18T12:50:28.989555,CVX,sell,24.8836,202.73,,,10,,negative_news,Negative news: worst sentiment -1.00
-2026-08-18T12:50:41.790921,EQT,buy,61.4173,53.03,51.08,55.96,10,95,decision,
-2026-08-18T12:52:27.595396,KKR,buy,16.7039,108.835,101.23,120.24,9,90,decision,"Exceptional quant score 99, solid uptrend, increasing volume trend, and heavy insider net buying of $50.9M."
-2026-08-18T13:32:31.556382,WSM,sell,0.1026,240.4,,,10,,ma_breakdown,Moving-average breakdown: price 237.62 < SMA-20 238.1
-2026-08-18T13:56:26.881685,COHR,sell,7.9896,312.86,,,10,,hard_loss_cap,Hard loss cap hit: price 312.8375 <= 314.51 (-8% from entry 341.86)
-2026-08-18T13:56:31.629079,ICE,buy,15.5354,156.305,151.0,165.0,8,84,decision,
-2026-08-18T17:58:30.463931,CEG,sell,35.6034,269.945,,,10,,ma_breakdown,Moving-average breakdown: price 270.0 < SMA-20 270.64
-2026-08-18T17:58:42.698003,COO,buy,101.9321,76.215,74.0,80.5,9,92,decision,
-2026-08-18T17:58:43.761028,T,buy,380.3291,25.115,24.4,26.5,8,85,decision,
-2026-08-18T18:12:35.403440,ICE,sell,15.5354,157.96,,,10,,negative_news,Negative news: worst sentiment -1.00
-2026-08-18T19:26:33.067396,LMT,sell,16.3555,608.49,,,10,,negative_news,Negative news: worst sentiment -1.00
-2026-08-18T19:26:41.780643,LLY,buy,3.7597,1221.8,1180.0,1284.5,8,85,decision,"Strong uptrend with solid health care sector rotation tailwinds, positive momentum, and clean technical structure near highs."
-2026-08-19T08:02:44.021616,HPE,buy,135.7673,55.685,52.5,62.0,8,84,decision,
-2026-08-19T13:34:48.325476,NUE,sell,36.5544,267.84,,,10,,ma_breakdown,Moving-average breakdown: price 264.31 < SMA-20 264.56
-2026-08-19T13:38:42.605004,LLY,sell,0.8314,1272.205,,,10,,scale_out,Scale-out: banked 33% at 1272.46 (60% of the way to target 1284.5)
-2026-08-19T13:41:05.988111,COO,buy,29.1327,75.795,72.68,80.47,6,,decision,"technical score 80/100, strong setup, adding to position."
-2026-08-19T13:41:06.676209,HPE,buy,46.7644,54.42,49.13,63.44,6,,decision,"technical score 80/100, strong setup, adding to position."
-2026-08-19T13:41:08.112917,SNDK,buy,1.5721,1637.89,1163.97,2348.77,6,,decision,"technical score 79/100, strong signal on technicals alone."
-2026-08-19T13:41:09.336166,INTC,buy,51.5371,94.3,87.46,107.56,5,,decision,"technical score 59/100, strong signal on technicals alone."
-2026-08-19T13:41:12.268624,AMT,buy,14.8145,173.8,167.65,183.03,6,,decision,"technical score 74/100, strong signal on technicals alone."
-2026-08-19T13:41:15.545431,ANET,buy,6.2335,189.5,179.94,211.4,6,,decision,"technical score 71/100, strong signal on technicals alone."
-2026-08-19T13:42:36.462281,EOG,sell,22.7468,150.07,,,10,,scale_out,Scale-out: banked 33% at 150.52 (60% of the way to target 155.34)
-2026-08-19T13:42:38.864506,INTC,sell,51.5371,94.245,,,10,,ma_breakdown,Moving-average breakdown: price 94.205 < SMA-20 96.29
-2026-08-19T13:43:00.846162,AMCR,buy,95.5314,47.23,44.81,50.86,6,,decision,"technical score 69/100, strong signal on technicals alone."
-2026-08-19T13:43:04.274550,IBKR,buy,50.3871,89.64,85.43,95.95,6,,decision,"technical score 74/100, strong signal on technicals alone."
-2026-08-19T13:49:29.126664,IBKR,sell,50.3871,89.93,,,10,,ma_breakdown,Moving-average breakdown: price 89.555 < SMA-20 90.04
-2026-08-19T13:49:29.824550,LLY,sell,1.6873,1288.975,,,10,,take_profit,Take-profit hit: price 1288.975 >= target 1284.5
-2026-08-19T13:49:45.560487,ICE,buy,13.6893,157.29,147.5,171.97,9,89,decision,
-2026-08-19T14:10:34.706416,ANET,sell,6.2335,186.35,,,10,,ma_breakdown,Moving-average breakdown: price 186.36 < SMA-20 186.89
-2026-08-19T14:11:03.268613,EQT,buy,21.6474,53.85,51.12,57.95,7,,decision,"technical score 80/100, strong setup, adding to position on opening-range breakout (above)."
-2026-08-19T14:11:05.590926,TRMB,buy,19.6689,59.27,54.75,66.05,6,,decision,"technical score 66/100, strong signal on technicals alone with opening-range breakout (above)."
-2026-08-19T14:12:34.241080,HPE,sell,182.5317,51.88,,,10,,ma_breakdown,Moving-average breakdown: price 51.91 < SMA-20 52.09
-2026-08-19T14:12:46.172124,INTU,buy,23.0293,360.49,345.0,390.0,9,86,decision,
-2026-08-19T16:26:31.230630,SNDK,sell,1.5721,1588.43,,,10,,negative_news,Negative news: worst sentiment -1.00
-2026-08-19T16:28:42.759691,NOW,buy,19.2179,129.41,122.5,142.0,8,85,decision,
-2026-08-19T16:58:29.344884,NOW,sell,19.2179,128.73,,,10,,negative_news,Negative news: worst sentiment -1.00
-2026-08-19T16:58:32.361389,TSCO,buy,25.552,35.515,34.0,38.0,8,80.0,decision,
-2026-08-19T17:01:07.759729,EQT,buy,29.2283,53.765,51.12,57.73,7,,decision,"technical score 80/100, strong setup, adding to position on opening-range breakout (above)."
+timestamp,ticker,action,qty,price,stop_loss,take_profit,conviction,confidence,trigger,engine,book,transaction_costs_dollars,reasoning
+2026-08-12T07:32:27.312840,HON,sell,49.4672,230.005,,,10,,ma_breakdown,,,,Moving-average breakdown: price 230.5 < SMA-20 238.73
+2026-08-12T13:34:28.579501,META,sell,6.0354,600.165,,,10,,ma_breakdown,,,,Moving-average breakdown: price 599.64 < SMA-20 601.98
+2026-08-12T22:42:33.864094,GILD,buy,23.3789,135.86,128.44,141.66,9,92,decision,,,,Exceptional quant score of 100/100 supported by massive $81M insider buying. Technicals show a strong uptrend with price above the opening range and significant fundamental floor established by recent
+2026-08-12T22:42:34.500254,COO,buy,41.4168,76.69,71.32,79.2,9,90,decision,,,,High quant score of 95/100 with robust uptrend and RSI at 67 indicating strong momentum. Price is holding above support levels with clear technical strength relative to the broader market.
+2026-08-12T22:42:35.208276,GPN,buy,22.4236,88.53,83.93,92.99,8,85,decision,,,,Strong insider support of $31M and solid ADX of 33 confirming a robust trend. Technicals are bullish with price trading above the opening range.
+2026-08-12T23:04:34.478534,COR,buy,10.109,314.2,301.69,333.91,9,90,decision,,,,"Strong quant score of 95/100. Despite a gap down, the stock maintains a solid uptrend with high ADX of 29. Buying the dip near support levels for a potential reversal."
+2026-08-13T08:00:51.995552,MSI,buy,21.1281,469.78,445.0,510.0,9,92,decision,,,,
+2026-08-13T08:00:53.035935,NWS,buy,303.7199,32.68,31.0,35.5,9,90,decision,,,,
+2026-08-13T08:00:53.990847,NVDA,buy,44.2888,224.11,208.0,235.29,8,85,decision,,,,
+2026-08-13T08:00:54.844521,NDAQ,buy,103.7371,95.68,93.0,99.0,8,81,decision,,,,
+2026-08-13T08:20:38.937076,LMT,buy,16.3555,606.76,585.0,640.0,8,81,decision,,,,
+2026-08-13T09:40:40.128365,CEG,buy,35.6034,278.73,264.0,300.0,8,85,decision,,,,
+2026-08-13T09:54:56.593264,CHD,buy,97.9637,101.31,97.0,104.58,8,85,decision,,,,"High quant score (88) with an established uptrend, supportive ADX, and positive insider backing."
+2026-08-13T13:30:37.082721,NUE,buy,36.5544,271.585,251.55,285.0,8,85,decision,,,,
+2026-08-13T13:46:45.137113,MS,buy,43.8344,220.855,208.19,229.09,8,85,decision,,,,
+2026-08-13T14:05:48.494940,GEHC,buy,0.6136,73.855,67.16,76.94,8,80,decision,,,,
+2026-08-13T14:45:36.549796,HAS,buy,1.1333,95.645,89.34,99.5,8,80,decision,,,,"Strong quant score (84/100), uptrend, solid insider buying ($47.8M), and favorable price action near the upper range."
+2026-08-13T14:51:01.075625,IVZ,buy,1.4577,32.13,29.32,33.5,8,82,decision,,,,
+2026-08-13T15:20:36.664195,STLD,buy,0.1352,262.395,245.76,319.79,8,85,decision,,,,
+2026-08-13T16:15:45.711113,WSM,buy,0.1026,245.57,235.0,254.69,8,85,decision,,,,
+2026-08-13T21:56:05.761097,CVX,buy,24.8836,197.72,185.93,210.0,9,89,decision,,,,
+2026-08-14T14:08:30.648773,NDAQ,sell,103.7371,96.845,,,10,,negative_news,,,,Negative news: worst sentiment -0.67
+2026-08-14T14:08:56.431576,IVZ,buy,305.4561,32.145,29.7,35.81,7,,decision,,,,"technical score 80/100, strong setup, adding to position on opening-range breakout (above)."
+2026-08-14T14:08:56.621003,STLD,buy,0.7864,262.055,245.76,286.5,6,,decision,,,,"technical score 80/100, strong setup, adding to position."
+2026-08-14T14:08:57.203996,COHR,buy,7.9896,342.35,248.88,482.56,7,,decision,,,,"technical score 70/100, strong signal on technicals alone with opening-range breakout (above)."
+2026-08-14T15:10:37.118184,HAS,sell,1.1333,97.13,,,10,,negative_news,,,,Negative news: worst sentiment -1.00
+2026-08-15T18:14:28.282379,NVDA,sell,44.2888,225.16,,,10,,negative_news,,,,Negative news: worst sentiment -1.00
+2026-08-17T08:01:07.210536,MPC,buy,20.6725,355.48,335.0,386.2,9,85,decision,,,,"Strong quant score of 69/100, significant insider accumulation of $5.8M, and strong momentum in the energy sector with RSI at 74 and bullish MACD histogram."
+2026-08-17T13:30:37.843871,CHD,sell,97.9637,101.295,,,10,,ma_breakdown,,,,Moving-average breakdown: price 100.0 < SMA-20 100.15
+2026-08-17T13:30:41.781175,STLD,sell,0.9216,252.87,,,10,,ma_breakdown,,,,Moving-average breakdown: price 253.88 < SMA-20 254.02
+2026-08-17T13:30:57.246916,ERIE,buy,0.7641,255.48,233.21,288.88,9,86,decision,,,,
+2026-08-17T13:34:56.280937,EOG,buy,68.7237,142.325,133.65,155.34,5,,decision,,,,"technical score 61/100, strong signal on technicals alone."
+2026-08-18T11:08:38.739534,MS,sell,43.8344,218.19,,,10,,negative_news,,,,Negative news: worst sentiment -1.00
+2026-08-18T12:50:28.989555,CVX,sell,24.8836,202.73,,,10,,negative_news,,,,Negative news: worst sentiment -1.00
+2026-08-18T12:50:41.790921,EQT,buy,61.4173,53.03,51.08,55.96,10,95,decision,,,,
+2026-08-18T12:52:27.595396,KKR,buy,16.7039,108.835,101.23,120.24,9,90,decision,,,,"Exceptional quant score 99, solid uptrend, increasing volume trend, and heavy insider net buying of $50.9M."
+2026-08-18T13:32:31.556382,WSM,sell,0.1026,240.4,,,10,,ma_breakdown,,,,Moving-average breakdown: price 237.62 < SMA-20 238.1
+2026-08-18T13:56:26.881685,COHR,sell,7.9896,312.86,,,10,,hard_loss_cap,,,,Hard loss cap hit: price 312.8375 <= 314.51 (-8% from entry 341.86)
+2026-08-18T13:56:31.629079,ICE,buy,15.5354,156.305,151.0,165.0,8,84,decision,,,,
+2026-08-18T17:58:30.463931,CEG,sell,35.6034,269.945,,,10,,ma_breakdown,,,,Moving-average breakdown: price 270.0 < SMA-20 270.64
+2026-08-18T17:58:42.698003,COO,buy,101.9321,76.215,74.0,80.5,9,92,decision,,,,
+2026-08-18T17:58:43.761028,T,buy,380.3291,25.115,24.4,26.5,8,85,decision,,,,
+2026-08-18T18:12:35.403440,ICE,sell,15.5354,157.96,,,10,,negative_news,,,,Negative news: worst sentiment -1.00
+2026-08-18T19:26:33.067396,LMT,sell,16.3555,608.49,,,10,,negative_news,,,,Negative news: worst sentiment -1.00
+2026-08-18T19:26:41.780643,LLY,buy,3.7597,1221.8,1180.0,1284.5,8,85,decision,,,,"Strong uptrend with solid health care sector rotation tailwinds, positive momentum, and clean technical structure near highs."
+2026-08-19T08:02:44.021616,HPE,buy,135.7673,55.685,52.5,62.0,8,84,decision,,,,
+2026-08-19T13:34:48.325476,NUE,sell,36.5544,267.84,,,10,,ma_breakdown,,,,Moving-average breakdown: price 264.31 < SMA-20 264.56
+2026-08-19T13:38:42.605004,LLY,sell,0.8314,1272.205,,,10,,scale_out,,,,Scale-out: banked 33% at 1272.46 (60% of the way to target 1284.5)
+2026-08-19T13:41:05.988111,COO,buy,29.1327,75.795,72.68,80.47,6,,decision,,,,"technical score 80/100, strong setup, adding to position."
+2026-08-19T13:41:06.676209,HPE,buy,46.7644,54.42,49.13,63.44,6,,decision,,,,"technical score 80/100, strong setup, adding to position."
+2026-08-19T13:41:08.112917,SNDK,buy,1.5721,1637.89,1163.97,2348.77,6,,decision,,,,"technical score 79/100, strong signal on technicals alone."
+2026-08-19T13:41:09.336166,INTC,buy,51.5371,94.3,87.46,107.56,5,,decision,,,,"technical score 59/100, strong signal on technicals alone."
+2026-08-19T13:41:12.268624,AMT,buy,14.8145,173.8,167.65,183.03,6,,decision,,,,"technical score 74/100, strong signal on technicals alone."
+2026-08-19T13:41:15.545431,ANET,buy,6.2335,189.5,179.94,211.4,6,,decision,,,,"technical score 71/100, strong signal on technicals alone."
+2026-08-19T13:42:36.462281,EOG,sell,22.7468,150.07,,,10,,scale_out,,,,Scale-out: banked 33% at 150.52 (60% of the way to target 155.34)
+2026-08-19T13:42:38.864506,INTC,sell,51.5371,94.245,,,10,,ma_breakdown,,,,Moving-average breakdown: price 94.205 < SMA-20 96.29
+2026-08-19T13:43:00.846162,AMCR,buy,95.5314,47.23,44.81,50.86,6,,decision,,,,"technical score 69/100, strong signal on technicals alone."
+2026-08-19T13:43:04.274550,IBKR,buy,50.3871,89.64,85.43,95.95,6,,decision,,,,"technical score 74/100, strong signal on technicals alone."
+2026-08-19T13:49:29.126664,IBKR,sell,50.3871,89.93,,,10,,ma_breakdown,,,,Moving-average breakdown: price 89.555 < SMA-20 90.04
+2026-08-19T13:49:29.824550,LLY,sell,1.6873,1288.975,,,10,,take_profit,,,,Take-profit hit: price 1288.975 >= target 1284.5
+2026-08-19T13:49:45.560487,ICE,buy,13.6893,157.29,147.5,171.97,9,89,decision,,,,
+2026-08-19T14:10:34.706416,ANET,sell,6.2335,186.35,,,10,,ma_breakdown,,,,Moving-average breakdown: price 186.36 < SMA-20 186.89
+2026-08-19T14:11:03.268613,EQT,buy,21.6474,53.85,51.12,57.95,7,,decision,,,,"technical score 80/100, strong setup, adding to position on opening-range breakout (above)."
+2026-08-19T14:11:05.590926,TRMB,buy,19.6689,59.27,54.75,66.05,6,,decision,,,,"technical score 66/100, strong signal on technicals alone with opening-range breakout (above)."
+2026-08-19T14:12:34.241080,HPE,sell,182.5317,51.88,,,10,,ma_breakdown,,,,Moving-average breakdown: price 51.91 < SMA-20 52.09
+2026-08-19T14:12:46.172124,INTU,buy,23.0293,360.49,345.0,390.0,9,86,decision,,,,
+2026-08-19T16:26:31.230630,SNDK,sell,1.5721,1588.43,,,10,,negative_news,,,,Negative news: worst sentiment -1.00
+2026-08-19T16:28:42.759691,NOW,buy,19.2179,129.41,122.5,142.0,8,85,decision,,,,
+2026-08-19T16:58:29.344884,NOW,sell,19.2179,128.73,,,10,,negative_news,,,,Negative news: worst sentiment -1.00
+2026-08-19T16:58:32.361389,TSCO,buy,25.552,35.515,34.0,38.0,8,80.0,decision,,,,
+2026-08-19T17:01:07.759729,EQT,buy,29.2283,53.765,51.12,57.73,7,,decision,,,,"technical score 80/100, strong setup, adding to position on opening-range breakout (above)."
+2026-08-19T21:45:12.930428,CVX,buy,24.8836,197.69,,,5,,reconciled_fill,legacy/unknown,legacy,2.4596,
+2026-08-19T21:45:12.931557,NDAQ,sell,103.7371,96.79,,,5,,reconciled_fill,legacy/unknown,legacy,5.0204,
+2026-08-19T21:45:12.932086,IVZ,buy,305.4561,32.16,,,5,,reconciled_fill,legacy/unknown,legacy,4.9117,
+2026-08-19T21:45:12.932643,STLD,buy,0.7864,262.442,,,5,,reconciled_fill,legacy/unknown,legacy,0.1032,
+2026-08-19T21:45:12.933177,COHR,buy,7.9896,341.86,,,5,,reconciled_fill,legacy/unknown,legacy,1.3657,
+2026-08-19T21:45:12.933726,HAS,sell,1.1333,97.06,,,5,,reconciled_fill,legacy/unknown,legacy,0.055,
+2026-08-19T21:45:12.934252,NVDA,sell,44.2888,225.16,,,5,,reconciled_fill,legacy/unknown,legacy,4.986,
+2026-08-19T21:45:12.934808,CHD,sell,97.9637,100.0,,,5,,reconciled_fill,legacy/unknown,legacy,4.8982,
+2026-08-19T21:45:12.935776,STLD,sell,0.9216,253.142,,,5,,reconciled_fill,legacy/unknown,legacy,0.1166,
+2026-08-19T21:45:12.936566,ERIE,buy,0.7641,259.084,,,5,,reconciled_fill,legacy/unknown,legacy,0.099,
+2026-08-19T21:45:12.937106,EOG,buy,68.7237,142.87,,,5,,reconciled_fill,legacy/unknown,legacy,4.9093,
+2026-08-19T21:45:12.937649,CVX,sell,24.8836,204.63,,,5,,reconciled_fill,legacy/unknown,legacy,2.546,
+2026-08-19T21:45:12.938274,EQT,buy,61.4173,53.03,,,5,,reconciled_fill,legacy/unknown,legacy,1.6285,
+2026-08-19T21:45:12.938816,KKR,buy,16.7039,107.93,,,5,,reconciled_fill,legacy/unknown,legacy,0.9014,
+2026-08-19T21:45:12.939335,WSM,sell,0.1026,238.48,,,5,,reconciled_fill,legacy/unknown,legacy,0.0122,
+2026-08-19T21:45:12.939900,COHR,sell,7.9896,312.7,,,5,,reconciled_fill,legacy/unknown,legacy,1.2492,
+2026-08-19T21:45:12.940546,ICE,buy,15.5354,156.52,,,5,,reconciled_fill,legacy/unknown,legacy,1.2158,
+2026-08-19T21:45:12.941074,CEG,sell,35.6034,269.830522,,,5,,reconciled_fill,legacy/unknown,legacy,4.8034,
+2026-08-19T21:45:12.941617,COO,buy,101.9321,76.44,,,5,,reconciled_fill,legacy/unknown,legacy,3.8958,
+2026-08-19T21:45:12.942149,T,buy,380.3291,25.12,,,5,,reconciled_fill,legacy/unknown,legacy,4.7769,
+2026-08-19T21:45:12.942788,ICE,sell,15.5354,157.94,,,5,,reconciled_fill,legacy/unknown,legacy,1.2268,
+2026-08-19T21:45:12.943334,LMT,sell,16.3555,607.45,,,5,,reconciled_fill,legacy/unknown,legacy,4.9676,
+2026-08-19T21:45:12.943893,LLY,buy,3.7597,1222.36765,,,5,,reconciled_fill,legacy/unknown,legacy,2.2979,
+2026-08-19T21:45:12.944450,HPE,buy,135.7673,55.68,,,5,,reconciled_fill,legacy/unknown,legacy,3.7798,
+2026-08-19T21:45:12.945002,NUE,sell,36.5544,263.16,,,5,,reconciled_fill,legacy/unknown,legacy,4.8098,
+2026-08-19T21:45:12.945575,LLY,sell,0.8314,1271.54,,,5,,reconciled_fill,legacy/unknown,legacy,0.5286,
+2026-08-19T21:45:12.946133,COO,buy,29.1327,77.29,,,5,,reconciled_fill,legacy/unknown,legacy,1.1258,
+2026-08-19T21:45:12.946709,HPE,buy,46.7644,54.45,,,5,,reconciled_fill,legacy/unknown,legacy,1.2732,
+2026-08-19T21:45:12.947267,SNDK,buy,1.5721,1638.0,,,5,,reconciled_fill,legacy/unknown,legacy,1.2875,
+2026-08-19T21:45:12.947949,INTC,buy,51.5371,94.29803,,,5,,reconciled_fill,legacy/unknown,legacy,2.4299,
+2026-08-19T21:45:12.964581,AMT,buy,14.8145,174.03,,,5,,reconciled_fill,legacy/unknown,legacy,1.2891,
+2026-08-19T21:45:12.965259,ANET,buy,6.2335,189.94,,,5,,reconciled_fill,legacy/unknown,legacy,0.592,
+2026-08-19T21:45:12.965876,EOG,sell,22.7468,150.513194,,,5,,reconciled_fill,legacy/unknown,legacy,1.7118,
+2026-08-19T21:45:12.966490,INTC,sell,51.5371,94.24,,,5,,reconciled_fill,legacy/unknown,legacy,2.4284,
+2026-08-19T21:45:12.967185,AMCR,buy,95.5314,47.27,,,5,,reconciled_fill,legacy/unknown,legacy,2.2579,
+2026-08-19T21:45:12.967832,IBKR,buy,50.3871,89.71,,,5,,reconciled_fill,legacy/unknown,legacy,2.2601,
+2026-08-19T21:45:12.968469,IBKR,sell,50.3871,89.45,,,5,,reconciled_fill,legacy/unknown,legacy,2.2536,
+2026-08-19T21:45:12.969223,LLY,sell,1.6873,1287.19,,,5,,reconciled_fill,legacy/unknown,legacy,1.0859,
+2026-08-19T21:45:12.969868,ICE,buy,13.6893,157.426951,,,5,,reconciled_fill,legacy/unknown,legacy,1.0775,
+2026-08-19T21:45:12.970512,ANET,sell,6.2335,186.01,,,5,,reconciled_fill,legacy/unknown,legacy,0.5797,
+2026-08-19T21:45:12.971297,EQT,buy,21.6474,53.84,,,5,,reconciled_fill,legacy/unknown,legacy,0.5827,
+2026-08-19T21:45:12.971934,TRMB,buy,19.6689,59.37,,,5,,reconciled_fill,legacy/unknown,legacy,0.5839,
+2026-08-19T21:45:12.972577,HPE,sell,182.5317,51.842202,,,5,,reconciled_fill,legacy/unknown,legacy,4.7314,
+2026-08-19T21:45:12.973312,INTU,buy,23.0293,360.736513,,,5,,reconciled_fill,legacy/unknown,legacy,4.1538,
+2026-08-19T21:45:12.973953,SNDK,sell,1.5721,1587.89,,,5,,reconciled_fill,legacy/unknown,legacy,1.2482,
+2026-08-19T21:45:12.974696,NOW,buy,19.2179,129.4,,,5,,reconciled_fill,legacy/unknown,legacy,1.2434,
+2026-08-19T21:45:12.975320,NOW,sell,19.2179,128.63,,,5,,reconciled_fill,legacy/unknown,legacy,1.236,
+2026-08-19T21:45:12.976070,TSCO,buy,25.552,35.51,,,5,,reconciled_fill,legacy/unknown,legacy,0.4537,
+2026-08-19T21:45:12.976713,EQT,buy,29.2283,53.77,,,5,,reconciled_fill,legacy/unknown,legacy,0.7858,
