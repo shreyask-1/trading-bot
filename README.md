@@ -194,7 +194,9 @@ environment variables (set them as repo secrets / Actions env).
   `PENDING_TRADE_MAX_ATTEMPTS`, default 6): queued ideas retain their original
   age and retry count when refreshed. Stale or repeatedly unverified ideas are
   removed and replaced by fresh analysis instead of living in the morning
-  prompt indefinitely.
+  prompt indefinitely. Known-stale ideas also use a 30-minute retry cooldown
+  (`STALE_QUEUE_RETRY_COOLDOWN_MINUTES`) so repeated after-hours data gaps do
+  not burn Gemini calls every two minutes.
 - **Turnover/friction budget** (`MAX_DAILY_TURNOVER_PCT`, default 50%):
   limits submitted buy and non-protective-sell notional per Eastern day so
   churn cannot spend the edge on spread/slippage. Stops, hard loss caps,
