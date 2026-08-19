@@ -28,6 +28,7 @@ Flow (in order):
 11. Record a full performance snapshot and log everything
 """
 
+import hashlib
 import json
 import os
 import time
@@ -112,6 +113,20 @@ LOG_KEEP_BYTES = int(os.environ.get("LOG_KEEP_BYTES", 500_000))
 _marks = {}
 
 
+def _build_fingerprint():
+    """Short source fingerprint printed to prove which code Actions executed."""
+    digest = hashlib.sha256()
+    for name in ("main.py", "trader.py", "decide.py", "config.py"):
+        path = os.path.join(os.path.dirname(__file__), name)
+        try:
+            with open(path, "rb") as f:
+                digest.update(name.encode("utf-8"))
+                digest.update(f.read())
+        except OSError:
+            digest.update((name + ":missing").encode("utf-8"))
+    return digest.hexdigest()[:12]
+
+
 def _mark(section):
     now = time.monotonic()
     _t0 = _marks.pop("_t0", None)
@@ -123,6 +138,7 @@ def run():
     os.makedirs(LOG_DIR, exist_ok=True)
     timestamp = datetime.now()
     log_lines = [f"=== Run at {timestamp.isoformat()} ==="]
+    log_lines.append(f"Build fingerprint: {_build_fingerprint()}")
 
     # One deadline for the whole run -- see RUN_BUDGET_SECONDS above. Every
     # budgeted step receives the remaining time; cosmetic steps are skipped
