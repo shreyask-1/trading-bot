@@ -392,7 +392,9 @@ def run():
             log_lines.append(f"Decision step failed, no trades this run: {e}")
             trades = []
 
-        # Step 5: execute
+        # Step 5: execute. A stale-data rejection is retryable, not a
+        # permanent rejection: retain that idea for the next fresh quote.
+        requeue_trades = []
         for trade in trades:
             try:
                 result = execute_trade(trade, account, size_multiplier=size_multiplier)
@@ -403,6 +405,12 @@ def run():
                     account = get_account_snapshot()
                 elif status == "skipped":
                     skipped += 1
+                    reason = str(result.get("reason", "")).lower()
+                    if any(marker in reason for marker in (
+                        "stale quote", "stale candle", "market data unavailable",
+                        "candle timestamp missing", "quote missing",
+                    )):
+                        requeue_trades.append(trade)
                 elif status == "shadow":
                     shadowed += 1
                 else:
@@ -418,9 +426,16 @@ def run():
         # quota-exhausted / network error), the queue was never re-checked, so
         # wiping it would silently discard every overnight idea. Keep it and
         # the next live-session run re-verifies instead.
-        if pending and decision_ok and not decision_meta.get("technical_fallback"):
-            clear_pending_trades()
-            log_lines.append("Overnight queue cleared after verification.")
+        if decision_ok and not decision_meta.get("technical_fallback"):
+            if requeue_trades and OVERNIGHT_QUEUE_ENABLED:
+                queued_retry = save_pending_trades(requeue_trades)
+                log_lines.append(
+                    f"Overnight queue kept {queued_retry} idea(s) whose market data was stale; "
+                    "they will be retried after fresh quotes arrive."
+                )
+            elif pending:
+                clear_pending_trades()
+                log_lines.append("Overnight queue cleared after verification.")
         elif pending:
             log_lines.append(
                 "Overnight queue KEPT for next run (Gemini did not verify this round "
