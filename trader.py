@@ -48,6 +48,8 @@ from config import (
     WALKFORWARD_MIN_SAMPLES,
     WALKFORWARD_PROVEN_MULT,
     MAX_PENDING_TRADES,
+    PENDING_TRADE_MAX_AGE_HOURS,
+    PENDING_TRADE_MAX_ATTEMPTS,
     ALLOW_GEMINI_CUSTOM_EXITS,
     ENABLE_INTRADAY_ANALYSIS,
     INTRADAY_BAR_MINUTES,
@@ -924,26 +926,92 @@ def sync_dashboard_watchlist(tickers):
 # ============================================================
 # Overnight trade queue (24/7 flow: queue at night, verify at the open)
 # ============================================================
-def load_pending_trades():
-    """Overnight queue: trade ideas proposed while no session could fill."""
-    pending = _load_json_file(PENDING_TRADES_FILE, [])
-    if not isinstance(pending, list):
-        return []
-    # Sanitize levels on load too: anything queued before the exit-level
-    # validation landed (or by an older version) could carry a garbage
-    # take-profit (e.g. 1.4e-12) that would confuse the morning prompt.
-    # Non-finite / non-positive levels become None; inverted pairs are both
-    # dropped so the code derives sane ATR/swing levels at execution.
-    for t in pending:
-        if not isinstance(t, dict):
+def _queue_timestamp(value, fallback=None):
+    """Parse a queue timestamp and normalize it to an aware UTC datetime."""
+    fallback = fallback or datetime.now(pytz.utc)
+    if not value:
+        return fallback
+    try:
+        parsed = datetime.fromisoformat(str(value).replace("Z", "+00:00"))
+        if parsed.tzinfo is None:
+            parsed = pytz.utc.localize(parsed)
+        return parsed.astimezone(pytz.utc)
+    except (TypeError, ValueError):
+        return fallback
+
+
+def _queue_item_expired(item, now=None):
+    now = now or datetime.now(pytz.utc)
+    attempts = int(item.get("verification_attempts", 0) or 0)
+    if PENDING_TRADE_MAX_ATTEMPTS > 0 and attempts >= PENDING_TRADE_MAX_ATTEMPTS:
+        return True
+    if PENDING_TRADE_MAX_AGE_HOURS > 0:
+        age_hours = (now - _queue_timestamp(item.get("queued_at"), now)).total_seconds() / 3600.0
+        if age_hours >= PENDING_TRADE_MAX_AGE_HOURS:
+            return True
+    return False
+
+
+def prune_pending_trades():
+    """Return (fresh_items, expired_count) and persist the pruned queue."""
+    raw = _load_json_file(PENDING_TRADES_FILE, [])
+    if not isinstance(raw, list):
+        return [], 0
+    now = datetime.now(pytz.utc)
+    fresh = []
+    expired = 0
+    changed = False
+    for original in raw:
+        if not isinstance(original, dict):
+            changed = True
+            expired += 1
             continue
-        stop = _sane_level(t.get("stop_loss"))
-        tp = _sane_level(t.get("take_profit"))
+        item = dict(original)
+        if not item.get("queued_at"):
+            item["queued_at"] = now.isoformat()
+            changed = True
+        try:
+            normalized_attempts = max(0, int(item.get("verification_attempts", 0) or 0))
+        except (TypeError, ValueError):
+            normalized_attempts = 0
+        if item.get("verification_attempts") != normalized_attempts:
+            item["verification_attempts"] = normalized_attempts
+            changed = True
+        stop = _sane_level(item.get("stop_loss"))
+        tp = _sane_level(item.get("take_profit"))
         if stop is not None and tp is not None and tp <= stop:
             stop = tp = None
-        t["stop_loss"] = stop
-        t["take_profit"] = tp
-    return pending
+        if item.get("stop_loss") != stop or item.get("take_profit") != tp:
+            changed = True
+        item["stop_loss"] = stop
+        item["take_profit"] = tp
+        if _queue_item_expired(item, now):
+            expired += 1
+            changed = True
+            continue
+        fresh.append(item)
+    if changed or len(fresh) != len(raw):
+        _save_json_file(PENDING_TRADES_FILE, fresh)
+    return fresh, expired
+
+
+def load_pending_trades():
+    """Overnight queue: load only fresh, still-retryable trade ideas."""
+    fresh, _expired = prune_pending_trades()
+    return fresh
+
+
+def mark_pending_verification_attempts(trades):
+    """Record one live-session verification attempt without resetting age."""
+    now = datetime.now(pytz.utc).isoformat()
+    marked = []
+    for trade in trades or []:
+        item = dict(trade)
+        item["verification_attempts"] = int(item.get("verification_attempts", 0) or 0) + 1
+        item["last_verification_at"] = now
+        marked.append(item)
+    _save_json_file(PENDING_TRADES_FILE, marked)
+    return marked
 
 
 def _sane_level(value):
@@ -970,8 +1038,23 @@ def save_pending_trades(trades):
     """
     existing = load_pending_trades()
     merged = {}
-    for t in existing + list(trades):
+    now = datetime.now(pytz.utc).isoformat()
+    for original in existing + list(trades):
+        if not isinstance(original, dict):
+            continue
+        t = dict(original)
         key = (t.get("ticker"), str(t.get("action", "buy")).lower())
+        previous = merged.get(key)
+        # Updating an idea with fresher levels must not reset its age or retry
+        # count; otherwise a noisy overnight loop could keep one stale idea
+        # alive forever.
+        if previous:
+            t["queued_at"] = previous.get("queued_at", now)
+            t["verification_attempts"] = previous.get("verification_attempts", 0)
+        else:
+            t.setdefault("queued_at", now)
+            t.setdefault("verification_attempts", 0)
+        t["updated_at"] = now
         merged[key] = t
     out = list(merged.values())
     if MAX_PENDING_TRADES > 0 and len(out) > MAX_PENDING_TRADES:
@@ -3253,6 +3336,38 @@ def _correlation_room_for(account_snapshot, ticker, total_value):
     except Exception as e:
         print(f"Correlation cap unavailable for {ticker} (continuing without it): {e}")
         return float("inf"), []
+
+
+def get_sector_exposure_summary(account_snapshot):
+    """Return a cheap, cached sector-exposure monitor for the run log.
+
+    The buy-side sector/correlation caps already protect new entries. This
+    read-only summary makes the current concentration visible even when no
+    candidate is being evaluated, without issuing extra network requests.
+    """
+    total_value = float(account_snapshot.get("total_value", 0.0) or 0.0)
+    if total_value <= 0:
+        return "unavailable (non-positive portfolio value)"
+    cache = _load_json_file(os.path.join(os.path.dirname(__file__), "logs", "sector_profiles.json"), {})
+    profiles = cache.get("by_ticker", {}) if isinstance(cache, dict) else {}
+    buckets = {}
+    for symbol, position in account_snapshot.get("holdings", {}).items():
+        try:
+            value = float(position.get("qty", 0) or 0) * float(position.get("current_price", 0) or 0)
+        except (TypeError, ValueError):
+            continue
+        sector = (profiles.get(symbol, {}) or {}).get("sector") or "UNKNOWN"
+        buckets[sector] = buckets.get(sector, 0.0) + max(0.0, value)
+    if not buckets:
+        return "unavailable (no holdings)"
+    parts = []
+    for sector, value in sorted(buckets.items(), key=lambda pair: pair[1], reverse=True):
+        pct = value / total_value * 100.0
+        marker = " !" if sector != "UNKNOWN" and pct > MAX_SECTOR_EXPOSURE_PCT * 100.0 else ""
+        parts.append(f"{sector} {pct:.1f}%{marker}")
+    if "UNKNOWN" in buckets:
+        parts.append("cached sector data missing for UNKNOWN")
+    return ", ".join(parts[:8])
 
 
 def _chase_size_multiplier(extension_pct, limit_pct):
