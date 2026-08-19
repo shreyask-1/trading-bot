@@ -199,7 +199,8 @@ environment variables (set them as repo secrets / Actions env).
   an `Engine P&L:` line. Older trades without an engine field remain visible as
   `legacy/unknown` rather than being misattributed.
 - **Separate books** (`logs/book_performance.csv`): reports `daytrade`, `swing`,
-  and `legacy` realized/unrealized P&L independently.
+  and unattributed historical positions independently for measurement only;
+  book labels never change trading eligibility.
 - **Fill-accurate accounting**: accepted/pending orders are not treated as
   trades until Alpaca reports an actual fill. Partial fills are reconciled on
   the next run, and estimated commission/slippage are deducted from realized
@@ -211,10 +212,16 @@ environment variables (set them as repo secrets / Actions env).
 - **Operator controls**: `MANUAL_BUY_KILL_SWITCH=true` blocks new buys while
   protective sells continue; `SHADOW_MODE=true` evaluates and logs buys to
   `logs/shadow_trades.jsonl` without submitting them.
-- **Stagnation exits and reports**: bot-attributed positions that exceed the
-  holding-time/progress limits are exited, while `logs/daily_report.csv` and
-  `logs/weekly_report.csv` identify the symbols, setups, and engines causing
-  realized losses.
+- **Stagnation exits and reports**: every position that exceeds the
+  holding-time/progress limits is eligible for the same exit rules, while
+  `logs/daily_report.csv` and `logs/weekly_report.csv` identify the symbols,
+  setups, and engines causing realized losses. Non-protective stagnation exits
+  are capped per run with `STAGNATION_MAX_EXITS_PER_RUN`.
+- **Reconciliation drift handling**: an unexplained reduction of a bot-created
+  position is recorded once as `ACCOUNT DRIFT` and adopted in the ledger;
+  unexplained increases remain `FOREIGN ACTIVITY` alerts. This prevents a
+  broker liquidation or missing sell-fill record from generating a false
+  second-trader alarm forever.
 - **Better news filtering** (`NEWS_MIN_SCORE_TO_CONSIDER`, default 5): every
   article is scored 0-10; only the important ones (earnings beats,
   partnerships, upgrades) reach Gemini. Interviews and filler don't.
