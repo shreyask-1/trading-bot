@@ -5084,3 +5084,35 @@ Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 4 t
 Performance: Total return -0.98% | Max drawdown 12.37% | Daily Sharpe 0.13 | 10 closed trades | Win rate 30% | Avg winner +1.30% | Avg loser -3.38% | Open positions: 17 | Equity $98,852.44
 Timings: account: 0.0s | risk: 2.4s | decide: 3.4s | watchlist: 0.0s | perf: 0.1s
 
+=== Run at 2026-08-19T20:34:24.777430 ===
+Current time: 2026-08-19 04:34 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+Account value: $98,863.95
+Cash: $4,957.37 | Holdings (17): {'AMCR': '95.5314 sh (+0.38%)', 'AMT': '14.8145 sh (+0.26%)', 'COO': '131.0648 sh (+0.13%)', 'EOG': '45.9769 sh (+4.63%)', 'EQT': '112.293 sh (+0.49%)', 'ERIE': '0.7641 sh (+3.20%)', 'GEHC': '0.6136 sh (+1.25%)', 'ICE': '13.6893 sh (-0.12%)', 'INTU': '23.0293 sh (+0.49%)', 'IVZ': '306.9138 sh (+0.16%)', 'KKR': '16.7039 sh (+2.34%)', 'MS': '43.8344 sh (-3.05%)', 'MSI': '21.1281 sh (+2.36%)', 'NWS': '303.7199 sh (+2.85%)', 'T': '380.3291 sh (-0.04%)', 'TRMB': '19.6689 sh (-0.20%)', 'TSCO': '25.552 sh (-0.22%)'}
+Open orders (1): MS sell 43.8344
+  !! FOREIGN ACTIVITY: LLY holds 0.0000 sh but this bot should own 1.2410 sh (diff -1.2410). Someone/something else is trading this account.
+Risk state: peak $99,703.60 | drawdown 0.84% | today -0.28% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 1 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 41/65 candidates passed.
+Gemini proposed 1 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 388
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued TRGP buy (conf 90, stop 285.0, tp 320.0)
+  -> queued BR buy (conf 91, stop 165.0, tp 190.0)
+  -> queued LLY buy (conf 88, stop 1240.0, tp 1350.0)
+  -> queued TGT buy (conf 88, stop 150.21, tp 172.0)
+  -> queued MRNA buy (conf 85, stop 160.0, tp 200.0)
+  -> queued MSI buy (conf 85, stop 469.21, tp 502.5)
+  -> queued KO buy (conf 85, stop 87.5, tp 95.0)
+  -> queued TMUS buy (conf 80, stop 176.85, tp 191.0)
+  -> queued MRN buy (conf 88, stop 162.0, tp 195.0)
+  -> queued NOW buy (conf None, stop 111.955, tp 129.645)
+  -> queued GEHC buy (conf None, stop 69.605, tp 75.405)
+  -> queued ICE buy (conf None, stop 147.5, tp 159.57)
+Dashboard watchlist synced (18 symbols) for news/headlines.
+Ending portfolio value: $98,863.95
+Trade journal: all: 10 trades, 30% win rate, avg -1.98% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 4 trades, 50% win rate, avg -0.81% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 4 trades, 50% win rate, avg -0.81% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return -0.97% | Max drawdown 12.37% | Daily Sharpe 0.13 | 10 closed trades | Win rate 30% | Avg winner +1.30% | Avg loser -3.38% | Open positions: 17 | Equity $98,863.95
+Timings: account: 0.0s | risk: 1.4s | decide: 2.8s | watchlist: 0.0s | perf: 0.1s
+
