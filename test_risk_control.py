@@ -605,6 +605,11 @@ def test_technical_fallback_holds_losers():
             check("fallback still exits the UP weak name (UP1)", "UP1" in sells, str(sells))
             check("fallback still adds to STRONG", "STRONG" in buys, str(buys))
             check("fallback flagged", meta.get("technical_fallback") is True, str(meta))
+            old_cap = decide.TECHNICAL_FALLBACK_MAX_TRADES_PER_RUN
+            decide.TECHNICAL_FALLBACK_MAX_TRADES_PER_RUN = 1
+            capped, capped_meta = decide.get_technical_trade_decisions(scored_holdings, {}, account)
+            check("fallback caps degraded trade count", len(capped) == 1 and capped_meta.get("technical_fallback_capped") == 1, str((capped, capped_meta)))
+            decide.TECHNICAL_FALLBACK_MAX_TRADES_PER_RUN = old_cap
         finally:
             decide.get_tickers_with_open_orders = old_unavail
             decide.get_tickers_on_cooldown = old_cd
