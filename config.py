@@ -189,11 +189,15 @@ COMMISSION_PER_SHARE = float(os.environ.get("COMMISSION_PER_SHARE", "0.0"))
 ESTIMATED_SLIPPAGE_BPS = float(os.environ.get("ESTIMATED_SLIPPAGE_BPS", "5.0"))
 
 # A position that has not progressed is capital being held without evidence.
-# Only bot-attributed positions with an open-trade record are eligible; legacy
-# holdings keep their separate legacy policy.
+# Every position with an open-trade record is eligible, regardless of when it
+# entered the account. Ownership history is used for attribution only.
 MAX_HOLDING_HOURS = float(os.environ.get("MAX_HOLDING_HOURS", "120"))
 STAGNATION_MAX_HOURS = float(os.environ.get("STAGNATION_MAX_HOURS", "24"))
 STAGNATION_MIN_PROGRESS_PCT = float(os.environ.get("STAGNATION_MIN_PROGRESS_PCT", "0.5"))
+# Limit non-protective stagnation/time exits so a stale-data or bad-cache
+# episode cannot liquidate an entire book in one run. Hard stops, negative-news
+# exits, and de-leveraging are not subject to this cap.
+STAGNATION_MAX_EXITS_PER_RUN = int(os.environ.get("STAGNATION_MAX_EXITS_PER_RUN", "2"))
 
 # Daily/weekly reports are written locally and appended to the normal run log.
 ENABLE_PERFORMANCE_REPORTS = os.environ.get("ENABLE_PERFORMANCE_REPORTS", "true").lower() == "true"
@@ -281,24 +285,18 @@ ENABLE_SCALE_OUT = os.environ.get("ENABLE_SCALE_OUT", "true").lower() == "true"
 SCALE_OUT_AT_RR_FRAC = float(os.environ.get("SCALE_OUT_AT_RR_FRAC", 0.6))
 SCALE_OUT_FRAC = float(os.environ.get("SCALE_OUT_FRAC", 0.33))
 
-# --- Conservative quality-trim (legacy pre-baseline holdings) ---
-# The baseline positions recorded in reconciliation_state.json predate this
-# bot -- they existed before the deploy and were never screened by this
-# strategy (the ~$89K drag). ENABLE_QUALITY_TRIM sells only LEGACY positions
-# that FAIL the current technical screens (signal score <
-# QUALITY_TRIM_SCORE_THRESHOLD), at most QUALITY_TRIM_MAX_PER_RUN per run,
-# skipping tickers with open orders and positions already within
-# QUALITY_TRIM_LOSS_GUARD_PCT of their entry (never sell into the hole).
-# Winners and non-legacy positions are never touched. Set false to leave
-# legacy holdings alone.
+# --- Uniform portfolio quality review ---
+# The quality review applies to EVERY holding, not just positions that existed
+# before deployment. It can bank winners at the configured profit threshold and
+# replace weak, non-losing positions; positions already down are not churned
+# into weakness. Ownership history is never used to grant a stock more value.
 ENABLE_QUALITY_TRIM = os.environ.get("ENABLE_QUALITY_TRIM", "true").lower() == "true"
 QUALITY_TRIM_SCORE_THRESHOLD = float(os.environ.get("QUALITY_TRIM_SCORE_THRESHOLD", 55.0))
 QUALITY_TRIM_MAX_PER_RUN = int(os.environ.get("QUALITY_TRIM_MAX_PER_RUN", 2))
 QUALITY_TRIM_LOSS_GUARD_PCT = float(os.environ.get("QUALITY_TRIM_LOSS_GUARD_PCT", 3.0))
-# Profit-take on legacy winners: any LEGACY pre-baseline position that is up
-# QUALITY_TRIM_PROFIT_TAKE_PCT or more since its avg entry price gets sold to
-# bank the gain (score ignored -- a winner is a winner). Profit-takers are
-# sold before score-failures and share the same QUALITY_TRIM_MAX_PER_RUN cap.
+# Profit-take on any winner: a position up QUALITY_TRIM_PROFIT_TAKE_PCT or
+# more since its average entry is sold to bank the gain (score ignored).
+# Profit-takers are sold before score-failures and share the same cap.
 QUALITY_TRIM_PROFIT_TAKE_PCT = float(os.environ.get("QUALITY_TRIM_PROFIT_TAKE_PCT", 5.0))
 
 # --- Momentum pre-filter on the universe scan (concentrate on movers) ---
