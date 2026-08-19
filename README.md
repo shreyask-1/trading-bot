@@ -206,7 +206,9 @@ environment variables (set them as repo secrets / Actions env).
 - **Engine-quality gate** (`ENGINE_QUALITY_GATE_MIN_SAMPLES`, default 30):
   once an engine has enough clean attributed closed trades, a persistently
   negative fallback engine is blocked while protective sells continue. Old
-  unattributed history never activates the gate.
+  unattributed history never activates the gate. Degraded fallback runs are
+  also capped at 8 strongest ideas (`TECHNICAL_FALLBACK_MAX_TRADES_PER_RUN`)
+  so a Gemini outage cannot flood the execution loop with stale or weak orders.
 - **Time-of-day sizing** (`TIME_OF_DAY_MULTIPLIERS`): new buys trade full
   size in the open power hour (9:30-11:00) and closing push (15:00-16:00),
   are cut to 50% through the lunch lull (11:30-13:30 ET), and 70-80% in
