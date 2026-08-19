@@ -31,7 +31,13 @@ from datetime import datetime, timedelta
 
 import requests
 
-from config import FINNHUB_API_KEY, ENABLE_ANALYST_ACTIONS
+from config import (
+    FINNHUB_API_KEY,
+    ENABLE_ANALYST_ACTIONS,
+    ENABLE_INSIDER_ACTIVITY,
+    ENABLE_SEC_FILINGS,
+    ENABLE_REDDIT_SENTIMENT,
+)
 
 BASE_DIR = os.path.dirname(__file__)
 LOG_DIR = os.path.join(BASE_DIR, "logs")
@@ -767,6 +773,13 @@ def get_fundamental_signals(tickers):
             "sector": sp.get("sector"),
             "market_cap": sp.get("market_cap"),
             "analyst_consensus": consensus.get(t, {}),
+            "availability": {
+                "analyst": "disabled" if not ENABLE_ANALYST_ACTIONS else ("available" if analyst.get("actions") else "unavailable"),
+                "insider": "disabled" if not ENABLE_INSIDER_ACTIVITY else ("available" if t in insider.get("by_ticker", {}) else "unavailable"),
+                "sec": "disabled" if not ENABLE_SEC_FILINGS else ("available" if t in sec.get("by_ticker", {}) else "unavailable"),
+                "reddit": "disabled" if not ENABLE_REDDIT_SENTIMENT else ("available" if t in reddit.get("by_ticker", {}) else "unavailable"),
+                "analyst_consensus": "available" if t in consensus else "unavailable",
+            },
         }
     return signals
 
@@ -832,6 +845,10 @@ def get_context_block(tickers, include_econ=True):
     if acts:
         parts = [f"{a['symbol']} {a['action']} ({a.get('to_grade')})" for a in acts[:8]]
         lines.append("Analyst actions: " + ", ".join(parts))
+    elif not ENABLE_ANALYST_ACTIONS:
+        lines.append("Analyst actions: unavailable (disabled on current plan)")
+    else:
+        lines.append("Analyst actions: unavailable (no fresh cache)")
 
     insider = _load_cache("insider_activity.json", 24) or {"by_ticker": {}}
     ins_parts = []
@@ -843,6 +860,10 @@ def get_context_block(tickers, include_econ=True):
             ins_parts.append(f"{t} insider net sell ${-info['net_buy_value']:,.0f}")
     if ins_parts:
         lines.append("Insider activity: " + ", ".join(ins_parts[:8]))
+    elif not ENABLE_INSIDER_ACTIVITY:
+        lines.append("Insider activity: unavailable (disabled)")
+    else:
+        lines.append("Insider activity: unavailable (no fresh cache)")
 
     reddit = _load_cache("reddit_sentiment.json", 6) or {"by_ticker": {}}
     red_parts = []
@@ -852,6 +873,10 @@ def get_context_block(tickers, include_econ=True):
             red_parts.append(f"{t} reddit {s:+.2f}")
     if red_parts:
         lines.append("Reddit sentiment: " + ", ".join(red_parts[:8]))
+    elif not ENABLE_REDDIT_SENTIMENT:
+        lines.append("Reddit sentiment: unavailable (disabled or blocked)")
+    else:
+        lines.append("Reddit sentiment: unavailable (no fresh cache)")
 
     sec = _load_cache("sec_filings.json", 24) or {"by_ticker": {}}
     sec_parts = []
@@ -861,6 +886,10 @@ def get_context_block(tickers, include_econ=True):
             sec_parts.append(f"{t} filed {','.join(forms)}")
     if sec_parts:
         lines.append("Recent SEC filings: " + "; ".join(sec_parts[:8]))
+    elif not ENABLE_SEC_FILINGS:
+        lines.append("Recent SEC filings: unavailable (disabled)")
+    else:
+        lines.append("Recent SEC filings: unavailable (no fresh cache)")
 
     # Per-ticker sector + market cap, so Gemini can tie each candidate to the
     # sector rotation read above. Pure cache read (refresh happens lazily in
