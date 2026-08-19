@@ -28,6 +28,7 @@ from config import (
     GEMINI_MODEL_LIMITS,
     GEMINI_DAILY_BUDGET,
     GEMINI_RUNS_PER_DAY,
+    GEMINI_MAX_ATTEMPTS_PER_RUN,
     GEMINI_QUOTA_RESET_TIMEZONE,
     MIN_CONVICTION_TO_TRADE,
     WATCHLIST,
@@ -428,7 +429,10 @@ def _generate_with_rotation(prompt, tracker, model_list, schema=None, time_budge
     """
     last_error = None
     deadline = (time.monotonic() + time_budget) if time_budget is not None else None
+    attempts = 0
     for model_name in model_list:
+        if GEMINI_MAX_ATTEMPTS_PER_RUN > 0 and attempts >= GEMINI_MAX_ATTEMPTS_PER_RUN:
+            break
         # Adaptive per-attempt timeout: cap each attempt at the time actually
         # left in the run (floor GEMINI_ATTEMPT_MIN_SECONDS), so a hung
         # Google response can never push the run past its deadline -- the
@@ -446,6 +450,7 @@ def _generate_with_rotation(prompt, tracker, model_list, schema=None, time_budge
         if not _has_rpm_room(tracker, model_name):
             continue
 
+        attempts += 1
         try:
             client = genai.Client(
                 api_key=GEMINI_API_KEY,
@@ -826,7 +831,7 @@ def _refresh_data_feeds(candidate_tickers, time_budget=None):
             print(f"Analyst actions refresh failed: {e}")
     if ENABLE_REDDIT_SENTIMENT and time.monotonic() < deadline:
         try:
-            get_reddit_sentiment()
+            get_reddit_sentiment(time_budget=max(0.0, deadline - time.monotonic()))
         except Exception as e:
             print(f"Reddit sentiment refresh failed: {e}")
     if ENABLE_INSIDER_ACTIVITY and time.monotonic() < deadline:
@@ -847,11 +852,11 @@ def _refresh_data_feeds(candidate_tickers, time_budget=None):
             print(f"SEC filings refresh failed: {e}")
 
 
-def _build_fundamental_block(tickers):
-    """Phase 2 context block for the Gemini prompt (pure cache reads)."""
+def _build_fundamental_block(tickers, time_budget=None):
+    """Phase 2 context block for the Gemini prompt, bounded by run time."""
     from data_feeds import get_context_block
     try:
-        return get_context_block(tickers)
+        return get_context_block(tickers, time_budget=time_budget)
     except Exception as e:
         print(f"Could not build fundamental context: {e}")
         return "none"
@@ -1247,7 +1252,10 @@ def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL", pending_
     fundamental = {}
     try:
         from data_feeds import get_fundamental_signals
-        fundamental = get_fundamental_signals(all_candidate_tickers)
+        fundamental = get_fundamental_signals(
+            all_candidate_tickers,
+            time_budget=_analysis_remaining(),
+        )
     except Exception as e:
         print(f"Fundamental signals unavailable (continuing without them): {e}")
 
@@ -1336,7 +1344,7 @@ def get_trade_decisions(candidates, account_snapshot, regime="NEUTRAL", pending_
         news_block=_fmt_news_block(new_candidates, scored_news, news_sentiment, fundamental),
         watchlist_block=_fmt_watchlist_block(scored_watchlist, fundamental),
         pending_block=_fmt_pending_block(pending_trades),
-        fundamental_block=_build_fundamental_block(all_candidate_tickers),
+        fundamental_block=_build_fundamental_block(all_candidate_tickers, time_budget=_remaining()),
         performance_brief=build_performance_brief(),
     )
 
