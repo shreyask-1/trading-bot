@@ -67,3 +67,5 @@ timestamp,ticker,action,qty,price,stop_loss,take_profit,conviction,confidence,tr
 2026-08-19T14:12:46.172124,INTU,buy,23.0293,360.49,345.0,390.0,9,86,decision,
 2026-08-19T16:26:31.230630,SNDK,sell,1.5721,1588.43,,,10,,negative_news,Negative news: worst sentiment -1.00
 2026-08-19T16:28:42.759691,NOW,buy,19.2179,129.41,122.5,142.0,8,85,decision,
+2026-08-19T16:58:29.344884,NOW,sell,19.2179,128.73,,,10,,negative_news,Negative news: worst sentiment -1.00
+2026-08-19T16:58:32.361389,TSCO,buy,25.552,35.515,34.0,38.0,8,80.0,decision,

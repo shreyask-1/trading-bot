@@ -13695,3 +13695,26 @@ Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 3 t
 Performance: Total return -0.69% | Max drawdown 12.37% | Daily Sharpe 0.19 | 9 closed trades | Win rate 33% | Avg winner +1.30% | Avg loser -3.86% | Open positions: 17 | Equity $99,140.11
 Timings: account: 0.0s | risk: 5.2s | decide: 2.1s | watchlist: 0.0s | perf: 0.1s
 
+=== Run at 2026-08-19T16:58:25.924176 ===
+Current time: 2026-08-19 12:58 PM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,143.23
+Cash: $4,964.33 | Holdings (17): {'AMCR': '95.5314 sh (-0.37%)', 'AMT': '14.8145 sh (-0.07%)', 'COO': '131.0648 sh (+0.29%)', 'EOG': '45.9769 sh (+5.54%)', 'EQT': '83.0647 sh (+0.92%)', 'ERIE': '0.7641 sh (+3.22%)', 'GEHC': '0.6136 sh (+1.07%)', 'ICE': '13.6893 sh (+0.70%)', 'INTU': '23.0293 sh (+0.77%)', 'IVZ': '306.9138 sh (+1.32%)', 'KKR': '16.7039 sh (+3.22%)', 'MS': '43.8344 sh (-2.77%)', 'MSI': '21.1281 sh (+2.08%)', 'NOW': '19.2179 sh (-0.53%)', 'NWS': '303.7199 sh (+3.13%)', 'T': '380.3291 sh (+0.24%)', 'TRMB': '19.6689 sh (+0.36%)'}
+Open orders (1): MS sell 43.8344
+  !! FOREIGN ACTIVITY: LLY holds 0.0000 sh but this bot should own 1.2410 sh (diff -1.2410). Someone/something else is trading this account.
+Risk state: peak $99,703.60 | drawdown 0.56% | today -0.00% | halted: False
+Risk management triggered 1 forced sell(s):
+  -> {"timestamp": "2026-08-19T16:58:29.345409", "ticker": "NOW", "action": "sell", "qty": 19.2179, "conviction": 10, "size_multiplier": 1.0, "order_id": "1e564cbd-69ea-49dd-916b-4fbbe53e2657", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": null, "take_profit": null, "reasoning": "Negative news: worst sentiment -1.00", "status": "submitted", "trigger": "negative_news"}
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 3 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 30/60 candidates passed.
+Gemini proposed 1 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 285
+  -> {"timestamp": "2026-08-19T16:58:32.361840", "ticker": "TSCO", "action": "buy", "qty": 25.552, "conviction": 8, "size_multiplier": 1.0, "order_id": "9d35454d-fb91-4b4d-8a6c-bd1ca3c4ec43", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": 34.0, "take_profit": 38.0, "reasoning": "", "status": "submitted"}
+Overnight queue cleared after verification.
+Dashboard watchlist synced (18 symbols) for news/headlines.
+Ending portfolio value: $99,143.69
+Trade journal: all: 10 trades, 30% win rate, avg -1.98% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 4 trades, 50% win rate, avg -0.81% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 4 trades, 50% win rate, avg -0.81% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return -0.69% | Max drawdown 12.37% | Daily Sharpe 0.19 | 10 closed trades | Win rate 30% | Avg winner +1.30% | Avg loser -3.38% | Open positions: 17 | Equity $99,143.71
+Timings: account: 0.0s | risk: 4.5s | decide: 1.9s | watchlist: 0.0s | perf: 0.1s
+
