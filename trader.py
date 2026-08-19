@@ -91,6 +91,7 @@ from config import (
     MAX_HOLDING_HOURS,
     STAGNATION_MAX_HOURS,
     STAGNATION_MIN_PROGRESS_PCT,
+    STAGNATION_MAX_EXITS_PER_RUN,
     ENABLE_PERFORMANCE_REPORTS,
     ENABLE_FOREIGN_ACTIVITY_DETECTION,
     DAYTRADE_MODE,
@@ -2276,6 +2277,49 @@ def reconcile_foreign_activity(account_snapshot):
         for t, q in bot_expected.items():
             expected[t] = expected.get(t, 0.0) + q
 
+    # A missing position is an unexplained ACCOUNT DRIFT, not evidence of a
+    # second trader: a broker liquidation, manual sale, corporate action, or
+    # an order-history gap can reduce a bot-created position. Adopt the
+    # reduction once as a synthetic, clearly-labelled filled sell so the
+    # expected ledger catches up without repeatedly shouting FOREIGN ACTIVITY.
+    # Unexplained increases remain foreign-activity alerts below.
+    try:
+        open_order_tickers = get_tickers_with_open_orders()
+    except Exception:
+        open_order_tickers = set()
+    drift_adjusted = False
+    for t, bot_qty in list(bot_expected.items()):
+        if t in open_order_tickers:
+            continue  # an outstanding sell may legitimately explain the gap
+        expected_qty = float(baseline.get(t, 0.0) or 0.0) + float(bot_qty or 0.0)
+        actual = float(holdings.get(t, {}).get("qty", 0.0) or 0.0)
+        reduction = expected_qty - actual
+        if reduction <= 0.01:
+            continue
+        ledger = _load_json_file(ORDER_LEDGER_FILE, [])
+        ledger.append({
+            "timestamp": datetime.now().isoformat(),
+            "ticker": t,
+            "action": "sell",
+            "qty": round(reduction, 4),
+            "order_id": f"reconciliation-reduction-{t}-{int(time.time() * 1000)}",
+            "order_status": "filled",
+            "source": "broker_reconciliation_adjustment",
+            "reasoning": "Account position was lower than the bot ledger; adopted broker/account reduction.",
+            "accounted_filled_qty": round(reduction, 4),
+        })
+        _save_json_file(ORDER_LEDGER_FILE, ledger)
+        drift_adjusted = True
+        flags.append(
+            f"ACCOUNT DRIFT: {t} was {expected_qty:.4f} sh in the bot ledger but "
+            f"the account has {actual:.4f} sh; adopted the reduction once."
+        )
+    if drift_adjusted:
+        bot_expected = get_expected_holdings()
+        expected = dict(baseline)
+        for t, q in bot_expected.items():
+            expected[t] = expected.get(t, 0.0) + q
+
     for t, q in expected.items():
         if abs(q) <= 0.0001:
             continue
@@ -2774,7 +2818,14 @@ def enforce_stagnant_positions(account_snapshot, time_budget=None):
     open_orders = get_tickers_with_open_orders()
     now = datetime.now()
     deadline = time.monotonic() + time_budget if time_budget is not None else None
+    exits_submitted = 0
     for ticker, record in open_map.items():
+        # Every open position follows the same holding-time and stagnation
+        # policy, regardless of when it entered the account. `engine` remains
+        # useful for reporting, but never grants a position special treatment.
+        record_engine = _infer_engine(record.get("engine"), record.get("setup", ""), previous=record)
+        if STAGNATION_MAX_EXITS_PER_RUN > 0 and exits_submitted >= STAGNATION_MAX_EXITS_PER_RUN:
+            break
         if deadline is not None and time.monotonic() >= deadline:
             break
         pos = (account_snapshot.get("holdings") or {}).get(ticker)
@@ -2804,10 +2855,12 @@ def enforce_stagnant_positions(account_snapshot, time_budget=None):
             }, account_snapshot, trigger=trigger)
             result["trigger"] = trigger
             results.append(result)
+            if result.get("status") == "submitted":
+                exits_submitted += 1
     return results
 
-
 def enforce_portfolio_consolidation(account_snapshot, time_budget=None):
+
     results = []
     holdings = account_snapshot.get("holdings", {})
     if len(holdings) <= MAX_OPEN_POSITIONS:
@@ -2842,41 +2895,33 @@ def enforce_portfolio_consolidation(account_snapshot, time_budget=None):
 
 def enforce_quality_trim(account_snapshot, time_budget=None):
     """
-    Conservative quality-trim of LEGACY holdings -- the pre-baseline positions
-    recorded in reconciliation_state.json's baseline that predate this bot and
-    were never screened by this strategy (the ~$89K drag). Two passes, sharing
-    the QUALITY_TRIM_MAX_PER_RUN cap:
-      1. Profit-take: any legacy position up >= QUALITY_TRIM_PROFIT_TAKE_PCT
-         since its avg entry price is sold to bank the gain (score ignored).
-      2. Score-based: legacy positions that FAIL the current technical screens
-         (signal score below QUALITY_TRIM_SCORE_THRESHOLD), worst first, but
-         ONLY when the position is not down overall (current >= entry) -- a
-         legacy loser is held long until it recovers to the +5% profit-take
-         mark instead of being sold into weakness (never sell into the hole).
-    Skips tickers with open orders. Non-legacy positions are never touched.
-    Returns the executed trade results (empty when nothing qualifies).
+    Uniform portfolio-quality review. Every holding is evaluated identically;
+    baseline/original ownership never changes eligibility. Two passes share the
+    QUALITY_TRIM_MAX_PER_RUN cap:
+      1. Profit-take: any position up >= QUALITY_TRIM_PROFIT_TAKE_PCT since
+         average entry is sold to bank the gain (score ignored).
+      2. Score-based: positions that fail the technical screen are considered
+         worst first, but are not sold while down overall. This prevents
+         indiscriminate loss-churning while still allowing weak positions to
+         be replaced after they recover.
+    Skips tickers with open orders. Returns submitted results.
     time_budget (wall-clock seconds, optional): stops scoring new holdings
     once the run's deadline is spent (never stalls a run on a cosmetic step).
     """
     if not ENABLE_QUALITY_TRIM:
         print("Quality trim: disabled via ENABLE_QUALITY_TRIM=false -- skipping.")
         return []
-    recon = _load_json_file(RECON_STATE_FILE, {})
-    baseline = recon.get("baseline") or {}
-    if not baseline:
-        print("Quality trim: no legacy baseline recorded yet (reconciliation_state.json empty) -- nothing to trim.")
-        return []  # no legacy positions recorded on this account
     holdings = account_snapshot.get("holdings", {})
     open_orders = get_tickers_with_open_orders()
-    candidates = [t for t in holdings if t in baseline and t not in open_orders]
+    candidates = [t for t in holdings if t not in open_orders]
     if not candidates:
-        print(f"Quality trim: {len(holdings)} holdings, none are legacy baseline names (or all have open orders) -- nothing to trim.")
+        print(f"Quality review: {len(holdings)} holdings are already covered by open orders -- nothing to review.")
         return []
     deadline = time.monotonic() + time_budget if time_budget is not None else None
     scored = []
     for t in candidates:
         if deadline is not None and time.monotonic() >= deadline:
-            print("Quality trim: run budget spent -- skipped scoring remaining legacy holdings this run.")
+            print("Quality review: run budget spent -- skipped scoring remaining holdings this run.")
             break
         try:
             ind_data = get_full_indicators(t)
@@ -2891,7 +2936,7 @@ def enforce_quality_trim(account_snapshot, time_budget=None):
     slots_left = QUALITY_TRIM_MAX_PER_RUN
     loss_guard_skips = 0
 
-    def _sell_legacy(t, reason):
+    def _sell_quality_candidate(t, reason):
         nonlocal slots_left
         trade = {"ticker": t, "action": "sell", "dollar_amount": 0, "reasoning": reason, "conviction": 10}
         result = execute_trade(trade, account_snapshot, trigger="quality_trim")
@@ -2899,7 +2944,7 @@ def enforce_quality_trim(account_snapshot, time_budget=None):
         results.append(result)
         slots_left -= 1
 
-    # Pass 1: profit-take on legacy winners -- any legacy position up
+    # Pass 1: profit-take on any winner -- any position up
     # QUALITY_TRIM_PROFIT_TAKE_PCT or more since its avg entry price is sold
     # to bank the gain. Score is ignored here (a winner is a winner).
     profit_takers = []
@@ -2917,17 +2962,16 @@ def enforce_quality_trim(account_snapshot, time_budget=None):
         current = float(pos.get("current_price", 0) or 0)
         gain_pct = (current / entry - 1.0) * 100.0 if entry else 0.0
         reason = (
-            f"Quality trim profit-take: legacy pre-baseline holding {t} is up "
+            f"Quality review profit-take: {t} is up "
             f"{round(gain_pct, 1)}% since entry >= {QUALITY_TRIM_PROFIT_TAKE_PCT}%; "
             "banking the gain"
         )
-        _sell_legacy(t, reason)
+        _sell_quality_candidate(t, reason)
 
-    # Pass 2: score-based trim of legacy positions failing the technical
-    # screens (signal score below QUALITY_TRIM_SCORE_THRESHOLD), worst first,
-    # but ONLY for positions that are not down overall (current >= entry): a
-    # legacy loser is held long until it recovers to the +5% profit-take
-    # mark instead of being sold into weakness. Never sells into the hole.
+    # Pass 2: score-based review of every position failing the technical
+    # screen (signal score below QUALITY_TRIM_SCORE_THRESHOLD), worst first,
+    # but ONLY for positions that are not down overall (current >= entry).
+    # Never sells into the hole.
     # Uses whatever per-run slots remain.
     for score, t in scored:
         if slots_left <= 0:
@@ -2941,25 +2985,25 @@ def enforce_quality_trim(account_snapshot, time_budget=None):
         current = float(pos.get("current_price", 0) or 0)
         if entry > 0 and current > 0 and current < entry:
             loss_guard_skips += 1
-            continue  # legacy loser -- hold long until it recovers to +5%
+            continue  # losing position -- do not churn it into weakness
         if entry > 0 and current > 0 and current <= entry * (1.0 - QUALITY_TRIM_LOSS_GUARD_PCT / 100.0):
             loss_guard_skips += 1
             continue  # already near the loss guard -- don't sell into the hole
         reason = (
-            f"Quality trim: legacy pre-baseline holding {t} fails technical screens "
+            f"Quality review: {t} fails technical screens "
             f"(signal score {round(score, 1)} < {QUALITY_TRIM_SCORE_THRESHOLD}); freeing "
             "capital for higher-conviction entries"
         )
-        _sell_legacy(t, reason)
+        _sell_quality_candidate(t, reason)
 
     if not results and scored:
         worst_score = scored[0][0]
         if worst_score >= QUALITY_TRIM_SCORE_THRESHOLD:
-            why = f"worst legacy score {round(worst_score, 1)} >= threshold {QUALITY_TRIM_SCORE_THRESHOLD}"
+            why = f"worst score {round(worst_score, 1)} >= threshold {QUALITY_TRIM_SCORE_THRESHOLD}"
         else:
-            why = (f"worst legacy score {round(worst_score, 1)} < threshold {QUALITY_TRIM_SCORE_THRESHOLD} "
+            why = (f"worst score {round(worst_score, 1)} < threshold {QUALITY_TRIM_SCORE_THRESHOLD} "
                    f"but {loss_guard_skips} held back (down overall or near entry)")
-        print(f"Quality trim: checked {len(scored)} legacy position(s); {why} -- nothing sold this run.")
+        print(f"Quality review: checked {len(scored)} position(s); {why} -- nothing sold this run.")
     return results
 
 def confidence_to_size_pct(confidence):
