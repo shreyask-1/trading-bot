@@ -148,6 +148,7 @@ from config import (
     SELF_LEARNING_EDGE_MIN,
 )
 import indicators as ind
+from sector_fallback import SECTOR_FALLBACK
 from market_regime import evaluate_market_regime
 from signal_score import calculate_signal_score
 
@@ -3356,7 +3357,7 @@ def get_sector_exposure_summary(account_snapshot):
             value = float(position.get("qty", 0) or 0) * float(position.get("current_price", 0) or 0)
         except (TypeError, ValueError):
             continue
-        sector = (profiles.get(symbol, {}) or {}).get("sector") or "UNKNOWN"
+        sector = (profiles.get(symbol, {}) or {}).get("sector") or SECTOR_FALLBACK.get(symbol) or "UNKNOWN"
         buckets[sector] = buckets.get(sector, 0.0) + max(0.0, value)
     if not buckets:
         return "unavailable (no holdings)"
