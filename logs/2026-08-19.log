@@ -11220,4 +11220,27 @@ Trade journal: all: 5 trades, 40% win rate, avg -1.72% | breakout: 1 trades, 0% 
 Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 2 trades, 100% win rate, avg +1.79% (WORKING) | technical: 2 trades, 0% win rate, avg -1.78% (LOSING)
 Performance: Total return -0.50% | Max drawdown 12.37% | Daily Sharpe 0.23 | 5 closed trades | Win rate 40% | Avg winner +1.79% | Avg loser -4.06% | Open positions: 17 | Equity $99,428.59
 Timings: account: 0.0s | risk: 9.9s | decide: 19.9s | watchlist: 0.0s | perf: 0.1s
+=== Run at 2026-08-19T13:49:25.543582 ===
+Current time: 2026-08-19 09:49 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,468.93
+Cash: $449.27 | Holdings (18): {'AMCR': '95.5314 sh (+0.02%)', 'AMT': '14.8145 sh (+0.70%)', 'ANET': '6.2335 sh (-0.38%)', 'COO': '131.0648 sh (+1.09%)', 'EOG': '45.9769 sh (+5.56%)', 'EQT': '61.4173 sh (+1.30%)', 'ERIE': '0.7641 sh (+1.48%)', 'GEHC': '0.6136 sh (+0.97%)', 'HPE': '182.5317 sh (-2.94%)', 'IBKR': '50.3871 sh (-0.17%)', 'IVZ': '306.9138 sh (+1.37%)', 'KKR': '16.7039 sh (+1.76%)', 'LLY': '1.6873 sh (+5.45%)', 'MS': '43.8344 sh (-2.67%)', 'MSI': '21.1281 sh (+1.58%)', 'NWS': '303.7199 sh (+2.05%)', 'SNDK': '1.5721 sh (-1.10%)', 'T': '380.3291 sh (+0.46%)'}
+Open orders (1): MS sell 43.8344
+  !! FOREIGN ACTIVITY: LLY holds 1.6873 sh but this bot should own 2.9283 sh (diff -1.2410). Someone/something else is trading this account.
+Risk state: peak $99,703.60 | drawdown 0.24% | today +0.33% | halted: False
+Risk management triggered 2 forced sell(s):
+  -> {"timestamp": "2026-08-19T13:49:29.127196", "ticker": "IBKR", "action": "sell", "qty": 50.3871, "conviction": 10, "size_multiplier": 1.0, "order_id": "7a0258f4-4dff-40d4-961e-8bffa4a9813f", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": null, "take_profit": null, "reasoning": "Moving-average breakdown: price 89.555 < SMA-20 90.04", "status": "submitted", "trigger": "ma_breakdown"}
+  -> {"timestamp": "2026-08-19T13:49:29.824986", "ticker": "LLY", "action": "sell", "qty": 1.6873, "conviction": 10, "size_multiplier": 1.0, "order_id": "f3e5234e-4f23-4bed-8982-1b84f440db4f", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": null, "take_profit": null, "reasoning": "Take-profit hit: price 1288.975 >= target 1284.5", "status": "submitted", "trigger": "take_profit"}
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 5 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 38/59 candidates passed.
+Gemini proposed 1 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 201
+  -> {"timestamp": "2026-08-19T13:49:45.560931", "ticker": "ICE", "action": "buy", "qty": 13.6893, "conviction": 9, "size_multiplier": 1.0, "order_id": "bebf7c89-63e7-4422-a1d6-39158ab8f9c3", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": 147.5, "take_profit": 171.97, "reasoning": "", "status": "submitted"}
+Overnight queue cleared after verification.
+Dashboard watchlist synced (17 symbols) for news/headlines.
+Ending portfolio value: $99,427.51
+Trade journal: all: 6 trades, 50% win rate, avg -1.38% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 2 trades, 100% win rate, avg +1.79% | technical: 3 trades, 33% win rate, avg -1.08%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 2 trades, 100% win rate, avg +1.79% (WORKING) | technical: 3 trades, 33% win rate, avg -1.08% (LOSING)
+Performance: Total return -0.41% | Max drawdown 12.37% | Daily Sharpe 0.25 | 6 closed trades | Win rate 50% | Avg winner +1.30% | Avg loser -4.06% | Open positions: 16 | Equity $99,430.25
+Timings: account: 0.0s | risk: 5.5s | decide: 14.4s | watchlist: 0.0s | perf: 0.1s
 
