@@ -108,6 +108,18 @@ from config import (
     MAX_RISK_PER_TRADE_PCT,
     RISK_PARITY_SIZING,
     MAX_SECTOR_EXPOSURE_PCT,
+    ENABLE_CORRELATION_CAP,
+    CORRELATION_THRESHOLD,
+    MAX_CORRELATED_EXPOSURE_PCT,
+    CORRELATION_LOOKBACK_DAYS,
+    CORRELATION_MAX_HOLDINGS_CHECKED,
+    MAX_DAILY_TURNOVER_PCT,
+    MAX_DAILY_TURNOVER_DOLLARS,
+    TURNOVER_PROTECTIVE_SELLS_BYPASS,
+    ENGINE_QUALITY_GATE_ENABLED,
+    ENGINE_QUALITY_GATE_MIN_SAMPLES,
+    ENGINE_QUALITY_GATE_MIN_WIN_RATE_PCT,
+    ENGINE_QUALITY_GATE_MAX_AVG_PNL_PCT,
     TIME_OF_DAY_MULTIPLIERS,
     CONFIDENCE_SIZING,
     CONFIDENCE_MIN_TO_TRADE,
@@ -1248,6 +1260,8 @@ OPERATIONS_STATE_FILE = os.path.join(os.path.dirname(__file__), "logs", "operati
 DAILY_REPORT_FILE = os.path.join(os.path.dirname(__file__), "logs", "daily_report.csv")
 WEEKLY_REPORT_FILE = os.path.join(os.path.dirname(__file__), "logs", "weekly_report.csv")
 BOOK_PERFORMANCE_FILE = os.path.join(os.path.dirname(__file__), "logs", "book_performance.csv")
+TURNOVER_STATE_FILE = os.path.join(os.path.dirname(__file__), "logs", "turnover_state.json")
+SHADOW_REPORT_FILE = os.path.join(os.path.dirname(__file__), "logs", "shadow_report.csv")
 BOOK_PERFORMANCE_HEADER = [
     "timestamp", "book", "realized_pnl_dollars", "closed_trades", "wins",
     "win_rate_pct", "avg_realized_pnl_pct", "unrealized_pnl_dollars",
@@ -1453,6 +1467,36 @@ def _engine_performance(account_snapshot):
         g["open"] += 1
         g["exposure"] += float(position.get("qty", 0) or 0) * float(position.get("current_price", 0) or 0)
     return groups
+
+
+def record_shadow_report():
+    """Persist a compact report of rejected/dry-run candidates by reason."""
+    if not os.path.exists(SHADOW_TRADES_FILE):
+        return "no shadow candidates yet"
+    records = []
+    try:
+        with open(SHADOW_TRADES_FILE) as f:
+            for line in f:
+                try:
+                    item = json.loads(line)
+                    if isinstance(item, dict):
+                        records.append(item)
+                except json.JSONDecodeError:
+                    continue
+    except OSError:
+        return "shadow report unavailable"
+    groups = {}
+    for item in records[-500:]:
+        reason = str(item.get("reason", "unknown"))
+        reason_key = reason.split(":", 1)[0][:80]
+        key = (item.get("engine", "unknown"), reason_key)
+        groups[key] = groups.get(key, 0) + 1
+    with open(SHADOW_REPORT_FILE, "w", newline="") as f:
+        writer = csv.DictWriter(f, fieldnames=["timestamp", "engine", "reason", "count"])
+        writer.writeheader()
+        for (engine, reason), count in sorted(groups.items()):
+            writer.writerow({"timestamp": datetime.now().isoformat(), "engine": engine, "reason": reason, "count": count})
+    return f"{len(records)} shadow candidate(s), {len(groups)} rejection group(s)"
 
 
 def record_periodic_performance_reports(account_snapshot):
@@ -1686,6 +1730,42 @@ def _setup_stats():
             "avg_pnl_pct": s["sum"] / s["n"],
         }
     return out
+
+
+def engine_quality_gate(engine):
+    """Return (allowed, explanation) using only clean attributed results.
+
+    Unattributed historical trades are intentionally excluded. The gate is
+    conservative: it remains open until there are enough samples, then blocks
+    an engine only when both its win rate and average net P&L demonstrate a
+    persistent drag. Protective sells are never routed through this gate.
+    """
+    if not ENGINE_QUALITY_GATE_ENABLED:
+        return True, "engine quality gate disabled"
+    rows = _read_trade_results()
+    values = []
+    for row in rows:
+        if _infer_engine(row.get("engine"), row.get("setup", ""), row.get("exit_reason", "")) != engine:
+            continue
+        try:
+            values.append((float(row.get("pnl_pct", 0) or 0), float(row.get("pnl_dollars", 0) or 0)))
+        except (TypeError, ValueError):
+            continue
+    n = len(values)
+    if n < ENGINE_QUALITY_GATE_MIN_SAMPLES:
+        return True, f"{engine}: {n}/{ENGINE_QUALITY_GATE_MIN_SAMPLES} clean samples; gate not active"
+    wins = sum(1 for pct, _dollars in values if pct > 0)
+    win_rate = wins / n * 100.0
+    avg_pnl_pct = sum(pct for pct, _dollars in values) / n
+    if win_rate < ENGINE_QUALITY_GATE_MIN_WIN_RATE_PCT and avg_pnl_pct <= ENGINE_QUALITY_GATE_MAX_AVG_PNL_PCT:
+        return False, (
+            f"{engine}: blocked after {n} clean trades; win rate {win_rate:.1f}% "
+            f"and average net P&L {avg_pnl_pct:+.2f}%"
+        )
+    return True, (
+        f"{engine}: allowed after {n} clean trades; win rate {win_rate:.1f}% "
+        f"and average net P&L {avg_pnl_pct:+.2f}%"
+    )
 
 
 def get_setup_multiplier(setup_category):
@@ -3082,6 +3162,99 @@ def _market_data_guard_reason(ticker, indicators_data):
     return None
 
 
+def _daily_turnover_limit(total_value):
+    limits = []
+    if MAX_DAILY_TURNOVER_PCT > 0:
+        limits.append(float(total_value) * MAX_DAILY_TURNOVER_PCT)
+    if MAX_DAILY_TURNOVER_DOLLARS > 0:
+        limits.append(MAX_DAILY_TURNOVER_DOLLARS)
+    return min(limits) if limits else 0.0
+
+
+def _turnover_state():
+    state = _load_json_file(TURNOVER_STATE_FILE, {})
+    day = datetime.now(_EASTERN).strftime("%Y-%m-%d")
+    if state.get("day") != day:
+        return {"day": day, "submitted_notional": 0.0}
+    return state
+
+
+def _turnover_guard_reason(notional, total_value, action, trigger):
+    limit = _daily_turnover_limit(total_value)
+    if limit <= 0:
+        return None
+    if action == "sell" and TURNOVER_PROTECTIVE_SELLS_BYPASS and trigger in {
+        "stop_loss", "hard_loss_cap", "negative_news", "ma_breakdown",
+        "rsi_exhaustion", "take_profit", "deleveraging", "circuit_breaker_flatten",
+        "end_of_day_flatten",
+    }:
+        return None
+    state = _turnover_state()
+    used = float(state.get("submitted_notional", 0.0) or 0.0)
+    if used + notional > limit:
+        return (
+            f"daily turnover budget reached: ${used:,.2f} used + ${notional:,.2f} "
+            f"would exceed ${limit:,.2f}; protective sells remain allowed"
+        )
+    return None
+
+
+def _record_turnover(notional):
+    limit = _daily_turnover_limit(1.0)
+    # The caller has already applied the account-specific limit. Persist the
+    # submitted notional even when a broker later rejects it; conservative
+    # accounting is preferable to repeated churn against a slow broker.
+    state = _turnover_state()
+    state["submitted_notional"] = round(float(state.get("submitted_notional", 0.0) or 0.0) + abs(float(notional)), 2)
+    _save_json_file(TURNOVER_STATE_FILE, state)
+
+
+def _return_series(closes):
+    values = [float(x) for x in (closes or []) if x is not None]
+    return [values[i] / values[i - 1] - 1.0 for i in range(1, len(values)) if values[i - 1]]
+
+
+def _pearson(a, b):
+    n = min(len(a), len(b))
+    if n < 20:
+        return None
+    a, b = a[-n:], b[-n:]
+    ma, mb = sum(a) / n, sum(b) / n
+    va = sum((x - ma) ** 2 for x in a)
+    vb = sum((y - mb) ** 2 for y in b)
+    if va <= 0 or vb <= 0:
+        return None
+    return sum((x - ma) * (y - mb) for x, y in zip(a, b)) / (va ** 0.5 * vb ** 0.5)
+
+
+def _correlation_room_for(account_snapshot, ticker, total_value):
+    """Return (dollars, correlated_symbols) for a candidate's factor bucket."""
+    if not ENABLE_CORRELATION_CAP or MAX_CORRELATED_EXPOSURE_PCT <= 0:
+        return float("inf"), []
+    try:
+        candidate = get_price_history(ticker, days=CORRELATION_LOOKBACK_DAYS)
+        candidate_returns = _return_series((candidate or {}).get("closes"))
+        if len(candidate_returns) < 20:
+            return float("inf"), []
+        ranked = []
+        for symbol, pos in account_snapshot.get("holdings", {}).items():
+            if symbol == ticker:
+                continue
+            if len(ranked) >= CORRELATION_MAX_HOLDINGS_CHECKED:
+                break
+            history = get_price_history(symbol, days=CORRELATION_LOOKBACK_DAYS)
+            corr = _pearson(candidate_returns, _return_series((history or {}).get("closes")))
+            if corr is not None and corr >= CORRELATION_THRESHOLD:
+                value = float(pos.get("qty", 0) or 0) * float(pos.get("current_price", 0) or 0)
+                ranked.append((symbol, value, corr))
+        correlated_value = sum(value for _symbol, value, _corr in ranked)
+        room = max(0.0, float(total_value) * MAX_CORRELATED_EXPOSURE_PCT - correlated_value)
+        return room, [f"{s} ({c:.2f})" for s, _v, c in ranked]
+    except Exception as e:
+        print(f"Correlation cap unavailable for {ticker} (continuing without it): {e}")
+        return float("inf"), []
+
+
 def _chase_size_multiplier(extension_pct, limit_pct):
     """
     Soft chase filter: how much of a full position an extended name earns.
@@ -3405,6 +3578,15 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
             except Exception as e:
                 print(f"Sector cap check failed on {ticker} (continuing without it): {e}")
 
+        correlation_room = None
+        correlated_symbols = []
+        if ENABLE_CORRELATION_CAP and MAX_CORRELATED_EXPOSURE_PCT > 0:
+            correlation_room, correlated_symbols = _correlation_room_for(
+                account_snapshot, ticker, total_value
+            )
+            if correlation_room < amount:
+                amount = correlation_room
+
         # Risk-based sizing: cap the position so a stop-out costs at most
         # MAX_RISK_PER_TRADE_PCT of equity, using THIS trade's real stop
         # distance (tight stop = bigger size, wide stop = smaller size).
@@ -3430,6 +3612,8 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
         _caps = [exposure_room]
         if sector_room is not None:
             _caps.append(sector_room)
+        if correlation_room is not None:
+            _caps.append(correlation_room)
         if risk_cap_amount is not None:
             _caps.append(risk_cap_amount)
         hard_cap = min(_caps)
@@ -3487,6 +3671,9 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
                 reason += f" (high-conviction swap sold {swap_result.get('ticker')}, fill pending)"
             if sector_was_binding and sector_room is not None:
                 reason += f", and sector room (${sector_room:,.2f})"
+            if correlation_room is not None and correlation_room < buy_target:
+                peers = ", ".join(correlated_symbols[:5]) or "correlated holdings"
+                reason += f", and correlation room (${correlation_room:,.2f}; peers {peers})"
             return {
                 "ticker": ticker,
                 "status": "skipped",
@@ -3508,6 +3695,10 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
         side = OrderSide.SELL
     else:
         return {"ticker": ticker, "status": "failed", "reason": f"unknown action '{action}'"}
+
+    turnover_reason = _turnover_guard_reason(qty * price, total_value, action, trigger)
+    if turnover_reason:
+        return {"ticker": ticker, "status": "skipped", "reason": turnover_reason, "turnover_guard": True}
 
     try:
         # Extended-hours trading: Alpaca's extended session (4:00-9:30 AM and
@@ -3569,6 +3760,7 @@ def execute_trade(trade, account_snapshot=None, size_multiplier=1.0, trigger=Non
             }
 
         order = trading_client.submit_order(order_request)
+        _record_turnover(qty * price)
         _record_cooldown(ticker)
 
         # Per-trade custom stop-loss / take-profit: computed from THIS trade's
