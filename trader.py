@@ -170,6 +170,9 @@ EARNINGS_CAL_FILE = os.path.join(os.path.dirname(__file__), "logs", "earnings_ca
 # Overnight queue: trade ideas proposed while no session could fill, re-verified
 # by Gemini at the next live-session run before anything is placed.
 PENDING_TRADES_FILE = os.path.join(os.path.dirname(__file__), "data", "pending_trades.json")
+# Separate cooldown state prevents a queue merge/rewrite from dropping the
+# timestamp that suppresses repeated stale-data Gemini calls.
+STALE_QUEUE_STATE_FILE = os.path.join(os.path.dirname(__file__), "data", "stale_queue_cooldowns.json")
 # Dashboard watchlist: the Alpaca dashboard renders news/headlines from your
 # watchlist, so even a flat cash account shows content for the names the bot
 # is actively watching. Kept in sync by sync_dashboard_watchlist() each run.
@@ -1016,12 +1019,20 @@ def mark_pending_verification_attempts(trades):
     return marked
 
 
+def _stale_queue_key(trade):
+    return f"{trade.get('ticker', '')}|{str(trade.get('action', 'buy')).lower()}"
+
+
 def pending_trade_in_stale_cooldown(trade, now=None):
     """Whether a known-stale queue item should skip this verification cycle."""
-    if STALE_QUEUE_RETRY_COOLDOWN_MINUTES <= 0:
+    if STALE_QUEUE_RETRY_COOLDOWN_MINUTES <= 0 or not isinstance(trade, dict):
         return False
     now = now or datetime.now(pytz.utc)
-    last_stale = trade.get("last_stale_at") if isinstance(trade, dict) else None
+    cooldowns = _load_json_file(STALE_QUEUE_STATE_FILE, {})
+    last_stale = cooldowns.get(_stale_queue_key(trade))
+    # Read the inline field too so state created by the previous version is
+    # compatible with the dedicated cooldown file.
+    last_stale = last_stale or trade.get("last_stale_at")
     if not last_stale:
         return False
     age_minutes = (now - _queue_timestamp(last_stale, now)).total_seconds() / 60.0
@@ -1029,13 +1040,18 @@ def pending_trade_in_stale_cooldown(trade, now=None):
 
 
 def mark_pending_stale(trades):
-    """Stamp data-guard rejections without consuming verification attempts."""
+    """Persist data-guard rejections without consuming verification attempts."""
     now = datetime.now(pytz.utc).isoformat()
+    cooldowns = _load_json_file(STALE_QUEUE_STATE_FILE, {})
+    if not isinstance(cooldowns, dict):
+        cooldowns = {}
     marked = []
     for trade in trades or []:
         item = dict(trade)
         item["last_stale_at"] = now
+        cooldowns[_stale_queue_key(item)] = now
         marked.append(item)
+    _save_json_file(STALE_QUEUE_STATE_FILE, cooldowns)
     return marked
 
 
