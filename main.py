@@ -43,6 +43,8 @@ from trader import (
     get_account_snapshot,
     execute_trade,
     check_atr_stop_take_profit,
+    reconcile_filled_orders,
+    enforce_stagnant_positions,
     enforce_portfolio_consolidation,
     enforce_quality_trim,
     enforce_deleveraging,
@@ -64,6 +66,8 @@ from trader import (
     summarize_trade_results,
     summarize_performance,
     build_performance_brief,
+    record_engine_performance_snapshot,
+    record_periodic_performance_reports,
 )
 from news import get_news_candidates
 from decide import get_trade_decisions
@@ -144,6 +148,12 @@ def run():
     log_lines.append(f"Account value: ${account['total_value']:,.2f}")
     holdings_summary = {t: f"{p['qty']} sh ({p['unrealized_plpc']:+.2f}%)" for t, p in account["holdings"].items()}
     log_lines.append(f"Cash: ${account['cash']:,.2f} | Holdings ({len(account['holdings'])}): {holdings_summary or 'none'}")
+    try:
+        fill_counts = reconcile_filled_orders()
+        if any(fill_counts.values()):
+            log_lines.append(f"Fill reconciliation: {fill_counts}")
+    except Exception as e:
+        log_lines.append(f"Fill reconciliation failed (continuing): {e}")
     _mark("account")
 
     # Open-order visibility: queued/pending orders (e.g. de-leveraging sells
@@ -294,6 +304,20 @@ def run():
         except Exception as e:
             log_lines.append(f"Flatten step failed (continuing anyway): {e}")
 
+    # Step 1c.6: release bot capital from positions that have exceeded their
+    # holding limit or stopped progressing. Legacy positions are excluded.
+    stagnation_exits = 0
+    try:
+        stagnation_sells = enforce_stagnant_positions(account, time_budget=_remaining_run())
+        stagnation_exits = len(stagnation_sells)
+        if stagnation_sells:
+            log_lines.append(f"Stagnation/holding-time exits: {stagnation_exits}")
+            for s_ in stagnation_sells:
+                log_lines.append(f"  -> {json.dumps(s_)}")
+            account = get_account_snapshot()
+    except Exception as e:
+        log_lines.append(f"Stagnation check failed (continuing): {e}")
+
     _mark("risk")
     # Step 2: market regime -> position-sizing multiplier
     try:
@@ -322,7 +346,7 @@ def run():
         "technical_fallback": False,
         "gemini_calls_today": 0,
     }
-    executed = skipped = failed = 0
+    executed = skipped = failed = shadowed = 0
 
     if halted:
         log_lines.append(f"Trading halted ({halt_reason}) -- no new trades this run.")
@@ -381,6 +405,8 @@ def run():
                     account = get_account_snapshot()
                 elif status == "skipped":
                     skipped += 1
+                elif status == "shadow":
+                    shadowed += 1
                 else:
                     failed += 1
             except Exception as e:
@@ -491,6 +517,7 @@ def run():
             trades_skipped=skipped,
             trades_failed=failed,
             risk_exits=risk_exits,
+            trades_shadowed=shadowed,
             consolidation_exits=consolidation_exits,
         )
             log_lines.append(f"Ending portfolio value: ${final_account['total_value']:,.2f}")
@@ -519,6 +546,17 @@ def run():
         log_lines.append(f"Performance: {perf}")
     except Exception as e:
         log_lines.append(f"Could not summarize performance: {e}")
+
+    # Engine attribution: separates realized closed-trade P&L and current
+    # unrealized P&L for Gemini, the technical fallback, and unattributed
+    # legacy holdings. This is also written to logs/engine_performance.csv so
+    # a dashboard or spreadsheet can plot the three books independently.
+    try:
+        engine_perf = record_engine_performance_snapshot(final_account, LOG_DIR)
+        log_lines.append(f"Engine P&L: {engine_perf}")
+        log_lines.append(f"Reports: {record_periodic_performance_reports(final_account)}")
+    except Exception as e:
+        log_lines.append(f"Could not record engine P&L: {e}")
 
     _mark("perf")
     timings = " | ".join(f"{k}: {v:.1f}s" for k, v in _marks.items() if k != "_t0")
