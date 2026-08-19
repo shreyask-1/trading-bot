@@ -49,26 +49,33 @@ UNIVERSE_SCAN_PER_RUN = int(os.environ.get("UNIVERSE_SCAN_PER_RUN", 60))
 ALPACA_DATA_FEED = os.environ.get("ALPACA_DATA_FEED", "iex")
 
 # --- Position sizing ---
-# FLAT sizing (ON by default): EVERY trade is sized the same -- FLAT_TRADE_SIZE_PCT
-# of portfolio equity, capped only by the per-position ceiling and the
-# regime/breaker multiplier. Confidence/conviction/time-of-day/setup-learning/
-# economic-event/earnings multipliers do NOT change size in flat mode;
-# confidence still GATES (below CONFIDENCE_MIN_TO_TRADE the trade is skipped,
-# it just doesn't resize). Set FLAT_SIZING=false to restore per-confidence
-# tiered sizing.
+# FLAT sizing (ON by default): trades start from the same
+# FLAT_TRADE_SIZE_PCT of equity. Confidence/conviction/time-of-day/setup/
+# event multipliers do not deliberately resize normal flat trades, but risk,
+# exposure, sector, cash, chase, and stop-distance caps may reduce a trade.
+# Fallback trades have their own smaller cap. Set FLAT_SIZING=false to restore
+# confidence-tiered sizing.
 FLAT_SIZING = os.environ.get("FLAT_SIZING", "true").lower() == "true"
 FLAT_TRADE_SIZE_PCT = float(os.environ.get("FLAT_TRADE_SIZE_PCT", 0.10))
 MAX_POSITION_PCT = 0.15  # Hard ceiling: no single position over 15% of portfolio
 MIN_CONVICTION_TO_TRADE = 6  # Conviction 1-10; below this, skip trade
 
 # --- Cash discipline & portfolio sprawl control ---
-MIN_CASH_RESERVE_PCT = 0.05  # Normally-untouchable cash fraction (5%)
+# Keep a larger cash buffer so the bot can react to new setups and absorb
+# slippage instead of running permanently at the exposure ceiling.
+MIN_CASH_RESERVE_PCT = float(os.environ.get("MIN_CASH_RESERVE_PCT", 0.10))  # 10% reserve
+
+# Do not let exceptional confidence bypass the reserve. A sell can still fund
+# a replacement through the high-conviction swap path, but buys cannot spend
+# the reserve by themselves.
+EXCEPTIONAL_TRADE_RESERVE_ACCESS_PCT = float(os.environ.get("EXCEPTIONAL_TRADE_RESERVE_ACCESS_PCT", 0.0))
 MIN_TRADE_DOLLAR_AMOUNT = 25  # Buys sized below $25 skipped outright
 MAX_OPEN_POSITIONS = 20  # Hard cap on distinct held tickers
 CONSOLIDATION_SCORE_THRESHOLD = 70  # Force-sell excess positions scoring below this
 
 EXCEPTIONAL_CONVICTION_THRESHOLD = 9
-EXCEPTIONAL_TRADE_RESERVE_ACCESS_PCT = 0.5
+# Defined above next to the cash-reserve setting; kept here only as a comment
+# marker so older configuration readers can find the related control.
 
 # --- High-conviction swaps ---
 # When a genuinely outstanding new idea (Gemini confidence >= SWAP_MIN_CONFIDENCE
@@ -115,11 +122,9 @@ OVERNIGHT_QUEUE_ENABLED = (
 # Hard ceiling on TOTAL invested (holdings + pending buys) as a fraction of
 # portfolio value. 15% per position x 20 positions mathematically allows ~3x
 # leverage; this caps gross exposure so the account can never sit in margin.
-# 0.95 lets the bot deploy the usable cash beyond the 5% MIN_CASH_RESERVE_PCT
-# (at 0.90 the account gets stuck 'full' with ~$5k cash idle and every buy
-# skipped as below minimum size -- exactly the 2026-08-13 log); the reserve
-# still guarantees cash is never fully spent.
-MAX_TOTAL_EXPOSURE_PCT = float(os.environ.get("MAX_TOTAL_EXPOSURE_PCT", 0.95))
+# 0.90 leaves room for new setups and spread/slippage while the separate
+# cash-reserve rule prevents buys from consuming the reserve.
+MAX_TOTAL_EXPOSURE_PCT = float(os.environ.get("MAX_TOTAL_EXPOSURE_PCT", 0.90))
 # Hard per-position loss cap (%): if a position is ever down this much from
 # its average entry, it is force-sold even if ATR/indicator data is unavailable.
 MAX_POSITION_LOSS_PCT = float(os.environ.get("MAX_POSITION_LOSS_PCT", 8.0))
@@ -127,23 +132,23 @@ MAX_POSITION_LOSS_PCT = float(os.environ.get("MAX_POSITION_LOSS_PCT", 8.0))
 # cash is back to this fraction of portfolio value (default 2% = positive cash).
 DELEVERAGE_TARGET_CASH_PCT = float(os.environ.get("DELEVERAGE_TARGET_CASH_PCT", 0.02))
 
-# --- Equity-level circuit breakers (OPT-IN; OFF by default) ---
-# As requested: the bot NEVER stops buying/selling/trading for the day on its
-# own. Both "stop the day" breakers default to 0.0 = disabled. The 2026-08-11
-# loss was NOT a bad trading day -- it was margin caused by overnight order
-# stacking. THAT failure mode is prevented by the market-hours gate, the hard
-# no-margin rule, pending-order-aware cash, de-leveraging, and per-position
-# stops, all of which remain ON. Re-enable either breaker by setting it to a
-# positive value (e.g. DAILY_LOSS_HALT_PCT=3.0).
+# --- Equity-level circuit breakers ---
+# A daily loss halt protects against repeated churn: it blocks NEW buys after
+# the configured daily loss while stops, sells, and de-leveraging continue.
+# The prior overnight-margin failure is separately prevented by the hard
+# no-margin rule, pending-order-aware cash, exposure cap, and de-leveraging.
 # Halt ALL new buys for the rest of the day if equity is down this much (%)
-# from the start of the day. 0 = disabled (default). Stops and sells always run.
-DAILY_LOSS_HALT_PCT = float(os.environ.get("DAILY_LOSS_HALT_PCT", 0.0))
+# from the start of the day. Stops and sells always run. Set to 0 to disable.
+# A 3% daily loss blocks NEW buys until the next Eastern day. Risk exits,
+# de-leveraging, and sells still run. This prevents churn from compounding
+# during a bad session while preserving the account-protection path.
+DAILY_LOSS_HALT_PCT = float(os.environ.get("DAILY_LOSS_HALT_PCT", 3.0))
 # Drawdown sizing cut (does NOT stop trading -- it only shrinks NEW buy size to
 # DELEVERAGE_SIZE_MULTIPLIER while drawdown from peak exceeds this %). Set <= 0
 # to disable even this.
 MAX_DRAWDOWN_DELEVERAGE_PCT = float(os.environ.get("MAX_DRAWDOWN_DELEVERAGE_PCT", 5.0))
 # Flatten every position + halt the day at this drawdown from peak.
-# 0 = disabled (default).
+# 0 = disabled; the daily-loss halt above is the less-destructive default.
 MAX_DRAWDOWN_FLATTEN_PCT = float(os.environ.get("MAX_DRAWDOWN_FLATTEN_PCT", 0.0))
 DELEVERAGE_SIZE_MULTIPLIER = float(os.environ.get("DELEVERAGE_SIZE_MULTIPLIER", 0.25))
 # When True (default), the equity peak is initialized to the account value on
@@ -158,6 +163,40 @@ RESET_EQUITY_PEAK_ON_START = (
 # on margin, halts, de-leveraging, and forced liquidations instead of finding
 # out by looking at the dashboard.
 DISCORD_WEBHOOK_URL = os.environ.get("DISCORD_WEBHOOK_URL", "")
+
+# --- Data quality, liquidity, execution, and operations ---
+# New buys require a recent quote/candle and sufficient liquidity. Protective
+# sells remain allowed when data is stale so the account can still reduce risk.
+ENABLE_MARKET_DATA_GUARDS = os.environ.get("ENABLE_MARKET_DATA_GUARDS", "true").lower() == "true"
+ALLOW_STALE_DATA_FOR_EXITS = os.environ.get("ALLOW_STALE_DATA_FOR_EXITS", "true").lower() == "true"
+MAX_QUOTE_AGE_SECONDS = float(os.environ.get("MAX_QUOTE_AGE_SECONDS", 180.0))
+MAX_CANDLE_AGE_MINUTES = float(os.environ.get("MAX_CANDLE_AGE_MINUTES", 30.0))
+MAX_BID_ASK_SPREAD_PCT = float(os.environ.get("MAX_BID_ASK_SPREAD_PCT", 0.75))
+MIN_AVG_DAILY_VOLUME = float(os.environ.get("MIN_AVG_DAILY_VOLUME", 500000))
+
+# Optional paper-only dry-run. When enabled, buys are evaluated and written to
+# logs/shadow_trades.jsonl but never submitted. Protective sells still submit.
+SHADOW_MODE = os.environ.get("SHADOW_MODE", "false").lower() == "true"
+# Manual emergency switch: blocks NEW buys only; stops, profit-taking,
+# de-leveraging, and all other protective sells continue to operate.
+MANUAL_BUY_KILL_SWITCH = os.environ.get("MANUAL_BUY_KILL_SWITCH", "false").lower() == "true"
+
+# Fill accounting and cost model. Alpaca paper trading has no commission, but
+# spread/slippage still affect realized results. Journal/P&L is finalized from
+# actual filled quantity and average fill price, not submission estimates.
+RECORD_ONLY_FILLED_ORDERS = os.environ.get("RECORD_ONLY_FILLED_ORDERS", "true").lower() == "true"
+COMMISSION_PER_SHARE = float(os.environ.get("COMMISSION_PER_SHARE", "0.0"))
+ESTIMATED_SLIPPAGE_BPS = float(os.environ.get("ESTIMATED_SLIPPAGE_BPS", "5.0"))
+
+# A position that has not progressed is capital being held without evidence.
+# Only bot-attributed positions with an open-trade record are eligible; legacy
+# holdings keep their separate legacy policy.
+MAX_HOLDING_HOURS = float(os.environ.get("MAX_HOLDING_HOURS", "120"))
+STAGNATION_MAX_HOURS = float(os.environ.get("STAGNATION_MAX_HOURS", "24"))
+STAGNATION_MIN_PROGRESS_PCT = float(os.environ.get("STAGNATION_MIN_PROGRESS_PCT", "0.5"))
+
+# Daily/weekly reports are written locally and appended to the normal run log.
+ENABLE_PERFORMANCE_REPORTS = os.environ.get("ENABLE_PERFORMANCE_REPORTS", "true").lower() == "true"
 
 # --- Second-trader / foreign-activity detection ---
 # The bot records every order it submits to logs/bot_order_ledger.json and,
@@ -374,6 +413,11 @@ ENABLE_INTRADAY_ANALYSIS = (
 )
 INTRADAY_BAR_MINUTES = int(os.environ.get("INTRADAY_BAR_MINUTES", 5))
 INTRADAY_LOOKBACK_DAYS = int(os.environ.get("INTRADAY_LOOKBACK_DAYS", 2))
+# Multi-timeframe context is collected only for the top candidates after the
+# cheap daily/5-minute screen, keeping the run bounded while giving Gemini
+# 1-minute, 5-minute, and 1-hour trend context.
+ENABLE_MULTI_TIMEFRAME = os.environ.get("ENABLE_MULTI_TIMEFRAME", "true").lower() == "true"
+MULTI_TIMEFRAME_MAX_TICKERS = int(os.environ.get("MULTI_TIMEFRAME_MAX_TICKERS", 6))
 
 # --- Cooldown & dedup ---
 TRADE_COOLDOWN_MINUTES = 30
@@ -444,6 +488,20 @@ REGIME_POSITION_MULTIPLIERS = {
 # --- Quantitative pre-screen ---
 MIN_SIGNAL_SCORE_TO_CONSIDER = 55
 
+# Entry/exit alignment: when daily data is available, new long entries must be
+# above SMA-20 because the MA-breakdown exit treats a close below SMA-20 as a
+# failure. This removes the buy-then-immediate-MA-sell whipsaw path.
+BUY_REQUIRE_SMA20_ALIGNMENT = os.environ.get("BUY_REQUIRE_SMA20_ALIGNMENT", "true").lower() == "true"
+MA_BREAKDOWN_REQUIRE_DOWNTREND = os.environ.get("MA_BREAKDOWN_REQUIRE_DOWNTREND", "true").lower() == "true"
+
+# Gemini-unavailable fallback is intentionally stricter than the normal
+# candidate screen. A 55/100 technical score is a research candidate, not a
+# sufficiently strong fallback trade. Fallback entries also use a smaller
+# per-position cap than Gemini-reviewed trades.
+TECHNICAL_FALLBACK_MIN_SCORE = float(os.environ.get("TECHNICAL_FALLBACK_MIN_SCORE", 65.0))
+TECHNICAL_FALLBACK_REQUIRE_UPTREND = os.environ.get("TECHNICAL_FALLBACK_REQUIRE_UPTREND", "true").lower() == "true"
+TECHNICAL_FALLBACK_MAX_POSITION_PCT = float(os.environ.get("TECHNICAL_FALLBACK_MAX_POSITION_PCT", 0.05))
+
 # --- Better news filtering ---
 # Every article is scored 0-10 (news.score_article: earnings beats and
 # partnerships score high, interviews and store openings score low). Articles
@@ -475,6 +533,11 @@ RSI_EXHAUSTION_LEVEL = float(os.environ.get("RSI_EXHAUSTION_LEVEL", 75.0))
 # ticker carries strong negative sentiment (uses the last news fetch).
 ENABLE_NEGATIVE_NEWS_EXIT = os.environ.get("ENABLE_NEGATIVE_NEWS_EXIT", "true").lower() == "true"
 NEGATIVE_NEWS_SENTIMENT_THRESHOLD = float(os.environ.get("NEGATIVE_NEWS_SENTIMENT_THRESHOLD", -0.4))
+# A single ambiguous headline should not liquidate a position. The news cache
+# records the number of negative articles in the current fetch; a very severe
+# sentiment still exits on its own as an emergency override.
+NEGATIVE_NEWS_MIN_ARTICLES = int(os.environ.get("NEGATIVE_NEWS_MIN_ARTICLES", 2))
+NEGATIVE_NEWS_EMERGENCY_THRESHOLD = float(os.environ.get("NEGATIVE_NEWS_EMERGENCY_THRESHOLD", -0.8))
 
 # --- Market regime filter (SPY + QQQ + VIX) ---
 # VIX stress levels (best-effort: only used when the data feed actually
