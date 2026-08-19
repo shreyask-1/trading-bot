@@ -16,6 +16,7 @@ Covers:
 import os
 import sys
 import json
+import csv
 import shutil
 import tempfile
 from types import SimpleNamespace
@@ -36,6 +37,9 @@ os.environ.setdefault("MIN_CASH_RESERVE_PCT", "0.05")
 # Unit tests stub get_price/get_full_indicators; production enables strict
 # quote, candle, spread, and liquidity guards by default.
 os.environ.setdefault("ENABLE_MARKET_DATA_GUARDS", "false")
+# Keep the broad smoke suite independent of the production turnover budget;
+# the turnover guard has its own focused test override.
+os.environ.setdefault("MAX_DAILY_TURNOVER_PCT", "0")
 
 sys.path.insert(0, os.path.dirname(__file__))
 
@@ -1695,6 +1699,68 @@ def test_high_conviction_swap():
         trader._SWAPS_THIS_RUN = 0
 
 
+def test_concentration_turnover_and_engine_gate():
+    print("\\n[30] Correlation cap, turnover budget, and engine-quality gate")
+    old_history = trader.get_price_history
+    old_corr = trader.ENABLE_CORRELATION_CAP
+    old_corr_threshold = trader.CORRELATION_THRESHOLD
+    old_corr_cap = trader.MAX_CORRELATED_EXPOSURE_PCT
+    old_gate = (trader.ENGINE_QUALITY_GATE_ENABLED, trader.ENGINE_QUALITY_GATE_MIN_SAMPLES,
+                trader.ENGINE_QUALITY_GATE_MIN_WIN_RATE_PCT, trader.ENGINE_QUALITY_GATE_MAX_AVG_PNL_PCT)
+    old_results = trader.TRADE_RESULTS_FILE
+    old_turnover = trader.MAX_DAILY_TURNOVER_PCT
+    temp = tempfile.mkdtemp()
+    trader.TRADE_RESULTS_FILE = os.path.join(temp, "results.csv")
+    try:
+        closes = [100 + i * 0.5 for i in range(70)]
+        trader.get_price_history = lambda _ticker, days=60: {"closes": closes}
+        trader.ENABLE_CORRELATION_CAP = True
+        trader.CORRELATION_THRESHOLD = 0.75
+        trader.MAX_CORRELATED_EXPOSURE_PCT = 0.35
+        room, peers = trader._correlation_room_for(
+            {"total_value": 10000.0, "holdings": {"PEER": {"qty": 10, "current_price": 100}}},
+            "CANDIDATE", 10000.0,
+        )
+        check("correlation cap finds highly correlated peer", room == 2500.0 and peers, str((room, peers)))
+
+        with open(trader.TRADE_RESULTS_FILE, "w", newline="") as f:
+            writer = csv.DictWriter(f, fieldnames=["pnl_pct", "pnl_dollars", "engine", "setup", "exit_reason"])
+            writer.writeheader()
+            for _ in range(3):
+                writer.writerow({"pnl_pct": -1.0, "pnl_dollars": -100, "engine": "technical_fallback", "setup": "technical", "exit_reason": "stop_loss"})
+            for _ in range(3):
+                writer.writerow({"pnl_pct": -1.0, "pnl_dollars": -100, "engine": "legacy/unknown", "setup": "old", "exit_reason": "stop_loss"})
+        trader.ENGINE_QUALITY_GATE_ENABLED = True
+        trader.ENGINE_QUALITY_GATE_MIN_SAMPLES = 3
+        trader.ENGINE_QUALITY_GATE_MIN_WIN_RATE_PCT = 45.0
+        trader.ENGINE_QUALITY_GATE_MAX_AVG_PNL_PCT = -0.25
+        allowed, reason = trader.engine_quality_gate("technical_fallback")
+        check("negative fallback expectancy is gated", allowed is False and "blocked" in reason, reason)
+        allowed, reason = trader.engine_quality_gate("gemini")
+        check("unattributed rows do not gate Gemini", allowed is True, reason)
+
+        trader.MAX_DAILY_TURNOVER_PCT = 0.01
+        state = trader._turnover_state()
+        state["submitted_notional"] = 900.0
+        trader._save_json_file(trader.TURNOVER_STATE_FILE, state)
+        reason = trader._turnover_guard_reason(200.0, 100000.0, "buy", "decision")
+        check("turnover budget blocks churn", reason is not None and "turnover budget" in reason, str(reason))
+        reason = trader._turnover_guard_reason(200.0, 100000.0, "sell", "stop_loss")
+        check("protective sell bypasses turnover budget", reason is None, str(reason))
+    finally:
+        trader.get_price_history = old_history
+        trader.ENABLE_CORRELATION_CAP = old_corr
+        trader.CORRELATION_THRESHOLD = old_corr_threshold
+        trader.MAX_CORRELATED_EXPOSURE_PCT = old_corr_cap
+        (trader.ENGINE_QUALITY_GATE_ENABLED,
+         trader.ENGINE_QUALITY_GATE_MIN_SAMPLES,
+         trader.ENGINE_QUALITY_GATE_MIN_WIN_RATE_PCT,
+         trader.ENGINE_QUALITY_GATE_MAX_AVG_PNL_PCT) = old_gate
+        trader.TRADE_RESULTS_FILE = old_results
+        trader.MAX_DAILY_TURNOVER_PCT = old_turnover
+        shutil.rmtree(temp, ignore_errors=True)
+
+
 def test_operational_safety_controls():
     print("\n[29] Data guards, kill switch, shadow mode, holding limits, and fill accounting")
     import tempfile
@@ -1860,6 +1926,8 @@ if __name__ == "__main__":
         "DAILY_REPORT_FILE": "daily_report.csv",
         "WEEKLY_REPORT_FILE": "weekly_report.csv",
         "BOOK_PERFORMANCE_FILE": "book_performance.csv",
+        "TURNOVER_STATE_FILE": "turnover_state.json",
+        "SHADOW_REPORT_FILE": "shadow_report.csv",
     }
     _original_state_paths = {}
     for _name, _filename in _state_bindings.items():
@@ -1911,6 +1979,7 @@ if __name__ == "__main__":
     test_indicator_cache_dedupes_fetches()
     test_run_budget_guard_keeps_hard_stop()
     test_high_conviction_swap()
+    test_concentration_turnover_and_engine_gate()
     test_operational_safety_controls()
     trader.is_within_trade_window = _REAL_WINDOW
     for _name, _path in _original_state_paths.items():
