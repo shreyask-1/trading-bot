@@ -97,6 +97,16 @@ _REDDIT_UA = {"User-Agent": "freebuff-paper-trader/1.0 (research)"}
 _UA_TIMEOUT = 10
 
 
+def _bounded_timeout(deadline, default, floor=0.5):
+    """Return a request timeout that cannot outlive a shared feed deadline."""
+    if deadline is None:
+        return float(default)
+    remaining = deadline - time.monotonic()
+    if remaining <= 0:
+        return 0.0
+    return max(floor, min(float(default), remaining))
+
+
 def _cache_path(name):
     return os.path.join(LOG_DIR, name)
 
@@ -361,7 +371,7 @@ def get_sec_filings(tickers, time_budget=None):
 # ============================================================
 # Reddit sentiment (best-effort; datacenter IPs are often blocked)
 # ============================================================
-def fetch_reddit_sentiment():
+def fetch_reddit_sentiment(time_budget=None):
     """
     Best-effort -1..+1 sentiment per ticker from Reddit's public JSON.
     Only r/wallstreetbets, r/stocks, r/investing 'hot' listings, so the
@@ -374,13 +384,17 @@ def fetch_reddit_sentiment():
     from news import headline_sentiment  # reuse the same deterministic lexicon
 
     by_ticker = {}
+    deadline = time.monotonic() + time_budget if time_budget is not None else None
     try:
         for sub in _REDDIT_SUBS:
+            timeout = _bounded_timeout(deadline, _UA_TIMEOUT)
+            if timeout <= 0:
+                break
             resp = requests.get(
                 f"https://www.reddit.com/r/{sub}/hot.json",
                 params={"limit": 25},
                 headers=_REDDIT_UA,
-                timeout=_UA_TIMEOUT,
+                timeout=timeout,
             )
             if resp.status_code != 200:
                 continue
@@ -405,9 +419,9 @@ def fetch_reddit_sentiment():
     return result
 
 
-def get_reddit_sentiment():
+def get_reddit_sentiment(time_budget=None):
     try:
-        return fetch_reddit_sentiment()
+        return fetch_reddit_sentiment(time_budget=time_budget)
     except Exception:
         return {}
 
@@ -433,7 +447,7 @@ _MACRO_ETFS = {
 }
 
 
-def get_market_pulse():
+def get_market_pulse(time_budget=None):
     """
     Market backdrop for the Gemini prompt, cached for 1 hour:
       - <SYM>_today  : today's % change for SPY/QQQ/IWM/DIA, the 11 sector
@@ -456,7 +470,8 @@ def get_market_pulse():
     # at most 12s total, then we keep whatever we already have (partial pulse
     # still beats a hung run; the rest fills in next hour's first run).
     pulse = {}
-    _deadline = time.monotonic() + 12.0
+    pulse_budget = 12.0 if time_budget is None else min(12.0, max(0.0, float(time_budget)))
+    _deadline = time.monotonic() + pulse_budget
     for s in symbols:
         if time.monotonic() >= _deadline:
             break
@@ -554,7 +569,7 @@ ANALYST_CONSENSUS_MAX_FRESH = 12
 PRIMARY_BROKEN_THRESHOLD = 5
 
 
-def _consensus_from_recommendation_trends(t):
+def _consensus_from_recommendation_trends(t, time_budget=None):
     """
     Fallback for get_analyst_consensus: Finnhub /stock/recommendation-trends
     (documented FREE endpoint) returns the raw buy/hold/sell analyst counts.
@@ -564,19 +579,19 @@ def _consensus_from_recommendation_trends(t):
         resp = requests.get(
             "https://finnhub.io/api/v1/stock/recommendation-trends",
             params={"symbol": t, "token": FINNHUB_API_KEY},
-            timeout=10,
+            timeout=float(time_budget) if time_budget is not None else 10,
         )
         resp.raise_for_status()
         rows = resp.json() or []
         if not rows:
             return None, None, None
         r = rows[0]
-        return r.get("strongBuy") + (r.get("buy") or 0), r.get("hold"), r.get("sell") + (r.get("strongSell") or 0)
+        return (r.get("strongBuy") or 0) + (r.get("buy") or 0), r.get("hold") or 0, (r.get("sell") or 0) + (r.get("strongSell") or 0)
     except Exception:
         return None, None, None
 
 
-def _consensus_from_price_target(t):
+def _consensus_from_price_target(t, time_budget=None):
     """
     Fallback for get_analyst_consensus: Finnhub /stock/price-target
     (documented FREE endpoint) returns the street's mean/high/low targets.
@@ -586,7 +601,7 @@ def _consensus_from_price_target(t):
         resp = requests.get(
             "https://finnhub.io/api/v1/stock/price-target",
             params={"symbol": t, "token": FINNHUB_API_KEY},
-            timeout=10,
+            timeout=float(time_budget) if time_budget is not None else 10,
         )
         resp.raise_for_status()
         d = resp.json() or {}
@@ -595,7 +610,7 @@ def _consensus_from_price_target(t):
         return None, None, None
 
 
-def get_analyst_consensus(tickers):
+def get_analyst_consensus(tickers, time_budget=None):
     """
     {ticker: {"buy": int, "hold": int, "sell": int, "target_mean": float,
     "target_high": float, "target_low": float}} -- primary source Finnhub
@@ -623,8 +638,12 @@ def get_analyst_consensus(tickers):
     consecutive_failures = int(cached.get("consecutive_failures", 0) or 0) if cached else 0
     need = [t for t in tickers if t and t not in store]
     _loop_start = time.monotonic()
+    budget = ANALYST_CONSENSUS_BUDGET_SECONDS
+    if time_budget is not None:
+        budget = min(budget, max(0.0, float(time_budget)))
+    deadline = _loop_start + budget
     for t in need[:ANALYST_CONSENSUS_MAX_FRESH]:
-        if time.monotonic() - _loop_start >= ANALYST_CONSENSUS_BUDGET_SECONDS:
+        if time.monotonic() >= deadline:
             break
         entry = {}
         primary_failed = False
@@ -633,7 +652,7 @@ def get_analyst_consensus(tickers):
                 resp = requests.get(
                     "https://finnhub.io/api/v1/stock/metrics",
                     params={"symbol": t, "metric": "all", "token": FINNHUB_API_KEY},
-                    timeout=10,
+                    timeout=_bounded_timeout(deadline, 10),
                 )
                 resp.raise_for_status()
                 data = (resp.json() or {}).get("metric") or {}
@@ -662,8 +681,13 @@ def get_analyst_consensus(tickers):
                 primary_broken = True
                 print("Analyst /stock/metrics primary endpoint consistently failing on this key -- "
                       "switching all analyst lookups to the documented-free endpoints for today.")
-            b, h, s = _consensus_from_recommendation_trends(t)
-            m, hi, lo = _consensus_from_price_target(t)
+            if time.monotonic() >= deadline:
+                break
+            b, h, s = _consensus_from_recommendation_trends(t, time_budget=_bounded_timeout(deadline, 10))
+            if time.monotonic() >= deadline:
+                m = hi = lo = None
+            else:
+                m, hi, lo = _consensus_from_price_target(t, time_budget=_bounded_timeout(deadline, 10))
             entry = {
                 "buy": b, "hold": h, "sell": s,
                 "target_mean": m, "target_high": hi, "target_low": lo,
@@ -683,7 +707,7 @@ def get_analyst_consensus(tickers):
     return store
 
 
-def get_sector_profiles(tickers):
+def get_sector_profiles(tickers, time_budget=None):
     """
     {ticker: {"sector": str, "market_cap": float, "source": str}}.
 
@@ -716,14 +740,18 @@ def get_sector_profiles(tickers):
         if t and not (store.get(t) or {}).get("sector") and t not in SECTOR_FALLBACK
     ]
     _loop_start = time.monotonic()
+    budget = SECTOR_PROFILE_BUDGET_SECONDS
+    if time_budget is not None:
+        budget = min(budget, max(0.0, float(time_budget)))
+    deadline = _loop_start + budget
     for t in need[:SECTOR_PROFILE_MAX_FRESH]:
-        if time.monotonic() - _loop_start >= SECTOR_PROFILE_BUDGET_SECONDS:
+        if time.monotonic() >= deadline:
             break
         try:
             resp = requests.get(
                 "https://finnhub.io/api/v1/stock/profile2",
                 params={"symbol": t, "token": FINNHUB_API_KEY},
-                timeout=10,
+                timeout=_bounded_timeout(deadline, 10),
             )
             resp.raise_for_status()
             data = resp.json() or {}
@@ -750,7 +778,7 @@ def get_sector_profiles(tickers):
 # ============================================================
 # Assembled blocks for prompts / scoring
 # ============================================================
-def get_fundamental_signals(tickers):
+def get_fundamental_signals(tickers, time_budget=None):
     """
     Everything Phase 2 knows about the given tickers right now, as a compact
     dict: {ticker: {"analyst": "upgrade"/"downgrade"/None, "insider_net": $,
@@ -775,8 +803,11 @@ def get_fundamental_signals(tickers):
     insider = _load_cache("insider_activity.json", 24) or {"by_ticker": {}}
     sec = _load_cache("sec_filings.json", 24) or {"by_ticker": {}}
     reddit = _load_cache("reddit_sentiment.json", 6) or {"by_ticker": {}}
-    sectors = get_sector_profiles(tickers)
-    consensus = get_analyst_consensus(tickers)
+    deadline = time.monotonic() + float(time_budget) if time_budget is not None else None
+    sector_budget = None if deadline is None else max(0.0, deadline - time.monotonic())
+    sectors = get_sector_profiles(tickers, time_budget=sector_budget)
+    consensus_budget = None if deadline is None else max(0.0, deadline - time.monotonic())
+    consensus = get_analyst_consensus(tickers, time_budget=consensus_budget)
 
     by_analyst = {}
     for a in analyst.get("actions", []):
@@ -815,7 +846,7 @@ def get_fundamental_signals(tickers):
     return signals
 
 
-def get_context_block(tickers, include_econ=True):
+def get_context_block(tickers, include_econ=True, time_budget=None):
     """
     Human-readable Phase 2 context for the Gemini prompt:
     market pulse (indexes/sectors/movers), high-impact economic events,
@@ -826,7 +857,7 @@ def get_context_block(tickers, include_econ=True):
 
     # Market pulse: indexes + sector rotation (cached hourly, ~15 calls once
     # per hour) plus movers/breadth from today's scan cache (zero API cost).
-    pulse = get_market_pulse()
+    pulse = get_market_pulse(time_budget=time_budget)
     if pulse:
         idx = [f"{k} {pulse[f'{k}_today']:+.2f}%" for k in ("SPY", "QQQ", "IWM", "DIA") if pulse.get(f"{k}_today") is not None]
         if idx:

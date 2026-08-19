@@ -40,6 +40,7 @@ from config import (
     MAX_DRAWDOWN_FLATTEN_PCT,
     OVERNIGHT_QUEUE_ENABLED,
     STALE_QUEUE_RETRY_COOLDOWN_MINUTES,
+    RUN_FINALIZATION_RESERVE_SECONDS,
 )
 from trader import (
     get_account_snapshot,
@@ -147,6 +148,12 @@ def run():
 
     def _remaining_run():
         return max(0.0, _run_deadline - time.monotonic())
+
+    def _analysis_budget():
+        # Leave time for dashboard/performance finalization even when Gemini
+        # or a feed stalls. Risk-management steps intentionally use the full
+        # remaining budget above this point.
+        return max(0.0, _remaining_run() - RUN_FINALIZATION_RESERVE_SECONDS)
 
     market_open = is_market_open()
     # A live "trading session" is the regular session, plus the Alpaca extended
@@ -408,7 +415,7 @@ def run():
 
         # Step 3: news
         try:
-            candidates, news_stats, news_sentiment = get_news_candidates(time_budget=_remaining_run())
+            candidates, news_stats, news_sentiment = get_news_candidates(time_budget=_analysis_budget())
             # news_sentiment ({ticker: -1..+1}) is folded into the quant
             # scores inside decide.py; surfaced here for the log only.
             log_lines.append(
@@ -423,7 +430,7 @@ def run():
         # Step 4: decisions (quant pre-screen inside get_trade_decisions)
         decision_ok = False
         try:
-            trades, decision_meta = get_trade_decisions(candidates, account, regime, pending_trades=pending, time_budget=_remaining_run())
+            trades, decision_meta = get_trade_decisions(candidates, account, regime, pending_trades=pending, time_budget=_analysis_budget())
             decision_ok = True
             log_lines.append(
                 f"Quant pre-screen: {decision_meta['candidates_passed_prescreen']}/"
@@ -510,7 +517,7 @@ def run():
         # is submitted now -- the first live-session run re-verifies them with
         # Gemini before placing anything.
         try:
-            candidates, news_stats, news_sentiment = get_news_candidates(time_budget=_remaining_run())
+            candidates, news_stats, news_sentiment = get_news_candidates(time_budget=_analysis_budget())
             log_lines.append(
                 f"News: fetched {news_stats['articles_fetched']}, "
                 f"{news_stats['articles_new_after_dedup']} new after dedup, "
@@ -521,7 +528,7 @@ def run():
             candidates = {}
 
         try:
-            trades, decision_meta = get_trade_decisions(candidates, account, regime, time_budget=_remaining_run())
+            trades, decision_meta = get_trade_decisions(candidates, account, regime, time_budget=_analysis_budget())
             log_lines.append(
                 f"Quant pre-screen: {decision_meta['candidates_passed_prescreen']}/"
                 f"{decision_meta['candidates_considered']} candidates passed."
@@ -564,8 +571,8 @@ def run():
     # flat. Best-effort -- a cosmetic failure never stops the run. Skipped
     # entirely if the run deadline is already spent (one more API call would
     # push the run past the cap for zero trading value).
-    if _remaining_run() <= 0:
-        log_lines.append("Run budget spent -- skipping dashboard watchlist sync.")
+    if _remaining_run() <= RUN_FINALIZATION_RESERVE_SECONDS:
+        log_lines.append("Run budget reserve reached -- skipping dashboard watchlist sync.")
     else:
         try:
             watchlist_tickers = set(account["holdings"].keys())
@@ -582,8 +589,8 @@ def run():
     # Step 6: performance tracking. Skipped if the run deadline is spent:
     # the snapshot needs one more Alpaca call, and trading correctness (the
     # steps above) matters more than this cosmetic record.
-    if _remaining_run() <= 0:
-        log_lines.append("Run budget spent -- skipping performance snapshot.")
+    if _remaining_run() <= RUN_FINALIZATION_RESERVE_SECONDS:
+        log_lines.append("Run budget reserve reached -- skipping performance snapshot.")
         final_account = account
     else:
         try:
