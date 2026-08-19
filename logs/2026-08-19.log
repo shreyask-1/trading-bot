@@ -11106,3 +11106,40 @@ Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 2 t
 Performance: Total return -0.52% | Max drawdown 12.37% | Daily Sharpe 0.22 | 4 closed trades | Win rate 50% | Avg winner +1.79% | Avg loser -6.05% | Open positions: 13 | Equity $99,315.55
 Timings: account: 0.0s | risk: 9.8s | decide: 6.0s | watchlist: 0.2s | perf: 0.3s
 
+=== Run at 2026-08-19T13:40:35.470594 ===
+Current time: 2026-08-19 09:40 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,340.54
+Cash: $17,199.82 | Holdings (13): {'COO': '101.9321 sh (+0.95%)', 'EOG': '68.7237 sh (+4.85%)', 'EQT': '61.4173 sh (+1.00%)', 'ERIE': '0.7641 sh (+0.95%)', 'GEHC': '0.6136 sh (+0.40%)', 'HPE': '135.7673 sh (-2.30%)', 'IVZ': '306.9138 sh (+1.16%)', 'KKR': '16.7039 sh (+1.50%)', 'LLY': '1.6873 sh (+3.90%)', 'MS': '43.8344 sh (-2.92%)', 'MSI': '21.1281 sh (+0.80%)', 'NWS': '303.7199 sh (+2.73%)', 'T': '380.3291 sh (-0.32%)'}
+Open orders (1): MS sell 43.8344
+  !! FOREIGN ACTIVITY: LLY holds 1.6873 sh but this bot should own 2.9283 sh (diff -1.2410). Someone/something else is trading this account.
+Risk state: peak $99,703.60 | drawdown 0.36% | today +0.20% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 120, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 15/26 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 17 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 200
+  -> {"timestamp": "2026-08-19T13:41:05.988554", "ticker": "COO", "action": "buy", "qty": 29.1327, "conviction": 6, "size_multiplier": 1.0, "order_id": "c9917930-e512-44c1-92f2-c8163afe3cbb", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": 72.68, "take_profit": 80.47, "reasoning": "technical score 80/100, strong setup, adding to position.", "status": "submitted"}
+  -> {"timestamp": "2026-08-19T13:41:06.676628", "ticker": "HPE", "action": "buy", "qty": 46.7644, "conviction": 6, "size_multiplier": 1.0, "order_id": "9b3ed282-8f51-425d-83bb-632e06fc2274", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": 49.13, "take_profit": 63.44, "reasoning": "technical score 80/100, strong setup, adding to position.", "status": "submitted"}
+  -> {"timestamp": "2026-08-19T13:41:08.113321", "ticker": "SNDK", "action": "buy", "qty": 1.5721, "conviction": 6, "size_multiplier": 1.0, "order_id": "ebe3ef02-ee7e-47da-8cdf-7219c7c6e6c8", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": 1163.97, "take_profit": 2348.77, "reasoning": "technical score 79/100, strong signal on technicals alone.", "status": "submitted"}
+  -> {"timestamp": "2026-08-19T13:41:09.336576", "ticker": "INTC", "action": "buy", "qty": 51.5371, "conviction": 5, "size_multiplier": 1.0, "order_id": "9e1e7738-e37f-41d7-a283-2ec4fca75082", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": 87.46, "take_profit": 107.56, "reasoning": "technical score 59/100, strong signal on technicals alone.", "status": "submitted"}
+  -> {"ticker": "AMCR", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,901.37), room ($9,934.25), regime multiplier (100%), and cash reserve ($4,967.12 kept of $12,401.83 cash)"}
+  -> {"ticker": "AMGN", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,901.37), room ($9,934.25), regime multiplier (100%), and cash reserve ($4,967.12 kept of $12,401.83 cash)"}
+  -> {"timestamp": "2026-08-19T13:41:12.269025", "ticker": "AMT", "action": "buy", "qty": 14.8145, "conviction": 6, "size_multiplier": 1.0, "order_id": "fd4047e2-1a8e-420e-8418-9289ad456471", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": 167.65, "take_profit": 183.03, "reasoning": "technical score 74/100, strong signal on technicals alone.", "status": "submitted"}
+  -> {"ticker": "ALB", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,899.73), room ($9,933.15), regime multiplier (100%), and cash reserve ($4,966.58 kept of $6,149.15 cash)"}
+  -> {"ticker": "AME", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,899.73), room ($9,933.15), regime multiplier (100%), and cash reserve ($4,966.58 kept of $6,149.15 cash)"}
+  -> {"ticker": "AMP", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,899.73), room ($9,933.15), regime multiplier (100%), and cash reserve ($4,966.58 kept of $6,149.15 cash)"}
+  -> {"ticker": "AMZN", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,899.73), room ($9,933.15), regime multiplier (100%), and cash reserve ($4,966.58 kept of $6,149.15 cash)"}
+  -> {"timestamp": "2026-08-19T13:41:15.545818", "ticker": "ANET", "action": "buy", "qty": 6.2335, "conviction": 6, "size_multiplier": 1.0, "order_id": "37fe001d-354c-402d-bfe8-0efcd41cd7ff", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": 179.94, "take_profit": 211.4, "reasoning": "technical score 71/100, strong signal on technicals alone.", "status": "submitted"}
+  -> {"ticker": "AOS", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,899.14), room ($9,932.76), regime multiplier (100%), and cash reserve ($4,966.38 kept of $2,388.71 cash)"}
+  -> {"ticker": "APA", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,899.14), room ($9,932.76), regime multiplier (100%), and cash reserve ($4,966.38 kept of $2,388.71 cash)"}
+  -> {"ticker": "APD", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,899.14), room ($9,932.76), regime multiplier (100%), and cash reserve ($4,966.38 kept of $2,388.71 cash)"}
+  -> {"ticker": "APO", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,899.14), room ($9,932.76), regime multiplier (100%), and cash reserve ($4,966.38 kept of $2,388.71 cash)"}
+  -> {"ticker": "ARES", "status": "skipped", "reason": "below minimum trade size ($25) after position cap ($14,899.14), room ($9,932.76), regime multiplier (100%), and cash reserve ($4,966.38 kept of $2,388.71 cash)"}
+Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); will re-verify when available.
+Run budget spent -- skipping dashboard watchlist sync.
+Run budget spent -- skipping performance snapshot.
+Trade journal: all: 4 trades, 50% win rate, avg -2.13% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 2 trades, 100% win rate, avg +1.79% | technical: 1 trades, 0% win rate, avg -3.50%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 2 trades, 100% win rate, avg +1.79% (WORKING) | technical: 1 trades, 0% win rate, avg -3.50% (LOSING)
+Performance: Total return -0.50% | Max drawdown 12.37% | Daily Sharpe 0.23 | 4 closed trades | Win rate 50% | Avg winner +1.79% | Avg loser -6.05% | Open positions: 16 | Equity $99,327.57
+Timings: account: 0.0s | risk: 7.6s | decide: 33.9s | watchlist: 0.0s | perf: 0.0s
+

@@ -47,3 +47,9 @@ timestamp,ticker,action,qty,price,stop_loss,take_profit,conviction,confidence,tr
 2026-08-19T08:02:44.021616,HPE,buy,135.7673,55.685,52.5,62.0,8,84,decision,
 2026-08-19T13:34:48.325476,NUE,sell,36.5544,267.84,,,10,,ma_breakdown,Moving-average breakdown: price 264.31 < SMA-20 264.56
 2026-08-19T13:38:42.605004,LLY,sell,0.8314,1272.205,,,10,,scale_out,Scale-out: banked 33% at 1272.46 (60% of the way to target 1284.5)
+2026-08-19T13:41:05.988111,COO,buy,29.1327,75.795,72.68,80.47,6,,decision,"technical score 80/100, strong setup, adding to position."
+2026-08-19T13:41:06.676209,HPE,buy,46.7644,54.42,49.13,63.44,6,,decision,"technical score 80/100, strong setup, adding to position."
+2026-08-19T13:41:08.112917,SNDK,buy,1.5721,1637.89,1163.97,2348.77,6,,decision,"technical score 79/100, strong signal on technicals alone."
+2026-08-19T13:41:09.336166,INTC,buy,51.5371,94.3,87.46,107.56,5,,decision,"technical score 59/100, strong signal on technicals alone."
+2026-08-19T13:41:12.268624,AMT,buy,14.8145,173.8,167.65,183.03,6,,decision,"technical score 74/100, strong signal on technicals alone."
+2026-08-19T13:41:15.545431,ANET,buy,6.2335,189.5,179.94,211.4,6,,decision,"technical score 71/100, strong signal on technicals alone."
