@@ -255,17 +255,15 @@ def run():
     except Exception as e:
         log_lines.append(f"De-leveraging step failed (continuing anyway): {e}")
 
-    # Step 1c.4: conservative quality-trim of legacy pre-baseline holdings
-    # (recorded in reconciliation_state.json's baseline). Only legacy positions
-    # that FAIL the current technical screens get sold, a few per run, never
-    # into the hole -- the rest of the account's capital flows back into the
-    # risk-parity-sized, sector-capped entries.
+    # Step 1c.4: uniform portfolio quality review. Every holding receives the
+    # same winner/weakness treatment; baseline ownership history is not used to
+    # grant any position special value.
     quality_trim_exits = 0
     try:
         quality_sells = enforce_quality_trim(account, time_budget=_remaining_run())
         quality_trim_exits = len(quality_sells)
         if quality_sells:
-            log_lines.append(f"Quality trim freed {quality_trim_exits} legacy position(s):")
+            log_lines.append(f"Quality review submitted {quality_trim_exits} position exit(s):")
             for q_ in quality_sells:
                 log_lines.append(f"  -> {json.dumps(q_)}")
             account = get_account_snapshot()
@@ -304,8 +302,8 @@ def run():
         except Exception as e:
             log_lines.append(f"Flatten step failed (continuing anyway): {e}")
 
-    # Step 1c.6: release bot capital from positions that have exceeded their
-    # holding limit or stopped progressing. Legacy positions are excluded.
+    # Step 1c.6: release capital from any position that has exceeded its
+    # holding limit or stopped progressing. All positions are treated equally.
     stagnation_exits = 0
     try:
         stagnation_sells = enforce_stagnant_positions(account, time_budget=_remaining_run())
