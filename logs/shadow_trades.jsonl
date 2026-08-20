@@ -1366,3 +1366,6 @@
 {"timestamp": "2026-08-20T23:40:36.768568", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 334.61, "reason": "stale quote for NDSN (13241.213824s old; limit 180s)"}
 {"timestamp": "2026-08-20T23:40:36.891275", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 124.11, "reason": "stale quote for RVTY (13247.916454s old; limit 180s)"}
 {"timestamp": "2026-08-20T23:40:37.036978", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 36.5, "reason": "stale quote for SMCI (13236.332308s old; limit 180s)"}
+{"timestamp": "2026-08-20T23:42:36.399711", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 124.11, "reason": "stale quote for RVTY (13367.28892s old; limit 180s)"}
+{"timestamp": "2026-08-20T23:42:36.689691", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 334.61, "reason": "stale quote for NDSN (13361.019322s old; limit 180s)"}
+{"timestamp": "2026-08-20T23:42:37.031715", "ticker": "TMO", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 627.62, "reason": "stale quote for TMO (13359.469628s old; limit 180s)"}
