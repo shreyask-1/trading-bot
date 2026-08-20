@@ -590,3 +590,5 @@
 {"timestamp": "2026-08-20T13:46:43.009450", "ticker": "TMO", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 617.85, "reason": "liquidity filter: TMO average volume 118,250 < 500,000"}
 {"timestamp": "2026-08-20T13:46:43.485238", "ticker": "WAT", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 411.28, "reason": "liquidity filter: WAT average volume 55,808 < 500,000"}
 {"timestamp": "2026-08-20T13:46:43.911466", "ticker": "XEL", "action": "buy", "engine": "gemini", "confidence": 87, "conviction": 9, "price": 79.46, "reason": "liquidity filter: XEL average volume 256,639 < 500,000"}
+{"timestamp": "2026-08-20T13:48:44.807270", "ticker": "TMO", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 620.255, "reason": "liquidity filter: TMO average volume 118,374 < 500,000"}
+{"timestamp": "2026-08-20T13:48:45.101809", "ticker": "TYL", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 350.495, "reason": "liquidity filter: TYL average volume 56,912 < 500,000"}
