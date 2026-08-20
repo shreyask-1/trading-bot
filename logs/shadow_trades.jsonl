@@ -505,3 +505,5 @@
 {"timestamp": "2026-08-20T12:42:57.206565", "ticker": "DIS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 106.92, "reason": "stale quote for DIS (60186.921797s old; limit 180s)"}
 {"timestamp": "2026-08-20T12:44:28.939442", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 152.19, "reason": "stale quote for MRK (60273.162119s old; limit 180s)"}
 {"timestamp": "2026-08-20T12:44:28.988539", "ticker": "EQIX", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 1076.865, "reason": "stale quote for EQIX (60274.494325s old; limit 180s)"}
+{"timestamp": "2026-08-20T12:46:33.927429", "ticker": "A", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 155.41, "reason": "stale quote for A (60395.547383s old; limit 180s)"}
+{"timestamp": "2026-08-20T12:46:33.984337", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 152.19, "reason": "stale quote for MRK (60398.213271s old; limit 180s)"}
