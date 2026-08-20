@@ -728,3 +728,5 @@
 {"timestamp": "2026-08-20T15:12:54.725247", "ticker": "ZBH", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 100.75, "reason": "liquidity filter: ZBH average volume 159,402 < 500,000"}
 {"timestamp": "2026-08-20T15:12:54.991869", "ticker": "TMO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 631.61, "reason": "liquidity filter: TMO average volume 120,791 < 500,000"}
 {"timestamp": "2026-08-20T15:12:54.992103", "ticker": "WTW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 341.25, "reason": "liquidity filter: WTW average volume 45,487 < 500,000"}
+{"timestamp": "2026-08-20T15:14:41.828747", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 331.82, "reason": "liquidity filter: NDSN average volume 15,734 < 500,000"}
+{"timestamp": "2026-08-20T15:14:42.045638", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 54.18, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
