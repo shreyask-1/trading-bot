@@ -492,3 +492,6 @@
 {"timestamp": "2026-08-20T12:38:53.243862", "ticker": "CVNA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 70.42, "reason": "stale quote for CVNA (59934.16898s old; limit 180s)"}
 {"timestamp": "2026-08-20T12:38:53.505613", "ticker": "DRI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 221.9, "reason": "stale quote for DRI (59946.957693s old; limit 180s)"}
 {"timestamp": "2026-08-20T12:38:53.792548", "ticker": "DIS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 106.92, "reason": "stale quote for DIS (59943.525365s old; limit 180s)"}
+{"timestamp": "2026-08-20T12:40:33.566185", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 152.19, "reason": "stale quote for MRK (60037.764226s old; limit 180s)"}
+{"timestamp": "2026-08-20T12:40:33.642981", "ticker": "CVX", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 205.78, "reason": "stale quote for CVX (60035.514541s old; limit 180s)"}
+{"timestamp": "2026-08-20T12:40:33.718851", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 53.645, "reason": "stale quote for EQT (60033.916216s old; limit 180s)"}
