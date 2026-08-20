@@ -129,3 +129,4 @@ timestamp,ticker,action,qty,price,stop_loss,take_profit,conviction,confidence,tr
 2026-08-20T13:50:33.095242,AMCR,sell,95.5314,47.47,,,10,,quality_trim,legacy/unknown,legacy,2.2674,Quality review: AMCR fails technical screens (signal score 50.0 < 55.0); freeing capital for higher-conviction entries
 2026-08-20T13:56:27.398772,ICE,sell,13.6893,157.51,,,10,,stagnation_exit,legacy/unknown,legacy,1.0781,"Stagnation exit: 24.1h held, progress +0.31% < 0.50%"
 2026-08-20T14:14:28.106144,TRMB,sell,19.6689,59.08,,,10,,stagnation_exit,legacy/unknown,legacy,0.581,"Stagnation exit: 24.0h held, progress -0.34% < 0.50%"
+2026-08-20T14:16:26.763810,INTU,sell,23.0293,359.739566,,,10,,stagnation_exit,legacy/unknown,legacy,4.1423,"Stagnation exit: 24.0h held, progress -0.08% < 0.50%"
