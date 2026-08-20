@@ -527,3 +527,6 @@
 {"timestamp": "2026-08-20T12:58:40.786998", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 152.19, "reason": "stale quote for MRK (61124.991302s old; limit 180s)"}
 {"timestamp": "2026-08-20T12:58:40.858479", "ticker": "VRTX", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 551.95, "reason": "stale quote for VRTX (61125.57407s old; limit 180s)"}
 {"timestamp": "2026-08-20T12:58:40.913047", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 266.1, "reason": "stale quote for ABBV (61125.006218s old; limit 180s)"}
+{"timestamp": "2026-08-20T13:00:52.528100", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 152.19, "reason": "stale quote for MRK (61249.28545s old; limit 180s)"}
+{"timestamp": "2026-08-20T13:00:52.528276", "ticker": "VRTX", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 551.95, "reason": "stale quote for VRTX (61251.221152s old; limit 180s)"}
+{"timestamp": "2026-08-20T13:00:52.528406", "ticker": "VZ", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 49.36, "reason": "stale quote for VZ (61249.852155s old; limit 180s)"}
