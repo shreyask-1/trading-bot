@@ -905,3 +905,6 @@
 {"timestamp": "2026-08-20T17:12:32.089160", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 89.3, "reason": "liquidity filter: SOLV average volume 79,244 < 500,000"}
 {"timestamp": "2026-08-20T17:14:46.166637", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 331.86, "reason": "liquidity filter: NDSN average volume 17,197 < 500,000"}
 {"timestamp": "2026-08-20T17:14:46.638286", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 23.24, "reason": "market data unavailable for MOS (bid/ask spread missing)"}
+{"timestamp": "2026-08-20T17:16:39.653995", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 331.84, "reason": "liquidity filter: NDSN average volume 17,215 < 500,000"}
+{"timestamp": "2026-08-20T17:16:40.004684", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 89.095, "reason": "liquidity filter: SOLV average volume 79,280 < 500,000"}
+{"timestamp": "2026-08-20T17:16:40.380553", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 23.235, "reason": "market data unavailable for MOS (bid/ask spread missing)"}
