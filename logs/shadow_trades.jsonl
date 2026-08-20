@@ -949,3 +949,4 @@
 {"timestamp": "2026-08-20T17:46:56.337234", "ticker": "TSCO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 34.755, "reason": "market data unavailable for TSCO (bid/ask spread missing)"}
 {"timestamp": "2026-08-20T17:46:56.395549", "ticker": "GEHC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 74.86, "reason": "liquidity filter: GEHC average volume 270,116 < 500,000"}
 {"timestamp": "2026-08-20T17:46:56.452140", "ticker": "MSI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 481.57, "reason": "liquidity filter: MSI average volume 49,574 < 500,000"}
+{"timestamp": "2026-08-20T17:48:49.491638", "ticker": "RMD", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 228.97, "reason": "liquidity filter: RMD average volume 90,847 < 500,000"}
