@@ -1154,3 +1154,5 @@
 {"timestamp": "2026-08-20T19:54:53.383472", "ticker": "SOLV", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 88.81, "reason": "liquidity filter: SOLV average volume 80,219 < 500,000"}
 {"timestamp": "2026-08-20T19:54:53.846613", "ticker": "SWKS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 67.62, "reason": "liquidity filter: SWKS average volume 249,654 < 500,000"}
 {"timestamp": "2026-08-20T19:54:54.134558", "ticker": "TSN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 58.595, "reason": "liquidity filter: TSN average volume 151,668 < 500,000"}
+{"timestamp": "2026-08-20T19:56:41.904772", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 334.55, "reason": "liquidity filter: NDSN average volume 19,144 < 500,000"}
+{"timestamp": "2026-08-20T19:56:42.154154", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 123.88, "reason": "liquidity filter: RVTY average volume 96,138 < 500,000"}
