@@ -663,3 +663,4 @@
 {"timestamp": "2026-08-20T14:36:45.302544", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 53.96, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
 {"timestamp": "2026-08-20T14:36:45.833188", "ticker": "T", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 25.16, "reason": "market data unavailable for T (bid/ask spread missing)"}
 {"timestamp": "2026-08-20T14:36:45.952960", "ticker": "STX", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 864.845, "reason": "liquidity filter: STX average volume 228,883 < 500,000"}
+{"timestamp": "2026-08-20T14:38:43.738016", "ticker": "NOC", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 584.82, "reason": "liquidity filter: NOC average volume 36,465 < 500,000"}
