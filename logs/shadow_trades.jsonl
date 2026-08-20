@@ -587,3 +587,6 @@
 {"timestamp": "2026-08-20T13:44:52.486434", "ticker": "UNP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 301.09, "reason": "stale quote for UNP (185.8952s old; limit 180s)"}
 {"timestamp": "2026-08-20T13:44:52.735863", "ticker": "VLTO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 100.18, "reason": "stale quote for VLTO (659.586731s old; limit 180s)"}
 {"timestamp": "2026-08-20T13:44:52.934368", "ticker": "WBD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 28.44, "reason": "market data unavailable for WBD (bid/ask spread missing)"}
+{"timestamp": "2026-08-20T13:46:43.009450", "ticker": "TMO", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 617.85, "reason": "liquidity filter: TMO average volume 118,250 < 500,000"}
+{"timestamp": "2026-08-20T13:46:43.485238", "ticker": "WAT", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 411.28, "reason": "liquidity filter: WAT average volume 55,808 < 500,000"}
+{"timestamp": "2026-08-20T13:46:43.911466", "ticker": "XEL", "action": "buy", "engine": "gemini", "confidence": 87, "conviction": 9, "price": 79.46, "reason": "liquidity filter: XEL average volume 256,639 < 500,000"}
