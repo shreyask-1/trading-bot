@@ -300,3 +300,5 @@
 {"timestamp": "2026-08-20T09:16:40.613230", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 152.19, "reason": "stale quote for MRK (47804.665316s old; limit 180s)"}
 {"timestamp": "2026-08-20T09:18:45.346126", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 152.19, "reason": "stale quote for MRK (47929.383063s old; limit 180s)"}
 {"timestamp": "2026-08-20T09:18:45.664790", "ticker": "OXY", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 60.08, "reason": "stale quote for OXY (47925.487496s old; limit 180s)"}
+{"timestamp": "2026-08-20T09:20:46.923302", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 152.19, "reason": "stale quote for MRK (48050.962548s old; limit 180s)"}
+{"timestamp": "2026-08-20T09:20:47.238319", "ticker": "NWSA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 29.47, "reason": "stale quote for NWSA (48047.405967s old; limit 180s)"}
