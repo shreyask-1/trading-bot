@@ -576,3 +576,4 @@
 {"timestamp": "2026-08-20T13:32:50.741878", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 265.06, "reason": "liquidity filter: ABBV average volume 245,316 < 500,000"}
 {"timestamp": "2026-08-20T13:34:39.911375", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 149.175, "reason": "liquidity filter: MRK average volume 341,670 < 500,000"}
 {"timestamp": "2026-08-20T13:34:40.140335", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 264.38, "reason": "liquidity filter: ABBV average volume 245,701 < 500,000"}
+{"timestamp": "2026-08-20T13:39:12.840439", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 149.415, "reason": "liquidity filter: MRK average volume 342,241 < 500,000"}
