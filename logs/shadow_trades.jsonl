@@ -383,3 +383,5 @@
 {"timestamp": "2026-08-20T10:34:38.813378", "ticker": "COST", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 956.99, "reason": "stale quote for COST (52479.677605s old; limit 180s)"}
 {"timestamp": "2026-08-20T10:36:27.373210", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 152.19, "reason": "stale quote for MRK (52591.609598s old; limit 180s)"}
 {"timestamp": "2026-08-20T10:36:27.419586", "ticker": "FOXA", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 67.97, "reason": "stale quote for FOXA (52588.600513s old; limit 180s)"}
+{"timestamp": "2026-08-20T10:38:31.874375", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 152.19, "reason": "stale quote for MRK (52716.057548s old; limit 180s)"}
+{"timestamp": "2026-08-20T10:38:31.995938", "ticker": "GILD", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 147.51, "reason": "stale quote for GILD (52723.348179s old; limit 180s)"}
