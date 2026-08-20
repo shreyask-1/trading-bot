@@ -281,3 +281,4 @@
 {"timestamp": "2026-08-20T08:50:59.107768", "ticker": "OXY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 60.08, "reason": "stale quote for OXY (46258.975515s old; limit 180s)"}
 {"timestamp": "2026-08-20T08:50:59.411387", "ticker": "NVDA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 217.58, "reason": "stale quote for NVDA (46261.715818s old; limit 180s)"}
 {"timestamp": "2026-08-20T08:50:59.699853", "ticker": "OMC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 87.43, "reason": "stale quote for OMC (46260.924542s old; limit 180s)"}
+{"timestamp": "2026-08-20T08:52:34.766522", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 127.17, "reason": "stale quote for NOW (46359.306903s old; limit 180s)"}
