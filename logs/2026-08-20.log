@@ -6237,3 +6237,33 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,705.68;
 Shadow report: 872 shadow candidate(s), 245 rejection group(s)
 Timings: account: 0.0s | risk: 3.8s | decide: 7.5s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-08-20T16:50:29.962329 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-20 12:50 PM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $98,824.72
+Cash: $65,372.54 | Holdings (7): {'AMT': '14.8145 sh (+1.43%)', 'ERIE': '0.7641 sh (+2.66%)', 'GEHC': '0.6136 sh (+1.86%)', 'MS': '43.8344 sh (-4.35%)', 'MSI': '21.1281 sh (+2.93%)', 'NWS': '303.7199 sh (+3.19%)', 'TSCO': '25.552 sh (-1.90%)'}
+Sector exposure (cached): Communication Services 10.3%, Technology 10.3%, Financials 9.6%, Real Estate 2.6%, Consumer Discretionary 0.9%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.88% | today -0.04% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+Overnight queue deferred 4 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+Morning verification: 1 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
+News: fetched 157, 1 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 38/60 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 263
+  -> {"ticker": "NDSN", "status": "skipped", "reason": "liquidity filter: NDSN average volume 16,817 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "SOLV", "status": "skipped", "reason": "stale quote for SOLV (417.275699s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "TMO", "status": "skipped", "reason": "liquidity filter: TMO average volume 122,255 < 500,000", "shadow": false, "data_guard": true}
+Overnight queue kept 5 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
+Dashboard watchlist synced (10 symbols) for news/headlines.
+Ending portfolio value: $98,827.84
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return -0.04% | Max drawdown 0.30% | Daily Sharpe -17.41 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 7 | Equity $98,824.72
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+214.63 (7 open) | Books: legacy: realized $-1,705.68, unrealized $+214.63
+Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,705.68; worst symbols HPE:-1286.89; COHR:-471.20; SNDK:-159.07; ANET:-45.31; NOW:-30.35
+Shadow report: 875 shadow candidate(s), 243 rejection group(s)
+Timings: account: 0.0s | risk: 2.0s | decide: 9.0s | watchlist: 0.1s | perf: 0.1s
+

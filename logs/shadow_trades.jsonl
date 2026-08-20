@@ -870,3 +870,6 @@
 {"timestamp": "2026-08-20T16:46:31.540889", "ticker": "TMO", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 630.2, "reason": "liquidity filter: TMO average volume 122,228 < 500,000"}
 {"timestamp": "2026-08-20T16:48:41.289257", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 331.12, "reason": "liquidity filter: NDSN average volume 16,806 < 500,000"}
 {"timestamp": "2026-08-20T16:48:41.640034", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 89.38, "reason": "stale quote for SOLV (297.792783s old; limit 180s)"}
+{"timestamp": "2026-08-20T16:50:40.807873", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 331.07, "reason": "liquidity filter: NDSN average volume 16,817 < 500,000"}
+{"timestamp": "2026-08-20T16:50:40.993081", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 89.38, "reason": "stale quote for SOLV (417.275699s old; limit 180s)"}
+{"timestamp": "2026-08-20T16:50:41.300169", "ticker": "TMO", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 630.13, "reason": "liquidity filter: TMO average volume 122,255 < 500,000"}
