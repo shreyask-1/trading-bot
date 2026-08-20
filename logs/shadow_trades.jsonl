@@ -365,3 +365,5 @@
 {"timestamp": "2026-08-20T10:12:29.026779", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 152.19, "reason": "stale quote for MRK (51153.248118s old; limit 180s)"}
 {"timestamp": "2026-08-20T10:16:44.052982", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 152.19, "reason": "stale quote for MRK (51408.068034s old; limit 180s)"}
 {"timestamp": "2026-08-20T10:16:44.415458", "ticker": "GILD", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 147.51, "reason": "stale quote for GILD (51415.580857s old; limit 180s)"}
+{"timestamp": "2026-08-20T10:18:40.473786", "ticker": "ARE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 50.56, "reason": "stale quote for ARE (51521.009646s old; limit 180s)"}
+{"timestamp": "2026-08-20T10:18:40.733266", "ticker": "OXY", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 60.08, "reason": "stale quote for OXY (51520.604136s old; limit 180s)"}
