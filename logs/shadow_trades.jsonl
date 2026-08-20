@@ -686,3 +686,5 @@
 {"timestamp": "2026-08-20T14:46:45.731798", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 54.17, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
 {"timestamp": "2026-08-20T14:48:38.150920", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 54.175, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
 {"timestamp": "2026-08-20T14:48:38.505528", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 69.07, "reason": "liquidity filter: SWKS average volume 243,963 < 500,000"}
+{"timestamp": "2026-08-20T14:50:48.741247", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 328.46, "reason": "liquidity filter: NDSN average volume 15,308 < 500,000"}
+{"timestamp": "2026-08-20T14:50:49.168847", "ticker": "STX", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 862.515, "reason": "liquidity filter: STX average volume 228,980 < 500,000"}
