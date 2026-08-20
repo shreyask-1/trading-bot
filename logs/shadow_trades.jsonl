@@ -223,3 +223,5 @@
 {"timestamp": "2026-08-20T08:04:33.145393", "ticker": "OXY", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 60.08, "reason": "stale quote for OXY (43469.999487s old; limit 180s)"}
 {"timestamp": "2026-08-20T08:06:44.831393", "ticker": "NTAP", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 194.49, "reason": "stale quote for NTAP (43610.43642s old; limit 180s)"}
 {"timestamp": "2026-08-20T08:06:45.132139", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 152.19, "reason": "stale quote for MRK (43609.17249s old; limit 180s)"}
+{"timestamp": "2026-08-20T08:08:35.308646", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 152.19, "reason": "stale quote for MRK (43719.544395s old; limit 180s)"}
+{"timestamp": "2026-08-20T08:08:35.308869", "ticker": "PSX", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 242.195, "reason": "stale quote for PSX (43720.085377s old; limit 180s)"}
