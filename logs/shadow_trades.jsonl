@@ -614,3 +614,5 @@
 {"timestamp": "2026-08-20T14:10:57.828528", "ticker": "MSI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 483.385, "reason": "liquidity filter: MSI average volume 48,291 < 500,000"}
 {"timestamp": "2026-08-20T14:10:57.880851", "ticker": "NWS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 33.56, "reason": "stale quote for NWS (496.023214s old; limit 180s)"}
 {"timestamp": "2026-08-20T14:10:58.229047", "ticker": "MDLZ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 64.45, "reason": "market data unavailable for MDLZ (bid/ask spread missing)"}
+{"timestamp": "2026-08-20T14:12:36.606402", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 324.48, "reason": "liquidity filter: NDSN average volume 14,728 < 500,000"}
+{"timestamp": "2026-08-20T14:12:36.606606", "ticker": "OXY", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 61.955, "reason": "market data unavailable for OXY (bid/ask spread missing)"}
