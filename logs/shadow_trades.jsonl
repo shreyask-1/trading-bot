@@ -443,3 +443,5 @@
 {"timestamp": "2026-08-20T11:52:28.843883", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 303.26, "reason": "stale quote for APD (57152.978755s old; limit 180s)"}
 {"timestamp": "2026-08-20T11:54:31.281263", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 152.19, "reason": "stale quote for MRK (57275.44033s old; limit 180s)"}
 {"timestamp": "2026-08-20T11:54:31.425278", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 303.26, "reason": "stale quote for APD (57275.479714s old; limit 180s)"}
+{"timestamp": "2026-08-20T11:56:38.853822", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 152.19, "reason": "stale quote for MRK (57402.934724s old; limit 180s)"}
+{"timestamp": "2026-08-20T11:56:39.115223", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 303.26, "reason": "stale quote for APD (57403.091261s old; limit 180s)"}
