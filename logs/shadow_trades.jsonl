@@ -856,3 +856,5 @@
 {"timestamp": "2026-08-20T16:31:09.282584", "ticker": "MSI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 483.62, "reason": "liquidity filter: MSI average volume 49,112 < 500,000"}
 {"timestamp": "2026-08-20T16:32:34.920150", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 330.75, "reason": "liquidity filter: NDSN average volume 16,676 < 500,000"}
 {"timestamp": "2026-08-20T16:32:35.311511", "ticker": "TMO", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 628.02, "reason": "liquidity filter: TMO average volume 121,924 < 500,000"}
+{"timestamp": "2026-08-20T16:34:41.367815", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 330.46, "reason": "liquidity filter: NDSN average volume 16,696 < 500,000"}
+{"timestamp": "2026-08-20T16:34:42.923272", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 123.75, "reason": "liquidity filter: RVTY average volume 92,864 < 500,000"}
