@@ -684,3 +684,5 @@
 {"timestamp": "2026-08-20T14:44:56.772405", "ticker": "SMCI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 36.89, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
 {"timestamp": "2026-08-20T14:46:44.000410", "ticker": "STX", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 867.01, "reason": "liquidity filter: STX average volume 228,956 < 500,000"}
 {"timestamp": "2026-08-20T14:46:45.731798", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 54.17, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-08-20T14:48:38.150920", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 54.175, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-08-20T14:48:38.505528", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 69.07, "reason": "liquidity filter: SWKS average volume 243,963 < 500,000"}
