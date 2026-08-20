@@ -836,3 +836,6 @@
 {"timestamp": "2026-08-20T16:16:37.556428", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 123.51, "reason": "liquidity filter: RVTY average volume 92,676 < 500,000"}
 {"timestamp": "2026-08-20T16:18:53.332546", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 331.35, "reason": "liquidity filter: NDSN average volume 16,522 < 500,000"}
 {"timestamp": "2026-08-20T16:18:54.939770", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 88.62, "reason": "stale quote for SOLV (518.890151s old; limit 180s)"}
+{"timestamp": "2026-08-20T16:20:39.631966", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 331.46, "reason": "liquidity filter: NDSN average volume 16,542 < 500,000"}
+{"timestamp": "2026-08-20T16:20:39.721467", "ticker": "T", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 25.135, "reason": "market data unavailable for T (bid/ask spread missing)"}
+{"timestamp": "2026-08-20T16:20:40.721298", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 123.58, "reason": "liquidity filter: RVTY average volume 92,731 < 500,000"}
