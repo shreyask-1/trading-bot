@@ -522,3 +522,5 @@
 {"timestamp": "2026-08-20T12:54:47.368035", "ticker": "XOM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 164.8, "reason": "stale quote for XOM (60895.492491s old; limit 180s)"}
 {"timestamp": "2026-08-20T12:54:47.446734", "ticker": "ABBV", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 266.1, "reason": "stale quote for ABBV (60891.521756s old; limit 180s)"}
 {"timestamp": "2026-08-20T12:54:47.542216", "ticker": "MRK", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 152.19, "reason": "stale quote for MRK (60891.750742s old; limit 180s)"}
+{"timestamp": "2026-08-20T12:56:30.973160", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 152.19, "reason": "stale quote for MRK (60995.1959s old; limit 180s)"}
+{"timestamp": "2026-08-20T12:56:31.031573", "ticker": "VRTX", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 551.95, "reason": "stale quote for VRTX (60995.760441s old; limit 180s)"}
