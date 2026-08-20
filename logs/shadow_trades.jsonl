@@ -1096,3 +1096,5 @@
 {"timestamp": "2026-08-20T19:08:59.498685", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 333.81, "reason": "liquidity filter: NDSN average volume 18,273 < 500,000"}
 {"timestamp": "2026-08-20T19:08:59.831962", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 124.22, "reason": "liquidity filter: RVTY average volume 94,940 < 500,000"}
 {"timestamp": "2026-08-20T19:10:56.450526", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 334.02, "reason": "liquidity filter: NDSN average volume 18,290 < 500,000"}
+{"timestamp": "2026-08-20T19:12:33.676604", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 334.09, "reason": "liquidity filter: NDSN average volume 18,308 < 500,000"}
+{"timestamp": "2026-08-20T19:12:34.284188", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 36.71, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
