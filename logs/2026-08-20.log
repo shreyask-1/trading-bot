@@ -7873,3 +7873,38 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,705.68;
 Shadow report: 1032 shadow candidate(s), 114 rejection group(s)
 Timings: account: 0.0s | risk: 4.3s | decide: 8.9s | watchlist: 0.1s | perf: 0.1s
 
+=== Run at 2026-08-20T18:36:24.622604 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-20 02:36 PM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $98,590.87
+Cash: $66,262.77 | Holdings (6): {'AMT': '14.8145 sh (+1.72%)', 'ERIE': '0.7641 sh (+2.72%)', 'GEHC': '0.6136 sh (+0.89%)', 'MS': '43.8344 sh (-5.15%)', 'MSI': '21.1281 sh (+1.50%)', 'NWS': '303.7199 sh (+2.97%)'}
+Sector exposure (cached): Communication Services 10.3%, Technology 10.2%, Financials 9.5%, Real Estate 2.7%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 1.12% | today -0.28% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+Overnight queue deferred 4 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+Morning verification: 2 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
+News: fetched 157, 2 new after dedup, 2 ticker(s) matched.
+Quant pre-screen: 12/16 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 307
+  -> {"ticker": "NWS", "status": "skipped", "reason": "liquidity filter: NWS average volume 59,783 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "IT", "status": "skipped", "reason": "stale quote for IT (283.889441s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "NDSN", "status": "skipped", "reason": "liquidity filter: NDSN average volume 17,878 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "WTW", "status": "skipped", "reason": "liquidity filter: WTW average volume 45,986 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "WY", "status": "skipped", "reason": "liquidity filter: WY average volume 346,845 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "ZBH", "status": "skipped", "reason": "liquidity filter: ZBH average volume 160,416 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "ZBRA", "status": "skipped", "reason": "liquidity filter: ZBRA average volume 51,063 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "A", "status": "skipped", "reason": "liquidity filter: A average volume 88,320 < 500,000", "shadow": false, "data_guard": true}
+Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); 2 idea(s) remain subject to the retry cap.
+Dashboard watchlist synced (14 symbols) for news/headlines.
+Ending portfolio value: $98,591.84
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return -0.28% | Max drawdown 0.51% | Daily Sharpe -15.98 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 6 | Equity $98,590.87
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $-4.25 (6 open) | Books: legacy: realized $-1,705.68, unrealized $-4.25
+Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,705.68; worst symbols HPE:-1286.89; COHR:-471.20; SNDK:-159.07; ANET:-45.31; NOW:-30.35
+Shadow report: 1040 shadow candidate(s), 107 rejection group(s)
+Timings: account: 0.0s | risk: 3.9s | decide: 12.8s | watchlist: 0.1s | perf: 0.1s
+
