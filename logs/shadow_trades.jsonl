@@ -546,3 +546,5 @@
 {"timestamp": "2026-08-20T13:14:34.722977", "ticker": "VRTX", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 551.95, "reason": "stale quote for VRTX (62079.340192s old; limit 180s)"}
 {"timestamp": "2026-08-20T13:16:33.411694", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 152.19, "reason": "stale quote for MRK (62197.618125s old; limit 180s)"}
 {"timestamp": "2026-08-20T13:16:33.657972", "ticker": "VRTX", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 551.95, "reason": "stale quote for VRTX (62198.197885s old; limit 180s)"}
+{"timestamp": "2026-08-20T13:18:32.988797", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 152.19, "reason": "stale quote for MRK (62317.218924s old; limit 180s)"}
+{"timestamp": "2026-08-20T13:18:32.988954", "ticker": "GILD", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 147.51, "reason": "stale quote for GILD (62321.678045s old; limit 180s)"}
