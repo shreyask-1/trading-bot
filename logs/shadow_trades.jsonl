@@ -469,3 +469,5 @@
 {"timestamp": "2026-08-20T12:20:45.332482", "ticker": "OKE", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 95.99, "reason": "stale quote for OKE (58850.89731s old; limit 180s)"}
 {"timestamp": "2026-08-20T12:22:40.654649", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 152.19, "reason": "stale quote for MRK (58964.649343s old; limit 180s)"}
 {"timestamp": "2026-08-20T12:22:40.965332", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 266.1, "reason": "stale quote for ABBV (58964.860377s old; limit 180s)"}
+{"timestamp": "2026-08-20T12:24:38.846156", "ticker": "APO", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 133.61, "reason": "stale quote for APO (59087.198116s old; limit 180s)"}
+{"timestamp": "2026-08-20T12:24:39.156349", "ticker": "ARES", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 143.1, "reason": "stale quote for ARES (59081.422756s old; limit 180s)"}
