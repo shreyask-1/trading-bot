@@ -801,3 +801,5 @@
 {"timestamp": "2026-08-20T15:53:00.108010", "ticker": "T", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 25.155, "reason": "market data unavailable for T (bid/ask spread missing)"}
 {"timestamp": "2026-08-20T15:53:00.164315", "ticker": "GEHC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 75.28, "reason": "liquidity filter: GEHC average volume 269,112 < 500,000"}
 {"timestamp": "2026-08-20T15:53:00.227400", "ticker": "MSI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 484.23, "reason": "liquidity filter: MSI average volume 49,022 < 500,000"}
+{"timestamp": "2026-08-20T15:54:43.959774", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 331.99, "reason": "liquidity filter: NDSN average volume 16,265 < 500,000"}
+{"timestamp": "2026-08-20T15:54:44.702919", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 123.405, "reason": "liquidity filter: RVTY average volume 92,252 < 500,000"}
