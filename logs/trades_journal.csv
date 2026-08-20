@@ -122,3 +122,4 @@ timestamp,ticker,action,qty,price,stop_loss,take_profit,conviction,confidence,tr
 2026-08-20T02:06:29.690935,IVZ,sell,306.9138,32.21,,,10,,max_holding_time,legacy/unknown,legacy,4.9428,Maximum holding time: 127.6h >= 120.0h
 2026-08-20T10:10:29.910604,EQT,sell,112.293,53.8,,,10,,stagnation_exit,legacy/unknown,legacy,3.0207,"Stagnation exit: 32.9h held, progress +0.49% < 0.50%"
 2026-08-20T11:34:23.937512,EOG,sell,45.9769,149.62,,,10,,quality_trim,legacy/unknown,legacy,3.4395,Quality review profit-take: EOG is up 6.4% since entry >= 5.0%; banking the gain
+2026-08-20T12:27:38.004414,COO,sell,131.0648,77.05,,,10,,stagnation_exit,legacy/unknown,legacy,5.0493,"Stagnation exit: 27.8h held, progress +0.46% < 0.50%"
