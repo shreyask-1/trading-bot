@@ -258,6 +258,9 @@ Reports: daily realized $-1,611.99; worst symbols HPE:-1286.89; COHR:-235.59; SN
 Shadow report: 218 shadow candidate(s), 218 rejection group(s)
 Timings: account: 0.0s | risk: 2.1s | decide: 5.7s | watchlist: 0.1s | perf: 0.1s
 
+=== Run at 2026-08-20T00:20:10.075666 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-19 08:20 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 === Run at 2026-08-20T00:19:26.663885 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-19 08:19 PM EDT | Market open (per Alpaca): False | Session: CLOSED
@@ -268,11 +271,18 @@ Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
 Open orders (5): T sell 380.329, COO sell 131.065, EQT sell 112.293, IVZ sell 306.914, MS sell 43.8344
 Risk state: peak $99,703.60 | drawdown 0.89% | today -0.33% | halted: False
 Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 3 new after dedup, 0 ticker(s) matched.
 News: fetched 158, 2 new after dedup, 0 ticker(s) matched.
 Quant pre-screen: 42/65 candidates passed.
 Gemini proposed 3 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 486
 Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued TRGP buy (conf 92, stop 285.5, tp 315.0)
+  -> queued WAT buy (conf 89, stop 400.0, tp 435.0)
+  -> queued TYL buy (conf 89, stop 300.28, tp 355.77)
+  -> queued MRK buy (conf 88, stop 145.0, tp 165.0)
+  -> queued KO buy (conf 88, stop 87.5, tp 93.5)
+  -> queued MDLZ buy (conf 85, stop 62.0, tp 67.0)
   -> queued TRGP buy (conf 92, stop 255.0, tp 315.0)
   -> queued WAT buy (conf 89, stop 400.0, tp 435.0)
   -> queued TYL buy (conf 89, stop 300.28, tp 355.77)
@@ -293,6 +303,7 @@ Performance: Total return -0.05% | Max drawdown 0.09% | Daily Sharpe -16.97 | 19
 Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+643.69 (17 open) | Books: legacy: realized $-1,705.68, unrealized $+643.69
 Reports: daily realized $-1,611.99; worst symbols HPE:-1286.89; COHR:-235.59; SNDK:-159.07; ANET:-45.31; NOW:-30.35 | weekly realized $-1,705.68; worst symbols HPE:-1286.89; COHR:-471.20; SNDK:-159.07; ANET:-45.31; NOW:-30.35
 Shadow report: 218 shadow candidate(s), 218 rejection group(s)
+Timings: account: 0.0s | risk: 2.5s | decide: 10.6s | watchlist: 0.1s | perf: 0.1s
 Timings: account: 0.0s | risk: 4.5s | decide: 12.0s | watchlist: 0.2s | perf: 0.1s
 
 === Run at 2026-08-20T00:20:47.896488 ===
