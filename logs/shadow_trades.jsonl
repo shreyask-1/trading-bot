@@ -1002,3 +1002,6 @@
 {"timestamp": "2026-08-20T18:20:56.756168", "ticker": "T", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 25.165, "reason": "market data unavailable for T (bid/ask spread missing)"}
 {"timestamp": "2026-08-20T18:22:41.437388", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 331.24, "reason": "liquidity filter: NDSN average volume 17,773 < 500,000"}
 {"timestamp": "2026-08-20T18:22:43.055810", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 123.78, "reason": "liquidity filter: RVTY average volume 94,332 < 500,000"}
+{"timestamp": "2026-08-20T18:24:56.421165", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 331.23, "reason": "liquidity filter: NDSN average volume 17,773 < 500,000"}
+{"timestamp": "2026-08-20T18:24:57.812351", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 123.78, "reason": "stale quote for RVTY (274.286394s old; limit 180s)"}
+{"timestamp": "2026-08-20T18:24:58.195690", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 36.555, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
