@@ -930,3 +930,6 @@
 {"timestamp": "2026-08-20T17:33:02.854154", "ticker": "TSCO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 34.885, "reason": "market data unavailable for TSCO (bid/ask spread missing)"}
 {"timestamp": "2026-08-20T17:33:02.916542", "ticker": "GEHC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 74.89, "reason": "liquidity filter: GEHC average volume 269,699 < 500,000"}
 {"timestamp": "2026-08-20T17:33:02.972974", "ticker": "MSI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 482.38, "reason": "liquidity filter: MSI average volume 49,426 < 500,000"}
+{"timestamp": "2026-08-20T17:34:35.179878", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 331.005, "reason": "liquidity filter: NDSN average volume 17,371 < 500,000"}
+{"timestamp": "2026-08-20T17:34:35.452919", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 88.96, "reason": "stale quote for SOLV (213.599648s old; limit 180s)"}
+{"timestamp": "2026-08-20T17:34:35.692102", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 124.095, "reason": "liquidity filter: RVTY average volume 94,106 < 500,000"}
