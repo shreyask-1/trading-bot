@@ -430,3 +430,4 @@
 {"timestamp": "2026-08-20T11:44:53.814416", "ticker": "AXON", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 646.05, "reason": "stale quote for AXON (56679.94946s old; limit 180s)"}
 {"timestamp": "2026-08-20T11:46:39.900202", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 152.19, "reason": "stale quote for MRK (56803.899604s old; limit 180s)"}
 {"timestamp": "2026-08-20T11:46:40.295719", "ticker": "A", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 155.41, "reason": "stale quote for A (56801.966808s old; limit 180s)"}
+{"timestamp": "2026-08-20T11:48:31.657230", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 152.19, "reason": "stale quote for MRK (56915.793262s old; limit 180s)"}
