@@ -5034,3 +5034,38 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,705.68;
 Shadow report: 755 shadow candidate(s), 349 rejection group(s)
 Timings: account: 0.0s | risk: 3.9s | decide: 10.9s | watchlist: 0.0s | perf: 0.1s
 
+=== Run at 2026-08-20T15:32:28.627719 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-20 11:32 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $98,904.60
+Cash: $65,372.54 | Holdings (7): {'AMT': '14.8145 sh (+1.78%)', 'ERIE': '0.7641 sh (+3.35%)', 'GEHC': '0.6136 sh (+1.95%)', 'MS': '43.8344 sh (-4.08%)', 'MSI': '21.1281 sh (+3.11%)', 'NWS': '303.7199 sh (+3.37%)', 'TSCO': '25.552 sh (-1.04%)'}
+Sector exposure (cached): Communication Services 10.3%, Technology 10.3%, Financials 9.6%, Real Estate 2.7%, Consumer Discretionary 0.9%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.80% | today +0.04% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+Overnight queue deferred 3 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+News: fetched 158, 3 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 40/60 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
+Technical fallback cap omitted 12 weaker idea(s) this run.
+Gemini calls used today (all models combined): 230
+  -> {"ticker": "SMCI", "status": "skipped", "reason": "market data unavailable for SMCI (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "NDSN", "status": "skipped", "reason": "liquidity filter: NDSN average volume 15,903 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "SLB", "status": "skipped", "reason": "market data unavailable for SLB (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "SWKS", "status": "skipped", "reason": "liquidity filter: SWKS average volume 244,417 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "T", "status": "skipped", "reason": "market data unavailable for T (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "GEHC", "status": "skipped", "reason": "liquidity filter: GEHC average volume 268,968 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "MSI", "status": "skipped", "reason": "liquidity filter: MSI average volume 48,992 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "NWS", "status": "skipped", "reason": "stale quote for NWS (309.494092s old; limit 180s)", "shadow": false, "data_guard": true}
+Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); 2 idea(s) remain subject to the retry cap.
+Run budget reserve reached -- skipping dashboard watchlist sync.
+Run budget reserve reached -- skipping performance snapshot.
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.06% | Max drawdown 0.29% | Daily Sharpe 15.56 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 7 | Equity $98,904.60
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+291.39 (7 open) | Books: legacy: realized $-1,705.68, unrealized $+291.39
+Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,705.68; worst symbols HPE:-1286.89; COHR:-471.20; SNDK:-159.07; ANET:-45.31; NOW:-30.35
+Shadow report: 763 shadow candidate(s), 342 rejection group(s)
+Timings: account: 0.0s | risk: 4.1s | decide: 23.3s | watchlist: 0.0s | perf: 0.0s
+
