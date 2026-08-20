@@ -482,3 +482,5 @@
 {"timestamp": "2026-08-20T12:34:38.540951", "ticker": "EQIX", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 1076.865, "reason": "stale quote for EQIX (59680.00406s old; limit 180s)"}
 {"timestamp": "2026-08-20T12:34:38.742364", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 152.19, "reason": "stale quote for MRK (59682.852712s old; limit 180s)"}
 {"timestamp": "2026-08-20T12:34:38.937103", "ticker": "CVX", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 205.78, "reason": "stale quote for CVX (59680.716049s old; limit 180s)"}
+{"timestamp": "2026-08-20T12:36:30.421629", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 152.19, "reason": "stale quote for MRK (59794.620494s old; limit 180s)"}
+{"timestamp": "2026-08-20T12:36:30.421853", "ticker": "OXY", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 60.08, "reason": "stale quote for OXY (59787.075343s old; limit 180s)"}
