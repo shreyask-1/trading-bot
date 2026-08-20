@@ -882,3 +882,6 @@
 {"timestamp": "2026-08-20T16:58:42.666451", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 124.08, "reason": "liquidity filter: RVTY average volume 93,092 < 500,000"}
 {"timestamp": "2026-08-20T16:58:42.993438", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 331.58, "reason": "liquidity filter: NDSN average volume 16,945 < 500,000"}
 {"timestamp": "2026-08-20T16:58:43.354871", "ticker": "TMO", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 630.025, "reason": "liquidity filter: TMO average volume 122,320 < 500,000"}
+{"timestamp": "2026-08-20T17:00:54.620511", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 331.11, "reason": "liquidity filter: NDSN average volume 16,961 < 500,000"}
+{"timestamp": "2026-08-20T17:00:54.620718", "ticker": "TMO", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 630.81, "reason": "liquidity filter: TMO average volume 122,352 < 500,000"}
+{"timestamp": "2026-08-20T17:00:54.620864", "ticker": "RMD", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 230.72, "reason": "stale quote for RMD (248.598607s old; limit 180s)"}
