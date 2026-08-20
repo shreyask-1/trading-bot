@@ -682,3 +682,5 @@
 {"timestamp": "2026-08-20T14:44:55.901666", "ticker": "MSI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 482.38, "reason": "liquidity filter: MSI average volume 48,803 < 500,000"}
 {"timestamp": "2026-08-20T14:44:56.294239", "ticker": "RMD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 229.62, "reason": "liquidity filter: RMD average volume 90,373 < 500,000"}
 {"timestamp": "2026-08-20T14:44:56.772405", "ticker": "SMCI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 36.89, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
+{"timestamp": "2026-08-20T14:46:44.000410", "ticker": "STX", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 867.01, "reason": "liquidity filter: STX average volume 228,956 < 500,000"}
+{"timestamp": "2026-08-20T14:46:45.731798", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 54.17, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
