@@ -958,3 +958,5 @@
 {"timestamp": "2026-08-20T17:50:58.474849", "ticker": "TSCO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 34.755, "reason": "market data unavailable for TSCO (bid/ask spread missing)"}
 {"timestamp": "2026-08-20T17:50:58.536686", "ticker": "GEHC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 74.785, "reason": "liquidity filter: GEHC average volume 270,153 < 500,000"}
 {"timestamp": "2026-08-20T17:50:58.598890", "ticker": "NWS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 33.61, "reason": "liquidity filter: NWS average volume 59,647 < 500,000"}
+{"timestamp": "2026-08-20T17:52:39.230278", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 330.28, "reason": "liquidity filter: NDSN average volume 17,462 < 500,000"}
+{"timestamp": "2026-08-20T17:52:39.546009", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 23.145, "reason": "market data unavailable for MOS (bid/ask spread missing)"}
