@@ -1038,3 +1038,5 @@
 {"timestamp": "2026-08-20T18:36:41.542225", "ticker": "ZBH", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 99.845, "reason": "liquidity filter: ZBH average volume 160,416 < 500,000"}
 {"timestamp": "2026-08-20T18:36:41.542349", "ticker": "ZBRA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 361.03, "reason": "liquidity filter: ZBRA average volume 51,063 < 500,000"}
 {"timestamp": "2026-08-20T18:36:41.542529", "ticker": "A", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 156.52, "reason": "liquidity filter: A average volume 88,320 < 500,000"}
+{"timestamp": "2026-08-20T18:38:46.657087", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 330.56, "reason": "liquidity filter: NDSN average volume 17,880 < 500,000"}
+{"timestamp": "2026-08-20T18:38:46.657241", "ticker": "ADM", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 82.6, "reason": "liquidity filter: ADM average volume 200,030 < 500,000"}
