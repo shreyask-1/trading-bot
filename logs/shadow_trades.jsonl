@@ -441,3 +441,5 @@
 {"timestamp": "2026-08-20T11:51:01.552873", "ticker": "AXON", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 646.05, "reason": "stale quote for AXON (57065.613139s old; limit 180s)"}
 {"timestamp": "2026-08-20T11:52:28.791978", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 152.19, "reason": "stale quote for MRK (57153.0118s old; limit 180s)"}
 {"timestamp": "2026-08-20T11:52:28.843883", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 303.26, "reason": "stale quote for APD (57152.978755s old; limit 180s)"}
+{"timestamp": "2026-08-20T11:54:31.281263", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 152.19, "reason": "stale quote for MRK (57275.44033s old; limit 180s)"}
+{"timestamp": "2026-08-20T11:54:31.425278", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 303.26, "reason": "stale quote for APD (57275.479714s old; limit 180s)"}
