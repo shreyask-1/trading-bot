@@ -763,3 +763,5 @@
 {"timestamp": "2026-08-20T15:32:56.601671", "ticker": "NWS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 33.71, "reason": "stale quote for NWS (309.494092s old; limit 180s)"}
 {"timestamp": "2026-08-20T15:34:33.581952", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 333.82, "reason": "liquidity filter: NDSN average volume 15,915 < 500,000"}
 {"timestamp": "2026-08-20T15:34:33.678194", "ticker": "STX", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 858.11, "reason": "liquidity filter: STX average volume 229,431 < 500,000"}
+{"timestamp": "2026-08-20T15:36:51.033922", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 333.115, "reason": "liquidity filter: NDSN average volume 15,938 < 500,000"}
+{"timestamp": "2026-08-20T15:36:51.374313", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 53.99, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
