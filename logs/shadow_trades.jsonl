@@ -832,3 +832,5 @@
 {"timestamp": "2026-08-20T16:13:01.088542", "ticker": "NWS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 33.715, "reason": "liquidity filter: NWS average volume 59,401 < 500,000"}
 {"timestamp": "2026-08-20T16:14:40.947096", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 331.29, "reason": "liquidity filter: NDSN average volume 16,519 < 500,000"}
 {"timestamp": "2026-08-20T16:14:41.895859", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 123.63, "reason": "stale quote for RVTY (225.070166s old; limit 180s)"}
+{"timestamp": "2026-08-20T16:16:36.555774", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 331.29, "reason": "stale quote for NDSN (203.750184s old; limit 180s)"}
+{"timestamp": "2026-08-20T16:16:37.556428", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 123.51, "reason": "liquidity filter: RVTY average volume 92,676 < 500,000"}
