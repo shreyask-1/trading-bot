@@ -635,3 +635,4 @@
 {"timestamp": "2026-08-20T14:22:44.358596", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 53.89, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
 {"timestamp": "2026-08-20T14:24:49.080706", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 326.12, "reason": "liquidity filter: NDSN average volume 14,810 < 500,000"}
 {"timestamp": "2026-08-20T14:24:49.431490", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 53.91, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-08-20T14:26:12.246358", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 87.985, "reason": "stale quote for SOLV (456.441745s old; limit 180s)"}
