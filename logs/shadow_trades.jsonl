@@ -392,3 +392,5 @@
 {"timestamp": "2026-08-20T10:50:35.477849", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 152.19, "reason": "stale quote for MRK (53439.665764s old; limit 180s)"}
 {"timestamp": "2026-08-20T10:50:35.579673", "ticker": "GILD", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 147.51, "reason": "stale quote for GILD (53446.950723s old; limit 180s)"}
 {"timestamp": "2026-08-20T10:52:34.041347", "ticker": "HPE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 53.125, "reason": "stale quote for HPE (53553.960087s old; limit 180s)"}
+{"timestamp": "2026-08-20T10:54:28.129172", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 152.19, "reason": "stale quote for MRK (53672.328431s old; limit 180s)"}
+{"timestamp": "2026-08-20T10:54:28.192571", "ticker": "GDDY", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 96.78, "reason": "stale quote for GDDY (53676.174227s old; limit 180s)"}
