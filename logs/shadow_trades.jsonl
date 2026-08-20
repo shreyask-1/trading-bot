@@ -786,3 +786,5 @@
 {"timestamp": "2026-08-20T15:45:10.402226", "ticker": "GEHC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 75.24, "reason": "liquidity filter: GEHC average volume 269,065 < 500,000"}
 {"timestamp": "2026-08-20T15:45:10.481720", "ticker": "MSI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 484.28, "reason": "liquidity filter: MSI average volume 49,004 < 500,000"}
 {"timestamp": "2026-08-20T15:45:10.537926", "ticker": "NWS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 33.73, "reason": "stale quote for NWS (238.923208s old; limit 180s)"}
+{"timestamp": "2026-08-20T15:46:40.346526", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 332.01, "reason": "liquidity filter: NDSN average volume 16,033 < 500,000"}
+{"timestamp": "2026-08-20T15:46:40.632879", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 53.92, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
