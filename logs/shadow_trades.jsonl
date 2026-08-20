@@ -251,3 +251,5 @@
 {"timestamp": "2026-08-20T08:22:54.499202", "ticker": "NVDA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 217.58, "reason": "stale quote for NVDA (44576.936726s old; limit 180s)"}
 {"timestamp": "2026-08-20T08:22:54.670439", "ticker": "OMC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 87.43, "reason": "stale quote for OMC (44575.989128s old; limit 180s)"}
 {"timestamp": "2026-08-20T08:24:31.505703", "ticker": "NTAP", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 194.49, "reason": "stale quote for NTAP (44677.2435s old; limit 180s)"}
+{"timestamp": "2026-08-20T08:27:22.966311", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 152.19, "reason": "stale quote for MRK (44847.163935s old; limit 180s)"}
+{"timestamp": "2026-08-20T08:27:23.030200", "ticker": "NWSA", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 29.47, "reason": "stale quote for NWSA (44843.387396s old; limit 180s)"}
