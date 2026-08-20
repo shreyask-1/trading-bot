@@ -616,3 +616,5 @@
 {"timestamp": "2026-08-20T14:10:58.229047", "ticker": "MDLZ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 64.45, "reason": "market data unavailable for MDLZ (bid/ask spread missing)"}
 {"timestamp": "2026-08-20T14:12:36.606402", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 324.48, "reason": "liquidity filter: NDSN average volume 14,728 < 500,000"}
 {"timestamp": "2026-08-20T14:12:36.606606", "ticker": "OXY", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 61.955, "reason": "market data unavailable for OXY (bid/ask spread missing)"}
+{"timestamp": "2026-08-20T14:14:45.122051", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 325.12, "reason": "liquidity filter: NDSN average volume 14,741 < 500,000"}
+{"timestamp": "2026-08-20T14:14:45.902802", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 953.485, "reason": "market data unavailable for MU (bid/ask spread missing)"}
