@@ -938,3 +938,5 @@
 {"timestamp": "2026-08-20T17:38:44.177975", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 330.395, "reason": "liquidity filter: NDSN average volume 17,397 < 500,000"}
 {"timestamp": "2026-08-20T17:38:44.670439", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 123.925, "reason": "liquidity filter: RVTY average volume 94,119 < 500,000"}
 {"timestamp": "2026-08-20T17:40:50.212563", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 330.31, "reason": "liquidity filter: NDSN average volume 17,414 < 500,000"}
+{"timestamp": "2026-08-20T17:42:44.015830", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 329.93, "reason": "liquidity filter: NDSN average volume 17,433 < 500,000"}
+{"timestamp": "2026-08-20T17:42:45.120505", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 23.09, "reason": "market data unavailable for MOS (bid/ask spread missing)"}
