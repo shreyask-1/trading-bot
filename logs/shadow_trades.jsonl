@@ -1158,3 +1158,6 @@
 {"timestamp": "2026-08-20T19:56:42.154154", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 123.88, "reason": "liquidity filter: RVTY average volume 96,138 < 500,000"}
 {"timestamp": "2026-08-20T19:58:31.348029", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 334.725, "reason": "liquidity filter: NDSN average volume 19,316 < 500,000"}
 {"timestamp": "2026-08-20T19:58:31.535458", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 124.04, "reason": "liquidity filter: RVTY average volume 96,247 < 500,000"}
+{"timestamp": "2026-08-20T21:30:36.640128", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 334.61, "reason": "stale quote for NDSN (5441.085786s old; limit 180s)"}
+{"timestamp": "2026-08-20T21:30:36.840734", "ticker": "TSCO", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 35.06, "reason": "stale quote for TSCO (5436.800132s old; limit 180s)"}
+{"timestamp": "2026-08-20T21:30:36.840895", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 124.11, "reason": "stale quote for RVTY (5444.857625s old; limit 180s)"}
