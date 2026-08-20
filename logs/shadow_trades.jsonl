@@ -865,3 +865,4 @@
 {"timestamp": "2026-08-20T16:40:48.897297", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 130.66, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
 {"timestamp": "2026-08-20T16:40:49.344172", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 330.7, "reason": "liquidity filter: NDSN average volume 16,742 < 500,000"}
 {"timestamp": "2026-08-20T16:42:40.780531", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 330.49, "reason": "liquidity filter: NDSN average volume 16,751 < 500,000"}
+{"timestamp": "2026-08-20T16:44:30.013476", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 330.505, "reason": "liquidity filter: NDSN average volume 16,756 < 500,000"}
