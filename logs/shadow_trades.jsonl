@@ -620,3 +620,6 @@
 {"timestamp": "2026-08-20T14:14:45.902802", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 953.485, "reason": "market data unavailable for MU (bid/ask spread missing)"}
 {"timestamp": "2026-08-20T14:16:39.632364", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 325.99, "reason": "liquidity filter: NDSN average volume 14,757 < 500,000"}
 {"timestamp": "2026-08-20T14:16:40.290067", "ticker": "TMO", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 619.145, "reason": "liquidity filter: TMO average volume 119,641 < 500,000"}
+{"timestamp": "2026-08-20T14:18:36.104881", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 325.99, "reason": "liquidity filter: NDSN average volume 14,780 < 500,000"}
+{"timestamp": "2026-08-20T14:18:36.105081", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 53.96, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-08-20T14:18:36.105224", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 119.43, "reason": "liquidity filter: RVTY average volume 91,135 < 500,000"}
