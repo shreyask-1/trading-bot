@@ -127,3 +127,4 @@ timestamp,ticker,action,qty,price,stop_loss,take_profit,conviction,confidence,tr
 2026-08-20T13:32:32.933744,KKR,sell,15.0,108.4,,,10,,stagnation_exit,legacy/unknown,legacy,0.813,"Stagnation exit: 48.6h held, progress +0.45% < 0.50%"
 2026-08-20T13:34:24.793189,KKR,sell,1.7039000000000009,108.498946,,,10,,stagnation_exit,legacy/unknown,legacy,0.0924,"Stagnation exit: 48.6h held, progress +0.45% < 0.50%"
 2026-08-20T13:50:33.095242,AMCR,sell,95.5314,47.47,,,10,,quality_trim,legacy/unknown,legacy,2.2674,Quality review: AMCR fails technical screens (signal score 50.0 < 55.0); freeing capital for higher-conviction entries
+2026-08-20T13:56:27.398772,ICE,sell,13.6893,157.51,,,10,,stagnation_exit,legacy/unknown,legacy,1.0781,"Stagnation exit: 24.1h held, progress +0.31% < 0.50%"

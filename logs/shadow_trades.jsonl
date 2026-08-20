@@ -597,3 +597,4 @@
 {"timestamp": "2026-08-20T13:52:44.714464", "ticker": "TMO", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 619.96, "reason": "liquidity filter: TMO average volume 118,536 < 500,000"}
 {"timestamp": "2026-08-20T13:52:45.852277", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 88.21, "reason": "liquidity filter: SOLV average volume 78,530 < 500,000"}
 {"timestamp": "2026-08-20T13:54:42.177544", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 88.21, "reason": "stale quote for SOLV (245.89487s old; limit 180s)"}
+{"timestamp": "2026-08-20T13:56:44.014477", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 69.07, "reason": "liquidity filter: SWKS average volume 243,288 < 500,000"}
