@@ -660,3 +660,6 @@
 {"timestamp": "2026-08-20T14:32:57.272583", "ticker": "SMCI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 36.985, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
 {"timestamp": "2026-08-20T14:34:34.978992", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 54.055, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
 {"timestamp": "2026-08-20T14:34:37.005367", "ticker": "TRGP", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 302.895, "reason": "liquidity filter: TRGP average volume 77,547 < 500,000"}
+{"timestamp": "2026-08-20T14:36:45.302544", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 53.96, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-08-20T14:36:45.833188", "ticker": "T", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 25.16, "reason": "market data unavailable for T (bid/ask spread missing)"}
+{"timestamp": "2026-08-20T14:36:45.952960", "ticker": "STX", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 864.845, "reason": "liquidity filter: STX average volume 228,883 < 500,000"}
