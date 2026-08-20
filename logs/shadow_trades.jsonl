@@ -730,3 +730,5 @@
 {"timestamp": "2026-08-20T15:12:54.992103", "ticker": "WTW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 341.25, "reason": "liquidity filter: WTW average volume 45,487 < 500,000"}
 {"timestamp": "2026-08-20T15:14:41.828747", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 331.82, "reason": "liquidity filter: NDSN average volume 15,734 < 500,000"}
 {"timestamp": "2026-08-20T15:14:42.045638", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 54.18, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-08-20T15:16:43.389070", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 331.75, "reason": "liquidity filter: NDSN average volume 15,748 < 500,000"}
+{"timestamp": "2026-08-20T15:16:43.479479", "ticker": "TMO", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 632.65, "reason": "liquidity filter: TMO average volume 120,856 < 500,000"}
