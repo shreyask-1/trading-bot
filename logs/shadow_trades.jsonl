@@ -373,3 +373,5 @@
 {"timestamp": "2026-08-20T10:22:29.018203", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 29.96, "reason": "stale quote for HPQ (51749.473793s old; limit 180s)"}
 {"timestamp": "2026-08-20T10:26:36.618580", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 152.19, "reason": "stale quote for MRK (52000.750187s old; limit 180s)"}
 {"timestamp": "2026-08-20T10:26:36.799092", "ticker": "FOXA", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 67.97, "reason": "stale quote for FOXA (51997.876823s old; limit 180s)"}
+{"timestamp": "2026-08-20T10:28:30.070429", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 152.19, "reason": "stale quote for MRK (52114.280392s old; limit 180s)"}
+{"timestamp": "2026-08-20T10:28:30.172211", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 29.96, "reason": "stale quote for HPQ (52110.60143s old; limit 180s)"}
