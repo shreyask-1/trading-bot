@@ -14115,3 +14115,38 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,705.68;
 Shadow report: 581 shadow candidate(s), 493 rejection group(s)
 Timings: account: 0.0s | risk: 2.5s | decide: 8.6s | watchlist: 0.1s | perf: 0.1s
 
+=== Run at 2026-08-20T13:44:25.561943 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-20 09:44 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $98,969.69
+Cash: $49,234.87 | Holdings (11): {'AMCR': '95.5314 sh (-0.11%)', 'AMT': '14.8145 sh (+1.78%)', 'ERIE': '0.7641 sh (+3.14%)', 'GEHC': '0.6136 sh (+0.69%)', 'ICE': '13.6893 sh (+0.40%)', 'INTU': '23.0293 sh (+0.87%)', 'MS': '43.8344 sh (-3.14%)', 'MSI': '21.1281 sh (+2.55%)', 'NWS': '303.7199 sh (+2.87%)', 'TRMB': '19.6689 sh (+0.32%)', 'TSCO': '25.552 sh (-1.83%)'}
+Sector exposure (cached): Technology 19.9%, Financials 11.9%, Communication Services 10.3%, Materials 4.6%, Real Estate 2.7%, Consumer Discretionary 0.9%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (2): AMCR sell 95.5314, MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.74% | today +0.11% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+Overnight queue deferred 4 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 34/60 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
+Technical fallback cap omitted 5 weaker idea(s) this run.
+Gemini calls used today (all models combined): 190
+  -> {"ticker": "WAT", "status": "skipped", "reason": "stale quote for WAT (266.861315s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "WDAY", "status": "skipped", "reason": "liquidity filter: WDAY average volume 258,019 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "TSCO", "status": "skipped", "reason": "market data unavailable for TSCO (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "VRTX", "status": "skipped", "reason": "stale quote for VRTX (196.907193s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "TYL", "status": "skipped", "reason": "liquidity filter: TYL average volume 56,882 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "UNP", "status": "skipped", "reason": "stale quote for UNP (185.8952s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "VLTO", "status": "skipped", "reason": "stale quote for VLTO (659.586731s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "WBD", "status": "skipped", "reason": "market data unavailable for WBD (bid/ask spread missing)", "shadow": false, "data_guard": true}
+Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); 2 idea(s) remain subject to the retry cap.
+Run budget reserve reached -- skipping dashboard watchlist sync.
+Run budget reserve reached -- skipping performance snapshot.
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.01% | Max drawdown 0.27% | Daily Sharpe 15.11 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 11 | Equity $98,969.69
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+348.06 (11 open) | Books: legacy: realized $-1,705.68, unrealized $+348.06
+Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,705.68; worst symbols HPE:-1286.89; COHR:-471.20; SNDK:-159.07; ANET:-45.31; NOW:-30.35
+Shadow report: 589 shadow candidate(s), 492 rejection group(s)
+Timings: account: 0.0s | risk: 1.9s | decide: 25.2s | watchlist: 0.0s | perf: 0.0s
+
