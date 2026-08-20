@@ -348,3 +348,5 @@
 {"timestamp": "2026-08-20T10:01:04.143895", "ticker": "GEHC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 74.635, "reason": "stale quote for GEHC (50442.593253s old; limit 180s)"}
 {"timestamp": "2026-08-20T10:01:04.162449", "ticker": "ICE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 157.23, "reason": "stale quote for ICE (50442.147359s old; limit 180s)"}
 {"timestamp": "2026-08-20T10:01:04.190678", "ticker": "INTU", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 362.46, "reason": "stale quote for INTU (50443.446631s old; limit 180s)"}
+{"timestamp": "2026-08-20T10:02:50.205249", "ticker": "OXY", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 60.08, "reason": "stale quote for OXY (50566.185265s old; limit 180s)"}
+{"timestamp": "2026-08-20T10:02:50.511961", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 152.19, "reason": "stale quote for MRK (50574.551386s old; limit 180s)"}
