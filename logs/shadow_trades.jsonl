@@ -397,3 +397,5 @@
 {"timestamp": "2026-08-20T10:58:28.711920", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 152.19, "reason": "stale quote for MRK (53912.944s old; limit 180s)"}
 {"timestamp": "2026-08-20T10:58:28.784273", "ticker": "GIS", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 40.0, "reason": "stale quote for GIS (53909.413395s old; limit 180s)"}
 {"timestamp": "2026-08-20T11:00:47.042876", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 152.19, "reason": "stale quote for MRK (54047.303365s old; limit 180s)"}
+{"timestamp": "2026-08-20T11:02:30.311355", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 152.19, "reason": "stale quote for MRK (54154.488633s old; limit 180s)"}
+{"timestamp": "2026-08-20T11:02:30.311573", "ticker": "GIS", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 40.0, "reason": "stale quote for GIS (54148.199222s old; limit 180s)"}
