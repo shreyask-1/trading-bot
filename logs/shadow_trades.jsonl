@@ -326,3 +326,5 @@
 {"timestamp": "2026-08-20T09:36:29.825751", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 127.17, "reason": "stale quote for NOW (48994.355862s old; limit 180s)"}
 {"timestamp": "2026-08-20T09:38:29.378342", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 152.19, "reason": "stale quote for MRK (49113.59835s old; limit 180s)"}
 {"timestamp": "2026-08-20T09:38:29.432688", "ticker": "NVDA", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 217.58, "reason": "stale quote for NVDA (49111.929677s old; limit 180s)"}
+{"timestamp": "2026-08-20T09:40:39.299506", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 152.19, "reason": "stale quote for MRK (49243.444404s old; limit 180s)"}
+{"timestamp": "2026-08-20T09:40:39.467609", "ticker": "OXY", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 60.08, "reason": "stale quote for OXY (49239.402006s old; limit 180s)"}
