@@ -216,3 +216,5 @@
 {"timestamp": "2026-08-19T23:58:32.651270", "ticker": "TRGP", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 297.14, "reason": "stale quote for TRGP (14315.532143s old; limit 180s)"}
 {"timestamp": "2026-08-19T23:58:32.761358", "ticker": "WDAY", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 198.46, "reason": "stale quote for WDAY (14319.356965s old; limit 180s)"}
 {"timestamp": "2026-08-19T23:58:32.761457", "ticker": "GEHC", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 74.635, "reason": "stale quote for GEHC (14307.666107s old; limit 180s)"}
+{"timestamp": "2026-08-20T08:00:58.378106", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 152.19, "reason": "stale quote for MRK (43243.912776s old; limit 180s)"}
+{"timestamp": "2026-08-20T08:00:58.378308", "ticker": "NTAP", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 194.49, "reason": "stale quote for NTAP (43246.46286s old; limit 180s)"}
