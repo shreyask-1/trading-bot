@@ -1013,3 +1013,6 @@
 {"timestamp": "2026-08-20T18:26:52.082539", "ticker": "SWKS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 69.03, "reason": "liquidity filter: SWKS average volume 246,176 < 500,000"}
 {"timestamp": "2026-08-20T18:26:52.165757", "ticker": "TSN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 58.605, "reason": "liquidity filter: TSN average volume 150,692 < 500,000"}
 {"timestamp": "2026-08-20T18:26:52.415448", "ticker": "T", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 25.17, "reason": "market data unavailable for T (bid/ask spread missing)"}
+{"timestamp": "2026-08-20T18:28:32.427791", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 330.585, "reason": "liquidity filter: NDSN average volume 17,795 < 500,000"}
+{"timestamp": "2026-08-20T18:28:33.814522", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 123.83, "reason": "liquidity filter: RVTY average volume 94,340 < 500,000"}
+{"timestamp": "2026-08-20T18:28:33.995847", "ticker": "TSCO", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 34.825, "reason": "market data unavailable for TSCO (bid/ask spread missing)"}
