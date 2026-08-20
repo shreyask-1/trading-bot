@@ -709,3 +709,5 @@
 {"timestamp": "2026-08-20T15:04:56.144102", "ticker": "RVTY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 122.61, "reason": "liquidity filter: RVTY average volume 91,521 < 500,000"}
 {"timestamp": "2026-08-20T15:04:56.144294", "ticker": "SOLV", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 88.21, "reason": "stale quote for SOLV (1249.140672s old; limit 180s)"}
 {"timestamp": "2026-08-20T15:04:57.100303", "ticker": "RMD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 230.24, "reason": "liquidity filter: RMD average volume 90,451 < 500,000"}
+{"timestamp": "2026-08-20T15:06:56.679027", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 330.82, "reason": "liquidity filter: NDSN average volume 15,656 < 500,000"}
+{"timestamp": "2026-08-20T15:06:56.805556", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 54.25, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
