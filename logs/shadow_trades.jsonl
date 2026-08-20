@@ -1122,3 +1122,5 @@
 {"timestamp": "2026-08-20T19:23:40.786868", "ticker": "TSCO", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 35.01, "reason": "market data unavailable for TSCO (bid/ask spread missing)"}
 {"timestamp": "2026-08-20T19:24:37.953388", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 335.52, "reason": "liquidity filter: NDSN average volume 18,512 < 500,000"}
 {"timestamp": "2026-08-20T19:24:38.297804", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 123.81, "reason": "liquidity filter: RVTY average volume 95,092 < 500,000"}
+{"timestamp": "2026-08-20T19:26:45.596899", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 335.68, "reason": "liquidity filter: NDSN average volume 18,525 < 500,000"}
+{"timestamp": "2026-08-20T19:26:45.876251", "ticker": "TRGP", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 299.62, "reason": "liquidity filter: TRGP average volume 80,004 < 500,000"}
