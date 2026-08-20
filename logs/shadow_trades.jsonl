@@ -1212,3 +1212,4 @@
 {"timestamp": "2026-08-20T22:20:55.135177", "ticker": "AES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 14.76, "reason": "stale quote for AES (8440.688063s old; limit 180s)"}
 {"timestamp": "2026-08-20T22:20:55.307196", "ticker": "ZBH", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 99.065, "reason": "stale quote for ZBH (8477.978743s old; limit 180s)"}
 {"timestamp": "2026-08-20T22:20:55.342111", "ticker": "NWS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 33.78, "reason": "stale quote for NWS (8438.245593s old; limit 180s)"}
+{"timestamp": "2026-08-20T22:22:33.309915", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 124.11, "reason": "stale quote for RVTY (8564.280829s old; limit 180s)"}
