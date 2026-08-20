@@ -1177,3 +1177,5 @@
 {"timestamp": "2026-08-20T21:46:51.311546", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 334.61, "reason": "stale quote for NDSN (6415.729105s old; limit 180s)"}
 {"timestamp": "2026-08-20T21:46:51.485721", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 124.11, "reason": "stale quote for RVTY (6422.47156s old; limit 180s)"}
 {"timestamp": "2026-08-20T21:48:35.269810", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 124.11, "reason": "stale quote for RVTY (6526.106147s old; limit 180s)"}
+{"timestamp": "2026-08-20T21:52:33.140541", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 124.11, "reason": "stale quote for RVTY (6764.223538s old; limit 180s)"}
+{"timestamp": "2026-08-20T21:52:33.198772", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 334.61, "reason": "stale quote for NDSN (6757.698785s old; limit 180s)"}
