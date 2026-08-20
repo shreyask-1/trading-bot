@@ -304,3 +304,6 @@
 {"timestamp": "2026-08-20T09:20:47.238319", "ticker": "NWSA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 29.47, "reason": "stale quote for NWSA (48047.405967s old; limit 180s)"}
 {"timestamp": "2026-08-20T09:22:39.149965", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 152.19, "reason": "stale quote for MRK (48163.22018s old; limit 180s)"}
 {"timestamp": "2026-08-20T09:22:39.150168", "ticker": "ARE", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 50.56, "reason": "stale quote for ARE (48159.277391s old; limit 180s)"}
+{"timestamp": "2026-08-20T09:24:45.997974", "ticker": "NTAP", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 194.49, "reason": "stale quote for NTAP (48291.713332s old; limit 180s)"}
+{"timestamp": "2026-08-20T09:24:46.136523", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 127.17, "reason": "stale quote for NOW (48290.640532s old; limit 180s)"}
+{"timestamp": "2026-08-20T09:24:46.259097", "ticker": "NTRS", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 185.4, "reason": "stale quote for NTRS (48290.218275s old; limit 180s)"}
