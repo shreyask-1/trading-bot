@@ -1612,3 +1612,5 @@
 {"timestamp": "2026-08-21T12:34:50.722219", "ticker": "AVY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 182.74, "reason": "stale quote for AVY (59805.047533s old; limit 180s)"}
 {"timestamp": "2026-08-21T12:34:50.741734", "ticker": "AWK", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 137.23, "reason": "stale quote for AWK (59683.173857s old; limit 180s)"}
 {"timestamp": "2026-08-21T12:34:50.864207", "ticker": "AMCR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 47.795, "reason": "stale quote for AMCR (59700.051914s old; limit 180s)"}
+{"timestamp": "2026-08-21T12:36:32.355023", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 261.9, "reason": "stale quote for ABBV (59792.462834s old; limit 180s)"}
+{"timestamp": "2026-08-21T12:36:32.467318", "ticker": "AMCR", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 47.795, "reason": "stale quote for AMCR (59801.6654s old; limit 180s)"}
