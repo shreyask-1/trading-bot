@@ -1556,3 +1556,4 @@
 {"timestamp": "2026-08-21T11:44:53.377562", "ticker": "CEG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 272.99, "reason": "stale quote for CEG (56676.87829s old; limit 180s)"}
 {"timestamp": "2026-08-21T11:44:53.377637", "ticker": "CF", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 125.765, "reason": "stale quote for CF (56685.572252s old; limit 180s)"}
 {"timestamp": "2026-08-21T11:44:53.377702", "ticker": "CHTR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 147.67, "reason": "stale quote for CHTR (56687.242077s old; limit 180s)"}
+{"timestamp": "2026-08-21T11:46:28.870117", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 261.9, "reason": "stale quote for ABBV (56788.988295s old; limit 180s)"}
