@@ -1759,3 +1759,4 @@
 {"timestamp": "2026-08-21T14:52:58.217528", "ticker": "SOLV", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 88.77, "reason": "liquidity filter: SOLV average volume 79,508 < 500,000"}
 {"timestamp": "2026-08-21T14:52:58.610922", "ticker": "ACN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 187.715, "reason": "liquidity filter: ACN average volume 298,960 < 500,000"}
 {"timestamp": "2026-08-21T14:52:59.596381", "ticker": "SJM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 124.505, "reason": "liquidity filter: SJM average volume 51,462 < 500,000"}
+{"timestamp": "2026-08-21T14:54:37.747942", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 358.09, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
