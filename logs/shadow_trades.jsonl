@@ -1698,3 +1698,5 @@
 {"timestamp": "2026-08-21T13:54:39.428133", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 263.17, "reason": "liquidity filter: ABBV average volume 252,388 < 500,000"}
 {"timestamp": "2026-08-21T13:56:43.662720", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 53.57, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
 {"timestamp": "2026-08-21T13:56:43.662979", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 88.6, "reason": "liquidity filter: SOLV average volume 79,139 < 500,000"}
+{"timestamp": "2026-08-21T13:58:47.921100", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 88.6, "reason": "stale quote for SOLV (264.23205s old; limit 180s)"}
+{"timestamp": "2026-08-21T13:58:49.343778", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 53.59, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
