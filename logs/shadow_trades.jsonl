@@ -2058,3 +2058,6 @@
 {"timestamp": "2026-08-21T19:14:51.912905", "ticker": "TYL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 350.46, "reason": "liquidity filter: TYL average volume 58,540 < 500,000"}
 {"timestamp": "2026-08-21T19:14:51.965019", "ticker": "SLB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 53.82, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
 {"timestamp": "2026-08-21T19:16:34.265957", "ticker": "ACN", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 183.36, "reason": "liquidity filter: ACN average volume 303,184 < 500,000"}
+{"timestamp": "2026-08-21T19:18:36.690662", "ticker": "T", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 25.32, "reason": "market data unavailable for T (bid/ask spread missing)"}
+{"timestamp": "2026-08-21T19:18:37.227866", "ticker": "TGT", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 163.895, "reason": "liquidity filter: TGT average volume 221,419 < 500,000"}
+{"timestamp": "2026-08-21T19:18:37.359200", "ticker": "TRMB", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 60.19, "reason": "liquidity filter: TRMB average volume 166,511 < 500,000"}
