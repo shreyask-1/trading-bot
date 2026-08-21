@@ -2078,3 +2078,5 @@
 {"timestamp": "2026-08-21T19:32:46.864450", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 364.89, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
 {"timestamp": "2026-08-21T19:32:47.811692", "ticker": "UNP", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 306.62, "reason": "liquidity filter: UNP average volume 130,470 < 500,000"}
 {"timestamp": "2026-08-21T19:32:48.958957", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 89.18, "reason": "liquidity filter: SOLV average volume 81,105 < 500,000"}
+{"timestamp": "2026-08-21T19:34:37.694635", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 365.1, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
+{"timestamp": "2026-08-21T19:34:37.757621", "ticker": "TGT", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 164.19, "reason": "liquidity filter: TGT average volume 222,334 < 500,000"}
