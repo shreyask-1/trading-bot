@@ -2102,3 +2102,6 @@
 {"timestamp": "2026-08-21T19:48:37.028181", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 365.32, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
 {"timestamp": "2026-08-21T19:48:37.326536", "ticker": "ACN", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 184.705, "reason": "liquidity filter: ACN average volume 304,197 < 500,000"}
 {"timestamp": "2026-08-21T19:48:37.474747", "ticker": "XOM", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 165.035, "reason": "liquidity filter: XOM average volume 442,748 < 500,000"}
+{"timestamp": "2026-08-21T19:50:32.971935", "ticker": "T", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 25.325, "reason": "market data unavailable for T (bid/ask spread missing)"}
+{"timestamp": "2026-08-21T19:50:33.036177", "ticker": "UNP", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 307.6, "reason": "liquidity filter: UNP average volume 130,993 < 500,000"}
+{"timestamp": "2026-08-21T19:50:33.205598", "ticker": "TRMB", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 60.38, "reason": "liquidity filter: TRMB average volume 167,205 < 500,000"}
