@@ -1426,3 +1426,5 @@
 {"timestamp": "2026-08-21T09:00:49.940246", "ticker": "AMCR", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 47.795, "reason": "stale quote for AMCR (46852.262917s old; limit 180s)"}
 {"timestamp": "2026-08-21T09:02:40.678145", "ticker": "WBD", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 28.24, "reason": "stale quote for WBD (46961.026058s old; limit 180s)"}
 {"timestamp": "2026-08-21T09:02:41.022237", "ticker": "WDAY", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 197.315, "reason": "stale quote for WDAY (46961.079831s old; limit 180s)"}
+{"timestamp": "2026-08-21T09:06:29.844715", "ticker": "WBD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 28.24, "reason": "stale quote for WBD (47190.41479s old; limit 180s)"}
+{"timestamp": "2026-08-21T09:06:29.897900", "ticker": "WDAY", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 197.315, "reason": "stale quote for WDAY (47190.162484s old; limit 180s)"}
