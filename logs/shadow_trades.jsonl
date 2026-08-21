@@ -1782,3 +1782,5 @@
 {"timestamp": "2026-08-21T15:16:40.809983", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 53.255, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
 {"timestamp": "2026-08-21T15:16:43.975445", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 360.935, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
 {"timestamp": "2026-08-21T15:16:44.182845", "ticker": "ACN", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 186.46, "reason": "liquidity filter: ACN average volume 299,978 < 500,000"}
+{"timestamp": "2026-08-21T15:18:50.194804", "ticker": "ACN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 186.16, "reason": "liquidity filter: ACN average volume 300,018 < 500,000"}
+{"timestamp": "2026-08-21T15:18:52.956192", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 360.74, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
