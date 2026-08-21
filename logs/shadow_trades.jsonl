@@ -1676,3 +1676,5 @@
 {"timestamp": "2026-08-21T13:39:10.796604", "ticker": "ACN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 182.69, "reason": "liquidity filter: ACN average volume 296,301 < 500,000"}
 {"timestamp": "2026-08-21T13:40:48.730507", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 53.865, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
 {"timestamp": "2026-08-21T13:40:49.142001", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 123.37, "reason": "liquidity filter: RVTY average volume 93,514 < 500,000"}
+{"timestamp": "2026-08-21T13:42:42.779198", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 53.77, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-08-21T13:42:43.235270", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 262.755, "reason": "liquidity filter: ABBV average volume 252,134 < 500,000"}
