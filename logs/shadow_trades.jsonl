@@ -1682,3 +1682,5 @@
 {"timestamp": "2026-08-21T13:44:36.973891", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 263.58, "reason": "liquidity filter: ABBV average volume 252,174 < 500,000"}
 {"timestamp": "2026-08-21T13:46:30.794043", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 53.74, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
 {"timestamp": "2026-08-21T13:46:31.023134", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 263.855, "reason": "liquidity filter: ABBV average volume 252,284 < 500,000"}
+{"timestamp": "2026-08-21T13:48:40.749007", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 53.875, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-08-21T13:48:41.675267", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 123.185, "reason": "stale quote for RVTY (202.622893s old; limit 180s)"}
