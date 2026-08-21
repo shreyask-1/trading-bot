@@ -1857,3 +1857,5 @@
 {"timestamp": "2026-08-21T16:01:04.342963", "ticker": "SCHW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 111.59, "reason": "liquidity filter: SCHW average volume 364,181 < 500,000"}
 {"timestamp": "2026-08-21T16:02:43.180274", "ticker": "ACN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 187.535, "reason": "liquidity filter: ACN average volume 300,592 < 500,000"}
 {"timestamp": "2026-08-21T16:02:43.521117", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 361.94, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
+{"timestamp": "2026-08-21T16:04:43.495580", "ticker": "ACN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 187.48, "reason": "liquidity filter: ACN average volume 300,610 < 500,000"}
+{"timestamp": "2026-08-21T16:04:43.638565", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 361.55, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
