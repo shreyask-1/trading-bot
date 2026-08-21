@@ -2028,3 +2028,4 @@
 {"timestamp": "2026-08-21T18:48:45.124339", "ticker": "XOM", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 165.35, "reason": "liquidity filter: XOM average volume 438,323 < 500,000"}
 {"timestamp": "2026-08-21T18:50:42.028873", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 89.01, "reason": "liquidity filter: SOLV average volume 80,536 < 500,000"}
 {"timestamp": "2026-08-21T18:50:42.175321", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 364.97, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
+{"timestamp": "2026-08-21T18:52:43.896035", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 89.01, "reason": "stale quote for SOLV (210.427984s old; limit 180s)"}
