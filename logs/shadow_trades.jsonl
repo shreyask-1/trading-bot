@@ -1495,3 +1495,4 @@
 {"timestamp": "2026-08-21T10:14:52.103176", "ticker": "A", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 156.285, "reason": "stale quote for A (51297.294729s old; limit 180s)"}
 {"timestamp": "2026-08-21T10:14:52.279663", "ticker": "AES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 14.76, "reason": "stale quote for AES (51297.594397s old; limit 180s)"}
 {"timestamp": "2026-08-21T10:14:52.420445", "ticker": "APD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 300.255, "reason": "stale quote for APD (51296.03381s old; limit 180s)"}
+{"timestamp": "2026-08-21T10:16:51.846455", "ticker": "ADM", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 81.7, "reason": "stale quote for ADM (51417.121756s old; limit 180s)"}
