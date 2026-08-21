@@ -1573,3 +1573,6 @@
 {"timestamp": "2026-08-21T11:56:41.319545", "ticker": "WELL", "action": "buy", "engine": "gemini", "confidence": 70, "conviction": 7, "price": 237.4, "reason": "stale quote for WELL (57403.318879s old; limit 180s)"}
 {"timestamp": "2026-08-21T11:56:41.568298", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 261.9, "reason": "stale quote for ABBV (57401.601723s old; limit 180s)"}
 {"timestamp": "2026-08-21T11:58:33.012632", "ticker": "AMCR", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 47.795, "reason": "stale quote for AMCR (57522.186737s old; limit 180s)"}
+{"timestamp": "2026-08-21T12:01:02.157294", "ticker": "MSI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 473.77, "reason": "stale quote for MSI (57644.509435s old; limit 180s)"}
+{"timestamp": "2026-08-21T12:01:02.157598", "ticker": "DOW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 32.91, "reason": "stale quote for DOW (57644.183782s old; limit 180s)"}
+{"timestamp": "2026-08-21T12:01:02.157793", "ticker": "AMCR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 47.795, "reason": "stale quote for AMCR (57651.944743s old; limit 180s)"}
