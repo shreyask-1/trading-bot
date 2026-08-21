@@ -2011,3 +2011,4 @@
 {"timestamp": "2026-08-21T18:28:43.088170", "ticker": "TRMB", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 60.08, "reason": "liquidity filter: TRMB average volume 165,980 < 500,000"}
 {"timestamp": "2026-08-21T18:31:02.606276", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 364.24, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
 {"timestamp": "2026-08-21T18:31:04.571601", "ticker": "ACN", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 183.495, "reason": "liquidity filter: ACN average volume 302,556 < 500,000"}
+{"timestamp": "2026-08-21T18:32:41.022425", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 364.315, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
