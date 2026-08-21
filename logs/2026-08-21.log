@@ -7734,6 +7734,9 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,705.68;
 Shadow report: 1400 shadow candidate(s), 277 rejection group(s)
 Timings: account: 0.0s | risk: 0.5s | decide: 22.2s | watchlist: 0.0s | perf: 0.0s
 
+=== Run at 2026-08-21T06:56:27.634675 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-21 02:56 AM EDT | Market open (per Alpaca): False | Session: CLOSED
 === Run at 2026-08-21T06:55:31.716741 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-21 02:55 AM EDT | Market open (per Alpaca): False | Session: CLOSED
@@ -7744,6 +7747,10 @@ Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
 Open orders (1): MS sell 43.8344
 Risk state: peak $99,703.60 | drawdown 1.24% | today +0.00% | halted: False
 Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 157, 2 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 44/64 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 589
 News: fetched 157, 4 new after dedup, 0 ticker(s) matched.
 Quant pre-screen: 44/64 candidates passed.
 Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
@@ -7757,6 +7764,13 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued APO buy (conf 90.0, stop None, tp None)
   -> queued TGT buy (conf 89, stop 145.62, tp 161.91)
   -> queued XEL buy (conf 89, stop 76.08, tp 84.0)
+  -> queued ARE buy (conf 88, stop 50.5, tp 58.0)
+  -> queued CF buy (conf 95, stop 119.5, tp 135.0)
+  -> queued AXON buy (conf None, stop 525.81, tp 651.08)
+  -> queued CBRE buy (conf 92, stop 147.0, tp 165.0)
+  -> queued BKNG buy (conf None, stop 204.275, tp 216.37)
+Dashboard watchlist synced (9 symbols) for news/headlines.
+Ending portfolio value: $98,471.97
   -> queued ARE buy (conf 89, stop 50.25, tp 57.5)
   -> queued CF buy (conf None, stop 111.94, tp 129.045)
   -> queued AXON buy (conf None, stop 525.81, tp 651.08)
@@ -7770,6 +7784,7 @@ Performance: Total return -0.40% | Max drawdown 0.62% | Daily Sharpe -11.26 | 19
 Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $-124.12 (6 open) | Books: legacy: realized $-1,705.68, unrealized $-124.12
 Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,705.68; worst symbols HPE:-1286.89; COHR:-471.20; SNDK:-159.07; ANET:-45.31; NOW:-30.35
 Shadow report: 1400 shadow candidate(s), 277 rejection group(s)
+Timings: account: 0.0s | risk: 2.2s | decide: 7.0s | watchlist: 0.1s | perf: 0.2s
 Timings: account: 0.0s | risk: 1.9s | decide: 22.7s | watchlist: 0.0s | perf: 0.0s
 
 === Run at 2026-08-21T06:57:02.644026 ===
