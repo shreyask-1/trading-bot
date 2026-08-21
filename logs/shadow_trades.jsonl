@@ -1702,3 +1702,5 @@
 {"timestamp": "2026-08-21T13:58:49.343778", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 53.59, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
 {"timestamp": "2026-08-21T14:00:52.585066", "ticker": "T", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 25.435, "reason": "market data unavailable for T (bid/ask spread missing)"}
 {"timestamp": "2026-08-21T14:00:52.585253", "ticker": "SYF", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 78.62, "reason": "liquidity filter: SYF average volume 157,697 < 500,000"}
+{"timestamp": "2026-08-21T14:02:41.281437", "ticker": "DLTR", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 129.515, "reason": "stale quote for DLTR (278.23073s old; limit 180s)"}
+{"timestamp": "2026-08-21T14:02:41.895307", "ticker": "SYF", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 78.6, "reason": "liquidity filter: SYF average volume 157,725 < 500,000"}
