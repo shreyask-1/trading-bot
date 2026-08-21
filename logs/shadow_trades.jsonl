@@ -1649,3 +1649,5 @@
 {"timestamp": "2026-08-21T13:16:34.082833", "ticker": "ARE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 52.95, "reason": "stale quote for ARE (62197.228528s old; limit 180s)"}
 {"timestamp": "2026-08-21T13:18:34.934998", "ticker": "ARE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 52.95, "reason": "stale quote for ARE (62318.323471s old; limit 180s)"}
 {"timestamp": "2026-08-21T13:18:35.195761", "ticker": "AMCR", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 47.795, "reason": "stale quote for AMCR (62324.281472s old; limit 180s)"}
+{"timestamp": "2026-08-21T13:20:40.336871", "ticker": "ADM", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 81.7, "reason": "stale quote for ADM (62445.789232s old; limit 180s)"}
+{"timestamp": "2026-08-21T13:20:40.471493", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 261.9, "reason": "stale quote for ABBV (62440.56817s old; limit 180s)"}
