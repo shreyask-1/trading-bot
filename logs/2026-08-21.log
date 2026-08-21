@@ -13717,3 +13717,36 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,705.68;
 Shadow report: 1665 shadow candidate(s), 500 rejection group(s)
 Timings: account: 0.0s | risk: 4.2s | decide: 15.3s | watchlist: 0.1s | perf: 0.1s
 
+=== Run at 2026-08-21T13:32:27.541109 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-21 09:32 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $98,777.94
+Cash: $66,261.26 | Holdings (6): {'AMT': '14.8145 sh (+0.24%)', 'ERIE': '0.7641 sh (+1.25%)', 'GEHC': '0.6136 sh (+0.19%)', 'MS': '43.8344 sh (-4.49%)', 'MSI': '21.1281 sh (+1.22%)', 'NWS': '303.7199 sh (+4.94%)'}
+Sector exposure (cached): Communication Services 10.5%, Technology 10.2%, Financials 9.6%, Real Estate 2.6%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.93% | today +0.31% | halted: False
+Stagnation/holding-time exits: 1
+  -> {"timestamp": "2026-08-21T13:32:36.473376", "ticker": "AMT", "action": "sell", "qty": 14.8145, "conviction": 10, "engine": "legacy/unknown", "size_multiplier": 1.0, "order_id": "8e4c9c36-14e8-4457-9f2a-2c4283957bf3", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": null, "take_profit": null, "reasoning": "Stagnation exit: 47.9h held, progress +0.31% < 0.50%", "status": "submitted", "trigger": "stagnation_exit"}
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+Overnight queue deferred 9 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+Morning verification: 2 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
+News: fetched 158, 5 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 41/60 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 182
+  -> {"ticker": "ABBV", "status": "skipped", "reason": "liquidity filter: ABBV average volume 252,012 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "XOM", "status": "skipped", "reason": "liquidity filter: XOM average volume 417,538 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "WELL", "status": "skipped", "reason": "liquidity filter: WELL average volume 133,787 < 500,000", "shadow": false, "data_guard": true}
+Overnight queue cleared after verification.
+Overnight queue retained 9 deferred stale idea(s).
+Dashboard watchlist synced (9 symbols) for news/headlines.
+Ending portfolio value: $98,780.38
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return -0.09% | Max drawdown 0.94% | Daily Sharpe -1.23 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 6 | Equity $98,768.75
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+185.80 (6 open) | Books: legacy: realized $-1,705.68, unrealized $+185.80
+Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,705.68; worst symbols HPE:-1286.89; COHR:-471.20; SNDK:-159.07; ANET:-45.31; NOW:-30.35
+Shadow report: 1668 shadow candidate(s), 498 rejection group(s)
+Timings: account: 0.0s | risk: 8.5s | decide: 9.9s | watchlist: 0.2s | perf: 0.2s
+
