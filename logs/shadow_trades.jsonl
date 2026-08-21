@@ -2031,3 +2031,5 @@
 {"timestamp": "2026-08-21T18:52:43.896035", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 89.01, "reason": "stale quote for SOLV (210.427984s old; limit 180s)"}
 {"timestamp": "2026-08-21T18:54:42.797300", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 365.13, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
 {"timestamp": "2026-08-21T18:54:43.152653", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 89.01, "reason": "stale quote for SOLV (329.920391s old; limit 180s)"}
+{"timestamp": "2026-08-21T18:56:44.513685", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 364.61, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
+{"timestamp": "2026-08-21T18:56:45.432662", "ticker": "ACN", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 183.91, "reason": "liquidity filter: ACN average volume 302,848 < 500,000"}
