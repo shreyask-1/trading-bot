@@ -13804,3 +13804,38 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,705.68;
 Shadow report: 1668 shadow candidate(s), 498 rejection group(s)
 Timings: account: 0.0s | risk: 3.3s | decide: 13.0s | watchlist: 0.1s | perf: 0.1s
 
+=== Run at 2026-08-21T13:38:43.407341 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-21 09:38 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $98,795.96
+Cash: $68,848.74 | Holdings (5): {'ERIE': '0.7641 sh (+1.84%)', 'GEHC': '0.6136 sh (+0.18%)', 'MS': '43.8344 sh (-4.70%)', 'MSI': '21.1281 sh (+1.49%)', 'NWS': '303.7199 sh (+5.00%)'}
+Sector exposure (cached): Communication Services 10.5%, Technology 10.2%, Financials 9.5%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.91% | today +0.33% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+Overnight queue deferred 9 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 43/60 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
+Technical fallback cap omitted 12 weaker idea(s) this run.
+Gemini calls used today (all models combined): 184
+  -> {"ticker": "ABBV", "status": "skipped", "reason": "liquidity filter: ABBV average volume 252,091 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "ADM", "status": "skipped", "reason": "liquidity filter: ADM average volume 199,100 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "ZBH", "status": "skipped", "reason": "liquidity filter: ZBH average volume 158,511 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "SLB", "status": "skipped", "reason": "market data unavailable for SLB (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "A", "status": "skipped", "reason": "liquidity filter: A average volume 86,985 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "AES", "status": "skipped", "reason": "stale quote for AES (192.94424s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "APD", "status": "skipped", "reason": "liquidity filter: APD average volume 47,321 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "ACN", "status": "skipped", "reason": "liquidity filter: ACN average volume 296,301 < 500,000", "shadow": false, "data_guard": true}
+Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); 5 idea(s) remain subject to the retry cap.
+Run budget reserve reached -- skipping dashboard watchlist sync.
+Run budget reserve reached -- skipping performance snapshot.
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return -0.13% | Max drawdown 0.94% | Daily Sharpe -2.02 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 5 | Equity $98,795.96
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+192.06 (5 open) | Books: legacy: realized $-1,705.68, unrealized $+192.06
+Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,705.68; worst symbols HPE:-1286.89; COHR:-471.20; SNDK:-159.07; ANET:-45.31; NOW:-30.35
+Shadow report: 1676 shadow candidate(s), 493 rejection group(s)
+Timings: account: 0.0s | risk: 2.0s | decide: 25.2s | watchlist: 0.0s | perf: 0.0s
+
