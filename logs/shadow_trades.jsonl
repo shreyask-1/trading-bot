@@ -2091,3 +2091,5 @@
 {"timestamp": "2026-08-21T19:40:56.879424", "ticker": "AJG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 263.855, "reason": "liquidity filter: AJG average volume 69,230 < 500,000"}
 {"timestamp": "2026-08-21T19:40:57.029718", "ticker": "ADM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 80.19, "reason": "liquidity filter: ADM average volume 206,542 < 500,000"}
 {"timestamp": "2026-08-21T19:40:57.170316", "ticker": "ACN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 184.43, "reason": "liquidity filter: ACN average volume 303,928 < 500,000"}
+{"timestamp": "2026-08-21T19:42:51.928898", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 365.425, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
+{"timestamp": "2026-08-21T19:42:53.017795", "ticker": "UNP", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 306.815, "reason": "liquidity filter: UNP average volume 130,705 < 500,000"}
