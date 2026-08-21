@@ -1674,3 +1674,5 @@
 {"timestamp": "2026-08-21T13:39:10.658843", "ticker": "AES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 14.755, "reason": "stale quote for AES (192.94424s old; limit 180s)"}
 {"timestamp": "2026-08-21T13:39:10.728915", "ticker": "APD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 301.49, "reason": "liquidity filter: APD average volume 47,321 < 500,000"}
 {"timestamp": "2026-08-21T13:39:10.796604", "ticker": "ACN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 182.69, "reason": "liquidity filter: ACN average volume 296,301 < 500,000"}
+{"timestamp": "2026-08-21T13:40:48.730507", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 53.865, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-08-21T13:40:49.142001", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 123.37, "reason": "liquidity filter: RVTY average volume 93,514 < 500,000"}
