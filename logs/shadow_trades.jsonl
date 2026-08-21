@@ -1717,3 +1717,6 @@
 {"timestamp": "2026-08-21T14:14:41.235527", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 68.53, "reason": "stale quote for SWKS (295.466609s old; limit 180s)"}
 {"timestamp": "2026-08-21T14:16:45.151278", "ticker": "XYZ", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 81.545, "reason": "liquidity filter: XYZ average volume 332,035 < 500,000"}
 {"timestamp": "2026-08-21T14:16:45.406925", "ticker": "ZTS", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 76.945, "reason": "stale quote for ZTS (205.756341s old; limit 180s)"}
+{"timestamp": "2026-08-21T14:18:31.205554", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 53.44, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-08-21T14:18:31.445027", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 67.76, "reason": "liquidity filter: SWKS average volume 241,929 < 500,000"}
+{"timestamp": "2026-08-21T14:18:31.445217", "ticker": "TYL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 349.16, "reason": "liquidity filter: TYL average volume 57,481 < 500,000"}
