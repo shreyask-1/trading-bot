@@ -1767,3 +1767,4 @@
 {"timestamp": "2026-08-21T14:58:42.042521", "ticker": "ACN", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 188.36, "reason": "liquidity filter: ACN average volume 299,515 < 500,000"}
 {"timestamp": "2026-08-21T15:00:53.468984", "ticker": "ACN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 188.225, "reason": "liquidity filter: ACN average volume 299,653 < 500,000"}
 {"timestamp": "2026-08-21T15:02:51.352044", "ticker": "ACN", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 187.9, "reason": "liquidity filter: ACN average volume 299,736 < 500,000"}
+{"timestamp": "2026-08-21T15:04:47.045876", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 53.435, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
