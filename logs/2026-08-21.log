@@ -2578,6 +2578,7 @@ Shadow report: 1400 shadow candidate(s), 277 rejection group(s)
 Timings: account: 0.0s | risk: 2.1s | decide: 9.6s | watchlist: 0.1s | perf: 0.1s
 
 === Run at 2026-08-21T02:18:45.585567 ===
+=== Run at 2026-08-21T02:18:01.704850 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-20 10:18 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $98,471.97
@@ -2588,6 +2589,7 @@ Open orders (1): MS sell 43.8344
 Risk state: peak $99,703.60 | drawdown 1.24% | today -0.40% | halted: False
 Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
 News: fetched 157, 0 new after dedup, 0 ticker(s) matched.
+News: fetched 157, 1 new after dedup, 0 ticker(s) matched.
 Quant pre-screen: 37/63 candidates passed.
 Gemini proposed 3 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 507
@@ -2613,4 +2615,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,705.68; worst symbols HPE:-1286.89; COHR:-471.20; SNDK:-159.07; ANET:-45.31; NOW:-30.35
 Shadow report: 1400 shadow candidate(s), 277 rejection group(s)
 Timings: account: 0.0s | risk: 0.7s | decide: 3.8s | watchlist: 0.0s | perf: 0.0s
+Timings: account: 0.0s | risk: 2.1s | decide: 15.7s | watchlist: 0.1s | perf: 0.1s
 
