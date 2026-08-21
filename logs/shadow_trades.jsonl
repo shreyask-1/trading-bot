@@ -1666,3 +1666,5 @@
 {"timestamp": "2026-08-21T13:32:45.941770", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 261.55, "reason": "liquidity filter: ABBV average volume 252,012 < 500,000"}
 {"timestamp": "2026-08-21T13:32:46.251917", "ticker": "XOM", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 167.57, "reason": "liquidity filter: XOM average volume 417,538 < 500,000"}
 {"timestamp": "2026-08-21T13:32:46.554267", "ticker": "WELL", "action": "buy", "engine": "gemini", "confidence": 72, "conviction": 7, "price": 237.12, "reason": "liquidity filter: WELL average volume 133,787 < 500,000"}
+{"timestamp": "2026-08-21T13:38:14.014362", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 54.04, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-08-21T13:38:14.326192", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 262.63, "reason": "liquidity filter: ABBV average volume 252,079 < 500,000"}
