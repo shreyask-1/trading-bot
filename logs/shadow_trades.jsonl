@@ -1577,3 +1577,5 @@
 {"timestamp": "2026-08-21T12:01:02.157598", "ticker": "DOW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 32.91, "reason": "stale quote for DOW (57644.183782s old; limit 180s)"}
 {"timestamp": "2026-08-21T12:01:02.157793", "ticker": "AMCR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 47.795, "reason": "stale quote for AMCR (57651.944743s old; limit 180s)"}
 {"timestamp": "2026-08-21T12:04:40.181465", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 261.9, "reason": "stale quote for ABBV (57870.009529s old; limit 180s)"}
+{"timestamp": "2026-08-21T12:06:39.365670", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 261.9, "reason": "stale quote for ABBV (57999.350643s old; limit 180s)"}
+{"timestamp": "2026-08-21T12:06:39.609488", "ticker": "ABT", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 114.18, "reason": "stale quote for ABT (58005.60321s old; limit 180s)"}
