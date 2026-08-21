@@ -1700,3 +1700,5 @@
 {"timestamp": "2026-08-21T13:56:43.662979", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 88.6, "reason": "liquidity filter: SOLV average volume 79,139 < 500,000"}
 {"timestamp": "2026-08-21T13:58:47.921100", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 88.6, "reason": "stale quote for SOLV (264.23205s old; limit 180s)"}
 {"timestamp": "2026-08-21T13:58:49.343778", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 53.59, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-08-21T14:00:52.585066", "ticker": "T", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 25.435, "reason": "market data unavailable for T (bid/ask spread missing)"}
+{"timestamp": "2026-08-21T14:00:52.585253", "ticker": "SYF", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 78.62, "reason": "liquidity filter: SYF average volume 157,697 < 500,000"}
