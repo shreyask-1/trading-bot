@@ -2029,3 +2029,5 @@
 {"timestamp": "2026-08-21T18:50:42.028873", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 89.01, "reason": "liquidity filter: SOLV average volume 80,536 < 500,000"}
 {"timestamp": "2026-08-21T18:50:42.175321", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 364.97, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
 {"timestamp": "2026-08-21T18:52:43.896035", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 89.01, "reason": "stale quote for SOLV (210.427984s old; limit 180s)"}
+{"timestamp": "2026-08-21T18:54:42.797300", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 365.13, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
+{"timestamp": "2026-08-21T18:54:43.152653", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 89.01, "reason": "stale quote for SOLV (329.920391s old; limit 180s)"}
