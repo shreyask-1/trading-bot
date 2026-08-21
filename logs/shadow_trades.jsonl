@@ -2072,3 +2072,6 @@
 {"timestamp": "2026-08-21T19:26:33.279977", "ticker": "TRMB", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 60.255, "reason": "liquidity filter: TRMB average volume 166,650 < 500,000"}
 {"timestamp": "2026-08-21T19:28:44.732795", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 365.145, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
 {"timestamp": "2026-08-21T19:28:45.069739", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 89.17, "reason": "liquidity filter: SOLV average volume 81,083 < 500,000"}
+{"timestamp": "2026-08-21T19:30:46.767371", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 364.16, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
+{"timestamp": "2026-08-21T19:30:48.517197", "ticker": "UNP", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 306.655, "reason": "liquidity filter: UNP average volume 130,426 < 500,000"}
+{"timestamp": "2026-08-21T19:30:48.765661", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 89.165, "reason": "liquidity filter: SOLV average volume 81,083 < 500,000"}
