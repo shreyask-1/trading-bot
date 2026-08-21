@@ -817,6 +817,7 @@ Shadow report: 1400 shadow candidate(s), 277 rejection group(s)
 Timings: account: 0.0s | risk: 1.8s | decide: 14.1s | watchlist: 0.1s | perf: 0.1s
 
 === Run at 2026-08-21T00:44:55.216742 ===
+=== Run at 2026-08-21T00:44:02.099073 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-20 08:44 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $98,471.97
@@ -834,6 +835,11 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued RVTY buy (conf 94, stop 113.58, tp 124.32)
   -> queued YUM buy (conf 94, stop 143.01, tp 154.75)
   -> queued UNP buy (conf 92, stop 290.37, tp 315.51)
+Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
+Technical fallback cap omitted 14 weaker idea(s) this run.
+Gemini calls used today (all models combined): 466
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued RVTY buy (conf 94, stop 113.58, tp 124.32)
   -> queued SRE buy (conf 90, stop 83.71, tp 92.0)
   -> queued APO buy (conf 90.0, stop None, tp None)
   -> queued TGT buy (conf 89, stop 145.62, tp 161.91)
@@ -845,6 +851,15 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued SOLV buy (conf 84, stop 81.65, tp 95.0)
 Dashboard watchlist synced (9 symbols) for news/headlines.
 Ending portfolio value: $98,471.97
+  -> queued TMO buy (conf 88, stop 577.88, tp 660.0)
+  -> queued TSCO buy (conf 86, stop 33.37, tp 36.88)
+  -> queued YUM buy (conf 85, stop 143.01, tp 160.0)
+  -> queued SMCI buy (conf 84, stop 29.68, tp 42.31)
+  -> queued SOLV buy (conf 84, stop 81.65, tp 95.0)
+  -> queued UNP buy (conf None, stop 290.37, tp 307.615)
+  -> queued NDSN buy (conf None, stop 303.41, tp 336.68)
+Run budget reserve reached -- skipping dashboard watchlist sync.
+Run budget reserve reached -- skipping performance snapshot.
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
 Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
 Performance: Total return -0.40% | Max drawdown 0.62% | Daily Sharpe -11.26 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 6 | Equity $98,471.97
@@ -852,4 +867,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,705.68; worst symbols HPE:-1286.89; COHR:-471.20; SNDK:-159.07; ANET:-45.31; NOW:-30.35
 Shadow report: 1400 shadow candidate(s), 277 rejection group(s)
 Timings: account: 0.0s | risk: 2.2s | decide: 19.6s | watchlist: 0.1s | perf: 0.2s
+Timings: account: 0.0s | risk: 2.6s | decide: 21.9s | watchlist: 0.0s | perf: 0.0s
 
