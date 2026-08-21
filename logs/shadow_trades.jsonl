@@ -1637,3 +1637,5 @@
 {"timestamp": "2026-08-21T12:58:42.635865", "ticker": "ZBH", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 99.065, "reason": "stale quote for ZBH (61145.204453s old; limit 180s)"}
 {"timestamp": "2026-08-21T13:01:01.017086", "ticker": "AMCR", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 47.795, "reason": "stale quote for AMCR (61254.596592s old; limit 180s)"}
 {"timestamp": "2026-08-21T13:01:01.017205", "ticker": "WELL", "action": "buy", "engine": "gemini", "confidence": 72, "conviction": 7, "price": 237.4, "reason": "stale quote for WELL (61251.808064s old; limit 180s)"}
+{"timestamp": "2026-08-21T13:02:36.419998", "ticker": "AMCR", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 47.795, "reason": "stale quote for AMCR (61365.15789s old; limit 180s)"}
+{"timestamp": "2026-08-21T13:02:36.420222", "ticker": "XOM", "action": "buy", "engine": "gemini", "confidence": 69, "conviction": 7, "price": 166.235, "reason": "stale quote for XOM (61355.22063s old; limit 180s)"}
