@@ -1915,3 +1915,5 @@
 {"timestamp": "2026-08-21T16:56:40.094232", "ticker": "ZTS", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 77.43, "reason": "stale quote for ZTS (295.343438s old; limit 180s)"}
 {"timestamp": "2026-08-21T16:58:37.831879", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 364.83, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
 {"timestamp": "2026-08-21T16:58:38.103152", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 53.625, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-08-21T17:00:57.503878", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 364.61, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
+{"timestamp": "2026-08-21T17:00:57.504059", "ticker": "ACN", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 186.44, "reason": "liquidity filter: ACN average volume 301,477 < 500,000"}
