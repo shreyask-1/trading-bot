@@ -7659,3 +7659,40 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,705.68;
 Shadow report: 1400 shadow candidate(s), 277 rejection group(s)
 Timings: account: 0.0s | risk: 1.1s | decide: 17.1s | watchlist: 0.1s | perf: 0.1s
 
+=== Run at 2026-08-21T06:46:28.030696 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-21 02:46 AM EDT | Market open (per Alpaca): False | Session: CLOSED
+Account value: $98,471.97
+Cash: $66,262.77 | Holdings (6): {'AMT': '14.8145 sh (+0.97%)', 'ERIE': '0.7641 sh (+1.24%)', 'GEHC': '0.6136 sh (+0.51%)', 'MS': '43.8344 sh (-6.11%)', 'MSI': '21.1281 sh (+0.83%)', 'NWS': '303.7199 sh (+3.62%)'}
+Sector exposure (cached): Communication Services 10.4%, Technology 10.2%, Financials 9.4%, Real Estate 2.6%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 1.24% | today +0.00% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 157, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 44/64 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 588
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued RVTY buy (conf 94, stop 113.58, tp 124.32)
+  -> queued CLX buy (conf 94, stop 104.27, tp 108.91)
+  -> queued UNP buy (conf 92, stop 290.37, tp 315.51)
+  -> queued SRE buy (conf 90, stop 83.71, tp 92.0)
+  -> queued APO buy (conf 90.0, stop None, tp None)
+  -> queued TGT buy (conf 89, stop 145.62, tp 161.91)
+  -> queued XEL buy (conf 89, stop 76.08, tp 84.0)
+  -> queued ARE buy (conf 89, stop 50.25, tp 57.5)
+  -> queued CF buy (conf 99, stop 118.5, tp 135.0)
+  -> queued AXON buy (conf 91, stop 585.0, tp 675.0)
+  -> queued CBRE buy (conf 88, stop 146.5, tp 162.0)
+  -> queued BKNG buy (conf None, stop 204.275, tp 216.37)
+Dashboard watchlist synced (9 symbols) for news/headlines.
+Ending portfolio value: $98,471.97
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return -0.40% | Max drawdown 0.62% | Daily Sharpe -11.26 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 6 | Equity $98,471.97
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $-124.12 (6 open) | Books: legacy: realized $-1,705.68, unrealized $-124.12
+Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,705.68; worst symbols HPE:-1286.89; COHR:-471.20; SNDK:-159.07; ANET:-45.31; NOW:-30.35
+Shadow report: 1400 shadow candidate(s), 277 rejection group(s)
+Timings: account: 0.0s | risk: 2.4s | decide: 8.9s | watchlist: 0.1s | perf: 0.2s
+
