@@ -1976,3 +1976,5 @@
 {"timestamp": "2026-08-21T18:02:54.103558", "ticker": "SLB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 53.58, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
 {"timestamp": "2026-08-21T18:02:54.364215", "ticker": "SJM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 124.12, "reason": "liquidity filter: SJM average volume 52,086 < 500,000"}
 {"timestamp": "2026-08-21T18:02:54.364444", "ticker": "STT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 186.59, "reason": "stale quote for STT (209.024893s old; limit 180s)"}
+{"timestamp": "2026-08-21T18:04:42.873677", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 363.065, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
+{"timestamp": "2026-08-21T18:04:43.379333", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 89.105, "reason": "stale quote for SOLV (556.929977s old; limit 180s)"}
