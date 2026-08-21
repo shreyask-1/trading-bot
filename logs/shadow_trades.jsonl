@@ -2057,3 +2057,4 @@
 {"timestamp": "2026-08-21T19:14:51.837472", "ticker": "TSCO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 34.89, "reason": "market data unavailable for TSCO (bid/ask spread missing)"}
 {"timestamp": "2026-08-21T19:14:51.912905", "ticker": "TYL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 350.46, "reason": "liquidity filter: TYL average volume 58,540 < 500,000"}
 {"timestamp": "2026-08-21T19:14:51.965019", "ticker": "SLB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 53.82, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-08-21T19:16:34.265957", "ticker": "ACN", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 183.36, "reason": "liquidity filter: ACN average volume 303,184 < 500,000"}
