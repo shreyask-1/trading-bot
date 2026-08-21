@@ -1713,3 +1713,5 @@
 {"timestamp": "2026-08-21T14:08:37.401118", "ticker": "ABT", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 115.23, "reason": "liquidity filter: ABT average volume 436,556 < 500,000"}
 {"timestamp": "2026-08-21T14:12:45.267295", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 53.395, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
 {"timestamp": "2026-08-21T14:12:45.267535", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 68.53, "reason": "liquidity filter: SWKS average volume 241,908 < 500,000"}
+{"timestamp": "2026-08-21T14:14:40.938732", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 53.435, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-08-21T14:14:41.235527", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 68.53, "reason": "stale quote for SWKS (295.466609s old; limit 180s)"}
