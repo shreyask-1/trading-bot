@@ -1747,3 +1747,5 @@
 {"timestamp": "2026-08-21T14:44:43.930544", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 356.345, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
 {"timestamp": "2026-08-21T14:44:44.165527", "ticker": "ACN", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 186.795, "reason": "liquidity filter: ACN average volume 298,470 < 500,000"}
 {"timestamp": "2026-08-21T14:46:44.166705", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 130.44, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
+{"timestamp": "2026-08-21T14:48:39.621749", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 67.51, "reason": "liquidity filter: SWKS average volume 242,300 < 500,000"}
+{"timestamp": "2026-08-21T14:48:42.264121", "ticker": "ZTS", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 78.04, "reason": "liquidity filter: ZTS average volume 302,950 < 500,000"}
