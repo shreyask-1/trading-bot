@@ -1832,3 +1832,4 @@
 {"timestamp": "2026-08-21T15:48:49.607858", "ticker": "ACN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 187.5, "reason": "liquidity filter: ACN average volume 300,367 < 500,000"}
 {"timestamp": "2026-08-21T15:48:49.665298", "ticker": "TRMB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 60.4, "reason": "stale quote for TRMB (507.987234s old; limit 180s)"}
 {"timestamp": "2026-08-21T15:50:35.447942", "ticker": "TYL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 352.97, "reason": "liquidity filter: TYL average volume 57,790 < 500,000"}
+{"timestamp": "2026-08-21T15:52:32.640687", "ticker": "NVDA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 216.42, "reason": "market data unavailable for NVDA (bid/ask spread missing)"}
