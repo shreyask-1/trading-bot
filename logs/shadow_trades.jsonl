@@ -1867,3 +1867,5 @@
 {"timestamp": "2026-08-21T16:10:51.859891", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 361.07, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
 {"timestamp": "2026-08-21T16:12:34.869601", "ticker": "ACN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 187.325, "reason": "liquidity filter: ACN average volume 300,718 < 500,000"}
 {"timestamp": "2026-08-21T16:12:34.869822", "ticker": "ADP", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 281.89, "reason": "liquidity filter: ADP average volume 112,569 < 500,000"}
+{"timestamp": "2026-08-21T16:16:34.512804", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 196.25, "reason": "stale quote for IT (323.227798s old; limit 180s)"}
+{"timestamp": "2026-08-21T16:16:34.615298", "ticker": "ACN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 186.8, "reason": "liquidity filter: ACN average volume 300,756 < 500,000"}
