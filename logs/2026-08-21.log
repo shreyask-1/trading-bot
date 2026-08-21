@@ -14043,3 +14043,34 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,705.68;
 Shadow report: 1694 shadow candidate(s), 479 rejection group(s)
 Timings: account: 0.0s | risk: 3.8s | decide: 22.7s | watchlist: 0.0s | perf: 0.0s
 
+=== Run at 2026-08-21T13:52:26.324087 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-21 09:52 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $98,846.15
+Cash: $68,848.74 | Holdings (5): {'ERIE': '0.7641 sh (+0.42%)', 'GEHC': '0.6136 sh (+0.36%)', 'MS': '43.8344 sh (-4.12%)', 'MSI': '21.1281 sh (+1.44%)', 'NWS': '303.7199 sh (+5.03%)'}
+Sector exposure (cached): Communication Services 10.5%, Technology 10.2%, Financials 9.6%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.86% | today +0.38% | halted: False
+Quality review submitted 1 position exit(s):
+  -> {"timestamp": "2026-08-21T13:52:31.872808", "ticker": "NWS", "action": "sell", "qty": 303.7199, "conviction": 10, "engine": "legacy/unknown", "size_multiplier": 1.0, "order_id": "42b5dfe2-abae-42a6-bcf6-d08c9dfb7fbf", "order_status": "OrderStatus.PENDING_NEW", "stop_loss": null, "take_profit": null, "reasoning": "Quality review profit-take: NWS is up 5.0% since entry >= 5.0%; banking the gain", "status": "submitted", "trigger": "quality_trim"}
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+Overnight queue deferred 11 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+Morning verification: 4 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
+News: fetched 158, 3 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 43/60 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 190
+  -> {"ticker": "SLB", "status": "skipped", "reason": "market data unavailable for SLB (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "SCHW", "status": "skipped", "reason": "liquidity filter: SCHW average volume 359,184 < 500,000", "shadow": false, "data_guard": true}
+Overnight queue kept 12 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
+Dashboard watchlist synced (7 symbols) for news/headlines.
+Ending portfolio value: $98,852.92
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return -0.02% | Max drawdown 0.94% | Daily Sharpe 0.13 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 5 | Equity $98,849.19
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $-252.11 (4 open) | Books: legacy: realized $-1,705.68, unrealized $-252.11
+Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,705.68; worst symbols HPE:-1286.89; COHR:-471.20; SNDK:-159.07; ANET:-45.31; NOW:-30.35
+Shadow report: 1696 shadow candidate(s), 477 rejection group(s)
+Timings: account: 0.0s | risk: 5.2s | decide: 7.5s | watchlist: 0.1s | perf: 0.2s
+
