@@ -1419,3 +1419,5 @@
 {"timestamp": "2026-08-21T08:50:36.007327", "ticker": "ADM", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 81.7, "reason": "stale quote for ADM (46241.487796s old; limit 180s)"}
 {"timestamp": "2026-08-21T08:50:36.088770", "ticker": "YUM", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 152.37, "reason": "stale quote for YUM (46244.520959s old; limit 180s)"}
 {"timestamp": "2026-08-21T08:54:42.836840", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 261.9, "reason": "stale quote for ABBV (46482.850508s old; limit 180s)"}
+{"timestamp": "2026-08-21T08:56:34.778202", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 261.9, "reason": "stale quote for ABBV (46594.875316s old; limit 180s)"}
+{"timestamp": "2026-08-21T08:56:34.921485", "ticker": "WBD", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 28.24, "reason": "stale quote for WBD (46595.437857s old; limit 180s)"}
