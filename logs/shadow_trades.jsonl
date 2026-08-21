@@ -1709,3 +1709,5 @@
 {"timestamp": "2026-08-21T14:04:58.920284", "ticker": "SYF", "action": "buy", "engine": "gemini", "confidence": 64, "conviction": 7, "price": 78.82, "reason": "liquidity filter: SYF average volume 157,770 < 500,000"}
 {"timestamp": "2026-08-21T14:06:42.609526", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 53.495, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
 {"timestamp": "2026-08-21T14:06:43.647366", "ticker": "T", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 25.53, "reason": "market data unavailable for T (bid/ask spread missing)"}
+{"timestamp": "2026-08-21T14:08:37.400907", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 264.49, "reason": "liquidity filter: ABBV average volume 252,709 < 500,000"}
+{"timestamp": "2026-08-21T14:08:37.401118", "ticker": "ABT", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 115.23, "reason": "liquidity filter: ABT average volume 436,556 < 500,000"}
