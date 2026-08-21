@@ -2112,3 +2112,5 @@
 {"timestamp": "2026-08-21T19:54:43.967773", "ticker": "ACN", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 184.84, "reason": "liquidity filter: ACN average volume 304,357 < 500,000"}
 {"timestamp": "2026-08-21T19:54:44.243038", "ticker": "UNP", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 307.8, "reason": "liquidity filter: UNP average volume 131,313 < 500,000"}
 {"timestamp": "2026-08-21T19:56:40.968656", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 195.87, "reason": "liquidity filter: IT average volume 82,124 < 500,000"}
+{"timestamp": "2026-08-21T19:58:41.128882", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 363.27, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
+{"timestamp": "2026-08-21T19:58:41.459075", "ticker": "UNP", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 307.95, "reason": "liquidity filter: UNP average volume 131,858 < 500,000"}
