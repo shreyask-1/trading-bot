@@ -1633,3 +1633,5 @@
 {"timestamp": "2026-08-21T12:54:35.628583", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 261.9, "reason": "stale quote for ABBV (60875.581758s old; limit 180s)"}
 {"timestamp": "2026-08-21T12:56:32.085823", "ticker": "AMCR", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 47.795, "reason": "stale quote for AMCR (61001.325543s old; limit 180s)"}
 {"timestamp": "2026-08-21T12:56:32.178419", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 261.9, "reason": "stale quote for ABBV (60992.306512s old; limit 180s)"}
+{"timestamp": "2026-08-21T12:58:42.326670", "ticker": "YUM", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 152.37, "reason": "stale quote for YUM (61130.587974s old; limit 180s)"}
+{"timestamp": "2026-08-21T12:58:42.635865", "ticker": "ZBH", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 99.065, "reason": "stale quote for ZBH (61145.204453s old; limit 180s)"}
