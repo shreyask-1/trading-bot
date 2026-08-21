@@ -1399,3 +1399,5 @@
 {"timestamp": "2026-08-20T23:58:32.877185", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 334.61, "reason": "stale quote for NDSN (14317.288069s old; limit 180s)"}
 {"timestamp": "2026-08-20T23:58:33.069855", "ticker": "TGT", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 158.27, "reason": "stale quote for TGT (14323.295706s old; limit 180s)"}
 {"timestamp": "2026-08-21T08:06:35.247004", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 261.9, "reason": "stale quote for ABBV (43595.398841s old; limit 180s)"}
+{"timestamp": "2026-08-21T08:08:38.536922", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 261.9, "reason": "stale quote for ABBV (43718.630507s old; limit 180s)"}
+{"timestamp": "2026-08-21T08:08:38.654737", "ticker": "WBD", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 28.24, "reason": "stale quote for WBD (43719.189126s old; limit 180s)"}
