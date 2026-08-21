@@ -1986,3 +1986,5 @@
 {"timestamp": "2026-08-21T18:06:56.117743", "ticker": "GEHC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 74.49, "reason": "stale quote for GEHC (274.405134s old; limit 180s)"}
 {"timestamp": "2026-08-21T18:06:56.542217", "ticker": "SLB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 53.67, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
 {"timestamp": "2026-08-21T18:06:58.580143", "ticker": "SWKS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 66.905, "reason": "liquidity filter: SWKS average volume 244,264 < 500,000"}
+{"timestamp": "2026-08-21T18:08:49.805475", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 363.43, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
+{"timestamp": "2026-08-21T18:08:52.483144", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 89.135, "reason": "liquidity filter: SOLV average volume 80,392 < 500,000"}
