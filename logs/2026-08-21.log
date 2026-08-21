@@ -8460,6 +8460,9 @@ Timings: account: 0.0s | risk: 0.6s | decide: 2.7s | watchlist: 0.0s | perf: 0.0
 === Run at 2026-08-21T07:35:08.830628 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-21 03:35 AM EDT | Market open (per Alpaca): False | Session: CLOSED
+=== Run at 2026-08-21T07:34:23.528479 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-21 03:34 AM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $98,471.97
 Cash: $66,262.77 | Holdings (6): {'AMT': '14.8145 sh (+0.97%)', 'ERIE': '0.7641 sh (+1.24%)', 'GEHC': '0.6136 sh (+0.51%)', 'MS': '43.8344 sh (-6.11%)', 'MSI': '21.1281 sh (+0.83%)', 'NWS': '303.7199 sh (+3.62%)'}
 Sector exposure (cached): Communication Services 10.4%, Technology 10.2%, Financials 9.4%, Real Estate 2.6%, Health Care 0.0%
@@ -8487,6 +8490,8 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued BKR buy (conf None, stop 61.54, tp 65.305)
 Run budget reserve reached -- skipping dashboard watchlist sync.
 Run budget reserve reached -- skipping performance snapshot.
+Dashboard watchlist synced (13 symbols) for news/headlines.
+Ending portfolio value: $98,471.97
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
 Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
 Performance: Total return -0.40% | Max drawdown 0.62% | Daily Sharpe -11.26 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 6 | Equity $98,471.97
@@ -8494,4 +8499,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,705.68; worst symbols HPE:-1286.89; COHR:-471.20; SNDK:-159.07; ANET:-45.31; NOW:-30.35
 Shadow report: 1400 shadow candidate(s), 277 rejection group(s)
 Timings: account: 0.0s | risk: 2.9s | decide: 22.1s | watchlist: 0.0s | perf: 0.0s
+Timings: account: 0.0s | risk: 0.4s | decide: 21.7s | watchlist: 0.0s | perf: 0.0s
 
