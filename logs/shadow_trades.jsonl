@@ -1525,3 +1525,5 @@
 {"timestamp": "2026-08-21T10:42:58.866417", "ticker": "APD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 300.255, "reason": "stale quote for APD (52982.450023s old; limit 180s)"}
 {"timestamp": "2026-08-21T10:44:38.579234", "ticker": "WDAY", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 197.315, "reason": "stale quote for WDAY (53078.685317s old; limit 180s)"}
 {"timestamp": "2026-08-21T10:44:38.838396", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 261.9, "reason": "stale quote for ABBV (53078.85387s old; limit 180s)"}
+{"timestamp": "2026-08-21T10:48:36.820420", "ticker": "ADM", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 81.7, "reason": "stale quote for ADM (53322.168264s old; limit 180s)"}
+{"timestamp": "2026-08-21T10:48:37.078346", "ticker": "WDAY", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 197.315, "reason": "stale quote for WDAY (53317.186418s old; limit 180s)"}
