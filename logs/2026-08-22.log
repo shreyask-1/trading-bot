@@ -4033,6 +4033,7 @@ Shadow report: 2116 shadow candidate(s), 95 rejection group(s)
 Timings: account: 0.0s | risk: 0.8s | decide: 23.5s | watchlist: 0.1s | perf: 0.1s
 
 === Run at 2026-08-22T03:34:42.139814 ===
+=== Run at 2026-08-22T03:34:13.677842 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-21 11:34 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,040.18
@@ -4051,6 +4052,9 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued DRI buy (conf 92, stop 213.0, tp 235.0)
   -> queued DE buy (conf 90, stop 610.0, tp 680.0)
   -> queued BSX buy (conf 88, stop 49.0, tp 54.5)
+  -> queued DRI buy (conf 92, stop 213.0, tp 229.46)
+  -> queued DE buy (conf 90, stop 579.5, tp 654.13)
+  -> queued BSX buy (conf 95, stop 49.01, tp 52.92)
   -> queued INTU buy (conf 82, stop 352.0, tp 390.0)
   -> queued T buy (conf 81, stop 24.8, tp 26.800000000000004)
   -> queued TSLA buy (conf 80, stop 323.73, tp 366.5)
@@ -4068,4 +4072,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,705.68; worst symbols HPE:-1286.89; COHR:-471.20; SNDK:-159.07; ANET:-45.31; NOW:-30.35
 Shadow report: 2116 shadow candidate(s), 95 rejection group(s)
 Timings: account: 0.0s | risk: 0.7s | decide: 3.7s | watchlist: 0.0s | perf: 0.0s
+Timings: account: 0.0s | risk: 0.4s | decide: 5.3s | watchlist: 0.0s | perf: 0.0s
 
