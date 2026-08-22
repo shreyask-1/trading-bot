@@ -10213,3 +10213,41 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,705.68;
 Shadow report: 2116 shadow candidate(s), 95 rejection group(s)
 Timings: account: 0.0s | risk: 0.6s | decide: 3.3s | watchlist: 0.0s | perf: 0.0s
 
+=== Run at 2026-08-22T09:00:35.838443 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-22 05:00 AM EDT | Market open (per Alpaca): False | Session: CLOSED
+Account value: $99,039.83
+Cash: $79,250.80 | Holdings (4): {'ERIE': '0.7641 sh (+2.23%)', 'GEHC': '0.6136 sh (+1.25%)', 'MS': '43.8344 sh (-3.06%)', 'MSI': '21.1281 sh (+2.28%)'}
+Sector exposure (cached): Technology 10.2%, Financials 9.7%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.67% | today -0.00% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 157, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 14/18 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
+Technical fallback cap omitted 1 weaker idea(s) this run.
+Gemini calls used today (all models combined): 55
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued SOLV buy (conf 89, stop 87.0, tp 94.0)
+  -> queued COHR buy (conf 85, stop 105.5, tp 128.0)
+  -> queued BSX buy (conf None, stop 49.01, tp 52.92)
+  -> queued INTU buy (conf 82, stop 352.0, tp 390.0)
+  -> queued CVX buy (conf 82, stop 195.0, tp 214.65)
+  -> queued T buy (conf 81, stop 24.8, tp 26.800000000000004)
+  -> queued TSLA buy (conf 80, stop 323.73, tp 366.5)
+  -> queued SLB buy (conf 80, stop 52.2, tp 57.0)
+  -> queued DRI buy (conf None, stop 212.995, tp 229.46)
+  -> queued DE buy (conf None, stop 579.5, tp 654.135)
+  -> queued COP buy (conf None, stop 119.165, tp 135.87)
+  -> queued DASH buy (conf None, stop 206.73, tp 225.9)
+Run budget reserve reached -- skipping dashboard watchlist sync.
+Run budget reserve reached -- skipping performance snapshot.
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.17% | Max drawdown 0.94% | Daily Sharpe 2.02 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 4 | Equity $99,039.83
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $-64.86 (4 open) | Books: legacy: realized $-1,705.68, unrealized $-64.86
+Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,705.68; worst symbols HPE:-1286.89; COHR:-471.20; SNDK:-159.07; ANET:-45.31; NOW:-30.35
+Shadow report: 2116 shadow candidate(s), 95 rejection group(s)
+Timings: account: 0.0s | risk: 1.7s | decide: 22.9s | watchlist: 0.0s | perf: 0.0s
+
