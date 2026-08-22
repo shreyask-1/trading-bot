@@ -4938,6 +4938,7 @@ Shadow report: 2116 shadow candidate(s), 95 rejection group(s)
 Timings: account: 0.0s | risk: 0.5s | decide: 3.4s | watchlist: 0.0s | perf: 0.0s
 
 === Run at 2026-08-22T04:22:58.856284 ===
+=== Run at 2026-08-22T04:22:25.466046 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-22 12:22 AM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,040.18
@@ -4952,6 +4953,10 @@ Quant pre-screen: 44/66 candidates passed.
 Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
 Technical fallback cap omitted 19 weaker idea(s) this run.
 Gemini calls used today (all models combined): 539
+News: fetched 119, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 44/66 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 540
 Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
   -> queued SOLV buy (conf 89, stop 87.0, tp 94.0)
   -> queued COHR buy (conf 85, stop 105.5, tp 128.0)
@@ -4966,6 +4971,11 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued CVX buy (conf None, stop 189.13, tp 208.91)
   -> queued DASH buy (conf None, stop 206.73, tp 225.9)
 Dashboard watchlist synced (11 symbols) for news/headlines.
+  -> queued DRI buy (conf 90, stop 212.5, tp 235.0)
+  -> queued DE buy (conf 95, stop 615.0, tp 685.0)
+  -> queued CVX buy (conf None, stop 189.13, tp 208.91)
+  -> queued DASH buy (conf 85, stop 215.0, tp 240.0)
+Dashboard watchlist synced (7 symbols) for news/headlines.
 Ending portfolio value: $99,040.18
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
 Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
@@ -4974,4 +4984,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,705.68; worst symbols HPE:-1286.89; COHR:-471.20; SNDK:-159.07; ANET:-45.31; NOW:-30.35
 Shadow report: 2116 shadow candidate(s), 95 rejection group(s)
 Timings: account: 0.0s | risk: 0.3s | decide: 22.0s | watchlist: 0.0s | perf: 0.0s
+Timings: account: 0.0s | risk: 0.4s | decide: 10.7s | watchlist: 0.0s | perf: 0.0s
 
