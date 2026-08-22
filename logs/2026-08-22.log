@@ -10549,6 +10549,7 @@ Shadow report: 2116 shadow candidate(s), 95 rejection group(s)
 Timings: account: 0.0s | risk: 0.2s | decide: 2.7s | watchlist: 0.0s | perf: 0.0s
 
 === Run at 2026-08-22T09:18:40.071871 ===
+=== Run at 2026-08-22T09:18:10.118427 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-22 05:18 AM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,039.83
@@ -10559,6 +10560,7 @@ Open orders (1): MS sell 43.8344
 Risk state: peak $99,703.60 | drawdown 0.67% | today -0.00% | halted: False
 Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
 News: fetched 157, 1 new after dedup, 0 ticker(s) matched.
+News: fetched 157, 2 new after dedup, 0 ticker(s) matched.
 Quant pre-screen: 44/66 candidates passed.
 Gemini proposed 2 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 63
@@ -10573,6 +10575,12 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued SLB buy (conf 80, stop 52.2, tp 57.0)
   -> queued DRI buy (conf 85, stop 213.0, tp 229.46)
   -> queued DE buy (conf 85, stop None, tp None)
+  -> queued CVX buy (conf 82, stop 189.13, tp 214.65)
+  -> queued T buy (conf 81, stop 24.8, tp 26.800000000000004)
+  -> queued TSLA buy (conf 80, stop 323.73, tp 366.5)
+  -> queued SLB buy (conf 80, stop 52.2, tp 57.0)
+  -> queued DRI buy (conf 82, stop 213.0, tp 235.0)
+  -> queued DE buy (conf 85, stop 605.0, tp 690.0)
   -> queued COP buy (conf None, stop 119.165, tp 135.87)
   -> queued DASH buy (conf None, stop 206.73, tp 225.9)
 Dashboard watchlist synced (6 symbols) for news/headlines.
@@ -10584,4 +10592,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,705.68; worst symbols HPE:-1286.89; COHR:-471.20; SNDK:-159.07; ANET:-45.31; NOW:-30.35
 Shadow report: 2116 shadow candidate(s), 95 rejection group(s)
 Timings: account: 0.0s | risk: 1.0s | decide: 3.5s | watchlist: 0.1s | perf: 0.1s
+Timings: account: 0.0s | risk: 0.7s | decide: 4.5s | watchlist: 0.1s | perf: 0.1s
 
