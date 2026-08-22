@@ -13462,3 +13462,8 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,705.68;
 Shadow report: 2116 shadow candidate(s), 95 rejection group(s)
 Timings: account: 0.0s | risk: 0.3s | decide: 3.2s | watchlist: 0.0s | perf: 0.0s
 
+=== Run at 2026-08-22T11:52:22.851312 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-22 07:52 AM EDT | Market open (per Alpaca): False | Session: CLOSED
+FATAL: could not fetch account snapshot, aborting run. Error: {"message": "service temporary unavailable."}
+
