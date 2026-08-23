@@ -826,6 +826,7 @@ Shadow report: 2116 shadow candidate(s), 95 rejection group(s)
 Timings: account: 0.0s | risk: 0.7s | decide: 22.6s | watchlist: 0.1s | perf: 0.1s
 
 === Run at 2026-08-23T00:44:56.759874 ===
+=== Run at 2026-08-23T00:44:06.634088 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-22 08:44 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,039.83
@@ -836,6 +837,7 @@ Open orders (2): ERIE sell 0.7641, MS sell 43.8344
 Risk state: peak $99,703.60 | drawdown 0.67% | today -0.00% | halted: False
 Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
 News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
+News: fetched 158, 1 new after dedup, 0 ticker(s) matched.
 Quant pre-screen: 42/66 candidates passed.
 Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
 Technical fallback cap omitted 19 weaker idea(s) this run.
@@ -862,4 +864,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,705.68; worst symbols HPE:-1286.89; COHR:-471.20; SNDK:-159.07; ANET:-45.31; NOW:-30.35
 Shadow report: 2116 shadow candidate(s), 95 rejection group(s)
 Timings: account: 0.0s | risk: 1.5s | decide: 23.0s | watchlist: 0.0s | perf: 0.0s
+Timings: account: 0.0s | risk: 0.8s | decide: 24.0s | watchlist: 0.0s | perf: 0.0s
 
