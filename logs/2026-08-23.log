@@ -7256,6 +7256,7 @@ Shadow report: 2116 shadow candidate(s), 95 rejection group(s)
 Timings: account: 0.0s | risk: 0.8s | decide: 3.8s | watchlist: 0.1s | perf: 0.1s
 
 === Run at 2026-08-23T06:24:44.497797 ===
+=== Run at 2026-08-23T06:24:14.906337 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-23 02:24 AM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,039.83
@@ -7266,6 +7267,7 @@ Open orders (2): ERIE sell 0.7641, MS sell 43.8344
 Risk state: peak $99,703.60 | drawdown 0.67% | today +0.00% | halted: False
 Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
 News: fetched 158, 1 new after dedup, 0 ticker(s) matched.
+News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
 Quant pre-screen: 44/66 candidates passed.
 Gemini proposed 3 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 543
@@ -7278,6 +7280,7 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued DE buy (conf 92, stop 579.5, tp 654.13)
   -> queued FDX buy (conf None, stop 317.065, tp 341.42)
   -> queued JKHY buy (conf 90, stop 149.19, tp 169.12)
+  -> queued JKHY buy (conf 88, stop 149.19, tp 169.12)
   -> queued GPN buy (conf None, stop 84.245, tp 95.53)
   -> queued HCA buy (conf None, stop 400.71, tp 431.36)
   -> queued CPRT buy (conf None, stop 28.68, tp 34.625)
@@ -7291,4 +7294,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,705.68; worst symbols HPE:-1286.89; COHR:-471.20; SNDK:-159.07; ANET:-45.31; NOW:-30.35
 Shadow report: 2116 shadow candidate(s), 95 rejection group(s)
 Timings: account: 0.0s | risk: 0.2s | decide: 3.1s | watchlist: 0.0s | perf: 0.0s
+Timings: account: 0.0s | risk: 1.2s | decide: 6.9s | watchlist: 0.1s | perf: 0.2s
 
