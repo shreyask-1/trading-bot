@@ -9969,6 +9969,7 @@ Shadow report: 2116 shadow candidate(s), 95 rejection group(s)
 Timings: account: 0.0s | risk: 0.2s | decide: 2.8s | watchlist: 0.0s | perf: 0.0s
 
 === Run at 2026-08-23T23:12:47.313066 ===
+=== Run at 2026-08-23T23:12:04.513075 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-23 07:12 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,039.83
@@ -9979,6 +9980,7 @@ Open orders (2): ERIE sell 0.7641, MS sell 43.8344
 Risk state: peak $99,703.60 | drawdown 0.67% | today +0.00% | halted: False
 Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
 News: fetched 158, 1 new after dedup, 0 ticker(s) matched.
+News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
 Quant pre-screen: 45/66 candidates passed.
 Gemini proposed 2 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 374
@@ -9991,6 +9993,10 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued DRI buy (conf 85, stop 213.0, tp 235.00000000000003)
   -> queued IT buy (conf None, stop 172.89, tp 196.625)
   -> queued JKHY buy (conf 85, stop 156.18, tp 176.18)
+  -> queued DE buy (conf 92, stop 608.0, tp 685.0)
+  -> queued DRI buy (conf 90, stop 210.0, tp 235.0)
+  -> queued IT buy (conf None, stop 172.89, tp 196.625)
+  -> queued JKHY buy (conf 82, stop 149.19, tp 192.88)
   -> queued DVN buy (conf None, stop 43.65, tp 49.72)
   -> queued HSY buy (conf None, stop 179.77, tp 190.26)
   -> queued J buy (conf None, stop 142.51, tp 150.215)
@@ -10004,4 +10010,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,705.68; worst symbols HPE:-1286.89; COHR:-471.20; SNDK:-159.07; ANET:-45.31; NOW:-30.35
 Shadow report: 2116 shadow candidate(s), 95 rejection group(s)
 Timings: account: 0.0s | risk: 0.6s | decide: 5.1s | watchlist: 0.1s | perf: 0.1s
+Timings: account: 0.0s | risk: 1.1s | decide: 7.0s | watchlist: 0.1s | perf: 0.1s
 
