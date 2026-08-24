@@ -2250,3 +2250,4 @@
 {"timestamp": "2026-08-24T09:54:56.615357", "ticker": "T", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 25.31, "reason": "stale quote for T (222897.202663s old; limit 180s)"}
 {"timestamp": "2026-08-24T09:54:56.896375", "ticker": "TRMB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 60.27, "reason": "stale quote for TRMB (222898.765878s old; limit 180s)"}
 {"timestamp": "2026-08-24T09:54:57.184946", "ticker": "TSCO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 34.98, "reason": "stale quote for TSCO (222897.29441s old; limit 180s)"}
+{"timestamp": "2026-08-24T09:56:44.362298", "ticker": "UNP", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 308.2, "reason": "stale quote for UNP (223009.500551s old; limit 180s)"}
