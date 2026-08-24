@@ -2849,3 +2849,6 @@
 {"timestamp": "2026-08-24T16:34:55.761554", "ticker": "TMO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 621.69, "reason": "liquidity filter: TMO average volume 114,014 < 500,000"}
 {"timestamp": "2026-08-24T16:34:56.110249", "ticker": "VEEV", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 246.59, "reason": "liquidity filter: VEEV average volume 87,175 < 500,000"}
 {"timestamp": "2026-08-24T16:34:56.512626", "ticker": "TRMB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 60.605, "reason": "liquidity filter: TRMB average volume 159,892 < 500,000"}
+{"timestamp": "2026-08-24T16:36:37.532800", "ticker": "TSCO", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 35.955, "reason": "market data unavailable for TSCO (bid/ask spread missing)"}
+{"timestamp": "2026-08-24T16:36:37.821232", "ticker": "TGT", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 170.39, "reason": "liquidity filter: TGT average volume 223,048 < 500,000"}
+{"timestamp": "2026-08-24T16:36:38.118629", "ticker": "V", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 380.19, "reason": "liquidity filter: V average volume 279,696 < 500,000"}
