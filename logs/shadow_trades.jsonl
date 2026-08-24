@@ -2605,3 +2605,5 @@
 {"timestamp": "2026-08-24T13:44:33.908363", "ticker": "TRGP", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 293.94, "reason": "stale candle for TRGP (584.6m old; limit 30.0m)"}
 {"timestamp": "2026-08-24T13:44:34.056261", "ticker": "TGT", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 168.955, "reason": "stale candle for TGT (584.6m old; limit 30.0m)"}
 {"timestamp": "2026-08-24T13:44:34.325058", "ticker": "UNP", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 309.045, "reason": "stale candle for UNP (584.6m old; limit 30.0m)"}
+{"timestamp": "2026-08-24T13:46:32.816694", "ticker": "GILD", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 146.025, "reason": "stale candle for GILD (586.5m old; limit 30.0m)"}
+{"timestamp": "2026-08-24T13:46:32.816860", "ticker": "GDDY", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 98.47, "reason": "stale candle for GDDY (586.5m old; limit 30.0m)"}
