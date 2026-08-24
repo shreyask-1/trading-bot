@@ -2957,3 +2957,6 @@
 {"timestamp": "2026-08-24T17:56:55.493472", "ticker": "GDDY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 100.22, "reason": "liquidity filter: GDDY average volume 124,724 < 500,000"}
 {"timestamp": "2026-08-24T17:56:55.493703", "ticker": "GILD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 146.55, "reason": "liquidity filter: GILD average volume 255,082 < 500,000"}
 {"timestamp": "2026-08-24T17:56:55.493860", "ticker": "GIS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 40.745, "reason": "market data unavailable for GIS (bid/ask spread missing)"}
+{"timestamp": "2026-08-24T17:58:27.447037", "ticker": "VRTX", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 550.2, "reason": "stale quote for VRTX (299.486697s old; limit 180s)"}
+{"timestamp": "2026-08-24T17:58:27.489131", "ticker": "TYL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 354.75, "reason": "liquidity filter: TYL average volume 57,115 < 500,000"}
+{"timestamp": "2026-08-24T17:58:27.554125", "ticker": "TSCO", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 35.625, "reason": "market data unavailable for TSCO (bid/ask spread missing)"}
