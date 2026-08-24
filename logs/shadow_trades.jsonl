@@ -3105,3 +3105,6 @@
 {"timestamp": "2026-08-24T19:04:40.661176", "ticker": "TSCO", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 35.625, "reason": "market data unavailable for TSCO (bid/ask spread missing)"}
 {"timestamp": "2026-08-24T19:06:31.588429", "ticker": "TRGP", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 292.89, "reason": "liquidity filter: TRGP average volume 80,098 < 500,000"}
 {"timestamp": "2026-08-24T19:06:31.728052", "ticker": "TGT", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 169.27, "reason": "liquidity filter: TGT average volume 226,246 < 500,000"}
+{"timestamp": "2026-08-24T19:08:29.380409", "ticker": "GDDY", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 100.66, "reason": "liquidity filter: GDDY average volume 125,228 < 500,000"}
+{"timestamp": "2026-08-24T19:08:29.469734", "ticker": "TSCO", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 35.705, "reason": "market data unavailable for TSCO (bid/ask spread missing)"}
+{"timestamp": "2026-08-24T19:08:29.522668", "ticker": "V", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 380.8, "reason": "stale quote for V (209.037688s old; limit 180s)"}
