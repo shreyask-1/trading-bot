@@ -2694,3 +2694,5 @@
 {"timestamp": "2026-08-24T14:51:11.108992", "ticker": "MSI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 483.635, "reason": "stale candle for MSI (651.2m old; limit 30.0m)"}
 {"timestamp": "2026-08-24T14:52:43.256623", "ticker": "TRGP", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 292.75, "reason": "stale candle for TRGP (652.7m old; limit 30.0m)"}
 {"timestamp": "2026-08-24T14:52:43.597691", "ticker": "TGT", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 169.63, "reason": "stale candle for TGT (652.7m old; limit 30.0m)"}
+{"timestamp": "2026-08-24T14:54:32.288129", "ticker": "TRGP", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 293.25, "reason": "stale candle for TRGP (654.5m old; limit 30.0m)"}
+{"timestamp": "2026-08-24T14:54:32.818953", "ticker": "TGT", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 169.82, "reason": "stale candle for TGT (654.5m old; limit 30.0m)"}
