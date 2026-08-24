@@ -3082,3 +3082,6 @@
 {"timestamp": "2026-08-24T18:51:01.431945", "ticker": "VRSK", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 189.86, "reason": "stale quote for VRSK (234.915821s old; limit 180s)"}
 {"timestamp": "2026-08-24T18:51:01.760320", "ticker": "TRMB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 60.64, "reason": "liquidity filter: TRMB average volume 161,083 < 500,000"}
 {"timestamp": "2026-08-24T18:51:02.089001", "ticker": "UNP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 308.975, "reason": "liquidity filter: UNP average volume 127,559 < 500,000"}
+{"timestamp": "2026-08-24T18:52:47.499627", "ticker": "TSCO", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 35.585, "reason": "market data unavailable for TSCO (bid/ask spread missing)"}
+{"timestamp": "2026-08-24T18:52:47.542337", "ticker": "TGT", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 169.55, "reason": "liquidity filter: TGT average volume 225,887 < 500,000"}
+{"timestamp": "2026-08-24T18:52:47.589881", "ticker": "TRGP", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 292.79, "reason": "liquidity filter: TRGP average volume 80,000 < 500,000"}
