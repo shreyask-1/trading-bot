@@ -2533,3 +2533,5 @@
 {"timestamp": "2026-08-24T13:00:43.391766", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 67.145, "reason": "stale quote for SWKS (234040.032504s old; limit 180s)"}
 {"timestamp": "2026-08-24T13:02:51.775506", "ticker": "TGT", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 165.455, "reason": "stale quote for TGT (234162.684041s old; limit 180s)"}
 {"timestamp": "2026-08-24T13:02:52.242105", "ticker": "SPGI", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 431.04, "reason": "stale quote for SPGI (234172.479384s old; limit 180s)"}
+{"timestamp": "2026-08-24T13:04:35.348921", "ticker": "TRGP", "action": "buy", "engine": "gemini", "confidence": 90.0, "conviction": 9, "price": 299.075, "reason": "stale quote for TRGP (234270.310025s old; limit 180s)"}
+{"timestamp": "2026-08-24T13:04:35.473857", "ticker": "TGT", "action": "buy", "engine": "gemini", "confidence": 84.0, "conviction": 8, "price": 165.455, "reason": "stale quote for TGT (234278.507355s old; limit 180s)"}
