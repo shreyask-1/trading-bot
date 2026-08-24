@@ -3156,3 +3156,6 @@
 {"timestamp": "2026-08-24T19:44:29.540541", "ticker": "V", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 382.26, "reason": "liquidity filter: V average volume 283,477 < 500,000"}
 {"timestamp": "2026-08-24T19:44:29.586073", "ticker": "TRMB", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 60.64, "reason": "liquidity filter: TRMB average volume 161,479 < 500,000"}
 {"timestamp": "2026-08-24T19:48:37.523869", "ticker": "GDDY", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 100.325, "reason": "liquidity filter: GDDY average volume 125,865 < 500,000"}
+{"timestamp": "2026-08-24T19:52:29.760665", "ticker": "MSFT", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 488.68, "reason": "market data unavailable for MSFT (bid/ask spread missing)"}
+{"timestamp": "2026-08-24T19:52:29.829164", "ticker": "GDDY", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 100.84, "reason": "liquidity filter: GDDY average volume 125,943 < 500,000"}
+{"timestamp": "2026-08-24T19:52:29.829353", "ticker": "MA", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 599.35, "reason": "liquidity filter: MA average volume 166,496 < 500,000"}
