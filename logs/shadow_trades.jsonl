@@ -2782,3 +2782,5 @@
 {"timestamp": "2026-08-24T15:50:41.781594", "ticker": "TRGP", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 292.5, "reason": "liquidity filter: TRGP average volume 78,720 < 500,000"}
 {"timestamp": "2026-08-24T15:50:41.960221", "ticker": "TSCO", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 35.835, "reason": "market data unavailable for TSCO (bid/ask spread missing)"}
 {"timestamp": "2026-08-24T15:50:42.359691", "ticker": "TGT", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 170.505, "reason": "liquidity filter: TGT average volume 221,968 < 500,000"}
+{"timestamp": "2026-08-24T15:52:37.244640", "ticker": "TSCO", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 35.83, "reason": "market data unavailable for TSCO (bid/ask spread missing)"}
+{"timestamp": "2026-08-24T15:52:37.517717", "ticker": "TRGP", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 292.5, "reason": "stale quote for TRGP (224.39869s old; limit 180s)"}
