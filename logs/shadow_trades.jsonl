@@ -3120,3 +3120,5 @@
 {"timestamp": "2026-08-24T19:14:55.349079", "ticker": "TAP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 42.93, "reason": "liquidity filter: TAP average volume 154,854 < 500,000"}
 {"timestamp": "2026-08-24T19:14:55.653185", "ticker": "VRSK", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 189.8, "reason": "stale quote for VRSK (365.384548s old; limit 180s)"}
 {"timestamp": "2026-08-24T19:14:55.973218", "ticker": "VEEV", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 248.9, "reason": "liquidity filter: VEEV average volume 88,105 < 500,000"}
+{"timestamp": "2026-08-24T19:16:37.907421", "ticker": "TRGP", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 292.25, "reason": "liquidity filter: TRGP average volume 80,171 < 500,000"}
+{"timestamp": "2026-08-24T19:16:38.150024", "ticker": "TGT", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 168.935, "reason": "liquidity filter: TGT average volume 226,484 < 500,000"}
