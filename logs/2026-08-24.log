@@ -9894,6 +9894,7 @@ Shadow report: 3243 shadow candidate(s), 148 rejection group(s)
 Timings: account: 0.0s | risk: 1.1s | decide: 6.9s | watchlist: 0.1s | perf: 0.2s
 
 === Run at 2026-08-24T22:16:45.453057 ===
+=== Run at 2026-08-24T22:16:11.241154 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-24 06:16 PM EDT | Market open (per Alpaca): False | Session: EXTENDED
 Account value: $99,083.68
@@ -9913,6 +9914,15 @@ Gemini calls used today (all models combined): 391
   -> {"ticker": "GDDY", "status": "skipped", "reason": "stale quote for GDDY (8232.271476s old; limit 180s)", "shadow": false, "data_guard": true}
 Overnight queue kept 12 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
 Dashboard watchlist synced (8 symbols) for news/headlines.
+News: fetched 158, 2 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 39/60 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 391
+  -> {"ticker": "UNP", "status": "skipped", "reason": "stale quote for UNP (8206.694966s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "TYL", "status": "skipped", "reason": "stale quote for TYL (8195.143777s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "TRGP", "status": "skipped", "reason": "stale quote for TRGP (8192.988988s old; limit 180s)", "shadow": false, "data_guard": true}
+Overnight queue kept 12 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
+Dashboard watchlist synced (6 symbols) for news/headlines.
 Ending portfolio value: $99,083.68
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
 Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
@@ -9921,4 +9931,6 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,697.22; worst symbols HPE:-1286.89; COHR:-471.20; SNDK:-159.07; ANET:-45.31; NOW:-30.35
 Shadow report: 3245 shadow candidate(s), 150 rejection group(s)
 Timings: account: 0.0s | risk: 1.0s | decide: 10.1s | watchlist: 0.1s | perf: 0.2s
+Shadow report: 3246 shadow candidate(s), 151 rejection group(s)
+Timings: account: 0.0s | risk: 1.3s | decide: 6.9s | watchlist: 0.2s | perf: 0.2s
 
