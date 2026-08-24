@@ -2702,3 +2702,5 @@
 {"timestamp": "2026-08-24T14:58:37.753959", "ticker": "TRMB", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 60.695, "reason": "stale candle for TRMB (658.6m old; limit 30.0m)"}
 {"timestamp": "2026-08-24T14:58:38.051006", "ticker": "TSCO", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 36.065, "reason": "stale candle for TSCO (658.6m old; limit 30.0m)"}
 {"timestamp": "2026-08-24T14:58:38.319251", "ticker": "TYL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 359.57, "reason": "stale candle for TYL (658.6m old; limit 30.0m)"}
+{"timestamp": "2026-08-24T15:00:56.582050", "ticker": "STT", "action": "buy", "engine": "gemini", "confidence": 72, "conviction": 7, "price": 189.115, "reason": "stale candle for STT (660.9m old; limit 30.0m)"}
+{"timestamp": "2026-08-24T15:00:56.582225", "ticker": "SYF", "action": "buy", "engine": "gemini", "confidence": 68, "conviction": 7, "price": 80.94, "reason": "stale candle for SYF (660.9m old; limit 30.0m)"}
