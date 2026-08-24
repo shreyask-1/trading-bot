@@ -2662,3 +2662,5 @@
 {"timestamp": "2026-08-24T14:28:29.611447", "ticker": "TRGP", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 294.335, "reason": "stale candle for TRGP (628.5m old; limit 30.0m)"}
 {"timestamp": "2026-08-24T14:30:50.243781", "ticker": "TRGP", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 294.335, "reason": "stale quote for TRGP (206.06033s old; limit 180s)"}
 {"timestamp": "2026-08-24T14:30:50.690517", "ticker": "TGT", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 170.375, "reason": "stale candle for TGT (630.8m old; limit 30.0m)"}
+{"timestamp": "2026-08-24T14:33:27.176226", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 355.92, "reason": "stale candle for TSLA (633.5m old; limit 30.0m)"}
+{"timestamp": "2026-08-24T14:33:27.176399", "ticker": "LYB", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 66.02, "reason": "stale candle for LYB (633.5m old; limit 30.0m)"}
