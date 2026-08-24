@@ -2165,3 +2165,5 @@
 {"timestamp": "2026-08-24T09:00:59.001077", "ticker": "MSI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 480.42, "reason": "stale quote for MSI (219644.714404s old; limit 180s)"}
 {"timestamp": "2026-08-24T09:00:59.031481", "ticker": "SOLV", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 89.44, "reason": "stale quote for SOLV (219651.620045s old; limit 180s)"}
 {"timestamp": "2026-08-24T09:00:59.063415", "ticker": "STT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 187.21, "reason": "stale quote for STT (219656.854068s old; limit 180s)"}
+{"timestamp": "2026-08-24T09:02:31.753909", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 89.44, "reason": "stale quote for SOLV (219765.932129s old; limit 180s)"}
+{"timestamp": "2026-08-24T09:02:31.814442", "ticker": "SPGI", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 431.04, "reason": "stale quote for SPGI (219752.396687s old; limit 180s)"}
