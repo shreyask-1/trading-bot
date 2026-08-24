@@ -2614,3 +2614,5 @@
 {"timestamp": "2026-08-24T13:48:54.265733", "ticker": "TSCO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 35.465, "reason": "stale candle for TSCO (588.9m old; limit 30.0m)"}
 {"timestamp": "2026-08-24T13:48:54.672119", "ticker": "UNP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 309.84, "reason": "stale candle for UNP (588.9m old; limit 30.0m)"}
 {"timestamp": "2026-08-24T13:48:54.863577", "ticker": "TECH", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 72.37, "reason": "stale candle for TECH (588.9m old; limit 30.0m)"}
+{"timestamp": "2026-08-24T13:50:57.456881", "ticker": "TRGP", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 294.79, "reason": "stale quote for TRGP (366.938477s old; limit 180s)"}
+{"timestamp": "2026-08-24T13:50:57.537065", "ticker": "TGT", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 168.77, "reason": "stale candle for TGT (591.0m old; limit 30.0m)"}
