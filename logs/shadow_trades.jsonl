@@ -2885,3 +2885,4 @@
 {"timestamp": "2026-08-24T17:00:53.480123", "ticker": "TSCO", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 35.725, "reason": "market data unavailable for TSCO (bid/ask spread missing)"}
 {"timestamp": "2026-08-24T17:00:53.480315", "ticker": "TGT", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 170.3, "reason": "liquidity filter: TGT average volume 223,554 < 500,000"}
 {"timestamp": "2026-08-24T17:00:53.480530", "ticker": "GDDY", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 99.85, "reason": "stale quote for GDDY (258.13254s old; limit 180s)"}
+{"timestamp": "2026-08-24T17:02:49.987488", "ticker": "TSCO", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 35.68, "reason": "market data unavailable for TSCO (bid/ask spread missing)"}
