@@ -2870,3 +2870,5 @@
 {"timestamp": "2026-08-24T16:49:01.147541", "ticker": "TMO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 620.76, "reason": "liquidity filter: TMO average volume 114,217 < 500,000"}
 {"timestamp": "2026-08-24T16:49:01.447792", "ticker": "VEEV", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 246.36, "reason": "liquidity filter: VEEV average volume 87,262 < 500,000"}
 {"timestamp": "2026-08-24T16:49:01.974453", "ticker": "TRMB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 60.55, "reason": "liquidity filter: TRMB average volume 160,031 < 500,000"}
+{"timestamp": "2026-08-24T16:50:44.008489", "ticker": "TSCO", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 35.69, "reason": "market data unavailable for TSCO (bid/ask spread missing)"}
+{"timestamp": "2026-08-24T16:50:44.008624", "ticker": "GDDY", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 99.885, "reason": "liquidity filter: GDDY average volume 124,515 < 500,000"}
