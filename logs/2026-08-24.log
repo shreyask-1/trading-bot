@@ -6227,3 +6227,39 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,697.22;
 Shadow report: 3053 shadow candidate(s), 220 rejection group(s)
 Timings: account: 0.0s | risk: 1.4s | decide: 9.8s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-08-24T18:38:28.462484 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-24 02:38 PM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,058.52
+Cash: $79,453.81 | Holdings (3): {'GEHC': '0.6136 sh (+0.44%)', 'MS': '43.8344 sh (-2.86%)', 'MSI': '21.1281 sh (+2.28%)'}
+Sector exposure (cached): Technology 10.2%, Financials 9.5%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.65% | today -0.00% | halted: False
+Market regime: BEARISH (position-size multiplier: 0% incl. circuit breaker 100%)
+Overnight queue deferred 3 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+Morning verification: 1 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
+News: fetched 157, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 34/60 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
+Technical fallback cap omitted 12 weaker idea(s) this run.
+Gemini calls used today (all models combined): 295
+  -> {"ticker": "TYL", "status": "skipped", "reason": "liquidity filter: TYL average volume 57,222 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "TSCO", "status": "skipped", "reason": "market data unavailable for TSCO (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "V", "status": "skipped", "reason": "liquidity filter: V average volume 281,751 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "TAP", "status": "skipped", "reason": "liquidity filter: TAP average volume 154,325 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "VRTX", "status": "skipped", "reason": "liquidity filter: VRTX average volume 59,257 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "VRSK", "status": "skipped", "reason": "stale quote for VRSK (1281.305474s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "TRMB", "status": "skipped", "reason": "liquidity filter: TRMB average volume 161,004 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "UNP", "status": "skipped", "reason": "stale quote for UNP (264.590493s old; limit 180s)", "shadow": false, "data_guard": true}
+Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); 4 idea(s) remain subject to the retry cap.
+Run budget reserve reached -- skipping dashboard watchlist sync.
+Run budget reserve reached -- skipping performance snapshot.
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.19% | Max drawdown 0.94% | Daily Sharpe 1.58 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 3 | Equity $99,058.52
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $-51.20 (3 open) | Books: legacy: realized $-1,705.68, unrealized $-51.20
+Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,697.22; worst symbols HPE:-1286.89; COHR:-471.20; SNDK:-159.07; ANET:-45.31; NOW:-30.35
+Shadow report: 3061 shadow candidate(s), 214 rejection group(s)
+Timings: account: 0.0s | risk: 1.3s | decide: 25.8s | watchlist: 0.0s | perf: 0.0s
+
