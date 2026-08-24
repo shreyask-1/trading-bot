@@ -2625,3 +2625,4 @@
 {"timestamp": "2026-08-24T13:58:39.598394", "ticker": "TRGP", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 295.57, "reason": "stale candle for TRGP (598.7m old; limit 30.0m)"}
 {"timestamp": "2026-08-24T13:58:39.903933", "ticker": "TGT", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 169.86, "reason": "stale candle for TGT (598.7m old; limit 30.0m)"}
 {"timestamp": "2026-08-24T13:58:40.204731", "ticker": "SPGI", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 436.91, "reason": "stale candle for SPGI (598.7m old; limit 30.0m)"}
+{"timestamp": "2026-08-24T14:01:07.032536", "ticker": "SW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 50.06, "reason": "stale candle for SW (601.1m old; limit 30.0m)"}
