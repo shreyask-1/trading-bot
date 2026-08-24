@@ -10789,6 +10789,9 @@ Timings: account: 0.0s | risk: 1.3s | decide: 7.1s | watchlist: 0.2s | perf: 0.2
 === Run at 2026-08-24T23:15:02.483731 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-24 07:15 PM EDT | Market open (per Alpaca): False | Session: EXTENDED
+=== Run at 2026-08-24T23:14:27.583196 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-24 07:14 PM EDT | Market open (per Alpaca): False | Session: EXTENDED
 Account value: $99,093.91
 Cash: $79,453.81 | Holdings (3): {'GEHC': '0.6136 sh (+1.21%)', 'MS': '43.8344 sh (-2.74%)', 'MSI': '21.1281 sh (+2.51%)'}
 Sector exposure (cached): Technology 10.3%, Financials 9.5%, Health Care 0.0%
@@ -10806,6 +10809,14 @@ Gemini calls used today (all models combined): 418
   -> {"ticker": "TYL", "status": "skipped", "reason": "stale quote for TYL (11722.150066s old; limit 180s)", "shadow": false, "data_guard": true}
   -> {"ticker": "TGT", "status": "skipped", "reason": "stale quote for TGT (11707.749752s old; limit 180s)", "shadow": false, "data_guard": true}
   -> {"ticker": "TSCO", "status": "skipped", "reason": "stale quote for TSCO (11706.64969s old; limit 180s)", "shadow": false, "data_guard": true}
+News: fetched 156, 2 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 40/60 candidates passed.
+Gemini proposed 4 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 418
+  -> {"ticker": "UNP", "status": "skipped", "reason": "stale quote for UNP (11703.176992s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "TYL", "status": "skipped", "reason": "stale quote for TYL (11691.611429s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "TGT", "status": "skipped", "reason": "stale quote for TGT (11677.393278s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "TSCO", "status": "skipped", "reason": "stale quote for TSCO (11676.525357s old; limit 180s)", "shadow": false, "data_guard": true}
 Overnight queue kept 12 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
 Dashboard watchlist synced (7 symbols) for news/headlines.
 Ending portfolio value: $99,093.91
@@ -10816,4 +10827,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,697.22; worst symbols HPE:-1286.89; COHR:-471.20; SNDK:-159.07; ANET:-45.31; NOW:-30.35
 Shadow report: 3343 shadow candidate(s), 235 rejection group(s)
 Timings: account: 0.0s | risk: 0.3s | decide: 3.8s | watchlist: 0.0s | perf: 0.1s
+Timings: account: 0.0s | risk: 1.0s | decide: 7.5s | watchlist: 0.1s | perf: 0.2s
 
