@@ -2494,3 +2494,6 @@
 {"timestamp": "2026-08-24T12:30:43.483181", "ticker": "TGT", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 165.455, "reason": "stale quote for TGT (232246.492005s old; limit 180s)"}
 {"timestamp": "2026-08-24T12:30:43.985080", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 89.44, "reason": "stale quote for SOLV (232257.749334s old; limit 180s)"}
 {"timestamp": "2026-08-24T12:32:41.598609", "ticker": "LYB", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 67.49, "reason": "stale quote for LYB (232367.198776s old; limit 180s)"}
+{"timestamp": "2026-08-24T12:34:35.872798", "ticker": "TRGP", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 299.075, "reason": "stale quote for TRGP (232477.498075s old; limit 180s)"}
+{"timestamp": "2026-08-24T12:34:36.158601", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 89.44, "reason": "stale quote for SOLV (232490.164818s old; limit 180s)"}
+{"timestamp": "2026-08-24T12:34:36.425783", "ticker": "TGT", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 165.455, "reason": "stale quote for TGT (232479.34969s old; limit 180s)"}
