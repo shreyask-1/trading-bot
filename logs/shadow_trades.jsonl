@@ -3135,3 +3135,5 @@
 {"timestamp": "2026-08-24T19:24:29.990380", "ticker": "MSI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 480.85, "reason": "liquidity filter: MSI average volume 61,025 < 500,000"}
 {"timestamp": "2026-08-24T19:24:30.052427", "ticker": "V", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 381.755, "reason": "liquidity filter: V average volume 282,653 < 500,000"}
 {"timestamp": "2026-08-24T19:24:30.106807", "ticker": "TAP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 42.96, "reason": "liquidity filter: TAP average volume 154,988 < 500,000"}
+{"timestamp": "2026-08-24T19:26:29.860687", "ticker": "V", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 381.82, "reason": "liquidity filter: V average volume 282,676 < 500,000"}
+{"timestamp": "2026-08-24T19:26:29.920304", "ticker": "TRGP", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 292.265, "reason": "liquidity filter: TRGP average volume 80,266 < 500,000"}
