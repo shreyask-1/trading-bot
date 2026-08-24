@@ -2114,3 +2114,4 @@
 {"timestamp": "2026-08-21T19:56:40.968656", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 195.87, "reason": "liquidity filter: IT average volume 82,124 < 500,000"}
 {"timestamp": "2026-08-21T19:58:41.128882", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 363.27, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
 {"timestamp": "2026-08-21T19:58:41.459075", "ticker": "UNP", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 307.95, "reason": "liquidity filter: UNP average volume 131,858 < 500,000"}
+{"timestamp": "2026-08-24T08:00:41.297542", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 89.44, "reason": "stale quote for SOLV (216052.969897s old; limit 180s)"}
