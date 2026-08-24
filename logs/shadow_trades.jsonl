@@ -3197,3 +3197,6 @@
 {"timestamp": "2026-08-24T21:48:46.740620", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 202.75, "reason": "stale quote for IT (6521.679767s old; limit 180s)"}
 {"timestamp": "2026-08-24T21:48:46.740742", "ticker": "GIS", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 40.92, "reason": "stale quote for GIS (6524.608248s old; limit 180s)"}
 {"timestamp": "2026-08-24T21:48:46.740838", "ticker": "GILD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 146.82, "reason": "stale quote for GILD (6529.942754s old; limit 180s)"}
+{"timestamp": "2026-08-24T21:50:34.935749", "ticker": "TRGP", "action": "buy", "engine": "gemini", "confidence": 90.0, "conviction": 9, "price": 293.93, "reason": "stale quote for TRGP (6648.178169s old; limit 180s)"}
+{"timestamp": "2026-08-24T21:50:35.005137", "ticker": "TGT", "action": "buy", "engine": "gemini", "confidence": 82.0, "conviction": 8, "price": 169.865, "reason": "stale quote for TGT (6636.229097s old; limit 180s)"}
+{"timestamp": "2026-08-24T21:50:35.078332", "ticker": "TSCO", "action": "buy", "engine": "gemini", "confidence": 80.0, "conviction": 8, "price": 35.92, "reason": "stale quote for TSCO (6635.108271s old; limit 180s)"}
