@@ -9597,6 +9597,7 @@ Shadow report: 2147 shadow candidate(s), 95 rejection group(s)
 Timings: account: 0.0s | risk: 0.2s | decide: 9.7s | watchlist: 0.0s | perf: 0.1s
 
 === Run at 2026-08-24T08:36:53.042253 ===
+=== Run at 2026-08-24T08:36:23.850331 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-24 04:36 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
 Account value: $99,022.94
@@ -9614,6 +9615,12 @@ Gemini proposed 2 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 43
   -> {"ticker": "TGT", "status": "skipped", "reason": "stale quote for TGT (218223.023998s old; limit 180s)", "shadow": false, "data_guard": true}
   -> {"ticker": "SOLV", "status": "skipped", "reason": "stale quote for SOLV (218234.361157s old; limit 180s)", "shadow": false, "data_guard": true}
+News: fetched 158, 3 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 36/60 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 43
+  -> {"ticker": "TGT", "status": "skipped", "reason": "stale quote for TGT (218190.339639s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "TRGP", "status": "skipped", "reason": "stale quote for TRGP (218189.084677s old; limit 180s)", "shadow": false, "data_guard": true}
 Overnight queue kept 5 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
 Dashboard watchlist synced (5 symbols) for news/headlines.
 Ending portfolio value: $99,022.94
@@ -9624,4 +9631,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,697.22; worst symbols HPE:-1286.89; COHR:-471.20; SNDK:-159.07; ANET:-45.31; NOW:-30.35
 Shadow report: 2149 shadow candidate(s), 95 rejection group(s)
 Timings: account: 0.0s | risk: 1.0s | decide: 5.8s | watchlist: 0.1s | perf: 0.2s
+Timings: account: 0.0s | risk: 0.5s | decide: 2.6s | watchlist: 0.0s | perf: 0.0s
 
