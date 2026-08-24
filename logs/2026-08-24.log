@@ -11283,6 +11283,7 @@ Shadow report: 2300 shadow candidate(s), 219 rejection group(s)
 Timings: account: 0.0s | risk: 1.0s | decide: 5.4s | watchlist: 0.1s | perf: 0.2s
 
 === Run at 2026-08-24T10:28:57.340788 ===
+=== Run at 2026-08-24T10:28:25.937920 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-24 06:28 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
 Account value: $99,042.23
@@ -11299,6 +11300,8 @@ Gemini proposed 2 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 90
   -> {"ticker": "SOLV", "status": "skipped", "reason": "stale quote for SOLV (224963.525773s old; limit 180s)", "shadow": false, "data_guard": true}
   -> {"ticker": "TRGP", "status": "skipped", "reason": "stale quote for TRGP (224951.188313s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "SOLV", "status": "skipped", "reason": "stale quote for SOLV (224928.815396s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "TRGP", "status": "skipped", "reason": "stale quote for TRGP (224916.467912s old; limit 180s)", "shadow": false, "data_guard": true}
 Overnight queue kept 5 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
 Dashboard watchlist synced (5 symbols) for news/headlines.
 Ending portfolio value: $99,042.23
@@ -11309,4 +11312,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,697.22; worst symbols HPE:-1286.89; COHR:-471.20; SNDK:-159.07; ANET:-45.31; NOW:-30.35
 Shadow report: 2302 shadow candidate(s), 221 rejection group(s)
 Timings: account: 0.0s | risk: 1.4s | decide: 10.6s | watchlist: 0.0s | perf: 0.1s
+Timings: account: 0.0s | risk: 0.2s | decide: 8.2s | watchlist: 0.0s | perf: 0.0s
 
