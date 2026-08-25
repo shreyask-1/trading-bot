@@ -4570,3 +4570,6 @@
 {"timestamp": "2026-08-25T22:02:34.358280", "ticker": "AMCR", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 47.265, "reason": "stale quote for AMCR (7356.685729s old; limit 180s)"}
 {"timestamp": "2026-08-25T22:02:34.657942", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 158.815, "reason": "stale quote for MRNA (7355.910589s old; limit 180s)"}
 {"timestamp": "2026-08-25T22:02:34.658041", "ticker": "AMP", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 560.27, "reason": "stale quote for AMP (7352.292731s old; limit 180s)"}
+{"timestamp": "2026-08-25T22:04:38.815728", "ticker": "AMT", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 178.58, "reason": "stale quote for AMT (7478.883988s old; limit 180s)"}
+{"timestamp": "2026-08-25T22:04:39.120177", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 158.815, "reason": "stale quote for MRNA (7480.363303s old; limit 180s)"}
+{"timestamp": "2026-08-25T22:04:39.398992", "ticker": "AMP", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 560.27, "reason": "stale quote for AMP (7479.934581s old; limit 180s)"}
