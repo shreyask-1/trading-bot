@@ -4469,3 +4469,5 @@
 {"timestamp": "2026-08-25T19:04:59.972943", "ticker": "AIZ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 285.2, "reason": "stale quote for AIZ (2016.871633s old; limit 180s)"}
 {"timestamp": "2026-08-25T19:05:00.029999", "ticker": "APO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 133.0, "reason": "liquidity filter: APO average volume 165,869 < 500,000"}
 {"timestamp": "2026-08-25T19:06:31.507288", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 159.09, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T19:08:41.319586", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 158.74, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T19:08:41.603689", "ticker": "BALL", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 64.1, "reason": "stale quote for BALL (339.72777s old; limit 180s)"}
