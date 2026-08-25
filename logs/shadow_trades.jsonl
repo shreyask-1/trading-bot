@@ -4343,3 +4343,4 @@
 {"timestamp": "2026-08-25T17:14:57.098539", "ticker": "GEHC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 74.03, "reason": "stale quote for GEHC (190.636306s old; limit 180s)"}
 {"timestamp": "2026-08-25T17:14:57.342759", "ticker": "MRNA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 157.35, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
 {"timestamp": "2026-08-25T17:14:57.600920", "ticker": "RVTY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 124.54, "reason": "stale quote for RVTY (399.327228s old; limit 180s)"}
+{"timestamp": "2026-08-25T17:16:37.304457", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 157.35, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
