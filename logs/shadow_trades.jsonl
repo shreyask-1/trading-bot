@@ -4600,3 +4600,5 @@
 {"timestamp": "2026-08-25T22:20:40.373728", "ticker": "ARES", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 142.8, "reason": "stale quote for ARES (8449.409586s old; limit 180s)"}
 {"timestamp": "2026-08-25T22:22:44.592807", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 158.815, "reason": "stale quote for MRNA (8565.864246s old; limit 180s)"}
 {"timestamp": "2026-08-25T22:22:44.844066", "ticker": "ARES", "action": "buy", "engine": "gemini", "confidence": 93, "conviction": 9, "price": 142.8, "reason": "stale quote for ARES (8573.783132s old; limit 180s)"}
+{"timestamp": "2026-08-25T22:24:36.896097", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 158.815, "reason": "stale quote for MRNA (8678.179495s old; limit 180s)"}
+{"timestamp": "2026-08-25T22:24:37.154220", "ticker": "BALL", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 64.095, "reason": "stale quote for BALL (8689.284603s old; limit 180s)"}
