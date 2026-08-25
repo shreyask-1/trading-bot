@@ -4423,3 +4423,5 @@
 {"timestamp": "2026-08-25T18:26:32.993453", "ticker": "APA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 41.77, "reason": "liquidity filter: APA average volume 381,762 < 500,000"}
 {"timestamp": "2026-08-25T18:28:28.998369", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 157.97, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
 {"timestamp": "2026-08-25T18:28:29.092348", "ticker": "BMY", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 67.8, "reason": "market data unavailable for BMY (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T18:30:44.532119", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 156.48, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T18:30:45.272661", "ticker": "APA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 41.81, "reason": "liquidity filter: APA average volume 381,880 < 500,000"}
