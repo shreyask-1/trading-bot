@@ -4456,3 +4456,5 @@
 {"timestamp": "2026-08-25T18:56:50.548139", "ticker": "MRNA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 159.27, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
 {"timestamp": "2026-08-25T18:56:50.558127", "ticker": "MCO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 512.95, "reason": "liquidity filter: MCO average volume 36,305 < 500,000"}
 {"timestamp": "2026-08-25T18:58:38.792929", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 159.065, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T19:00:50.849457", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 158.5, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T19:00:50.849629", "ticker": "AIZ", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 285.2, "reason": "stale quote for AIZ (1756.722327s old; limit 180s)"}
