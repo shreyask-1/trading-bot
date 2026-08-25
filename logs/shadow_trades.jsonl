@@ -4512,3 +4512,5 @@
 {"timestamp": "2026-08-25T19:32:54.621186", "ticker": "BRO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 73.53, "reason": "liquidity filter: BRO average volume 133,728 < 500,000"}
 {"timestamp": "2026-08-25T19:32:54.689815", "ticker": "MSI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 486.32, "reason": "liquidity filter: MSI average volume 61,896 < 500,000"}
 {"timestamp": "2026-08-25T19:32:54.988519", "ticker": "ARES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 142.91, "reason": "liquidity filter: ARES average volume 135,513 < 500,000"}
+{"timestamp": "2026-08-25T19:34:37.441594", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 159.31, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T19:34:37.758329", "ticker": "AIZ", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 285.08, "reason": "stale quote for AIZ (894.555548s old; limit 180s)"}
