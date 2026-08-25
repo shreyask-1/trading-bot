@@ -13217,6 +13217,7 @@ Shadow report: 3853 shadow candidate(s), 500 rejection group(s)
 Timings: account: 0.0s | risk: 0.9s | decide: 5.3s | watchlist: 0.1s | perf: 0.1s
 
 === Run at 2026-08-25T12:28:57.727956 ===
+=== Run at 2026-08-25T12:28:25.399765 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-25 08:28 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
 Account value: $99,119.10
@@ -13234,6 +13235,12 @@ Gemini proposed 2 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 124
   -> {"ticker": "BKNG", "status": "skipped", "reason": "stale quote for BKNG (59345.351634s old; limit 180s)", "shadow": false, "data_guard": true}
   -> {"ticker": "WELL", "status": "skipped", "reason": "stale quote for WELL (59370.484695s old; limit 180s)", "shadow": false, "data_guard": true}
+News: fetched 158, 1 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 34/60 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 124
+  -> {"ticker": "WELL", "status": "skipped", "reason": "stale quote for WELL (59334.099418s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "BKNG", "status": "skipped", "reason": "stale quote for BKNG (59309.321299s old; limit 180s)", "shadow": false, "data_guard": true}
 Overnight queue kept 10 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
 Dashboard watchlist synced (5 symbols) for news/headlines.
 Ending portfolio value: $99,119.10
@@ -13244,4 +13251,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,611.99; worst symbols HPE:-1286.89; COHR:-235.59; SNDK:-159.07; ANET:-45.31; NOW:-30.35
 Shadow report: 3855 shadow candidate(s), 500 rejection group(s)
 Timings: account: 0.0s | risk: 1.3s | decide: 6.0s | watchlist: 0.1s | perf: 0.2s
+Timings: account: 0.0s | risk: 0.3s | decide: 3.4s | watchlist: 0.0s | perf: 0.1s
 
