@@ -4536,3 +4536,6 @@
 {"timestamp": "2026-08-25T19:56:36.368706", "ticker": "BKNG", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 213.395, "reason": "liquidity filter: BKNG average volume 278,802 < 500,000"}
 {"timestamp": "2026-08-25T19:58:35.975103", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 158.965, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
 {"timestamp": "2026-08-25T19:58:36.225886", "ticker": "BALL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 64.1, "reason": "liquidity filter: BALL average volume 79,354 < 500,000"}
+{"timestamp": "2026-08-25T21:30:47.679766", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 158.815, "reason": "stale quote for MRNA (5448.968606s old; limit 180s)"}
+{"timestamp": "2026-08-25T21:30:47.679967", "ticker": "AMCR", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 47.265, "reason": "stale quote for AMCR (5449.425938s old; limit 180s)"}
+{"timestamp": "2026-08-25T21:30:47.680138", "ticker": "AIZ", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 284.745, "reason": "stale quote for AIZ (5498.701869s old; limit 180s)"}
