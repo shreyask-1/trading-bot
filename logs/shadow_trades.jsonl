@@ -4524,3 +4524,5 @@
 {"timestamp": "2026-08-25T19:42:45.427556", "ticker": "NDAQ", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 99.055, "reason": "liquidity filter: NDAQ average volume 111,794 < 500,000"}
 {"timestamp": "2026-08-25T19:44:35.698091", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 158.6, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
 {"timestamp": "2026-08-25T19:44:35.952025", "ticker": "BLK", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 1179.38, "reason": "liquidity filter: BLK average volume 33,635 < 500,000"}
+{"timestamp": "2026-08-25T19:46:37.069845", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 158.86, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T19:46:37.330011", "ticker": "ARES", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 142.59, "reason": "liquidity filter: ARES average volume 135,822 < 500,000"}
