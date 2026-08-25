@@ -3848,3 +3848,4 @@
 {"timestamp": "2026-08-25T12:22:55.880786", "ticker": "WELL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 239.99, "reason": "stale quote for WELL (59000.766756s old; limit 180s)"}
 {"timestamp": "2026-08-25T12:22:56.015585", "ticker": "AES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 14.75, "reason": "stale quote for AES (58976.60481s old; limit 180s)"}
 {"timestamp": "2026-08-25T12:22:56.142460", "ticker": "AJG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 272.02, "reason": "stale quote for AJG (58984.630961s old; limit 180s)"}
+{"timestamp": "2026-08-25T12:25:03.779575", "ticker": "BIIB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 218.16, "reason": "stale quote for BIIB (59139.137332s old; limit 180s)"}
