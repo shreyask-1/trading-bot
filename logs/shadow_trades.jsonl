@@ -4286,3 +4286,6 @@
 {"timestamp": "2026-08-25T16:20:50.186980", "ticker": "BKNG", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 212.86, "reason": "liquidity filter: BKNG average volume 274,976 < 500,000"}
 {"timestamp": "2026-08-25T16:20:50.258084", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 38.225, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
 {"timestamp": "2026-08-25T16:20:50.344556", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 155.01, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T16:22:44.125197", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 155.695, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T16:22:44.423365", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 38.285, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T16:22:44.423562", "ticker": "NDAQ", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 98.955, "reason": "liquidity filter: NDAQ average volume 109,884 < 500,000"}
