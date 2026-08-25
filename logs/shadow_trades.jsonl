@@ -4228,3 +4228,5 @@
 {"timestamp": "2026-08-25T15:30:58.211878", "ticker": "BALL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 63.67, "reason": "liquidity filter: BALL average volume 77,728 < 500,000"}
 {"timestamp": "2026-08-25T15:30:58.817692", "ticker": "AVY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 181.17, "reason": "liquidity filter: AVY average volume 52,333 < 500,000"}
 {"timestamp": "2026-08-25T15:30:58.903935", "ticker": "AMP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 559.655, "reason": "liquidity filter: AMP average volume 16,054 < 500,000"}
+{"timestamp": "2026-08-25T15:32:30.679882", "ticker": "BKNG", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 212.95, "reason": "liquidity filter: BKNG average volume 274,450 < 500,000"}
+{"timestamp": "2026-08-25T15:32:30.841831", "ticker": "BMY", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 67.88, "reason": "market data unavailable for BMY (bid/ask spread missing)"}
