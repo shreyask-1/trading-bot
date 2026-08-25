@@ -4126,3 +4126,6 @@
 {"timestamp": "2026-08-25T14:24:38.159388", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 90.685, "reason": "liquidity filter: SOLV average volume 72,907 < 500,000"}
 {"timestamp": "2026-08-25T14:26:47.305594", "ticker": "BKNG", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 213.43, "reason": "liquidity filter: BKNG average volume 273,343 < 500,000"}
 {"timestamp": "2026-08-25T14:26:47.387522", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 38.04, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T14:28:35.499714", "ticker": "BKNG", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 213.125, "reason": "liquidity filter: BKNG average volume 273,384 < 500,000"}
+{"timestamp": "2026-08-25T14:28:35.615591", "ticker": "AJG", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 271.47, "reason": "stale quote for AJG (204.821544s old; limit 180s)"}
+{"timestamp": "2026-08-25T14:28:35.723895", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 37.895, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
