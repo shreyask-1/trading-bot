@@ -10731,3 +10731,34 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,611.99;
 Shadow report: 4697 shadow candidate(s), 195 rejection group(s)
 Timings: account: 0.0s | risk: 0.2s | decide: 3.6s | watchlist: 0.0s | perf: 0.1s
 
+=== Run at 2026-08-25T23:18:27.239269 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-25 07:18 PM EDT | Market open (per Alpaca): False | Session: EXTENDED
+Account value: $99,256.48
+Cash: $79,453.78 | Holdings (3): {'GEHC': '0.6136 sh (+0.02%)', 'MS': '43.8344 sh (-1.90%)', 'MSI': '21.1281 sh (+3.33%)'}
+Sector exposure (cached): Technology 10.3%, Financials 9.6%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.45% | today +0.16% | halted: False
+Market regime: BEARISH (position-size multiplier: 0% incl. circuit breaker 100%)
+Overnight queue deferred 6 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+Morning verification: 6 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
+News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 38/60 candidates passed.
+Gemini proposed 4 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 399
+  -> {"ticker": "MRNA", "status": "skipped", "reason": "stale quote for MRNA (11916.137318s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "APA", "status": "skipped", "reason": "stale quote for APA (11918.59222s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "BRO", "status": "skipped", "reason": "stale quote for BRO (11944.451843s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "ARES", "status": "skipped", "reason": "stale quote for ARES (11924.549134s old; limit 180s)", "shadow": false, "data_guard": true}
+Overnight queue kept 12 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
+Dashboard watchlist synced (7 symbols) for news/headlines.
+Ending portfolio value: $99,256.48
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.39% | Max drawdown 0.94% | Daily Sharpe 3.19 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 3 | Equity $99,256.48
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+146.78 (3 open) | Books: legacy: realized $-1,705.68, unrealized $+146.78
+Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,611.99; worst symbols HPE:-1286.89; COHR:-235.59; SNDK:-159.07; ANET:-45.31; NOW:-30.35
+Shadow report: 4701 shadow candidate(s), 199 rejection group(s)
+Timings: account: 0.0s | risk: 1.1s | decide: 6.8s | watchlist: 0.1s | perf: 0.2s
+
