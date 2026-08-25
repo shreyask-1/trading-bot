@@ -4500,3 +4500,5 @@
 {"timestamp": "2026-08-25T19:24:55.749069", "ticker": "MSI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 487.0, "reason": "liquidity filter: MSI average volume 61,855 < 500,000"}
 {"timestamp": "2026-08-25T19:24:56.044610", "ticker": "ARES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 142.83, "reason": "liquidity filter: ARES average volume 135,181 < 500,000"}
 {"timestamp": "2026-08-25T19:26:36.552724", "ticker": "AMT", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 178.86, "reason": "liquidity filter: AMT average volume 118,541 < 500,000"}
+{"timestamp": "2026-08-25T19:28:31.445651", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 158.86, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T19:28:31.551951", "ticker": "BMY", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 67.74, "reason": "market data unavailable for BMY (bid/ask spread missing)"}
