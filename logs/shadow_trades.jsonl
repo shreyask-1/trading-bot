@@ -3603,3 +3603,4 @@
 {"timestamp": "2026-08-25T10:04:49.024955", "ticker": "ADBE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 276.245, "reason": "stale quote for ADBE (50690.8952s old; limit 180s)"}
 {"timestamp": "2026-08-25T10:04:49.154909", "ticker": "ACN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 186.62, "reason": "stale quote for ACN (50699.330045s old; limit 180s)"}
 {"timestamp": "2026-08-25T10:04:49.181141", "ticker": "AMGN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 443.82, "reason": "stale quote for AMGN (50678.814512s old; limit 180s)"}
+{"timestamp": "2026-08-25T10:06:37.837507", "ticker": "WELL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 239.99, "reason": "stale quote for WELL (50822.706473s old; limit 180s)"}
