@@ -3779,3 +3779,6 @@
 {"timestamp": "2026-08-25T11:50:51.680266", "ticker": "AJG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 272.02, "reason": "stale quote for AJG (57060.201731s old; limit 180s)"}
 {"timestamp": "2026-08-25T11:52:28.938786", "ticker": "BKNG", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 213.37, "reason": "stale quote for BKNG (57149.018452s old; limit 180s)"}
 {"timestamp": "2026-08-25T11:52:28.989301", "ticker": "BIIB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 218.16, "reason": "stale quote for BIIB (57184.533696s old; limit 180s)"}
+{"timestamp": "2026-08-25T11:54:36.746453", "ticker": "BKNG", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 213.37, "reason": "stale quote for BKNG (57276.752834s old; limit 180s)"}
+{"timestamp": "2026-08-25T11:54:36.937958", "ticker": "WELL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 239.99, "reason": "stale quote for WELL (57301.767501s old; limit 180s)"}
+{"timestamp": "2026-08-25T11:54:37.114248", "ticker": "APA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 42.96, "reason": "stale quote for APA (57288.38766s old; limit 180s)"}
