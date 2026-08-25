@@ -4273,3 +4273,5 @@
 {"timestamp": "2026-08-25T16:06:39.186690", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 38.365, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
 {"timestamp": "2026-08-25T16:09:44.000908", "ticker": "NDAQ", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 99.1, "reason": "liquidity filter: NDAQ average volume 109,823 < 500,000"}
 {"timestamp": "2026-08-25T16:09:44.001028", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 266.075, "reason": "liquidity filter: ABBV average volume 237,548 < 500,000"}
+{"timestamp": "2026-08-25T16:10:39.490132", "ticker": "BKNG", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 212.61, "reason": "liquidity filter: BKNG average volume 274,937 < 500,000"}
+{"timestamp": "2026-08-25T16:10:39.631334", "ticker": "APA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 41.53, "reason": "liquidity filter: APA average volume 379,686 < 500,000"}
