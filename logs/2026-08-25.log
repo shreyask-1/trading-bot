@@ -14375,6 +14375,16 @@ Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
 Open orders (1): MS sell 43.8344
 Risk state: peak $99,703.60 | drawdown 0.61% | today +0.00% | halted: False
 Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+=== Run at 2026-08-25T13:40:30.049576 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-25 09:40 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,093.44
+Cash: $79,453.78 | Holdings (3): {'GEHC': '0.6136 sh (-0.23%)', 'MS': '43.8344 sh (-3.21%)', 'MSI': '21.1281 sh (+2.97%)'}
+Sector exposure (cached): Technology 10.3%, Financials 9.5%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.61% | today -0.00% | halted: False
+Market regime: BEARISH (position-size multiplier: 0% incl. circuit breaker 100%)
 Overnight queue deferred 8 known-stale idea(s) for 30 minutes to preserve Gemini quota.
 Morning verification: 1 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
 News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
@@ -14389,6 +14399,13 @@ Gemini calls used today (all models combined): 144
   -> {"ticker": "BIIB", "status": "skipped", "reason": "stale quote for BIIB (63743.850078s old; limit 180s)", "shadow": false, "data_guard": true}
   -> {"ticker": "WELL", "status": "skipped", "reason": "liquidity filter: WELL average volume 120,225 < 500,000", "shadow": false, "data_guard": true}
   -> {"ticker": "AES", "status": "skipped", "reason": "liquidity filter: AES average volume 340,773 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "BKNG", "status": "skipped", "reason": "liquidity filter: BKNG average volume 272,554 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "SMCI", "status": "skipped", "reason": "market data unavailable for SMCI (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "AMCR", "status": "skipped", "reason": "liquidity filter: AMCR average volume 209,152 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "APA", "status": "skipped", "reason": "liquidity filter: APA average volume 373,498 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "BIIB", "status": "skipped", "reason": "stale quote for BIIB (63691.955646s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "WELL", "status": "skipped", "reason": "liquidity filter: WELL average volume 120,220 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "AES", "status": "skipped", "reason": "liquidity filter: AES average volume 340,763 < 500,000", "shadow": false, "data_guard": true}
   -> {"ticker": "AJG", "status": "skipped", "reason": "liquidity filter: AJG average volume 65,610 < 500,000", "shadow": false, "data_guard": true}
 Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); 1 idea(s) remain subject to the retry cap.
 Run budget reserve reached -- skipping dashboard watchlist sync.
@@ -14400,4 +14417,9 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,611.99; worst symbols HPE:-1286.89; COHR:-235.59; SNDK:-159.07; ANET:-45.31; NOW:-30.35
 Shadow report: 4017 shadow candidate(s), 473 rejection group(s)
 Timings: account: 0.0s | risk: 0.3s | decide: 25.3s | watchlist: 0.0s | perf: 0.0s
+Performance: Total return +0.20% | Max drawdown 0.94% | Daily Sharpe 1.59 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 3 | Equity $99,093.44
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $-16.26 (3 open) | Books: legacy: realized $-1,705.68, unrealized $-16.26
+Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,611.99; worst symbols HPE:-1286.89; COHR:-235.59; SNDK:-159.07; ANET:-45.31; NOW:-30.35
+Shadow report: 4017 shadow candidate(s), 473 rejection group(s)
+Timings: account: 0.0s | risk: 1.4s | decide: 25.5s | watchlist: 0.0s | perf: 0.0s
 
