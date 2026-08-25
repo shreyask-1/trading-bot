@@ -3431,3 +3431,5 @@
 {"timestamp": "2026-08-25T08:06:55.077731", "ticker": "AES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 14.75, "reason": "stale quote for AES (43615.542977s old; limit 180s)"}
 {"timestamp": "2026-08-25T08:06:55.387491", "ticker": "AJG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 272.02, "reason": "stale quote for AJG (43623.748817s old; limit 180s)"}
 {"timestamp": "2026-08-25T08:06:55.687311", "ticker": "AMT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 178.4, "reason": "stale quote for AMT (43621.81801s old; limit 180s)"}
+{"timestamp": "2026-08-25T08:08:25.514598", "ticker": "WELL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 239.99, "reason": "stale quote for WELL (43730.456313s old; limit 180s)"}
+{"timestamp": "2026-08-25T08:08:25.553577", "ticker": "ACGL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 101.13, "reason": "stale quote for ACGL (43715.487062s old; limit 180s)"}
