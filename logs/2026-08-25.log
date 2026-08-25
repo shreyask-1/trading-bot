@@ -5539,3 +5539,37 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,611.99;
 Shadow report: 4378 shadow candidate(s), 161 rejection group(s)
 Timings: account: 0.0s | risk: 1.5s | decide: 6.0s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-08-25T17:54:27.866985 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-25 01:54 PM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,199.06
+Cash: $79,453.78 | Holdings (3): {'GEHC': '0.6136 sh (+0.52%)', 'MS': '43.8344 sh (-2.56%)', 'MSI': '21.1281 sh (+3.39%)'}
+Sector exposure (cached): Technology 10.3%, Financials 9.5%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.51% | today +0.11% | halted: False
+Market regime: BEARISH (position-size multiplier: 0% incl. circuit breaker 100%)
+Overnight queue deferred 4 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+News: fetched 158, 1 new after dedup, 6 ticker(s) matched.
+Quant pre-screen: 20/37 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
+Technical fallback cap omitted 9 weaker idea(s) this run.
+Gemini calls used today (all models combined): 251
+  -> {"ticker": "IT", "status": "skipped", "reason": "liquidity filter: IT average volume 79,915 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "WELL", "status": "skipped", "reason": "liquidity filter: WELL average volume 122,368 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "SMCI", "status": "skipped", "reason": "market data unavailable for SMCI (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "MOS", "status": "skipped", "reason": "market data unavailable for MOS (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "MPC", "status": "skipped", "reason": "liquidity filter: MPC average volume 108,512 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "NDAQ", "status": "skipped", "reason": "liquidity filter: NDAQ average volume 110,409 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "NFLX", "status": "skipped", "reason": "market data unavailable for NFLX (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "MKC", "status": "skipped", "reason": "stale quote for MKC (598.083969s old; limit 180s)", "shadow": false, "data_guard": true}
+Run budget reserve reached -- skipping dashboard watchlist sync.
+Run budget reserve reached -- skipping performance snapshot.
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.33% | Max drawdown 0.94% | Daily Sharpe 2.69 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 3 | Equity $99,199.06
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+89.36 (3 open) | Books: legacy: realized $-1,705.68, unrealized $+89.36
+Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,611.99; worst symbols HPE:-1286.89; COHR:-235.59; SNDK:-159.07; ANET:-45.31; NOW:-30.35
+Shadow report: 4386 shadow candidate(s), 154 rejection group(s)
+Timings: account: 0.0s | risk: 1.8s | decide: 24.2s | watchlist: 0.0s | perf: 0.0s
+
