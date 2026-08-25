@@ -4122,3 +4122,5 @@
 {"timestamp": "2026-08-25T14:22:53.414134", "ticker": "MOS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 23.845, "reason": "market data unavailable for MOS (bid/ask spread missing)"}
 {"timestamp": "2026-08-25T14:22:53.598010", "ticker": "MPC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 359.735, "reason": "liquidity filter: MPC average volume 106,801 < 500,000"}
 {"timestamp": "2026-08-25T14:22:53.625462", "ticker": "NWS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 34.75, "reason": "liquidity filter: NWS average volume 57,574 < 500,000"}
+{"timestamp": "2026-08-25T14:24:38.159201", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 53.76, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T14:24:38.159388", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 90.685, "reason": "liquidity filter: SOLV average volume 72,907 < 500,000"}
