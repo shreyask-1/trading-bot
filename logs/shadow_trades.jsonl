@@ -4440,3 +4440,6 @@
 {"timestamp": "2026-08-25T18:46:32.532911", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 158.17, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
 {"timestamp": "2026-08-25T18:48:29.394076", "ticker": "AMT", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 178.54, "reason": "liquidity filter: AMT average volume 118,271 < 500,000"}
 {"timestamp": "2026-08-25T18:48:29.467314", "ticker": "APA", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 41.725, "reason": "liquidity filter: APA average volume 382,192 < 500,000"}
+{"timestamp": "2026-08-25T18:50:35.748922", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 158.29, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T18:50:35.853287", "ticker": "AMT", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 178.52, "reason": "liquidity filter: AMT average volume 118,276 < 500,000"}
+{"timestamp": "2026-08-25T18:50:36.109315", "ticker": "BMY", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 67.66, "reason": "market data unavailable for BMY (bid/ask spread missing)"}
