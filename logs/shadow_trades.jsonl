@@ -4197,3 +4197,5 @@
 {"timestamp": "2026-08-25T15:04:33.570486", "ticker": "AJG", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 269.63, "reason": "stale quote for AJG (618.026776s old; limit 180s)"}
 {"timestamp": "2026-08-25T15:06:42.637870", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 158.205, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
 {"timestamp": "2026-08-25T15:06:42.939632", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 38.0, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T15:08:41.632405", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 38.01, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T15:08:41.802695", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 157.595, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
