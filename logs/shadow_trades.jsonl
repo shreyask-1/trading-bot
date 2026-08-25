@@ -4517,3 +4517,5 @@
 {"timestamp": "2026-08-25T19:36:32.662902", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 157.7, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
 {"timestamp": "2026-08-25T19:36:32.725724", "ticker": "BKNG", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 213.4, "reason": "liquidity filter: BKNG average volume 277,382 < 500,000"}
 {"timestamp": "2026-08-25T19:36:32.791211", "ticker": "BMY", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 67.79, "reason": "market data unavailable for BMY (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T19:38:38.515668", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 158.59, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T19:38:38.810207", "ticker": "ARES", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 142.82, "reason": "liquidity filter: ARES average volume 135,656 < 500,000"}
