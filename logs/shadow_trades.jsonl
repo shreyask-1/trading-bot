@@ -4532,3 +4532,5 @@
 {"timestamp": "2026-08-25T19:52:33.055273", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 159.76, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
 {"timestamp": "2026-08-25T19:54:39.271429", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 160.07, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
 {"timestamp": "2026-08-25T19:54:39.626362", "ticker": "APA", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 41.435, "reason": "liquidity filter: APA average volume 385,171 < 500,000"}
+{"timestamp": "2026-08-25T19:56:36.052693", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 158.83, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T19:56:36.368706", "ticker": "BKNG", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 213.395, "reason": "liquidity filter: BKNG average volume 278,802 < 500,000"}
