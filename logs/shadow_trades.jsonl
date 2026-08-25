@@ -4140,3 +4140,5 @@
 {"timestamp": "2026-08-25T14:32:51.844075", "ticker": "AJG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 271.465, "reason": "liquidity filter: AJG average volume 66,051 < 500,000"}
 {"timestamp": "2026-08-25T14:32:51.986463", "ticker": "AMT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 178.32, "reason": "liquidity filter: AMT average volume 117,038 < 500,000"}
 {"timestamp": "2026-08-25T14:34:31.440428", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 53.78, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T14:35:25.844474", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 37.96, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T14:35:26.186648", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 154.135, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
