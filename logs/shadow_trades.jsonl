@@ -3726,3 +3726,6 @@
 {"timestamp": "2026-08-25T11:30:58.500353", "ticker": "WELL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 239.99, "reason": "stale quote for WELL (55883.354809s old; limit 180s)"}
 {"timestamp": "2026-08-25T11:30:58.664931", "ticker": "AES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 14.75, "reason": "stale quote for AES (55859.233983s old; limit 180s)"}
 {"timestamp": "2026-08-25T11:30:58.834882", "ticker": "AJG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 272.02, "reason": "stale quote for AJG (55867.291142s old; limit 180s)"}
+{"timestamp": "2026-08-25T11:32:29.572813", "ticker": "BKNG", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 213.37, "reason": "stale quote for BKNG (55949.6041s old; limit 180s)"}
+{"timestamp": "2026-08-25T11:32:29.684246", "ticker": "WELL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 239.99, "reason": "stale quote for WELL (55974.580448s old; limit 180s)"}
+{"timestamp": "2026-08-25T11:32:29.853471", "ticker": "ADBE", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 276.245, "reason": "stale quote for ADBE (55951.703358s old; limit 180s)"}
