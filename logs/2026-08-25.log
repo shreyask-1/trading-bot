@@ -9526,6 +9526,9 @@ Timings: account: 0.0s | risk: 0.4s | decide: 3.0s | watchlist: 0.0s | perf: 0.1
 === Run at 2026-08-25T08:31:05.983135 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-25 04:31 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
+=== Run at 2026-08-25T08:30:33.124934 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-25 04:30 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
 Account value: $99,016.06
 Cash: $79,453.78 | Holdings (3): {'GEHC': '0.6136 sh (+1.21%)', 'MS': '43.8344 sh (-3.54%)', 'MSI': '21.1281 sh (+2.51%)'}
 Sector exposure (cached): Technology 10.3%, Financials 9.4%, Health Care 0.0%
@@ -9540,6 +9543,12 @@ Gemini proposed 2 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 34
   -> {"ticker": "WELL", "status": "skipped", "reason": "stale quote for WELL (45094.280238s old; limit 180s)", "shadow": false, "data_guard": true}
   -> {"ticker": "ACGL", "status": "skipped", "reason": "stale quote for ACGL (45079.312644s old; limit 180s)", "shadow": false, "data_guard": true}
+News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 35/60 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 34
+  -> {"ticker": "WELL", "status": "skipped", "reason": "stale quote for WELL (45065.246713s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "ACGL", "status": "skipped", "reason": "stale quote for ACGL (45050.518257s old; limit 180s)", "shadow": false, "data_guard": true}
 Overnight queue kept 3 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
 Dashboard watchlist synced (5 symbols) for news/headlines.
 Ending portfolio value: $99,016.06
@@ -9550,4 +9559,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,611.99; worst symbols HPE:-1286.89; COHR:-235.59; SNDK:-159.07; ANET:-45.31; NOW:-30.35
 Shadow report: 3461 shadow candidate(s), 338 rejection group(s)
 Timings: account: 0.0s | risk: 0.3s | decide: 2.7s | watchlist: 0.0s | perf: 0.1s
+Timings: account: 0.0s | risk: 1.1s | decide: 6.0s | watchlist: 0.1s | perf: 0.2s
 
