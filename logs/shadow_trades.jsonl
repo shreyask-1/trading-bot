@@ -4405,3 +4405,5 @@
 {"timestamp": "2026-08-25T18:08:59.135376", "ticker": "MRNA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 157.32, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
 {"timestamp": "2026-08-25T18:10:42.146665", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 156.44, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
 {"timestamp": "2026-08-25T18:12:41.675537", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 24.375, "reason": "market data unavailable for MOS (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T18:14:37.653944", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 157.33, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T18:14:37.974950", "ticker": "BMY", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 67.87, "reason": "market data unavailable for BMY (bid/ask spread missing)"}
