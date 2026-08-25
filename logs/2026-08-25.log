@@ -7724,6 +7724,7 @@ Shadow report: 4538 shadow candidate(s), 61 rejection group(s)
 Timings: account: 0.0s | risk: 1.3s | decide: 11.8s | watchlist: 0.1s | perf: 0.2s
 
 === Run at 2026-08-25T20:18:48.487018 ===
+=== Run at 2026-08-25T20:18:09.831128 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-25 04:18 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,256.35
@@ -7742,6 +7743,7 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued NEM buy (conf 88, stop 125.0, tp 145.0)
   -> queued PM buy (conf 85, stop 188.0, tp 202.0)
   -> queued MRK buy (conf 84, stop 149.0, tp 165.0)
+  -> queued MRK buy (conf 84, stop 148.0, tp 165.0)
   -> queued AMT buy (conf 84, stop 172.0, tp 188.0)
   -> queued BMY buy (conf 80, stop 64.46, tp 72.0)
   -> queued HAS buy (conf 80, stop 92.5, tp 105.0)
@@ -7749,6 +7751,7 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued NWSA buy (conf None, stop 28.22, tp 31.015)
   -> queued AIZ buy (conf 74, stop 277.29, tp 288.0)
   -> queued ACGL buy (conf None, stop 97.21, tp 101.53)
+  -> queued ACGL buy (conf 84, stop 97.21, tp 104.0)
   -> queued AMCR buy (conf 85, stop 44.81, tp 49.5)
 Dashboard watchlist synced (5 symbols) for news/headlines.
 Ending portfolio value: $99,256.35
@@ -7759,4 +7762,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,611.99; worst symbols HPE:-1286.89; COHR:-235.59; SNDK:-159.07; ANET:-45.31; NOW:-30.35
 Shadow report: 4538 shadow candidate(s), 61 rejection group(s)
 Timings: account: 0.0s | risk: 1.2s | decide: 7.3s | watchlist: 0.1s | perf: 0.2s
+Timings: account: 0.0s | risk: 1.2s | decide: 8.1s | watchlist: 0.1s | perf: 0.2s
 
