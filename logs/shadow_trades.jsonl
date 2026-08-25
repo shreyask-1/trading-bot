@@ -3889,3 +3889,5 @@
 {"timestamp": "2026-08-25T12:52:50.010651", "ticker": "SOLV", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 91.24, "reason": "stale quote for SOLV (60777.482364s old; limit 180s)"}
 {"timestamp": "2026-08-25T12:52:50.016803", "ticker": "SW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 48.69, "reason": "stale quote for SW (60749.879877s old; limit 180s)"}
 {"timestamp": "2026-08-25T12:52:50.057240", "ticker": "RMD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 232.51, "reason": "stale quote for RMD (60775.712889s old; limit 180s)"}
+{"timestamp": "2026-08-25T12:54:29.848994", "ticker": "BKNG", "action": "buy", "engine": "gemini", "confidence": 95, "conviction": 10, "price": 213.37, "reason": "stale quote for BKNG (60869.93946s old; limit 180s)"}
+{"timestamp": "2026-08-25T12:54:29.908496", "ticker": "WELL", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 239.99, "reason": "stale quote for WELL (60894.843749s old; limit 180s)"}
