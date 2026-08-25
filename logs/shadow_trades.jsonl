@@ -3871,3 +3871,5 @@
 {"timestamp": "2026-08-25T12:38:31.859522", "ticker": "WELL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 239.99, "reason": "stale quote for WELL (59936.762956s old; limit 180s)"}
 {"timestamp": "2026-08-25T12:40:33.467905", "ticker": "BKNG", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 213.37, "reason": "stale quote for BKNG (60033.554923s old; limit 180s)"}
 {"timestamp": "2026-08-25T12:40:33.538320", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 36.14, "reason": "stale quote for SMCI (2106.799816s old; limit 180s)"}
+{"timestamp": "2026-08-25T12:42:37.970990", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 92.0, "conviction": 9, "price": 36.14, "reason": "stale quote for SMCI (2231.043135s old; limit 180s)"}
+{"timestamp": "2026-08-25T12:42:38.286184", "ticker": "BKNG", "action": "buy", "engine": "gemini", "confidence": 95.0, "conviction": 10, "price": 213.37, "reason": "stale quote for BKNG (60158.19145s old; limit 180s)"}
