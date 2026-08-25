@@ -12248,3 +12248,39 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,611.99;
 Shadow report: 3712 shadow candidate(s), 500 rejection group(s)
 Timings: account: 0.0s | risk: 1.1s | decide: 5.3s | watchlist: 0.2s | perf: 0.1s
 
+=== Run at 2026-08-25T11:28:26.001148 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-25 07:28 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
+Account value: $99,015.57
+Cash: $79,453.78 | Holdings (3): {'GEHC': '0.6136 sh (+0.14%)', 'MS': '43.8344 sh (-3.54%)', 'MSI': '21.1281 sh (+2.51%)'}
+Sector exposure (cached): Technology 10.3%, Financials 9.4%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.69% | today -0.08% | halted: False
+Market regime: BEARISH (position-size multiplier: 0% incl. circuit breaker 100%)
+Overnight queue deferred 8 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+Morning verification: 4 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
+News: fetched 158, 1 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 34/60 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
+Technical fallback cap omitted 14 weaker idea(s) this run.
+Gemini calls used today (all models combined): 108
+  -> {"ticker": "BKNG", "status": "skipped", "reason": "stale quote for BKNG (55728.694611s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "AMCR", "status": "skipped", "reason": "stale quote for AMCR (55739.746538s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "MSI", "status": "skipped", "reason": "stale quote for MSI (55710.29444s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "APA", "status": "skipped", "reason": "stale quote for APA (55740.208595s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "BIIB", "status": "skipped", "reason": "stale quote for BIIB (55764.477084s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "WELL", "status": "skipped", "reason": "stale quote for WELL (55753.976193s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "AES", "status": "skipped", "reason": "stale quote for AES (55729.791006s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "AJG", "status": "skipped", "reason": "stale quote for AJG (55737.776518s old; limit 180s)", "shadow": false, "data_guard": true}
+Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); 5 idea(s) remain subject to the retry cap.
+Dashboard watchlist synced (10 symbols) for news/headlines.
+Ending portfolio value: $99,015.57
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.15% | Max drawdown 0.94% | Daily Sharpe 1.09 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 3 | Equity $99,015.57
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $-94.12 (3 open) | Books: legacy: realized $-1,705.68, unrealized $-94.12
+Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,611.99; worst symbols HPE:-1286.89; COHR:-235.59; SNDK:-159.07; ANET:-45.31; NOW:-30.35
+Shadow report: 3720 shadow candidate(s), 500 rejection group(s)
+Timings: account: 0.0s | risk: 0.4s | decide: 22.6s | watchlist: 0.1s | perf: 0.1s
+
