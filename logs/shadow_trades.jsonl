@@ -4160,3 +4160,4 @@
 {"timestamp": "2026-08-25T14:41:03.055170", "ticker": "AES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 14.745, "reason": "stale quote for AES (232.409623s old; limit 180s)"}
 {"timestamp": "2026-08-25T14:41:03.391682", "ticker": "AJG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 271.53, "reason": "liquidity filter: AJG average volume 66,111 < 500,000"}
 {"timestamp": "2026-08-25T14:41:03.820434", "ticker": "AMT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 177.95, "reason": "stale quote for AMT (184.618671s old; limit 180s)"}
+{"timestamp": "2026-08-25T14:42:35.989829", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 38.11, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
