@@ -3981,3 +3981,5 @@
 {"timestamp": "2026-08-25T13:31:11.446684", "ticker": "WELL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 240.135, "reason": "stale candle for WELL (1056.2m old; limit 30.0m)"}
 {"timestamp": "2026-08-25T13:31:12.273263", "ticker": "AES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 14.75, "reason": "stale quote for AES (63072.20363s old; limit 180s)"}
 {"timestamp": "2026-08-25T13:31:13.201609", "ticker": "AJG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 272.02, "reason": "stale quote for AJG (63080.919714s old; limit 180s)"}
+{"timestamp": "2026-08-25T13:32:37.562229", "ticker": "BKNG", "action": "buy", "engine": "gemini", "confidence": 95, "conviction": 10, "price": 213.315, "reason": "liquidity filter: BKNG average volume 272,389 < 500,000"}
+{"timestamp": "2026-08-25T13:32:38.254538", "ticker": "BIIB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 218.16, "reason": "stale quote for BIIB (63193.225231s old; limit 180s)"}
