@@ -4455,3 +4455,4 @@
 {"timestamp": "2026-08-25T18:56:50.481304", "ticker": "MSI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 486.59, "reason": "stale quote for MSI (194.983259s old; limit 180s)"}
 {"timestamp": "2026-08-25T18:56:50.548139", "ticker": "MRNA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 159.27, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
 {"timestamp": "2026-08-25T18:56:50.558127", "ticker": "MCO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 512.95, "reason": "liquidity filter: MCO average volume 36,305 < 500,000"}
+{"timestamp": "2026-08-25T18:58:38.792929", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 159.065, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
