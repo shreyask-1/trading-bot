@@ -4308,3 +4308,6 @@
 {"timestamp": "2026-08-25T16:42:33.279545", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 38.295, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
 {"timestamp": "2026-08-25T16:42:33.385181", "ticker": "BKNG", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 213.26, "reason": "liquidity filter: BKNG average volume 275,128 < 500,000"}
 {"timestamp": "2026-08-25T16:44:43.208326", "ticker": "BKNG", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 213.22, "reason": "liquidity filter: BKNG average volume 275,142 < 500,000"}
+{"timestamp": "2026-08-25T16:46:31.505167", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 38.35, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T16:46:31.613695", "ticker": "BKNG", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 213.25, "reason": "liquidity filter: BKNG average volume 275,153 < 500,000"}
+{"timestamp": "2026-08-25T16:46:31.690210", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 158.16, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
