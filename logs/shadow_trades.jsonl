@@ -4052,3 +4052,5 @@
 {"timestamp": "2026-08-25T14:01:01.649131", "ticker": "ADSK", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 5, "price": 252.455, "reason": "liquidity filter: ADSK average volume 81,330 < 500,000"}
 {"timestamp": "2026-08-25T14:01:01.649279", "ticker": "AES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 14.74, "reason": "liquidity filter: AES average volume 341,153 < 500,000"}
 {"timestamp": "2026-08-25T14:01:01.649382", "ticker": "AIZ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 287.5, "reason": "stale quote for AIZ (64937.252424s old; limit 180s)"}
+{"timestamp": "2026-08-25T14:02:44.959548", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 37.95, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T14:02:44.959777", "ticker": "AJG", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 270.09, "reason": "liquidity filter: AJG average volume 65,783 < 500,000"}
