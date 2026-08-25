@@ -4243,3 +4243,5 @@
 {"timestamp": "2026-08-25T15:34:31.526795", "ticker": "BMY", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 67.76, "reason": "market data unavailable for BMY (bid/ask spread missing)"}
 {"timestamp": "2026-08-25T15:36:41.357059", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 200.05, "reason": "liquidity filter: IT average volume 78,875 < 500,000"}
 {"timestamp": "2026-08-25T15:36:41.357206", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 54.065, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T15:40:44.474599", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 158.205, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T15:40:44.753290", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 38.47, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
