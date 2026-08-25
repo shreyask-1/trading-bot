@@ -4458,3 +4458,5 @@
 {"timestamp": "2026-08-25T18:58:38.792929", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 159.065, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
 {"timestamp": "2026-08-25T19:00:50.849457", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 158.5, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
 {"timestamp": "2026-08-25T19:00:50.849629", "ticker": "AIZ", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 285.2, "reason": "stale quote for AIZ (1756.722327s old; limit 180s)"}
+{"timestamp": "2026-08-25T19:02:38.986372", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 159.145, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T19:02:38.986611", "ticker": "AMT", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 8, "price": 178.69, "reason": "liquidity filter: AMT average volume 118,372 < 500,000"}
