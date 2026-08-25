@@ -4403,3 +4403,4 @@
 {"timestamp": "2026-08-25T18:08:58.807249", "ticker": "BKNG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 213.68, "reason": "liquidity filter: BKNG average volume 276,192 < 500,000"}
 {"timestamp": "2026-08-25T18:08:58.868636", "ticker": "GEHC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 74.365, "reason": "liquidity filter: GEHC average volume 221,209 < 500,000"}
 {"timestamp": "2026-08-25T18:08:59.135376", "ticker": "MRNA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 157.32, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T18:10:42.146665", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 156.44, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
