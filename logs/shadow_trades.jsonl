@@ -4213,3 +4213,5 @@
 {"timestamp": "2026-08-25T15:22:29.767448", "ticker": "BKNG", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 212.79, "reason": "liquidity filter: BKNG average volume 274,291 < 500,000"}
 {"timestamp": "2026-08-25T15:22:29.832360", "ticker": "BMY", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 67.82, "reason": "market data unavailable for BMY (bid/ask spread missing)"}
 {"timestamp": "2026-08-25T15:22:29.909717", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 38.22, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T15:24:37.199423", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 38.195, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T15:24:37.529307", "ticker": "BMY", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 67.865, "reason": "market data unavailable for BMY (bid/ask spread missing)"}
