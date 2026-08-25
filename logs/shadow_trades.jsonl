@@ -4255,3 +4255,4 @@
 {"timestamp": "2026-08-25T15:48:42.232059", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 38.19, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
 {"timestamp": "2026-08-25T15:50:41.322019", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 38.215, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
 {"timestamp": "2026-08-25T15:50:41.511235", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 124.19, "reason": "stale quote for RVTY (237.655811s old; limit 180s)"}
+{"timestamp": "2026-08-25T15:52:32.066564", "ticker": "BKNG", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 213.02, "reason": "liquidity filter: BKNG average volume 274,799 < 500,000"}
