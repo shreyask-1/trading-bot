@@ -4757,3 +4757,7 @@
 {"timestamp": "2026-08-25T23:52:39.989715", "ticker": "APA", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 41.34, "reason": "stale quote for APA (13963.377567s old; limit 180s)"}
 {"timestamp": "2026-08-25T23:52:40.277897", "ticker": "BRO", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 73.37, "reason": "stale quote for BRO (13989.388757s old; limit 180s)"}
 {"timestamp": "2026-08-25T23:52:40.559588", "ticker": "ARES", "action": "buy", "engine": "gemini", "confidence": 93, "conviction": 9, "price": 142.8, "reason": "stale quote for ARES (13969.47677s old; limit 180s)"}
+{"timestamp": "2026-08-25T23:54:39.532943", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 158.815, "reason": "stale quote for MRNA (14080.828324s old; limit 180s)"}
+{"timestamp": "2026-08-25T23:54:39.770838", "ticker": "APA", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 41.34, "reason": "stale quote for APA (14083.283843s old; limit 180s)"}
+{"timestamp": "2026-08-25T23:54:40.005523", "ticker": "BRO", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 73.37, "reason": "stale quote for BRO (14109.15489s old; limit 180s)"}
+{"timestamp": "2026-08-25T23:54:40.238790", "ticker": "ARES", "action": "buy", "engine": "gemini", "confidence": 93, "conviction": 9, "price": 142.8, "reason": "stale quote for ARES (14089.189164s old; limit 180s)"}
