@@ -4490,3 +4490,4 @@
 {"timestamp": "2026-08-25T19:22:54.084227", "ticker": "BRO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 73.425, "reason": "stale quote for BRO (190.979667s old; limit 180s)"}
 {"timestamp": "2026-08-25T19:22:54.122228", "ticker": "MSI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 486.82, "reason": "liquidity filter: MSI average volume 61,852 < 500,000"}
 {"timestamp": "2026-08-25T19:22:54.353090", "ticker": "ARES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 142.67, "reason": "liquidity filter: ARES average volume 135,159 < 500,000"}
+{"timestamp": "2026-08-25T19:23:43.268844", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 157.68, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
