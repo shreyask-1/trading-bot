@@ -4102,3 +4102,4 @@
 {"timestamp": "2026-08-25T14:14:53.116773", "ticker": "MKC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 54.95, "reason": "liquidity filter: MKC average volume 119,256 < 500,000"}
 {"timestamp": "2026-08-25T14:14:53.191679", "ticker": "RVTY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 124.34, "reason": "liquidity filter: RVTY average volume 93,035 < 500,000"}
 {"timestamp": "2026-08-25T14:14:53.414867", "ticker": "MDLZ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 63.6, "reason": "market data unavailable for MDLZ (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T14:16:37.805513", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 37.925, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
