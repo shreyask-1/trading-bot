@@ -3692,3 +3692,6 @@
 {"timestamp": "2026-08-25T11:14:31.078911", "ticker": "BKNG", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 213.37, "reason": "stale quote for BKNG (54871.178463s old; limit 180s)"}
 {"timestamp": "2026-08-25T11:14:31.119129", "ticker": "WELL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 239.99, "reason": "stale quote for WELL (54896.068035s old; limit 180s)"}
 {"timestamp": "2026-08-25T11:14:31.171596", "ticker": "AMCR", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 47.9, "reason": "stale quote for AMCR (54882.209017s old; limit 180s)"}
+{"timestamp": "2026-08-25T11:16:50.100505", "ticker": "BKNG", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 213.37, "reason": "stale quote for BKNG (55010.040346s old; limit 180s)"}
+{"timestamp": "2026-08-25T11:16:50.348748", "ticker": "WELL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 239.99, "reason": "stale quote for WELL (55035.141242s old; limit 180s)"}
+{"timestamp": "2026-08-25T11:16:50.599786", "ticker": "BIIB", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 218.16, "reason": "stale quote for BIIB (55045.985784s old; limit 180s)"}
