@@ -8641,6 +8641,7 @@ Shadow report: 3420 shadow candidate(s), 301 rejection group(s)
 Timings: account: 0.0s | risk: 0.5s | decide: 2.9s | watchlist: 0.0s | perf: 0.0s
 
 === Run at 2026-08-25T07:36:46.510229 ===
+=== Run at 2026-08-25T07:36:20.235406 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-25 03:36 AM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,093.91
@@ -8666,6 +8667,9 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued TGT buy (conf 85, stop 162.0, tp 180.0)
   -> queued WELL buy (conf 80, stop 230.0, tp 255.0)
   -> queued TRGP buy (conf 80, stop 280.0, tp 315.0)
+  -> queued TGT buy (conf 85, stop 164.5, tp 175.00000000000003)
+  -> queued WELL buy (conf 82, stop 232.0, tp 250.0)
+  -> queued TRGP buy (conf 80, stop 284.50000000000006, tp 305.00000000000006)
   -> queued SMCI buy (conf None, stop 30.92, tp 42.31)
 Dashboard watchlist synced (5 symbols) for news/headlines.
 Ending portfolio value: $99,093.91
@@ -8676,4 +8680,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,611.99; worst symbols HPE:-1286.89; COHR:-235.59; SNDK:-159.07; ANET:-45.31; NOW:-30.35
 Shadow report: 3420 shadow candidate(s), 301 rejection group(s)
 Timings: account: 0.0s | risk: 0.2s | decide: 3.0s | watchlist: 0.0s | perf: 0.1s
+Timings: account: 0.0s | risk: 0.5s | decide: 3.5s | watchlist: 0.0s | perf: 0.1s
 
