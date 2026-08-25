@@ -3613,3 +3613,6 @@
 {"timestamp": "2026-08-25T10:08:50.160019", "ticker": "AMT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 178.4, "reason": "stale quote for AMT (50936.258998s old; limit 180s)"}
 {"timestamp": "2026-08-25T10:08:50.235392", "ticker": "AVY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 183.89, "reason": "stale quote for AVY (50984.050932s old; limit 180s)"}
 {"timestamp": "2026-08-25T10:10:34.568502", "ticker": "WELL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 239.99, "reason": "stale quote for WELL (51059.493416s old; limit 180s)"}
+{"timestamp": "2026-08-25T10:12:44.206704", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 54.005, "reason": "stale quote for SLB (51161.212861s old; limit 180s)"}
+{"timestamp": "2026-08-25T10:12:44.206871", "ticker": "ROP", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 415.51, "reason": "stale quote for ROP (51165.79219s old; limit 180s)"}
+{"timestamp": "2026-08-25T10:12:44.494126", "ticker": "WELL", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 239.99, "reason": "stale quote for WELL (51189.257832s old; limit 180s)"}
