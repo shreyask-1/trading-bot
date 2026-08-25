@@ -3971,3 +3971,5 @@
 {"timestamp": "2026-08-25T13:26:54.661478", "ticker": "SOLV", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 91.24, "reason": "stale quote for SOLV (62802.275949s old; limit 180s)"}
 {"timestamp": "2026-08-25T13:26:54.699339", "ticker": "IT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 202.75, "reason": "stale quote for IT (62794.879875s old; limit 180s)"}
 {"timestamp": "2026-08-25T13:26:54.872769", "ticker": "RMD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 232.51, "reason": "stale quote for RMD (62820.428181s old; limit 180s)"}
+{"timestamp": "2026-08-25T13:28:36.249019", "ticker": "COST", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 971.85, "reason": "stale quote for COST (62921.909543s old; limit 180s)"}
+{"timestamp": "2026-08-25T13:28:36.490278", "ticker": "ROP", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 415.51, "reason": "stale quote for ROP (62924.675103s old; limit 180s)"}
