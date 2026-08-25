@@ -9746,3 +9746,37 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,611.99;
 Shadow report: 4587 shadow candidate(s), 98 rejection group(s)
 Timings: account: 0.0s | risk: 0.4s | decide: 3.0s | watchlist: 0.0s | perf: 0.1s
 
+=== Run at 2026-08-25T22:16:25.438669 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-25 06:16 PM EDT | Market open (per Alpaca): False | Session: EXTENDED
+Account value: $99,256.35
+Cash: $79,453.78 | Holdings (3): {'GEHC': '0.6136 sh (-0.27%)', 'MS': '43.8344 sh (-1.90%)', 'MSI': '21.1281 sh (+3.33%)'}
+Sector exposure (cached): Technology 10.3%, Financials 9.6%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.45% | today +0.16% | halted: False
+Market regime: BEARISH (position-size multiplier: 0% incl. circuit breaker 100%)
+Overnight queue deferred 12 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+News: fetched 158, 3 new after dedup, 2 ticker(s) matched.
+Quant pre-screen: 18/26 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
+Technical fallback cap omitted 5 weaker idea(s) this run.
+Gemini calls used today (all models combined): 369
+  -> {"ticker": "NFLX", "status": "skipped", "reason": "stale quote for NFLX (8189.732743s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "SMCI", "status": "skipped", "reason": "stale quote for SMCI (8211.044179s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "SOLV", "status": "skipped", "reason": "stale quote for SOLV (8214.892092s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "SLB", "status": "skipped", "reason": "stale quote for SLB (8212.493531s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "UBER", "status": "skipped", "reason": "stale quote for UBER (8198.706745s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "MRNA", "status": "skipped", "reason": "stale quote for MRNA (8212.470765s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "SJM", "status": "skipped", "reason": "stale quote for SJM (8212.404716s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "SCHW", "status": "skipped", "reason": "stale quote for SCHW (8212.435428s old; limit 180s)", "shadow": false, "data_guard": true}
+Run budget reserve reached -- skipping dashboard watchlist sync.
+Run budget reserve reached -- skipping performance snapshot.
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.39% | Max drawdown 0.94% | Daily Sharpe 3.19 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 3 | Equity $99,256.35
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+146.66 (3 open) | Books: legacy: realized $-1,705.68, unrealized $+146.66
+Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,611.99; worst symbols HPE:-1286.89; COHR:-235.59; SNDK:-159.07; ANET:-45.31; NOW:-30.35
+Shadow report: 4595 shadow candidate(s), 103 rejection group(s)
+Timings: account: 0.0s | risk: 0.7s | decide: 25.0s | watchlist: 0.0s | perf: 0.0s
+
