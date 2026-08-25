@@ -4266,3 +4266,4 @@
 {"timestamp": "2026-08-25T16:00:59.843522", "ticker": "NFLX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 81.68, "reason": "market data unavailable for NFLX (bid/ask spread missing)"}
 {"timestamp": "2026-08-25T16:00:59.850061", "ticker": "AES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 14.74, "reason": "stale quote for AES (583.98091s old; limit 180s)"}
 {"timestamp": "2026-08-25T16:00:59.861043", "ticker": "AJG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 268.97, "reason": "stale quote for AJG (318.074869s old; limit 180s)"}
+{"timestamp": "2026-08-25T16:02:42.356230", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 38.375, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
