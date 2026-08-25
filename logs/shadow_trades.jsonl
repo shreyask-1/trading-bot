@@ -4431,3 +4431,4 @@
 {"timestamp": "2026-08-25T18:34:31.815405", "ticker": "AMT", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 178.255, "reason": "stale quote for AMT (235.623112s old; limit 180s)"}
 {"timestamp": "2026-08-25T18:36:44.168004", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 156.89, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
 {"timestamp": "2026-08-25T18:36:44.318282", "ticker": "BMY", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 67.59, "reason": "market data unavailable for BMY (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T18:38:36.859560", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 157.325, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
