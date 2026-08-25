@@ -4040,3 +4040,5 @@
 {"timestamp": "2026-08-25T13:48:55.121685", "ticker": "WELL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 239.97, "reason": "liquidity filter: WELL average volume 120,300 < 500,000"}
 {"timestamp": "2026-08-25T13:48:55.338271", "ticker": "AES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 14.745, "reason": "liquidity filter: AES average volume 340,851 < 500,000"}
 {"timestamp": "2026-08-25T13:48:55.558988", "ticker": "AJG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 269.67, "reason": "liquidity filter: AJG average volume 65,625 < 500,000"}
+{"timestamp": "2026-08-25T13:50:43.275275", "ticker": "WELL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 239.97, "reason": "stale quote for WELL (248.844769s old; limit 180s)"}
+{"timestamp": "2026-08-25T13:50:43.535782", "ticker": "APA", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 41.905, "reason": "liquidity filter: APA average volume 373,677 < 500,000"}
