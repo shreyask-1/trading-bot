@@ -4384,3 +4384,6 @@
 {"timestamp": "2026-08-25T17:54:54.259628", "ticker": "NDAQ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 98.785, "reason": "liquidity filter: NDAQ average volume 110,409 < 500,000"}
 {"timestamp": "2026-08-25T17:54:54.259823", "ticker": "NFLX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 82.245, "reason": "market data unavailable for NFLX (bid/ask spread missing)"}
 {"timestamp": "2026-08-25T17:54:54.564419", "ticker": "MKC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 54.5, "reason": "stale quote for MKC (598.083969s old; limit 180s)"}
+{"timestamp": "2026-08-25T17:56:29.913420", "ticker": "BMY", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 67.91, "reason": "market data unavailable for BMY (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T17:56:29.984948", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 158.44, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T17:56:30.041811", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 38.3, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
