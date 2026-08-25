@@ -6454,3 +6454,37 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,611.99;
 Shadow report: 4449 shadow candidate(s), 94 rejection group(s)
 Timings: account: 0.0s | risk: 0.2s | decide: 4.1s | watchlist: 0.0s | perf: 0.1s
 
+=== Run at 2026-08-25T18:56:27.223034 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-25 02:56 PM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,286.22
+Cash: $79,453.78 | Holdings (3): {'GEHC': '0.6136 sh (+0.40%)', 'MS': '43.8344 sh (-1.90%)', 'MSI': '21.1281 sh (+3.63%)'}
+Sector exposure (cached): Technology 10.4%, Financials 9.6%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.42% | today +0.19% | halted: False
+Market regime: BEARISH (position-size multiplier: 0% incl. circuit breaker 100%)
+Overnight queue deferred 3 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+News: fetched 158, 1 new after dedup, 1 ticker(s) matched.
+Quant pre-screen: 16/25 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
+Technical fallback cap omitted 5 weaker idea(s) this run.
+Gemini calls used today (all models combined): 281
+  -> {"ticker": "MOS", "status": "skipped", "reason": "market data unavailable for MOS (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "MPC", "status": "skipped", "reason": "liquidity filter: MPC average volume 109,066 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "MDT", "status": "skipped", "reason": "liquidity filter: MDT average volume 466,222 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "MKC", "status": "skipped", "reason": "liquidity filter: MKC average volume 121,920 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "GEHC", "status": "skipped", "reason": "stale quote for GEHC (265.118317s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "MSI", "status": "skipped", "reason": "stale quote for MSI (194.983259s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "MRNA", "status": "skipped", "reason": "market data unavailable for MRNA (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "MCO", "status": "skipped", "reason": "liquidity filter: MCO average volume 36,305 < 500,000", "shadow": false, "data_guard": true}
+Dashboard watchlist synced (10 symbols) for news/headlines.
+Ending portfolio value: $99,288.62
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.43% | Max drawdown 0.94% | Daily Sharpe 3.44 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 3 | Equity $99,286.22
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+178.92 (3 open) | Books: legacy: realized $-1,705.68, unrealized $+178.92
+Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,611.99; worst symbols HPE:-1286.89; COHR:-235.59; SNDK:-159.07; ANET:-45.31; NOW:-30.35
+Shadow report: 4457 shadow candidate(s), 88 rejection group(s)
+Timings: account: 0.0s | risk: 0.3s | decide: 22.9s | watchlist: 0.0s | perf: 0.1s
+
