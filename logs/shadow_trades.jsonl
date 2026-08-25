@@ -4593,3 +4593,5 @@
 {"timestamp": "2026-08-25T22:17:46.144689", "ticker": "BMY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 67.93, "reason": "stale quote for BMY (8267.883828s old; limit 180s)"}
 {"timestamp": "2026-08-25T22:17:46.437300", "ticker": "BKNG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 213.82, "reason": "stale quote for BKNG (8272.062018s old; limit 180s)"}
 {"timestamp": "2026-08-25T22:17:46.711523", "ticker": "AMP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 560.27, "reason": "stale quote for AMP (8267.240317s old; limit 180s)"}
+{"timestamp": "2026-08-25T22:18:31.350938", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 158.815, "reason": "stale quote for MRNA (8312.765708s old; limit 180s)"}
+{"timestamp": "2026-08-25T22:18:31.351127", "ticker": "NFLX", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 82.25, "reason": "stale quote for NFLX (8308.724165s old; limit 180s)"}
