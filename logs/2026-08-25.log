@@ -9749,6 +9749,9 @@ Timings: account: 0.0s | risk: 0.4s | decide: 3.0s | watchlist: 0.0s | perf: 0.1
 === Run at 2026-08-25T22:17:19.408744 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-25 06:17 PM EDT | Market open (per Alpaca): False | Session: EXTENDED
+=== Run at 2026-08-25T22:16:25.438669 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-25 06:16 PM EDT | Market open (per Alpaca): False | Session: EXTENDED
 Account value: $99,256.35
 Cash: $79,453.78 | Holdings (3): {'GEHC': '0.6136 sh (-0.27%)', 'MS': '43.8344 sh (-1.90%)', 'MSI': '21.1281 sh (+3.33%)'}
 Sector exposure (cached): Technology 10.3%, Financials 9.6%, Health Care 0.0%
@@ -9770,6 +9773,19 @@ Gemini calls used today (all models combined): 369
   -> {"ticker": "BMY", "status": "skipped", "reason": "stale quote for BMY (8267.883828s old; limit 180s)", "shadow": false, "data_guard": true}
   -> {"ticker": "BKNG", "status": "skipped", "reason": "stale quote for BKNG (8272.062018s old; limit 180s)", "shadow": false, "data_guard": true}
   -> {"ticker": "AMP", "status": "skipped", "reason": "stale quote for AMP (8267.240317s old; limit 180s)", "shadow": false, "data_guard": true}
+News: fetched 158, 3 new after dedup, 2 ticker(s) matched.
+Quant pre-screen: 18/26 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
+Technical fallback cap omitted 5 weaker idea(s) this run.
+Gemini calls used today (all models combined): 369
+  -> {"ticker": "NFLX", "status": "skipped", "reason": "stale quote for NFLX (8189.732743s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "SMCI", "status": "skipped", "reason": "stale quote for SMCI (8211.044179s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "SOLV", "status": "skipped", "reason": "stale quote for SOLV (8214.892092s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "SLB", "status": "skipped", "reason": "stale quote for SLB (8212.493531s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "UBER", "status": "skipped", "reason": "stale quote for UBER (8198.706745s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "MRNA", "status": "skipped", "reason": "stale quote for MRNA (8212.470765s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "SJM", "status": "skipped", "reason": "stale quote for SJM (8212.404716s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "SCHW", "status": "skipped", "reason": "stale quote for SCHW (8212.435428s old; limit 180s)", "shadow": false, "data_guard": true}
 Run budget reserve reached -- skipping dashboard watchlist sync.
 Run budget reserve reached -- skipping performance snapshot.
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
@@ -9779,4 +9795,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $-1,611.99; worst symbols HPE:-1286.89; COHR:-235.59; SNDK:-159.07; ANET:-45.31; NOW:-30.35
 Shadow report: 4595 shadow candidate(s), 103 rejection group(s)
 Timings: account: 0.0s | risk: 1.1s | decide: 25.7s | watchlist: 0.0s | perf: 0.0s
+Timings: account: 0.0s | risk: 0.7s | decide: 25.0s | watchlist: 0.0s | perf: 0.0s
 
