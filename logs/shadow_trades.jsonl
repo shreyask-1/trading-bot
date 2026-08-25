@@ -4238,3 +4238,6 @@
 {"timestamp": "2026-08-25T15:33:59.848526", "ticker": "BALL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 63.67, "reason": "stale quote for BALL (236.435028s old; limit 180s)"}
 {"timestamp": "2026-08-25T15:34:00.159872", "ticker": "AVY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 181.17, "reason": "stale quote for AVY (327.975997s old; limit 180s)"}
 {"timestamp": "2026-08-25T15:34:00.298637", "ticker": "AMP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 559.655, "reason": "stale quote for AMP (217.763727s old; limit 180s)"}
+{"timestamp": "2026-08-25T15:34:31.418577", "ticker": "BKNG", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 212.96, "reason": "liquidity filter: BKNG average volume 274,519 < 500,000"}
+{"timestamp": "2026-08-25T15:34:31.479864", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 38.21, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
+{"timestamp": "2026-08-25T15:34:31.526795", "ticker": "BMY", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 67.76, "reason": "market data unavailable for BMY (bid/ask spread missing)"}
