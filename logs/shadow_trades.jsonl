@@ -5791,3 +5791,6 @@
 {"timestamp": "2026-08-26T19:02:41.013923", "ticker": "A", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 153.61, "reason": "liquidity filter: A average volume 103,086 < 500,000"}
 {"timestamp": "2026-08-26T19:02:41.014103", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 261.59, "reason": "liquidity filter: ABBV average volume 230,650 < 500,000"}
 {"timestamp": "2026-08-26T19:02:41.014254", "ticker": "XYZ", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 83.74, "reason": "stale quote for XYZ (198.610932s old; limit 180s)"}
+{"timestamp": "2026-08-26T19:04:40.240257", "ticker": "CSX", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 51.94, "reason": "market data unavailable for CSX (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T19:04:40.534445", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 54.94, "reason": "market data unavailable for EQT (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T19:04:40.534662", "ticker": "CVX", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 200.43, "reason": "liquidity filter: CVX average volume 297,911 < 500,000"}
