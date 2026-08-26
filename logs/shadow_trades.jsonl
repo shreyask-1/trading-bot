@@ -5362,3 +5362,6 @@
 {"timestamp": "2026-08-26T13:48:55.216748", "ticker": "CVNA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 76.35, "reason": "market data unavailable for CVNA (bid/ask spread missing)"}
 {"timestamp": "2026-08-26T13:48:55.467486", "ticker": "ACGL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 101.09, "reason": "liquidity filter: ACGL average volume 53,014 < 500,000"}
 {"timestamp": "2026-08-26T13:48:55.751786", "ticker": "COST", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 959.95, "reason": "liquidity filter: COST average volume 55,378 < 500,000"}
+{"timestamp": "2026-08-26T13:50:40.228804", "ticker": "CPB", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 23.625, "reason": "liquidity filter: CPB average volume 319,535 < 500,000"}
+{"timestamp": "2026-08-26T13:50:40.470615", "ticker": "CPRT", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 33.36, "reason": "market data unavailable for CPRT (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T13:50:40.733361", "ticker": "ACGL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 101.125, "reason": "liquidity filter: ACGL average volume 53,022 < 500,000"}
