@@ -5640,3 +5640,6 @@
 {"timestamp": "2026-08-26T17:30:47.294379", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 53.385, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
 {"timestamp": "2026-08-26T17:30:47.635015", "ticker": "SCHW", "action": "buy", "engine": "gemini", "confidence": 93, "conviction": 9, "price": 109.215, "reason": "liquidity filter: SCHW average volume 358,070 < 500,000"}
 {"timestamp": "2026-08-26T17:30:48.040519", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 37.87, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T17:33:09.227771", "ticker": "EOG", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 145.56, "reason": "liquidity filter: EOG average volume 174,237 < 500,000"}
+{"timestamp": "2026-08-26T17:33:09.353271", "ticker": "CPRT", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 32.795, "reason": "market data unavailable for CPRT (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T17:33:09.482390", "ticker": "CSX", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 52.05, "reason": "market data unavailable for CSX (bid/ask spread missing)"}
