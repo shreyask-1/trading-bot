@@ -5247,3 +5247,6 @@
 {"timestamp": "2026-08-26T12:41:00.370676", "ticker": "DLTR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 134.435, "reason": "stale quote for DLTR (60062.796887s old; limit 180s)"}
 {"timestamp": "2026-08-26T12:41:00.644094", "ticker": "CVNA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 75.745, "reason": "stale quote for CVNA (60060.455075s old; limit 180s)"}
 {"timestamp": "2026-08-26T12:41:00.894982", "ticker": "COST", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 960.3, "reason": "stale quote for COST (60067.611235s old; limit 180s)"}
+{"timestamp": "2026-08-26T12:42:45.689739", "ticker": "COP", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 131.85, "reason": "stale quote for COP (60167.29126s old; limit 180s)"}
+{"timestamp": "2026-08-26T12:42:46.006846", "ticker": "CVX", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 199.91, "reason": "stale quote for CVX (60166.755332s old; limit 180s)"}
+{"timestamp": "2026-08-26T12:42:46.300420", "ticker": "DLTR", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 134.435, "reason": "stale quote for DLTR (60168.690999s old; limit 180s)"}
