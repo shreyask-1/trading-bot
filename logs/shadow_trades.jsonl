@@ -5661,3 +5661,6 @@
 {"timestamp": "2026-08-26T17:44:40.081170", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 53.255, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
 {"timestamp": "2026-08-26T17:44:40.358638", "ticker": "SCHW", "action": "buy", "engine": "gemini", "confidence": 93, "conviction": 9, "price": 109.085, "reason": "liquidity filter: SCHW average volume 359,044 < 500,000"}
 {"timestamp": "2026-08-26T17:44:40.358833", "ticker": "TGT", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 163.625, "reason": "liquidity filter: TGT average volume 227,548 < 500,000"}
+{"timestamp": "2026-08-26T17:46:51.678063", "ticker": "DE", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 637.85, "reason": "liquidity filter: DE average volume 63,588 < 500,000"}
+{"timestamp": "2026-08-26T17:46:52.066753", "ticker": "DLTR", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 132.73, "reason": "liquidity filter: DLTR average volume 104,472 < 500,000"}
+{"timestamp": "2026-08-26T17:46:52.478032", "ticker": "DVN", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 47.03, "reason": "market data unavailable for DVN (bid/ask spread missing)"}
