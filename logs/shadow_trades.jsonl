@@ -5509,3 +5509,6 @@
 {"timestamp": "2026-08-26T16:11:22.888390", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 55.21, "reason": "liquidity filter: EQT average volume 498,205 < 500,000"}
 {"timestamp": "2026-08-26T16:11:22.888598", "ticker": "EOG", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 146.59, "reason": "liquidity filter: EOG average volume 173,312 < 500,000"}
 {"timestamp": "2026-08-26T16:11:23.092114", "ticker": "DLTR", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 132.785, "reason": "liquidity filter: DLTR average volume 102,890 < 500,000"}
+{"timestamp": "2026-08-26T16:12:50.820703", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 53.565, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T16:12:50.820884", "ticker": "SCHW", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 109.22, "reason": "liquidity filter: SCHW average volume 354,865 < 500,000"}
+{"timestamp": "2026-08-26T16:12:51.146192", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 55.23, "reason": "liquidity filter: EQT average volume 498,235 < 500,000"}
