@@ -5814,3 +5814,6 @@
 {"timestamp": "2026-08-26T19:18:42.131324", "ticker": "DLTR", "action": "buy", "engine": "gemini", "confidence": 95, "conviction": 10, "price": 132.39, "reason": "liquidity filter: DLTR average volume 106,240 < 500,000"}
 {"timestamp": "2026-08-26T19:18:42.494282", "ticker": "EOG", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 144.92, "reason": "stale quote for EOG (489.326633s old; limit 180s)"}
 {"timestamp": "2026-08-26T19:18:42.850270", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 54.97, "reason": "market data unavailable for EQT (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T19:20:32.179894", "ticker": "DLTR", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 132.385, "reason": "liquidity filter: DLTR average volume 106,275 < 500,000"}
+{"timestamp": "2026-08-26T19:20:32.224829", "ticker": "DE", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 634.82, "reason": "liquidity filter: DE average volume 64,033 < 500,000"}
+{"timestamp": "2026-08-26T19:20:32.288598", "ticker": "CSX", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 51.97, "reason": "market data unavailable for CSX (bid/ask spread missing)"}
