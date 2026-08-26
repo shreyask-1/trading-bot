@@ -10436,6 +10436,9 @@ Timings: account: 0.0s | risk: 0.4s | decide: 3.4s | watchlist: 0.0s | perf: 0.1
 === Run at 2026-08-26T09:32:26.662730 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-26 05:32 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
+=== Run at 2026-08-26T09:31:48.332685 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-26 05:31 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
 Account value: $99,343.68
 Cash: $79,453.78 | Holdings (3): {'GEHC': '0.6136 sh (+0.02%)', 'MS': '43.8344 sh (-1.49%)', 'MSI': '21.1281 sh (+3.81%)'}
 Sector exposure (cached): Technology 10.4%, Financials 9.6%, Health Care 0.0%
@@ -10452,6 +10455,9 @@ Gemini calls used today (all models combined): 66
   -> {"ticker": "CVX", "status": "skipped", "reason": "stale quote for CVX (48751.302362s old; limit 180s)", "shadow": false, "data_guard": true}
   -> {"ticker": "CPB", "status": "skipped", "reason": "stale quote for CPB (48757.294452s old; limit 180s)", "shadow": false, "data_guard": true}
   -> {"ticker": "DLTR", "status": "skipped", "reason": "stale quote for DLTR (48753.150796s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "CVX", "status": "skipped", "reason": "stale quote for CVX (48722.561538s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "DLTR", "status": "skipped", "reason": "stale quote for DLTR (48724.394465s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "COP", "status": "skipped", "reason": "stale quote for COP (48723.782397s old; limit 180s)", "shadow": false, "data_guard": true}
 Overnight queue kept 12 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
 Dashboard watchlist synced (6 symbols) for news/headlines.
 Ending portfolio value: $99,343.68
@@ -10462,4 +10468,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 4927 shadow candidate(s), 406 rejection group(s)
 Timings: account: 0.0s | risk: 0.4s | decide: 3.4s | watchlist: 0.1s | perf: 0.2s
+Timings: account: 0.0s | risk: 0.7s | decide: 12.7s | watchlist: 0.1s | perf: 0.1s
 
