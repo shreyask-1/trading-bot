@@ -5617,3 +5617,6 @@
 {"timestamp": "2026-08-26T17:18:43.180546", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 261.26, "reason": "liquidity filter: ABBV average volume 229,842 < 500,000"}
 {"timestamp": "2026-08-26T17:18:43.398699", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 55.28, "reason": "market data unavailable for EQT (bid/ask spread missing)"}
 {"timestamp": "2026-08-26T17:18:43.398924", "ticker": "XYZ", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 83.285, "reason": "liquidity filter: XYZ average volume 308,988 < 500,000"}
+{"timestamp": "2026-08-26T17:20:44.254617", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 53.4, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T17:20:44.254812", "ticker": "SCHW", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 109.255, "reason": "liquidity filter: SCHW average volume 357,335 < 500,000"}
+{"timestamp": "2026-08-26T17:20:44.432198", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 55.28, "reason": "market data unavailable for EQT (bid/ask spread missing)"}
