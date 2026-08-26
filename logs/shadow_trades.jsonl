@@ -5778,3 +5778,6 @@
 {"timestamp": "2026-08-26T18:52:39.855430", "ticker": "DLTR", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 132.915, "reason": "liquidity filter: DLTR average volume 105,640 < 500,000"}
 {"timestamp": "2026-08-26T18:52:40.181020", "ticker": "DVN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 46.83, "reason": "market data unavailable for DVN (bid/ask spread missing)"}
 {"timestamp": "2026-08-26T18:52:40.506519", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 54.85, "reason": "market data unavailable for EQT (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T18:54:38.543279", "ticker": "DLTR", "action": "buy", "engine": "gemini", "confidence": 95, "conviction": 10, "price": 132.835, "reason": "liquidity filter: DLTR average volume 105,683 < 500,000"}
+{"timestamp": "2026-08-26T18:54:38.739118", "ticker": "DVN", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 46.85, "reason": "market data unavailable for DVN (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T18:54:38.933591", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 54.88, "reason": "market data unavailable for EQT (bid/ask spread missing)"}
