@@ -5758,3 +5758,5 @@
 {"timestamp": "2026-08-26T18:40:36.160145", "ticker": "DLTR", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 132.6, "reason": "liquidity filter: DLTR average volume 105,373 < 500,000"}
 {"timestamp": "2026-08-26T18:40:36.367451", "ticker": "DVN", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 46.89, "reason": "market data unavailable for DVN (bid/ask spread missing)"}
 {"timestamp": "2026-08-26T18:40:36.464879", "ticker": "DE", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 634.91, "reason": "liquidity filter: DE average volume 63,830 < 500,000"}
+{"timestamp": "2026-08-26T18:42:46.477924", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 53.29, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T18:42:46.781868", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 37.39, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
