@@ -5328,3 +5328,6 @@
 {"timestamp": "2026-08-26T13:34:50.066398", "ticker": "COST", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 963.705, "reason": "liquidity filter: COST average volume 55,224 < 500,000"}
 {"timestamp": "2026-08-26T13:34:50.335041", "ticker": "CVX", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 198.935, "reason": "liquidity filter: CVX average volume 292,474 < 500,000"}
 {"timestamp": "2026-08-26T13:34:50.617634", "ticker": "CPB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 23.445, "reason": "liquidity filter: CPB average volume 319,258 < 500,000"}
+{"timestamp": "2026-08-26T13:36:47.854801", "ticker": "CVNA", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 76.4, "reason": "market data unavailable for CVNA (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T13:36:48.049906", "ticker": "CPB", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 23.55, "reason": "liquidity filter: CPB average volume 319,263 < 500,000"}
+{"timestamp": "2026-08-26T13:36:48.263355", "ticker": "CPRT", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 33.285, "reason": "market data unavailable for CPRT (bid/ask spread missing)"}
