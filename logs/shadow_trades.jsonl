@@ -5794,3 +5794,5 @@
 {"timestamp": "2026-08-26T19:04:40.240257", "ticker": "CSX", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 51.94, "reason": "market data unavailable for CSX (bid/ask spread missing)"}
 {"timestamp": "2026-08-26T19:04:40.534445", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 54.94, "reason": "market data unavailable for EQT (bid/ask spread missing)"}
 {"timestamp": "2026-08-26T19:04:40.534662", "ticker": "CVX", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 200.43, "reason": "liquidity filter: CVX average volume 297,911 < 500,000"}
+{"timestamp": "2026-08-26T19:06:39.452234", "ticker": "CSX", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 51.955, "reason": "market data unavailable for CSX (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T19:06:39.452417", "ticker": "DHR", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 216.12, "reason": "liquidity filter: DHR average volume 203,155 < 500,000"}
