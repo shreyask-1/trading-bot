@@ -10596,3 +10596,39 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; wor
 Shadow report: 4944 shadow candidate(s), 422 rejection group(s)
 Timings: account: 0.0s | risk: 0.4s | decide: 14.8s | watchlist: 0.0s | perf: 0.1s
 
+=== Run at 2026-08-26T09:42:33.539705 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-26 05:42 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
+Account value: $99,343.68
+Cash: $79,453.78 | Holdings (3): {'GEHC': '0.6136 sh (+0.02%)', 'MS': '43.8344 sh (-1.49%)', 'MSI': '21.1281 sh (+3.81%)'}
+Sector exposure (cached): Technology 10.4%, Financials 9.6%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.36% | today +0.09% | halted: False
+Market regime: BEARISH (position-size multiplier: 0% incl. circuit breaker 100%)
+Overnight queue deferred 4 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+Morning verification: 8 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
+News: fetched 158, 1 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 44/60 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
+Technical fallback cap omitted 18 weaker idea(s) this run.
+Gemini calls used today (all models combined): 69
+  -> {"ticker": "CVX", "status": "skipped", "reason": "stale quote for CVX (49379.766839s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "CPB", "status": "skipped", "reason": "stale quote for CPB (49385.95706s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "DRI", "status": "skipped", "reason": "stale quote for DRI (49417.201716s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "COP", "status": "skipped", "reason": "stale quote for COP (49381.501697s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "DE", "status": "skipped", "reason": "stale quote for DE (49389.021125s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "DLTR", "status": "skipped", "reason": "stale quote for DLTR (49382.896897s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "CVNA", "status": "skipped", "reason": "stale quote for CVNA (49380.594265s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "COST", "status": "skipped", "reason": "stale quote for COST (49387.799049s old; limit 180s)", "shadow": false, "data_guard": true}
+Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); 8 idea(s) remain subject to the retry cap.
+Run budget reserve reached -- skipping dashboard watchlist sync.
+Run budget reserve reached -- skipping performance snapshot.
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.48% | Max drawdown 0.94% | Daily Sharpe 3.68 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 3 | Equity $99,343.68
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+233.99 (3 open) | Books: legacy: realized $-1,705.68, unrealized $+233.99
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 4952 shadow candidate(s), 428 rejection group(s)
+Timings: account: 0.0s | risk: 1.3s | decide: 25.8s | watchlist: 0.0s | perf: 0.1s
+
