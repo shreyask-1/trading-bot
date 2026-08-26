@@ -5322,3 +5322,6 @@
 {"timestamp": "2026-08-26T13:30:50.000170", "ticker": "CPB", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 23.34, "reason": "stale candle for CPB (1055.8m old; limit 30.0m)"}
 {"timestamp": "2026-08-26T13:30:50.451606", "ticker": "CVX", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 198.73, "reason": "stale candle for CVX (1055.8m old; limit 30.0m)"}
 {"timestamp": "2026-08-26T13:30:50.936729", "ticker": "DLTR", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 134.435, "reason": "stale quote for DLTR (63053.134713s old; limit 180s)"}
+{"timestamp": "2026-08-26T13:32:31.638798", "ticker": "CVX", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 199.06, "reason": "liquidity filter: CVX average volume 292,389 < 500,000"}
+{"timestamp": "2026-08-26T13:32:31.759472", "ticker": "CPB", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 23.465, "reason": "liquidity filter: CPB average volume 319,243 < 500,000"}
+{"timestamp": "2026-08-26T13:32:31.852822", "ticker": "DRI", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 217.32, "reason": "liquidity filter: DRI average volume 80,531 < 500,000"}
