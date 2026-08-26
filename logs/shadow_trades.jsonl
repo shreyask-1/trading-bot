@@ -5788,3 +5788,6 @@
 {"timestamp": "2026-08-26T18:58:41.009357", "ticker": "DLTR", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 132.45, "reason": "liquidity filter: DLTR average volume 105,791 < 500,000"}
 {"timestamp": "2026-08-26T18:58:41.071116", "ticker": "DVN", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 46.875, "reason": "market data unavailable for DVN (bid/ask spread missing)"}
 {"timestamp": "2026-08-26T19:00:57.522680", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 194.035, "reason": "liquidity filter: IT average volume 79,350 < 500,000"}
+{"timestamp": "2026-08-26T19:02:41.013923", "ticker": "A", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 153.61, "reason": "liquidity filter: A average volume 103,086 < 500,000"}
+{"timestamp": "2026-08-26T19:02:41.014103", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 261.59, "reason": "liquidity filter: ABBV average volume 230,650 < 500,000"}
+{"timestamp": "2026-08-26T19:02:41.014254", "ticker": "XYZ", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 83.74, "reason": "stale quote for XYZ (198.610932s old; limit 180s)"}
