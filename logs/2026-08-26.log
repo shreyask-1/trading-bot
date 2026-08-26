@@ -15444,3 +15444,39 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; wor
 Shadow report: 5471 shadow candidate(s), 371 rejection group(s)
 Timings: account: 0.0s | risk: 1.3s | decide: 6.6s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-08-26T14:56:29.812054 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-26 10:56 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,118.51
+Cash: $79,453.78 | Holdings (3): {'GEHC': '0.6136 sh (-0.07%)', 'MS': '43.8344 sh (-3.58%)', 'MSI': '21.1281 sh (+3.59%)'}
+Sector exposure (cached): Technology 10.4%, Financials 9.4%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.59% | today -0.14% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+Overnight queue deferred 6 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+Morning verification: 1 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
+News: fetched 158, 1 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 41/60 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
+Technical fallback cap omitted 23 weaker idea(s) this run.
+Gemini calls used today (all models combined): 220
+  -> {"ticker": "SLB", "status": "skipped", "reason": "market data unavailable for SLB (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "CPB", "status": "skipped", "reason": "liquidity filter: CPB average volume 321,639 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "DLTR", "status": "skipped", "reason": "liquidity filter: DLTR average volume 101,593 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "DVN", "status": "skipped", "reason": "market data unavailable for DVN (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "EQIX", "status": "skipped", "reason": "liquidity filter: EQIX average volume 33,782 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "EOG", "status": "skipped", "reason": "liquidity filter: EOG average volume 171,189 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "CSX", "status": "skipped", "reason": "market data unavailable for CSX (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "COST", "status": "skipped", "reason": "stale quote for COST (464.90917s old; limit 180s)", "shadow": false, "data_guard": true}
+Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); 1 idea(s) remain subject to the retry cap.
+Run budget reserve reached -- skipping dashboard watchlist sync.
+Run budget reserve reached -- skipping performance snapshot.
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.22% | Max drawdown 0.94% | Daily Sharpe 1.54 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 3 | Equity $99,118.51
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+8.81 (3 open) | Books: legacy: realized $-1,705.68, unrealized $+8.81
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 5479 shadow candidate(s), 364 rejection group(s)
+Timings: account: 0.0s | risk: 1.2s | decide: 25.4s | watchlist: 0.0s | perf: 0.0s
+
