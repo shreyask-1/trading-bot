@@ -6026,3 +6026,6 @@
 {"timestamp": "2026-08-26T22:46:29.453028", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 54.785, "reason": "stale quote for EQT (9990.260362s old; limit 180s)"}
 {"timestamp": "2026-08-26T22:48:33.439066", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 91.54, "reason": "stale quote for SOLV (10127.188561s old; limit 180s)"}
 {"timestamp": "2026-08-26T22:48:33.635623", "ticker": "SNPS", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 410.58, "reason": "stale quote for SNPS (10120.311781s old; limit 180s)"}
+{"timestamp": "2026-08-26T22:50:36.960323", "ticker": "CTSH", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 62.065, "reason": "stale quote for CTSH (10240.152441s old; limit 180s)"}
+{"timestamp": "2026-08-26T22:50:37.061657", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 54.785, "reason": "stale quote for EQT (10237.839079s old; limit 180s)"}
+{"timestamp": "2026-08-26T22:50:37.133782", "ticker": "DE", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 634.12, "reason": "stale quote for DE (10249.229784s old; limit 180s)"}
