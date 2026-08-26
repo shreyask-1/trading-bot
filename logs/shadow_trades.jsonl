@@ -5672,3 +5672,6 @@
 {"timestamp": "2026-08-26T17:52:47.814865", "ticker": "DE", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 637.51, "reason": "liquidity filter: DE average volume 63,603 < 500,000"}
 {"timestamp": "2026-08-26T17:52:48.118237", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 55.185, "reason": "market data unavailable for EQT (bid/ask spread missing)"}
 {"timestamp": "2026-08-26T17:52:48.389720", "ticker": "CSX", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 52.11, "reason": "market data unavailable for CSX (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T17:54:32.331783", "ticker": "DE", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 637.51, "reason": "stale quote for DE (224.261992s old; limit 180s)"}
+{"timestamp": "2026-08-26T17:54:32.580599", "ticker": "DVN", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 47.11, "reason": "market data unavailable for DVN (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T17:54:32.890203", "ticker": "CSX", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 52.125, "reason": "market data unavailable for CSX (bid/ask spread missing)"}
