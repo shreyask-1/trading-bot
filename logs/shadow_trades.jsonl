@@ -5952,3 +5952,6 @@
 {"timestamp": "2026-08-26T22:04:56.212441", "ticker": "DVN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 46.83, "reason": "stale quote for DVN (7478.605098s old; limit 180s)"}
 {"timestamp": "2026-08-26T22:04:56.532883", "ticker": "CSGP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 32.135, "reason": "stale quote for CSGP (7502.280446s old; limit 180s)"}
 {"timestamp": "2026-08-26T22:04:56.605482", "ticker": "DIS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 109.61, "reason": "stale quote for DIS (7477.046679s old; limit 180s)"}
+{"timestamp": "2026-08-26T22:06:39.771607", "ticker": "CTSH", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 62.065, "reason": "stale quote for CTSH (7602.779205s old; limit 180s)"}
+{"timestamp": "2026-08-26T22:06:40.064715", "ticker": "DE", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 634.12, "reason": "stale quote for DE (7611.99717s old; limit 180s)"}
+{"timestamp": "2026-08-26T22:06:40.064874", "ticker": "ECL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 290.61, "reason": "stale quote for ECL (7599.788799s old; limit 180s)"}
