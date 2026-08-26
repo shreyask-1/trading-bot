@@ -5087,3 +5087,6 @@
 {"timestamp": "2026-08-26T11:02:48.528731", "ticker": "CSGP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 32.81, "reason": "stale quote for CSGP (54149.145837s old; limit 180s)"}
 {"timestamp": "2026-08-26T11:02:48.535352", "ticker": "MSI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 485.47, "reason": "stale quote for MSI (54146.705842s old; limit 180s)"}
 {"timestamp": "2026-08-26T11:02:48.581726", "ticker": "CPAY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 412.71, "reason": "stale quote for CPAY (54183.50562s old; limit 180s)"}
+{"timestamp": "2026-08-26T11:04:41.870416", "ticker": "HAS", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 96.77, "reason": "stale quote for HAS (54284.717076s old; limit 180s)"}
+{"timestamp": "2026-08-26T11:04:42.148517", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 124.78, "reason": "stale quote for RVTY (54287.746809s old; limit 180s)"}
+{"timestamp": "2026-08-26T11:04:42.450042", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 220.93, "reason": "stale quote for RSG (54292.217877s old; limit 180s)"}
