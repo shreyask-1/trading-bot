@@ -5377,3 +5377,6 @@
 {"timestamp": "2026-08-26T13:58:34.672943", "ticker": "CVX", "action": "buy", "engine": "gemini", "confidence": 95, "conviction": 10, "price": 200.09, "reason": "stale quote for CVX (263.340387s old; limit 180s)"}
 {"timestamp": "2026-08-26T13:58:34.933071", "ticker": "CPRT", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 33.38, "reason": "market data unavailable for CPRT (bid/ask spread missing)"}
 {"timestamp": "2026-08-26T13:58:35.052115", "ticker": "AJG", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 269.51, "reason": "liquidity filter: AJG average volume 65,253 < 500,000"}
+{"timestamp": "2026-08-26T14:00:55.269554", "ticker": "CPB", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 23.625, "reason": "liquidity filter: CPB average volume 319,822 < 500,000"}
+{"timestamp": "2026-08-26T14:00:55.269752", "ticker": "CPRT", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 33.3, "reason": "market data unavailable for CPRT (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T14:00:55.269857", "ticker": "COST", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 958.39, "reason": "liquidity filter: COST average volume 55,542 < 500,000"}
