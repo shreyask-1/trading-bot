@@ -5477,3 +5477,6 @@
 {"timestamp": "2026-08-26T14:56:56.798890", "ticker": "EOG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 145.5, "reason": "liquidity filter: EOG average volume 171,189 < 500,000"}
 {"timestamp": "2026-08-26T14:56:57.108536", "ticker": "CSX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 51.905, "reason": "market data unavailable for CSX (bid/ask spread missing)"}
 {"timestamp": "2026-08-26T14:56:57.397501", "ticker": "COST", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 956.38, "reason": "stale quote for COST (464.90917s old; limit 180s)"}
+{"timestamp": "2026-08-26T14:58:40.902507", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 53.4, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T14:58:41.217556", "ticker": "CPB", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 23.4, "reason": "liquidity filter: CPB average volume 321,650 < 500,000"}
+{"timestamp": "2026-08-26T14:58:41.580936", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 55.69, "reason": "liquidity filter: EQT average volume 493,622 < 500,000"}
