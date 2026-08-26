@@ -4980,3 +4980,6 @@
 {"timestamp": "2026-08-26T10:01:02.947822", "ticker": "COST", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 960.3, "reason": "stale quote for COST (50452.950323s old; limit 180s)"}
 {"timestamp": "2026-08-26T10:01:02.947984", "ticker": "CPAY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 412.71, "reason": "stale quote for CPAY (50461.358414s old; limit 180s)"}
 {"timestamp": "2026-08-26T10:01:02.948127", "ticker": "CPB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 23.455, "reason": "stale quote for CPB (50453.646456s old; limit 180s)"}
+{"timestamp": "2026-08-26T10:02:32.915000", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 220.93, "reason": "stale quote for RSG (50562.840519s old; limit 180s)"}
+{"timestamp": "2026-08-26T10:02:32.990156", "ticker": "COP", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 131.85, "reason": "stale quote for COP (50554.75611s old; limit 180s)"}
+{"timestamp": "2026-08-26T10:02:32.990385", "ticker": "CPRT", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 33.34, "reason": "stale quote for CPRT (50550.360571s old; limit 180s)"}
