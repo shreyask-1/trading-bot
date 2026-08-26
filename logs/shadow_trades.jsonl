@@ -5395,3 +5395,6 @@
 {"timestamp": "2026-08-26T14:10:44.573407", "ticker": "CPB", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 23.685, "reason": "liquidity filter: CPB average volume 319,975 < 500,000"}
 {"timestamp": "2026-08-26T14:10:44.635225", "ticker": "DLTR", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 132.98, "reason": "liquidity filter: DLTR average volume 100,769 < 500,000"}
 {"timestamp": "2026-08-26T14:10:44.775790", "ticker": "DVN", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 46.98, "reason": "market data unavailable for DVN (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T14:12:40.307820", "ticker": "CPB", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 23.71, "reason": "liquidity filter: CPB average volume 320,036 < 500,000"}
+{"timestamp": "2026-08-26T14:12:40.308039", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 56.11, "reason": "liquidity filter: EQT average volume 487,774 < 500,000"}
+{"timestamp": "2026-08-26T14:12:40.308182", "ticker": "EQIX", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 1081.43, "reason": "liquidity filter: EQIX average volume 33,655 < 500,000"}
