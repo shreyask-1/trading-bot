@@ -5921,3 +5921,6 @@
 {"timestamp": "2026-08-26T21:51:01.490966", "ticker": "EOG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 144.83, "reason": "stale quote for EOG (6661.520304s old; limit 180s)"}
 {"timestamp": "2026-08-26T21:51:01.785830", "ticker": "EG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 379.915, "reason": "stale quote for EG (6694.484256s old; limit 180s)"}
 {"timestamp": "2026-08-26T21:51:02.104586", "ticker": "ECL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 290.61, "reason": "stale quote for ECL (6668.044151s old; limit 180s)"}
+{"timestamp": "2026-08-26T21:52:37.142249", "ticker": "DLTR", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 132.265, "reason": "stale quote for DLTR (6758.799668s old; limit 180s)"}
+{"timestamp": "2026-08-26T21:52:37.442253", "ticker": "CTSH", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 62.065, "reason": "stale quote for CTSH (6760.468445s old; limit 180s)"}
+{"timestamp": "2026-08-26T21:52:37.748381", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 54.785, "reason": "stale quote for EQT (6758.377289s old; limit 180s)"}
