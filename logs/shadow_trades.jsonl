@@ -4769,3 +4769,5 @@
 {"timestamp": "2026-08-25T23:58:38.322076", "ticker": "APA", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 41.34, "reason": "stale quote for APA (14321.79478s old; limit 180s)"}
 {"timestamp": "2026-08-25T23:58:38.629111", "ticker": "BRO", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 73.37, "reason": "stale quote for BRO (14347.723428s old; limit 180s)"}
 {"timestamp": "2026-08-25T23:58:38.921961", "ticker": "ARES", "action": "buy", "engine": "gemini", "confidence": 93, "conviction": 9, "price": 142.8, "reason": "stale quote for ARES (14327.830458s old; limit 180s)"}
+{"timestamp": "2026-08-26T08:01:07.055573", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 220.93, "reason": "stale quote for RSG (43266.068957s old; limit 180s)"}
+{"timestamp": "2026-08-26T08:01:07.055707", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 124.78, "reason": "stale quote for RVTY (43265.853345s old; limit 180s)"}
