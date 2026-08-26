@@ -5488,3 +5488,6 @@
 {"timestamp": "2026-08-26T15:01:11.184441", "ticker": "CRM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 203.42, "reason": "liquidity filter: CRM average volume 385,007 < 500,000"}
 {"timestamp": "2026-08-26T15:01:11.195644", "ticker": "CPAY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 406.15, "reason": "liquidity filter: CPAY average volume 31,945 < 500,000"}
 {"timestamp": "2026-08-26T15:01:11.208029", "ticker": "DELL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 463.0, "reason": "liquidity filter: DELL average volume 196,676 < 500,000"}
+{"timestamp": "2026-08-26T15:56:40.934409", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 313.05, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T15:56:40.934527", "ticker": "STT", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 193.94, "reason": "liquidity filter: STT average volume 62,860 < 500,000"}
+{"timestamp": "2026-08-26T15:56:41.152053", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 55.34, "reason": "liquidity filter: EQT average volume 496,939 < 500,000"}
