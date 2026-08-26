@@ -5631,3 +5631,6 @@
 {"timestamp": "2026-08-26T17:24:56.776161", "ticker": "CTSH", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 61.705, "reason": "liquidity filter: CTSH average volume 445,358 < 500,000"}
 {"timestamp": "2026-08-26T17:24:57.051802", "ticker": "EQIX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 1074.8, "reason": "stale quote for EQIX (1675.965276s old; limit 180s)"}
 {"timestamp": "2026-08-26T17:24:57.351048", "ticker": "CRM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 203.725, "reason": "liquidity filter: CRM average volume 390,659 < 500,000"}
+{"timestamp": "2026-08-26T17:26:31.704700", "ticker": "EOG", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 145.69, "reason": "liquidity filter: EOG average volume 174,081 < 500,000"}
+{"timestamp": "2026-08-26T17:26:31.768852", "ticker": "DLTR", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 132.195, "reason": "liquidity filter: DLTR average volume 103,960 < 500,000"}
+{"timestamp": "2026-08-26T17:26:31.847975", "ticker": "CSX", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 52.05, "reason": "market data unavailable for CSX (bid/ask spread missing)"}
