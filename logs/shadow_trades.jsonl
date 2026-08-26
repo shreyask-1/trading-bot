@@ -5428,3 +5428,6 @@
 {"timestamp": "2026-08-26T14:32:42.929257", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 53.9, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
 {"timestamp": "2026-08-26T14:32:43.580188", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 56.42, "reason": "liquidity filter: EQT average volume 491,414 < 500,000"}
 {"timestamp": "2026-08-26T14:32:43.580388", "ticker": "SBAC", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 186.96, "reason": "stale quote for SBAC (339.84068s old; limit 180s)"}
+{"timestamp": "2026-08-26T14:34:31.283922", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 53.81, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T14:34:31.743468", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 56.435, "reason": "liquidity filter: EQT average volume 491,558 < 500,000"}
+{"timestamp": "2026-08-26T14:34:32.036525", "ticker": "CVX", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 201.0, "reason": "liquidity filter: CVX average volume 294,499 < 500,000"}
