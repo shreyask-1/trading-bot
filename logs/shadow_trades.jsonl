@@ -5581,3 +5581,6 @@
 {"timestamp": "2026-08-26T16:54:32.688663", "ticker": "EOG", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 145.95, "reason": "stale quote for EOG (221.568672s old; limit 180s)"}
 {"timestamp": "2026-08-26T16:54:32.980193", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 55.26, "reason": "market data unavailable for EQT (bid/ask spread missing)"}
 {"timestamp": "2026-08-26T16:54:33.048541", "ticker": "DLTR", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 132.77, "reason": "liquidity filter: DLTR average volume 103,367 < 500,000"}
+{"timestamp": "2026-08-26T16:56:43.558638", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 53.51, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T16:56:43.558847", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 312.99, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T16:56:44.244772", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 55.23, "reason": "market data unavailable for EQT (bid/ask spread missing)"}
