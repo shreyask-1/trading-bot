@@ -5682,3 +5682,6 @@
 {"timestamp": "2026-08-26T17:58:35.961514", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 313.035, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
 {"timestamp": "2026-08-26T17:58:35.961718", "ticker": "ARE", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 52.49, "reason": "liquidity filter: ARE average volume 103,571 < 500,000"}
 {"timestamp": "2026-08-26T17:58:35.961868", "ticker": "WST", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 352.72, "reason": "stale quote for WST (3108.594292s old; limit 180s)"}
+{"timestamp": "2026-08-26T18:00:57.357988", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 53.19, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T18:00:57.358161", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 55.18, "reason": "market data unavailable for EQT (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T18:00:57.358304", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 193.24, "reason": "stale quote for IT (283.941957s old; limit 180s)"}
