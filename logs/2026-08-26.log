@@ -9512,6 +9512,7 @@ Shadow report: 4824 shadow candidate(s), 314 rejection group(s)
 Timings: account: 0.0s | risk: 1.7s | decide: 6.9s | watchlist: 0.1s | perf: 0.2s
 
 === Run at 2026-08-26T08:32:49.070704 ===
+=== Run at 2026-08-26T08:32:05.872657 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-26 04:32 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
 Account value: $99,319.14
@@ -9530,6 +9531,13 @@ Gemini calls used today (all models combined): 38
   -> {"ticker": "CVX", "status": "skipped", "reason": "stale quote for CVX (45178.110453s old; limit 180s)", "shadow": false, "data_guard": true}
   -> {"ticker": "DLTR", "status": "skipped", "reason": "stale quote for DLTR (45180.030777s old; limit 180s)", "shadow": false, "data_guard": true}
   -> {"ticker": "COP", "status": "skipped", "reason": "stale quote for COP (45179.540598s old; limit 180s)", "shadow": false, "data_guard": true}
+News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 43/60 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 38
+  -> {"ticker": "CVX", "status": "skipped", "reason": "stale quote for CVX (45130.524431s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "DLTR", "status": "skipped", "reason": "stale quote for DLTR (45132.251325s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "COP", "status": "skipped", "reason": "stale quote for COP (45131.588758s old; limit 180s)", "shadow": false, "data_guard": true}
 Overnight queue kept 12 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
 Dashboard watchlist synced (6 symbols) for news/headlines.
 Ending portfolio value: $99,319.14
@@ -9540,4 +9548,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 4827 shadow candidate(s), 317 rejection group(s)
 Timings: account: 0.0s | risk: 1.2s | decide: 6.8s | watchlist: 0.1s | perf: 0.2s
+Timings: account: 0.0s | risk: 0.4s | decide: 3.4s | watchlist: 0.0s | perf: 0.1s
 
