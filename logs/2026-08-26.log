@@ -8240,3 +8240,40 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; wor
 Shadow report: 4771 shadow candidate(s), 261 rejection group(s)
 Timings: account: 0.0s | risk: 0.5s | decide: 3.6s | watchlist: 0.0s | perf: 0.1s
 
+=== Run at 2026-08-26T07:18:23.417890 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-26 03:18 AM EDT | Market open (per Alpaca): False | Session: CLOSED
+Account value: $99,257.36
+Cash: $79,453.78 | Holdings (3): {'GEHC': '0.6136 sh (+0.02%)', 'MS': '43.8344 sh (-1.89%)', 'MSI': '21.1281 sh (+3.33%)'}
+Sector exposure (cached): Technology 10.3%, Financials 9.6%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.45% | today +0.00% | halted: False
+Market regime: BEARISH (position-size multiplier: 0% incl. circuit breaker 100%)
+News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 45/66 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 5
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued APA buy (conf 94, stop 39.08, tp 45.04)
+  -> queued BRO buy (conf 94, stop 68.72, tp 74.76)
+  -> queued NWS buy (conf 94, stop 32.26, tp 37.0)
+  -> queued ARES buy (conf 93, stop 137.27, tp 149.87)
+  -> queued A buy (conf 92, stop 146.84, tp 160.47)
+  -> queued BMY buy (conf 89, stop 63.0, tp 68.64)
+  -> queued BALL buy (conf 89, stop 60.94, tp 64.64)
+  -> queued SLB buy (conf 88, stop 51.6, tp 54.68)
+  -> queued TRMB buy (conf 96, stop 54.75, tp 61.75)
+  -> queued TRGP buy (conf None, stop 266.23, tp 307.09)
+  -> queued ACGL buy (conf 94, stop 97.21, tp 101.53)
+  -> queued AMCR buy (conf 94, stop 44.81, tp 48.92)
+Dashboard watchlist synced (6 symbols) for news/headlines.
+Ending portfolio value: $99,257.36
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.39% | Max drawdown 0.94% | Daily Sharpe 2.98 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 3 | Equity $99,257.36
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+147.66 (3 open) | Books: legacy: realized $-1,705.68, unrealized $+147.66
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 4771 shadow candidate(s), 261 rejection group(s)
+Timings: account: 0.0s | risk: 0.6s | decide: 8.5s | watchlist: 0.1s | perf: 0.1s
+
