@@ -5348,3 +5348,6 @@
 {"timestamp": "2026-08-26T13:44:58.372664", "ticker": "CVX", "action": "buy", "engine": "gemini", "confidence": 95, "conviction": 10, "price": 199.98, "reason": "liquidity filter: CVX average volume 292,968 < 500,000"}
 {"timestamp": "2026-08-26T13:44:58.574562", "ticker": "CPB", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 23.595, "reason": "liquidity filter: CPB average volume 319,390 < 500,000"}
 {"timestamp": "2026-08-26T13:44:58.741055", "ticker": "ACGL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 101.05, "reason": "liquidity filter: ACGL average volume 52,988 < 500,000"}
+{"timestamp": "2026-08-26T13:45:41.931830", "ticker": "CVNA", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 76.585, "reason": "market data unavailable for CVNA (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T13:45:42.257243", "ticker": "CPB", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 23.62, "reason": "liquidity filter: CPB average volume 319,395 < 500,000"}
+{"timestamp": "2026-08-26T13:45:42.637870", "ticker": "CVX", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 199.98, "reason": "liquidity filter: CVX average volume 292,983 < 500,000"}
