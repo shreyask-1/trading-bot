@@ -8612,6 +8612,7 @@ Shadow report: 4771 shadow candidate(s), 261 rejection group(s)
 Timings: account: 0.0s | risk: 1.5s | decide: 13.3s | watchlist: 0.1s | perf: 0.2s
 
 === Run at 2026-08-26T07:38:48.519153 ===
+=== Run at 2026-08-26T07:38:19.688031 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-26 03:38 AM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,257.36
@@ -8637,6 +8638,10 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued TRMB buy (conf 96, stop 54.75, tp 61.75)
   -> queued TRGP buy (conf 94, stop 266.23, tp 307.09)
   -> queued ACGL buy (conf 94, stop 97.21, tp 101.53)
+  -> queued SLB buy (conf 92, stop 51.6, tp 57.5)
+  -> queued TRMB buy (conf 85, stop 54.75, tp 64.5)
+  -> queued TRGP buy (conf 94, stop 266.23, tp 307.09)
+  -> queued ACGL buy (conf 88, stop 97.21, tp 106.5)
   -> queued AMCR buy (conf 94, stop 44.81, tp 48.92)
 Dashboard watchlist synced (6 symbols) for news/headlines.
 Ending portfolio value: $99,257.36
@@ -8647,4 +8652,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 4771 shadow candidate(s), 261 rejection group(s)
 Timings: account: 0.0s | risk: 1.0s | decide: 7.4s | watchlist: 0.1s | perf: 0.2s
+Timings: account: 0.0s | risk: 0.3s | decide: 4.3s | watchlist: 0.0s | perf: 0.1s
 
