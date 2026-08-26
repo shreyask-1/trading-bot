@@ -5584,3 +5584,6 @@
 {"timestamp": "2026-08-26T16:56:43.558638", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 53.51, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
 {"timestamp": "2026-08-26T16:56:43.558847", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 312.99, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
 {"timestamp": "2026-08-26T16:56:44.244772", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 55.23, "reason": "market data unavailable for EQT (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T16:58:38.688623", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 55.205, "reason": "market data unavailable for EQT (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T16:58:39.013119", "ticker": "DVN", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 47.11, "reason": "market data unavailable for DVN (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T16:58:39.320553", "ticker": "DLTR", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 132.605, "reason": "liquidity filter: DLTR average volume 103,431 < 500,000"}
