@@ -14613,3 +14613,33 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; wor
 Shadow report: 5382 shadow candidate(s), 451 rejection group(s)
 Timings: account: 0.0s | risk: 0.8s | decide: 15.4s | watchlist: 0.1s | perf: 0.1s
 
+=== Run at 2026-08-26T14:02:28.538466 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-26 10:02 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,115.49
+Cash: $79,453.78 | Holdings (3): {'GEHC': '0.6136 sh (+0.23%)', 'MS': '43.8344 sh (-3.03%)', 'MSI': '21.1281 sh (+3.01%)'}
+Sector exposure (cached): Technology 10.3%, Financials 9.5%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.59% | today -0.14% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+Overnight queue deferred 5 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+Morning verification: 4 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
+News: fetched 158, 1 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 16/22 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 194
+  -> {"ticker": "CPB", "status": "skipped", "reason": "liquidity filter: CPB average volume 319,878 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "CPRT", "status": "skipped", "reason": "market data unavailable for CPRT (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "COST", "status": "skipped", "reason": "liquidity filter: COST average volume 55,558 < 500,000", "shadow": false, "data_guard": true}
+Overnight queue kept 9 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
+Dashboard watchlist synced (6 symbols) for news/headlines.
+Ending portfolio value: $99,108.75
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.24% | Max drawdown 0.94% | Daily Sharpe 1.72 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 3 | Equity $99,115.49
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $-0.94 (3 open) | Books: legacy: realized $-1,705.68, unrealized $-0.94
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 5385 shadow candidate(s), 448 rejection group(s)
+Timings: account: 0.0s | risk: 1.1s | decide: 13.6s | watchlist: 0.1s | perf: 0.2s
+
