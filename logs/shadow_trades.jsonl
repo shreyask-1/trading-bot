@@ -5407,3 +5407,6 @@
 {"timestamp": "2026-08-26T14:18:30.029850", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 56.3, "reason": "liquidity filter: EQT average volume 488,314 < 500,000"}
 {"timestamp": "2026-08-26T14:18:30.098460", "ticker": "CPB", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 23.66, "reason": "liquidity filter: CPB average volume 320,238 < 500,000"}
 {"timestamp": "2026-08-26T14:18:30.266837", "ticker": "EQIX", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 1081.415, "reason": "liquidity filter: EQIX average volume 33,686 < 500,000"}
+{"timestamp": "2026-08-26T14:20:45.966920", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 312.955, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T14:20:46.333444", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 56.29, "reason": "liquidity filter: EQT average volume 488,495 < 500,000"}
+{"timestamp": "2026-08-26T14:20:46.333664", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 262.175, "reason": "liquidity filter: ABBV average volume 226,530 < 500,000"}
