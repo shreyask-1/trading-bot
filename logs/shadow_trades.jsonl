@@ -5655,3 +5655,6 @@
 {"timestamp": "2026-08-26T17:40:56.822796", "ticker": "DLTR", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 132.665, "reason": "liquidity filter: DLTR average volume 104,237 < 500,000"}
 {"timestamp": "2026-08-26T17:40:57.138587", "ticker": "CSX", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 52.03, "reason": "market data unavailable for CSX (bid/ask spread missing)"}
 {"timestamp": "2026-08-26T17:40:57.435478", "ticker": "CTSH", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 61.725, "reason": "liquidity filter: CTSH average volume 446,769 < 500,000"}
+{"timestamp": "2026-08-26T17:42:37.310664", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 312.695, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T17:42:37.401159", "ticker": "A", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 153.02, "reason": "liquidity filter: A average volume 101,487 < 500,000"}
+{"timestamp": "2026-08-26T17:42:37.731672", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 261.09, "reason": "liquidity filter: ABBV average volume 230,092 < 500,000"}
