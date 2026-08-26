@@ -5679,3 +5679,6 @@
 {"timestamp": "2026-08-26T17:56:29.928948", "ticker": "CTSH", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 61.85, "reason": "liquidity filter: CTSH average volume 447,102 < 500,000"}
 {"timestamp": "2026-08-26T17:56:29.997587", "ticker": "DE", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 637.61, "reason": "liquidity filter: DE average volume 63,609 < 500,000"}
 {"timestamp": "2026-08-26T17:56:30.123244", "ticker": "DVN", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 47.09, "reason": "market data unavailable for DVN (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T17:58:35.961514", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 313.035, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T17:58:35.961718", "ticker": "ARE", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 52.49, "reason": "liquidity filter: ARE average volume 103,571 < 500,000"}
+{"timestamp": "2026-08-26T17:58:35.961868", "ticker": "WST", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 352.72, "reason": "stale quote for WST (3108.594292s old; limit 180s)"}
