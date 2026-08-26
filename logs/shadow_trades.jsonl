@@ -5491,3 +5491,6 @@
 {"timestamp": "2026-08-26T15:57:16.250699", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 313.14, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
 {"timestamp": "2026-08-26T15:57:16.250893", "ticker": "STT", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 193.94, "reason": "liquidity filter: STT average volume 62,860 < 500,000"}
 {"timestamp": "2026-08-26T15:57:16.380511", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 55.39, "reason": "liquidity filter: EQT average volume 497,030 < 500,000"}
+{"timestamp": "2026-08-26T15:58:49.976953", "ticker": "CVX", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 201.835, "reason": "liquidity filter: CVX average volume 295,480 < 500,000"}
+{"timestamp": "2026-08-26T15:58:50.292259", "ticker": "CPRT", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 32.975, "reason": "market data unavailable for CPRT (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T15:58:50.292462", "ticker": "CSX", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 52.035, "reason": "market data unavailable for CSX (bid/ask spread missing)"}
