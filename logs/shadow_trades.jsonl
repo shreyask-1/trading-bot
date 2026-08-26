@@ -5729,3 +5729,6 @@
 {"timestamp": "2026-08-26T18:24:57.608264", "ticker": "DE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 636.82, "reason": "liquidity filter: DE average volume 63,685 < 500,000"}
 {"timestamp": "2026-08-26T18:24:57.865686", "ticker": "EQIX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 1074.87, "reason": "stale quote for EQIX (735.264074s old; limit 180s)"}
 {"timestamp": "2026-08-26T18:24:58.151013", "ticker": "EOG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 145.17, "reason": "liquidity filter: EOG average volume 174,876 < 500,000"}
+{"timestamp": "2026-08-26T18:26:40.459025", "ticker": "DE", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 636.5, "reason": "liquidity filter: DE average volume 63,688 < 500,000"}
+{"timestamp": "2026-08-26T18:26:40.832456", "ticker": "EOG", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 145.17, "reason": "stale quote for EOG (192.006477s old; limit 180s)"}
+{"timestamp": "2026-08-26T18:26:41.175172", "ticker": "DLTR", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 132.405, "reason": "liquidity filter: DLTR average volume 105,031 < 500,000"}
