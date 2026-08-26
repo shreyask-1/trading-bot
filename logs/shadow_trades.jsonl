@@ -5787,3 +5787,4 @@
 {"timestamp": "2026-08-26T18:58:40.961344", "ticker": "EOG", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 144.79, "reason": "stale quote for EOG (478.275665s old; limit 180s)"}
 {"timestamp": "2026-08-26T18:58:41.009357", "ticker": "DLTR", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 132.45, "reason": "liquidity filter: DLTR average volume 105,791 < 500,000"}
 {"timestamp": "2026-08-26T18:58:41.071116", "ticker": "DVN", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 46.875, "reason": "market data unavailable for DVN (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T19:00:57.522680", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 194.035, "reason": "liquidity filter: IT average volume 79,350 < 500,000"}
