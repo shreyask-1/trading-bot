@@ -5027,3 +5027,7 @@
 {"timestamp": "2026-08-26T10:26:35.559293", "ticker": "CVX", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 199.91, "reason": "stale quote for CVX (51996.371382s old; limit 180s)"}
 {"timestamp": "2026-08-26T10:26:35.814967", "ticker": "CPB", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 23.455, "reason": "stale quote for CPB (52002.508835s old; limit 180s)"}
 {"timestamp": "2026-08-26T10:26:36.056813", "ticker": "COP", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 131.85, "reason": "stale quote for COP (51997.698028s old; limit 180s)"}
+{"timestamp": "2026-08-26T10:29:01.139036", "ticker": "MSI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 485.47, "reason": "stale quote for MSI (52119.988324s old; limit 180s)"}
+{"timestamp": "2026-08-26T10:29:01.145215", "ticker": "HAS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 96.77, "reason": "stale quote for HAS (52129.776821s old; limit 180s)"}
+{"timestamp": "2026-08-26T10:29:01.190731", "ticker": "RVTY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 124.78, "reason": "stale quote for RVTY (52146.95541s old; limit 180s)"}
+{"timestamp": "2026-08-26T10:29:01.196930", "ticker": "XOM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 160.62, "reason": "stale quote for XOM (52121.811402s old; limit 180s)"}
