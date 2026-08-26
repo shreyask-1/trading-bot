@@ -4828,3 +4828,6 @@
 {"timestamp": "2026-08-26T08:34:27.468362", "ticker": "CVX", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 199.91, "reason": "stale quote for CVX (45268.426639s old; limit 180s)"}
 {"timestamp": "2026-08-26T08:34:27.533494", "ticker": "CPB", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 23.455, "reason": "stale quote for CPB (45274.356351s old; limit 180s)"}
 {"timestamp": "2026-08-26T08:34:27.576299", "ticker": "DRI", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 220.36, "reason": "stale quote for DRI (45305.372268s old; limit 180s)"}
+{"timestamp": "2026-08-26T08:36:38.472883", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 220.93, "reason": "stale quote for RSG (45408.239251s old; limit 180s)"}
+{"timestamp": "2026-08-26T08:36:38.772502", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 124.78, "reason": "stale quote for RVTY (45404.342662s old; limit 180s)"}
+{"timestamp": "2026-08-26T08:36:39.080592", "ticker": "CPRT", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 33.34, "reason": "stale quote for CPRT (45400.300816s old; limit 180s)"}
