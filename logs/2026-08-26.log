@@ -6749,3 +6749,41 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; wor
 Shadow report: 5880 shadow candidate(s), 38 rejection group(s)
 Timings: account: 0.0s | risk: 1.2s | decide: 8.7s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-08-26T20:20:31.455259 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-26 04:20 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+Account value: $99,178.13
+Cash: $79,453.78 | Holdings (3): {'GEHC': '0.6136 sh (-0.80%)', 'MS': '43.8344 sh (-3.11%)', 'MSI': '21.1281 sh (+3.73%)'}
+Sector exposure (cached): Technology 10.4%, Financials 9.5%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.53% | today -0.08% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 1 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 40/65 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
+Technical fallback cap omitted 13 weaker idea(s) this run.
+Gemini calls used today (all models combined): 347
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued SLB buy (conf 92, stop 51.6, tp 54.680000000000014)
+  -> queued AAPL buy (conf 89, stop 302.06, tp 320.28)
+  -> queued EOG buy (conf 86, stop 140.56, tp 153.54)
+  -> queued DVN buy (conf 84, stop 43.65, tp 49.72)
+  -> queued CSX buy (conf 84, stop 50.03, tp 52.15)
+  -> queued EQIX buy (conf 84, stop 1035.19, tp 1127.93)
+  -> queued BMY buy (conf 84, stop 65.5, tp 70.5)
+  -> queued TRGP buy (conf None, stop 266.23, tp 307.09)
+  -> queued MSI buy (conf None, stop 457.185, tp 490.08)
+  -> queued TGT buy (conf None, stop 146.41, tp 170.72)
+  -> queued TYL buy (conf None, stop 311.245, tp 359.77)
+  -> queued TRMB buy (conf None, stop 54.75, tp 61.1)
+Run budget reserve reached -- skipping dashboard watchlist sync.
+Run budget reserve reached -- skipping performance snapshot.
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.31% | Max drawdown 0.94% | Daily Sharpe 2.31 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 3 | Equity $99,178.13
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+68.43 (3 open) | Books: legacy: realized $-1,705.68, unrealized $+68.43
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 5880 shadow candidate(s), 38 rejection group(s)
+Timings: account: 0.0s | risk: 1.4s | decide: 23.1s | watchlist: 0.0s | perf: 0.0s
+
