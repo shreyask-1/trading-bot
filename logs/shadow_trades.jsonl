@@ -5658,3 +5658,6 @@
 {"timestamp": "2026-08-26T17:42:37.310664", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 312.695, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
 {"timestamp": "2026-08-26T17:42:37.401159", "ticker": "A", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 153.02, "reason": "liquidity filter: A average volume 101,487 < 500,000"}
 {"timestamp": "2026-08-26T17:42:37.731672", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 261.09, "reason": "liquidity filter: ABBV average volume 230,092 < 500,000"}
+{"timestamp": "2026-08-26T17:44:40.081170", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 53.255, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T17:44:40.358638", "ticker": "SCHW", "action": "buy", "engine": "gemini", "confidence": 93, "conviction": 9, "price": 109.085, "reason": "liquidity filter: SCHW average volume 359,044 < 500,000"}
+{"timestamp": "2026-08-26T17:44:40.358833", "ticker": "TGT", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 163.625, "reason": "liquidity filter: TGT average volume 227,548 < 500,000"}
