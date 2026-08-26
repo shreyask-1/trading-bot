@@ -5707,3 +5707,6 @@
 {"timestamp": "2026-08-26T18:16:45.960942", "ticker": "EOG", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 145.28, "reason": "liquidity filter: EOG average volume 174,829 < 500,000"}
 {"timestamp": "2026-08-26T18:16:46.299456", "ticker": "DLTR", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 132.3, "reason": "liquidity filter: DLTR average volume 104,890 < 500,000"}
 {"timestamp": "2026-08-26T18:16:46.608077", "ticker": "DVN", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 47.05, "reason": "market data unavailable for DVN (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T18:18:36.201801", "ticker": "DVN", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 47.01, "reason": "market data unavailable for DVN (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T18:18:36.340340", "ticker": "DLTR", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 132.46, "reason": "liquidity filter: DLTR average volume 104,922 < 500,000"}
+{"timestamp": "2026-08-26T18:18:36.513772", "ticker": "EOG", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 145.31, "reason": "liquidity filter: EOG average volume 174,852 < 500,000"}
