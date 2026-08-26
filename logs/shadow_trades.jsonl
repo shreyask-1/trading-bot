@@ -5437,3 +5437,6 @@
 {"timestamp": "2026-08-26T14:36:40.789662", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 53.84, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
 {"timestamp": "2026-08-26T14:36:41.125457", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 56.305, "reason": "liquidity filter: EQT average volume 491,681 < 500,000"}
 {"timestamp": "2026-08-26T14:36:41.467394", "ticker": "CVX", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 200.86, "reason": "liquidity filter: CVX average volume 294,509 < 500,000"}
+{"timestamp": "2026-08-26T14:38:44.543706", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 53.73, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T14:38:44.864726", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 56.23, "reason": "liquidity filter: EQT average volume 491,904 < 500,000"}
+{"timestamp": "2026-08-26T14:38:44.864932", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 125.52, "reason": "stale quote for RVTY (790.406562s old; limit 180s)"}
