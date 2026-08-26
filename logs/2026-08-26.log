@@ -15510,3 +15510,39 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; wor
 Shadow report: 5482 shadow candidate(s), 361 rejection group(s)
 Timings: account: 0.0s | risk: 1.4s | decide: 6.8s | watchlist: 0.4s | perf: 0.2s
 
+=== Run at 2026-08-26T15:00:46.047928 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-26 11:00 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,125.98
+Cash: $79,453.78 | Holdings (3): {'GEHC': '0.6136 sh (-0.08%)', 'MS': '43.8344 sh (-3.50%)', 'MSI': '21.1281 sh (+3.58%)'}
+Sector exposure (cached): Technology 10.4%, Financials 9.4%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.58% | today -0.13% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+Overnight queue deferred 5 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+Morning verification: 2 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
+News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 10/12 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
+Technical fallback cap omitted 1 weaker idea(s) this run.
+Gemini calls used today (all models combined): 221
+  -> {"ticker": "SLB", "status": "skipped", "reason": "market data unavailable for SLB (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "CPB", "status": "skipped", "reason": "liquidity filter: CPB average volume 321,701 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "MSI", "status": "skipped", "reason": "liquidity filter: MSI average volume 61,463 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "EQT", "status": "skipped", "reason": "liquidity filter: EQT average volume 493,758 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "CPRT", "status": "skipped", "reason": "market data unavailable for CPRT (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "CRM", "status": "skipped", "reason": "liquidity filter: CRM average volume 385,007 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "CPAY", "status": "skipped", "reason": "liquidity filter: CPAY average volume 31,945 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "DELL", "status": "skipped", "reason": "liquidity filter: DELL average volume 196,676 < 500,000", "shadow": false, "data_guard": true}
+Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); 2 idea(s) remain subject to the retry cap.
+Run budget reserve reached -- skipping dashboard watchlist sync.
+Run budget reserve reached -- skipping performance snapshot.
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.26% | Max drawdown 0.94% | Daily Sharpe 1.83 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 3 | Equity $99,125.98
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+16.28 (3 open) | Books: legacy: realized $-1,705.68, unrealized $+16.28
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 5490 shadow candidate(s), 354 rejection group(s)
+Timings: account: 0.0s | risk: 0.8s | decide: 24.3s | watchlist: 0.0s | perf: 0.1s
+
