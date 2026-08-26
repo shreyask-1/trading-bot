@@ -5368,3 +5368,6 @@
 {"timestamp": "2026-08-26T13:52:37.485028", "ticker": "ACGL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 100.945, "reason": "liquidity filter: ACGL average volume 53,052 < 500,000"}
 {"timestamp": "2026-08-26T13:52:37.647024", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 261.2, "reason": "liquidity filter: ABBV average volume 225,440 < 500,000"}
 {"timestamp": "2026-08-26T13:52:37.647192", "ticker": "ADP", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 283.18, "reason": "stale quote for ADP (254.137809s old; limit 180s)"}
+{"timestamp": "2026-08-26T13:54:32.809532", "ticker": "CPRT", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 33.36, "reason": "market data unavailable for CPRT (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T13:54:32.881552", "ticker": "CVX", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 200.09, "reason": "liquidity filter: CVX average volume 293,298 < 500,000"}
+{"timestamp": "2026-08-26T13:54:32.963382", "ticker": "AJG", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 268.95, "reason": "liquidity filter: AJG average volume 65,200 < 500,000"}
