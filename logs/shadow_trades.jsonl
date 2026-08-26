@@ -5449,3 +5449,6 @@
 {"timestamp": "2026-08-26T14:44:38.480493", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 53.73, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
 {"timestamp": "2026-08-26T14:44:38.590642", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 55.975, "reason": "liquidity filter: EQT average volume 492,875 < 500,000"}
 {"timestamp": "2026-08-26T14:44:38.717893", "ticker": "CPB", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 23.5, "reason": "liquidity filter: CPB average volume 321,470 < 500,000"}
+{"timestamp": "2026-08-26T14:46:33.772804", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 53.7, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-08-26T14:46:33.875673", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 55.94, "reason": "liquidity filter: EQT average volume 493,008 < 500,000"}
+{"timestamp": "2026-08-26T14:46:33.961575", "ticker": "CPB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 23.46, "reason": "liquidity filter: CPB average volume 321,554 < 500,000"}
