@@ -5066,6 +5066,9 @@ Timings: account: 0.0s | risk: 0.2s | decide: 6.8s | watchlist: 0.0s | perf: 0.1
 === Run at 2026-08-26T04:31:17.351247 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-26 12:31 AM EDT | Market open (per Alpaca): False | Session: CLOSED
+=== Run at 2026-08-26T04:30:33.178719 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-26 12:30 AM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,256.48
 Cash: $79,453.78 | Holdings (3): {'GEHC': '0.6136 sh (+0.02%)', 'MS': '43.8344 sh (-1.90%)', 'MSI': '21.1281 sh (+3.33%)'}
 Sector exposure (cached): Technology 10.3%, Financials 9.6%, Health Care 0.0%
@@ -5090,6 +5093,10 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued AMCR buy (conf 94, stop 44.81, tp 48.92)
   -> queued ACGL buy (conf 94, stop 97.21, tp 101.53)
   -> queued TRMB buy (conf 96, stop 54.75, tp 61.75)
+  -> queued SLB buy (conf 92, stop 51.5, tp 54.75)
+  -> queued AMCR buy (conf 94, stop 44.81, tp 48.92)
+  -> queued ACGL buy (conf 88, stop 97.0, tp 101.5)
+  -> queued TRMB buy (conf 90, stop 54.5, tp 61.5)
 Dashboard watchlist synced (6 symbols) for news/headlines.
 Ending portfolio value: $99,256.48
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
@@ -5099,4 +5106,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 4771 shadow candidate(s), 261 rejection group(s)
 Timings: account: 0.0s | risk: 1.5s | decide: 10.9s | watchlist: 0.1s | perf: 0.2s
+Timings: account: 0.0s | risk: 1.1s | decide: 13.3s | watchlist: 0.1s | perf: 0.2s
 
