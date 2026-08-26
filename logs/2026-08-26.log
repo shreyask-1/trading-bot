@@ -12109,6 +12109,7 @@ Shadow report: 5118 shadow candidate(s), 500 rejection group(s)
 Timings: account: 0.0s | risk: 1.3s | decide: 6.5s | watchlist: 0.1s | perf: 0.2s
 
 === Run at 2026-08-26T11:20:51.889618 ===
+=== Run at 2026-08-26T11:20:23.820804 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-26 07:20 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
 Account value: $99,343.85
@@ -12127,6 +12128,9 @@ Gemini calls used today (all models combined): 114
   -> {"ticker": "COP", "status": "skipped", "reason": "stale quote for COP (55256.926468s old; limit 180s)", "shadow": false, "data_guard": true}
   -> {"ticker": "CVX", "status": "skipped", "reason": "stale quote for CVX (55256.170575s old; limit 180s)", "shadow": false, "data_guard": true}
   -> {"ticker": "CPB", "status": "skipped", "reason": "stale quote for CPB (55262.122301s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "CVX", "status": "skipped", "reason": "stale quote for CVX (55229.232312s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "COP", "status": "skipped", "reason": "stale quote for COP (55230.114656s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "DLTR", "status": "skipped", "reason": "stale quote for DLTR (55230.955494s old; limit 180s)", "shadow": false, "data_guard": true}
 Overnight queue kept 12 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
 Dashboard watchlist synced (6 symbols) for news/headlines.
 Ending portfolio value: $99,343.85
@@ -12137,4 +12141,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 5121 shadow candidate(s), 500 rejection group(s)
 Timings: account: 0.0s | risk: 0.2s | decide: 3.1s | watchlist: 0.0s | perf: 0.1s
+Timings: account: 0.0s | risk: 0.6s | decide: 3.6s | watchlist: 0.0s | perf: 0.1s
 
