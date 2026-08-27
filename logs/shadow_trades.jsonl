@@ -7055,3 +7055,6 @@
 {"timestamp": "2026-08-27T17:02:56.864052", "ticker": "CRM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 249.215, "reason": "liquidity filter: CRM average volume 436,950 < 500,000"}
 {"timestamp": "2026-08-27T17:02:57.179766", "ticker": "HAS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 94.33, "reason": "stale quote for HAS (351.548003s old; limit 180s)"}
 {"timestamp": "2026-08-27T17:02:57.247760", "ticker": "HCA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 423.685, "reason": "liquidity filter: HCA average volume 58,477 < 500,000"}
+{"timestamp": "2026-08-27T17:04:36.744014", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 224.205, "reason": "liquidity filter: CRWD average volume 290,863 < 500,000"}
+{"timestamp": "2026-08-27T17:04:36.874138", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 249.4, "reason": "liquidity filter: CRM average volume 437,218 < 500,000"}
+{"timestamp": "2026-08-27T17:04:36.874347", "ticker": "CNC", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 66.045, "reason": "liquidity filter: CNC average volume 182,712 < 500,000"}
