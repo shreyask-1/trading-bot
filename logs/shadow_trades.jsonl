@@ -6701,3 +6701,6 @@
 {"timestamp": "2026-08-27T13:58:39.979841", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 264.875, "reason": "liquidity filter: JNJ average volume 229,486 < 500,000"}
 {"timestamp": "2026-08-27T13:58:40.344011", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 34.37, "reason": "market data unavailable for HAL (bid/ask spread missing)"}
 {"timestamp": "2026-08-27T13:58:40.681843", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 197.75, "reason": "stale quote for IT (283.519766s old; limit 180s)"}
+{"timestamp": "2026-08-27T14:01:00.312026", "ticker": "XYZ", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 86.11, "reason": "liquidity filter: XYZ average volume 298,574 < 500,000"}
+{"timestamp": "2026-08-27T14:01:00.312217", "ticker": "GPN", "action": "buy", "engine": "gemini", "confidence": 72, "conviction": 7, "price": 93.26, "reason": "liquidity filter: GPN average volume 114,764 < 500,000"}
+{"timestamp": "2026-08-27T14:01:00.312363", "ticker": "GS", "action": "buy", "engine": "gemini", "confidence": 68, "conviction": 7, "price": 1046.275, "reason": "liquidity filter: GS average volume 61,868 < 500,000"}
