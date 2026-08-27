@@ -6680,3 +6680,6 @@
 {"timestamp": "2026-08-27T13:44:38.745032", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 34.445, "reason": "market data unavailable for HAL (bid/ask spread missing)"}
 {"timestamp": "2026-08-27T13:44:39.056253", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 264.52, "reason": "liquidity filter: JNJ average volume 228,740 < 500,000"}
 {"timestamp": "2026-08-27T13:44:39.349740", "ticker": "XYZ", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 85.6, "reason": "liquidity filter: XYZ average volume 297,677 < 500,000"}
+{"timestamp": "2026-08-27T13:46:40.169080", "ticker": "XYZ", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 85.765, "reason": "liquidity filter: XYZ average volume 297,762 < 500,000"}
+{"timestamp": "2026-08-27T13:46:40.753808", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 264.77, "reason": "liquidity filter: JNJ average volume 228,838 < 500,000"}
+{"timestamp": "2026-08-27T13:46:41.584494", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 34.465, "reason": "market data unavailable for HAL (bid/ask spread missing)"}
