@@ -7082,3 +7082,6 @@
 {"timestamp": "2026-08-27T17:16:34.412320", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 314.9, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
 {"timestamp": "2026-08-27T17:18:37.233527", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 224.91, "reason": "liquidity filter: CRWD average volume 291,764 < 500,000"}
 {"timestamp": "2026-08-27T17:18:37.594885", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 249.29, "reason": "liquidity filter: CRM average volume 438,474 < 500,000"}
+{"timestamp": "2026-08-27T17:20:54.824326", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 224.69, "reason": "liquidity filter: CRWD average volume 291,881 < 500,000"}
+{"timestamp": "2026-08-27T17:20:55.151450", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 249.22, "reason": "liquidity filter: CRM average volume 438,508 < 500,000"}
+{"timestamp": "2026-08-27T17:20:55.466507", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 266.62, "reason": "liquidity filter: JNJ average volume 237,084 < 500,000"}
