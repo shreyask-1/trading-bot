@@ -6443,3 +6443,6 @@
 {"timestamp": "2026-08-27T11:18:29.093585", "ticker": "COP", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 130.59, "reason": "stale quote for COP (55117.817057s old; limit 180s)"}
 {"timestamp": "2026-08-27T11:18:29.167323", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 279.54, "reason": "stale quote for CEG (55113.286993s old; limit 180s)"}
 {"timestamp": "2026-08-27T11:18:29.248672", "ticker": "CHD", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 102.85, "reason": "stale quote for CHD (55109.798576s old; limit 180s)"}
+{"timestamp": "2026-08-27T11:20:29.286933", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 270.115, "reason": "stale quote for JNJ (55233.410971s old; limit 180s)"}
+{"timestamp": "2026-08-27T11:20:29.341190", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 34.45, "reason": "stale quote for HAL (55230.788074s old; limit 180s)"}
+{"timestamp": "2026-08-27T11:20:29.382310", "ticker": "XYZ", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 83.07, "reason": "stale quote for XYZ (55239.487426s old; limit 180s)"}
