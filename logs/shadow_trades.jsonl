@@ -7546,3 +7546,5 @@
 {"timestamp": "2026-08-27T23:02:51.845118", "ticker": "HPQ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 29.625, "reason": "stale quote for HPQ (10953.206449s old; limit 180s)"}
 {"timestamp": "2026-08-27T23:02:51.845189", "ticker": "HSIC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 90.27, "reason": "stale quote for HSIC (10961.796737s old; limit 180s)"}
 {"timestamp": "2026-08-27T23:02:51.845250", "ticker": "ICE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 161.15, "reason": "stale quote for ICE (10976.954964s old; limit 180s)"}
+{"timestamp": "2026-08-27T23:04:40.102746", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 227.99, "reason": "stale quote for CRWD (11080.759635s old; limit 180s)"}
+{"timestamp": "2026-08-27T23:04:40.352217", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 29.625, "reason": "stale quote for HPQ (11080.974731s old; limit 180s)"}
