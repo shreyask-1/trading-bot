@@ -6332,3 +6332,7 @@
 {"timestamp": "2026-08-27T10:12:26.232827", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 270.115, "reason": "stale quote for JNJ (51150.357221s old; limit 180s)"}
 {"timestamp": "2026-08-27T10:12:26.285630", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 34.45, "reason": "stale quote for HAL (51147.734681s old; limit 180s)"}
 {"timestamp": "2026-08-27T10:12:26.330939", "ticker": "XYZ", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 83.07, "reason": "stale quote for XYZ (51156.432381s old; limit 180s)"}
+{"timestamp": "2026-08-27T10:14:47.792411", "ticker": "A", "action": "buy", "engine": "gemini", "confidence": 95, "conviction": 10, "price": 160.0, "reason": "stale quote for A (49359.594561s old; limit 180s)"}
+{"timestamp": "2026-08-27T10:14:47.792601", "ticker": "ACGL", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 100.7, "reason": "stale quote for ACGL (51292.155138s old; limit 180s)"}
+{"timestamp": "2026-08-27T10:14:47.792759", "ticker": "NDAQ", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 99.45, "reason": "stale quote for NDAQ (51287.83434s old; limit 180s)"}
+{"timestamp": "2026-08-27T10:14:47.792925", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 205.75, "reason": "stale quote for CRM (51285.19755s old; limit 180s)"}
