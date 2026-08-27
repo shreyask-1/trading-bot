@@ -6326,3 +6326,6 @@
 {"timestamp": "2026-08-27T10:08:57.016594", "ticker": "JKHY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 172.41, "reason": "stale quote for JKHY (50986.83643s old; limit 180s)"}
 {"timestamp": "2026-08-27T10:08:57.314346", "ticker": "HSY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 185.34, "reason": "stale quote for HSY (50940.554829s old; limit 180s)"}
 {"timestamp": "2026-08-27T10:08:57.616846", "ticker": "XYZ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 83.07, "reason": "stale quote for XYZ (50947.529305s old; limit 180s)"}
+{"timestamp": "2026-08-27T10:10:35.203768", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 270.115, "reason": "stale quote for JNJ (51039.280525s old; limit 180s)"}
+{"timestamp": "2026-08-27T10:10:35.309188", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 34.45, "reason": "stale quote for HAL (51036.719277s old; limit 180s)"}
+{"timestamp": "2026-08-27T10:10:35.417243", "ticker": "GIS", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 40.09, "reason": "stale quote for GIS (51035.82178s old; limit 180s)"}
