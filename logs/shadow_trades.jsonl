@@ -7151,3 +7151,6 @@
 {"timestamp": "2026-08-27T17:58:33.625279", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 225.92, "reason": "liquidity filter: CRWD average volume 293,923 < 500,000"}
 {"timestamp": "2026-08-27T17:58:33.804571", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 250.06, "reason": "liquidity filter: CRM average volume 445,591 < 500,000"}
 {"timestamp": "2026-08-27T17:58:33.977809", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 266.82, "reason": "liquidity filter: JNJ average volume 237,649 < 500,000"}
+{"timestamp": "2026-08-27T18:01:04.353613", "ticker": "MSI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 487.675, "reason": "liquidity filter: MSI average volume 63,200 < 500,000"}
+{"timestamp": "2026-08-27T18:01:04.353859", "ticker": "CRM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 250.03, "reason": "liquidity filter: CRM average volume 445,794 < 500,000"}
+{"timestamp": "2026-08-27T18:01:04.354078", "ticker": "HCA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 421.72, "reason": "liquidity filter: HCA average volume 58,753 < 500,000"}
