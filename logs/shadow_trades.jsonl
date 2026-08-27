@@ -7423,3 +7423,6 @@
 {"timestamp": "2026-08-27T22:04:40.012546", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 29.625, "reason": "stale quote for HPQ (7480.646442s old; limit 180s)"}
 {"timestamp": "2026-08-27T22:04:40.246629", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 35.49, "reason": "stale quote for HAL (7482.911129s old; limit 180s)"}
 {"timestamp": "2026-08-27T22:04:40.478694", "ticker": "IBM", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 238.76, "reason": "stale quote for IBM (7482.432254s old; limit 180s)"}
+{"timestamp": "2026-08-27T22:06:41.541052", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 227.99, "reason": "stale quote for CRWD (7602.194192s old; limit 180s)"}
+{"timestamp": "2026-08-27T22:06:41.817514", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 29.625, "reason": "stale quote for HPQ (7602.421487s old; limit 180s)"}
+{"timestamp": "2026-08-27T22:06:42.100263", "ticker": "IBM", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 238.76, "reason": "stale quote for IBM (7604.007397s old; limit 180s)"}
