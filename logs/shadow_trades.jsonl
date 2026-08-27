@@ -6993,3 +6993,6 @@
 {"timestamp": "2026-08-27T16:28:57.286794", "ticker": "IVZ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 33.53, "reason": "liquidity filter: IVZ average volume 280,896 < 500,000"}
 {"timestamp": "2026-08-27T16:28:57.541992", "ticker": "ADBE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 288.28, "reason": "liquidity filter: ADBE average volume 163,546 < 500,000"}
 {"timestamp": "2026-08-27T16:28:57.832404", "ticker": "INCY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 127.505, "reason": "stale quote for INCY (872.391848s old; limit 180s)"}
+{"timestamp": "2026-08-27T16:30:51.582413", "ticker": "ADBE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 288.65, "reason": "liquidity filter: ADBE average volume 163,615 < 500,000"}
+{"timestamp": "2026-08-27T16:30:51.582612", "ticker": "ADP", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 285.28, "reason": "stale quote for ADP (531.941318s old; limit 180s)"}
+{"timestamp": "2026-08-27T16:30:51.582770", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 258.285, "reason": "liquidity filter: ABBV average volume 214,059 < 500,000"}
