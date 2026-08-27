@@ -6780,3 +6780,5 @@
 {"timestamp": "2026-08-27T14:46:47.802472", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 95, "conviction": 10, "price": 248.535, "reason": "liquidity filter: CRM average volume 414,243 < 500,000"}
 {"timestamp": "2026-08-27T14:46:47.802677", "ticker": "ADBE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 288.01, "reason": "liquidity filter: ADBE average volume 160,451 < 500,000"}
 {"timestamp": "2026-08-27T14:46:48.236986", "ticker": "IVZ", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 33.24, "reason": "stale quote for IVZ (243.979272s old; limit 180s)"}
+{"timestamp": "2026-08-27T14:48:41.639701", "ticker": "ADBE", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 288.09, "reason": "liquidity filter: ADBE average volume 160,508 < 500,000"}
+{"timestamp": "2026-08-27T14:48:41.775681", "ticker": "ADSK", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 268.5, "reason": "liquidity filter: ADSK average volume 78,136 < 500,000"}
