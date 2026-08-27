@@ -6586,3 +6586,6 @@
 {"timestamp": "2026-08-27T12:50:43.607594", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 270.115, "reason": "stale quote for JNJ (60647.713251s old; limit 180s)"}
 {"timestamp": "2026-08-27T12:50:43.705444", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 34.45, "reason": "stale quote for HAL (60645.123213s old; limit 180s)"}
 {"timestamp": "2026-08-27T12:50:43.857522", "ticker": "INTU", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 345.76, "reason": "stale quote for INTU (60645.681156s old; limit 180s)"}
+{"timestamp": "2026-08-27T12:52:28.319730", "ticker": "MSI", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 487.025, "reason": "stale quote for MSI (60756.293666s old; limit 180s)"}
+{"timestamp": "2026-08-27T12:52:28.371280", "ticker": "HCA", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 426.87, "reason": "stale quote for HCA (60763.019537s old; limit 180s)"}
+{"timestamp": "2026-08-27T12:52:28.425669", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 270.115, "reason": "stale quote for JNJ (60752.542034s old; limit 180s)"}
