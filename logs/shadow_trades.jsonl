@@ -6455,3 +6455,6 @@
 {"timestamp": "2026-08-27T11:26:35.191806", "ticker": "A", "action": "buy", "engine": "gemini", "confidence": 95, "conviction": 10, "price": 160.0, "reason": "stale quote for A (53669.590973s old; limit 180s)"}
 {"timestamp": "2026-08-27T11:26:35.192035", "ticker": "BBY", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 87.45, "reason": "stale quote for BBY (55591.684494s old; limit 180s)"}
 {"timestamp": "2026-08-27T11:26:35.192184", "ticker": "ACGL", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 100.7, "reason": "stale quote for ACGL (55601.12309s old; limit 180s)"}
+{"timestamp": "2026-08-27T11:28:36.514483", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 270.115, "reason": "stale quote for JNJ (55720.451323s old; limit 180s)"}
+{"timestamp": "2026-08-27T11:28:36.829426", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 34.45, "reason": "stale quote for HAL (55718.078757s old; limit 180s)"}
+{"timestamp": "2026-08-27T11:28:37.125629", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 192.84, "reason": "stale quote for IT (55724.7668s old; limit 180s)"}
