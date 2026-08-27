@@ -7236,3 +7236,6 @@
 {"timestamp": "2026-08-27T18:44:30.465163", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 225.94, "reason": "liquidity filter: CRWD average volume 296,199 < 500,000"}
 {"timestamp": "2026-08-27T18:44:30.547579", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 250.61, "reason": "liquidity filter: CRM average volume 455,170 < 500,000"}
 {"timestamp": "2026-08-27T18:44:30.625765", "ticker": "KO", "action": "buy", "engine": "gemini", "confidence": 98, "conviction": 10, "price": 89.61, "reason": "market data unavailable for KO (bid/ask spread missing)"}
+{"timestamp": "2026-08-27T18:46:40.587969", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 225.85, "reason": "liquidity filter: CRWD average volume 296,313 < 500,000"}
+{"timestamp": "2026-08-27T18:46:40.844300", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 251.12, "reason": "liquidity filter: CRM average volume 455,393 < 500,000"}
+{"timestamp": "2026-08-27T18:46:41.199789", "ticker": "KO", "action": "buy", "engine": "gemini", "confidence": 98, "conviction": 10, "price": 89.595, "reason": "market data unavailable for KO (bid/ask spread missing)"}
