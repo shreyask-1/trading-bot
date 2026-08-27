@@ -6973,3 +6973,5 @@
 {"timestamp": "2026-08-27T16:18:50.236083", "ticker": "ADBE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 288.36, "reason": "liquidity filter: ADBE average volume 163,336 < 500,000"}
 {"timestamp": "2026-08-27T16:18:50.294614", "ticker": "MSI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 488.625, "reason": "liquidity filter: MSI average volume 62,931 < 500,000"}
 {"timestamp": "2026-08-27T16:18:50.350921", "ticker": "IT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 197.795, "reason": "stale quote for IT (233.038875s old; limit 180s)"}
+{"timestamp": "2026-08-27T16:20:40.154837", "ticker": "ADBE", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 288.25, "reason": "liquidity filter: ADBE average volume 163,364 < 500,000"}
+{"timestamp": "2026-08-27T16:20:40.256032", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 198.02, "reason": "liquidity filter: IT average volume 75,975 < 500,000"}
