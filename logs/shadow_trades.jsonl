@@ -6659,3 +6659,6 @@
 {"timestamp": "2026-08-27T13:31:00.496941", "ticker": "JKHY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 172.41, "reason": "stale quote for JKHY (63127.664475s old; limit 180s)"}
 {"timestamp": "2026-08-27T13:31:00.870417", "ticker": "HSY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 185.34, "reason": "stale quote for HSY (63064.049251s old; limit 180s)"}
 {"timestamp": "2026-08-27T13:31:01.213164", "ticker": "XYZ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 84.29, "reason": "liquidity filter: XYZ average volume 312,294 < 500,000"}
+{"timestamp": "2026-08-27T13:32:45.988576", "ticker": "XYZ", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 84.525, "reason": "liquidity filter: XYZ average volume 296,469 < 500,000"}
+{"timestamp": "2026-08-27T13:32:46.363204", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 34.47, "reason": "market data unavailable for HAL (bid/ask spread missing)"}
+{"timestamp": "2026-08-27T13:32:46.931136", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 194.685, "reason": "liquidity filter: IT average volume 75,004 < 500,000"}
