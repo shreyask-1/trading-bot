@@ -6923,3 +6923,6 @@
 {"timestamp": "2026-08-27T15:54:32.565461", "ticker": "HCA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 424.915, "reason": "liquidity filter: HCA average volume 58,274 < 500,000"}
 {"timestamp": "2026-08-27T15:54:32.663609", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 198.64, "reason": "liquidity filter: IT average volume 75,896 < 500,000"}
 {"timestamp": "2026-08-27T15:54:32.725418", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 267.4, "reason": "liquidity filter: JNJ average volume 235,393 < 500,000"}
+{"timestamp": "2026-08-27T15:56:40.534817", "ticker": "ADBE", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 287.03, "reason": "liquidity filter: ADBE average volume 162,687 < 500,000"}
+{"timestamp": "2026-08-27T15:56:40.796825", "ticker": "HCA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 424.915, "reason": "stale quote for HCA (268.68179s old; limit 180s)"}
+{"timestamp": "2026-08-27T15:56:41.056543", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 198.64, "reason": "stale quote for IT (290.016887s old; limit 180s)"}
