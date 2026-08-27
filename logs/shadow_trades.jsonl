@@ -6846,3 +6846,6 @@
 {"timestamp": "2026-08-27T15:18:49.880329", "ticker": "ADSK", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 271.305, "reason": "liquidity filter: ADSK average volume 78,618 < 500,000"}
 {"timestamp": "2026-08-27T15:18:50.055929", "ticker": "INCY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 127.72, "reason": "stale quote for INCY (308.659901s old; limit 180s)"}
 {"timestamp": "2026-08-27T15:18:50.078167", "ticker": "MSI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 488.595, "reason": "stale quote for MSI (236.687744s old; limit 180s)"}
+{"timestamp": "2026-08-27T15:20:37.437663", "ticker": "IVZ", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 33.395, "reason": "liquidity filter: IVZ average volume 279,843 < 500,000"}
+{"timestamp": "2026-08-27T15:20:37.561863", "ticker": "ADBE", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 289.245, "reason": "liquidity filter: ADBE average volume 161,425 < 500,000"}
+{"timestamp": "2026-08-27T15:20:37.719635", "ticker": "ADSK", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 271.285, "reason": "liquidity filter: ADSK average volume 78,692 < 500,000"}
