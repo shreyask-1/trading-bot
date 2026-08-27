@@ -7497,3 +7497,6 @@
 {"timestamp": "2026-08-27T22:38:57.634628", "ticker": "JNJ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 265.76, "reason": "stale quote for JNJ (9544.343461s old; limit 180s)"}
 {"timestamp": "2026-08-27T22:38:57.943788", "ticker": "CRM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 252.19, "reason": "stale quote for CRM (9541.478116s old; limit 180s)"}
 {"timestamp": "2026-08-27T22:38:58.249452", "ticker": "HCA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 419.01, "reason": "stale quote for HCA (9561.378733s old; limit 180s)"}
+{"timestamp": "2026-08-27T22:40:35.716035", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 29.625, "reason": "stale quote for HPQ (9636.384541s old; limit 180s)"}
+{"timestamp": "2026-08-27T22:40:35.886510", "ticker": "IBM", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 238.76, "reason": "stale quote for IBM (9637.886724s old; limit 180s)"}
+{"timestamp": "2026-08-27T22:40:36.065271", "ticker": "KO", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 89.055, "reason": "stale quote for KO (9636.039232s old; limit 180s)"}
