@@ -6815,3 +6815,6 @@
 {"timestamp": "2026-08-27T15:04:54.770752", "ticker": "ZBH", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 100.845, "reason": "liquidity filter: ZBH average volume 149,616 < 500,000"}
 {"timestamp": "2026-08-27T15:04:54.842827", "ticker": "A", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 157.85, "reason": "liquidity filter: A average volume 105,190 < 500,000"}
 {"timestamp": "2026-08-27T15:04:54.843100", "ticker": "ABT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 111.935, "reason": "liquidity filter: ABT average volume 372,636 < 500,000"}
+{"timestamp": "2026-08-27T15:06:43.945667", "ticker": "ADBE", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 289.995, "reason": "liquidity filter: ADBE average volume 161,186 < 500,000"}
+{"timestamp": "2026-08-27T15:06:44.223319", "ticker": "ADSK", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 271.135, "reason": "liquidity filter: ADSK average volume 78,411 < 500,000"}
+{"timestamp": "2026-08-27T15:06:44.223488", "ticker": "IBM", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 238.35, "reason": "liquidity filter: IBM average volume 207,638 < 500,000"}
