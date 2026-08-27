@@ -7364,3 +7364,6 @@
 {"timestamp": "2026-08-27T19:58:29.606730", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 227.94, "reason": "liquidity filter: CRWD average volume 303,845 < 500,000"}
 {"timestamp": "2026-08-27T19:58:29.693519", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 252.96, "reason": "liquidity filter: CRM average volume 470,920 < 500,000"}
 {"timestamp": "2026-08-27T19:58:29.820001", "ticker": "IBM", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 238.545, "reason": "liquidity filter: IBM average volume 219,534 < 500,000"}
+{"timestamp": "2026-08-27T21:30:38.932961", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 227.99, "reason": "stale quote for CRWD (5439.668891s old; limit 180s)"}
+{"timestamp": "2026-08-27T21:30:38.998579", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 252.19, "reason": "stale quote for CRM (5442.71112s old; limit 180s)"}
+{"timestamp": "2026-08-27T21:30:38.998767", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 35.49, "reason": "stale quote for HAL (5438.238437s old; limit 180s)"}
