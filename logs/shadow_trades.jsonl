@@ -7514,3 +7514,6 @@
 {"timestamp": "2026-08-27T22:46:33.838925", "ticker": "KMB", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 109.95, "reason": "stale quote for KMB (9995.283833s old; limit 180s)"}
 {"timestamp": "2026-08-27T22:46:33.965189", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 29.625, "reason": "stale quote for HPQ (9994.678369s old; limit 180s)"}
 {"timestamp": "2026-08-27T22:46:34.085949", "ticker": "IBM", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 238.76, "reason": "stale quote for IBM (9996.122605s old; limit 180s)"}
+{"timestamp": "2026-08-27T22:48:44.816272", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 227.99, "reason": "stale quote for CRWD (10125.467064s old; limit 180s)"}
+{"timestamp": "2026-08-27T22:48:45.128243", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 252.19, "reason": "stale quote for CRM (10128.643923s old; limit 180s)"}
+{"timestamp": "2026-08-27T22:48:45.128454", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 138.435, "reason": "stale quote for NOW (10116.814227s old; limit 180s)"}
