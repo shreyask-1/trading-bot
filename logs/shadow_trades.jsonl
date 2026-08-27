@@ -7438,3 +7438,6 @@
 {"timestamp": "2026-08-27T22:14:34.677960", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 29.625, "reason": "stale quote for HPQ (8075.27461s old; limit 180s)"}
 {"timestamp": "2026-08-27T22:14:34.926932", "ticker": "IBM", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 238.76, "reason": "stale quote for IBM (8076.867638s old; limit 180s)"}
 {"timestamp": "2026-08-27T22:14:35.196203", "ticker": "KMB", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 109.95, "reason": "stale quote for KMB (8076.539441s old; limit 180s)"}
+{"timestamp": "2026-08-27T22:16:30.446683", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 227.99, "reason": "stale quote for CRWD (8191.220539s old; limit 180s)"}
+{"timestamp": "2026-08-27T22:16:30.446895", "ticker": "ADSK", "action": "buy", "engine": "gemini", "confidence": 96, "conviction": 10, "price": 270.875, "reason": "stale quote for ADSK (8200.938546s old; limit 180s)"}
+{"timestamp": "2026-08-27T22:16:30.447026", "ticker": "ACN", "action": "buy", "engine": "gemini", "confidence": 96, "conviction": 10, "price": 187.355, "reason": "stale quote for ACN (8191.157655s old; limit 180s)"}
