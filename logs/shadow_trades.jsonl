@@ -7111,3 +7111,6 @@
 {"timestamp": "2026-08-27T17:34:58.262411", "ticker": "IVZ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 33.475, "reason": "liquidity filter: IVZ average volume 281,978 < 500,000"}
 {"timestamp": "2026-08-27T17:34:58.583956", "ticker": "INCY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 127.52, "reason": "stale quote for INCY (769.265323s old; limit 180s)"}
 {"timestamp": "2026-08-27T17:34:58.652362", "ticker": "MSI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 489.09, "reason": "liquidity filter: MSI average volume 63,096 < 500,000"}
+{"timestamp": "2026-08-27T17:36:37.429845", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 225.905, "reason": "liquidity filter: CRWD average volume 292,743 < 500,000"}
+{"timestamp": "2026-08-27T17:36:37.643009", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 250.58, "reason": "liquidity filter: CRM average volume 441,829 < 500,000"}
+{"timestamp": "2026-08-27T17:36:37.984937", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 266.845, "reason": "liquidity filter: JNJ average volume 237,335 < 500,000"}
