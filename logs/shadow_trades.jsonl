@@ -6390,3 +6390,6 @@
 {"timestamp": "2026-08-27T10:46:50.709234", "ticker": "CEG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 279.54, "reason": "stale quote for CEG (53195.988615s old; limit 180s)"}
 {"timestamp": "2026-08-27T10:46:50.709379", "ticker": "CF", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 125.74, "reason": "stale quote for CF (53202.44337s old; limit 180s)"}
 {"timestamp": "2026-08-27T10:46:50.709557", "ticker": "CHD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 102.85, "reason": "stale quote for CHD (53193.182914s old; limit 180s)"}
+{"timestamp": "2026-08-27T10:48:31.934752", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 270.115, "reason": "stale quote for JNJ (53316.034742s old; limit 180s)"}
+{"timestamp": "2026-08-27T10:48:32.018285", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 34.45, "reason": "stale quote for HAL (53313.440473s old; limit 180s)"}
+{"timestamp": "2026-08-27T10:48:32.084183", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 192.84, "reason": "stale quote for IT (53319.897757s old; limit 180s)"}
