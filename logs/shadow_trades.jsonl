@@ -6758,3 +6758,5 @@
 {"timestamp": "2026-08-27T14:26:33.453956", "ticker": "XYZ", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 85.155, "reason": "liquidity filter: XYZ average volume 300,123 < 500,000"}
 {"timestamp": "2026-08-27T14:28:49.603429", "ticker": "IVZ", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 33.16, "reason": "liquidity filter: IVZ average volume 278,948 < 500,000"}
 {"timestamp": "2026-08-27T14:28:49.648021", "ticker": "XYZ", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 85.02, "reason": "liquidity filter: XYZ average volume 300,166 < 500,000"}
+{"timestamp": "2026-08-27T14:30:53.201869", "ticker": "IVZ", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 33.195, "reason": "liquidity filter: IVZ average volume 278,970 < 500,000"}
+{"timestamp": "2026-08-27T14:30:54.552956", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 69, "conviction": 7, "price": 197.33, "reason": "stale quote for IT (183.093123s old; limit 180s)"}
