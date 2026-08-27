@@ -6717,3 +6717,6 @@
 {"timestamp": "2026-08-27T14:06:56.693447", "ticker": "HAS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 94.66, "reason": "liquidity filter: HAS average volume 59,744 < 500,000"}
 {"timestamp": "2026-08-27T14:06:56.693643", "ticker": "IQV", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 264.73, "reason": "liquidity filter: IQV average volume 76,665 < 500,000"}
 {"timestamp": "2026-08-27T14:06:56.749928", "ticker": "INTU", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 346.01, "reason": "liquidity filter: INTU average volume 187,363 < 500,000"}
+{"timestamp": "2026-08-27T14:08:32.705305", "ticker": "IVZ", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 33.34, "reason": "liquidity filter: IVZ average volume 278,667 < 500,000"}
+{"timestamp": "2026-08-27T14:08:32.705474", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 265.33, "reason": "liquidity filter: JNJ average volume 230,152 < 500,000"}
+{"timestamp": "2026-08-27T14:08:32.814783", "ticker": "HCA", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 420.065, "reason": "stale quote for HCA (338.763186s old; limit 180s)"}
