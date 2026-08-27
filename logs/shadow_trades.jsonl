@@ -6598,3 +6598,6 @@
 {"timestamp": "2026-08-27T12:58:35.436670", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 270.115, "reason": "stale quote for JNJ (61119.54672s old; limit 180s)"}
 {"timestamp": "2026-08-27T12:58:35.496586", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 34.45, "reason": "stale quote for HAL (61116.938897s old; limit 180s)"}
 {"timestamp": "2026-08-27T12:58:35.563644", "ticker": "INTU", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 345.76, "reason": "stale quote for INTU (61117.476316s old; limit 180s)"}
+{"timestamp": "2026-08-27T13:00:47.787213", "ticker": "XYZ", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 83.07, "reason": "stale quote for XYZ (61253.432492s old; limit 180s)"}
+{"timestamp": "2026-08-27T13:00:47.787342", "ticker": "GPC", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 139.53, "reason": "stale quote for GPC (61247.567488s old; limit 180s)"}
+{"timestamp": "2026-08-27T13:00:47.787442", "ticker": "YUM", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 154.34, "reason": "stale quote for YUM (61255.890288s old; limit 180s)"}
