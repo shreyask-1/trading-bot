@@ -7609,3 +7609,5 @@
 {"timestamp": "2026-08-27T23:28:54.218672", "ticker": "JNJ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 265.76, "reason": "stale quote for JNJ (12541.0053s old; limit 180s)"}
 {"timestamp": "2026-08-27T23:28:54.463634", "ticker": "HCA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 419.01, "reason": "stale quote for HCA (12557.639916s old; limit 180s)"}
 {"timestamp": "2026-08-27T23:28:54.718366", "ticker": "INTU", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 347.925, "reason": "stale quote for INTU (12535.049962s old; limit 180s)"}
+{"timestamp": "2026-08-27T23:30:41.446608", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 29.625, "reason": "stale quote for HPQ (12642.019305s old; limit 180s)"}
+{"timestamp": "2026-08-27T23:30:41.772661", "ticker": "IBM", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 238.76, "reason": "stale quote for IBM (12643.661101s old; limit 180s)"}
