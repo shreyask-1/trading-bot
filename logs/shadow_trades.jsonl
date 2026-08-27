@@ -6522,3 +6522,6 @@
 {"timestamp": "2026-08-27T12:08:55.335391", "ticker": "ABT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 114.08, "reason": "stale quote for ABT (58119.505294s old; limit 180s)"}
 {"timestamp": "2026-08-27T12:08:55.335477", "ticker": "ACGL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 100.7, "reason": "stale quote for ACGL (58125.422041s old; limit 180s)"}
 {"timestamp": "2026-08-27T12:08:55.335597", "ticker": "ACN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 181.36, "reason": "stale quote for ACN (58132.311332s old; limit 180s)"}
+{"timestamp": "2026-08-27T12:10:51.536717", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 34.45, "reason": "stale quote for HAL (58252.904686s old; limit 180s)"}
+{"timestamp": "2026-08-27T12:10:51.664694", "ticker": "HCA", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 426.87, "reason": "stale quote for HCA (58266.257467s old; limit 180s)"}
+{"timestamp": "2026-08-27T12:10:51.813699", "ticker": "XYZ", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 83.07, "reason": "stale quote for XYZ (58261.843589s old; limit 180s)"}
