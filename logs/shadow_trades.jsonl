@@ -6935,3 +6935,6 @@
 {"timestamp": "2026-08-27T16:00:49.792081", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 34.625, "reason": "market data unavailable for HAL (bid/ask spread missing)"}
 {"timestamp": "2026-08-27T16:02:48.935660", "ticker": "ADBE", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 287.18, "reason": "liquidity filter: ADBE average volume 162,970 < 500,000"}
 {"timestamp": "2026-08-27T16:02:49.109550", "ticker": "GPC", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 138.73, "reason": "stale quote for GPC (501.720931s old; limit 180s)"}
+{"timestamp": "2026-08-27T16:04:36.655729", "ticker": "ADBE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 287.13, "reason": "liquidity filter: ADBE average volume 162,998 < 500,000"}
+{"timestamp": "2026-08-27T16:04:36.655950", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 198.25, "reason": "liquidity filter: IT average volume 75,909 < 500,000"}
+{"timestamp": "2026-08-27T16:04:36.656089", "ticker": "CMCSA", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 26.805, "reason": "market data unavailable for CMCSA (bid/ask spread missing)"}
