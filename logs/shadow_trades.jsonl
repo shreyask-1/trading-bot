@@ -7571,3 +7571,6 @@
 {"timestamp": "2026-08-27T23:14:50.282553", "ticker": "ADBE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 289.1, "reason": "stale quote for ADBE (11678.272128s old; limit 180s)"}
 {"timestamp": "2026-08-27T23:14:50.282691", "ticker": "ADP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 284.57, "reason": "stale quote for ADP (11678.650865s old; limit 180s)"}
 {"timestamp": "2026-08-27T23:14:50.282839", "ticker": "ADSK", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 270.875, "reason": "stale quote for ADSK (11686.875646s old; limit 180s)"}
+{"timestamp": "2026-08-27T23:16:35.435878", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 29.625, "reason": "stale quote for HPQ (11795.986331s old; limit 180s)"}
+{"timestamp": "2026-08-27T23:16:35.774454", "ticker": "IBM", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 238.76, "reason": "stale quote for IBM (11797.651287s old; limit 180s)"}
+{"timestamp": "2026-08-27T23:16:36.080980", "ticker": "KO", "action": "buy", "engine": "gemini", "confidence": 98, "conviction": 10, "price": 89.055, "reason": "stale quote for KO (11795.962084s old; limit 180s)"}
