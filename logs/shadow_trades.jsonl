@@ -6955,3 +6955,5 @@
 {"timestamp": "2026-08-27T16:12:56.799356", "ticker": "IVZ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 33.5, "reason": "liquidity filter: IVZ average volume 280,719 < 500,000"}
 {"timestamp": "2026-08-27T16:12:57.144097", "ticker": "ADBE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 287.63, "reason": "liquidity filter: ADBE average volume 163,254 < 500,000"}
 {"timestamp": "2026-08-27T16:12:57.489176", "ticker": "INCY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 127.6, "reason": "liquidity filter: INCY average volume 54,226 < 500,000"}
+{"timestamp": "2026-08-27T16:14:33.520773", "ticker": "ADBE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 287.61, "reason": "liquidity filter: ADBE average volume 163,263 < 500,000"}
+{"timestamp": "2026-08-27T16:14:33.570207", "ticker": "GPC", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 138.52, "reason": "stale quote for GPC (641.001795s old; limit 180s)"}
