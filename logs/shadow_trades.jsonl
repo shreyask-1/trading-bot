@@ -6739,3 +6739,6 @@
 {"timestamp": "2026-08-27T14:15:01.368475", "ticker": "CHD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 101.47, "reason": "liquidity filter: CHD average volume 76,005 < 500,000"}
 {"timestamp": "2026-08-27T14:15:01.639699", "ticker": "XYZ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 85.43, "reason": "liquidity filter: XYZ average volume 299,717 < 500,000"}
 {"timestamp": "2026-08-27T14:15:01.639890", "ticker": "PLTR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 183.15, "reason": "market data unavailable for PLTR (bid/ask spread missing)"}
+{"timestamp": "2026-08-27T14:16:42.096093", "ticker": "IVZ", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 33.13, "reason": "liquidity filter: IVZ average volume 278,756 < 500,000"}
+{"timestamp": "2026-08-27T14:16:42.495827", "ticker": "HCA", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 422.01, "reason": "liquidity filter: HCA average volume 57,701 < 500,000"}
+{"timestamp": "2026-08-27T14:16:42.954371", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 264.505, "reason": "liquidity filter: JNJ average volume 230,397 < 500,000"}
