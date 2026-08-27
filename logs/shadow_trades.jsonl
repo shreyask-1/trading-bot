@@ -7163,3 +7163,6 @@
 {"timestamp": "2026-08-27T18:04:52.213868", "ticker": "IFF", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 86.905, "reason": "liquidity filter: IFF average volume 78,484 < 500,000"}
 {"timestamp": "2026-08-27T18:04:52.223851", "ticker": "INCY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 127.6, "reason": "liquidity filter: INCY average volume 54,384 < 500,000"}
 {"timestamp": "2026-08-27T18:04:52.233535", "ticker": "INTU", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 348.0, "reason": "liquidity filter: INTU average volume 193,508 < 500,000"}
+{"timestamp": "2026-08-27T18:06:43.829768", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 225.4, "reason": "liquidity filter: CRWD average volume 294,588 < 500,000"}
+{"timestamp": "2026-08-27T18:06:44.097461", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 250.05, "reason": "liquidity filter: CRM average volume 446,478 < 500,000"}
+{"timestamp": "2026-08-27T18:06:44.363271", "ticker": "HCA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 421.97, "reason": "liquidity filter: HCA average volume 58,778 < 500,000"}
