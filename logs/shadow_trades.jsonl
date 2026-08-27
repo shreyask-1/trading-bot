@@ -7521,3 +7521,6 @@
 {"timestamp": "2026-08-27T22:50:39.712868", "ticker": "IBM", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 238.76, "reason": "stale quote for IBM (10241.804186s old; limit 180s)"}
 {"timestamp": "2026-08-27T22:50:39.770501", "ticker": "IFF", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 86.88, "reason": "stale quote for IFF (10254.19537s old; limit 180s)"}
 {"timestamp": "2026-08-27T22:50:39.847650", "ticker": "KO", "action": "buy", "engine": "gemini", "confidence": 98, "conviction": 10, "price": 89.055, "reason": "stale quote for KO (10239.891725s old; limit 180s)"}
+{"timestamp": "2026-08-27T22:52:36.738950", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 29.625, "reason": "stale quote for HPQ (10357.327779s old; limit 180s)"}
+{"timestamp": "2026-08-27T22:52:37.035975", "ticker": "IBM", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 238.76, "reason": "stale quote for IBM (10358.939403s old; limit 180s)"}
+{"timestamp": "2026-08-27T22:52:37.327227", "ticker": "KO", "action": "buy", "engine": "gemini", "confidence": 98, "conviction": 10, "price": 89.055, "reason": "stale quote for KO (10357.218568s old; limit 180s)"}
