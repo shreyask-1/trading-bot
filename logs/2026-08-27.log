@@ -15411,3 +15411,37 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; wor
 Shadow report: 6829 shadow candidate(s), 348 rejection group(s)
 Timings: account: 0.0s | risk: 1.1s | decide: 19.2s | watchlist: 0.2s | perf: 0.2s
 
+=== Run at 2026-08-27T15:14:29.269798 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-27 11:14 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,232.13
+Cash: $79,453.78 | Holdings (3): {'GEHC': '0.6136 sh (-0.88%)', 'MS': '43.8344 sh (-2.84%)', 'MSI': '21.1281 sh (+4.01%)'}
+Sector exposure (cached): Technology 10.4%, Financials 9.5%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.47% | today +0.05% | halted: False
+Market regime: BULLISH (position-size multiplier: 100% incl. circuit breaker 100%)
+Overnight queue deferred 2 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+News: fetched 158, 2 new after dedup, 1 ticker(s) matched.
+Quant pre-screen: 22/41 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
+Technical fallback cap omitted 10 weaker idea(s) this run.
+Gemini calls used today (all models combined): 233
+  -> {"ticker": "AJG", "status": "skipped", "reason": "liquidity filter: AJG average volume 65,653 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "ABBV", "status": "skipped", "reason": "liquidity filter: ABBV average volume 213,302 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "ALB", "status": "skipped", "reason": "stale quote for ALB (538.496663s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "ADBE", "status": "skipped", "reason": "liquidity filter: ADBE average volume 161,308 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "ADSK", "status": "skipped", "reason": "liquidity filter: ADSK average volume 78,536 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "ACN", "status": "skipped", "reason": "liquidity filter: ACN average volume 225,350 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "MSI", "status": "skipped", "reason": "liquidity filter: MSI average volume 62,787 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "CMCSA", "status": "skipped", "reason": "market data unavailable for CMCSA (bid/ask spread missing)", "shadow": false, "data_guard": true}
+Run budget reserve reached -- skipping dashboard watchlist sync.
+Run budget reserve reached -- skipping performance snapshot.
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.37% | Max drawdown 0.94% | Daily Sharpe 2.63 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 3 | Equity $99,232.13
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+122.43 (3 open) | Books: legacy: realized $-1,705.68, unrealized $+122.43
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 6837 shadow candidate(s), 341 rejection group(s)
+Timings: account: 0.0s | risk: 1.1s | decide: 25.4s | watchlist: 0.0s | perf: 0.1s
+
