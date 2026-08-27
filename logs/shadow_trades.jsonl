@@ -6944,3 +6944,6 @@
 {"timestamp": "2026-08-27T16:08:44.960492", "ticker": "ADBE", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 287.09, "reason": "liquidity filter: ADBE average volume 163,200 < 500,000"}
 {"timestamp": "2026-08-27T16:08:45.242906", "ticker": "GPC", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 138.52, "reason": "stale quote for GPC (292.493274s old; limit 180s)"}
 {"timestamp": "2026-08-27T16:08:45.243085", "ticker": "IVZ", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 33.535, "reason": "liquidity filter: IVZ average volume 280,683 < 500,000"}
+{"timestamp": "2026-08-27T16:11:02.114567", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 198.25, "reason": "stale quote for IT (446.045494s old; limit 180s)"}
+{"timestamp": "2026-08-27T16:11:02.380562", "ticker": "ADBE", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 287.51, "reason": "liquidity filter: ADBE average volume 163,241 < 500,000"}
+{"timestamp": "2026-08-27T16:11:02.690124", "ticker": "GPC", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 138.52, "reason": "stale quote for GPC (429.911196s old; limit 180s)"}
