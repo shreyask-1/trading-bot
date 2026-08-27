@@ -6835,3 +6835,6 @@
 {"timestamp": "2026-08-27T15:14:56.167986", "ticker": "ACN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 188.18, "reason": "liquidity filter: ACN average volume 225,350 < 500,000"}
 {"timestamp": "2026-08-27T15:14:56.227113", "ticker": "MSI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 488.595, "reason": "liquidity filter: MSI average volume 62,787 < 500,000"}
 {"timestamp": "2026-08-27T15:14:56.286673", "ticker": "CMCSA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 26.68, "reason": "market data unavailable for CMCSA (bid/ask spread missing)"}
+{"timestamp": "2026-08-27T15:16:32.034402", "ticker": "ADSK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 270.94, "reason": "liquidity filter: ADSK average volume 78,586 < 500,000"}
+{"timestamp": "2026-08-27T15:16:32.103668", "ticker": "ADBE", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 289.275, "reason": "liquidity filter: ADBE average volume 161,321 < 500,000"}
+{"timestamp": "2026-08-27T15:16:32.185731", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 198.275, "reason": "liquidity filter: IT average volume 75,774 < 500,000"}
