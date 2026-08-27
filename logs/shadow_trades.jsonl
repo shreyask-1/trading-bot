@@ -7043,3 +7043,6 @@
 {"timestamp": "2026-08-27T16:54:34.456950", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 223.04, "reason": "liquidity filter: CRWD average volume 290,431 < 500,000"}
 {"timestamp": "2026-08-27T16:54:34.549267", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 249.47, "reason": "liquidity filter: CRM average volume 436,272 < 500,000"}
 {"timestamp": "2026-08-27T16:54:34.549465", "ticker": "DG", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 128.36, "reason": "liquidity filter: DG average volume 104,941 < 500,000"}
+{"timestamp": "2026-08-27T16:56:37.109790", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 222.73, "reason": "liquidity filter: CRWD average volume 290,484 < 500,000"}
+{"timestamp": "2026-08-27T16:56:37.409563", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 249.23, "reason": "liquidity filter: CRM average volume 436,407 < 500,000"}
+{"timestamp": "2026-08-27T16:56:37.765113", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 198.29, "reason": "stale quote for IT (359.454535s old; limit 180s)"}
