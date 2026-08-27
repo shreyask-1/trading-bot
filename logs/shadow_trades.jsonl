@@ -6760,3 +6760,6 @@
 {"timestamp": "2026-08-27T14:28:49.648021", "ticker": "XYZ", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 85.02, "reason": "liquidity filter: XYZ average volume 300,166 < 500,000"}
 {"timestamp": "2026-08-27T14:30:53.201869", "ticker": "IVZ", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 33.195, "reason": "liquidity filter: IVZ average volume 278,970 < 500,000"}
 {"timestamp": "2026-08-27T14:30:54.552956", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 69, "conviction": 7, "price": 197.33, "reason": "stale quote for IT (183.093123s old; limit 180s)"}
+{"timestamp": "2026-08-27T14:32:42.453939", "ticker": "IVZ", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 33.21, "reason": "liquidity filter: IVZ average volume 279,014 < 500,000"}
+{"timestamp": "2026-08-27T14:32:42.728349", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 265.36, "reason": "liquidity filter: JNJ average volume 230,899 < 500,000"}
+{"timestamp": "2026-08-27T14:32:43.019816", "ticker": "XYZ", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 84.915, "reason": "liquidity filter: XYZ average volume 300,293 < 500,000"}
