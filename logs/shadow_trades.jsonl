@@ -8055,3 +8055,6 @@
 {"timestamp": "2026-08-28T10:56:45.538791", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 138.435, "reason": "stale quote for NOW (53805.793535s old; limit 180s)"}
 {"timestamp": "2026-08-28T10:56:45.849254", "ticker": "OMC", "action": "buy", "engine": "gemini", "confidence": 100, "conviction": 10, "price": 87.895, "reason": "stale quote for OMC (53816.28186s old; limit 180s)"}
 {"timestamp": "2026-08-28T10:56:46.154024", "ticker": "PCG", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 17.97, "reason": "stale quote for PCG (53808.574715s old; limit 180s)"}
+{"timestamp": "2026-08-28T10:58:30.258091", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 138.435, "reason": "stale quote for NOW (53910.646787s old; limit 180s)"}
+{"timestamp": "2026-08-28T10:58:30.394759", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 142.71, "reason": "stale quote for MRNA (53914.08097s old; limit 180s)"}
+{"timestamp": "2026-08-28T10:58:30.526707", "ticker": "ORCL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 152.34, "reason": "stale quote for ORCL (50560.084549s old; limit 180s)"}
