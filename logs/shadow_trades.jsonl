@@ -8643,3 +8643,6 @@
 {"timestamp": "2026-08-28T15:58:52.284503", "ticker": "CME", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 284.86, "reason": "liquidity filter: CME average volume 79,297 < 500,000"}
 {"timestamp": "2026-08-28T15:58:52.307691", "ticker": "CMG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 38.1, "reason": "market data unavailable for CMG (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T15:58:52.331214", "ticker": "COIN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 180.58, "reason": "liquidity filter: COIN average volume 252,046 < 500,000"}
+{"timestamp": "2026-08-28T16:00:48.566146", "ticker": "HAS", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 95.45, "reason": "liquidity filter: HAS average volume 59,701 < 500,000"}
+{"timestamp": "2026-08-28T16:00:48.566319", "ticker": "NFLX", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 82.03, "reason": "market data unavailable for NFLX (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T16:00:48.566466", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 143.63, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
