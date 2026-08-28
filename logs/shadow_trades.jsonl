@@ -8045,3 +8045,6 @@
 {"timestamp": "2026-08-28T10:50:40.454670", "ticker": "NDAQ", "action": "buy", "engine": "gemini", "confidence": 83, "conviction": 8, "price": 99.335, "reason": "stale quote for NDAQ (53444.67312s old; limit 180s)"}
 {"timestamp": "2026-08-28T10:50:40.789353", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 138.435, "reason": "stale quote for NOW (53441.015033s old; limit 180s)"}
 {"timestamp": "2026-08-28T10:50:41.128148", "ticker": "ORCL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 152.34, "reason": "stale quote for ORCL (50090.530496s old; limit 180s)"}
+{"timestamp": "2026-08-28T10:52:29.690009", "ticker": "FDS", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 304.88, "reason": "stale quote for FDS (53656.326329s old; limit 180s)"}
+{"timestamp": "2026-08-28T10:52:29.690193", "ticker": "FDX", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 331.29, "reason": "stale quote for FDX (53555.054808s old; limit 180s)"}
+{"timestamp": "2026-08-28T10:52:29.690379", "ticker": "FCX", "action": "buy", "engine": "gemini", "confidence": 83, "conviction": 8, "price": 78.37, "reason": "stale quote for FCX (53548.559736s old; limit 180s)"}
