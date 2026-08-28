@@ -8520,3 +8520,6 @@
 {"timestamp": "2026-08-28T14:56:28.679494", "ticker": "GIS", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 41.06, "reason": "market data unavailable for GIS (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T14:56:28.930507", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 191.985, "reason": "liquidity filter: PM average volume 175,790 < 500,000"}
 {"timestamp": "2026-08-28T14:56:29.056410", "ticker": "PFE", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 27.86, "reason": "market data unavailable for PFE (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T14:58:46.947757", "ticker": "GIS", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 41.065, "reason": "market data unavailable for GIS (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T14:58:46.947993", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 35.765, "reason": "market data unavailable for HAL (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T14:58:46.948151", "ticker": "HCA", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 418.65, "reason": "stale quote for HCA (181.615619s old; limit 180s)"}
