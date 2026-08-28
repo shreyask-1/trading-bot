@@ -8715,3 +8715,6 @@
 {"timestamp": "2026-08-28T16:36:51.053672", "ticker": "NSC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 347.2, "reason": "liquidity filter: NSC average volume 35,531 < 500,000"}
 {"timestamp": "2026-08-28T16:36:51.133012", "ticker": "OKE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 95.24, "reason": "liquidity filter: OKE average volume 183,930 < 500,000"}
 {"timestamp": "2026-08-28T16:36:51.202808", "ticker": "PFE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 27.86, "reason": "market data unavailable for PFE (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T16:38:41.468508", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 259.76, "reason": "market data unavailable for CRM (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T16:38:41.627020", "ticker": "PAYX", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 127.28, "reason": "liquidity filter: PAYX average volume 96,136 < 500,000"}
+{"timestamp": "2026-08-28T16:38:41.768166", "ticker": "NSC", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 347.2, "reason": "stale quote for NSC (183.381938s old; limit 180s)"}
