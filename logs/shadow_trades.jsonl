@@ -8572,3 +8572,6 @@
 {"timestamp": "2026-08-28T15:24:51.424313", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 192.115, "reason": "liquidity filter: PM average volume 176,018 < 500,000"}
 {"timestamp": "2026-08-28T15:24:51.735693", "ticker": "PAYX", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 127.45, "reason": "stale quote for PAYX (280.884342s old; limit 180s)"}
 {"timestamp": "2026-08-28T15:24:52.032877", "ticker": "NWS", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 35.0, "reason": "liquidity filter: NWS average volume 59,616 < 500,000"}
+{"timestamp": "2026-08-28T15:26:30.884727", "ticker": "NWS", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 34.95, "reason": "liquidity filter: NWS average volume 59,656 < 500,000"}
+{"timestamp": "2026-08-28T15:26:31.199876", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 192.115, "reason": "stale quote for PM (247.50281s old; limit 180s)"}
+{"timestamp": "2026-08-28T15:26:31.261816", "ticker": "ORCL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 153.51, "reason": "market data unavailable for ORCL (bid/ask spread missing)"}
