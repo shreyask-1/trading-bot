@@ -8602,3 +8602,5 @@
 {"timestamp": "2026-08-28T15:40:34.916583", "ticker": "NFLX", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 82.23, "reason": "market data unavailable for NFLX (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T15:40:34.975710", "ticker": "PCG", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 18.135, "reason": "market data unavailable for PCG (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T15:40:35.035471", "ticker": "PAYX", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 127.73, "reason": "stale quote for PAYX (318.308733s old; limit 180s)"}
+{"timestamp": "2026-08-28T15:42:28.949268", "ticker": "NFLX", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 82.18, "reason": "market data unavailable for NFLX (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T15:42:29.010138", "ticker": "PAYX", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 127.73, "reason": "stale quote for PAYX (432.282719s old; limit 180s)"}
