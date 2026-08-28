@@ -7651,3 +7651,4 @@
 {"timestamp": "2026-08-27T23:56:42.887359", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 265.76, "reason": "stale quote for JNJ (14209.614538s old; limit 180s)"}
 {"timestamp": "2026-08-27T23:58:29.528132", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 29.625, "reason": "stale quote for HPQ (14310.292854s old; limit 180s)"}
 {"timestamp": "2026-08-27T23:58:29.580407", "ticker": "IBM", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 238.76, "reason": "stale quote for IBM (14311.667024s old; limit 180s)"}
+{"timestamp": "2026-08-28T08:01:45.896036", "ticker": "MKC", "action": "buy", "engine": "gemini", "confidence": 66, "conviction": 7, "price": 54.55, "reason": "stale quote for MKC (43310.019603s old; limit 180s)"}
