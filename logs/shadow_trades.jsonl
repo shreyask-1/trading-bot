@@ -9074,3 +9074,5 @@
 {"timestamp": "2026-08-28T19:56:47.391409", "ticker": "NSC", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 348.67, "reason": "liquidity filter: NSC average volume 37,066 < 500,000"}
 {"timestamp": "2026-08-28T19:56:47.659848", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 144.6, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T19:56:47.913456", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 191.89, "reason": "liquidity filter: PM average volume 178,866 < 500,000"}
+{"timestamp": "2026-08-28T19:58:33.053506", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 144.76, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T19:58:33.174465", "ticker": "NSC", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 348.59, "reason": "liquidity filter: NSC average volume 37,350 < 500,000"}
