@@ -8686,3 +8686,6 @@
 {"timestamp": "2026-08-28T16:21:02.087108", "ticker": "OKE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 95.22, "reason": "liquidity filter: OKE average volume 183,790 < 500,000"}
 {"timestamp": "2026-08-28T16:21:02.424192", "ticker": "PFE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 27.865, "reason": "market data unavailable for PFE (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T16:21:02.802346", "ticker": "NFLX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 81.83, "reason": "market data unavailable for NFLX (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T16:22:29.845788", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 192.02, "reason": "stale quote for PM (283.96067s old; limit 180s)"}
+{"timestamp": "2026-08-28T16:22:29.918695", "ticker": "PLTR", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 185.86, "reason": "market data unavailable for PLTR (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T16:22:29.986183", "ticker": "PCG", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 18.085, "reason": "market data unavailable for PCG (bid/ask spread missing)"}
