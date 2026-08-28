@@ -8537,3 +8537,6 @@
 {"timestamp": "2026-08-28T15:03:00.321340", "ticker": "NEM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 130.85, "reason": "liquidity filter: NEM average volume 303,059 < 500,000"}
 {"timestamp": "2026-08-28T15:03:00.541969", "ticker": "GIS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 41.055, "reason": "market data unavailable for GIS (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T15:03:00.586660", "ticker": "NDAQ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 99.81, "reason": "stale quote for NDAQ (315.577037s old; limit 180s)"}
+{"timestamp": "2026-08-28T15:04:36.396728", "ticker": "NWS", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 35.09, "reason": "liquidity filter: NWS average volume 59,442 < 500,000"}
+{"timestamp": "2026-08-28T15:04:36.396856", "ticker": "NSC", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 347.185, "reason": "stale quote for NSC (235.432482s old; limit 180s)"}
+{"timestamp": "2026-08-28T15:04:36.696244", "ticker": "NFLX", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 82.18, "reason": "market data unavailable for NFLX (bid/ask spread missing)"}
