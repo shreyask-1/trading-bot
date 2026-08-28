@@ -8422,3 +8422,6 @@
 {"timestamp": "2026-08-28T14:01:05.554979", "ticker": "MRK", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 148.63, "reason": "liquidity filter: MRK average volume 415,866 < 500,000"}
 {"timestamp": "2026-08-28T14:01:05.555085", "ticker": "MRNA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 138.0, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T14:01:05.555221", "ticker": "MRSH", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 192.585, "reason": "liquidity filter: MRSH average volume 75,586 < 500,000"}
+{"timestamp": "2026-08-28T14:02:36.060584", "ticker": "GIS", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 41.35, "reason": "market data unavailable for GIS (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T14:02:36.386297", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 148.655, "reason": "liquidity filter: MRK average volume 416,160 < 500,000"}
+{"timestamp": "2026-08-28T14:02:36.720520", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 23.98, "reason": "market data unavailable for MOS (bid/ask spread missing)"}
