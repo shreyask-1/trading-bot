@@ -8704,3 +8704,6 @@
 {"timestamp": "2026-08-28T16:32:42.518278", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 260.04, "reason": "market data unavailable for CRM (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T16:32:42.954515", "ticker": "PAYX", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 127.68, "reason": "stale quote for PAYX (1572.424031s old; limit 180s)"}
 {"timestamp": "2026-08-28T16:32:43.283267", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 191.805, "reason": "stale quote for PM (228.555744s old; limit 180s)"}
+{"timestamp": "2026-08-28T16:34:33.775016", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 321.12, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T16:34:34.025521", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 259.52, "reason": "market data unavailable for CRM (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T16:34:34.242208", "ticker": "CPRT", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 33.075, "reason": "market data unavailable for CPRT (bid/ask spread missing)"}
