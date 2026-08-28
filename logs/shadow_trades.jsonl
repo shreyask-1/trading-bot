@@ -8206,3 +8206,6 @@
 {"timestamp": "2026-08-28T12:10:52.591007", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 137.88, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T12:10:52.669802", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 142.71, "reason": "stale quote for MRNA (58256.399329s old; limit 180s)"}
 {"timestamp": "2026-08-28T12:10:52.733521", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 23.77, "reason": "stale quote for MOS (58254.823372s old; limit 180s)"}
+{"timestamp": "2026-08-28T12:12:38.671032", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 137.88, "reason": "stale quote for NOW (219.662008s old; limit 180s)"}
+{"timestamp": "2026-08-28T12:12:38.834080", "ticker": "ORCL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 152.34, "reason": "stale quote for ORCL (55008.366963s old; limit 180s)"}
+{"timestamp": "2026-08-28T12:12:38.982332", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 142.71, "reason": "stale quote for MRNA (58362.662979s old; limit 180s)"}
