@@ -8389,3 +8389,7 @@
 {"timestamp": "2026-08-28T13:42:58.147811", "ticker": "MOS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 24.02, "reason": "market data unavailable for MOS (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T13:42:58.409487", "ticker": "MRNA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 136.545, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T13:42:58.713997", "ticker": "ORCL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 152.72, "reason": "market data unavailable for ORCL (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T13:44:42.364609", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 140.535, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T13:44:42.699602", "ticker": "FDX", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 331.97, "reason": "liquidity filter: FDX average volume 123,307 < 500,000"}
+{"timestamp": "2026-08-28T13:44:42.997258", "ticker": "NSC", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 348.24, "reason": "stale quote for NSC (359.452986s old; limit 180s)"}
+{"timestamp": "2026-08-28T13:44:43.291990", "ticker": "OMC", "action": "buy", "engine": "gemini", "confidence": 100, "conviction": 10, "price": 88.94, "reason": "stale quote for OMC (444.53742s old; limit 180s)"}
