@@ -8476,3 +8476,6 @@
 {"timestamp": "2026-08-28T14:31:03.145829", "ticker": "FTNT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 163.265, "reason": "liquidity filter: FTNT average volume 164,594 < 500,000"}
 {"timestamp": "2026-08-28T14:31:03.489818", "ticker": "GEN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 30.69, "reason": "liquidity filter: GEN average volume 413,023 < 500,000"}
 {"timestamp": "2026-08-28T14:31:03.490013", "ticker": "GILD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 146.535, "reason": "liquidity filter: GILD average volume 227,603 < 500,000"}
+{"timestamp": "2026-08-28T14:32:29.472113", "ticker": "NSC", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 347.15, "reason": "stale quote for NSC (274.283292s old; limit 180s)"}
+{"timestamp": "2026-08-28T14:32:29.580294", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 192.48, "reason": "liquidity filter: PM average volume 175,473 < 500,000"}
+{"timestamp": "2026-08-28T14:32:30.370780", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 23.45, "reason": "market data unavailable for MOS (bid/ask spread missing)"}
