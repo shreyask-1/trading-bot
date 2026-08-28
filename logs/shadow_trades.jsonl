@@ -8666,3 +8666,6 @@
 {"timestamp": "2026-08-28T16:10:34.419078", "ticker": "NFLX", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 82.04, "reason": "market data unavailable for NFLX (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T16:10:34.634861", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 137.82, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T16:10:34.720860", "ticker": "NSC", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 347.07, "reason": "liquidity filter: NSC average volume 35,511 < 500,000"}
+{"timestamp": "2026-08-28T16:12:38.672251", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 192.04, "reason": "liquidity filter: PM average volume 176,495 < 500,000"}
+{"timestamp": "2026-08-28T16:12:38.738302", "ticker": "PAYX", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 127.68, "reason": "stale quote for PAYX (368.424023s old; limit 180s)"}
+{"timestamp": "2026-08-28T16:12:38.875539", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 137.5, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
