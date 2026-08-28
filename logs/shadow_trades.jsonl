@@ -7991,3 +7991,6 @@
 {"timestamp": "2026-08-28T10:30:57.334975", "ticker": "MRNA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 142.71, "reason": "stale quote for MRNA (52261.033174s old; limit 180s)"}
 {"timestamp": "2026-08-28T10:30:57.446595", "ticker": "ORCL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 152.34, "reason": "stale quote for ORCL (48907.020146s old; limit 180s)"}
 {"timestamp": "2026-08-28T10:30:57.562889", "ticker": "PFE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 28.005, "reason": "stale quote for PFE (52259.039199s old; limit 180s)"}
+{"timestamp": "2026-08-28T10:32:48.732638", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 23.77, "reason": "stale quote for MOS (52370.752569s old; limit 180s)"}
+{"timestamp": "2026-08-28T10:32:48.864416", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 149.655, "reason": "stale quote for MRK (52379.222237s old; limit 180s)"}
+{"timestamp": "2026-08-28T10:32:48.994368", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 138.435, "reason": "stale quote for NOW (52369.379403s old; limit 180s)"}
