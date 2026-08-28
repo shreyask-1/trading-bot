@@ -8663,3 +8663,6 @@
 {"timestamp": "2026-08-28T16:08:32.435283", "ticker": "NFLX", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 81.97, "reason": "market data unavailable for NFLX (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T16:08:32.549426", "ticker": "NWS", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 34.945, "reason": "liquidity filter: NWS average volume 59,885 < 500,000"}
 {"timestamp": "2026-08-28T16:08:32.549631", "ticker": "OKE", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 95.075, "reason": "liquidity filter: OKE average volume 183,636 < 500,000"}
+{"timestamp": "2026-08-28T16:10:34.419078", "ticker": "NFLX", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 82.04, "reason": "market data unavailable for NFLX (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T16:10:34.634861", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 137.82, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T16:10:34.720860", "ticker": "NSC", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 347.07, "reason": "liquidity filter: NSC average volume 35,511 < 500,000"}
