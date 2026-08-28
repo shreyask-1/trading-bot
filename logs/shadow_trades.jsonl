@@ -8871,3 +8871,6 @@
 {"timestamp": "2026-08-28T18:02:46.075277", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 260.35, "reason": "market data unavailable for CRM (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T18:02:47.635647", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 137.25, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T18:02:47.957607", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 145.28, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T18:04:45.740918", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 260.755, "reason": "market data unavailable for CRM (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T18:04:45.741133", "ticker": "NSC", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 347.945, "reason": "liquidity filter: NSC average volume 35,940 < 500,000"}
+{"timestamp": "2026-08-28T18:04:46.067900", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 145.6, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
