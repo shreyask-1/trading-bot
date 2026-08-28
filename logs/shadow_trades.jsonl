@@ -8256,3 +8256,6 @@
 {"timestamp": "2026-08-28T12:34:37.746572", "ticker": "HCA", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 419.01, "reason": "stale quote for HCA (59698.325994s old; limit 180s)"}
 {"timestamp": "2026-08-28T12:34:37.956825", "ticker": "FTNT", "action": "buy", "engine": "gemini", "confidence": 93, "conviction": 9, "price": 172.72, "reason": "stale quote for FTNT (59678.124218s old; limit 180s)"}
 {"timestamp": "2026-08-28T12:34:38.161924", "ticker": "FOX", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 60.375, "reason": "stale quote for FOX (59688.936434s old; limit 180s)"}
+{"timestamp": "2026-08-28T12:36:36.630073", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 137.88, "reason": "stale quote for NOW (1657.536863s old; limit 180s)"}
+{"timestamp": "2026-08-28T12:36:36.876526", "ticker": "NSC", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 347.845, "reason": "stale quote for NSC (59803.736544s old; limit 180s)"}
+{"timestamp": "2026-08-28T12:36:37.129473", "ticker": "ORCL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 152.34, "reason": "stale quote for ORCL (56446.597365s old; limit 180s)"}
