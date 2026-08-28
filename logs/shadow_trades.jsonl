@@ -8358,3 +8358,6 @@
 {"timestamp": "2026-08-28T13:28:56.267983", "ticker": "MRNA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 135.45, "reason": "stale quote for MRNA (595.514681s old; limit 180s)"}
 {"timestamp": "2026-08-28T13:28:56.522904", "ticker": "ORCL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 152.8, "reason": "stale quote for ORCL (674.501905s old; limit 180s)"}
 {"timestamp": "2026-08-28T13:28:56.798682", "ticker": "PFE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 28.005, "reason": "stale quote for PFE (62938.148333s old; limit 180s)"}
+{"timestamp": "2026-08-28T13:30:41.773939", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 139.19, "reason": "stale candle for NOW (85.7m old; limit 30.0m)"}
+{"timestamp": "2026-08-28T13:30:42.561490", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 23.995, "reason": "stale candle for MOS (1055.7m old; limit 30.0m)"}
+{"timestamp": "2026-08-28T13:30:43.142599", "ticker": "ORCL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 153.57, "reason": "market data unavailable for ORCL (bid/ask spread missing)"}
