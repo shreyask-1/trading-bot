@@ -8632,3 +8632,6 @@
 {"timestamp": "2026-08-28T15:54:49.583752", "ticker": "NSC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 346.48, "reason": "liquidity filter: NSC average volume 35,498 < 500,000"}
 {"timestamp": "2026-08-28T15:54:49.673867", "ticker": "ORCL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 151.235, "reason": "market data unavailable for ORCL (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T15:54:49.760787", "ticker": "NFLX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 82.07, "reason": "market data unavailable for NFLX (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T15:56:37.552134", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 191.905, "reason": "liquidity filter: PM average volume 176,369 < 500,000"}
+{"timestamp": "2026-08-28T15:56:37.865985", "ticker": "PAYX", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 127.71, "reason": "liquidity filter: PAYX average volume 96,014 < 500,000"}
+{"timestamp": "2026-08-28T15:56:38.155605", "ticker": "NSC", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 346.48, "reason": "stale quote for NSC (208.439383s old; limit 180s)"}
