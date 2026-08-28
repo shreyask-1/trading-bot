@@ -8058,3 +8058,7 @@
 {"timestamp": "2026-08-28T10:58:30.258091", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 138.435, "reason": "stale quote for NOW (53910.646787s old; limit 180s)"}
 {"timestamp": "2026-08-28T10:58:30.394759", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 142.71, "reason": "stale quote for MRNA (53914.08097s old; limit 180s)"}
 {"timestamp": "2026-08-28T10:58:30.526707", "ticker": "ORCL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 152.34, "reason": "stale quote for ORCL (50560.084549s old; limit 180s)"}
+{"timestamp": "2026-08-28T11:01:03.073855", "ticker": "GEN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 30.52, "reason": "stale quote for GEN (54043.353824s old; limit 180s)"}
+{"timestamp": "2026-08-28T11:01:03.148958", "ticker": "NOW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 138.435, "reason": "stale quote for NOW (54042.870883s old; limit 180s)"}
+{"timestamp": "2026-08-28T11:01:03.149123", "ticker": "FDS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 304.88, "reason": "stale quote for FDS (54153.478802s old; limit 180s)"}
+{"timestamp": "2026-08-28T11:01:03.149316", "ticker": "FDX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 331.29, "reason": "stale quote for FDX (54052.461999s old; limit 180s)"}
