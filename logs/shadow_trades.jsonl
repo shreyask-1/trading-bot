@@ -8544,3 +8544,6 @@
 {"timestamp": "2026-08-28T15:06:35.073271", "ticker": "PCG", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 18.19, "reason": "market data unavailable for PCG (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T15:06:35.073386", "ticker": "ORCL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 152.57, "reason": "market data unavailable for ORCL (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T15:06:35.206162", "ticker": "NFLX", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 82.14, "reason": "market data unavailable for NFLX (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T15:08:33.232092", "ticker": "NWS", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 35.065, "reason": "liquidity filter: NWS average volume 59,503 < 500,000"}
+{"timestamp": "2026-08-28T15:08:33.286259", "ticker": "PAYX", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 127.47, "reason": "stale quote for PAYX (639.247753s old; limit 180s)"}
+{"timestamp": "2026-08-28T15:08:33.286475", "ticker": "PLTR", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 186.9, "reason": "market data unavailable for PLTR (bid/ask spread missing)"}
