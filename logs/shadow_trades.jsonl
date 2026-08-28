@@ -8843,3 +8843,6 @@
 {"timestamp": "2026-08-28T17:44:36.645097", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 260.77, "reason": "market data unavailable for CRM (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T17:44:36.947914", "ticker": "PAYX", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 127.02, "reason": "liquidity filter: PAYX average volume 96,523 < 500,000"}
 {"timestamp": "2026-08-28T17:44:37.275114", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 192.09, "reason": "stale quote for PM (433.075656s old; limit 180s)"}
+{"timestamp": "2026-08-28T17:46:39.863698", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 261.05, "reason": "market data unavailable for CRM (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T17:46:40.192354", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 144.415, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T17:46:40.585950", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 192.39, "reason": "liquidity filter: PM average volume 177,053 < 500,000"}
