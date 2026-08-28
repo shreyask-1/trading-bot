@@ -8593,3 +8593,6 @@
 {"timestamp": "2026-08-28T15:34:37.708257", "ticker": "NFLX", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 82.25, "reason": "market data unavailable for NFLX (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T15:34:37.888614", "ticker": "PAYX", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 127.69, "reason": "liquidity filter: PAYX average volume 95,924 < 500,000"}
 {"timestamp": "2026-08-28T15:34:38.307408", "ticker": "PLTR", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 188.125, "reason": "market data unavailable for PLTR (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T15:36:32.784628", "ticker": "NFLX", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 82.18, "reason": "market data unavailable for NFLX (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T15:36:32.834348", "ticker": "NSC", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 347.26, "reason": "liquidity filter: NSC average volume 35,476 < 500,000"}
+{"timestamp": "2026-08-28T15:36:32.917198", "ticker": "ORCL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 152.735, "reason": "market data unavailable for ORCL (bid/ask spread missing)"}
