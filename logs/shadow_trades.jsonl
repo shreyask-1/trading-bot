@@ -8277,3 +8277,6 @@
 {"timestamp": "2026-08-28T12:48:37.965118", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 137.88, "reason": "stale quote for NOW (2378.925178s old; limit 180s)"}
 {"timestamp": "2026-08-28T12:48:38.181667", "ticker": "NSC", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 347.845, "reason": "stale quote for NSC (60525.085089s old; limit 180s)"}
 {"timestamp": "2026-08-28T12:48:38.365167", "ticker": "PCG", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 17.97, "reason": "stale quote for PCG (60520.878936s old; limit 180s)"}
+{"timestamp": "2026-08-28T12:50:35.798200", "ticker": "FDX", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 331.29, "reason": "stale quote for FDX (60643.551697s old; limit 180s)"}
+{"timestamp": "2026-08-28T12:50:35.847589", "ticker": "FTNT", "action": "buy", "engine": "gemini", "confidence": 93, "conviction": 9, "price": 172.72, "reason": "stale quote for FTNT (60636.137284s old; limit 180s)"}
+{"timestamp": "2026-08-28T12:50:35.847789", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 29.625, "reason": "stale quote for HPQ (60634.613141s old; limit 180s)"}
