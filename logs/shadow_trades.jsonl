@@ -8378,3 +8378,6 @@
 {"timestamp": "2026-08-28T13:38:55.018831", "ticker": "MRNA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 137.17, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T13:38:55.199537", "ticker": "ORCL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 152.86, "reason": "market data unavailable for ORCL (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T13:38:55.388367", "ticker": "PFE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 27.945, "reason": "market data unavailable for PFE (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T13:40:50.729114", "ticker": "FTNT", "action": "buy", "engine": "gemini", "confidence": 93, "conviction": 9, "price": 170.135, "reason": "liquidity filter: FTNT average volume 161,841 < 500,000"}
+{"timestamp": "2026-08-28T13:40:50.729327", "ticker": "FDX", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 333.45, "reason": "liquidity filter: FDX average volume 123,247 < 500,000"}
+{"timestamp": "2026-08-28T13:40:50.729526", "ticker": "GILD", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 147.4, "reason": "liquidity filter: GILD average volume 226,424 < 500,000"}
