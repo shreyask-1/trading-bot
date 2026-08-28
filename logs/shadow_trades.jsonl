@@ -8393,3 +8393,6 @@
 {"timestamp": "2026-08-28T13:44:42.699602", "ticker": "FDX", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 331.97, "reason": "liquidity filter: FDX average volume 123,307 < 500,000"}
 {"timestamp": "2026-08-28T13:44:42.997258", "ticker": "NSC", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 348.24, "reason": "stale quote for NSC (359.452986s old; limit 180s)"}
 {"timestamp": "2026-08-28T13:44:43.291990", "ticker": "OMC", "action": "buy", "engine": "gemini", "confidence": 100, "conviction": 10, "price": 88.94, "reason": "stale quote for OMC (444.53742s old; limit 180s)"}
+{"timestamp": "2026-08-28T13:46:35.021905", "ticker": "FDX", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 332.12, "reason": "liquidity filter: FDX average volume 123,341 < 500,000"}
+{"timestamp": "2026-08-28T13:46:35.259075", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 140.95, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T13:46:35.458675", "ticker": "NSC", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 348.24, "reason": "stale quote for NSC (471.987903s old; limit 180s)"}
