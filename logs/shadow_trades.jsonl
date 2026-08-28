@@ -8494,3 +8494,6 @@
 {"timestamp": "2026-08-28T14:42:33.199881", "ticker": "GIS", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 41.21, "reason": "market data unavailable for GIS (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T14:42:33.283075", "ticker": "NWS", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 35.27, "reason": "liquidity filter: NWS average volume 58,996 < 500,000"}
 {"timestamp": "2026-08-28T14:42:33.511754", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 147.955, "reason": "liquidity filter: MRK average volume 418,645 < 500,000"}
+{"timestamp": "2026-08-28T14:44:39.853634", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 23.5, "reason": "market data unavailable for MOS (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T14:44:40.096047", "ticker": "NWS", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 35.21, "reason": "liquidity filter: NWS average volume 59,030 < 500,000"}
+{"timestamp": "2026-08-28T14:44:40.331843", "ticker": "PFE", "action": "buy", "engine": "gemini", "confidence": 83, "conviction": 8, "price": 27.89, "reason": "market data unavailable for PFE (bid/ask spread missing)"}
