@@ -8894,3 +8894,5 @@
 {"timestamp": "2026-08-28T18:15:11.170791", "ticker": "NWSA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 30.905, "reason": "liquidity filter: NWSA average volume 259,046 < 500,000"}
 {"timestamp": "2026-08-28T18:15:11.600698", "ticker": "OKE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 95.335, "reason": "liquidity filter: OKE average volume 185,013 < 500,000"}
 {"timestamp": "2026-08-28T18:15:11.939621", "ticker": "NFLX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 81.545, "reason": "market data unavailable for NFLX (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T18:16:52.895350", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 260.265, "reason": "market data unavailable for CRM (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T18:16:53.218412", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 144.795, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
