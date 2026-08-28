@@ -8557,3 +8557,6 @@
 {"timestamp": "2026-08-28T15:14:40.266960", "ticker": "NFLX", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 81.935, "reason": "market data unavailable for NFLX (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T15:14:40.267158", "ticker": "FTNT", "action": "buy", "engine": "gemini", "confidence": 83, "conviction": 8, "price": 165.03, "reason": "liquidity filter: FTNT average volume 165,871 < 500,000"}
 {"timestamp": "2026-08-28T15:14:40.267267", "ticker": "HAS", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 94.925, "reason": "stale quote for HAS (1150.484876s old; limit 180s)"}
+{"timestamp": "2026-08-28T15:16:34.607435", "ticker": "NWS", "action": "buy", "engine": "gemini", "confidence": 95, "conviction": 10, "price": 35.0, "reason": "liquidity filter: NWS average volume 59,542 < 500,000"}
+{"timestamp": "2026-08-28T15:16:34.692152", "ticker": "PAYX", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 127.45, "reason": "stale quote for PAYX (183.042889s old; limit 180s)"}
+{"timestamp": "2026-08-28T15:16:34.872731", "ticker": "PLTR", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 187.5, "reason": "market data unavailable for PLTR (bid/ask spread missing)"}
