@@ -8776,3 +8776,6 @@
 {"timestamp": "2026-08-28T17:06:37.222197", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 259.05, "reason": "market data unavailable for CRM (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T17:06:37.652623", "ticker": "NSC", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 347.57, "reason": "liquidity filter: NSC average volume 35,544 < 500,000"}
 {"timestamp": "2026-08-28T17:06:38.083802", "ticker": "NWS", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 34.85, "reason": "stale quote for NWS (333.327914s old; limit 180s)"}
+{"timestamp": "2026-08-28T17:08:49.815891", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 258.97, "reason": "market data unavailable for CRM (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T17:08:50.175057", "ticker": "NSC", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 347.69, "reason": "liquidity filter: NSC average volume 35,597 < 500,000"}
+{"timestamp": "2026-08-28T17:08:50.478932", "ticker": "PAYX", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 127.34, "reason": "liquidity filter: PAYX average volume 96,274 < 500,000"}
