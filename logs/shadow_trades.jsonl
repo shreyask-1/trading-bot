@@ -8428,3 +8428,6 @@
 {"timestamp": "2026-08-28T14:04:30.861385", "ticker": "GIS", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 41.24, "reason": "market data unavailable for GIS (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T14:04:30.969420", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 148.85, "reason": "liquidity filter: MRK average volume 416,297 < 500,000"}
 {"timestamp": "2026-08-28T14:04:30.969618", "ticker": "NSC", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 348.08, "reason": "stale quote for NSC (263.485846s old; limit 180s)"}
+{"timestamp": "2026-08-28T14:06:43.255514", "ticker": "NSC", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 348.08, "reason": "liquidity filter: NSC average volume 35,289 < 500,000"}
+{"timestamp": "2026-08-28T14:06:43.255707", "ticker": "PCG", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 18.255, "reason": "market data unavailable for PCG (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T14:06:43.741892", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 136.1, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
