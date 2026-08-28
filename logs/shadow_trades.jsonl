@@ -9001,3 +9001,6 @@
 {"timestamp": "2026-08-28T19:20:47.954770", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 145.1, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T19:20:48.266330", "ticker": "NSC", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 348.32, "reason": "liquidity filter: NSC average volume 36,291 < 500,000"}
 {"timestamp": "2026-08-28T19:20:48.573197", "ticker": "NWS", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 34.875, "reason": "liquidity filter: NWS average volume 60,737 < 500,000"}
+{"timestamp": "2026-08-28T19:22:34.989518", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 145.21, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T19:22:34.989711", "ticker": "CSGP", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 32.495, "reason": "liquidity filter: CSGP average volume 411,689 < 500,000"}
+{"timestamp": "2026-08-28T19:22:34.989874", "ticker": "CPRT", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 33.15, "reason": "market data unavailable for CPRT (bid/ask spread missing)"}
