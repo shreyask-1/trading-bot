@@ -8868,3 +8868,6 @@
 {"timestamp": "2026-08-28T18:01:03.963157", "ticker": "CRM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 260.55, "reason": "market data unavailable for CRM (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T18:01:03.963309", "ticker": "MRNA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 137.06, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T18:01:03.963484", "ticker": "MRSH", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 193.63, "reason": "liquidity filter: MRSH average volume 77,236 < 500,000"}
+{"timestamp": "2026-08-28T18:02:46.075277", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 260.35, "reason": "market data unavailable for CRM (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T18:02:47.635647", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 137.25, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T18:02:47.957607", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 145.28, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
