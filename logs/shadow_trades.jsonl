@@ -9029,3 +9029,6 @@
 {"timestamp": "2026-08-28T19:34:54.327174", "ticker": "NWSA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 31.025, "reason": "liquidity filter: NWSA average volume 261,404 < 500,000"}
 {"timestamp": "2026-08-28T19:34:54.580302", "ticker": "NDAQ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 99.375, "reason": "liquidity filter: NDAQ average volume 95,437 < 500,000"}
 {"timestamp": "2026-08-28T19:34:54.959957", "ticker": "NFLX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 81.745, "reason": "market data unavailable for NFLX (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T19:36:41.826484", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 145.03, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T19:36:42.120361", "ticker": "NSC", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 348.415, "reason": "liquidity filter: NSC average volume 36,385 < 500,000"}
+{"timestamp": "2026-08-28T19:36:42.422224", "ticker": "NWS", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 34.875, "reason": "liquidity filter: NWS average volume 60,970 < 500,000"}
