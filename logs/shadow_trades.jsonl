@@ -8190,3 +8190,6 @@
 {"timestamp": "2026-08-28T12:00:40.011719", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 23.77, "reason": "stale quote for MOS (57639.692715s old; limit 180s)"}
 {"timestamp": "2026-08-28T12:00:40.011940", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 142.71, "reason": "stale quote for MRNA (57641.736369s old; limit 180s)"}
 {"timestamp": "2026-08-28T12:00:40.012078", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 149.655, "reason": "stale quote for MRK (57648.317306s old; limit 180s)"}
+{"timestamp": "2026-08-28T12:02:31.046851", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 23.77, "reason": "stale quote for MOS (57753.118184s old; limit 180s)"}
+{"timestamp": "2026-08-28T12:02:31.102151", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 142.71, "reason": "stale quote for MRNA (57754.85148s old; limit 180s)"}
+{"timestamp": "2026-08-28T12:02:31.102363", "ticker": "NDAQ", "action": "buy", "engine": "gemini", "confidence": 83, "conviction": 8, "price": 99.335, "reason": "stale quote for NDAQ (57751.522181s old; limit 180s)"}
