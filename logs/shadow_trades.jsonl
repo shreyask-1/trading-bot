@@ -8080,3 +8080,6 @@
 {"timestamp": "2026-08-28T11:06:56.824478", "ticker": "NFLX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 79.82, "reason": "stale quote for NFLX (54416.914109s old; limit 180s)"}
 {"timestamp": "2026-08-28T11:06:57.120543", "ticker": "NDSN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 330.89, "reason": "stale quote for NDSN (54433.668913s old; limit 180s)"}
 {"timestamp": "2026-08-28T11:06:57.189042", "ticker": "NWS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 35.32, "reason": "stale quote for NWS (54407.576404s old; limit 180s)"}
+{"timestamp": "2026-08-28T11:08:42.575776", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 138.435, "reason": "stale quote for NOW (54522.837888s old; limit 180s)"}
+{"timestamp": "2026-08-28T11:08:42.874594", "ticker": "NSC", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 347.845, "reason": "stale quote for NSC (54529.693437s old; limit 180s)"}
+{"timestamp": "2026-08-28T11:08:42.874808", "ticker": "ORCL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 152.34, "reason": "stale quote for ORCL (51166.32619s old; limit 180s)"}
