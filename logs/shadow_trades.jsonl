@@ -8451,3 +8451,6 @@
 {"timestamp": "2026-08-28T14:16:58.263007", "ticker": "MRNA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 134.75, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T14:16:58.584395", "ticker": "NDSN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 327.54, "reason": "stale quote for NDSN (198.238378s old; limit 180s)"}
 {"timestamp": "2026-08-28T14:16:58.918355", "ticker": "PFE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 27.98, "reason": "market data unavailable for PFE (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T14:18:36.011925", "ticker": "NSC", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 347.545, "reason": "liquidity filter: NSC average volume 35,327 < 500,000"}
+{"timestamp": "2026-08-28T14:18:36.421205", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 192.6, "reason": "liquidity filter: PM average volume 175,288 < 500,000"}
+{"timestamp": "2026-08-28T14:18:36.756544", "ticker": "PCG", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 18.295, "reason": "market data unavailable for PCG (bid/ask spread missing)"}
