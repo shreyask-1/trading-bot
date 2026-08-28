@@ -8657,3 +8657,6 @@
 {"timestamp": "2026-08-28T16:04:50.186028", "ticker": "FOX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 61.375, "reason": "stale quote for FOX (1844.53022s old; limit 180s)"}
 {"timestamp": "2026-08-28T16:04:50.255090", "ticker": "NOW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 143.29, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T16:04:50.261199", "ticker": "FISV", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 53.605, "reason": "liquidity filter: FISV average volume 381,446 < 500,000"}
+{"timestamp": "2026-08-28T16:06:42.621943", "ticker": "NWS", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 35.005, "reason": "stale quote for NWS (253.115774s old; limit 180s)"}
+{"timestamp": "2026-08-28T16:06:42.964405", "ticker": "NFLX", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 81.99, "reason": "market data unavailable for NFLX (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T16:06:43.811456", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 147.83, "reason": "liquidity filter: MRK average volume 422,344 < 500,000"}
