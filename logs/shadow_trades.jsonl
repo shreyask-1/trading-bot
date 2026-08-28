@@ -8998,3 +8998,6 @@
 {"timestamp": "2026-08-28T19:18:38.529453", "ticker": "NSC", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 348.42, "reason": "liquidity filter: NSC average volume 36,283 < 500,000"}
 {"timestamp": "2026-08-28T19:18:38.841074", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 191.58, "reason": "liquidity filter: PM average volume 177,590 < 500,000"}
 {"timestamp": "2026-08-28T19:18:39.267371", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 145.105, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T19:20:47.954770", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 145.1, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T19:20:48.266330", "ticker": "NSC", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 348.32, "reason": "liquidity filter: NSC average volume 36,291 < 500,000"}
+{"timestamp": "2026-08-28T19:20:48.573197", "ticker": "NWS", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 34.875, "reason": "liquidity filter: NWS average volume 60,737 < 500,000"}
