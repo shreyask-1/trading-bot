@@ -8399,3 +8399,6 @@
 {"timestamp": "2026-08-28T13:48:41.479252", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 141.59, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
 {"timestamp": "2026-08-28T13:48:41.746387", "ticker": "NSC", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 348.34, "reason": "liquidity filter: NSC average volume 35,270 < 500,000"}
 {"timestamp": "2026-08-28T13:48:42.011142", "ticker": "FDX", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 332.29, "reason": "liquidity filter: FDX average volume 123,365 < 500,000"}
+{"timestamp": "2026-08-28T13:50:42.411443", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 141.345, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
+{"timestamp": "2026-08-28T13:50:42.681934", "ticker": "NSC", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 348.34, "reason": "liquidity filter: NSC average volume 35,272 < 500,000"}
+{"timestamp": "2026-08-28T13:50:42.953187", "ticker": "PCG", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 18.24, "reason": "market data unavailable for PCG (bid/ask spread missing)"}
