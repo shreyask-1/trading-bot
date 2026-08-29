@@ -19006,3 +19006,41 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; wor
 Shadow report: 9078 shadow candidate(s), 89 rejection group(s)
 Timings: account: 0.0s | risk: 1.3s | decide: 23.1s | watchlist: 0.0s | perf: 0.1s
 
+=== Run at 2026-08-29T17:00:37.108117 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-29 01:00 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+Account value: $99,180.36
+Cash: $79,453.78 | Holdings (3): {'GEHC': '0.6136 sh (-2.94%)', 'MS': '43.8344 sh (-2.80%)', 'MSI': '21.1281 sh (+3.46%)'}
+Sector exposure (cached): Technology 10.4%, Financials 9.5%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.52% | today +0.00% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 2 new after dedup, 1 ticker(s) matched.
+Quant pre-screen: 17/21 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
+Technical fallback cap omitted 3 weaker idea(s) this run.
+Gemini calls used today (all models combined): 226
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued JKHY buy (conf 88, stop 149.19, tp 180.0)
+  -> queued DIS buy (conf None, stop 103.48, tp 111.815)
+  -> queued ADSK buy (conf 85, stop 241.48, tp 280.0)
+  -> queued ADM buy (conf 82, stop 76.1, tp 85.0)
+  -> queued NOW buy (conf 82, stop 138.0, tp 155.0)
+  -> queued NDAQ buy (conf 80, stop 97.5, tp 103.5)
+  -> queued T buy (conf 80, stop 24.61, tp 27.2)
+  -> queued AWK buy (conf 78, stop 134.5, tp 144.0)
+  -> queued BIIB buy (conf 78, stop 210.0, tp 232.0)
+  -> queued NWSA buy (conf None, stop 28.57, tp 31.66)
+  -> queued NSC buy (conf None, stop 335.01, tp 355.51)
+  -> queued NWS buy (conf None, stop 32.575, tp 35.74)
+Run budget reserve reached -- skipping dashboard watchlist sync.
+Run budget reserve reached -- skipping performance snapshot.
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.32% | Max drawdown 0.94% | Daily Sharpe 1.98 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 3 | Equity $99,180.36
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+70.66 (3 open) | Books: legacy: realized $-1,705.68, unrealized $+70.66
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 9078 shadow candidate(s), 89 rejection group(s)
+Timings: account: 0.0s | risk: 1.2s | decide: 23.2s | watchlist: 0.0s | perf: 0.1s
+
