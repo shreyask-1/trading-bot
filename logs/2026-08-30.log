@@ -10467,6 +10467,7 @@ Shadow report: 9078 shadow candidate(s), 89 rejection group(s)
 Timings: account: 0.0s | risk: 0.7s | decide: 6.1s | watchlist: 0.1s | perf: 0.2s
 
 === Run at 2026-08-30T21:44:47.729022 ===
+=== Run at 2026-08-30T21:44:18.904642 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-30 05:44 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,180.36
@@ -10481,6 +10482,8 @@ Quant pre-screen: 42/68 candidates passed.
 Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
 Technical fallback cap omitted 20 weaker idea(s) this run.
 Gemini calls used today (all models combined): 326
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 327
 Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
   -> queued MSI sell (conf None, stop None, tp None)
   -> queued BR buy (conf 86, stop 167.76, tp 186.6)
@@ -10495,6 +10498,12 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued NWS buy (conf None, stop 32.575, tp 35.74)
   -> queued FDX buy (conf None, stop 324.3, tp 340.76)
 Dashboard watchlist synced (11 symbols) for news/headlines.
+  -> queued FTNT buy (conf 85, stop 155.0, tp 180.0)
+  -> queued NWSA buy (conf 88, stop 29.5, tp 33.5)
+  -> queued NSC buy (conf 82, stop 335.0, tp 370.0)
+  -> queued NWS buy (conf None, stop 32.575, tp 35.74)
+  -> queued FDX buy (conf None, stop 324.3, tp 340.76)
+Dashboard watchlist synced (6 symbols) for news/headlines.
 Ending portfolio value: $99,180.36
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
 Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
@@ -10503,4 +10512,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 9078 shadow candidate(s), 89 rejection group(s)
 Timings: account: 0.0s | risk: 0.2s | decide: 22.5s | watchlist: 0.0s | perf: 0.1s
+Timings: account: 0.0s | risk: 0.5s | decide: 4.4s | watchlist: 0.0s | perf: 0.1s
 
