@@ -15796,6 +15796,9 @@ Timings: account: 0.0s | risk: 1.4s | decide: 23.2s | watchlist: 0.0s | perf: 0.
 === Run at 2026-08-30T14:07:09.166047 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-30 10:07 AM EDT | Market open (per Alpaca): False | Session: CLOSED
+=== Run at 2026-08-30T14:06:27.616351 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-30 10:06 AM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,180.36
 Cash: $79,453.78 | Holdings (3): {'GEHC': '0.6136 sh (-2.94%)', 'MS': '43.8344 sh (-2.80%)', 'MSI': '21.1281 sh (+3.46%)'}
 Sector exposure (cached): Technology 10.4%, Financials 9.5%, Health Care 0.0%
@@ -15806,6 +15809,7 @@ Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100
 News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
 Quant pre-screen: 35/56 candidates passed.
 Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini proposed 1 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 156
 Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
   -> queued MSI sell (conf None, stop None, tp None)
@@ -15821,6 +15825,10 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued NWS buy (conf None, stop 32.575, tp 35.74)
   -> queued FDX buy (conf None, stop 324.3, tp 340.76)
 Dashboard watchlist synced (5 symbols) for news/headlines.
+  -> queued NSC buy (conf None, stop 335.01, tp 355.51)
+  -> queued NWS buy (conf None, stop 32.575, tp 35.74)
+  -> queued FDX buy (conf None, stop 324.3, tp 340.76)
+Dashboard watchlist synced (4 symbols) for news/headlines.
 Ending portfolio value: $99,180.36
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
 Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
@@ -15829,4 +15837,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 9078 shadow candidate(s), 89 rejection group(s)
 Timings: account: 0.0s | risk: 1.2s | decide: 11.6s | watchlist: 0.1s | perf: 0.2s
+Timings: account: 0.0s | risk: 1.5s | decide: 11.3s | watchlist: 0.1s | perf: 0.2s
 
