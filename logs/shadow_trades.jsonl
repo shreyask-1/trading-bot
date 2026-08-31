@@ -9261,3 +9261,5 @@
 {"timestamp": "2026-08-31T12:04:42.740157", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 256.01, "reason": "stale quote for CRM (230691.306464s old; limit 180s)"}
 {"timestamp": "2026-08-31T12:08:42.066982", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 128.8, "reason": "stale quote for RVTY (230925.236017s old; limit 180s)"}
 {"timestamp": "2026-08-31T12:08:42.067133", "ticker": "SCHW", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 110.12, "reason": "stale quote for SCHW (230920.89827s old; limit 180s)"}
+{"timestamp": "2026-08-31T12:10:33.420628", "ticker": "DIS", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 108.1, "reason": "stale quote for DIS (231037.79222s old; limit 180s)"}
+{"timestamp": "2026-08-31T12:10:33.468818", "ticker": "ECL", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 286.825, "reason": "stale quote for ECL (231038.388843s old; limit 180s)"}
