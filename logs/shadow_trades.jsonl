@@ -9250,3 +9250,4 @@
 {"timestamp": "2026-08-31T11:44:58.991500", "ticker": "CRM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 256.01, "reason": "stale quote for CRM (229507.523815s old; limit 180s)"}
 {"timestamp": "2026-08-31T11:44:59.280378", "ticker": "DE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 630.82, "reason": "stale quote for DE (229518.188658s old; limit 180s)"}
 {"timestamp": "2026-08-31T11:46:37.639877", "ticker": "EL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 103.36, "reason": "stale quote for EL (229598.550935s old; limit 180s)"}
+{"timestamp": "2026-08-31T11:52:32.946352", "ticker": "DIS", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 108.1, "reason": "stale quote for DIS (229957.272192s old; limit 180s)"}
