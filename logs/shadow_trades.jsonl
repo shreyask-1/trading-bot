@@ -9644,3 +9644,6 @@
 {"timestamp": "2026-08-31T19:04:35.505853", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 229.29, "reason": "liquidity filter: CRWD average volume 304,604 < 500,000"}
 {"timestamp": "2026-08-31T19:04:35.553469", "ticker": "AWK", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 138.71, "reason": "liquidity filter: AWK average volume 105,344 < 500,000"}
 {"timestamp": "2026-08-31T19:06:32.284496", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 229.4, "reason": "liquidity filter: CRWD average volume 304,660 < 500,000"}
+{"timestamp": "2026-08-31T19:08:46.921387", "ticker": "ORCL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 150.925, "reason": "market data unavailable for ORCL (bid/ask spread missing)"}
+{"timestamp": "2026-08-31T19:08:47.227054", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 229.335, "reason": "liquidity filter: CRWD average volume 304,765 < 500,000"}
+{"timestamp": "2026-08-31T19:08:47.227252", "ticker": "ACN", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 191.26, "reason": "liquidity filter: ACN average volume 220,745 < 500,000"}
