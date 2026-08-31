@@ -9448,3 +9448,6 @@
 {"timestamp": "2026-08-31T16:06:33.680738", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 308.75, "reason": "liquidity filter: APD average volume 44,092 < 500,000"}
 {"timestamp": "2026-08-31T16:06:33.736834", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 225.95, "reason": "liquidity filter: CRWD average volume 299,663 < 500,000"}
 {"timestamp": "2026-08-31T16:06:33.737003", "ticker": "BR", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 183.545, "reason": "liquidity filter: BR average volume 67,216 < 500,000"}
+{"timestamp": "2026-08-31T16:10:49.018090", "ticker": "BMY", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 66.59, "reason": "market data unavailable for BMY (bid/ask spread missing)"}
+{"timestamp": "2026-08-31T16:10:49.281930", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 308.455, "reason": "liquidity filter: APD average volume 44,102 < 500,000"}
+{"timestamp": "2026-08-31T16:10:49.282155", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 279.14, "reason": "liquidity filter: CEG average volume 104,701 < 500,000"}
