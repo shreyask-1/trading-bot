@@ -9706,3 +9706,5 @@
 {"timestamp": "2026-08-31T19:58:45.565750", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 80.0, "conviction": 8, "price": 230.905, "reason": "liquidity filter: CRWD average volume 310,143 < 500,000"}
 {"timestamp": "2026-08-31T19:58:45.725521", "ticker": "ARES", "action": "buy", "engine": "gemini", "confidence": 78.0, "conviction": 8, "price": 143.12, "reason": "liquidity filter: ARES average volume 119,719 < 500,000"}
 {"timestamp": "2026-08-31T19:58:45.854076", "ticker": "AWK", "action": "buy", "engine": "gemini", "confidence": 80.0, "conviction": 8, "price": 138.44, "reason": "liquidity filter: AWK average volume 106,306 < 500,000"}
+{"timestamp": "2026-08-31T21:31:41.340963", "ticker": "COIN", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 188.035, "reason": "stale quote for COIN (5502.442997s old; limit 180s)"}
+{"timestamp": "2026-08-31T21:31:41.341191", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 230.98, "reason": "stale quote for CRWD (5500.953896s old; limit 180s)"}
