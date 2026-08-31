@@ -9251,3 +9251,6 @@
 {"timestamp": "2026-08-31T11:44:59.280378", "ticker": "DE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 630.82, "reason": "stale quote for DE (229518.188658s old; limit 180s)"}
 {"timestamp": "2026-08-31T11:46:37.639877", "ticker": "EL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 103.36, "reason": "stale quote for EL (229598.550935s old; limit 180s)"}
 {"timestamp": "2026-08-31T11:52:32.946352", "ticker": "DIS", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 108.1, "reason": "stale quote for DIS (229957.272192s old; limit 180s)"}
+{"timestamp": "2026-08-31T11:54:30.728590", "ticker": "DIS", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 108.1, "reason": "stale quote for DIS (230075.056753s old; limit 180s)"}
+{"timestamp": "2026-08-31T11:54:30.836494", "ticker": "CPRT", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 33.0, "reason": "stale quote for CPRT (230071.846115s old; limit 180s)"}
+{"timestamp": "2026-08-31T11:54:30.940060", "ticker": "EL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 103.36, "reason": "stale quote for EL (230072.010249s old; limit 180s)"}
