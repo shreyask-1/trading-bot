@@ -9439,3 +9439,5 @@
 {"timestamp": "2026-08-31T15:58:32.467131", "ticker": "ADBE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 291.99, "reason": "liquidity filter: ADBE average volume 159,220 < 500,000"}
 {"timestamp": "2026-08-31T15:58:32.524642", "ticker": "CDW", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 149.7, "reason": "stale quote for CDW (910.735376s old; limit 180s)"}
 {"timestamp": "2026-08-31T15:58:32.584089", "ticker": "ARE", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 50.86, "reason": "stale candle for ARE (718.5m old; limit 30.0m)"}
+{"timestamp": "2026-08-31T16:00:48.943680", "ticker": "ADBE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 292.11, "reason": "liquidity filter: ADBE average volume 159,228 < 500,000"}
+{"timestamp": "2026-08-31T16:00:48.943871", "ticker": "APO", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 137.07, "reason": "liquidity filter: APO average volume 138,535 < 500,000"}
