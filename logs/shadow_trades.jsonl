@@ -9428,3 +9428,5 @@
 {"timestamp": "2026-08-31T15:48:30.847978", "ticker": "DIS", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 107.885, "reason": "liquidity filter: DIS average volume 420,269 < 500,000"}
 {"timestamp": "2026-08-31T15:50:39.238086", "ticker": "BIIB", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 218.49, "reason": "stale quote for BIIB (876.242778s old; limit 180s)"}
 {"timestamp": "2026-08-31T15:50:39.400651", "ticker": "ADBE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 291.94, "reason": "liquidity filter: ADBE average volume 159,196 < 500,000"}
+{"timestamp": "2026-08-31T15:52:33.827658", "ticker": "ADBE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 292.16, "reason": "liquidity filter: ADBE average volume 159,200 < 500,000"}
+{"timestamp": "2026-08-31T15:52:33.932041", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 227.58, "reason": "liquidity filter: CRWD average volume 299,268 < 500,000"}
