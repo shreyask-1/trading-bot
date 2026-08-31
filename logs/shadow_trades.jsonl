@@ -9731,3 +9731,5 @@
 {"timestamp": "2026-08-31T21:48:37.225638", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 367.92, "reason": "stale quote for TSLA (6463.583152s old; limit 180s)"}
 {"timestamp": "2026-08-31T21:48:37.503821", "ticker": "DG", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 126.8, "reason": "stale quote for DG (6519.877295s old; limit 180s)"}
 {"timestamp": "2026-08-31T21:48:37.749383", "ticker": "DE", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 655.41, "reason": "stale quote for DE (6522.900271s old; limit 180s)"}
+{"timestamp": "2026-08-31T21:50:34.687485", "ticker": "BLK", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 1156.17, "reason": "stale quote for BLK (6645.691481s old; limit 180s)"}
+{"timestamp": "2026-08-31T21:50:34.818761", "ticker": "COIN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 188.035, "reason": "stale quote for COIN (6635.939896s old; limit 180s)"}
