@@ -9421,3 +9421,5 @@
 {"timestamp": "2026-08-31T15:42:32.046564", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 314.725, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
 {"timestamp": "2026-08-31T15:44:31.527611", "ticker": "ADBE", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 292.26, "reason": "liquidity filter: ADBE average volume 159,172 < 500,000"}
 {"timestamp": "2026-08-31T15:44:31.576440", "ticker": "BALL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 63.39, "reason": "stale quote for BALL (354.27347s old; limit 180s)"}
+{"timestamp": "2026-08-31T15:46:38.939685", "ticker": "ADBE", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 292.07, "reason": "liquidity filter: ADBE average volume 159,175 < 500,000"}
+{"timestamp": "2026-08-31T15:46:39.242333", "ticker": "BALL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 63.39, "reason": "stale quote for BALL (481.739911s old; limit 180s)"}
