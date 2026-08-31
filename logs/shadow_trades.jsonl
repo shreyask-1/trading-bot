@@ -9423,3 +9423,6 @@
 {"timestamp": "2026-08-31T15:44:31.576440", "ticker": "BALL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 63.39, "reason": "stale quote for BALL (354.27347s old; limit 180s)"}
 {"timestamp": "2026-08-31T15:46:38.939685", "ticker": "ADBE", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 292.07, "reason": "liquidity filter: ADBE average volume 159,175 < 500,000"}
 {"timestamp": "2026-08-31T15:46:39.242333", "ticker": "BALL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 63.39, "reason": "stale quote for BALL (481.739911s old; limit 180s)"}
+{"timestamp": "2026-08-31T15:48:30.804410", "ticker": "ADBE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 291.92, "reason": "liquidity filter: ADBE average volume 159,188 < 500,000"}
+{"timestamp": "2026-08-31T15:48:30.847763", "ticker": "CRPT", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 14.31, "reason": "stale quote for CRPT (1967.191693s old; limit 180s)"}
+{"timestamp": "2026-08-31T15:48:30.847978", "ticker": "DIS", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 107.885, "reason": "liquidity filter: DIS average volume 420,269 < 500,000"}
