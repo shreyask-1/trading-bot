@@ -9308,3 +9308,5 @@
 {"timestamp": "2026-08-31T13:26:30.277230", "ticker": "WELL", "action": "buy", "engine": "gemini", "confidence": 95, "conviction": 10, "price": 237.85, "reason": "stale quote for WELL (235603.599104s old; limit 180s)"}
 {"timestamp": "2026-08-31T13:26:30.361655", "ticker": "ADSK", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 260.77, "reason": "stale quote for ADSK (235591.160764s old; limit 180s)"}
 {"timestamp": "2026-08-31T13:26:30.422223", "ticker": "AJG", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 267.54, "reason": "stale quote for AJG (235590.568372s old; limit 180s)"}
+{"timestamp": "2026-08-31T13:28:42.786488", "ticker": "EL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 103.36, "reason": "stale quote for EL (235723.859814s old; limit 180s)"}
+{"timestamp": "2026-08-31T13:28:42.878270", "ticker": "CPRT", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 33.0, "reason": "stale quote for CPRT (235723.902029s old; limit 180s)"}
