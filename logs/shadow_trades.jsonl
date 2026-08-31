@@ -9404,3 +9404,5 @@
 {"timestamp": "2026-08-31T15:20:57.429717", "ticker": "CPRT", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 33.295, "reason": "market data unavailable for CPRT (bid/ask spread missing)"}
 {"timestamp": "2026-08-31T15:22:38.100585", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 278.065, "reason": "liquidity filter: CEG average volume 104,405 < 500,000"}
 {"timestamp": "2026-08-31T15:22:38.440232", "ticker": "ARE", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 50.89, "reason": "stale candle for ARE (682.6m old; limit 30.0m)"}
+{"timestamp": "2026-08-31T15:24:44.687754", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 278.09, "reason": "liquidity filter: CEG average volume 104,416 < 500,000"}
+{"timestamp": "2026-08-31T15:24:44.942140", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 308.31, "reason": "liquidity filter: APD average volume 43,773 < 500,000"}
