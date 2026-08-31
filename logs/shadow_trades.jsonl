@@ -9478,3 +9478,5 @@
 {"timestamp": "2026-08-31T16:26:56.662277", "ticker": "AWK", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 138.395, "reason": "liquidity filter: AWK average volume 103,509 < 500,000"}
 {"timestamp": "2026-08-31T16:26:56.990170", "ticker": "BMY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 66.545, "reason": "market data unavailable for BMY (bid/ask spread missing)"}
 {"timestamp": "2026-08-31T16:26:57.308526", "ticker": "CDW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 150.29, "reason": "liquidity filter: CDW average volume 117,962 < 500,000"}
+{"timestamp": "2026-08-31T16:28:32.919690", "ticker": "BIIB", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 218.37, "reason": "stale candle for BIIB (748.5m old; limit 30.0m)"}
+{"timestamp": "2026-08-31T16:28:32.969303", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 307.855, "reason": "liquidity filter: APD average volume 44,163 < 500,000"}
