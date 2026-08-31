@@ -7737,6 +7737,9 @@ Timings: account: 0.0s | risk: 0.9s | decide: 11.3s | watchlist: 0.2s | perf: 0.
 === Run at 2026-08-31T21:33:57.661432 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-31 05:33 PM EDT | Market open (per Alpaca): False | Session: EXTENDED
+=== Run at 2026-08-31T21:31:35.250339 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-31 05:31 PM EDT | Market open (per Alpaca): False | Session: EXTENDED
 Account value: $99,119.73
 Cash: $89,705.98 | Holdings (2): {'GEHC': '0.6136 sh (-3.61%)', 'MS': '43.8344 sh (-3.26%)'}
 Sector exposure (cached): Financials 9.5%, Health Care 0.0%
@@ -7753,6 +7756,14 @@ Gemini calls used today (all models combined): 390
   -> {"ticker": "DG", "status": "skipped", "reason": "stale quote for DG (5651.191612s old; limit 180s)", "shadow": false, "data_guard": true}
 Overnight queue kept 12 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
 Dashboard watchlist synced (5 symbols) for news/headlines.
+News: fetched 158, 4 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 10/18 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 392
+  -> {"ticker": "COIN", "status": "skipped", "reason": "stale quote for COIN (5502.442997s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "CRWD", "status": "skipped", "reason": "stale quote for CRWD (5500.953896s old; limit 180s)", "shadow": false, "data_guard": true}
+Overnight queue kept 12 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
+Dashboard watchlist synced (4 symbols) for news/headlines.
 Ending portfolio value: $99,119.73
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
 Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
@@ -7761,4 +7772,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 9710 shadow candidate(s), 248 rejection group(s)
 Timings: account: 0.0s | risk: 0.9s | decide: 9.6s | watchlist: 0.1s | perf: 0.2s
+Timings: account: 0.0s | risk: 0.3s | decide: 5.6s | watchlist: 0.1s | perf: 0.2s
 
