@@ -9402,3 +9402,5 @@
 {"timestamp": "2026-08-31T15:18:38.003142", "ticker": "BIIB", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 217.78, "reason": "stale quote for BIIB (325.704879s old; limit 180s)"}
 {"timestamp": "2026-08-31T15:20:57.105944", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 277.99, "reason": "liquidity filter: CEG average volume 104,379 < 500,000"}
 {"timestamp": "2026-08-31T15:20:57.429717", "ticker": "CPRT", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 33.295, "reason": "market data unavailable for CPRT (bid/ask spread missing)"}
+{"timestamp": "2026-08-31T15:22:38.100585", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 278.065, "reason": "liquidity filter: CEG average volume 104,405 < 500,000"}
+{"timestamp": "2026-08-31T15:22:38.440232", "ticker": "ARE", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 50.89, "reason": "stale candle for ARE (682.6m old; limit 30.0m)"}
