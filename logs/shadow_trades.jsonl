@@ -9570,3 +9570,5 @@
 {"timestamp": "2026-08-31T17:58:29.772619", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 307.225, "reason": "liquidity filter: APD average volume 44,667 < 500,000"}
 {"timestamp": "2026-08-31T17:58:29.828050", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 278.19, "reason": "liquidity filter: CEG average volume 105,391 < 500,000"}
 {"timestamp": "2026-08-31T17:58:29.893040", "ticker": "BR", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 182.89, "reason": "stale quote for BR (190.236797s old; limit 180s)"}
+{"timestamp": "2026-08-31T18:02:44.336137", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 228.055, "reason": "liquidity filter: CRWD average volume 302,174 < 500,000"}
+{"timestamp": "2026-08-31T18:02:44.595822", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 307.135, "reason": "liquidity filter: APD average volume 44,685 < 500,000"}
