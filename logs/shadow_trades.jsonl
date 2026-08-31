@@ -9624,3 +9624,5 @@
 {"timestamp": "2026-08-31T18:46:35.702982", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 308.15, "reason": "liquidity filter: APD average volume 44,995 < 500,000"}
 {"timestamp": "2026-08-31T18:48:45.866782", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 308.155, "reason": "liquidity filter: APD average volume 45,004 < 500,000"}
 {"timestamp": "2026-08-31T18:48:46.127260", "ticker": "CBOE", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 305.435, "reason": "liquidity filter: CBOE average volume 46,730 < 500,000"}
+{"timestamp": "2026-08-31T18:52:37.640527", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 228.72, "reason": "liquidity filter: CRWD average volume 303,938 < 500,000"}
+{"timestamp": "2026-08-31T18:52:37.903904", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 308.21, "reason": "liquidity filter: APD average volume 45,085 < 500,000"}
