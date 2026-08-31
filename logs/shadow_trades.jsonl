@@ -9539,3 +9539,6 @@
 {"timestamp": "2026-08-31T17:34:30.038035", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 58.945, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
 {"timestamp": "2026-08-31T17:34:30.038203", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 91.2, "reason": "stale quote for SOLV (980.000509s old; limit 180s)"}
 {"timestamp": "2026-08-31T17:36:30.112207", "ticker": "BIIB", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 217.74, "reason": "stale quote for BIIB (222.717244s old; limit 180s)"}
+{"timestamp": "2026-08-31T17:38:40.761703", "ticker": "BIIB", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 217.74, "reason": "stale quote for BIIB (353.279216s old; limit 180s)"}
+{"timestamp": "2026-08-31T17:38:40.922515", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 307.32, "reason": "liquidity filter: APD average volume 44,554 < 500,000"}
+{"timestamp": "2026-08-31T17:38:41.071138", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 71, "conviction": 7, "price": 227.455, "reason": "liquidity filter: CRWD average volume 301,478 < 500,000"}
