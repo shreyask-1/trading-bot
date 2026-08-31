@@ -7577,6 +7577,9 @@ Shadow report: 9708 shadow candidate(s), 248 rejection group(s)
 Timings: account: 0.0s | risk: 0.2s | decide: 4.7s | watchlist: 0.0s | perf: 0.1s
 Timings: account: 0.0s | risk: 0.4s | decide: 7.3s | watchlist: 0.1s | perf: 0.1s
 
+=== Run at 2026-08-31T21:19:12.071396 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-31 05:19 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 === Run at 2026-08-31T21:16:34.285458 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-31 05:16 PM EDT | Market open (per Alpaca): False | Session: CLOSED
@@ -7587,12 +7590,16 @@ Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
 Open orders (1): MS sell 43.8344
 Risk state: peak $99,703.60 | drawdown 0.59% | today -0.06% | halted: False
 Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 2 new after dedup, 0 ticker(s) matched.
 News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
 Quant pre-screen: 38/66 candidates passed.
 Gemini proposed 2 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 389
 Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
   -> queued BIIB buy (conf 85, stop 210.0, tp 230.00000000000003)
+  -> queued DE buy (conf 91, stop 635.0, tp 685.0000000000001)
+  -> queued CRWD buy (conf 88, stop 215.0, tp 250.0)
+  -> queued COIN buy (conf 88, stop 146.09, tp 210.0)
   -> queued DE buy (conf 90, stop 625.0, tp 690.0)
   -> queued CRWD buy (conf 88, stop 215.0, tp 255.0)
   -> queued COIN buy (conf None, stop 146.09, tp 193.795)
@@ -7603,6 +7610,7 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued DVN buy (conf None, stop 46.185, tp 49.72)
   -> queued CRM buy (conf None, stop 193.585, tp 263.48)
   -> queued EL buy (conf None, stop 83.97, tp 108.37)
+  -> queued TSLA buy (conf 92, stop 331.16, tp 395.0)
   -> queued TSLA buy (conf 85, stop 331.16, tp 395.00000000000006)
 Dashboard watchlist synced (4 symbols) for news/headlines.
 Ending portfolio value: $99,119.73
@@ -7612,6 +7620,7 @@ Performance: Total return +0.25% | Max drawdown 0.94% | Daily Sharpe 1.43 | 19 c
 Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $-317.24 (2 open) | Books: legacy: realized $-1,705.68, unrealized $-317.24
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 9708 shadow candidate(s), 248 rejection group(s)
+Timings: account: 0.0s | risk: 0.8s | decide: 8.9s | watchlist: 0.1s | perf: 0.2s
 Timings: account: 0.0s | risk: 1.0s | decide: 7.9s | watchlist: 0.2s | perf: 0.2s
 
 === Run at 2026-08-31T21:21:32.549974 ===
