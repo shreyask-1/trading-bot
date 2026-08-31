@@ -9300,3 +9300,5 @@
 {"timestamp": "2026-08-31T13:08:37.211487", "ticker": "DIS", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 108.1, "reason": "stale quote for DIS (234519.037s old; limit 180s)"}
 {"timestamp": "2026-08-31T13:18:41.148558", "ticker": "ECL", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 286.825, "reason": "stale quote for ECL (235125.916491s old; limit 180s)"}
 {"timestamp": "2026-08-31T13:18:41.398127", "ticker": "DHR", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 216.1, "reason": "stale quote for DHR (235128.723347s old; limit 180s)"}
+{"timestamp": "2026-08-31T13:20:34.721538", "ticker": "ICE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 162.34, "reason": "stale quote for ICE (235232.505962s old; limit 180s)"}
+{"timestamp": "2026-08-31T13:20:34.721701", "ticker": "ADBE", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 291.545, "reason": "stale quote for ADBE (235233.226595s old; limit 180s)"}
