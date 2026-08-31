@@ -9451,3 +9451,6 @@
 {"timestamp": "2026-08-31T16:10:49.018090", "ticker": "BMY", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 66.59, "reason": "market data unavailable for BMY (bid/ask spread missing)"}
 {"timestamp": "2026-08-31T16:10:49.281930", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 308.455, "reason": "liquidity filter: APD average volume 44,102 < 500,000"}
 {"timestamp": "2026-08-31T16:10:49.282155", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 279.14, "reason": "liquidity filter: CEG average volume 104,701 < 500,000"}
+{"timestamp": "2026-08-31T16:12:33.869264", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 308.455, "reason": "liquidity filter: APD average volume 44,119 < 500,000"}
+{"timestamp": "2026-08-31T16:12:33.915385", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 279.31, "reason": "liquidity filter: CEG average volume 104,713 < 500,000"}
+{"timestamp": "2026-08-31T16:12:33.969855", "ticker": "BIIB", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 218.39, "reason": "stale candle for BIIB (732.6m old; limit 30.0m)"}
