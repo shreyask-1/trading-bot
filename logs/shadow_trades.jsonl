@@ -9352,3 +9352,4 @@
 {"timestamp": "2026-08-31T14:24:38.887371", "ticker": "BIIB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 218.54, "reason": "stale quote for BIIB (1035.719567s old; limit 180s)"}
 {"timestamp": "2026-08-31T14:24:39.181670", "ticker": "BALL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 63.38, "reason": "stale candle for BALL (624.7m old; limit 30.0m)"}
 {"timestamp": "2026-08-31T14:24:39.487914", "ticker": "CDW", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 148.17, "reason": "stale candle for CDW (624.7m old; limit 30.0m)"}
+{"timestamp": "2026-08-31T14:32:34.501389", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 312.495, "reason": "stale candle for APD (632.6m old; limit 30.0m)"}
