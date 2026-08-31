@@ -9413,3 +9413,5 @@
 {"timestamp": "2026-08-31T15:28:55.909255", "ticker": "BALL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 63.42, "reason": "stale quote for BALL (347.877676s old; limit 180s)"}
 {"timestamp": "2026-08-31T15:30:48.101659", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 278.24, "reason": "liquidity filter: CEG average volume 104,481 < 500,000"}
 {"timestamp": "2026-08-31T15:30:48.407283", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 225.81, "reason": "liquidity filter: CRWD average volume 298,594 < 500,000"}
+{"timestamp": "2026-08-31T15:32:44.510407", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 91.06, "reason": "stale candle for SOLV (692.7m old; limit 30.0m)"}
+{"timestamp": "2026-08-31T15:32:44.510534", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 146.93, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
