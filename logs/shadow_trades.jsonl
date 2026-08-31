@@ -9584,3 +9584,5 @@
 {"timestamp": "2026-08-31T18:14:40.967995", "ticker": "AWK", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 138.6, "reason": "liquidity filter: AWK average volume 104,717 < 500,000"}
 {"timestamp": "2026-08-31T18:16:32.750750", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 307.68, "reason": "liquidity filter: APD average volume 44,774 < 500,000"}
 {"timestamp": "2026-08-31T18:16:32.809529", "ticker": "BLK", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 1156.65, "reason": "liquidity filter: BLK average volume 30,927 < 500,000"}
+{"timestamp": "2026-08-31T18:20:36.701501", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 228.655, "reason": "liquidity filter: CRWD average volume 302,844 < 500,000"}
+{"timestamp": "2026-08-31T18:20:36.701693", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 261.695, "reason": "market data unavailable for CRM (bid/ask spread missing)"}
