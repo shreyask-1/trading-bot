@@ -9728,3 +9728,6 @@
 {"timestamp": "2026-08-31T21:46:55.669078", "ticker": "BALL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 63.05, "reason": "stale quote for BALL (6428.750232s old; limit 180s)"}
 {"timestamp": "2026-08-31T21:46:55.850451", "ticker": "CBOE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 300.85, "reason": "stale quote for CBOE (6417.205137s old; limit 180s)"}
 {"timestamp": "2026-08-31T21:46:56.032034", "ticker": "ARES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 143.21, "reason": "stale quote for ARES (6419.361635s old; limit 180s)"}
+{"timestamp": "2026-08-31T21:48:37.225638", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 367.92, "reason": "stale quote for TSLA (6463.583152s old; limit 180s)"}
+{"timestamp": "2026-08-31T21:48:37.503821", "ticker": "DG", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 126.8, "reason": "stale quote for DG (6519.877295s old; limit 180s)"}
+{"timestamp": "2026-08-31T21:48:37.749383", "ticker": "DE", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 655.41, "reason": "stale quote for DE (6522.900271s old; limit 180s)"}
