@@ -9323,3 +9323,5 @@
 {"timestamp": "2026-08-31T13:54:30.638188", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 257.11, "reason": "stale candle for CRM (594.5m old; limit 30.0m)"}
 {"timestamp": "2026-08-31T13:56:29.851143", "ticker": "CPRT", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 32.915, "reason": "stale candle for CPRT (596.5m old; limit 30.0m)"}
 {"timestamp": "2026-08-31T13:56:29.910198", "ticker": "DIS", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 107.155, "reason": "stale candle for DIS (596.5m old; limit 30.0m)"}
+{"timestamp": "2026-08-31T13:58:49.885375", "ticker": "ADSK", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 260.825, "reason": "stale candle for ADSK (598.8m old; limit 30.0m)"}
+{"timestamp": "2026-08-31T13:58:50.129359", "ticker": "AJG", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 263.255, "reason": "stale quote for AJG (290.622362s old; limit 180s)"}

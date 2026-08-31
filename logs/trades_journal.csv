@@ -134,3 +134,4 @@ timestamp,ticker,action,qty,price,stop_loss,take_profit,conviction,confidence,tr
 2026-08-21T13:34:30.205962,AMT,sell,14.8145,174.658498,,,10,,stagnation_exit,legacy/unknown,legacy,1.2937,"Stagnation exit: 47.9h held, progress +0.31% < 0.50%"
 2026-08-21T13:54:28.226094,NWS,sell,303.7199,34.25,,,10,,quality_trim,legacy/unknown,legacy,5.2012,Quality review profit-take: NWS is up 5.0% since entry >= 5.0%; banking the gain
 2026-08-24T08:00:35.353368,ERIE,sell,0.7641,265.6897,,,10,,max_holding_time,legacy/unknown,legacy,0.1015,Maximum holding time: 120.0h >= 120.0h
+2026-08-31T13:58:31.229079,MSI,sell,21.1281,485.24,,,10,,quality_trim,legacy/unknown,legacy,5.1261,Quality review: MSI fails technical screens (signal score 50.0 < 55.0); freeing capital for higher-conviction entries
