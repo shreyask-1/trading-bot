@@ -9096,3 +9096,6 @@
 {"timestamp": "2026-08-31T08:16:59.325672", "ticker": "CVNA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 74.05, "reason": "stale quote for CVNA (217021.036447s old; limit 180s)"}
 {"timestamp": "2026-08-31T08:16:59.623955", "ticker": "CPRT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 33.0, "reason": "stale quote for CPRT (217020.494097s old; limit 180s)"}
 {"timestamp": "2026-08-31T08:16:59.918580", "ticker": "CRM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 256.01, "reason": "stale quote for CRM (217028.512671s old; limit 180s)"}
+{"timestamp": "2026-08-31T08:20:36.012407", "ticker": "COIN", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 178.53, "reason": "stale quote for COIN (217242.342042s old; limit 180s)"}
+{"timestamp": "2026-08-31T08:20:36.056728", "ticker": "DVN", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 47.35, "reason": "stale quote for DVN (217237.393661s old; limit 180s)"}
+{"timestamp": "2026-08-31T08:20:36.108521", "ticker": "ECL", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 286.825, "reason": "stale quote for ECL (217241.027147s old; limit 180s)"}
