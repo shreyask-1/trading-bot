@@ -9548,3 +9548,5 @@
 {"timestamp": "2026-08-31T17:46:44.005050", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 59.15, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
 {"timestamp": "2026-08-31T17:46:44.312943", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 91.2, "reason": "stale quote for SOLV (1715.853928s old; limit 180s)"}
 {"timestamp": "2026-08-31T17:46:44.313153", "ticker": "ARE", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 51.13, "reason": "liquidity filter: ARE average volume 101,409 < 500,000"}
+{"timestamp": "2026-08-31T17:48:41.794968", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 227.47, "reason": "liquidity filter: CRWD average volume 301,721 < 500,000"}
+{"timestamp": "2026-08-31T17:48:41.795231", "ticker": "CPRT", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 33.24, "reason": "market data unavailable for CPRT (bid/ask spread missing)"}
