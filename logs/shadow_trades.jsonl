@@ -9393,3 +9393,5 @@
 {"timestamp": "2026-08-31T15:08:37.504644", "ticker": "BMY", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 66.5, "reason": "market data unavailable for BMY (bid/ask spread missing)"}
 {"timestamp": "2026-08-31T15:08:37.672443", "ticker": "BALL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 63.44, "reason": "stale candle for BALL (668.6m old; limit 30.0m)"}
 {"timestamp": "2026-08-31T15:10:51.975560", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 226.98, "reason": "liquidity filter: CRWD average volume 297,995 < 500,000"}
+{"timestamp": "2026-08-31T15:12:36.246212", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 277.6, "reason": "liquidity filter: CEG average volume 104,291 < 500,000"}
+{"timestamp": "2026-08-31T15:12:36.410539", "ticker": "BALL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 63.44, "reason": "stale quote for BALL (315.964058s old; limit 180s)"}
