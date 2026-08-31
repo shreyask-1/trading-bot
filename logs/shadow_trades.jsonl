@@ -9510,3 +9510,5 @@
 {"timestamp": "2026-08-31T16:56:29.821711", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 278.13, "reason": "stale quote for CEG (193.265358s old; limit 180s)"}
 {"timestamp": "2026-08-31T16:58:29.208721", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 307.195, "reason": "liquidity filter: APD average volume 44,337 < 500,000"}
 {"timestamp": "2026-08-31T16:58:29.249817", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 278.26, "reason": "liquidity filter: CEG average volume 105,025 < 500,000"}
+{"timestamp": "2026-08-31T17:02:40.146625", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 227.06, "reason": "liquidity filter: CRWD average volume 300,840 < 500,000"}
+{"timestamp": "2026-08-31T17:02:40.146820", "ticker": "ARES", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 142.655, "reason": "liquidity filter: ARES average volume 116,699 < 500,000"}
