@@ -9406,3 +9406,6 @@
 {"timestamp": "2026-08-31T15:22:38.440232", "ticker": "ARE", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 50.89, "reason": "stale candle for ARE (682.6m old; limit 30.0m)"}
 {"timestamp": "2026-08-31T15:24:44.687754", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 278.09, "reason": "liquidity filter: CEG average volume 104,416 < 500,000"}
 {"timestamp": "2026-08-31T15:24:44.942140", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 308.31, "reason": "liquidity filter: APD average volume 43,773 < 500,000"}
+{"timestamp": "2026-08-31T15:26:33.167892", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 278.05, "reason": "liquidity filter: CEG average volume 104,423 < 500,000"}
+{"timestamp": "2026-08-31T15:26:33.264356", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 226.23, "reason": "liquidity filter: CRWD average volume 298,432 < 500,000"}
+{"timestamp": "2026-08-31T15:26:33.360223", "ticker": "CDW", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 148.825, "reason": "stale quote for CDW (263.192709s old; limit 180s)"}
