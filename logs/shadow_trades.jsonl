@@ -9430,3 +9430,6 @@
 {"timestamp": "2026-08-31T15:50:39.400651", "ticker": "ADBE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 291.94, "reason": "liquidity filter: ADBE average volume 159,196 < 500,000"}
 {"timestamp": "2026-08-31T15:52:33.827658", "ticker": "ADBE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 292.16, "reason": "liquidity filter: ADBE average volume 159,200 < 500,000"}
 {"timestamp": "2026-08-31T15:52:33.932041", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 227.58, "reason": "liquidity filter: CRWD average volume 299,268 < 500,000"}
+{"timestamp": "2026-08-31T15:54:43.478497", "ticker": "NVDA", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 220.02, "reason": "market data unavailable for NVDA (bid/ask spread missing)"}
+{"timestamp": "2026-08-31T15:54:43.725080", "ticker": "ADBE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 292.13, "reason": "liquidity filter: ADBE average volume 159,208 < 500,000"}
+{"timestamp": "2026-08-31T15:54:43.990862", "ticker": "DIS", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 108.0, "reason": "liquidity filter: DIS average volume 420,468 < 500,000"}
