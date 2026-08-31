@@ -9396,3 +9396,5 @@
 {"timestamp": "2026-08-31T15:12:36.246212", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 277.6, "reason": "liquidity filter: CEG average volume 104,291 < 500,000"}
 {"timestamp": "2026-08-31T15:12:36.410539", "ticker": "BALL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 63.44, "reason": "stale quote for BALL (315.964058s old; limit 180s)"}
 {"timestamp": "2026-08-31T15:14:46.656872", "ticker": "TGT", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 162.415, "reason": "liquidity filter: TGT average volume 221,949 < 500,000"}
+{"timestamp": "2026-08-31T15:16:37.574695", "ticker": "CDW", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 148.86, "reason": "stale candle for CDW (676.6m old; limit 30.0m)"}
+{"timestamp": "2026-08-31T15:16:37.746710", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 277.605, "reason": "liquidity filter: CEG average volume 104,317 < 500,000"}
