@@ -9716,3 +9716,5 @@
 {"timestamp": "2026-08-31T21:40:48.503970", "ticker": "BLK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 1156.17, "reason": "stale quote for BLK (6059.369797s old; limit 180s)"}
 {"timestamp": "2026-08-31T21:40:48.787107", "ticker": "COIN", "action": "buy", "engine": "gemini", "confidence": 83, "conviction": 8, "price": 188.035, "reason": "stale quote for COIN (6049.787139s old; limit 180s)"}
 {"timestamp": "2026-08-31T21:40:49.079807", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 230.98, "reason": "stale quote for CRWD (6051.607027s old; limit 180s)"}
+{"timestamp": "2026-08-31T21:42:39.776307", "ticker": "COIN", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 188.035, "reason": "stale quote for COIN (6160.757977s old; limit 180s)"}
+{"timestamp": "2026-08-31T21:42:40.058983", "ticker": "BLK", "action": "buy", "engine": "gemini", "confidence": 93, "conviction": 9, "price": 1156.17, "reason": "stale quote for BLK (6170.939912s old; limit 180s)"}
