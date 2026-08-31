@@ -9388,3 +9388,5 @@
 {"timestamp": "2026-08-31T15:01:02.128151", "ticker": "ARES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 142.49, "reason": "stale candle for ARES (661.0m old; limit 30.0m)"}
 {"timestamp": "2026-08-31T15:02:44.930045", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 941.92, "reason": "market data unavailable for MU (bid/ask spread missing)"}
 {"timestamp": "2026-08-31T15:02:44.930206", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 227.5, "reason": "liquidity filter: CRWD average volume 297,810 < 500,000"}
+{"timestamp": "2026-08-31T15:04:32.790342", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 227.05, "reason": "liquidity filter: CRWD average volume 297,858 < 500,000"}
+{"timestamp": "2026-08-31T15:04:32.790499", "ticker": "BALL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 63.66, "reason": "stale quote for BALL (512.320028s old; limit 180s)"}
