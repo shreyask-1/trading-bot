@@ -9492,3 +9492,4 @@
 {"timestamp": "2026-08-31T16:36:28.968855", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 279.05, "reason": "liquidity filter: CEG average volume 104,909 < 500,000"}
 {"timestamp": "2026-08-31T16:38:31.220532", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 278.62, "reason": "liquidity filter: CEG average volume 104,923 < 500,000"}
 {"timestamp": "2026-08-31T16:38:31.328783", "ticker": "APO", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 8, "price": 137.16, "reason": "liquidity filter: APO average volume 138,863 < 500,000"}
+{"timestamp": "2026-08-31T16:42:32.389838", "ticker": "BMY", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 66.595, "reason": "market data unavailable for BMY (bid/ask spread missing)"}
