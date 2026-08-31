@@ -9523,3 +9523,4 @@
 {"timestamp": "2026-08-31T17:08:51.401468", "ticker": "ARES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 142.76, "reason": "liquidity filter: ARES average volume 116,745 < 500,000"}
 {"timestamp": "2026-08-31T17:14:30.856297", "ticker": "BMY", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 66.64, "reason": "market data unavailable for BMY (bid/ask spread missing)"}
 {"timestamp": "2026-08-31T17:14:30.972385", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 71, "conviction": 8, "price": 226.815, "reason": "liquidity filter: CRWD average volume 301,060 < 500,000"}
+{"timestamp": "2026-08-31T17:18:36.203574", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 307.91, "reason": "liquidity filter: APD average volume 44,446 < 500,000"}
