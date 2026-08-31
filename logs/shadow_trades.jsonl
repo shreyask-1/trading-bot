@@ -9310,3 +9310,5 @@
 {"timestamp": "2026-08-31T13:26:30.422223", "ticker": "AJG", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 267.54, "reason": "stale quote for AJG (235590.568372s old; limit 180s)"}
 {"timestamp": "2026-08-31T13:28:42.786488", "ticker": "EL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 103.36, "reason": "stale quote for EL (235723.859814s old; limit 180s)"}
 {"timestamp": "2026-08-31T13:28:42.878270", "ticker": "CPRT", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 33.0, "reason": "stale quote for CPRT (235723.902029s old; limit 180s)"}
+{"timestamp": "2026-08-31T13:32:34.947229", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 198.545, "reason": "stale quote for IT (235990.874784s old; limit 180s)"}
+{"timestamp": "2026-08-31T13:32:34.947434", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 145.12, "reason": "stale candle for NOW (572.6m old; limit 30.0m)"}
