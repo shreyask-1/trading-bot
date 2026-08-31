@@ -7225,6 +7225,9 @@ Timings: account: 0.0s | risk: 1.0s | decide: 23.6s | watchlist: 0.0s | perf: 0.
 === Run at 2026-08-31T06:26:33.396816 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-31 02:26 AM EDT | Market open (per Alpaca): False | Session: CLOSED
+=== Run at 2026-08-31T06:25:49.764154 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-31 02:25 AM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,180.36
 Cash: $79,453.78 | Holdings (3): {'GEHC': '0.6136 sh (-2.94%)', 'MS': '43.8344 sh (-2.80%)', 'MSI': '21.1281 sh (+3.46%)'}
 Sector exposure (cached): Technology 10.4%, Financials 9.5%, Health Care 0.0%
@@ -7245,6 +7248,9 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued JKHY buy (conf 85, stop 149.19, tp 185.0)
   -> queued NWSA buy (conf 92, stop 28.57, tp 33.5)
   -> queued NSC buy (conf 88, stop 335.01, tp 365.0)
+  -> queued JKHY buy (conf 88, stop 149.19, tp 185.0)
+  -> queued NWSA buy (conf 95, stop 28.57, tp 33.5)
+  -> queued NSC buy (conf 92, stop 335.01, tp 365.0)
   -> queued NWS buy (conf None, stop 32.575, tp 35.74)
   -> queued NDAQ buy (conf None, stop 95.825, tp 100.875)
   -> queued IFF buy (conf None, stop 80.88, tp 88.115)
@@ -7258,4 +7264,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 9078 shadow candidate(s), 89 rejection group(s)
 Timings: account: 0.0s | risk: 0.4s | decide: 6.7s | watchlist: 0.1s | perf: 0.1s
+Timings: account: 0.0s | risk: 1.3s | decide: 16.2s | watchlist: 0.1s | perf: 0.2s
 
