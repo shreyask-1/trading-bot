@@ -9855,3 +9855,6 @@
 {"timestamp": "2026-08-31T23:08:55.497005", "ticker": "BALL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 63.05, "reason": "stale quote for BALL (11348.474297s old; limit 180s)"}
 {"timestamp": "2026-08-31T23:08:55.853120", "ticker": "CBOE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 300.85, "reason": "stale quote for CBOE (11337.062823s old; limit 180s)"}
 {"timestamp": "2026-08-31T23:08:56.178640", "ticker": "ARES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 143.21, "reason": "stale quote for ARES (11339.402469s old; limit 180s)"}
+{"timestamp": "2026-08-31T23:10:39.949999", "ticker": "COIN", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 188.035, "reason": "stale quote for COIN (11441.026151s old; limit 180s)"}
+{"timestamp": "2026-08-31T23:10:40.191393", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 230.98, "reason": "stale quote for CRWD (11442.743983s old; limit 180s)"}
+{"timestamp": "2026-08-31T23:10:40.376892", "ticker": "ARES", "action": "buy", "engine": "gemini", "confidence": 83, "conviction": 8, "price": 143.21, "reason": "stale quote for ARES (11443.702712s old; limit 180s)"}
