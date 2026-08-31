@@ -9419,3 +9419,5 @@
 {"timestamp": "2026-08-31T15:36:38.133786", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 278.875, "reason": "liquidity filter: CEG average volume 104,531 < 500,000"}
 {"timestamp": "2026-08-31T15:38:48.490594", "ticker": "BMY", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 66.53, "reason": "market data unavailable for BMY (bid/ask spread missing)"}
 {"timestamp": "2026-08-31T15:42:32.046564", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 314.725, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
+{"timestamp": "2026-08-31T15:44:31.527611", "ticker": "ADBE", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 292.26, "reason": "liquidity filter: ADBE average volume 159,172 < 500,000"}
+{"timestamp": "2026-08-31T15:44:31.576440", "ticker": "BALL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 63.39, "reason": "stale quote for BALL (354.27347s old; limit 180s)"}
