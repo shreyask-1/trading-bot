@@ -7734,6 +7734,9 @@ Shadow report: 9708 shadow candidate(s), 248 rejection group(s)
 Timings: account: 0.0s | risk: 1.0s | decide: 23.6s | watchlist: 0.0s | perf: 0.1s
 Timings: account: 0.0s | risk: 0.9s | decide: 11.3s | watchlist: 0.2s | perf: 0.2s
 
+=== Run at 2026-08-31T21:33:57.661432 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-31 05:33 PM EDT | Market open (per Alpaca): False | Session: EXTENDED
 === Run at 2026-08-31T21:31:35.250339 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-31 05:31 PM EDT | Market open (per Alpaca): False | Session: EXTENDED
@@ -7745,6 +7748,14 @@ Open orders (1): MS sell 43.8344
 Risk state: peak $99,703.60 | drawdown 0.59% | today -0.06% | halted: False
 Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
 Morning verification: 12 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
+News: fetched 158, 7 new after dedup, 1 ticker(s) matched.
+Quant pre-screen: 33/61 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 390
+  -> {"ticker": "COIN", "status": "skipped", "reason": "stale quote for COIN (5649.525397s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "DG", "status": "skipped", "reason": "stale quote for DG (5651.191612s old; limit 180s)", "shadow": false, "data_guard": true}
+Overnight queue kept 12 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
+Dashboard watchlist synced (5 symbols) for news/headlines.
 News: fetched 158, 4 new after dedup, 0 ticker(s) matched.
 Quant pre-screen: 10/18 candidates passed.
 Gemini proposed 2 trade(s) meeting the conviction bar.
@@ -7760,6 +7771,7 @@ Performance: Total return +0.25% | Max drawdown 0.94% | Daily Sharpe 1.43 | 19 c
 Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $-317.24 (2 open) | Books: legacy: realized $-1,705.68, unrealized $-317.24
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 9710 shadow candidate(s), 248 rejection group(s)
+Timings: account: 0.0s | risk: 0.9s | decide: 9.6s | watchlist: 0.1s | perf: 0.2s
 Timings: account: 0.0s | risk: 0.3s | decide: 5.6s | watchlist: 0.1s | perf: 0.2s
 
 === Run at 2026-08-31T21:36:23.458857 ===
