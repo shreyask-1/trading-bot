@@ -9572,3 +9572,6 @@
 {"timestamp": "2026-08-31T17:58:29.893040", "ticker": "BR", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 182.89, "reason": "stale quote for BR (190.236797s old; limit 180s)"}
 {"timestamp": "2026-08-31T18:02:44.336137", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 228.055, "reason": "liquidity filter: CRWD average volume 302,174 < 500,000"}
 {"timestamp": "2026-08-31T18:02:44.595822", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 307.135, "reason": "liquidity filter: APD average volume 44,685 < 500,000"}
+{"timestamp": "2026-08-31T18:06:33.039479", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 227.885, "reason": "liquidity filter: CRWD average volume 302,268 < 500,000"}
+{"timestamp": "2026-08-31T18:06:33.151479", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 307.48, "reason": "liquidity filter: APD average volume 44,712 < 500,000"}
+{"timestamp": "2026-08-31T18:06:33.291661", "ticker": "AWK", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 138.66, "reason": "liquidity filter: AWK average volume 104,558 < 500,000"}
