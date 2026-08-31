@@ -9538,3 +9538,4 @@
 {"timestamp": "2026-08-31T17:32:35.142916", "ticker": "ARE", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 50.73, "reason": "liquidity filter: ARE average volume 101,343 < 500,000"}
 {"timestamp": "2026-08-31T17:34:30.038035", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 58.945, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
 {"timestamp": "2026-08-31T17:34:30.038203", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 91.2, "reason": "stale quote for SOLV (980.000509s old; limit 180s)"}
+{"timestamp": "2026-08-31T17:36:30.112207", "ticker": "BIIB", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 217.74, "reason": "stale quote for BIIB (222.717244s old; limit 180s)"}
