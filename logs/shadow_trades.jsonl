@@ -9317,3 +9317,5 @@
 {"timestamp": "2026-08-31T13:38:29.228818", "ticker": "DIS", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 107.89, "reason": "stale candle for DIS (578.5m old; limit 30.0m)"}
 {"timestamp": "2026-08-31T13:48:43.233470", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 59.85, "reason": "stale candle for SLB (588.7m old; limit 30.0m)"}
 {"timestamp": "2026-08-31T13:48:43.469853", "ticker": "SJM", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 132.83, "reason": "stale quote for SJM (265.185462s old; limit 180s)"}
+{"timestamp": "2026-08-31T13:52:29.612146", "ticker": "CPRT", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 32.88, "reason": "stale candle for CPRT (592.5m old; limit 30.0m)"}
+{"timestamp": "2026-08-31T13:52:29.661023", "ticker": "DE", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 642.76, "reason": "stale candle for DE (592.5m old; limit 30.0m)"}
