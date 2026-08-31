@@ -9545,3 +9545,6 @@
 {"timestamp": "2026-08-31T17:40:35.401844", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 307.305, "reason": "liquidity filter: APD average volume 44,566 < 500,000"}
 {"timestamp": "2026-08-31T17:40:35.450852", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 277.97, "reason": "liquidity filter: CEG average volume 105,262 < 500,000"}
 {"timestamp": "2026-08-31T17:44:29.778974", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 307.26, "reason": "liquidity filter: APD average volume 44,578 < 500,000"}
+{"timestamp": "2026-08-31T17:46:44.005050", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 59.15, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-08-31T17:46:44.312943", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 91.2, "reason": "stale quote for SOLV (1715.853928s old; limit 180s)"}
+{"timestamp": "2026-08-31T17:46:44.313153", "ticker": "ARE", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 51.13, "reason": "liquidity filter: ARE average volume 101,409 < 500,000"}
