@@ -9566,3 +9566,4 @@
 {"timestamp": "2026-08-31T17:54:56.918393", "ticker": "CDW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 151.32, "reason": "liquidity filter: CDW average volume 118,878 < 500,000"}
 {"timestamp": "2026-08-31T17:54:57.165144", "ticker": "CBOE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 305.18, "reason": "liquidity filter: CBOE average volume 46,582 < 500,000"}
 {"timestamp": "2026-08-31T17:54:57.409354", "ticker": "ARES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 143.015, "reason": "liquidity filter: ARES average volume 117,288 < 500,000"}
+{"timestamp": "2026-08-31T17:56:31.648967", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 307.24, "reason": "liquidity filter: APD average volume 44,660 < 500,000"}
