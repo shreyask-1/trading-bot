@@ -9330,3 +9330,5 @@
 {"timestamp": "2026-08-31T14:01:08.114686", "ticker": "ARES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 142.01, "reason": "stale candle for ARES (601.1m old; limit 30.0m)"}
 {"timestamp": "2026-08-31T14:06:54.275775", "ticker": "SCHW", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 109.915, "reason": "stale candle for SCHW (606.9m old; limit 30.0m)"}
 {"timestamp": "2026-08-31T14:06:54.275947", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 9, "price": 91.03, "reason": "stale quote for SOLV (180.125149s old; limit 180s)"}
+{"timestamp": "2026-08-31T14:08:36.971250", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 311.71, "reason": "stale candle for APD (608.6m old; limit 30.0m)"}
+{"timestamp": "2026-08-31T14:08:37.054711", "ticker": "BALL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 63.49, "reason": "stale quote for BALL (228.818955s old; limit 180s)"}
