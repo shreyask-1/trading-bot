@@ -9457,3 +9457,5 @@
 {"timestamp": "2026-08-31T16:14:34.194542", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 308.72, "reason": "liquidity filter: APD average volume 44,126 < 500,000"}
 {"timestamp": "2026-08-31T16:14:34.306721", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 279.125, "reason": "liquidity filter: CEG average volume 104,783 < 500,000"}
 {"timestamp": "2026-08-31T16:14:34.482539", "ticker": "BIIB", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 218.39, "reason": "stale quote for BIIB (299.849342s old; limit 180s)"}
+{"timestamp": "2026-08-31T16:16:35.747499", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 278.995, "reason": "liquidity filter: CEG average volume 104,788 < 500,000"}
+{"timestamp": "2026-08-31T16:16:35.817525", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 308.29, "reason": "liquidity filter: APD average volume 44,130 < 500,000"}
