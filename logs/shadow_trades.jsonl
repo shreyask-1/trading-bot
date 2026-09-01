@@ -10663,3 +10663,6 @@
 {"timestamp": "2026-09-01T19:17:54.063289", "ticker": "AMGN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 436.34, "reason": "liquidity filter: AMGN average volume 84,692 < 500,000"}
 {"timestamp": "2026-09-01T19:17:54.379575", "ticker": "AMT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 175.06, "reason": "liquidity filter: AMT average volume 84,608 < 500,000"}
 {"timestamp": "2026-09-01T19:17:54.694243", "ticker": "APD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 305.11, "reason": "liquidity filter: APD average volume 46,981 < 500,000"}
+{"timestamp": "2026-09-01T19:23:30.931617", "ticker": "ALB", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 136.03, "reason": "stale quote for ALB (409.697124s old; limit 180s)"}
+{"timestamp": "2026-09-01T19:23:31.010566", "ticker": "AMGN", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 436.32, "reason": "liquidity filter: AMGN average volume 84,742 < 500,000"}
+{"timestamp": "2026-09-01T19:23:31.104132", "ticker": "ARE", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 52.16, "reason": "liquidity filter: ARE average volume 99,202 < 500,000"}
