@@ -18626,6 +18626,9 @@ Timings: account: 0.0s | risk: 0.3s | decide: 7.0s | watchlist: 0.0s | perf: 0.1
 === Run at 2026-09-01T21:12:25.646681 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-01 05:12 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+=== Run at 2026-09-01T21:09:53.465104 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-01 05:09 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,007.65
 Cash: $89,705.74 | Holdings (2): {'GEHC': '0.6136 sh (-4.71%)', 'MS': '43.8344 sh (-4.41%)'}
 Sector exposure (cached): Financials 9.4%, Health Care 0.0%
@@ -18643,6 +18646,15 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued DE buy (conf None, stop 579.5, tp 677.885)
   -> queued DG buy (conf None, stop 117.975, tp 132.32)
   -> queued DVN buy (conf None, stop 46.185, tp 49.72)
+News: fetched 158, 10 new after dedup, 1 ticker(s) matched.
+Quant pre-screen: 18/21 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 234
+Market closed (overnight): queued 11 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued ALB buy (conf 84, stop 130.0, tp None)
+  -> queued DE buy (conf 88, stop 635.0, tp 715.0000000000001)
+  -> queued DG buy (conf 80, stop 126.0, tp 140.0)
+  -> queued DVN buy (conf 80, stop 47.5, tp 52.5)
   -> queued FCX buy (conf None, stop 67.3, tp 80.235)
   -> queued DLTR buy (conf None, stop 118.44, tp 137.05)
   -> queued FDS buy (conf None, stop 290.44, tp 314.51)
@@ -18653,6 +18665,11 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued FTNT buy (conf None, stop 148.33, tp 173.86)
 Run budget reserve reached -- skipping dashboard watchlist sync.
 Run budget reserve reached -- skipping performance snapshot.
+  -> queued GILD buy (conf 85, stop 143.0, tp None)
+  -> queued GDDY buy (conf None, stop 94.5, tp 102.26)
+  -> queued NOW buy (conf None, stop 118.64, tp 149.56)
+Dashboard watchlist synced (5 symbols) for news/headlines.
+Ending portfolio value: $99,007.65
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
 Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
 Performance: Total return +0.14% | Max drawdown 0.94% | Daily Sharpe 0.69 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 2 | Equity $99,007.65
@@ -18660,4 +18677,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 10693 shadow candidate(s), 274 rejection group(s)
 Timings: account: 0.0s | risk: 0.8s | decide: 23.5s | watchlist: 0.0s | perf: 0.1s
+Timings: account: 0.0s | risk: 0.1s | decide: 4.6s | watchlist: 0.0s | perf: 0.1s
 
