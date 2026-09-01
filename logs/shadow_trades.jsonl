@@ -10419,3 +10419,6 @@
 {"timestamp": "2026-09-01T13:34:27.946837", "ticker": "EOG", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 146.97, "reason": "liquidity filter: EOG average volume 169,749 < 500,000"}
 {"timestamp": "2026-09-01T13:36:57.638846", "ticker": "NOW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 145.555, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
 {"timestamp": "2026-09-01T13:36:57.895065", "ticker": "EPAM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 118.415, "reason": "stale quote for EPAM (221.371915s old; limit 180s)"}
+{"timestamp": "2026-09-01T13:38:34.606698", "ticker": "AMT", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 178.01, "reason": "liquidity filter: AMT average volume 79,591 < 500,000"}
+{"timestamp": "2026-09-01T13:38:34.723092", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 308.04, "reason": "stale quote for APD (444.016462s old; limit 180s)"}
+{"timestamp": "2026-09-01T13:38:34.854046", "ticker": "AJG", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 266.36, "reason": "liquidity filter: AJG average volume 64,024 < 500,000"}
