@@ -7703,3 +7703,39 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; wor
 Shadow report: 10925 shadow candidate(s), 279 rejection group(s)
 Timings: account: 0.0s | risk: 0.3s | decide: 3.3s | watchlist: 0.0s | perf: 0.1s
 
+=== Run at 2026-09-01T23:44:33.676582 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-01 07:44 PM EDT | Market open (per Alpaca): False | Session: EXTENDED
+Account value: $99,005.55
+Cash: $89,705.74 | Holdings (2): {'GEHC': '0.6136 sh (-4.71%)', 'MS': '43.8344 sh (-4.43%)'}
+Sector exposure (cached): Financials 9.3%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.70% | today -0.08% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+Overnight queue deferred 7 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+Morning verification: 3 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
+News: fetched 154, 4 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 34/60 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
+Technical fallback cap omitted 6 weaker idea(s) this run.
+Gemini calls used today (all models combined): 280
+  -> {"ticker": "ALB", "status": "skipped", "reason": "stale quote for ALB (13502.558324s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "CBOE", "status": "skipped", "reason": "stale quote for CBOE (13507.927324s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "AMT", "status": "skipped", "reason": "stale quote for AMT (13512.676542s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "CAH", "status": "skipped", "reason": "stale quote for CAH (13509.207766s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "APA", "status": "skipped", "reason": "stale quote for APA (13504.715604s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "APH", "status": "skipped", "reason": "stale quote for APH (13502.269459s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "AMGN", "status": "skipped", "reason": "stale quote for AMGN (13499.645813s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "BIIB", "status": "skipped", "reason": "stale quote for BIIB (13589.651003s old; limit 180s)", "shadow": false, "data_guard": true}
+Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); 6 idea(s) remain subject to the retry cap.
+Run budget reserve reached -- skipping dashboard watchlist sync.
+Run budget reserve reached -- skipping performance snapshot.
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.14% | Max drawdown 0.94% | Daily Sharpe 0.68 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 2 | Equity $99,005.55
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $-431.19 (2 open) | Books: legacy: realized $-1,705.68, unrealized $-431.19
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 10933 shadow candidate(s), 285 rejection group(s)
+Timings: account: 0.0s | risk: 0.5s | decide: 24.9s | watchlist: 0.0s | perf: 0.1s
+
