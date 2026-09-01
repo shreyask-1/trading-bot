@@ -10462,3 +10462,4 @@
 {"timestamp": "2026-09-01T14:37:34.491776", "ticker": "BIIB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 217.42, "reason": "stale quote for BIIB (791.772929s old; limit 180s)"}
 {"timestamp": "2026-09-01T14:37:34.634507", "ticker": "CRM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 260.76, "reason": "market data unavailable for CRM (bid/ask spread missing)"}
 {"timestamp": "2026-09-01T14:37:34.842167", "ticker": "BRO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 72.83, "reason": "stale quote for BRO (359.715332s old; limit 180s)"}
+{"timestamp": "2026-09-01T14:42:08.256046", "ticker": "DE", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 672.46, "reason": "liquidity filter: DE average volume 61,255 < 500,000"}
