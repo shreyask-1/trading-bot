@@ -10804,3 +10804,6 @@
 {"timestamp": "2026-09-01T22:30:59.845697", "ticker": "T", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 26.015, "reason": "stale quote for T (9040.904491s old; limit 180s)"}
 {"timestamp": "2026-09-01T22:32:38.254688", "ticker": "AMGN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 438.13, "reason": "stale quote for AMGN (9158.479081s old; limit 180s)"}
 {"timestamp": "2026-09-01T22:32:38.527939", "ticker": "ALB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 135.515, "reason": "stale quote for ALB (9162.775929s old; limit 180s)"}
+{"timestamp": "2026-09-01T22:34:43.666860", "ticker": "DG", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 131.12, "reason": "stale quote for DG (9287.194377s old; limit 180s)"}
+{"timestamp": "2026-09-01T22:34:43.667036", "ticker": "DE", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 676.14, "reason": "stale quote for DE (9279.662563s old; limit 180s)"}
+{"timestamp": "2026-09-01T22:34:43.965101", "ticker": "ALB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 135.515, "reason": "stale quote for ALB (9288.196869s old; limit 180s)"}
