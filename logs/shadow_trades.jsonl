@@ -10794,3 +10794,5 @@
 {"timestamp": "2026-09-01T22:24:58.889802", "ticker": "APH", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 163.165, "reason": "stale quote for APH (8701.864644s old; limit 180s)"}
 {"timestamp": "2026-09-01T22:24:59.224685", "ticker": "AMGN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 438.13, "reason": "stale quote for AMGN (8699.407872s old; limit 180s)"}
 {"timestamp": "2026-09-01T22:24:59.543645", "ticker": "BIIB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 215.99, "reason": "stale quote for BIIB (8789.584552s old; limit 180s)"}
+{"timestamp": "2026-09-01T22:26:43.217950", "ticker": "ALB", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 135.515, "reason": "stale quote for ALB (8807.481496s old; limit 180s)"}
+{"timestamp": "2026-09-01T22:26:43.450821", "ticker": "AMT", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 176.03, "reason": "stale quote for AMT (8817.499506s old; limit 180s)"}
