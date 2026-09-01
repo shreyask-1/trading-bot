@@ -5812,6 +5812,9 @@ Timings: account: 0.0s | risk: 0.8s | decide: 9.0s | watchlist: 0.1s | perf: 0.2
 === Run at 2026-09-01T21:43:19.234187 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-01 05:43 PM EDT | Market open (per Alpaca): False | Session: EXTENDED
+=== Run at 2026-09-01T21:40:55.031326 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-01 05:40 PM EDT | Market open (per Alpaca): False | Session: EXTENDED
 Account value: $99,005.02
 Cash: $89,705.74 | Holdings (2): {'GEHC': '0.6136 sh (-4.71%)', 'MS': '43.8344 sh (-4.44%)'}
 Sector exposure (cached): Financials 9.3%, Health Care 0.0%
@@ -5829,6 +5832,13 @@ Gemini calls used today (all models combined): 238
   -> {"ticker": "DG", "status": "skipped", "reason": "stale quote for DG (6213.526657s old; limit 180s)", "shadow": false, "data_guard": true}
 Overnight queue kept 12 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
 Dashboard watchlist synced (4 symbols) for news/headlines.
+News: fetched 158, 2 new after dedup, 2 ticker(s) matched.
+Quant pre-screen: 14/26 candidates passed.
+Gemini proposed 1 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 239
+  -> {"ticker": "ALB", "status": "skipped", "reason": "stale quote for ALB (6063.179836s old; limit 180s)", "shadow": false, "data_guard": true}
+Overnight queue kept 12 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
+Dashboard watchlist synced (5 symbols) for news/headlines.
 Ending portfolio value: $99,005.02
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
 Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
@@ -5837,4 +5847,6 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 10700 shadow candidate(s), 274 rejection group(s)
 Timings: account: 0.0s | risk: 0.1s | decide: 3.5s | watchlist: 0.0s | perf: 0.2s
+Shadow report: 10699 shadow candidate(s), 274 rejection group(s)
+Timings: account: 0.0s | risk: 0.3s | decide: 3.4s | watchlist: 0.0s | perf: 0.1s
 
