@@ -9961,3 +9961,4 @@
 {"timestamp": "2026-08-31T23:58:52.293307", "ticker": "ARES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 143.21, "reason": "stale quote for ARES (14335.6651s old; limit 180s)"}
 {"timestamp": "2026-09-01T08:01:04.280171", "ticker": "EPAM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 117.8, "reason": "stale quote for EPAM (43251.518446s old; limit 180s)"}
 {"timestamp": "2026-09-01T08:01:04.280322", "ticker": "AJG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 262.17, "reason": "stale quote for AJG (43275.727209s old; limit 180s)"}
+{"timestamp": "2026-09-01T08:02:42.221451", "ticker": "EPAM", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 117.8, "reason": "stale quote for EPAM (43367.663236s old; limit 180s)"}
