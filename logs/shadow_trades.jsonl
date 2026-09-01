@@ -10474,3 +10474,5 @@
 {"timestamp": "2026-09-01T14:54:09.522153", "ticker": "TSCO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 35.14, "reason": "market data unavailable for TSCO (bid/ask spread missing)"}
 {"timestamp": "2026-09-01T14:54:09.919244", "ticker": "STT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 189.54, "reason": "stale quote for STT (263.468896s old; limit 180s)"}
 {"timestamp": "2026-09-01T14:54:10.201352", "ticker": "TGT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 163.7, "reason": "liquidity filter: TGT average volume 220,753 < 500,000"}
+{"timestamp": "2026-09-01T14:59:04.113119", "ticker": "DE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 670.65, "reason": "liquidity filter: DE average volume 61,596 < 500,000"}
+{"timestamp": "2026-09-01T14:59:04.467744", "ticker": "DG", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 130.07, "reason": "liquidity filter: DG average volume 123,935 < 500,000"}
