@@ -10670,3 +10670,5 @@
 {"timestamp": "2026-09-01T19:31:27.524781", "ticker": "BRO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 71.82, "reason": "liquidity filter: BRO average volume 125,221 < 500,000"}
 {"timestamp": "2026-09-01T19:31:27.524941", "ticker": "CAH", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 238.63, "reason": "liquidity filter: CAH average volume 79,242 < 500,000"}
 {"timestamp": "2026-09-01T19:31:27.525128", "ticker": "CBOE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 308.44, "reason": "liquidity filter: CBOE average volume 46,016 < 500,000"}
+{"timestamp": "2026-09-01T19:36:54.004586", "ticker": "ALB", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 135.86, "reason": "liquidity filter: ALB average volume 84,995 < 500,000"}
+{"timestamp": "2026-09-01T19:36:54.004789", "ticker": "WELL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 239.635, "reason": "liquidity filter: WELL average volume 112,531 < 500,000"}
