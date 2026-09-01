@@ -17499,6 +17499,11 @@ Build fingerprint: 4f68550affe5
 Current time: 2026-09-01 03:20 PM EDT | Market open (per Alpaca): True | Session: REGULAR
 Account value: $99,041.45
 Cash: $89,705.74 | Holdings (2): {'GEHC': '0.6136 sh (-4.60%)', 'MS': '43.8344 sh (-4.06%)'}
+=== Run at 2026-09-01T19:17:28.254260 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-01 03:17 PM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,041.23
+Cash: $89,705.74 | Holdings (2): {'GEHC': '0.6136 sh (-4.61%)', 'MS': '43.8344 sh (-4.06%)'}
 Sector exposure (cached): Financials 9.4%, Health Care 0.0%
 Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
 Open orders (1): MS sell 43.8344
@@ -17521,4 +17526,23 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 10661 shadow candidate(s), 305 rejection group(s)
 Timings: account: 0.0s | risk: 0.8s | decide: 20.9s | watchlist: 0.1s | perf: 0.2s
+Overnight queue deferred 2 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+News: fetched 158, 5 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 9/23 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 4 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 217
+  -> {"ticker": "ALB", "status": "skipped", "reason": "liquidity filter: ALB average volume 84,896 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "AMGN", "status": "skipped", "reason": "liquidity filter: AMGN average volume 84,692 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "AMT", "status": "skipped", "reason": "liquidity filter: AMT average volume 84,608 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "APD", "status": "skipped", "reason": "liquidity filter: APD average volume 46,981 < 500,000", "shadow": false, "data_guard": true}
+Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); 4 idea(s) remain subject to the retry cap.
+Run budget reserve reached -- skipping dashboard watchlist sync.
+Run budget reserve reached -- skipping performance snapshot.
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.16% | Max drawdown 0.94% | Daily Sharpe 0.84 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 2 | Equity $99,041.23
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $-395.50 (2 open) | Books: legacy: realized $-1,705.68, unrealized $-395.50
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 10665 shadow candidate(s), 301 rejection group(s)
+Timings: account: 0.0s | risk: 0.9s | decide: 24.9s | watchlist: 0.0s | perf: 0.1s
 
