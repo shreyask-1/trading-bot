@@ -17991,6 +17991,9 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; wor
 Shadow report: 10687 shadow candidate(s), 282 rejection group(s)
 Timings: account: 0.0s | risk: 0.2s | decide: 14.6s | watchlist: 0.0s | perf: 0.1s
 
+=== Run at 2026-09-01T20:08:25.969773 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-01 04:08 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 === Run at 2026-09-01T20:05:46.087508 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-01 04:05 PM EDT | Market open (per Alpaca): False | Session: CLOSED
@@ -18001,6 +18004,14 @@ Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
 Open orders (1): MS sell 43.8344
 Risk state: peak $99,703.60 | drawdown 0.71% | today -0.09% | halted: False
 Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 9 new after dedup, 3 ticker(s) matched.
+Quant pre-screen: 15/31 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 226
+Market closed (overnight): queued 2 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued ALB buy (conf 85, stop 131.37, tp 143.90000000000003)
+  -> queued DE buy (conf 82, stop 637.33, tp 715.14)
+Dashboard watchlist synced (7 symbols) for news/headlines.
 News: fetched 158, 4 new after dedup, 0 ticker(s) matched.
 Quant pre-screen: 16/30 candidates passed.
 Gemini proposed 2 trade(s) meeting the conviction bar.
@@ -18016,6 +18027,7 @@ Performance: Total return +0.13% | Max drawdown 0.94% | Daily Sharpe 0.65 | 19 c
 Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $-436.97 (2 open) | Books: legacy: realized $-1,705.68, unrealized $-436.97
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 10693 shadow candidate(s), 274 rejection group(s)
+Timings: account: 0.0s | risk: 0.8s | decide: 14.9s | watchlist: 0.1s | perf: 0.2s
 Timings: account: 0.0s | risk: 0.2s | decide: 9.9s | watchlist: 0.0s | perf: 0.1s
 
 === Run at 2026-09-01T20:11:23.254016 ===
