@@ -16183,6 +16183,15 @@ Sector exposure (cached): Financials 9.4%, Health Care 0.0%
 Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
 Open orders (1): MS sell 43.8344
 Risk state: peak $99,703.60 | drawdown 0.66% | today -0.05% | halted: False
+=== Run at 2026-09-01T17:17:03.664948 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-01 01:17 PM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,052.56
+Cash: $89,705.74 | Holdings (2): {'GEHC': '0.6136 sh (-4.27%)', 'MS': '43.8344 sh (-3.95%)'}
+Sector exposure (cached): Financials 9.4%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.65% | today -0.04% | halted: False
 Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
 Morning verification: 4 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
 News: fetched 158, 7 new after dedup, 0 ticker(s) matched.
@@ -16202,4 +16211,22 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 10573 shadow candidate(s), 384 rejection group(s)
 Timings: account: 0.0s | risk: 1.0s | decide: 11.7s | watchlist: 0.1s | perf: 0.2s
+Technical fallback (Gemini throttled/unavailable) proposed 6 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 202
+  -> {"ticker": "ALB", "status": "skipped", "reason": "liquidity filter: ALB average volume 84,066 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "DG", "status": "skipped", "reason": "liquidity filter: DG average volume 126,538 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "AMGN", "status": "skipped", "reason": "liquidity filter: AMGN average volume 83,591 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "AMT", "status": "skipped", "reason": "liquidity filter: AMT average volume 83,364 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "APA", "status": "skipped", "reason": "liquidity filter: APA average volume 362,480 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "APD", "status": "skipped", "reason": "liquidity filter: APD average volume 46,092 < 500,000", "shadow": false, "data_guard": true}
+Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); 4 idea(s) remain subject to the retry cap.
+Run budget reserve reached -- skipping dashboard watchlist sync.
+Run budget reserve reached -- skipping performance snapshot.
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.20% | Max drawdown 0.94% | Daily Sharpe 1.04 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 2 | Equity $99,052.56
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $-384.17 (2 open) | Books: legacy: realized $-1,705.68, unrealized $-384.17
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 10578 shadow candidate(s), 375 rejection group(s)
+Timings: account: 0.0s | risk: 0.8s | decide: 25.5s | watchlist: 0.0s | perf: 0.1s
 
