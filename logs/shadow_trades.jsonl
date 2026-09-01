@@ -9959,3 +9959,5 @@
 {"timestamp": "2026-08-31T23:58:52.031692", "ticker": "BALL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 63.05, "reason": "stale quote for BALL (14345.163806s old; limit 180s)"}
 {"timestamp": "2026-08-31T23:58:52.166082", "ticker": "CBOE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 300.85, "reason": "stale quote for CBOE (14333.548684s old; limit 180s)"}
 {"timestamp": "2026-08-31T23:58:52.293307", "ticker": "ARES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 143.21, "reason": "stale quote for ARES (14335.6651s old; limit 180s)"}
+{"timestamp": "2026-09-01T08:01:04.280171", "ticker": "EPAM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 117.8, "reason": "stale quote for EPAM (43251.518446s old; limit 180s)"}
+{"timestamp": "2026-09-01T08:01:04.280322", "ticker": "AJG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 262.17, "reason": "stale quote for AJG (43275.727209s old; limit 180s)"}
