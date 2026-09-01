@@ -10385,3 +10385,5 @@
 {"timestamp": "2026-09-01T13:07:05.342169", "ticker": "CRL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 5, "price": 288.945, "reason": "stale quote for CRL (61616.844839s old; limit 180s)"}
 {"timestamp": "2026-09-01T13:07:05.371072", "ticker": "CRM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 253.61, "reason": "stale quote for CRM (563.640104s old; limit 180s)"}
 {"timestamp": "2026-09-01T13:07:05.399811", "ticker": "CSGP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 32.07, "reason": "stale quote for CSGP (61605.535508s old; limit 180s)"}
+{"timestamp": "2026-09-01T13:08:39.584544", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 309.57, "reason": "stale quote for APD (61726.821386s old; limit 180s)"}
+{"timestamp": "2026-09-01T13:08:39.885962", "ticker": "AJG", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 262.17, "reason": "stale quote for AJG (61745.918346s old; limit 180s)"}
