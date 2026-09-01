@@ -17142,6 +17142,19 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; wor
 Shadow report: 10631 shadow candidate(s), 332 rejection group(s)
 Timings: account: 0.0s | risk: 0.3s | decide: 4.6s | watchlist: 0.1s | perf: 0.1s
 
+=== Run at 2026-09-01T18:49:41.101239 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-01 02:49 PM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,032.56
+Cash: $89,705.74 | Holdings (2): {'GEHC': '0.6136 sh (-4.40%)', 'MS': '43.8344 sh (-4.15%)'}
+Sector exposure (cached): Financials 9.4%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.67% | today -0.06% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+Overnight queue deferred 1 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+Morning verification: 4 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
+News: fetched 158, 2 new after dedup, 0 ticker(s) matched.
 === Run at 2026-09-01T18:46:45.580126 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-01 02:46 PM EDT | Market open (per Alpaca): True | Session: REGULAR
@@ -17158,6 +17171,24 @@ Quant pre-screen: 23/60 candidates passed.
 Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
 Technical fallback cap omitted 1 weaker idea(s) this run.
 Gemini calls used today (all models combined): 214
+  -> {"ticker": "ALB", "status": "skipped", "reason": "stale quote for ALB (327.242417s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "CAH", "status": "skipped", "reason": "liquidity filter: CAH average volume 78,954 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "APD", "status": "skipped", "reason": "liquidity filter: APD average volume 46,663 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "DG", "status": "skipped", "reason": "liquidity filter: DG average volume 128,200 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "APA", "status": "skipped", "reason": "liquidity filter: APA average volume 366,099 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "AMT", "status": "skipped", "reason": "liquidity filter: AMT average volume 84,200 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "AMGN", "status": "skipped", "reason": "liquidity filter: AMGN average volume 84,527 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "BMY", "status": "skipped", "reason": "market data unavailable for BMY (bid/ask spread missing)", "shadow": false, "data_guard": true}
+Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); 4 idea(s) remain subject to the retry cap.
+Run budget reserve reached -- skipping dashboard watchlist sync.
+Run budget reserve reached -- skipping performance snapshot.
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.16% | Max drawdown 0.94% | Daily Sharpe 0.83 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 2 | Equity $99,032.56
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $-404.17 (2 open) | Books: legacy: realized $-1,705.68, unrealized $-404.17
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 10639 shadow candidate(s), 325 rejection group(s)
+Timings: account: 0.0s | risk: 1.1s | decide: 26.8s | watchlist: 0.0s | perf: 0.1s
   -> {"ticker": "ALB", "status": "skipped", "reason": "liquidity filter: ALB average volume 84,536 < 500,000", "shadow": false, "data_guard": true}
   -> {"ticker": "CAH", "status": "skipped", "reason": "stale quote for CAH (373.795973s old; limit 180s)", "shadow": false, "data_guard": true}
   -> {"ticker": "APD", "status": "skipped", "reason": "liquidity filter: APD average volume 46,650 < 500,000", "shadow": false, "data_guard": true}
