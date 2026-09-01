@@ -10428,3 +10428,4 @@
 {"timestamp": "2026-09-01T13:40:57.452513", "ticker": "BALL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 62.96, "reason": "stale quote for BALL (352.866899s old; limit 180s)"}
 {"timestamp": "2026-09-01T13:40:57.981488", "ticker": "BR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 182.42, "reason": "liquidity filter: BR average volume 63,708 < 500,000"}
 {"timestamp": "2026-09-01T13:40:58.231035", "ticker": "BIIB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 218.235, "reason": "liquidity filter: BIIB average volume 34,533 < 500,000"}
+{"timestamp": "2026-09-01T13:42:40.745892", "ticker": "AMT", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 177.56, "reason": "stale quote for AMT (195.070468s old; limit 180s)"}
