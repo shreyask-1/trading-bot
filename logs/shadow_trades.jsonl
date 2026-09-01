@@ -10657,3 +10657,5 @@
 {"timestamp": "2026-09-01T19:07:30.200729", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 143.48, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
 {"timestamp": "2026-09-01T19:07:30.200868", "ticker": "ALB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 135.77, "reason": "liquidity filter: ALB average volume 84,807 < 500,000"}
 {"timestamp": "2026-09-01T19:07:30.200979", "ticker": "DG", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 131.05, "reason": "liquidity filter: DG average volume 128,494 < 500,000"}
+{"timestamp": "2026-09-01T19:12:15.562326", "ticker": "ALB", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 135.735, "reason": "stale quote for ALB (208.018253s old; limit 180s)"}
+{"timestamp": "2026-09-01T19:12:15.616516", "ticker": "AMGN", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 436.075, "reason": "liquidity filter: AMGN average volume 84,661 < 500,000"}
