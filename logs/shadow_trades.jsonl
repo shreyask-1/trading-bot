@@ -10491,3 +10491,5 @@
 {"timestamp": "2026-09-01T15:17:04.348321", "ticker": "AMT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 174.98, "reason": "liquidity filter: AMT average volume 80,734 < 500,000"}
 {"timestamp": "2026-09-01T15:21:54.186705", "ticker": "DG", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 131.02, "reason": "liquidity filter: DG average volume 124,341 < 500,000"}
 {"timestamp": "2026-09-01T15:21:54.399102", "ticker": "ALB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 135.475, "reason": "stale quote for ALB (231.327521s old; limit 180s)"}
+{"timestamp": "2026-09-01T15:26:28.985144", "ticker": "DG", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 131.01, "reason": "liquidity filter: DG average volume 124,439 < 500,000"}
+{"timestamp": "2026-09-01T15:26:29.069879", "ticker": "ALB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 135.86, "reason": "liquidity filter: ALB average volume 83,528 < 500,000"}
