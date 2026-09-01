@@ -10623,3 +10623,5 @@
 {"timestamp": "2026-09-01T18:19:24.139140", "ticker": "APA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 44.15, "reason": "liquidity filter: APA average volume 365,007 < 500,000"}
 {"timestamp": "2026-09-01T18:19:24.428759", "ticker": "APD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 306.935, "reason": "liquidity filter: APD average volume 46,276 < 500,000"}
 {"timestamp": "2026-09-01T18:25:19.072271", "ticker": "ALB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 136.9, "reason": "stale quote for ALB (279.166261s old; limit 180s)"}
+{"timestamp": "2026-09-01T18:30:14.512257", "ticker": "ALB", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 136.29, "reason": "liquidity filter: ALB average volume 84,441 < 500,000"}
+{"timestamp": "2026-09-01T18:30:15.323493", "ticker": "DG", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 131.21, "reason": "liquidity filter: DG average volume 127,909 < 500,000"}
