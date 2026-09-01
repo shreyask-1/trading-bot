@@ -10364,3 +10364,5 @@
 {"timestamp": "2026-09-01T12:52:56.281494", "ticker": "BLK", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 1156.17, "reason": "stale quote for BLK (60787.038034s old; limit 180s)"}
 {"timestamp": "2026-09-01T12:52:56.606427", "ticker": "BR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 182.59, "reason": "stale quote for BR (60805.412192s old; limit 180s)"}
 {"timestamp": "2026-09-01T12:52:56.972761", "ticker": "BIIB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 216.74, "reason": "stale quote for BIIB (60795.458742s old; limit 180s)"}
+{"timestamp": "2026-09-01T12:54:39.019519", "ticker": "NVDA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 220.8, "reason": "stale quote for NVDA (60869.495187s old; limit 180s)"}
+{"timestamp": "2026-09-01T12:54:39.234494", "ticker": "AMT", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 175.92, "reason": "stale quote for AMT (60896.779038s old; limit 180s)"}
