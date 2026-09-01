@@ -10476,3 +10476,6 @@
 {"timestamp": "2026-09-01T14:54:10.201352", "ticker": "TGT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 163.7, "reason": "liquidity filter: TGT average volume 220,753 < 500,000"}
 {"timestamp": "2026-09-01T14:59:04.113119", "ticker": "DE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 670.65, "reason": "liquidity filter: DE average volume 61,596 < 500,000"}
 {"timestamp": "2026-09-01T14:59:04.467744", "ticker": "DG", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 130.07, "reason": "liquidity filter: DG average volume 123,935 < 500,000"}
+{"timestamp": "2026-09-01T15:04:09.285380", "ticker": "DE", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 673.49, "reason": "liquidity filter: DE average volume 61,671 < 500,000"}
+{"timestamp": "2026-09-01T15:04:09.285555", "ticker": "ALB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 136.375, "reason": "stale quote for ALB (205.961811s old; limit 180s)"}
+{"timestamp": "2026-09-01T15:04:09.285705", "ticker": "DG", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 130.215, "reason": "liquidity filter: DG average volume 124,036 < 500,000"}
