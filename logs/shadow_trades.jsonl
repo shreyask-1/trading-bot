@@ -10303,3 +10303,4 @@
 {"timestamp": "2026-09-01T12:06:54.558880", "ticker": "ARES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 143.21, "reason": "stale quote for ARES (57997.068392s old; limit 180s)"}
 {"timestamp": "2026-09-01T12:06:54.563973", "ticker": "APO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 136.7, "reason": "stale quote for APO (58004.982225s old; limit 180s)"}
 {"timestamp": "2026-09-01T12:06:54.610207", "ticker": "AMGN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 5, "price": 429.77, "reason": "stale quote for AMGN (58015.463725s old; limit 180s)"}
+{"timestamp": "2026-09-01T12:10:39.592418", "ticker": "SNDK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 1555.0, "reason": "stale quote for SNDK (56147.939776s old; limit 180s)"}
