@@ -18893,6 +18893,9 @@ Timings: account: 0.0s | risk: 0.8s | decide: 9.7s | watchlist: 0.1s | perf: 0.2
 Shadow report: 10695 shadow candidate(s), 274 rejection group(s)
 Timings: account: 0.0s | risk: 0.5s | decide: 8.4s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-09-01T21:38:35.363840 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-01 05:38 PM EDT | Market open (per Alpaca): False | Session: EXTENDED
 === Run at 2026-09-01T21:35:35.221700 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-01 05:35 PM EDT | Market open (per Alpaca): False | Session: EXTENDED
@@ -18903,6 +18906,17 @@ Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
 Open orders (1): MS sell 43.8344
 Risk state: peak $99,703.60 | drawdown 0.70% | today -0.08% | halted: False
 Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+Overnight queue deferred 3 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+Morning verification: 9 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
+News: fetched 158, 5 new after dedup, 2 ticker(s) matched.
+Quant pre-screen: 9/15 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 237
+  -> {"ticker": "ALB", "status": "skipped", "reason": "stale quote for ALB (5928.609149s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "DG", "status": "skipped", "reason": "stale quote for DG (5935.006846s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "TEL", "status": "skipped", "reason": "entry alignment: price $207.94 is not above SMA-20 $209.26"}
+Overnight queue kept 12 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
+Dashboard watchlist synced (7 symbols) for news/headlines.
 Overnight queue deferred 2 known-stale idea(s) for 30 minutes to preserve Gemini quota.
 Morning verification: 10 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
 News: fetched 158, 7 new after dedup, 0 ticker(s) matched.
@@ -18921,6 +18935,7 @@ Performance: Total return +0.14% | Max drawdown 0.94% | Daily Sharpe 0.68 | 19 c
 Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $-431.71 (2 open) | Books: legacy: realized $-1,705.68, unrealized $-431.71
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 10698 shadow candidate(s), 274 rejection group(s)
+Timings: account: 0.0s | risk: 0.5s | decide: 8.3s | watchlist: 0.1s | perf: 0.1s
 Timings: account: 0.0s | risk: 0.8s | decide: 9.0s | watchlist: 0.1s | perf: 0.2s
 
 === Run at 2026-09-01T21:40:55.031326 ===
