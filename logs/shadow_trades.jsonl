@@ -10416,3 +10416,4 @@
 {"timestamp": "2026-09-01T13:32:36.480201", "ticker": "EPAM", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 117.8, "reason": "stale quote for EPAM (63161.714984s old; limit 180s)"}
 {"timestamp": "2026-09-01T13:32:37.130852", "ticker": "AJG", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 262.17, "reason": "stale quote for AJG (63182.762891s old; limit 180s)"}
 {"timestamp": "2026-09-01T13:32:37.240459", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 100, "conviction": 10, "price": 308.04, "reason": "liquidity filter: APD average volume 44,726 < 500,000"}
+{"timestamp": "2026-09-01T13:34:27.946837", "ticker": "EOG", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 146.97, "reason": "liquidity filter: EOG average volume 169,749 < 500,000"}
