@@ -10540,3 +10540,5 @@
 {"timestamp": "2026-09-01T16:33:01.133252", "ticker": "BMY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 66.79, "reason": "market data unavailable for BMY (bid/ask spread missing)"}
 {"timestamp": "2026-09-01T16:33:01.232838", "ticker": "BRO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 71.96, "reason": "liquidity filter: BRO average volume 122,023 < 500,000"}
 {"timestamp": "2026-09-01T16:33:01.298586", "ticker": "CAH", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 239.255, "reason": "liquidity filter: CAH average volume 78,341 < 500,000"}
+{"timestamp": "2026-09-01T16:37:36.819501", "ticker": "ALB", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 136.86, "reason": "liquidity filter: ALB average volume 83,835 < 500,000"}
+{"timestamp": "2026-09-01T16:37:37.111531", "ticker": "DG", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 129.855, "reason": "liquidity filter: DG average volume 125,889 < 500,000"}
