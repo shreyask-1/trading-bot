@@ -10617,3 +10617,5 @@
 {"timestamp": "2026-09-01T18:14:10.951857", "ticker": "DG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 131.26, "reason": "liquidity filter: DG average volume 127,682 < 500,000"}
 {"timestamp": "2026-09-01T18:14:10.952067", "ticker": "T", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 26.115, "reason": "market data unavailable for T (bid/ask spread missing)"}
 {"timestamp": "2026-09-01T18:22:34.514598", "ticker": "ALB", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 136.9, "reason": "liquidity filter: ALB average volume 84,395 < 500,000"}
+{"timestamp": "2026-09-01T18:28:04.037893", "ticker": "ALB", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 136.545, "reason": "liquidity filter: ALB average volume 84,402 < 500,000"}
+{"timestamp": "2026-09-01T18:28:04.398538", "ticker": "DG", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 131.325, "reason": "liquidity filter: DG average volume 127,885 < 500,000"}
