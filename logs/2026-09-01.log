@@ -225,6 +225,9 @@ Timings: account: 0.0s | risk: 0.5s | decide: 24.3s | watchlist: 0.0s | perf: 0.
 === Run at 2026-09-01T00:13:20.796803 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-08-31 08:13 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+=== Run at 2026-09-01T00:12:29.864894 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-08-31 08:12 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,117.07
 Cash: $89,705.98 | Holdings (2): {'GEHC': '0.6136 sh (-3.67%)', 'MS': '43.8344 sh (-3.29%)'}
 Sector exposure (cached): Financials 9.5%, Health Care 0.0%
@@ -259,4 +262,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 9961 shadow candidate(s), 297 rejection group(s)
 Timings: account: 0.0s | risk: 0.8s | decide: 23.8s | watchlist: 0.0s | perf: 0.1s
+Timings: account: 0.0s | risk: 1.0s | decide: 23.5s | watchlist: 0.0s | perf: 0.1s
 
