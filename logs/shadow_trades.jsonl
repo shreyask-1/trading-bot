@@ -10949,3 +10949,7 @@
 {"timestamp": "2026-09-01T23:50:54.567452", "ticker": "APH", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 163.165, "reason": "stale quote for APH (13857.755737s old; limit 180s)"}
 {"timestamp": "2026-09-01T23:50:54.640269", "ticker": "AMGN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 438.13, "reason": "stale quote for AMGN (13855.019122s old; limit 180s)"}
 {"timestamp": "2026-09-01T23:50:54.697996", "ticker": "BIIB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 215.99, "reason": "stale quote for BIIB (13944.934405s old; limit 180s)"}
+{"timestamp": "2026-09-01T23:52:30.249413", "ticker": "TYL", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 376.56, "reason": "stale quote for TYL (13958.356088s old; limit 180s)"}
+{"timestamp": "2026-09-01T23:52:30.249572", "ticker": "ULTA", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 545.65, "reason": "stale quote for ULTA (13953.256842s old; limit 180s)"}
+{"timestamp": "2026-09-01T23:52:30.309699", "ticker": "TRGP", "action": "buy", "engine": "gemini", "confidence": 87, "conviction": 9, "price": 295.995, "reason": "stale quote for TRGP (13973.152384s old; limit 180s)"}
+{"timestamp": "2026-09-01T23:52:30.309861", "ticker": "DELL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 467.0, "reason": "stale quote for DELL (12650.867926s old; limit 180s)"}
