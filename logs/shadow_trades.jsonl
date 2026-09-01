@@ -10012,3 +10012,5 @@
 {"timestamp": "2026-09-01T08:40:45.487660", "ticker": "EOG", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 145.01, "reason": "stale quote for EOG (45656.512472s old; limit 180s)"}
 {"timestamp": "2026-09-01T08:42:37.321178", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 309.57, "reason": "stale quote for APD (45764.601108s old; limit 180s)"}
 {"timestamp": "2026-09-01T08:44:47.386629", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 309.57, "reason": "stale quote for APD (45894.609551s old; limit 180s)"}
+{"timestamp": "2026-09-01T08:46:36.663990", "ticker": "AMT", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 175.92, "reason": "stale quote for AMT (46014.196567s old; limit 180s)"}
+{"timestamp": "2026-09-01T08:46:36.903129", "ticker": "EOG", "action": "buy", "engine": "gemini", "confidence": 70, "conviction": 7, "price": 145.01, "reason": "stale quote for EOG (46007.970073s old; limit 180s)"}
