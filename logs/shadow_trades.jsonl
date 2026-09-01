@@ -10450,3 +10450,4 @@
 {"timestamp": "2026-09-01T14:22:10.422803", "ticker": "CPRT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 32.695, "reason": "market data unavailable for CPRT (bid/ask spread missing)"}
 {"timestamp": "2026-09-01T14:22:10.516612", "ticker": "CTSH", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 64.53, "reason": "liquidity filter: CTSH average volume 362,146 < 500,000"}
 {"timestamp": "2026-09-01T14:22:10.516812", "ticker": "DASH", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 231.2, "reason": "liquidity filter: DASH average volume 232,500 < 500,000"}
+{"timestamp": "2026-09-01T14:27:24.975250", "ticker": "ELV", "action": "buy", "engine": "gemini", "confidence": 95, "conviction": 10, "price": 403.11, "reason": "liquidity filter: ELV average volume 34,909 < 500,000"}
