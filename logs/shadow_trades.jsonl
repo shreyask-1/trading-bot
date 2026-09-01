@@ -10653,3 +10653,4 @@
 {"timestamp": "2026-09-01T18:57:52.562212", "ticker": "AMT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 175.205, "reason": "liquidity filter: AMT average volume 84,303 < 500,000"}
 {"timestamp": "2026-09-01T18:57:52.722019", "ticker": "AMGN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 436.04, "reason": "liquidity filter: AMGN average volume 84,569 < 500,000"}
 {"timestamp": "2026-09-01T18:57:52.866078", "ticker": "BMY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 66.925, "reason": "market data unavailable for BMY (bid/ask spread missing)"}
+{"timestamp": "2026-09-01T19:02:10.469616", "ticker": "ALB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 135.56, "reason": "liquidity filter: ALB average volume 84,764 < 500,000"}
