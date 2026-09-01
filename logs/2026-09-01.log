@@ -17947,6 +17947,9 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; wor
 Shadow report: 10687 shadow candidate(s), 282 rejection group(s)
 Timings: account: 0.0s | risk: 0.2s | decide: 8.4s | watchlist: 0.0s | perf: 0.1s
 
+=== Run at 2026-09-01T20:03:12.514773 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-01 04:03 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 === Run at 2026-09-01T20:00:33.145253 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-01 04:00 PM EDT | Market open (per Alpaca): False | Session: CLOSED
@@ -17957,6 +17960,20 @@ Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
 Open orders (1): MS sell 43.8344
 Risk state: peak $99,703.60 | drawdown 0.70% | today -0.08% | halted: False
 Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News fetch failed, proceeding with watchlist only: HTTPSConnectionPool(host='finnhub.io', port=443): Read timed out. (read timeout=15.0)
+Quant pre-screen: 0/0 candidates passed.
+Gemini proposed 0 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 225
+Market closed (overnight): no trade ideas queued this run.
+Dashboard watchlist synced (2 symbols) for news/headlines.
+Ending portfolio value: $98,999.76
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.13% | Max drawdown 0.94% | Daily Sharpe 0.65 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 2 | Equity $99,005.02
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $-436.97 (2 open) | Books: legacy: realized $-1,705.68, unrealized $-436.97
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 10693 shadow candidate(s), 274 rejection group(s)
+Timings: account: 0.0s | risk: 0.6s | decide: 17.2s | watchlist: 0.1s | perf: 0.2s
 News: fetched 158, 2 new after dedup, 0 ticker(s) matched.
 Quant pre-screen: 14/18 candidates passed.
 Gemini proposed 2 trade(s) meeting the conviction bar.
