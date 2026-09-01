@@ -18569,6 +18569,9 @@ Shadow report: 10693 shadow candidate(s), 274 rejection group(s)
 Timings: account: 0.0s | risk: 0.2s | decide: 7.0s | watchlist: 0.0s | perf: 0.1s
 Timings: account: 0.0s | risk: 0.8s | decide: 10.6s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-09-01T21:07:18.022244 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-01 05:07 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 === Run at 2026-09-01T21:04:49.887998 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-01 05:04 PM EDT | Market open (per Alpaca): False | Session: CLOSED
@@ -18579,6 +18582,15 @@ Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
 Open orders (1): MS sell 43.8344
 Risk state: peak $99,703.60 | drawdown 0.70% | today -0.08% | halted: False
 Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 9 new after dedup, 1 ticker(s) matched.
+Quant pre-screen: 18/21 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 233
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued ALB buy (conf 80, stop 130.0, tp 145.0)
+  -> queued DE buy (conf 85, stop 650.0, tp 710.0)
+  -> queued DG buy (conf 82, stop 125.0, tp 140.0)
+  -> queued DVN buy (conf 80, stop 47.5, tp 52.0)
 News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
 Quant pre-screen: 15/18 candidates passed.
 Gemini proposed 2 trade(s) meeting the conviction bar.
@@ -18592,6 +18604,11 @@ Market closed (overnight): queued 11 trade idea(s) for next-morning verification
   -> queued DLTR buy (conf None, stop 118.44, tp 137.05)
   -> queued FDS buy (conf None, stop 290.44, tp 314.51)
   -> queued FANG buy (conf None, stop 197.23, tp 216.02)
+  -> queued GILD buy (conf None, stop 143.24, tp 149.94)
+  -> queued GDDY buy (conf None, stop 94.5, tp 102.26)
+  -> queued NOW buy (conf None, stop 118.64, tp 149.56)
+  -> queued FTNT buy (conf None, stop 148.33, tp 173.86)
+Dashboard watchlist synced (6 symbols) for news/headlines.
   -> queued GILD buy (conf 85, stop 143.0, tp None)
   -> queued GDDY buy (conf None, stop 94.5, tp 102.26)
   -> queued NOW buy (conf None, stop 118.64, tp 149.56)
@@ -18603,6 +18620,7 @@ Performance: Total return +0.14% | Max drawdown 0.94% | Daily Sharpe 0.69 | 19 c
 Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $-429.08 (2 open) | Books: legacy: realized $-1,705.68, unrealized $-429.08
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 10693 shadow candidate(s), 274 rejection group(s)
+Timings: account: 0.0s | risk: 1.0s | decide: 13.3s | watchlist: 0.1s | perf: 0.2s
 Timings: account: 0.0s | risk: 0.3s | decide: 7.0s | watchlist: 0.0s | perf: 0.1s
 
 === Run at 2026-09-01T21:09:53.465104 ===
