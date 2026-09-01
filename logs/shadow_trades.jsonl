@@ -10169,3 +10169,6 @@
 {"timestamp": "2026-09-01T10:20:59.011344", "ticker": "BLK", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 1156.17, "reason": "stale quote for BLK (51669.915866s old; limit 180s)"}
 {"timestamp": "2026-09-01T10:20:59.264039", "ticker": "BR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 182.59, "reason": "stale quote for BR (51688.133505s old; limit 180s)"}
 {"timestamp": "2026-09-01T10:20:59.505868", "ticker": "BIIB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 216.74, "reason": "stale quote for BIIB (51678.096008s old; limit 180s)"}
+{"timestamp": "2026-09-01T10:22:31.758955", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 309.57, "reason": "stale quote for APD (51759.000973s old; limit 180s)"}
+{"timestamp": "2026-09-01T10:22:32.064393", "ticker": "EPAM", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 117.8, "reason": "stale quote for EPAM (51757.448299s old; limit 180s)"}
+{"timestamp": "2026-09-01T10:22:32.384830", "ticker": "AMT", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 175.92, "reason": "stale quote for AMT (51769.846735s old; limit 180s)"}
