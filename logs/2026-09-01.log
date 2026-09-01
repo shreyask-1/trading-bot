@@ -15134,6 +15134,11 @@ Build fingerprint: 4f68550affe5
 Current time: 2026-09-01 11:49 AM EDT | Market open (per Alpaca): True | Session: REGULAR
 Account value: $99,125.17
 Cash: $89,705.74 | Holdings (2): {'GEHC': '0.6136 sh (-3.65%)', 'MS': '43.8344 sh (-3.20%)'}
+=== Run at 2026-09-01T15:46:25.100018 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-01 11:46 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,123.81
+Cash: $89,705.74 | Holdings (2): {'GEHC': '0.6136 sh (-3.75%)', 'MS': '43.8344 sh (-3.21%)'}
 Sector exposure (cached): Financials 9.5%, Health Care 0.0%
 Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
 Open orders (1): MS sell 43.8344
@@ -15152,6 +15157,17 @@ Gemini calls used today (all models combined): 191
   -> {"ticker": "BIIB", "status": "skipped", "reason": "liquidity filter: BIIB average volume 35,053 < 500,000", "shadow": false, "data_guard": true}
   -> {"ticker": "BRO", "status": "skipped", "reason": "liquidity filter: BRO average volume 121,788 < 500,000", "shadow": false, "data_guard": true}
   -> {"ticker": "CAH", "status": "skipped", "reason": "stale quote for CAH (272.261467s old; limit 180s)", "shadow": false, "data_guard": true}
+News: fetched 158, 3 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 19/60 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 7 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 192
+  -> {"ticker": "ALB", "status": "skipped", "reason": "liquidity filter: ALB average volume 83,632 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "DG", "status": "skipped", "reason": "liquidity filter: DG average volume 124,718 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "AMGN", "status": "skipped", "reason": "liquidity filter: AMGN average volume 82,639 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "AMT", "status": "skipped", "reason": "liquidity filter: AMT average volume 81,123 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "BIIB", "status": "skipped", "reason": "liquidity filter: BIIB average volume 35,036 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "BRO", "status": "skipped", "reason": "liquidity filter: BRO average volume 121,777 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "CAH", "status": "skipped", "reason": "liquidity filter: CAH average volume 78,123 < 500,000", "shadow": false, "data_guard": true}
 Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); 4 idea(s) remain subject to the retry cap.
 Run budget reserve reached -- skipping dashboard watchlist sync.
 Run budget reserve reached -- skipping performance snapshot.
@@ -15162,4 +15178,9 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 10517 shadow candidate(s), 428 rejection group(s)
 Timings: account: 0.0s | risk: 0.9s | decide: 25.5s | watchlist: 0.0s | perf: 0.1s
+Performance: Total return +0.25% | Max drawdown 0.94% | Daily Sharpe 1.37 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 2 | Equity $99,123.81
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $-312.92 (2 open) | Books: legacy: realized $-1,705.68, unrealized $-312.92
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 10514 shadow candidate(s), 428 rejection group(s)
+Timings: account: 0.0s | risk: 0.9s | decide: 26.2s | watchlist: 0.0s | perf: 0.1s
 
