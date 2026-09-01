@@ -10522,3 +10522,5 @@
 {"timestamp": "2026-09-01T15:57:41.653231", "ticker": "CAH", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 238.905, "reason": "liquidity filter: CAH average volume 78,149 < 500,000"}
 {"timestamp": "2026-09-01T16:02:58.142331", "ticker": "ALB", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 136.915, "reason": "liquidity filter: ALB average volume 83,669 < 500,000"}
 {"timestamp": "2026-09-01T16:02:58.142571", "ticker": "DG", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 130.72, "reason": "liquidity filter: DG average volume 125,012 < 500,000"}
+{"timestamp": "2026-09-01T16:08:27.806786", "ticker": "ALB", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 136.915, "reason": "stale quote for ALB (507.572844s old; limit 180s)"}
+{"timestamp": "2026-09-01T16:08:28.066034", "ticker": "DG", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 130.74, "reason": "liquidity filter: DG average volume 125,078 < 500,000"}
