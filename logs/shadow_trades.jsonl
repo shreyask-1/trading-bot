@@ -10476,3 +10476,4 @@
 {"timestamp": "2026-09-01T14:51:41.257601", "ticker": "APD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 305.79, "reason": "liquidity filter: APD average volume 45,258 < 500,000"}
 {"timestamp": "2026-09-01T14:51:41.298994", "ticker": "BIIB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 216.48, "reason": "stale quote for BIIB (704.017132s old; limit 180s)"}
 {"timestamp": "2026-09-01T14:51:41.344285", "ticker": "BRO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 72.33, "reason": "liquidity filter: BRO average volume 121,405 < 500,000"}
+{"timestamp": "2026-09-01T14:56:26.437192", "ticker": "DE", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 670.62, "reason": "liquidity filter: DE average volume 61,519 < 500,000"}
