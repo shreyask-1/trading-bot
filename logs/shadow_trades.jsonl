@@ -10802,3 +10802,5 @@
 {"timestamp": "2026-09-01T22:30:59.530429", "ticker": "TGT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 163.72, "reason": "stale quote for TGT (9043.380523s old; limit 180s)"}
 {"timestamp": "2026-09-01T22:30:59.845514", "ticker": "ALB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 9, "price": 135.515, "reason": "stale quote for ALB (9064.060303s old; limit 180s)"}
 {"timestamp": "2026-09-01T22:30:59.845697", "ticker": "T", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 26.015, "reason": "stale quote for T (9040.904491s old; limit 180s)"}
+{"timestamp": "2026-09-01T22:32:38.254688", "ticker": "AMGN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 438.13, "reason": "stale quote for AMGN (9158.479081s old; limit 180s)"}
+{"timestamp": "2026-09-01T22:32:38.527939", "ticker": "ALB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 135.515, "reason": "stale quote for ALB (9162.775929s old; limit 180s)"}
