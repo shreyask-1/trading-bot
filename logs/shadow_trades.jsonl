@@ -10190,3 +10190,5 @@
 {"timestamp": "2026-09-01T10:36:37.997665", "ticker": "EPAM", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 117.8, "reason": "stale quote for EPAM (52603.392429s old; limit 180s)"}
 {"timestamp": "2026-09-01T10:38:30.062705", "ticker": "EPAM", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 117.8, "reason": "stale quote for EPAM (52715.583707s old; limit 180s)"}
 {"timestamp": "2026-09-01T10:38:30.180971", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 309.57, "reason": "stale quote for APD (52717.550333s old; limit 180s)"}
+{"timestamp": "2026-09-01T10:40:34.994530", "ticker": "EPAM", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 117.8, "reason": "stale quote for EPAM (52840.547516s old; limit 180s)"}
+{"timestamp": "2026-09-01T10:40:35.083813", "ticker": "AMT", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 175.92, "reason": "stale quote for AMT (52852.736651s old; limit 180s)"}
