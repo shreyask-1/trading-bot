@@ -10744,3 +10744,5 @@
 {"timestamp": "2026-09-01T22:03:01.320902", "ticker": "APA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 44.315, "reason": "stale quote for APA (7365.556612s old; limit 180s)"}
 {"timestamp": "2026-09-01T22:03:01.393473", "ticker": "APD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 305.23, "reason": "stale quote for APD (7366.075065s old; limit 180s)"}
 {"timestamp": "2026-09-01T22:03:01.466026", "ticker": "APH", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 163.165, "reason": "stale quote for APH (7363.584802s old; limit 180s)"}
+{"timestamp": "2026-09-01T22:04:32.413775", "ticker": "ALB", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 135.515, "reason": "stale quote for ALB (7476.812256s old; limit 180s)"}
+{"timestamp": "2026-09-01T22:04:32.493181", "ticker": "AMT", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 176.03, "reason": "stale quote for AMT (7486.654857s old; limit 180s)"}
