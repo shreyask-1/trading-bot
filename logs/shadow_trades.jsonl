@@ -10853,3 +10853,5 @@
 {"timestamp": "2026-09-01T22:56:49.172902", "ticker": "CEG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 280.25, "reason": "stale quote for CEG (10593.855951s old; limit 180s)"}
 {"timestamp": "2026-09-01T22:56:49.368298", "ticker": "BKR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 63.645, "reason": "stale quote for BKR (10613.233147s old; limit 180s)"}
 {"timestamp": "2026-09-01T22:58:29.665053", "ticker": "ALB", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 135.515, "reason": "stale quote for ALB (10714.079509s old; limit 180s)"}
+{"timestamp": "2026-09-01T23:00:51.739251", "ticker": "AMGN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 438.13, "reason": "stale quote for AMGN (10846.962972s old; limit 180s)"}
+{"timestamp": "2026-09-01T23:00:51.739417", "ticker": "AMT", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 176.03, "reason": "stale quote for AMT (10861.355096s old; limit 180s)"}
