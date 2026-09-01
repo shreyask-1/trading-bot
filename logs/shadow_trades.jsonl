@@ -10441,3 +10441,5 @@
 {"timestamp": "2026-09-01T13:54:40.048399", "ticker": "BR", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 182.305, "reason": "stale quote for BR (572.118793s old; limit 180s)"}
 {"timestamp": "2026-09-01T13:54:40.108452", "ticker": "AJG", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 261.985, "reason": "liquidity filter: AJG average volume 64,175 < 500,000"}
 {"timestamp": "2026-09-01T13:56:33.337940", "ticker": "AJG", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 261.985, "reason": "stale quote for AJG (243.123768s old; limit 180s)"}
+{"timestamp": "2026-09-01T14:15:39.650261", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 306.075, "reason": "liquidity filter: APD average volume 45,073 < 500,000"}
+{"timestamp": "2026-09-01T14:15:40.006623", "ticker": "AMT", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 175.12, "reason": "liquidity filter: AMT average volume 79,930 < 500,000"}
