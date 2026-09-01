@@ -10512,3 +10512,4 @@
 {"timestamp": "2026-09-01T15:46:52.099974", "ticker": "BIIB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 216.34, "reason": "liquidity filter: BIIB average volume 35,036 < 500,000"}
 {"timestamp": "2026-09-01T15:46:52.430561", "ticker": "BRO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 72.005, "reason": "liquidity filter: BRO average volume 121,777 < 500,000"}
 {"timestamp": "2026-09-01T15:46:52.753538", "ticker": "CAH", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 239.22, "reason": "liquidity filter: CAH average volume 78,123 < 500,000"}
+{"timestamp": "2026-09-01T15:52:13.523043", "ticker": "ALB", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 136.77, "reason": "stale quote for ALB (326.191938s old; limit 180s)"}
