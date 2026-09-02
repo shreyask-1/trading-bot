@@ -11732,3 +11732,6 @@
 {"timestamp": "2026-09-02T15:34:45.065592", "ticker": "CVNA", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 74.645, "reason": "liquidity filter: CVNA average volume 382,542 < 500,000"}
 {"timestamp": "2026-09-02T15:34:45.215903", "ticker": "EL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 101.745, "reason": "liquidity filter: EL average volume 181,973 < 500,000"}
 {"timestamp": "2026-09-02T15:34:45.336849", "ticker": "ELV", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 406.43, "reason": "liquidity filter: ELV average volume 34,806 < 500,000"}
+{"timestamp": "2026-09-02T15:36:41.894443", "ticker": "EL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 101.79, "reason": "liquidity filter: EL average volume 181,979 < 500,000"}
+{"timestamp": "2026-09-02T15:36:42.217473", "ticker": "ELV", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 406.8, "reason": "liquidity filter: ELV average volume 34,810 < 500,000"}
+{"timestamp": "2026-09-02T15:36:42.513750", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 55.66, "reason": "market data unavailable for EQT (bid/ask spread missing)"}
