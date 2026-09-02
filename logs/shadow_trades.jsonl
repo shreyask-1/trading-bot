@@ -11660,3 +11660,5 @@
 {"timestamp": "2026-09-02T14:49:26.967154", "ticker": "CVNA", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 74.63, "reason": "liquidity filter: CVNA average volume 380,289 < 500,000"}
 {"timestamp": "2026-09-02T14:49:27.273132", "ticker": "JKHY", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 167.99, "reason": "liquidity filter: JKHY average volume 54,122 < 500,000"}
 {"timestamp": "2026-09-02T14:49:27.549951", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 274.74, "reason": "liquidity filter: JNJ average volume 231,387 < 500,000"}
+{"timestamp": "2026-09-02T14:50:38.870870", "ticker": "APD", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 311.535, "reason": "liquidity filter: APD average volume 46,032 < 500,000"}
+{"timestamp": "2026-09-02T14:50:38.962517", "ticker": "AES", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 14.785, "reason": "stale quote for AES (328.281114s old; limit 180s)"}
