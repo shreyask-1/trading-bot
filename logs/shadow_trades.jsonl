@@ -11920,3 +11920,6 @@
 {"timestamp": "2026-09-02T17:12:49.960954", "ticker": "HAL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 37.385, "reason": "market data unavailable for HAL (bid/ask spread missing)"}
 {"timestamp": "2026-09-02T17:12:49.961124", "ticker": "HPQ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 32.24, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
 {"timestamp": "2026-09-02T17:12:49.961275", "ticker": "HSIC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 91.255, "reason": "stale quote for HSIC (418.010079s old; limit 180s)"}
+{"timestamp": "2026-09-02T17:14:36.209404", "ticker": "EL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 101.105, "reason": "liquidity filter: EL average volume 182,758 < 500,000"}
+{"timestamp": "2026-09-02T17:14:36.290371", "ticker": "CVNA", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 75.25, "reason": "liquidity filter: CVNA average volume 384,373 < 500,000"}
+{"timestamp": "2026-09-02T17:14:36.374358", "ticker": "DGX", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 241.59, "reason": "liquidity filter: DGX average volume 38,913 < 500,000"}
