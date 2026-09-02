@@ -11566,3 +11566,6 @@
 {"timestamp": "2026-09-02T13:56:34.393331", "ticker": "DE", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 679.58, "reason": "liquidity filter: DE average volume 63,963 < 500,000"}
 {"timestamp": "2026-09-02T13:56:34.456357", "ticker": "ELV", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 403.78, "reason": "liquidity filter: ELV average volume 34,229 < 500,000"}
 {"timestamp": "2026-09-02T13:56:34.509588", "ticker": "DG", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 132.06, "reason": "liquidity filter: DG average volume 128,352 < 500,000"}
+{"timestamp": "2026-09-02T13:58:47.361134", "ticker": "KHC", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 26.035, "reason": "market data unavailable for KHC (bid/ask spread missing)"}
+{"timestamp": "2026-09-02T13:58:47.361355", "ticker": "IFF", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 87.17, "reason": "stale quote for IFF (553.386295s old; limit 180s)"}
+{"timestamp": "2026-09-02T13:58:47.483127", "ticker": "GPN", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 93.245, "reason": "liquidity filter: GPN average volume 90,205 < 500,000"}
