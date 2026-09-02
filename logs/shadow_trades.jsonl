@@ -12076,3 +12076,7 @@
 {"timestamp": "2026-09-02T18:26:47.107021", "ticker": "DGX", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 242.43, "reason": "stale quote for DGX (199.665996s old; limit 180s)"}
 {"timestamp": "2026-09-02T18:26:47.385140", "ticker": "EL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 101.41, "reason": "liquidity filter: EL average volume 183,163 < 500,000"}
 {"timestamp": "2026-09-02T18:26:47.604271", "ticker": "ELV", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 407.58, "reason": "liquidity filter: ELV average volume 35,516 < 500,000"}
+{"timestamp": "2026-09-02T18:28:34.776839", "ticker": "EL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 101.52, "reason": "liquidity filter: EL average volume 183,185 < 500,000"}
+{"timestamp": "2026-09-02T18:28:34.847499", "ticker": "ELV", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 407.565, "reason": "liquidity filter: ELV average volume 35,517 < 500,000"}
+{"timestamp": "2026-09-02T18:28:34.948625", "ticker": "CVNA", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 74.435, "reason": "liquidity filter: CVNA average volume 386,546 < 500,000"}
+{"timestamp": "2026-09-02T18:28:35.039436", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 55.725, "reason": "market data unavailable for EQT (bid/ask spread missing)"}
