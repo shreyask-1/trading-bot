@@ -11573,3 +11573,6 @@
 {"timestamp": "2026-09-02T14:01:07.955655", "ticker": "IFF", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 87.17, "reason": "stale quote for IFF (686.74487s old; limit 180s)"}
 {"timestamp": "2026-09-02T14:01:07.955810", "ticker": "CSGP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 32.5, "reason": "liquidity filter: CSGP average volume 399,973 < 500,000"}
 {"timestamp": "2026-09-02T14:01:07.955961", "ticker": "CTSH", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 63.92, "reason": "liquidity filter: CTSH average volume 351,146 < 500,000"}
+{"timestamp": "2026-09-02T14:02:39.964371", "ticker": "IFF", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 87.51, "reason": "liquidity filter: IFF average volume 68,297 < 500,000"}
+{"timestamp": "2026-09-02T14:02:39.964525", "ticker": "GPC", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 136.76, "reason": "liquidity filter: GPC average volume 59,170 < 500,000"}
+{"timestamp": "2026-09-02T14:02:39.964604", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 36.625, "reason": "market data unavailable for HAL (bid/ask spread missing)"}
