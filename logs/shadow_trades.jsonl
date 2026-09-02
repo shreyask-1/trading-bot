@@ -11773,3 +11773,6 @@
 {"timestamp": "2026-09-02T15:50:59.313773", "ticker": "CVNA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 73.97, "reason": "liquidity filter: CVNA average volume 382,940 < 500,000"}
 {"timestamp": "2026-09-02T15:50:59.454576", "ticker": "BBY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 86.77, "reason": "liquidity filter: BBY average volume 148,082 < 500,000"}
 {"timestamp": "2026-09-02T15:50:59.600792", "ticker": "GPN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 92.515, "reason": "stale quote for GPN (240.489615s old; limit 180s)"}
+{"timestamp": "2026-09-02T15:52:33.997255", "ticker": "EL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 101.47, "reason": "stale quote for EL (258.30096s old; limit 180s)"}
+{"timestamp": "2026-09-02T15:52:34.071511", "ticker": "ELV", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 407.275, "reason": "liquidity filter: ELV average volume 34,894 < 500,000"}
+{"timestamp": "2026-09-02T15:52:34.190068", "ticker": "CVNA", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 73.945, "reason": "liquidity filter: CVNA average volume 383,069 < 500,000"}
