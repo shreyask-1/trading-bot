@@ -11072,3 +11072,6 @@
 {"timestamp": "2026-09-02T09:02:54.643779", "ticker": "CVNA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 72.155, "reason": "stale quote for CVNA (46953.860943s old; limit 180s)"}
 {"timestamp": "2026-09-02T09:02:54.681096", "ticker": "CVX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 211.02, "reason": "stale quote for CVX (46958.653572s old; limit 180s)"}
 {"timestamp": "2026-09-02T09:02:54.681230", "ticker": "DASH", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 225.58, "reason": "stale quote for DASH (46963.605184s old; limit 180s)"}
+{"timestamp": "2026-09-02T09:04:36.020158", "ticker": "KHC", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 25.87, "reason": "stale quote for KHC (47076.389417s old; limit 180s)"}
+{"timestamp": "2026-09-02T09:04:36.020451", "ticker": "DE", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 676.14, "reason": "stale quote for DE (47076.950678s old; limit 180s)"}
+{"timestamp": "2026-09-02T09:04:36.020594", "ticker": "DG", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 131.12, "reason": "stale quote for DG (47083.775883s old; limit 180s)"}
