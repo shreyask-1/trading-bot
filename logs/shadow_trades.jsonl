@@ -11623,3 +11623,6 @@
 {"timestamp": "2026-09-02T14:30:48.116981", "ticker": "CVNA", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 74.0, "reason": "liquidity filter: CVNA average volume 379,616 < 500,000"}
 {"timestamp": "2026-09-02T14:30:48.668645", "ticker": "EL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 101.365, "reason": "stale quote for EL (194.254897s old; limit 180s)"}
 {"timestamp": "2026-09-02T14:30:48.863207", "ticker": "DIS", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 108.435, "reason": "liquidity filter: DIS average volume 349,602 < 500,000"}
+{"timestamp": "2026-09-02T14:33:02.125721", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 275.69, "reason": "liquidity filter: JNJ average volume 230,472 < 500,000"}
+{"timestamp": "2026-09-02T14:33:02.125936", "ticker": "JKHY", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 166.98, "reason": "liquidity filter: JKHY average volume 54,099 < 500,000"}
+{"timestamp": "2026-09-02T14:33:02.444472", "ticker": "CVNA", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 73.79, "reason": "liquidity filter: CVNA average volume 379,662 < 500,000"}
