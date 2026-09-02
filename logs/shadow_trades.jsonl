@@ -11597,3 +11597,6 @@
 {"timestamp": "2026-09-02T14:16:46.123929", "ticker": "CVNA", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 73.84, "reason": "liquidity filter: CVNA average volume 379,183 < 500,000"}
 {"timestamp": "2026-09-02T14:16:46.440359", "ticker": "DGX", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 241.18, "reason": "liquidity filter: DGX average volume 37,412 < 500,000"}
 {"timestamp": "2026-09-02T14:16:46.710038", "ticker": "EL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 101.3, "reason": "liquidity filter: EL average volume 181,330 < 500,000"}
+{"timestamp": "2026-09-02T14:18:55.319195", "ticker": "CVNA", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 73.62, "reason": "liquidity filter: CVNA average volume 379,261 < 500,000"}
+{"timestamp": "2026-09-02T14:18:55.619454", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 106.165, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
+{"timestamp": "2026-09-02T14:18:55.926242", "ticker": "GPN", "action": "buy", "engine": "gemini", "confidence": 69, "conviction": 7, "price": 92.325, "reason": "liquidity filter: GPN average volume 90,346 < 500,000"}
