@@ -12323,3 +12323,6 @@
 {"timestamp": "2026-09-02T22:05:01.033635", "ticker": "BBY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 86.94, "reason": "stale quote for BBY (7513.398781s old; limit 180s)"}
 {"timestamp": "2026-09-02T22:05:01.110169", "ticker": "HAL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 37.63, "reason": "stale quote for HAL (7481.240963s old; limit 180s)"}
 {"timestamp": "2026-09-02T22:05:01.110395", "ticker": "HPQ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 32.0, "reason": "stale quote for HPQ (7485.197377s old; limit 180s)"}
+{"timestamp": "2026-09-02T22:06:41.853192", "ticker": "DGX", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 240.76, "reason": "stale quote for DGX (7610.805224s old; limit 180s)"}
+{"timestamp": "2026-09-02T22:06:41.853355", "ticker": "EBAY", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 106.69, "reason": "stale quote for EBAY (7596.255233s old; limit 180s)"}
+{"timestamp": "2026-09-02T22:06:41.853470", "ticker": "EL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 101.175, "reason": "stale quote for EL (7611.462067s old; limit 180s)"}
