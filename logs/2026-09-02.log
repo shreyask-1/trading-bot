@@ -750,6 +750,9 @@ Timings: account: 0.0s | risk: 0.5s | decide: 7.7s | watchlist: 0.1s | perf: 0.1
 === Run at 2026-09-02T00:41:21.533257 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-01 08:41 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+=== Run at 2026-09-02T00:40:31.731779 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-01 08:40 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,005.55
 Cash: $89,705.74 | Holdings (2): {'GEHC': '0.6136 sh (-4.71%)', 'MS': '43.8344 sh (-4.43%)'}
 Sector exposure (cached): Financials 9.3%, Health Care 0.0%
@@ -760,11 +763,16 @@ Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100
 News: fetched 155, 3 new after dedup, 1 ticker(s) matched.
 Quant pre-screen: 17/21 candidates passed.
 Technical fallback (Gemini throttled/unavailable) proposed 7 trade(s) meeting the conviction bar.
+News: fetched 155, 1 new after dedup, 2 ticker(s) matched.
+Quant pre-screen: 31/58 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
+Technical fallback cap omitted 8 weaker idea(s) this run.
 Gemini calls used today (all models combined): 295
 Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
   -> queued TYL buy (conf 92, stop 363.0, tp 405.00000000000006)
   -> queued AMT buy (conf 90, stop 172.62, tp 180.84)
   -> queued CAH buy (conf 90, stop 227.7, tp 240.44)
+  -> queued CPRT buy (conf 90.0, stop None, tp None)
   -> queued CBOE buy (conf 89, stop 274.38, tp 317.44)
   -> queued ULTA buy (conf 88, stop 526.0, tp 580.0)
   -> queued GDDY buy (conf 88, stop 94.5, tp 105.0)
@@ -776,6 +784,8 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued ALB buy (conf None, stop 131.37, tp 143.9)
 Dashboard watchlist synced (10 symbols) for news/headlines.
 Ending portfolio value: $99,005.55
+Run budget reserve reached -- skipping dashboard watchlist sync.
+Run budget reserve reached -- skipping performance snapshot.
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
 Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
 Performance: Total return +0.14% | Max drawdown 0.94% | Daily Sharpe 0.66 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 2 | Equity $99,005.55
@@ -783,4 +793,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 10969 shadow candidate(s), 311 rejection group(s)
 Timings: account: 0.0s | risk: 0.1s | decide: 22.7s | watchlist: 0.0s | perf: 0.1s
+Timings: account: 0.0s | risk: 1.4s | decide: 23.1s | watchlist: 0.0s | perf: 0.1s
 
