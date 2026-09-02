@@ -15186,6 +15186,11 @@ Build fingerprint: 4f68550affe5
 Current time: 2026-09-02 10:49 AM EDT | Market open (per Alpaca): True | Session: REGULAR
 Account value: $99,217.33
 Cash: $89,705.74 | Holdings (2): {'GEHC': '0.6136 sh (-3.41%)', 'MS': '43.8344 sh (-2.25%)'}
+=== Run at 2026-09-02T14:48:31.369967 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-02 10:48 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,215.11
+Cash: $89,705.74 | Holdings (2): {'GEHC': '0.6136 sh (-3.47%)', 'MS': '43.8344 sh (-2.27%)'}
 Sector exposure (cached): Financials 9.5%, Health Care 0.0%
 Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
 Open orders (1): MS sell 43.8344
@@ -15211,4 +15216,25 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 11662 shadow candidate(s), 390 rejection group(s)
 Timings: account: 0.0s | risk: 1.0s | decide: 13.8s | watchlist: 0.1s | perf: 0.2s
+Overnight queue deferred 3 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+Morning verification: 4 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
+News: fetched 158, 3 new after dedup, 1 ticker(s) matched.
+Quant pre-screen: 23/61 candidates passed.
+Gemini proposed 4 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 209
+  -> {"ticker": "ON", "status": "skipped", "reason": "entry alignment: price $73.94 is not above SMA-20 $77.10"}
+  -> {"ticker": "CVNA", "status": "skipped", "reason": "liquidity filter: CVNA average volume 380,240 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "JKHY", "status": "skipped", "reason": "liquidity filter: JKHY average volume 54,122 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "JNJ", "status": "skipped", "reason": "liquidity filter: JNJ average volume 231,338 < 500,000", "shadow": false, "data_guard": true}
+Overnight queue cleared after verification.
+Overnight queue retained 3 deferred stale idea(s).
+Dashboard watchlist synced (6 symbols) for news/headlines.
+Ending portfolio value: $99,215.13
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.35% | Max drawdown 0.94% | Daily Sharpe 1.79 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 2 | Equity $99,215.11
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $-221.61 (2 open) | Books: legacy: realized $-1,705.68, unrealized $-221.61
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 11662 shadow candidate(s), 390 rejection group(s)
+Timings: account: 0.0s | risk: 1.0s | decide: 11.4s | watchlist: 0.1s | perf: 0.3s
 
