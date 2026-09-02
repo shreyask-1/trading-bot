@@ -11657,3 +11657,6 @@
 {"timestamp": "2026-09-02T14:46:55.930663", "ticker": "APA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 44.39, "reason": "liquidity filter: APA average volume 353,354 < 500,000"}
 {"timestamp": "2026-09-02T14:46:56.197547", "ticker": "AJG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 263.615, "reason": "stale quote for AJG (294.5531s old; limit 180s)"}
 {"timestamp": "2026-09-02T14:46:56.552610", "ticker": "DHR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 211.185, "reason": "liquidity filter: DHR average volume 185,094 < 500,000"}
+{"timestamp": "2026-09-02T14:49:26.967154", "ticker": "CVNA", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 74.63, "reason": "liquidity filter: CVNA average volume 380,289 < 500,000"}
+{"timestamp": "2026-09-02T14:49:27.273132", "ticker": "JKHY", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 167.99, "reason": "liquidity filter: JKHY average volume 54,122 < 500,000"}
+{"timestamp": "2026-09-02T14:49:27.549951", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 274.74, "reason": "liquidity filter: JNJ average volume 231,387 < 500,000"}
