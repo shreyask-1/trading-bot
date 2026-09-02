@@ -10997,6 +10997,9 @@ Timings: account: 0.0s | risk: 1.0s | decide: 25.6s | watchlist: 0.0s | perf: 0.
 === Run at 2026-09-02T10:13:11.008362 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-02 06:13 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
+=== Run at 2026-09-02T10:12:22.604007 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-02 06:12 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
 Account value: $98,998.01
 Cash: $89,705.74 | Holdings (2): {'GEHC': '0.6136 sh (-4.71%)', 'MS': '43.8344 sh (-4.51%)'}
 Sector exposure (cached): Financials 9.3%, Health Care 0.0%
@@ -11013,6 +11016,9 @@ Gemini calls used today (all models combined): 84
   -> {"ticker": "KHC", "status": "skipped", "reason": "stale quote for KHC (51198.364483s old; limit 180s)", "shadow": false, "data_guard": true}
   -> {"ticker": "DE", "status": "skipped", "reason": "stale quote for DE (51202.257907s old; limit 180s)", "shadow": false, "data_guard": true}
   -> {"ticker": "ELV", "status": "skipped", "reason": "stale quote for ELV (51207.211979s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "KHC", "status": "skipped", "reason": "stale quote for KHC (51158.930972s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "DE", "status": "skipped", "reason": "stale quote for DE (51162.781947s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "ELV", "status": "skipped", "reason": "stale quote for ELV (51167.690498s old; limit 180s)", "shadow": false, "data_guard": true}
 Overnight queue kept 12 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
 Dashboard watchlist synced (5 symbols) for news/headlines.
 Ending portfolio value: $98,998.01
@@ -11023,4 +11029,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 11195 shadow candidate(s), 500 rejection group(s)
 Timings: account: 0.0s | risk: 0.9s | decide: 6.0s | watchlist: 0.1s | perf: 0.3s
+Timings: account: 0.0s | risk: 0.8s | decide: 15.4s | watchlist: 0.1s | perf: 0.2s
 
