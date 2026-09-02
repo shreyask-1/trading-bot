@@ -14256,3 +14256,38 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; wor
 Shadow report: 11548 shadow candidate(s), 484 rejection group(s)
 Timings: account: 0.0s | risk: 1.0s | decide: 10.3s | watchlist: 0.2s | perf: 0.3s
 
+=== Run at 2026-09-02T13:48:24.284425 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-02 09:48 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,055.84
+Cash: $89,705.74 | Holdings (2): {'GEHC': '0.6136 sh (-3.80%)', 'MS': '43.8344 sh (-3.91%)'}
+Sector exposure (cached): Financials 9.4%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.65% | today +0.05% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+Overnight queue deferred 9 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+News: fetched 158, 1 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 42/60 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
+Technical fallback cap omitted 11 weaker idea(s) this run.
+Gemini calls used today (all models combined): 183
+  -> {"ticker": "ELV", "status": "skipped", "reason": "liquidity filter: ELV average volume 34,203 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "DE", "status": "skipped", "reason": "liquidity filter: DE average volume 63,889 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "DG", "status": "skipped", "reason": "liquidity filter: DG average volume 128,257 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "EL", "status": "skipped", "reason": "liquidity filter: EL average volume 180,603 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "CRM", "status": "skipped", "reason": "market data unavailable for CRM (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "EPAM", "status": "skipped", "reason": "liquidity filter: EPAM average volume 68,979 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "CVNA", "status": "skipped", "reason": "liquidity filter: CVNA average volume 377,678 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "EG", "status": "skipped", "reason": "stale quote for EG (703.54183s old; limit 180s)", "shadow": false, "data_guard": true}
+Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); 4 idea(s) remain subject to the retry cap.
+Run budget reserve reached -- skipping dashboard watchlist sync.
+Run budget reserve reached -- skipping performance snapshot.
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.19% | Max drawdown 0.94% | Daily Sharpe 0.95 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 2 | Equity $99,055.84
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $-380.89 (2 open) | Books: legacy: realized $-1,705.68, unrealized $-380.89
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 11556 shadow candidate(s), 479 rejection group(s)
+Timings: account: 0.0s | risk: 0.5s | decide: 25.8s | watchlist: 0.0s | perf: 0.1s
+
