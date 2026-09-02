@@ -11269,3 +11269,6 @@
 {"timestamp": "2026-09-02T10:56:56.276692", "ticker": "CRM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 258.135, "reason": "stale quote for CRM (53824.38993s old; limit 180s)"}
 {"timestamp": "2026-09-02T10:56:56.528222", "ticker": "EPAM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 116.515, "reason": "stale quote for EPAM (53853.187529s old; limit 180s)"}
 {"timestamp": "2026-09-02T10:56:56.784301", "ticker": "CVNA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 72.155, "reason": "stale quote for CVNA (53816.750146s old; limit 180s)"}
+{"timestamp": "2026-09-02T10:58:28.325258", "ticker": "KHC", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 25.87, "reason": "stale quote for KHC (53908.678921s old; limit 180s)"}
+{"timestamp": "2026-09-02T10:58:28.371491", "ticker": "DE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 676.14, "reason": "stale quote for DE (53912.353334s old; limit 180s)"}
+{"timestamp": "2026-09-02T10:58:28.414692", "ticker": "ELV", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 403.07, "reason": "stale quote for ELV (53917.049594s old; limit 180s)"}
