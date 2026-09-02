@@ -12150,3 +12150,6 @@
 {"timestamp": "2026-09-02T19:02:52.818292", "ticker": "BBY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 88.35, "reason": "liquidity filter: BBY average volume 151,946 < 500,000"}
 {"timestamp": "2026-09-02T19:02:52.873679", "ticker": "DG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 132.87, "reason": "liquidity filter: DG average volume 132,006 < 500,000"}
 {"timestamp": "2026-09-02T19:02:52.912228", "ticker": "DHR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 210.19, "reason": "liquidity filter: DHR average volume 190,051 < 500,000"}
+{"timestamp": "2026-09-02T19:04:48.382701", "ticker": "DELL", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 484.49, "reason": "liquidity filter: DELL average volume 223,458 < 500,000"}
+{"timestamp": "2026-09-02T19:04:48.585424", "ticker": "CVNA", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 74.06, "reason": "liquidity filter: CVNA average volume 387,641 < 500,000"}
+{"timestamp": "2026-09-02T19:04:48.756077", "ticker": "BBY", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 88.28, "reason": "liquidity filter: BBY average volume 151,997 < 500,000"}
