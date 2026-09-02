@@ -18167,3 +18167,35 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; wor
 Shadow report: 12023 shadow candidate(s), 76 rejection group(s)
 Timings: account: 0.0s | risk: 0.1s | decide: 6.6s | watchlist: 0.0s | perf: 0.1s
 
+=== Run at 2026-09-02T18:00:37.301928 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-02 02:00 PM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,005.96
+Cash: $89,705.74 | Holdings (2): {'GEHC': '0.6136 sh (-3.60%)', 'MS': '43.8344 sh (-4.43%)'}
+Sector exposure (cached): Financials 9.3%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.70% | today +0.00% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+Overnight queue deferred 5 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+News: fetched 158, 1 new after dedup, 2 ticker(s) matched.
+Quant pre-screen: 8/13 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 6 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 287
+  -> {"ticker": "CVX", "status": "skipped", "reason": "liquidity filter: CVX average volume 267,594 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "BBY", "status": "skipped", "reason": "liquidity filter: BBY average volume 150,496 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "CVNA", "status": "skipped", "reason": "liquidity filter: CVNA average volume 385,395 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "AIZ", "status": "skipped", "reason": "stale quote for AIZ (562.390526s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "AJG", "status": "skipped", "reason": "liquidity filter: AJG average volume 70,041 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "ALB", "status": "skipped", "reason": "liquidity filter: ALB average volume 82,557 < 500,000", "shadow": false, "data_guard": true}
+Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); 3 idea(s) remain subject to the retry cap.
+Run budget reserve reached -- skipping dashboard watchlist sync.
+Run budget reserve reached -- skipping performance snapshot.
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.14% | Max drawdown 0.94% | Daily Sharpe 0.67 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 2 | Equity $99,005.96
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $-430.77 (2 open) | Books: legacy: realized $-1,705.68, unrealized $-430.77
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 12029 shadow candidate(s), 76 rejection group(s)
+Timings: account: 0.0s | risk: 0.6s | decide: 24.3s | watchlist: 0.0s | perf: 0.1s
+
