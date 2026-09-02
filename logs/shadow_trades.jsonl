@@ -12003,3 +12003,6 @@
 {"timestamp": "2026-09-02T17:46:43.416929", "ticker": "CVNA", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 74.74, "reason": "liquidity filter: CVNA average volume 385,032 < 500,000"}
 {"timestamp": "2026-09-02T17:46:43.638242", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 37.605, "reason": "market data unavailable for HAL (bid/ask spread missing)"}
 {"timestamp": "2026-09-02T17:46:43.638453", "ticker": "JKHY", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 168.03, "reason": "liquidity filter: JKHY average volume 54,520 < 500,000"}
+{"timestamp": "2026-09-02T17:48:39.328201", "ticker": "EL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 101.38, "reason": "liquidity filter: EL average volume 182,952 < 500,000"}
+{"timestamp": "2026-09-02T17:48:39.583292", "ticker": "CVNA", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 74.735, "reason": "liquidity filter: CVNA average volume 385,078 < 500,000"}
+{"timestamp": "2026-09-02T17:48:39.828448", "ticker": "DGX", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 241.61, "reason": "liquidity filter: DGX average volume 39,124 < 500,000"}
