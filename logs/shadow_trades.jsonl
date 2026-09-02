@@ -11525,3 +11525,6 @@
 {"timestamp": "2026-09-02T13:32:44.691755", "ticker": "KHC", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 26.025, "reason": "market data unavailable for KHC (bid/ask spread missing)"}
 {"timestamp": "2026-09-02T13:32:44.691970", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 36.6, "reason": "market data unavailable for HAL (bid/ask spread missing)"}
 {"timestamp": "2026-09-02T13:32:44.692129", "ticker": "GPN", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 91.0, "reason": "liquidity filter: GPN average volume 90,102 < 500,000"}
+{"timestamp": "2026-09-02T13:34:39.484082", "ticker": "KHC", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 26.11, "reason": "market data unavailable for KHC (bid/ask spread missing)"}
+{"timestamp": "2026-09-02T13:34:39.549376", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 36.74, "reason": "market data unavailable for HAL (bid/ask spread missing)"}
+{"timestamp": "2026-09-02T13:34:39.617327", "ticker": "GPN", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 91.0, "reason": "stale quote for GPN (200.735178s old; limit 180s)"}
