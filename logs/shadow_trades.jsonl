@@ -12473,3 +12473,5 @@
 {"timestamp": "2026-09-02T23:26:48.422750", "ticker": "DIS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 108.01, "reason": "stale quote for DIS (12419.260252s old; limit 180s)"}
 {"timestamp": "2026-09-02T23:26:48.492049", "ticker": "EQT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 55.77, "reason": "stale quote for EQT (12413.253961s old; limit 180s)"}
 {"timestamp": "2026-09-02T23:26:48.561864", "ticker": "EXPD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 186.25, "reason": "stale quote for EXPD (12420.456087s old; limit 180s)"}
+{"timestamp": "2026-09-02T23:28:35.121418", "ticker": "EL", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 101.175, "reason": "stale quote for EL (12529.582674s old; limit 180s)"}
+{"timestamp": "2026-09-02T23:28:35.363165", "ticker": "FDS", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 306.245, "reason": "stale quote for FDS (12527.570929s old; limit 180s)"}
