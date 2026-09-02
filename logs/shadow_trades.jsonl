@@ -11588,3 +11588,6 @@
 {"timestamp": "2026-09-02T14:10:45.968146", "ticker": "AES", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 14.77, "reason": "stale quote for AES (578.668998s old; limit 180s)"}
 {"timestamp": "2026-09-02T14:10:45.968317", "ticker": "ALB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 134.49, "reason": "stale quote for ALB (208.871095s old; limit 180s)"}
 {"timestamp": "2026-09-02T14:10:46.100369", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 105.78, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
+{"timestamp": "2026-09-02T14:12:36.020026", "ticker": "EL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 101.18, "reason": "liquidity filter: EL average volume 181,281 < 500,000"}
+{"timestamp": "2026-09-02T14:12:36.086478", "ticker": "CVNA", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 73.99, "reason": "liquidity filter: CVNA average volume 378,660 < 500,000"}
+{"timestamp": "2026-09-02T14:12:36.159322", "ticker": "DGX", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 240.72, "reason": "liquidity filter: DGX average volume 37,379 < 500,000"}
