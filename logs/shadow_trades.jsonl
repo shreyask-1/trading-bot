@@ -12351,3 +12351,7 @@
 {"timestamp": "2026-09-02T22:18:56.642985", "ticker": "EQT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 55.77, "reason": "stale quote for EQT (8341.335517s old; limit 180s)"}
 {"timestamp": "2026-09-02T22:18:56.822487", "ticker": "EXPD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 186.25, "reason": "stale quote for EXPD (8348.632516s old; limit 180s)"}
 {"timestamp": "2026-09-02T22:18:56.962923", "ticker": "DELL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 492.215, "reason": "stale quote for DELL (8338.980511s old; limit 180s)"}
+{"timestamp": "2026-09-02T22:20:37.702696", "ticker": "DGX", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 240.76, "reason": "stale quote for DGX (8446.815761s old; limit 180s)"}
+{"timestamp": "2026-09-02T22:20:37.778466", "ticker": "EBAY", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 106.69, "reason": "stale quote for EBAY (8439.024243s old; limit 180s)"}
+{"timestamp": "2026-09-02T22:20:37.831939", "ticker": "EL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 101.175, "reason": "stale quote for EL (8452.430553s old; limit 180s)"}
+{"timestamp": "2026-09-02T22:20:37.885443", "ticker": "ELV", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 405.92, "reason": "stale quote for ELV (8446.810277s old; limit 180s)"}
