@@ -12265,3 +12265,7 @@
 {"timestamp": "2026-09-02T21:36:51.200194", "ticker": "AJG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 264.645, "reason": "stale quote for AJG (5798.940507s old; limit 180s)"}
 {"timestamp": "2026-09-02T21:36:51.207210", "ticker": "ALB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 9, "price": 137.79, "reason": "stale quote for ALB (5797.152708s old; limit 180s)"}
 {"timestamp": "2026-09-02T21:36:51.214982", "ticker": "AMGN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 5, "price": 442.83, "reason": "stale quote for AMGN (5791.753565s old; limit 180s)"}
+{"timestamp": "2026-09-02T21:38:36.083777", "ticker": "CVNA", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 74.165, "reason": "stale quote for CVNA (5916.937626s old; limit 180s)"}
+{"timestamp": "2026-09-02T21:38:36.248302", "ticker": "DGX", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 240.76, "reason": "stale quote for DGX (5925.281011s old; limit 180s)"}
+{"timestamp": "2026-09-02T21:38:36.248460", "ticker": "EL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 101.175, "reason": "stale quote for EL (5924.773602s old; limit 180s)"}
+{"timestamp": "2026-09-02T21:38:36.248531", "ticker": "ELV", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 405.92, "reason": "stale quote for ELV (5919.260476s old; limit 180s)"}
