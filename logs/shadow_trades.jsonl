@@ -12502,3 +12502,5 @@
 {"timestamp": "2026-09-02T23:40:55.283407", "ticker": "EXPD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 186.25, "reason": "stale quote for EXPD (13267.10602s old; limit 180s)"}
 {"timestamp": "2026-09-02T23:41:25.039208", "ticker": "EL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 101.175, "reason": "stale quote for EL (13299.617555s old; limit 180s)"}
 {"timestamp": "2026-09-02T23:41:25.107023", "ticker": "EBAY", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 106.69, "reason": "stale quote for EBAY (13286.365083s old; limit 180s)"}
+{"timestamp": "2026-09-02T23:42:40.667912", "ticker": "EL", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 101.175, "reason": "stale quote for EL (13375.115326s old; limit 180s)"}
+{"timestamp": "2026-09-02T23:42:40.937610", "ticker": "FDS", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 306.245, "reason": "stale quote for FDS (13373.141405s old; limit 180s)"}
