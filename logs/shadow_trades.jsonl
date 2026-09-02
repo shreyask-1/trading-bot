@@ -11585,3 +11585,6 @@
 {"timestamp": "2026-09-02T14:08:38.815187", "ticker": "CVNA", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 73.69, "reason": "liquidity filter: CVNA average volume 378,558 < 500,000"}
 {"timestamp": "2026-09-02T14:08:38.875877", "ticker": "DIS", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 108.14, "reason": "liquidity filter: DIS average volume 348,820 < 500,000"}
 {"timestamp": "2026-09-02T14:08:38.876087", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 105.25, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
+{"timestamp": "2026-09-02T14:10:45.968146", "ticker": "AES", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 14.77, "reason": "stale quote for AES (578.668998s old; limit 180s)"}
+{"timestamp": "2026-09-02T14:10:45.968317", "ticker": "ALB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 134.49, "reason": "stale quote for ALB (208.871095s old; limit 180s)"}
+{"timestamp": "2026-09-02T14:10:46.100369", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 105.78, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
