@@ -12249,3 +12249,7 @@
 {"timestamp": "2026-09-02T19:58:33.542432", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 55.78, "reason": "market data unavailable for EQT (bid/ask spread missing)"}
 {"timestamp": "2026-09-02T19:58:33.648012", "ticker": "EL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 101.14, "reason": "liquidity filter: EL average volume 184,707 < 500,000"}
 {"timestamp": "2026-09-02T19:58:33.767530", "ticker": "ELV", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 406.37, "reason": "liquidity filter: ELV average volume 36,155 < 500,000"}
+{"timestamp": "2026-09-02T21:30:52.416819", "ticker": "CVNA", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 74.165, "reason": "stale quote for CVNA (5443.483744s old; limit 180s)"}
+{"timestamp": "2026-09-02T21:30:52.416982", "ticker": "DGX", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 240.76, "reason": "stale quote for DGX (5455.573427s old; limit 180s)"}
+{"timestamp": "2026-09-02T21:30:52.750077", "ticker": "BBY", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 86.94, "reason": "stale quote for BBY (5465.12437s old; limit 180s)"}
+{"timestamp": "2026-09-02T21:30:53.074714", "ticker": "DELL", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 492.215, "reason": "stale quote for DELL (5454.957135s old; limit 180s)"}
