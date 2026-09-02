@@ -11987,3 +11987,6 @@
 {"timestamp": "2026-09-02T17:36:58.552425", "ticker": "DE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 686.0, "reason": "liquidity filter: DE average volume 65,970 < 500,000"}
 {"timestamp": "2026-09-02T17:36:58.886408", "ticker": "DIS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 108.615, "reason": "liquidity filter: DIS average volume 355,211 < 500,000"}
 {"timestamp": "2026-09-02T17:36:59.188896", "ticker": "EPAM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 117.0, "reason": "stale quote for EPAM (403.384822s old; limit 180s)"}
+{"timestamp": "2026-09-02T17:38:37.224591", "ticker": "DGX", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 241.76, "reason": "liquidity filter: DGX average volume 39,048 < 500,000"}
+{"timestamp": "2026-09-02T17:38:37.284260", "ticker": "EL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 101.47, "reason": "liquidity filter: EL average volume 182,866 < 500,000"}
+{"timestamp": "2026-09-02T17:38:37.365275", "ticker": "ELV", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 405.35, "reason": "liquidity filter: ELV average volume 35,261 < 500,000"}
