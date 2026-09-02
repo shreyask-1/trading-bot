@@ -18321,3 +18321,38 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; wor
 Shadow report: 12041 shadow candidate(s), 72 rejection group(s)
 Timings: account: 0.0s | risk: 1.4s | decide: 16.1s | watchlist: 0.2s | perf: 0.3s
 
+=== Run at 2026-09-02T18:10:37.313790 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-02 02:10 PM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,005.54
+Cash: $89,705.74 | Holdings (2): {'GEHC': '0.6136 sh (-3.56%)', 'MS': '43.8344 sh (-4.44%)'}
+Sector exposure (cached): Financials 9.3%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.70% | today -0.00% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+Overnight queue deferred 3 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 36/55 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
+Technical fallback cap omitted 12 weaker idea(s) this run.
+Gemini calls used today (all models combined): 291
+  -> {"ticker": "EL", "status": "skipped", "reason": "liquidity filter: EL average volume 183,112 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "ELV", "status": "skipped", "reason": "liquidity filter: ELV average volume 35,459 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "CVNA", "status": "skipped", "reason": "liquidity filter: CVNA average volume 386,059 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "DE", "status": "skipped", "reason": "liquidity filter: DE average volume 66,352 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "EQT", "status": "skipped", "reason": "market data unavailable for EQT (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "DGX", "status": "skipped", "reason": "stale quote for DGX (180.044864s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "DIS", "status": "skipped", "reason": "liquidity filter: DIS average volume 356,089 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "DVN", "status": "skipped", "reason": "market data unavailable for DVN (bid/ask spread missing)", "shadow": false, "data_guard": true}
+Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); 3 idea(s) remain subject to the retry cap.
+Run budget reserve reached -- skipping dashboard watchlist sync.
+Run budget reserve reached -- skipping performance snapshot.
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.13% | Max drawdown 0.94% | Daily Sharpe 0.61 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 2 | Equity $99,005.54
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $-431.19 (2 open) | Books: legacy: realized $-1,705.68, unrealized $-431.19
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 12049 shadow candidate(s), 73 rejection group(s)
+Timings: account: 0.0s | risk: 1.3s | decide: 25.9s | watchlist: 0.0s | perf: 0.1s
+
