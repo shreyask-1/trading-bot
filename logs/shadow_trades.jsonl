@@ -12319,3 +12319,7 @@
 {"timestamp": "2026-09-02T22:02:32.607308", "ticker": "DELL", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 492.215, "reason": "stale quote for DELL (7354.671038s old; limit 180s)"}
 {"timestamp": "2026-09-02T22:02:32.650915", "ticker": "BBY", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 86.94, "reason": "stale quote for BBY (7365.246494s old; limit 180s)"}
 {"timestamp": "2026-09-02T22:02:32.651101", "ticker": "DIS", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 108.01, "reason": "stale quote for DIS (7359.168353s old; limit 180s)"}
+{"timestamp": "2026-09-02T22:05:00.689083", "ticker": "DELL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 492.215, "reason": "stale quote for DELL (7502.55312s old; limit 180s)"}
+{"timestamp": "2026-09-02T22:05:01.033635", "ticker": "BBY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 86.94, "reason": "stale quote for BBY (7513.398781s old; limit 180s)"}
+{"timestamp": "2026-09-02T22:05:01.110169", "ticker": "HAL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 37.63, "reason": "stale quote for HAL (7481.240963s old; limit 180s)"}
+{"timestamp": "2026-09-02T22:05:01.110395", "ticker": "HPQ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 32.0, "reason": "stale quote for HPQ (7485.197377s old; limit 180s)"}
