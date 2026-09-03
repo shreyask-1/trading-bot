@@ -13506,3 +13506,4 @@
 {"timestamp": "2026-09-03T23:44:59.877403", "ticker": "IVZ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 32.705, "reason": "stale quote for IVZ (13507.581294s old; limit 180s)"}
 {"timestamp": "2026-09-03T23:45:00.196308", "ticker": "IBKR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 92.96, "reason": "stale quote for IBKR (13504.473739s old; limit 180s)"}
 {"timestamp": "2026-09-03T23:45:00.503059", "ticker": "KO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 88.84, "reason": "stale quote for KO (13500.263511s old; limit 180s)"}
+{"timestamp": "2026-09-03T23:46:29.390225", "ticker": "ICE", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 164.61, "reason": "stale quote for ICE (13591.298823s old; limit 180s)"}
