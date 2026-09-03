@@ -13388,3 +13388,4 @@
 {"timestamp": "2026-09-03T18:32:47.945954", "ticker": "KDP", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 33.15, "reason": "market data unavailable for KDP (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T18:34:46.724910", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 72, "conviction": 7, "price": 32.31, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T18:37:03.044324", "ticker": "ICE", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 163.96, "reason": "liquidity filter: ICE average volume 152,907 < 500,000"}
+{"timestamp": "2026-09-03T18:38:53.528476", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 32.175, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
