@@ -7137,6 +7137,9 @@ Timings: account: 0.0s | risk: 0.9s | decide: 8.7s | watchlist: 0.1s | perf: 0.3
 === Run at 2026-09-03T21:53:09.001967 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-03 05:53 PM EDT | Market open (per Alpaca): False | Session: EXTENDED
+=== Run at 2026-09-03T21:50:10.567957 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-03 05:50 PM EDT | Market open (per Alpaca): False | Session: EXTENDED
 Account value: $99,294.78
 Cash: $89,705.74 | Holdings (2): {'GEHC': '0.6136 sh (-5.65%)', 'MS': '43.8344 sh (-1.44%)'}
 Sector exposure (cached): Financials 9.6%, Health Care 0.0%
@@ -7154,6 +7157,15 @@ Gemini calls used today (all models combined): 312
   -> {"ticker": "ICE", "status": "skipped", "reason": "stale quote for ICE (6805.768768s old; limit 180s)", "shadow": false, "data_guard": true}
 Overnight queue kept 12 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
 Dashboard watchlist synced (4 symbols) for news/headlines.
+Overnight queue deferred 5 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+Morning verification: 7 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
+News: fetched 158, 3 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 28/46 candidates passed.
+Gemini proposed 0 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 308
+Overnight queue cleared after verification.
+Overnight queue retained 5 deferred stale idea(s).
+Dashboard watchlist synced (2 symbols) for news/headlines.
 Ending portfolio value: $99,294.78
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
 Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
@@ -7162,4 +7174,6 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 13457 shadow candidate(s), 112 rejection group(s)
 Timings: account: 0.0s | risk: 0.5s | decide: 14.1s | watchlist: 0.1s | perf: 0.2s
+Shadow report: 13455 shadow candidate(s), 112 rejection group(s)
+Timings: account: 0.0s | risk: 0.5s | decide: 15.3s | watchlist: 0.1s | perf: 0.2s
 
