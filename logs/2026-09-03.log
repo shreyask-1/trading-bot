@@ -6809,6 +6809,9 @@ Shadow report: 13449 shadow candidate(s), 112 rejection group(s)
 Timings: account: 0.0s | risk: 0.5s | decide: 6.5s | watchlist: 0.0s | perf: 0.1s
 Timings: account: 0.0s | risk: 0.2s | decide: 7.5s | watchlist: 0.0s | perf: 0.2s
 
+=== Run at 2026-09-03T21:10:59.351685 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-03 05:10 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 === Run at 2026-09-03T21:07:49.569094 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-03 05:07 PM EDT | Market open (per Alpaca): False | Session: CLOSED
@@ -6819,6 +6822,10 @@ Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
 Open orders (1): MS sell 43.8344
 Risk state: peak $99,703.60 | drawdown 0.41% | today +0.26% | halted: False
 Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 156, 2 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 20/28 candidates passed.
+Gemini proposed 0 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 305
 News: fetched 157, 3 new after dedup, 0 ticker(s) matched.
 Quant pre-screen: 20/28 candidates passed.
 Gemini proposed 0 trade(s) meeting the conviction bar.
@@ -6832,6 +6839,7 @@ Performance: Total return +0.43% | Max drawdown 0.94% | Daily Sharpe 2.12 | 19 c
 Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $-141.96 (2 open) | Books: legacy: realized $-1,705.68, unrealized $-141.96
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 13449 shadow candidate(s), 112 rejection group(s)
+Timings: account: 0.0s | risk: 0.3s | decide: 6.1s | watchlist: 0.0s | perf: 0.2s
 Timings: account: 0.0s | risk: 0.9s | decide: 10.2s | watchlist: 0.1s | perf: 0.3s
 
 === Run at 2026-09-03T21:13:53.080955 ===
