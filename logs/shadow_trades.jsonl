@@ -12885,3 +12885,5 @@
 {"timestamp": "2026-09-03T12:18:58.689643", "ticker": "CPB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 23.805, "reason": "stale quote for CPB (58717.73577s old; limit 180s)"}
 {"timestamp": "2026-09-03T12:18:58.708689", "ticker": "CPRT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 32.17, "reason": "stale quote for CPRT (58716.978582s old; limit 180s)"}
 {"timestamp": "2026-09-03T12:18:58.726785", "ticker": "CRM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 256.89, "reason": "stale quote for CRM (58719.444414s old; limit 180s)"}
+{"timestamp": "2026-09-03T12:20:55.431720", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 37.63, "reason": "stale quote for HAL (58856.479642s old; limit 180s)"}
+{"timestamp": "2026-09-03T12:20:55.750460", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 71, "conviction": 7, "price": 950.46, "reason": "stale quote for MU (55473.00687s old; limit 180s)"}
