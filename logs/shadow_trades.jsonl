@@ -13065,3 +13065,5 @@
 {"timestamp": "2026-09-03T14:25:04.756390", "ticker": "HAL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 37.9, "reason": "market data unavailable for HAL (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T14:25:05.046101", "ticker": "JNJ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 275.87, "reason": "liquidity filter: JNJ average volume 221,171 < 500,000"}
 {"timestamp": "2026-09-03T14:25:06.626131", "ticker": "MSFT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 512.27, "reason": "market data unavailable for MSFT (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T14:28:38.149827", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 275.475, "reason": "liquidity filter: JNJ average volume 221,289 < 500,000"}
+{"timestamp": "2026-09-03T14:28:38.541816", "ticker": "HSIC", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 89.75, "reason": "stale quote for HSIC (422.627925s old; limit 180s)"}
