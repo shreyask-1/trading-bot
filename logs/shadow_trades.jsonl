@@ -13521,3 +13521,5 @@
 {"timestamp": "2026-09-03T23:56:51.031866", "ticker": "IVZ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 32.705, "reason": "stale quote for IVZ (14218.888491s old; limit 180s)"}
 {"timestamp": "2026-09-03T23:56:51.112240", "ticker": "IBKR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 92.96, "reason": "stale quote for IBKR (14215.570141s old; limit 180s)"}
 {"timestamp": "2026-09-03T23:56:51.174836", "ticker": "KO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 88.84, "reason": "stale quote for KO (14211.119328s old; limit 180s)"}
+{"timestamp": "2026-09-03T23:58:35.558988", "ticker": "NVDA", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 228.54, "reason": "stale quote for NVDA (14312.028825s old; limit 180s)"}
+{"timestamp": "2026-09-03T23:58:35.741576", "ticker": "NDAQ", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 98.67, "reason": "stale quote for NDAQ (14333.46229s old; limit 180s)"}
