@@ -13337,3 +13337,5 @@
 {"timestamp": "2026-09-03T17:56:51.658329", "ticker": "IBKR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 92.74, "reason": "liquidity filter: IBKR average volume 175,870 < 500,000"}
 {"timestamp": "2026-09-03T17:58:42.453648", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 124.355, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T17:58:42.564063", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 32.305, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T18:00:48.748384", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 145.35, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T18:00:48.748562", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 124.265, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
