@@ -13425,3 +13425,4 @@
 {"timestamp": "2026-09-03T19:24:33.796279", "ticker": "MSFT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 5, "price": 511.37, "reason": "market data unavailable for MSFT (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T19:24:33.796481", "ticker": "NDAQ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 98.01, "reason": "liquidity filter: NDAQ average volume 100,169 < 500,000"}
 {"timestamp": "2026-09-03T19:24:33.796638", "ticker": "NEM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 129.99, "reason": "liquidity filter: NEM average volume 300,436 < 500,000"}
+{"timestamp": "2026-09-03T19:31:00.606678", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 31.925, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
