@@ -13151,3 +13151,5 @@
 {"timestamp": "2026-09-03T15:25:35.324493", "ticker": "HSIC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 90.34, "reason": "stale quote for HSIC (188.713124s old; limit 180s)"}
 {"timestamp": "2026-09-03T15:25:35.854606", "ticker": "IVZ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 32.35, "reason": "liquidity filter: IVZ average volume 233,537 < 500,000"}
 {"timestamp": "2026-09-03T15:25:36.163613", "ticker": "KO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 5, "price": 88.9, "reason": "market data unavailable for KO (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T15:26:42.721134", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 32.2, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T15:26:42.967427", "ticker": "MPC", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 396.82, "reason": "liquidity filter: MPC average volume 105,842 < 500,000"}
