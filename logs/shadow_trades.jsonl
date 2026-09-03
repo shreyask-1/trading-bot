@@ -12923,3 +12923,5 @@
 {"timestamp": "2026-09-03T12:39:04.268789", "ticker": "INCY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 5, "price": 128.88, "reason": "stale quote for INCY (59958.795482s old; limit 180s)"}
 {"timestamp": "2026-09-03T12:39:04.453228", "ticker": "JKHY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 167.085, "reason": "stale quote for JKHY (59972.927539s old; limit 180s)"}
 {"timestamp": "2026-09-03T12:39:04.625169", "ticker": "JNJ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 275.42, "reason": "stale quote for JNJ (59944.59865s old; limit 180s)"}
+{"timestamp": "2026-09-03T12:40:55.900012", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 37.63, "reason": "stale quote for HAL (60057.005468s old; limit 180s)"}
+{"timestamp": "2026-09-03T12:40:56.164813", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 107.73, "reason": "stale quote for HOOD (59638.828137s old; limit 180s)"}
