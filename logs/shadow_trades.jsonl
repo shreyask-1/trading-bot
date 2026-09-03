@@ -13326,3 +13326,4 @@
 {"timestamp": "2026-09-03T17:52:53.903578", "ticker": "J", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 147.71, "reason": "liquidity filter: J average volume 33,574 < 500,000"}
 {"timestamp": "2026-09-03T17:52:54.173875", "ticker": "KO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 88.895, "reason": "market data unavailable for KO (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T17:52:54.428237", "ticker": "IBKR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 92.73, "reason": "liquidity filter: IBKR average volume 175,804 < 500,000"}
+{"timestamp": "2026-09-03T17:54:43.585228", "ticker": "NDAQ", "action": "buy", "engine": "gemini", "confidence": 83, "conviction": 8, "price": 98.23, "reason": "liquidity filter: NDAQ average volume 99,271 < 500,000"}
