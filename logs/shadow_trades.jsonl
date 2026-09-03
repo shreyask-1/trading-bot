@@ -12956,3 +12956,5 @@
 {"timestamp": "2026-09-03T13:02:51.885240", "ticker": "HAL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 37.63, "reason": "stale quote for HAL (61373.121188s old; limit 180s)"}
 {"timestamp": "2026-09-03T13:02:51.895084", "ticker": "HPQ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 32.0, "reason": "stale quote for HPQ (61352.022638s old; limit 180s)"}
 {"timestamp": "2026-09-03T13:02:51.905601", "ticker": "HSIC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 90.385, "reason": "stale quote for HSIC (61353.19596s old; limit 180s)"}
+{"timestamp": "2026-09-03T13:04:58.572336", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 151.615, "reason": "stale quote for MRK (61488.12473s old; limit 180s)"}
+{"timestamp": "2026-09-03T13:04:58.572450", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 25.8, "reason": "stale quote for MOS (61486.646884s old; limit 180s)"}
