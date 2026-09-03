@@ -13477,3 +13477,6 @@
 {"timestamp": "2026-09-03T22:42:33.253393", "ticker": "NEM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 130.39, "reason": "stale quote for NEM (9764.842614s old; limit 180s)"}
 {"timestamp": "2026-09-03T22:42:33.273066", "ticker": "NTRS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 187.505, "reason": "stale quote for NTRS (9744.652644s old; limit 180s)"}
 {"timestamp": "2026-09-03T22:42:33.294777", "ticker": "NWS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 34.73, "reason": "stale quote for NWS (9737.015998s old; limit 180s)"}
+{"timestamp": "2026-09-03T22:48:42.703433", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 31.925, "reason": "stale quote for HPQ (10124.243661s old; limit 180s)"}
+{"timestamp": "2026-09-03T22:48:42.985174", "ticker": "ICE", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 164.61, "reason": "stale quote for ICE (10124.722012s old; limit 180s)"}
+{"timestamp": "2026-09-03T22:48:43.278349", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 278.45, "reason": "stale quote for JNJ (10126.907286s old; limit 180s)"}
