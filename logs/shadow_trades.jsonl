@@ -13268,3 +13268,5 @@
 {"timestamp": "2026-09-03T17:12:54.214605", "ticker": "CRM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 264.765, "reason": "market data unavailable for CRM (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T17:12:54.214804", "ticker": "CVNA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 74.0, "reason": "liquidity filter: CVNA average volume 386,601 < 500,000"}
 {"timestamp": "2026-09-03T17:14:45.173511", "ticker": "NVDA", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 227.3, "reason": "market data unavailable for NVDA (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T17:16:41.358837", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 123.3, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T17:16:42.106976", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 192.94, "reason": "stale quote for IT (296.646522s old; limit 180s)"}
