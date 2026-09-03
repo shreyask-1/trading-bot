@@ -12731,3 +12731,5 @@
 {"timestamp": "2026-09-03T10:12:52.900228", "ticker": "INCY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 5, "price": 128.88, "reason": "stale quote for INCY (51187.463559s old; limit 180s)"}
 {"timestamp": "2026-09-03T10:12:53.044258", "ticker": "JKHY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 167.085, "reason": "stale quote for JKHY (51201.528965s old; limit 180s)"}
 {"timestamp": "2026-09-03T10:12:53.191225", "ticker": "JNJ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 275.42, "reason": "stale quote for JNJ (51173.176454s old; limit 180s)"}
+{"timestamp": "2026-09-03T10:14:36.828412", "ticker": "HSIC", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 90.385, "reason": "stale quote for HSIC (51279.200151s old; limit 180s)"}
+{"timestamp": "2026-09-03T10:14:37.037989", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 71, "conviction": 7, "price": 950.46, "reason": "stale quote for MU (47894.379235s old; limit 180s)"}
