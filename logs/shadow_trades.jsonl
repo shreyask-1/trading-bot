@@ -13251,3 +13251,6 @@
 {"timestamp": "2026-09-03T17:00:51.722687", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 32.2, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T17:02:47.472446", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 123.2, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T17:02:47.472669", "ticker": "ICE", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 163.19, "reason": "liquidity filter: ICE average volume 150,366 < 500,000"}
+{"timestamp": "2026-09-03T17:04:59.752205", "ticker": "HPQ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 32.125, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T17:05:00.095941", "ticker": "IBKR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 92.63, "reason": "liquidity filter: IBKR average volume 174,827 < 500,000"}
+{"timestamp": "2026-09-03T17:05:00.361655", "ticker": "ICE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 163.155, "reason": "liquidity filter: ICE average volume 150,626 < 500,000"}
