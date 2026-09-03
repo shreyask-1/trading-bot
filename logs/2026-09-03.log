@@ -18838,6 +18838,11 @@ Build fingerprint: 4f68550affe5
 Current time: 2026-09-03 03:12 PM EDT | Market open (per Alpaca): True | Session: REGULAR
 Account value: $99,264.00
 Cash: $89,705.74 | Holdings (2): {'GEHC': '0.6136 sh (-5.86%)', 'MS': '43.8344 sh (-1.76%)'}
+=== Run at 2026-09-03T19:09:17.381557 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-03 03:09 PM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,261.82
+Cash: $89,705.74 | Holdings (2): {'GEHC': '0.6136 sh (-5.83%)', 'MS': '43.8344 sh (-1.78%)'}
 Sector exposure (cached): Financials 9.6%, Health Care 0.0%
 Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
 Open orders (1): MS sell 43.8344
@@ -18860,4 +18865,20 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 13421 shadow candidate(s), 138 rejection group(s)
 Timings: account: 0.0s | risk: 0.2s | decide: 11.0s | watchlist: 0.0s | perf: 0.2s
+News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 16/25 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 287
+  -> {"ticker": "KDP", "status": "skipped", "reason": "market data unavailable for KDP (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "IVZ", "status": "skipped", "reason": "liquidity filter: IVZ average volume 239,197 < 500,000", "shadow": false, "data_guard": true}
+Overnight queue kept 3 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
+Dashboard watchlist synced (4 symbols) for news/headlines.
+Ending portfolio value: $99,261.19
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.40% | Max drawdown 0.94% | Daily Sharpe 1.97 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 2 | Equity $99,261.82
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $-175.54 (2 open) | Books: legacy: realized $-1,705.68, unrealized $-175.54
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 13422 shadow candidate(s), 137 rejection group(s)
+Timings: account: 0.0s | risk: 0.4s | decide: 21.7s | watchlist: 0.1s | perf: 0.2s
 
