@@ -13314,3 +13314,5 @@
 {"timestamp": "2026-09-03T17:46:53.375782", "ticker": "ICE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 163.3, "reason": "liquidity filter: ICE average volume 151,762 < 500,000"}
 {"timestamp": "2026-09-03T17:46:53.507420", "ticker": "KO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 88.875, "reason": "market data unavailable for KO (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T17:46:53.582960", "ticker": "IBKR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 92.7, "reason": "liquidity filter: IBKR average volume 175,694 < 500,000"}
+{"timestamp": "2026-09-03T17:48:39.645133", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 194.67, "reason": "liquidity filter: IT average volume 56,720 < 500,000"}
+{"timestamp": "2026-09-03T17:48:39.924987", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 124.45, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
