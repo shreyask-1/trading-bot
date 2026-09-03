@@ -13419,3 +13419,6 @@
 {"timestamp": "2026-09-03T19:08:44.611587", "ticker": "KDP", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 33.075, "reason": "market data unavailable for KDP (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T19:08:44.611776", "ticker": "IVZ", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 32.59, "reason": "liquidity filter: IVZ average volume 239,185 < 500,000"}
 {"timestamp": "2026-09-03T19:12:37.676806", "ticker": "IVZ", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 32.625, "reason": "liquidity filter: IVZ average volume 239,291 < 500,000"}
+{"timestamp": "2026-09-03T19:18:43.723546", "ticker": "HIG", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 140.2, "reason": "liquidity filter: HIG average volume 42,930 < 500,000"}
+{"timestamp": "2026-09-03T19:18:43.723698", "ticker": "ICE", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 163.63, "reason": "liquidity filter: ICE average volume 154,397 < 500,000"}
+{"timestamp": "2026-09-03T19:18:43.907124", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 278.725, "reason": "liquidity filter: JNJ average volume 227,059 < 500,000"}
