@@ -6253,6 +6253,9 @@ Timings: account: 0.0s | risk: 0.3s | decide: 7.0s | watchlist: 0.1s | perf: 0.2
 === Run at 2026-09-03T20:11:15.258500 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-03 04:11 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+=== Run at 2026-09-03T20:08:21.557328 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-03 04:08 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,267.16
 Cash: $89,705.74 | Holdings (2): {'GEHC': '0.6136 sh (-5.65%)', 'MS': '43.8344 sh (-1.72%)'}
 Sector exposure (cached): Financials 9.6%, Health Care 0.0%
@@ -6275,6 +6278,12 @@ Market closed (overnight): queued 9 trade idea(s) for next-morning verification 
   -> queued JNJ buy (conf 82, stop 269.0, tp 292.0)
   -> queued IVZ buy (conf 78, stop 31.000000000000004, tp 35.0)
 Dashboard watchlist synced (4 symbols) for news/headlines.
+News: fetched 156, 5 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 15/17 candidates passed.
+Gemini proposed 0 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 294
+Market closed (overnight): no trade ideas queued this run.
+Dashboard watchlist synced (2 symbols) for news/headlines.
 Ending portfolio value: $99,267.16
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
 Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
@@ -6283,4 +6292,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 13449 shadow candidate(s), 112 rejection group(s)
 Timings: account: 0.0s | risk: 0.6s | decide: 14.6s | watchlist: 0.1s | perf: 0.2s
+Timings: account: 0.0s | risk: 0.3s | decide: 7.2s | watchlist: 0.1s | perf: 0.2s
 
