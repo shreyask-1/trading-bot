@@ -18750,3 +18750,33 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; wor
 Shadow report: 13417 shadow candidate(s), 142 rejection group(s)
 Timings: account: 0.0s | risk: 0.3s | decide: 7.6s | watchlist: 0.0s | perf: 0.2s
 
+=== Run at 2026-09-03T19:00:35.301067 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-03 03:00 PM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,239.81
+Cash: $89,705.74 | Holdings (2): {'GEHC': '0.6136 sh (-5.56%)', 'MS': '43.8344 sh (-2.01%)'}
+Sector exposure (cached): Financials 9.6%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.47% | today +0.21% | halted: False
+Market regime: BULLISH (position-size multiplier: 100% incl. circuit breaker 100%)
+Overnight queue deferred 3 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+Morning verification: 1 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
+News: fetched 158, 8 new after dedup, 2 ticker(s) matched.
+Quant pre-screen: 6/9 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 285
+  -> {"ticker": "COIN", "status": "skipped", "reason": "liquidity filter: COIN average volume 260,977 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "NTAP", "status": "skipped", "reason": "entry alignment: price $184.66 is not above SMA-20 $193.45"}
+Overnight queue cleared after verification.
+Overnight queue retained 3 deferred stale idea(s).
+Dashboard watchlist synced (5 symbols) for news/headlines.
+Ending portfolio value: $99,240.03
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.38% | Max drawdown 0.94% | Daily Sharpe 1.87 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 2 | Equity $99,239.81
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $-196.71 (2 open) | Books: legacy: realized $-1,705.68, unrealized $-196.71
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 13418 shadow candidate(s), 141 rejection group(s)
+Timings: account: 0.0s | risk: 0.1s | decide: 16.4s | watchlist: 0.0s | perf: 0.2s
+
