@@ -13127,3 +13127,5 @@
 {"timestamp": "2026-09-03T15:10:57.668998", "ticker": "NVDA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 226.31, "reason": "market data unavailable for NVDA (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T15:10:57.825367", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 123.2, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T15:10:58.040404", "ticker": "MPC", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 397.69, "reason": "liquidity filter: MPC average volume 105,684 < 500,000"}
+{"timestamp": "2026-09-03T15:12:52.315249", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 122.76, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T15:12:52.511770", "ticker": "MPC", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 397.69, "reason": "stale quote for MPC (185.952562s old; limit 180s)"}
