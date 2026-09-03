@@ -13243,3 +13243,5 @@
 {"timestamp": "2026-09-03T16:51:01.894388", "ticker": "KDP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 33.1, "reason": "market data unavailable for KDP (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T16:52:41.607443", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 122.89, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T16:54:43.219796", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 123.02, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T16:56:48.329939", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 122.95, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T16:56:48.378468", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 278.07, "reason": "liquidity filter: JNJ average volume 224,075 < 500,000"}
