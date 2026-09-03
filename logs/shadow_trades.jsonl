@@ -13428,3 +13428,5 @@
 {"timestamp": "2026-09-03T19:21:20.719856", "ticker": "JNJ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 278.64, "reason": "liquidity filter: JNJ average volume 227,095 < 500,000"}
 {"timestamp": "2026-09-03T19:21:20.918503", "ticker": "KDP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 32.98, "reason": "market data unavailable for KDP (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T19:21:20.958934", "ticker": "IT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 195.53, "reason": "stale quote for IT (249.524239s old; limit 180s)"}
+{"timestamp": "2026-09-03T19:27:53.102414", "ticker": "MSCI", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 574.28, "reason": "stale quote for MSCI (254.584598s old; limit 180s)"}
+{"timestamp": "2026-09-03T19:27:53.102585", "ticker": "NDAQ", "action": "buy", "engine": "gemini", "confidence": 73, "conviction": 7, "price": 98.11, "reason": "liquidity filter: NDAQ average volume 100,246 < 500,000"}
