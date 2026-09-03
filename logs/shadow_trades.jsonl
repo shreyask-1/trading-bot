@@ -13121,3 +13121,5 @@
 {"timestamp": "2026-09-03T14:59:00.646423", "ticker": "IVZ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 32.38, "reason": "liquidity filter: IVZ average volume 232,587 < 500,000"}
 {"timestamp": "2026-09-03T15:04:55.402482", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 123.3, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T15:04:55.402618", "ticker": "MPC", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 398.005, "reason": "liquidity filter: MPC average volume 105,656 < 500,000"}
+{"timestamp": "2026-09-03T15:06:47.042638", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 123.33, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T15:06:47.347722", "ticker": "MPC", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 398.005, "reason": "stale quote for MPC (191.725359s old; limit 180s)"}
