@@ -13177,3 +13177,6 @@
 {"timestamp": "2026-09-03T15:41:33.495449", "ticker": "ORCL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 152.705, "reason": "market data unavailable for ORCL (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T15:41:33.912129", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 121.51, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T15:42:47.839707", "ticker": "ORCL", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 152.78, "reason": "market data unavailable for ORCL (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T15:44:38.076428", "ticker": "ORCL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 152.83, "reason": "market data unavailable for ORCL (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T15:44:38.473242", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 121.415, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T15:44:38.840450", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 277.87, "reason": "liquidity filter: JNJ average volume 223,130 < 500,000"}
