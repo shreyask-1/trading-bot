@@ -6812,6 +6812,9 @@ Timings: account: 0.0s | risk: 0.2s | decide: 7.5s | watchlist: 0.0s | perf: 0.2
 === Run at 2026-09-03T21:10:59.351685 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-03 05:10 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+=== Run at 2026-09-03T21:07:49.569094 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-03 05:07 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,294.78
 Cash: $89,705.74 | Holdings (2): {'GEHC': '0.6136 sh (-5.65%)', 'MS': '43.8344 sh (-1.44%)'}
 Sector exposure (cached): Financials 9.6%, Health Care 0.0%
@@ -6823,6 +6826,10 @@ News: fetched 156, 2 new after dedup, 0 ticker(s) matched.
 Quant pre-screen: 20/28 candidates passed.
 Gemini proposed 0 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 305
+News: fetched 157, 3 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 20/28 candidates passed.
+Gemini proposed 0 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 302
 Market closed (overnight): no trade ideas queued this run.
 Dashboard watchlist synced (2 symbols) for news/headlines.
 Ending portfolio value: $99,294.78
@@ -6833,4 +6840,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 13449 shadow candidate(s), 112 rejection group(s)
 Timings: account: 0.0s | risk: 0.3s | decide: 6.1s | watchlist: 0.0s | perf: 0.2s
+Timings: account: 0.0s | risk: 0.9s | decide: 10.2s | watchlist: 0.1s | perf: 0.3s
 
