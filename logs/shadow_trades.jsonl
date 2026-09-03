@@ -13280,3 +13280,4 @@
 {"timestamp": "2026-09-03T17:24:52.565293", "ticker": "ICE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 162.93, "reason": "liquidity filter: ICE average volume 150,962 < 500,000"}
 {"timestamp": "2026-09-03T17:24:52.610459", "ticker": "J", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 147.94, "reason": "stale quote for J (327.02913s old; limit 180s)"}
 {"timestamp": "2026-09-03T17:24:52.680246", "ticker": "KO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 88.935, "reason": "market data unavailable for KO (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T17:26:41.836933", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 122.81, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
