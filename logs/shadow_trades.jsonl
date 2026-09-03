@@ -13398,3 +13398,6 @@
 {"timestamp": "2026-09-03T18:43:04.483148", "ticker": "GM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 87.145, "reason": "liquidity filter: GM average volume 166,767 < 500,000"}
 {"timestamp": "2026-09-03T18:43:04.483308", "ticker": "GEN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 31.225, "reason": "liquidity filter: GEN average volume 415,013 < 500,000"}
 {"timestamp": "2026-09-03T18:43:04.575054", "ticker": "IT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 197.09, "reason": "stale quote for IT (279.508301s old; limit 180s)"}
+{"timestamp": "2026-09-03T18:46:30.692693", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 32.065, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T18:46:30.811293", "ticker": "ICE", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 163.585, "reason": "liquidity filter: ICE average volume 153,261 < 500,000"}
+{"timestamp": "2026-09-03T18:46:30.943661", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 278.49, "reason": "liquidity filter: JNJ average volume 226,411 < 500,000"}
