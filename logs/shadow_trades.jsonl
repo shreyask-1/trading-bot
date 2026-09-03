@@ -13368,3 +13368,4 @@
 {"timestamp": "2026-09-03T18:21:08.035683", "ticker": "KO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 88.885, "reason": "market data unavailable for KO (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T18:21:08.334272", "ticker": "IT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 196.72, "reason": "stale quote for IT (482.209944s old; limit 180s)"}
 {"timestamp": "2026-09-03T18:21:08.673817", "ticker": "IFF", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 86.46, "reason": "stale quote for IFF (247.863144s old; limit 180s)"}
+{"timestamp": "2026-09-03T18:22:44.073767", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 196.72, "reason": "stale quote for IT (578.119193s old; limit 180s)"}
