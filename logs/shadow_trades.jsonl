@@ -13432,3 +13432,4 @@
 {"timestamp": "2026-09-03T19:27:53.102585", "ticker": "NDAQ", "action": "buy", "engine": "gemini", "confidence": 73, "conviction": 7, "price": 98.11, "reason": "liquidity filter: NDAQ average volume 100,246 < 500,000"}
 {"timestamp": "2026-09-03T19:33:29.229841", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 31.945, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T19:33:29.314121", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 123.94, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T19:42:34.478391", "ticker": "KDP", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 32.92, "reason": "market data unavailable for KDP (bid/ask spread missing)"}
