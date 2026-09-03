@@ -12613,3 +12613,5 @@
 {"timestamp": "2026-09-03T08:56:35.297674", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 10, "price": 275.42, "reason": "stale quote for JNJ (46595.301479s old; limit 180s)"}
 {"timestamp": "2026-09-03T08:58:38.616541", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 32.0, "reason": "stale quote for HPQ (46719.899734s old; limit 180s)"}
 {"timestamp": "2026-09-03T08:58:38.924076", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 275.42, "reason": "stale quote for JNJ (46718.782058s old; limit 180s)"}
+{"timestamp": "2026-09-03T09:01:06.853240", "ticker": "GPC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 137.17, "reason": "stale quote for GPC (46852.685733s old; limit 180s)"}
+{"timestamp": "2026-09-03T09:01:06.853406", "ticker": "HAL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 37.63, "reason": "stale quote for HAL (46852.280388s old; limit 180s)"}
