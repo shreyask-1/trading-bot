@@ -12720,3 +12720,5 @@
 {"timestamp": "2026-09-03T10:04:52.349572", "ticker": "HSIC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 90.385, "reason": "stale quote for HSIC (50673.875519s old; limit 180s)"}
 {"timestamp": "2026-09-03T10:06:45.918900", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 37.63, "reason": "stale quote for HAL (50806.959983s old; limit 180s)"}
 {"timestamp": "2026-09-03T10:06:46.264703", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 950.46, "reason": "stale quote for MU (47423.518721s old; limit 180s)"}
+{"timestamp": "2026-09-03T10:08:32.386758", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 275.42, "reason": "stale quote for JNJ (50910.529858s old; limit 180s)"}
+{"timestamp": "2026-09-03T10:08:32.446943", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 37.63, "reason": "stale quote for HAL (50913.698442s old; limit 180s)"}
