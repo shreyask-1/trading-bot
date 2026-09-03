@@ -13271,3 +13271,5 @@
 {"timestamp": "2026-09-03T17:16:41.358837", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 123.3, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T17:16:42.106976", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 192.94, "reason": "stale quote for IT (296.646522s old; limit 180s)"}
 {"timestamp": "2026-09-03T17:18:44.953495", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 123.2, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T17:22:40.054955", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 122.7, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T17:22:40.128739", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 32.165, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
