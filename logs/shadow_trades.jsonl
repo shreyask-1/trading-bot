@@ -13416,3 +13416,5 @@
 {"timestamp": "2026-09-03T18:56:33.735991", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 122.97, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T18:58:35.733025", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 123.02, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T19:00:51.963016", "ticker": "COIN", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 191.8, "reason": "liquidity filter: COIN average volume 260,977 < 500,000"}
+{"timestamp": "2026-09-03T19:08:44.611587", "ticker": "KDP", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 33.075, "reason": "market data unavailable for KDP (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T19:08:44.611776", "ticker": "IVZ", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 32.59, "reason": "liquidity filter: IVZ average volume 239,185 < 500,000"}
