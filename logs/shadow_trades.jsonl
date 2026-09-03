@@ -13012,3 +13012,5 @@
 {"timestamp": "2026-09-03T13:40:46.772559", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 31.86, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T13:42:37.834840", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 37.795, "reason": "market data unavailable for HAL (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T13:42:38.161358", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 275.65, "reason": "liquidity filter: JNJ average volume 220,084 < 500,000"}
+{"timestamp": "2026-09-03T13:44:34.500799", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 71, "conviction": 7, "price": 937.48, "reason": "market data unavailable for MU (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T13:44:34.843048", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 121.785, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
