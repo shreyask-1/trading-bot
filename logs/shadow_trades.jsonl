@@ -13001,3 +13001,6 @@
 {"timestamp": "2026-09-03T13:28:32.991178", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 32.0, "reason": "stale quote for HPQ (62914.428985s old; limit 180s)"}
 {"timestamp": "2026-09-03T13:30:52.528290", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 37.79, "reason": "stale candle for HAL (1055.9m old; limit 30.0m)"}
 {"timestamp": "2026-09-03T13:30:52.970735", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 31.64, "reason": "stale candle for HPQ (1055.9m old; limit 30.0m)"}
+{"timestamp": "2026-09-03T13:34:38.941927", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 37.76, "reason": "market data unavailable for HAL (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T13:34:39.580978", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 277.62, "reason": "liquidity filter: JNJ average volume 219,857 < 500,000"}
+{"timestamp": "2026-09-03T13:34:39.768494", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 31.64, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
