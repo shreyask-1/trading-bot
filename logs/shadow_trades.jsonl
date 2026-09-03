@@ -12616,3 +12616,5 @@
 {"timestamp": "2026-09-03T09:01:06.853240", "ticker": "GPC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 137.17, "reason": "stale quote for GPC (46852.685733s old; limit 180s)"}
 {"timestamp": "2026-09-03T09:01:06.853406", "ticker": "HAL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 37.63, "reason": "stale quote for HAL (46852.280388s old; limit 180s)"}
 {"timestamp": "2026-09-03T09:02:53.017654", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 37.63, "reason": "stale quote for HAL (46974.083723s old; limit 180s)"}
+{"timestamp": "2026-09-03T09:04:33.986861", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 950.46, "reason": "stale quote for MU (43691.425207s old; limit 180s)"}
+{"timestamp": "2026-09-03T09:04:34.065460", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 37.63, "reason": "stale quote for HAL (47075.303723s old; limit 180s)"}
