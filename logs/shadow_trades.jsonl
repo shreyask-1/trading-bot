@@ -13418,3 +13418,5 @@
 {"timestamp": "2026-09-03T19:00:51.963016", "ticker": "COIN", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 191.8, "reason": "liquidity filter: COIN average volume 260,977 < 500,000"}
 {"timestamp": "2026-09-03T19:07:22.699381", "ticker": "KDP", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 33.08, "reason": "market data unavailable for KDP (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T19:07:22.699563", "ticker": "IVZ", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 32.615, "reason": "liquidity filter: IVZ average volume 239,158 < 500,000"}
+{"timestamp": "2026-09-03T19:09:39.563348", "ticker": "KDP", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 33.085, "reason": "market data unavailable for KDP (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T19:09:39.692966", "ticker": "IVZ", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 32.59, "reason": "liquidity filter: IVZ average volume 239,197 < 500,000"}
