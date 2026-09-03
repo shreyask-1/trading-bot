@@ -13174,3 +13174,5 @@
 {"timestamp": "2026-09-03T15:35:05.949656", "ticker": "OKE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 96.435, "reason": "liquidity filter: OKE average volume 159,778 < 500,000"}
 {"timestamp": "2026-09-03T15:36:48.930251", "ticker": "ORCL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 152.79, "reason": "market data unavailable for ORCL (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T15:36:49.125161", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 121.9, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T15:41:33.495449", "ticker": "ORCL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 152.705, "reason": "market data unavailable for ORCL (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T15:41:33.912129", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 121.51, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
