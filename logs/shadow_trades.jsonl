@@ -13335,3 +13335,5 @@
 {"timestamp": "2026-09-03T17:56:51.550187", "ticker": "J", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 147.71, "reason": "stale quote for J (331.578555s old; limit 180s)"}
 {"timestamp": "2026-09-03T17:56:51.602991", "ticker": "KO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 88.89, "reason": "market data unavailable for KO (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T17:56:51.658329", "ticker": "IBKR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 92.74, "reason": "liquidity filter: IBKR average volume 175,870 < 500,000"}
+{"timestamp": "2026-09-03T17:58:42.453648", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 124.355, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T17:58:42.564063", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 32.305, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
