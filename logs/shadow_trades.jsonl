@@ -13109,3 +13109,5 @@
 {"timestamp": "2026-09-03T14:48:50.720471", "ticker": "NUE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 263.93, "reason": "liquidity filter: NUE average volume 67,721 < 500,000"}
 {"timestamp": "2026-09-03T14:48:50.826720", "ticker": "MPC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 397.29, "reason": "liquidity filter: MPC average volume 105,550 < 500,000"}
 {"timestamp": "2026-09-03T14:48:51.008431", "ticker": "NFLX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 82.07, "reason": "market data unavailable for NFLX (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T14:50:52.105297", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 31.915, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T14:50:52.324647", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 277.16, "reason": "stale quote for JNJ (189.186125s old; limit 180s)"}
