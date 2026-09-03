@@ -13436,3 +13436,6 @@
 {"timestamp": "2026-09-03T19:39:39.975054", "ticker": "CVNA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 72.98, "reason": "liquidity filter: CVNA average volume 392,067 < 500,000"}
 {"timestamp": "2026-09-03T19:39:39.975215", "ticker": "DE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 691.18, "reason": "liquidity filter: DE average volume 70,354 < 500,000"}
 {"timestamp": "2026-09-03T19:45:14.245838", "ticker": "KDP", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 32.945, "reason": "market data unavailable for KDP (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T19:51:00.659658", "ticker": "HIG", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 140.19, "reason": "liquidity filter: HIG average volume 43,214 < 500,000"}
+{"timestamp": "2026-09-03T19:51:00.927816", "ticker": "ICE", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 164.16, "reason": "liquidity filter: ICE average volume 156,789 < 500,000"}
+{"timestamp": "2026-09-03T19:51:01.202278", "ticker": "KDP", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 32.82, "reason": "market data unavailable for KDP (bid/ask spread missing)"}
