@@ -13358,3 +13358,4 @@
 {"timestamp": "2026-09-03T18:14:56.177816", "ticker": "KO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 88.905, "reason": "market data unavailable for KO (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T18:14:56.353444", "ticker": "IT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 196.72, "reason": "liquidity filter: IT average volume 56,886 < 500,000"}
 {"timestamp": "2026-09-03T18:14:56.558808", "ticker": "IFF", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 86.46, "reason": "liquidity filter: IFF average volume 63,382 < 500,000"}
+{"timestamp": "2026-09-03T18:16:45.622217", "ticker": "KDP", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 33.055, "reason": "market data unavailable for KDP (bid/ask spread missing)"}
