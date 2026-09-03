@@ -13133,3 +13133,5 @@
 {"timestamp": "2026-09-03T15:14:53.462395", "ticker": "MPC", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 397.72, "reason": "liquidity filter: MPC average volume 105,699 < 500,000"}
 {"timestamp": "2026-09-03T15:16:54.882889", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 123.155, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T15:16:55.148413", "ticker": "MPC", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 397.5, "reason": "liquidity filter: MPC average volume 105,756 < 500,000"}
+{"timestamp": "2026-09-03T15:18:44.777321", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 123.39, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T15:18:44.777527", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 144.02, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
