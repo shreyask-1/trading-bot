@@ -13374,3 +13374,5 @@
 {"timestamp": "2026-09-03T18:24:39.776286", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 278.12, "reason": "liquidity filter: JNJ average volume 225,498 < 500,000"}
 {"timestamp": "2026-09-03T18:26:44.209742", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 146.24, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T18:26:44.496836", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 32.365, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T18:28:58.982440", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 32.325, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T18:28:59.152002", "ticker": "ICE", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 163.455, "reason": "liquidity filter: ICE average volume 152,607 < 500,000"}
