@@ -13316,3 +13316,5 @@
 {"timestamp": "2026-09-03T17:46:53.582960", "ticker": "IBKR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 92.7, "reason": "liquidity filter: IBKR average volume 175,694 < 500,000"}
 {"timestamp": "2026-09-03T17:48:39.645133", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 194.67, "reason": "liquidity filter: IT average volume 56,720 < 500,000"}
 {"timestamp": "2026-09-03T17:48:39.924987", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 124.45, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T17:50:49.270874", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 194.67, "reason": "stale quote for IT (185.682904s old; limit 180s)"}
+{"timestamp": "2026-09-03T17:50:49.271099", "ticker": "MA", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 585.62, "reason": "liquidity filter: MA average volume 120,935 < 500,000"}
