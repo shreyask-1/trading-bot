@@ -12896,3 +12896,5 @@
 {"timestamp": "2026-09-03T12:23:08.289275", "ticker": "JNJ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 275.42, "reason": "stale quote for JNJ (58988.238531s old; limit 180s)"}
 {"timestamp": "2026-09-03T12:24:38.318282", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 37.63, "reason": "stale quote for HAL (59079.413234s old; limit 180s)"}
 {"timestamp": "2026-09-03T12:24:38.464515", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 275.42, "reason": "stale quote for JNJ (59078.444136s old; limit 180s)"}
+{"timestamp": "2026-09-03T12:26:48.574271", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 151.615, "reason": "stale quote for MRK (59201.836638s old; limit 180s)"}
+{"timestamp": "2026-09-03T12:26:48.574444", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 25.8, "reason": "stale quote for MOS (59200.025177s old; limit 180s)"}
