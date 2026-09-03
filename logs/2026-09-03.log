@@ -12812,3 +12812,37 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; wor
 Shadow report: 12889 shadow candidate(s), 500 rejection group(s)
 Timings: account: 0.0s | risk: 0.9s | decide: 22.1s | watchlist: 0.1s | perf: 0.3s
 
+=== Run at 2026-09-03T12:22:41.508655 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-03 08:22 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
+Account value: $99,059.02
+Cash: $89,705.74 | Holdings (2): {'GEHC': '0.6136 sh (-4.52%)', 'MS': '43.8344 sh (-3.88%)'}
+Sector exposure (cached): Financials 9.4%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.65% | today +0.03% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+Overnight queue deferred 6 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+Morning verification: 3 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
+News: fetched 158, 3 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 34/60 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 7 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 130
+  -> {"ticker": "HAL", "status": "skipped", "reason": "stale quote for HAL (58987.996864s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "HPQ", "status": "skipped", "reason": "stale quote for HPQ (58988.702629s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "HSIC", "status": "skipped", "reason": "stale quote for HSIC (58989.924391s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "ICE", "status": "skipped", "reason": "stale quote for ICE (58992.538269s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "INCY", "status": "skipped", "reason": "stale quote for INCY (59002.422731s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "JKHY", "status": "skipped", "reason": "stale quote for JKHY (59016.555037s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "JNJ", "status": "skipped", "reason": "stale quote for JNJ (58988.238531s old; limit 180s)", "shadow": false, "data_guard": true}
+Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); 3 idea(s) remain subject to the retry cap.
+Run budget reserve reached -- skipping dashboard watchlist sync.
+Run budget reserve reached -- skipping performance snapshot.
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.19% | Max drawdown 0.94% | Daily Sharpe 0.93 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 2 | Equity $99,059.02
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $-377.71 (2 open) | Books: legacy: realized $-1,705.68, unrealized $-377.71
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 12896 shadow candidate(s), 500 rejection group(s)
+Timings: account: 0.0s | risk: 0.7s | decide: 25.4s | watchlist: 0.0s | perf: 0.1s
+
