@@ -2323,6 +2323,9 @@ Timings: account: 0.0s | risk: 0.1s | decide: 5.3s | watchlist: 0.0s | perf: 0.1
 === Run at 2026-09-03T02:07:26.198992 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-02 10:07 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+=== Run at 2026-09-03T02:06:28.690350 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-02 10:06 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,034.04
 Cash: $89,705.74 | Holdings (2): {'GEHC': '0.6136 sh (-4.52%)', 'MS': '43.8344 sh (-4.14%)'}
 Sector exposure (cached): Financials 9.4%, Health Care 0.0%
@@ -2331,6 +2334,7 @@ Open orders (1): MS sell 43.8344
 Risk state: peak $99,703.60 | drawdown 0.67% | today +0.03% | halted: False
 Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
 News: fetched 158, 1 new after dedup, 0 ticker(s) matched.
+News: fetched 158, 2 new after dedup, 0 ticker(s) matched.
 Quant pre-screen: 35/54 candidates passed.
 Gemini proposed 1 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 487
@@ -2343,6 +2347,7 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued CVNA buy (conf 91, stop 69.07, tp 76.76)
   -> queued ELV buy (conf 89, stop 391.77, tp 408.56)
   -> queued EL buy (conf 92, stop 94.46, tp 108.37)
+  -> queued EL buy (conf 85, stop 94.46, tp 108.37)
   -> queued FDS buy (conf 82, stop 290.44, tp 314.51)
   -> queued MCK buy (conf None, stop 838.94, tp 928.28)
   -> queued JNJ buy (conf None, stop 263.885, tp 281.0)
@@ -2356,4 +2361,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 12531 shadow candidate(s), 298 rejection group(s)
 Timings: account: 0.0s | risk: 1.0s | decide: 13.8s | watchlist: 0.2s | perf: 0.3s
+Timings: account: 0.0s | risk: 1.2s | decide: 20.7s | watchlist: 0.1s | perf: 0.3s
 
