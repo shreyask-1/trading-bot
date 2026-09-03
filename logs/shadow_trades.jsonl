@@ -12531,3 +12531,4 @@
 {"timestamp": "2026-09-02T23:58:58.892943", "ticker": "EXPD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 186.25, "reason": "stale quote for EXPD (14350.619231s old; limit 180s)"}
 {"timestamp": "2026-09-03T08:01:07.208820", "ticker": "GPC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 137.17, "reason": "stale quote for GPC (43250.442709s old; limit 180s)"}
 {"timestamp": "2026-09-03T08:01:07.209026", "ticker": "HAL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 37.63, "reason": "stale quote for HAL (43251.120417s old; limit 180s)"}
+{"timestamp": "2026-09-03T08:02:51.089020", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 151.615, "reason": "stale quote for MRK (43367.713731s old; limit 180s)"}
