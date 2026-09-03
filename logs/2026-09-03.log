@@ -14970,3 +14970,39 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; wor
 Shadow report: 13104 shadow candidate(s), 420 rejection group(s)
 Timings: account: 0.0s | risk: 0.2s | decide: 3.9s | watchlist: 0.0s | perf: 0.1s
 
+=== Run at 2026-09-03T14:48:26.143381 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-03 10:48 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,234.36
+Cash: $89,705.74 | Holdings (2): {'GEHC': '0.6136 sh (-6.44%)', 'MS': '43.8344 sh (-2.06%)'}
+Sector exposure (cached): Financials 9.6%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.47% | today +0.20% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+Overnight queue deferred 6 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+Morning verification: 6 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
+News: fetched 157, 1 new after dedup, 1 ticker(s) matched.
+Quant pre-screen: 18/31 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
+Technical fallback cap omitted 3 weaker idea(s) this run.
+Gemini calls used today (all models combined): 183
+  -> {"ticker": "NVDA", "status": "skipped", "reason": "market data unavailable for NVDA (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "MRNA", "status": "skipped", "reason": "market data unavailable for MRNA (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "NOW", "status": "skipped", "reason": "market data unavailable for NOW (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "MOS", "status": "skipped", "reason": "liquidity filter: MOS average volume 478,095 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "NUE", "status": "skipped", "reason": "liquidity filter: NUE average volume 67,721 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "MPC", "status": "skipped", "reason": "liquidity filter: MPC average volume 105,550 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "NDAQ", "status": "skipped", "reason": "entry alignment: price $97.19 is not above SMA-20 $97.27"}
+  -> {"ticker": "NFLX", "status": "skipped", "reason": "market data unavailable for NFLX (bid/ask spread missing)", "shadow": false, "data_guard": true}
+Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); 7 idea(s) remain subject to the retry cap.
+Dashboard watchlist synced (10 symbols) for news/headlines.
+Ending portfolio value: $99,229.98
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.37% | Max drawdown 0.94% | Daily Sharpe 1.82 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 2 | Equity $99,234.36
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $-206.75 (2 open) | Books: legacy: realized $-1,705.68, unrealized $-206.75
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 13111 shadow candidate(s), 415 rejection group(s)
+Timings: account: 0.0s | risk: 0.2s | decide: 24.5s | watchlist: 0.0s | perf: 0.2s
+
