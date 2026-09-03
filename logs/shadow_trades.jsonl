@@ -13111,3 +13111,5 @@
 {"timestamp": "2026-09-03T14:48:51.008431", "ticker": "NFLX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 82.07, "reason": "market data unavailable for NFLX (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T14:50:52.105297", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 31.915, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T14:50:52.324647", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 277.16, "reason": "stale quote for JNJ (189.186125s old; limit 180s)"}
+{"timestamp": "2026-09-03T14:53:24.152150", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 37.985, "reason": "market data unavailable for HAL (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T14:53:24.459664", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 31.83, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
