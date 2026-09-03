@@ -6516,6 +6516,9 @@ Timings: account: 0.0s | risk: 0.6s | decide: 15.3s | watchlist: 0.1s | perf: 0.
 === Run at 2026-09-03T20:39:54.682788 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-03 04:39 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+=== Run at 2026-09-03T20:36:35.170054 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-03 04:36 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,267.16
 Cash: $89,705.74 | Holdings (2): {'GEHC': '0.6136 sh (-5.65%)', 'MS': '43.8344 sh (-1.72%)'}
 Sector exposure (cached): Financials 9.6%, Health Care 0.0%
@@ -6540,6 +6543,23 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued MOS buy (conf 80, stop 24.2, tp 27.5)
   -> queued MSCI buy (conf 79, stop 557.67, tp 595.0)
   -> queued IVZ buy (conf 78, stop 31.000000000000004, tp 35.0)
+News: fetched 156, 6 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 41/64 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 299
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued LULU buy (conf 96, stop 114.91, tp 128.5)
+  -> queued NVDA buy (conf 91, stop 218.5, tp 245.0)
+  -> queued PAYX buy (conf 88, stop 121.5, tp 132.0)
+  -> queued MPC buy (conf 85, stop 365.0, tp 415.00000000000006)
+  -> queued HOOD buy (conf 82, stop 113.22, tp 140.0)
+  -> queued KDP buy (conf 82, stop 31.6, tp 35.93)
+  -> queued NUE buy (conf 82, stop 245.0, tp 285.0)
+  -> queued MRK buy (conf 82, stop 145.0, tp 162.00000000000003)
+  -> queued HPQ buy (conf 80, stop 31.0, tp 34.5)
+  -> queued JNJ buy (conf 80, stop 268.0, tp 290.0)
+  -> queued MSCI buy (conf 79, stop 557.67, tp 595.0)
+  -> queued MA buy (conf 78, stop 565.0, tp 620.0)
 Dashboard watchlist synced (5 symbols) for news/headlines.
 Ending portfolio value: $99,267.16
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
@@ -6549,4 +6569,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 13449 shadow candidate(s), 112 rejection group(s)
 Timings: account: 0.0s | risk: 0.9s | decide: 9.3s | watchlist: 0.1s | perf: 0.2s
+Timings: account: 0.0s | risk: 0.5s | decide: 9.0s | watchlist: 0.1s | perf: 0.2s
 
