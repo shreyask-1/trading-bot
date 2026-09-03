@@ -13024,3 +13024,5 @@
 {"timestamp": "2026-09-03T13:49:01.310080", "ticker": "INCY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 5, "price": 126.44, "reason": "liquidity filter: INCY average volume 45,413 < 500,000"}
 {"timestamp": "2026-09-03T13:49:01.445264", "ticker": "JKHY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 168.675, "reason": "liquidity filter: JKHY average volume 52,620 < 500,000"}
 {"timestamp": "2026-09-03T13:49:01.587018", "ticker": "JNJ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 273.61, "reason": "liquidity filter: JNJ average volume 220,422 < 500,000"}
+{"timestamp": "2026-09-03T13:50:40.810609", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 37.815, "reason": "market data unavailable for HAL (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T13:50:40.903644", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 32.06, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
