@@ -12969,3 +12969,4 @@
 {"timestamp": "2026-09-03T13:13:09.019402", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 37.63, "reason": "stale quote for HAL (61990.085116s old; limit 180s)"}
 {"timestamp": "2026-09-03T13:13:09.337692", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 112.2, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
 {"timestamp": "2026-09-03T13:13:09.638237", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 71, "conviction": 7, "price": 957.78, "reason": "market data unavailable for MU (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T13:14:40.005414", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 275.42, "reason": "stale quote for JNJ (62079.891771s old; limit 180s)"}
