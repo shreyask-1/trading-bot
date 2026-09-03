@@ -13119,3 +13119,5 @@
 {"timestamp": "2026-09-03T14:58:59.843117", "ticker": "JNJ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 277.49, "reason": "liquidity filter: JNJ average volume 221,884 < 500,000"}
 {"timestamp": "2026-09-03T14:59:00.101508", "ticker": "MPC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 397.68, "reason": "liquidity filter: MPC average volume 105,622 < 500,000"}
 {"timestamp": "2026-09-03T14:59:00.646423", "ticker": "IVZ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 32.38, "reason": "liquidity filter: IVZ average volume 232,587 < 500,000"}
+{"timestamp": "2026-09-03T15:04:55.402482", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 123.3, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
+{"timestamp": "2026-09-03T15:04:55.402618", "ticker": "MPC", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 398.005, "reason": "liquidity filter: MPC average volume 105,656 < 500,000"}
