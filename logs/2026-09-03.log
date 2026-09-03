@@ -6728,3 +6728,40 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; wor
 Shadow report: 13449 shadow candidate(s), 112 rejection group(s)
 Timings: account: 0.0s | risk: 0.6s | decide: 24.1s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-09-03T21:01:54.076488 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-03 05:01 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+Account value: $99,294.78
+Cash: $89,705.74 | Holdings (2): {'GEHC': '0.6136 sh (-5.65%)', 'MS': '43.8344 sh (-1.44%)'}
+Sector exposure (cached): Financials 9.6%, Health Care 0.0%
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Open orders (1): MS sell 43.8344
+Risk state: peak $99,703.60 | drawdown 0.41% | today +0.26% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 156, 3 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 14/16 candidates passed.
+Gemini proposed 1 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 301
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued NVDA buy (conf 91, stop 218.5, tp 245.0)
+  -> queued PAYX buy (conf 88, stop 121.5, tp 132.0)
+  -> queued HOOD buy (conf 82, stop 113.22, tp 140.0)
+  -> queued NUE buy (conf 82, stop 245.0, tp 285.0)
+  -> queued HPQ buy (conf 80, stop 31.0, tp 34.5)
+  -> queued MSCI buy (conf 79, stop 557.67, tp 595.0)
+  -> queued IVZ buy (conf 78, stop 31.64, tp 33.63)
+  -> queued LULU buy (conf None, stop 114.91, tp 124.35)
+  -> queued JNJ buy (conf None, stop 263.885, tp 281.0)
+  -> queued KDP buy (conf None, stop 31.6, tp 33.16)
+  -> queued MRK buy (conf None, stop 145.925, tp 156.9)
+  -> queued MRNA buy (conf None, stop 130.05, tp 161.29)
+Dashboard watchlist synced (3 symbols) for news/headlines.
+Ending portfolio value: $99,294.78
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.43% | Max drawdown 0.94% | Daily Sharpe 2.12 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 2 | Equity $99,294.78
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $-141.96 (2 open) | Books: legacy: realized $-1,705.68, unrealized $-141.96
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 13449 shadow candidate(s), 112 rejection group(s)
+Timings: account: 0.0s | risk: 0.2s | decide: 7.5s | watchlist: 0.0s | perf: 0.2s
+
