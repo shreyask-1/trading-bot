@@ -13100,3 +13100,5 @@
 {"timestamp": "2026-09-03T14:44:54.812985", "ticker": "JNJ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 277.16, "reason": "liquidity filter: JNJ average volume 221,634 < 500,000"}
 {"timestamp": "2026-09-03T14:44:55.077354", "ticker": "MCK", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 925.93, "reason": "liquidity filter: MCK average volume 44,050 < 500,000"}
 {"timestamp": "2026-09-03T14:44:55.418798", "ticker": "MPC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 396.99, "reason": "liquidity filter: MPC average volume 105,538 < 500,000"}
+{"timestamp": "2026-09-03T14:46:29.963670", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 277.12, "reason": "liquidity filter: JNJ average volume 221,764 < 500,000"}
+{"timestamp": "2026-09-03T14:46:30.092537", "ticker": "KDP", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 32.765, "reason": "market data unavailable for KDP (bid/ask spread missing)"}
