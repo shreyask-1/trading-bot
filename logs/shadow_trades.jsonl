@@ -14405,3 +14405,6 @@
 {"timestamp": "2026-09-04T14:48:59.662046", "ticker": "HOOD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 121.78, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
 {"timestamp": "2026-09-04T14:48:59.732754", "ticker": "IVZ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 32.945, "reason": "liquidity filter: IVZ average volume 231,726 < 500,000"}
 {"timestamp": "2026-09-04T14:48:59.733004", "ticker": "JKHY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 165.44, "reason": "stale quote for JKHY (836.548098s old; limit 180s)"}
+{"timestamp": "2026-09-04T14:51:22.547920", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 995.68, "reason": "market data unavailable for MU (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T14:51:22.844479", "ticker": "ORCL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 158.44, "reason": "market data unavailable for ORCL (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T14:51:23.148542", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 141.18, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
