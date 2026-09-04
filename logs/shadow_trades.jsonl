@@ -14969,3 +14969,6 @@
 {"timestamp": "2026-09-04T18:30:55.808013", "ticker": "NRG", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 118.96, "reason": "liquidity filter: NRG average volume 126,335 < 500,000"}
 {"timestamp": "2026-09-04T18:30:56.300171", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 141.89, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
 {"timestamp": "2026-09-04T18:30:59.416631", "ticker": "NUE", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 261.405, "reason": "liquidity filter: NUE average volume 69,642 < 500,000"}
+{"timestamp": "2026-09-04T18:32:48.227650", "ticker": "NRG", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 118.95, "reason": "liquidity filter: NRG average volume 126,348 < 500,000"}
+{"timestamp": "2026-09-04T18:32:49.183623", "ticker": "INTC", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 94.895, "reason": "market data unavailable for INTC (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T18:32:51.361255", "ticker": "NUE", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 261.405, "reason": "stale quote for NUE (205.913932s old; limit 180s)"}
