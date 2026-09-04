@@ -14520,3 +14520,6 @@
 {"timestamp": "2026-09-04T15:38:53.036184", "ticker": "NUE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 260.52, "reason": "liquidity filter: NUE average volume 68,819 < 500,000"}
 {"timestamp": "2026-09-04T15:38:54.035285", "ticker": "NVDA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 231.98, "reason": "market data unavailable for NVDA (bid/ask spread missing)"}
 {"timestamp": "2026-09-04T15:38:54.234865", "ticker": "ORCL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 157.495, "reason": "market data unavailable for ORCL (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T15:40:43.148275", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 999.52, "reason": "market data unavailable for MU (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T15:40:44.064479", "ticker": "INTC", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 94.9, "reason": "market data unavailable for INTC (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T15:40:44.523672", "ticker": "NRG", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 116.65, "reason": "stale quote for NRG (226.296839s old; limit 180s)"}
