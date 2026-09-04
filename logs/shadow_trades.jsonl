@@ -14312,3 +14312,6 @@
 {"timestamp": "2026-09-04T14:18:44.450612", "ticker": "NFLX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 81.225, "reason": "market data unavailable for NFLX (bid/ask spread missing)"}
 {"timestamp": "2026-09-04T14:18:44.804498", "ticker": "NVDA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 233.99, "reason": "market data unavailable for NVDA (bid/ask spread missing)"}
 {"timestamp": "2026-09-04T14:18:45.158849", "ticker": "PFE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 28.395, "reason": "market data unavailable for PFE (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T14:20:35.488778", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 993.71, "reason": "market data unavailable for MU (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T14:20:35.640971", "ticker": "ORCL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 157.27, "reason": "market data unavailable for ORCL (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T14:20:35.777154", "ticker": "NUE", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 261.05, "reason": "liquidity filter: NUE average volume 68,199 < 500,000"}
