@@ -14332,3 +14332,6 @@
 {"timestamp": "2026-09-04T14:28:51.933986", "ticker": "HOOD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 122.185, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
 {"timestamp": "2026-09-04T14:28:51.944010", "ticker": "HPQ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 31.995, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
 {"timestamp": "2026-09-04T14:28:51.954821", "ticker": "HSIC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 90.29, "reason": "stale quote for HSIC (204.034817s old; limit 180s)"}
+{"timestamp": "2026-09-04T14:30:49.104371", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 997.61, "reason": "market data unavailable for MU (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T14:30:49.220016", "ticker": "ORCL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 158.275, "reason": "market data unavailable for ORCL (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T14:30:49.524037", "ticker": "NUE", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 262.175, "reason": "liquidity filter: NUE average volume 68,265 < 500,000"}
