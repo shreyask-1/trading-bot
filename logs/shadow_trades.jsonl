@@ -14146,3 +14146,6 @@
 {"timestamp": "2026-09-04T13:14:37.419686", "ticker": "ORCL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 158.24, "reason": "stale quote for ORCL (603.179808s old; limit 180s)"}
 {"timestamp": "2026-09-04T13:14:37.541956", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 143.4, "reason": "stale quote for NOW (3477.74585s old; limit 180s)"}
 {"timestamp": "2026-09-04T13:14:37.619213", "ticker": "NVDA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 230.49, "reason": "stale quote for NVDA (240.358286s old; limit 180s)"}
+{"timestamp": "2026-09-04T13:16:41.225460", "ticker": "ORCL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 159.0, "reason": "market data unavailable for ORCL (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T13:16:41.359031", "ticker": "NVDA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 230.49, "reason": "stale quote for NVDA (364.051445s old; limit 180s)"}
+{"timestamp": "2026-09-04T13:16:41.418156", "ticker": "PAYX", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 125.13, "reason": "stale quote for PAYX (62206.377634s old; limit 180s)"}
