@@ -14725,3 +14725,6 @@
 {"timestamp": "2026-09-04T16:54:39.461060", "ticker": "NRG", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 117.635, "reason": "liquidity filter: NRG average volume 124,093 < 500,000"}
 {"timestamp": "2026-09-04T16:54:39.833195", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 1004.92, "reason": "market data unavailable for MU (bid/ask spread missing)"}
 {"timestamp": "2026-09-04T16:54:40.373126", "ticker": "INTC", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 95.66, "reason": "market data unavailable for INTC (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T16:56:32.941929", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 1005.77, "reason": "market data unavailable for MU (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T16:56:33.052063", "ticker": "NRG", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 117.635, "reason": "liquidity filter: NRG average volume 124,106 < 500,000"}
+{"timestamp": "2026-09-04T16:56:33.367066", "ticker": "INTC", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 95.61, "reason": "market data unavailable for INTC (bid/ask spread missing)"}
