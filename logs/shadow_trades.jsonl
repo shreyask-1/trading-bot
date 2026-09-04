@@ -14963,3 +14963,6 @@
 {"timestamp": "2026-09-04T18:26:44.217273", "ticker": "NRG", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 118.78, "reason": "liquidity filter: NRG average volume 126,257 < 500,000"}
 {"timestamp": "2026-09-04T18:26:44.512163", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 141.94, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
 {"timestamp": "2026-09-04T18:26:46.236329", "ticker": "NUE", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 261.18, "reason": "stale quote for NUE (322.282009s old; limit 180s)"}
+{"timestamp": "2026-09-04T18:28:42.647299", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 142.14, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T18:28:44.159521", "ticker": "NUE", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 261.38, "reason": "liquidity filter: NUE average volume 69,467 < 500,000"}
+{"timestamp": "2026-09-04T18:28:44.495020", "ticker": "OKE", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 95.15, "reason": "liquidity filter: OKE average volume 162,154 < 500,000"}
