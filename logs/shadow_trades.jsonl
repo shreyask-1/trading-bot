@@ -13977,3 +13977,6 @@
 {"timestamp": "2026-09-04T12:10:40.288845", "ticker": "PFE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 28.81, "reason": "stale quote for PFE (58241.852516s old; limit 180s)"}
 {"timestamp": "2026-09-04T12:10:40.469691", "ticker": "PRU", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 123.18, "reason": "stale quote for PRU (58252.628038s old; limit 180s)"}
 {"timestamp": "2026-09-04T12:10:40.631663", "ticker": "OKE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 95.75, "reason": "stale quote for OKE (58245.785085s old; limit 180s)"}
+{"timestamp": "2026-09-04T12:12:51.099226", "ticker": "STLD", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 245.82, "reason": "stale quote for STLD (58380.329495s old; limit 180s)"}
+{"timestamp": "2026-09-04T12:12:51.099414", "ticker": "SPGI", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 450.6, "reason": "stale quote for SPGI (58362.007922s old; limit 180s)"}
+{"timestamp": "2026-09-04T12:12:51.099563", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 71.48, "reason": "stale quote for SWKS (58361.474272s old; limit 180s)"}
