@@ -14736,3 +14736,5 @@
 {"timestamp": "2026-09-04T16:59:06.112239", "ticker": "NVDA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 231.58, "reason": "market data unavailable for NVDA (bid/ask spread missing)"}
 {"timestamp": "2026-09-04T16:59:06.797473", "ticker": "NWS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 34.185, "reason": "liquidity filter: NWS average volume 60,378 < 500,000"}
 {"timestamp": "2026-09-04T16:59:07.150200", "ticker": "ORCL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 158.56, "reason": "market data unavailable for ORCL (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T17:01:02.109758", "ticker": "MU", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 1004.3, "reason": "market data unavailable for MU (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T17:01:02.110001", "ticker": "NEM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 128.47, "reason": "liquidity filter: NEM average volume 277,525 < 500,000"}
