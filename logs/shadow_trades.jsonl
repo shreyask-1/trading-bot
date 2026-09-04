@@ -13816,3 +13816,6 @@
 {"timestamp": "2026-09-04T10:48:36.593302", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 145.58, "reason": "stale quote for NOW (53322.330394s old; limit 180s)"}
 {"timestamp": "2026-09-04T10:48:36.855358", "ticker": "NVDA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 228.54, "reason": "stale quote for NVDA (53317.142697s old; limit 180s)"}
 {"timestamp": "2026-09-04T10:48:37.102826", "ticker": "NUE", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 262.475, "reason": "stale quote for NUE (53321.919694s old; limit 180s)"}
+{"timestamp": "2026-09-04T10:50:38.789817", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 148.81, "reason": "stale quote for MRNA (53449.615386s old; limit 180s)"}
+{"timestamp": "2026-09-04T10:50:38.942990", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 145.58, "reason": "stale quote for NOW (53444.745635s old; limit 180s)"}
+{"timestamp": "2026-09-04T10:50:39.084365", "ticker": "NVDA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 228.54, "reason": "stale quote for NVDA (53439.456411s old; limit 180s)"}
