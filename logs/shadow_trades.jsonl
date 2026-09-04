@@ -13942,3 +13942,5 @@
 {"timestamp": "2026-09-04T11:58:34.556228", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 145.58, "reason": "stale quote for NOW (57520.395405s old; limit 180s)"}
 {"timestamp": "2026-09-04T11:58:34.699554", "ticker": "NVDA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 228.54, "reason": "stale quote for NVDA (57515.066637s old; limit 180s)"}
 {"timestamp": "2026-09-04T11:58:34.821663", "ticker": "NUE", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 262.475, "reason": "stale quote for NUE (57519.744792s old; limit 180s)"}
+{"timestamp": "2026-09-04T12:01:05.005762", "ticker": "OKE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 95.75, "reason": "stale quote for OKE (57649.889034s old; limit 180s)"}
+{"timestamp": "2026-09-04T12:01:05.005983", "ticker": "MSFT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 510.15, "reason": "stale quote for MSFT (57647.812984s old; limit 180s)"}
