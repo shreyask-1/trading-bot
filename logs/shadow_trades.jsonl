@@ -15043,3 +15043,6 @@
 {"timestamp": "2026-09-04T19:07:04.538677", "ticker": "NWS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 34.12, "reason": "liquidity filter: NWS average volume 60,969 < 500,000"}
 {"timestamp": "2026-09-04T19:07:04.616476", "ticker": "PFE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 28.47, "reason": "market data unavailable for PFE (bid/ask spread missing)"}
 {"timestamp": "2026-09-04T19:07:05.109537", "ticker": "NTRS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 187.42, "reason": "stale quote for NTRS (248.018046s old; limit 180s)"}
+{"timestamp": "2026-09-04T19:08:35.355494", "ticker": "NRG", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 118.45, "reason": "liquidity filter: NRG average volume 127,073 < 500,000"}
+{"timestamp": "2026-09-04T19:08:35.993402", "ticker": "NUE", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 261.72, "reason": "stale quote for NUE (1450.04109s old; limit 180s)"}
+{"timestamp": "2026-09-04T19:08:36.056880", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 141.95, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
