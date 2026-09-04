@@ -15006,3 +15006,5 @@
 {"timestamp": "2026-09-04T18:48:50.789130", "ticker": "NRG", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 118.745, "reason": "liquidity filter: NRG average volume 126,652 < 500,000"}
 {"timestamp": "2026-09-04T18:48:51.993583", "ticker": "NUE", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 261.72, "reason": "stale quote for NUE (265.47127s old; limit 180s)"}
 {"timestamp": "2026-09-04T18:48:52.252223", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 141.96, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T18:50:58.904850", "ticker": "HAL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 37.02, "reason": "market data unavailable for HAL (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T18:50:58.904989", "ticker": "HOOD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 122.45, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
