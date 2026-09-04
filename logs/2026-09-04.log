@@ -10896,6 +10896,9 @@ Timings: account: 0.0s | risk: 0.8s | decide: 12.4s | watchlist: 0.1s | perf: 0.
 === Run at 2026-09-04T10:11:24.272800 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-04 06:11 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
+=== Run at 2026-09-04T10:10:38.063921 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-04 06:10 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
 Account value: $99,260.10
 Cash: $89,705.74 | Holdings (2): {'GEHC': '0.6136 sh (-6.72%)', 'MS': '43.8344 sh (-1.79%)'}
 Sector exposure (cached): Financials 9.6%, Health Care 0.0%
@@ -10912,6 +10915,13 @@ Gemini calls used today (all models combined): 85
   -> {"ticker": "MRNA", "status": "skipped", "reason": "stale quote for MRNA (51108.414849s old; limit 180s)", "shadow": false, "data_guard": true}
   -> {"ticker": "NOW", "status": "skipped", "reason": "stale quote for NOW (51103.726647s old; limit 180s)", "shadow": false, "data_guard": true}
   -> {"ticker": "NVDA", "status": "skipped", "reason": "stale quote for NVDA (51098.682389s old; limit 180s)", "shadow": false, "data_guard": true}
+News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 41/60 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 85
+  -> {"ticker": "MRNA", "status": "skipped", "reason": "stale quote for MRNA (51057.077371s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "NOW", "status": "skipped", "reason": "stale quote for NOW (51052.214612s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "NVDA", "status": "skipped", "reason": "stale quote for NVDA (51046.924457s old; limit 180s)", "shadow": false, "data_guard": true}
 Overnight queue kept 12 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
 Dashboard watchlist synced (5 symbols) for news/headlines.
 Ending portfolio value: $99,260.10
@@ -10922,4 +10932,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 13749 shadow candidate(s), 341 rejection group(s)
 Timings: account: 0.0s | risk: 1.0s | decide: 12.6s | watchlist: 0.2s | perf: 0.2s
+Timings: account: 0.0s | risk: 0.4s | decide: 7.8s | watchlist: 0.1s | perf: 0.2s
 
