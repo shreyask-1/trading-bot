@@ -15059,3 +15059,6 @@
 {"timestamp": "2026-09-04T19:12:42.311950", "ticker": "NVDA", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 230.09, "reason": "market data unavailable for NVDA (bid/ask spread missing)"}
 {"timestamp": "2026-09-04T19:14:55.155986", "ticker": "SWKS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 73.29, "reason": "liquidity filter: SWKS average volume 243,948 < 500,000"}
 {"timestamp": "2026-09-04T19:14:55.156180", "ticker": "SYF", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 80.09, "reason": "liquidity filter: SYF average volume 144,996 < 500,000"}
+{"timestamp": "2026-09-04T19:16:41.624665", "ticker": "NRG", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 118.31, "reason": "liquidity filter: NRG average volume 127,298 < 500,000"}
+{"timestamp": "2026-09-04T19:16:42.551298", "ticker": "INTC", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 94.615, "reason": "market data unavailable for INTC (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T19:16:42.930668", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 141.95, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
