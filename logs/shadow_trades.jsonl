@@ -14504,3 +14504,6 @@
 {"timestamp": "2026-09-04T15:28:38.423474", "ticker": "PFE", "action": "buy", "engine": "gemini", "confidence": 83, "conviction": 8, "price": 28.56, "reason": "market data unavailable for PFE (bid/ask spread missing)"}
 {"timestamp": "2026-09-04T15:31:04.065403", "ticker": "SWKS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 73.65, "reason": "liquidity filter: SWKS average volume 224,824 < 500,000"}
 {"timestamp": "2026-09-04T15:31:04.065612", "ticker": "SYF", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 80.07, "reason": "liquidity filter: SYF average volume 142,856 < 500,000"}
+{"timestamp": "2026-09-04T15:32:37.532817", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 1000.86, "reason": "market data unavailable for MU (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T15:32:38.244503", "ticker": "INTC", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 94.965, "reason": "market data unavailable for INTC (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T15:32:38.536374", "ticker": "ORCL", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 157.47, "reason": "market data unavailable for ORCL (bid/ask spread missing)"}
