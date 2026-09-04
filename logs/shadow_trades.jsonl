@@ -14378,3 +14378,6 @@
 {"timestamp": "2026-09-04T14:40:58.215527", "ticker": "NFLX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 80.59, "reason": "market data unavailable for NFLX (bid/ask spread missing)"}
 {"timestamp": "2026-09-04T14:40:58.880343", "ticker": "NVDA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 233.62, "reason": "market data unavailable for NVDA (bid/ask spread missing)"}
 {"timestamp": "2026-09-04T14:40:59.173723", "ticker": "PFE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 28.48, "reason": "market data unavailable for PFE (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T14:42:40.267795", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 999.13, "reason": "market data unavailable for MU (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T14:42:41.077860", "ticker": "NVDA", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 233.59, "reason": "market data unavailable for NVDA (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T14:42:41.837883", "ticker": "NUE", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 261.98, "reason": "liquidity filter: NUE average volume 68,301 < 500,000"}
