@@ -14216,3 +14216,6 @@
 {"timestamp": "2026-09-04T13:36:57.795334", "ticker": "PFE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 28.63, "reason": "market data unavailable for PFE (bid/ask spread missing)"}
 {"timestamp": "2026-09-04T13:36:58.237052", "ticker": "PRU", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 123.205, "reason": "liquidity filter: PRU average volume 59,946 < 500,000"}
 {"timestamp": "2026-09-04T13:36:58.604172", "ticker": "OKE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 95.285, "reason": "stale quote for OKE (272.07608s old; limit 180s)"}
+{"timestamp": "2026-09-04T13:38:40.438476", "ticker": "ORCL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 158.785, "reason": "market data unavailable for ORCL (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T13:38:40.671785", "ticker": "NVDA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 232.93, "reason": "market data unavailable for NVDA (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T13:38:40.923395", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 140.97, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
