@@ -14437,3 +14437,5 @@
 {"timestamp": "2026-09-04T14:58:52.877489", "ticker": "TGT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 163.68, "reason": "stale quote for TGT (238.030753s old; limit 180s)"}
 {"timestamp": "2026-09-04T15:01:00.244540", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 1002.365, "reason": "market data unavailable for MU (bid/ask spread missing)"}
 {"timestamp": "2026-09-04T15:01:00.244693", "ticker": "INTC", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 95.23, "reason": "market data unavailable for INTC (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T15:02:50.561617", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 1001.715, "reason": "market data unavailable for MU (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T15:02:51.527429", "ticker": "INTC", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 95.215, "reason": "market data unavailable for INTC (bid/ask spread missing)"}
