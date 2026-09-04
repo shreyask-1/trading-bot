@@ -14093,3 +14093,6 @@
 {"timestamp": "2026-09-04T12:54:47.653163", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 143.4, "reason": "stale quote for NOW (2287.888183s old; limit 180s)"}
 {"timestamp": "2026-09-04T12:54:47.726891", "ticker": "NVDA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 230.7, "reason": "market data unavailable for NVDA (bid/ask spread missing)"}
 {"timestamp": "2026-09-04T12:54:47.806882", "ticker": "ORCL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 159.0, "reason": "market data unavailable for ORCL (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T12:56:40.240606", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 143.4, "reason": "stale quote for NOW (2400.504036s old; limit 180s)"}
+{"timestamp": "2026-09-04T12:56:40.302887", "ticker": "NVDA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 230.7, "reason": "stale quote for NVDA (235.86407s old; limit 180s)"}
+{"timestamp": "2026-09-04T12:56:40.371776", "ticker": "ORCL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 158.95, "reason": "market data unavailable for ORCL (bid/ask spread missing)"}
