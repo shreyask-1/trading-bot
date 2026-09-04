@@ -14435,3 +14435,5 @@
 {"timestamp": "2026-09-04T14:58:52.765047", "ticker": "TEL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 208.57, "reason": "liquidity filter: TEL average volume 136,173 < 500,000"}
 {"timestamp": "2026-09-04T14:58:52.818999", "ticker": "TECH", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 72.46, "reason": "stale quote for TECH (390.230987s old; limit 180s)"}
 {"timestamp": "2026-09-04T14:58:52.877489", "ticker": "TGT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 163.68, "reason": "stale quote for TGT (238.030753s old; limit 180s)"}
+{"timestamp": "2026-09-04T15:01:00.244540", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 1002.365, "reason": "market data unavailable for MU (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T15:01:00.244693", "ticker": "INTC", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 95.23, "reason": "market data unavailable for INTC (bid/ask spread missing)"}
