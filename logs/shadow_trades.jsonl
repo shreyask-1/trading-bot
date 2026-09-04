@@ -13703,3 +13703,7 @@
 {"timestamp": "2026-09-04T09:40:58.453128", "ticker": "PAYX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 125.13, "reason": "stale quote for PAYX (49263.267019s old; limit 180s)"}
 {"timestamp": "2026-09-04T09:40:58.707688", "ticker": "PFE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 28.81, "reason": "stale quote for PFE (49260.198815s old; limit 180s)"}
 {"timestamp": "2026-09-04T09:40:59.025524", "ticker": "MRK", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 152.325, "reason": "stale quote for MRK (49258.980062s old; limit 180s)"}
+{"timestamp": "2026-09-04T09:42:37.661320", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 152.325, "reason": "stale quote for MRK (49357.632116s old; limit 180s)"}
+{"timestamp": "2026-09-04T09:42:37.930286", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 148.81, "reason": "stale quote for MRNA (49368.65137s old; limit 180s)"}
+{"timestamp": "2026-09-04T09:42:38.185632", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 145.58, "reason": "stale quote for NOW (49363.920348s old; limit 180s)"}
+{"timestamp": "2026-09-04T09:42:38.445516", "ticker": "NUE", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 262.475, "reason": "stale quote for NUE (49363.250401s old; limit 180s)"}
