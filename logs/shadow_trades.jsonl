@@ -13720,3 +13720,6 @@
 {"timestamp": "2026-09-04T09:50:34.209949", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 145.58, "reason": "stale quote for NOW (49840.071589s old; limit 180s)"}
 {"timestamp": "2026-09-04T09:50:34.277344", "ticker": "NVDA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 228.54, "reason": "stale quote for NVDA (49834.706142s old; limit 180s)"}
 {"timestamp": "2026-09-04T09:50:34.325768", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 152.325, "reason": "stale quote for MRK (49834.455715s old; limit 180s)"}
+{"timestamp": "2026-09-04T09:52:38.228864", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 148.81, "reason": "stale quote for MRNA (49968.959736s old; limit 180s)"}
+{"timestamp": "2026-09-04T09:52:38.484071", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 152.325, "reason": "stale quote for MRK (49958.462296s old; limit 180s)"}
+{"timestamp": "2026-09-04T09:52:38.742972", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 145.58, "reason": "stale quote for NOW (49964.478741s old; limit 180s)"}
