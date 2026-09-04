@@ -13831,3 +13831,6 @@
 {"timestamp": "2026-09-04T11:00:44.951063", "ticker": "MSFT", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 510.15, "reason": "stale quote for MSFT (54042.885602s old; limit 180s)"}
 {"timestamp": "2026-09-04T11:00:44.951294", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 957.46, "reason": "stale quote for MU (53964.363815s old; limit 180s)"}
 {"timestamp": "2026-09-04T11:00:44.951462", "ticker": "MSCI", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 574.52, "reason": "stale quote for MSCI (54050.263045s old; limit 180s)"}
+{"timestamp": "2026-09-04T11:02:42.307321", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 145.58, "reason": "stale quote for NOW (54163.657315s old; limit 180s)"}
+{"timestamp": "2026-09-04T11:02:42.502126", "ticker": "MSFT", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 510.15, "reason": "stale quote for MSFT (54164.611082s old; limit 180s)"}
+{"timestamp": "2026-09-04T11:02:42.693556", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 957.46, "reason": "stale quote for MU (54085.693177s old; limit 180s)"}
