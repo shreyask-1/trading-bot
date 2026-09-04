@@ -14681,3 +14681,6 @@
 {"timestamp": "2026-09-04T16:38:58.350000", "ticker": "NVDA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 231.41, "reason": "market data unavailable for NVDA (bid/ask spread missing)"}
 {"timestamp": "2026-09-04T16:38:59.379209", "ticker": "NWS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 34.19, "reason": "liquidity filter: NWS average volume 60,302 < 500,000"}
 {"timestamp": "2026-09-04T16:38:59.906604", "ticker": "ORCL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 157.64, "reason": "market data unavailable for ORCL (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T16:40:42.980641", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 1004.465, "reason": "market data unavailable for MU (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T16:40:43.133230", "ticker": "NRG", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 116.83, "reason": "liquidity filter: NRG average volume 123,860 < 500,000"}
+{"timestamp": "2026-09-04T16:40:44.005842", "ticker": "INTC", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 95.48, "reason": "market data unavailable for INTC (bid/ask spread missing)"}
