@@ -14738,3 +14738,6 @@
 {"timestamp": "2026-09-04T16:59:07.150200", "ticker": "ORCL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 158.56, "reason": "market data unavailable for ORCL (bid/ask spread missing)"}
 {"timestamp": "2026-09-04T17:01:02.109758", "ticker": "MU", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 1004.3, "reason": "market data unavailable for MU (bid/ask spread missing)"}
 {"timestamp": "2026-09-04T17:01:02.110001", "ticker": "NEM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 128.47, "reason": "liquidity filter: NEM average volume 277,525 < 500,000"}
+{"timestamp": "2026-09-04T17:02:55.413135", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 1003.555, "reason": "market data unavailable for MU (bid/ask spread missing)"}
+{"timestamp": "2026-09-04T17:02:55.733651", "ticker": "NRG", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 117.4, "reason": "liquidity filter: NRG average volume 124,204 < 500,000"}
+{"timestamp": "2026-09-04T17:02:55.733838", "ticker": "NVDA", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 231.51, "reason": "market data unavailable for NVDA (bid/ask spread missing)"}
