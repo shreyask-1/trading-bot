@@ -13999,3 +13999,6 @@
 {"timestamp": "2026-09-04T12:18:46.466080", "ticker": "PFE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 28.81, "reason": "stale quote for PFE (58728.007075s old; limit 180s)"}
 {"timestamp": "2026-09-04T12:18:46.613343", "ticker": "PRU", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 123.18, "reason": "stale quote for PRU (58738.802295s old; limit 180s)"}
 {"timestamp": "2026-09-04T12:18:46.828636", "ticker": "OKE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 95.75, "reason": "stale quote for OKE (58731.929032s old; limit 180s)"}
+{"timestamp": "2026-09-04T12:20:40.275585", "ticker": "MA", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 585.71, "reason": "stale quote for MA (58834.560563s old; limit 180s)"}
+{"timestamp": "2026-09-04T12:20:40.332102", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 143.4, "reason": "stale quote for NOW (240.597002s old; limit 180s)"}
+{"timestamp": "2026-09-04T12:20:40.436706", "ticker": "NVDA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 228.54, "reason": "stale quote for NVDA (58840.828453s old; limit 180s)"}
