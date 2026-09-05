@@ -508,6 +508,9 @@ Timings: account: 0.0s | risk: 0.8s | decide: 7.9s | watchlist: 0.1s | perf: 0.3
 === Run at 2026-09-05T00:29:11.751895 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-04 08:29 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+=== Run at 2026-09-05T00:28:35.151809 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-04 08:28 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,292.93
 Cash: $89,705.74 | Holdings (2): {'GEHC': '0.6136 sh (-6.82%)', 'MS': '43.8344 sh (-1.45%)'}
 Sector exposure (cached): Financials 9.6%, Health Care 0.0%
@@ -532,6 +535,15 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued MOS buy (conf None, stop 23.325, tp 26.29)
   -> queued ORCL buy (conf 82, stop 149.0, tp 175.0)
   -> queued NVDA buy (conf 85, stop 215.0, tp 250.0)
+  -> queued NRG buy (conf 85, stop 111.0, tp 130.0)
+  -> queued INTC buy (conf 80, stop 85.0, tp 105.0)
+  -> queued MU buy (conf 84, stop 960.0, tp 1100.0)
+  -> queued NUE buy (conf None, stop 243.54, tp 267.24)
+  -> queued OKE buy (conf 84, stop 91.5, tp 102.0)
+  -> queued SMCI buy (conf None, stop 34.095, tp 40.905)
+  -> queued MOS buy (conf None, stop 23.325, tp 26.29)
+  -> queued ORCL buy (conf 82, stop 149.0, tp 175.0)
+  -> queued NVDA buy (conf 88, stop 215.0, tp 250.0)
 Dashboard watchlist synced (5 symbols) for news/headlines.
 Ending portfolio value: $99,292.93
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
@@ -541,4 +553,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 15174 shadow candidate(s), 78 rejection group(s)
 Timings: account: 0.0s | risk: 0.6s | decide: 6.8s | watchlist: 0.1s | perf: 0.2s
+Timings: account: 0.0s | risk: 1.0s | decide: 8.7s | watchlist: 0.1s | perf: 0.3s
 
