@@ -18560,6 +18560,7 @@ Shadow report: 15174 shadow candidate(s), 78 rejection group(s)
 Timings: account: 0.0s | risk: 1.0s | decide: 7.5s | watchlist: 0.2s | perf: 0.3s
 
 === Run at 2026-09-06T16:34:53.863405 ===
+=== Run at 2026-09-06T16:34:26.404487 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-06 12:34 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,291.62
@@ -18572,6 +18573,9 @@ Market regime: BULLISH (position-size multiplier: 100% incl. circuit breaker 100
 News: fetched 158, 1 new after dedup, 0 ticker(s) matched.
 Quant pre-screen: 41/66 candidates passed.
 Gemini proposed 3 trade(s) meeting the conviction bar.
+News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 41/66 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 241
 Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
   -> queued CNC buy (conf 89, stop 63.66, tp 70.5)
@@ -18587,6 +18591,14 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued AAPL buy (conf 84, stop 302.0, tp 345.0)
   -> queued SMCI buy (conf 75, stop 35.0, tp 45.0)
 Dashboard watchlist synced (5 symbols) for news/headlines.
+  -> queued NVDA buy (conf 88, stop 215.0, tp 250.0)
+  -> queued SLB buy (conf 85, stop 52.01, tp 60.46)
+  -> queued TEL buy (conf 85, stop 197.0, tp 220.0)
+  -> queued CEG buy (conf 84, stop 269.66, tp 315.0)
+  -> queued EPAM buy (conf 84, stop 107.18, tp 121.07)
+  -> queued AAPL buy (conf 84, stop 302.0, tp 345.0)
+  -> queued SMCI buy (conf 79, stop 36.5, tp 44.0)
+Dashboard watchlist synced (4 symbols) for news/headlines.
 Ending portfolio value: $99,291.62
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
 Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
@@ -18595,4 +18607,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 15174 shadow candidate(s), 78 rejection group(s)
 Timings: account: 0.0s | risk: 0.4s | decide: 3.6s | watchlist: 0.0s | perf: 0.2s
+Timings: account: 0.0s | risk: 0.1s | decide: 3.0s | watchlist: 0.1s | perf: 0.2s
 
