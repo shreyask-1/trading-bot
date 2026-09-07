@@ -15305,3 +15305,5 @@
 {"timestamp": "2026-09-07T22:42:52.986361", "ticker": "EPAM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 117.26, "reason": "stale quote for EPAM (268999.73209s old; limit 180s)"}
 {"timestamp": "2026-09-07T22:44:32.064693", "ticker": "EL", "action": "buy", "engine": "gemini", "confidence": 95, "conviction": 10, "price": 103.78, "reason": "stale quote for EL (269082.732087s old; limit 180s)"}
 {"timestamp": "2026-09-07T22:44:32.125499", "ticker": "ELV", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 407.45, "reason": "stale quote for ELV (269073.421665s old; limit 180s)"}
+{"timestamp": "2026-09-07T22:46:32.473964", "ticker": "EG", "action": "buy", "engine": "gemini", "confidence": 90.0, "conviction": 9, "price": 380.63, "reason": "stale quote for EG (269212.85568s old; limit 180s)"}
+{"timestamp": "2026-09-07T22:46:32.514011", "ticker": "EL", "action": "buy", "engine": "gemini", "confidence": 95.0, "conviction": 10, "price": 103.78, "reason": "stale quote for EL (269203.181447s old; limit 180s)"}
