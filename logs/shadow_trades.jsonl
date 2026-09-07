@@ -15223,3 +15223,6 @@
 {"timestamp": "2026-09-07T21:56:56.430962", "ticker": "CVX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 208.55, "reason": "stale quote for CVX (266216.728185s old; limit 180s)"}
 {"timestamp": "2026-09-07T21:56:56.736721", "ticker": "DE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 693.61, "reason": "stale quote for DE (266220.685128s old; limit 180s)"}
 {"timestamp": "2026-09-07T21:56:57.032656", "ticker": "EPAM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 117.26, "reason": "stale quote for EPAM (266243.591198s old; limit 180s)"}
+{"timestamp": "2026-09-07T21:58:38.615202", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 32.64, "reason": "stale quote for HPQ (266320.350492s old; limit 180s)"}
+{"timestamp": "2026-09-07T21:58:38.904937", "ticker": "HIG", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 138.35, "reason": "stale quote for HIG (266330.987145s old; limit 180s)"}
+{"timestamp": "2026-09-07T21:58:39.191014", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 37.08, "reason": "stale quote for HAL (266320.413776s old; limit 180s)"}
