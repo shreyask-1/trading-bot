@@ -15356,3 +15356,5 @@
 {"timestamp": "2026-09-07T23:22:50.375224", "ticker": "CVX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 208.55, "reason": "stale quote for CVX (271370.858226s old; limit 180s)"}
 {"timestamp": "2026-09-07T23:22:50.419824", "ticker": "DE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 693.61, "reason": "stale quote for DE (271374.564314s old; limit 180s)"}
 {"timestamp": "2026-09-07T23:22:50.465014", "ticker": "EPAM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 117.26, "reason": "stale quote for EPAM (271397.209631s old; limit 180s)"}
+{"timestamp": "2026-09-07T23:24:31.839559", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 55.16, "reason": "stale quote for EQT (271477.48331s old; limit 180s)"}
+{"timestamp": "2026-09-07T23:24:32.026135", "ticker": "EL", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 103.78, "reason": "stale quote for EL (271482.580097s old; limit 180s)"}
