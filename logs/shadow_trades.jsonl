@@ -15760,3 +15760,6 @@
 {"timestamp": "2026-09-08T14:10:37.714612", "ticker": "ICE", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 159.44, "reason": "stale quote for ICE (483.077763s old; limit 180s)"}
 {"timestamp": "2026-09-08T14:12:41.346655", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 26.425, "reason": "stale candle for MOS (612.7m old; limit 30.0m)"}
 {"timestamp": "2026-09-08T14:12:41.346848", "ticker": "MPC", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 397.845, "reason": "stale candle for MPC (612.7m old; limit 30.0m)"}
+{"timestamp": "2026-09-08T14:18:38.661418", "ticker": "KDP", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 32.57, "reason": "stale candle for KDP (618.6m old; limit 30.0m)"}
+{"timestamp": "2026-09-08T14:18:38.965188", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 71, "conviction": 7, "price": 1016.52, "reason": "market data unavailable for MU (bid/ask spread missing)"}
+{"timestamp": "2026-09-08T14:18:39.265406", "ticker": "ICE", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 8, "price": 159.35, "reason": "stale candle for ICE (618.7m old; limit 30.0m)"}
