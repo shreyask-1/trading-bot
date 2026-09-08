@@ -15809,3 +15809,5 @@
 {"timestamp": "2026-09-08T15:06:59.732121", "ticker": "KDP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 32.775, "reason": "market data unavailable for KDP (bid/ask spread missing)"}
 {"timestamp": "2026-09-08T15:08:32.954955", "ticker": "KDP", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 32.78, "reason": "market data unavailable for KDP (bid/ask spread missing)"}
 {"timestamp": "2026-09-08T15:08:32.995091", "ticker": "INTC", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 103.53, "reason": "market data unavailable for INTC (bid/ask spread missing)"}
+{"timestamp": "2026-09-08T15:10:44.007008", "ticker": "LITE", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 972.66, "reason": "liquidity filter: LITE average volume 155,530 < 500,000"}
+{"timestamp": "2026-09-08T15:10:44.067307", "ticker": "INTC", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 103.49, "reason": "market data unavailable for INTC (bid/ask spread missing)"}
