@@ -15708,3 +15708,4 @@
 {"timestamp": "2026-09-08T12:58:37.787253", "ticker": "ICE", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 161.25, "reason": "stale quote for ICE (320324.182404s old; limit 180s)"}
 {"timestamp": "2026-09-08T13:00:59.509301", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 25.855, "reason": "stale quote for MOS (320457.25866s old; limit 180s)"}
 {"timestamp": "2026-09-08T13:00:59.509490", "ticker": "TGT", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 164.35, "reason": "stale quote for TGT (320459.542567s old; limit 180s)"}
+{"timestamp": "2026-09-08T13:04:30.552557", "ticker": "HIG", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 138.35, "reason": "stale quote for HIG (320681.367708s old; limit 180s)"}
