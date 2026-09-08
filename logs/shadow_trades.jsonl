@@ -15485,3 +15485,5 @@
 {"timestamp": "2026-09-08T08:58:32.727691", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 37.08, "reason": "stale quote for HAL (305914.093824s old; limit 180s)"}
 {"timestamp": "2026-09-08T09:01:03.435418", "ticker": "GPN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 92.51, "reason": "stale quote for GPN (306045.588567s old; limit 180s)"}
 {"timestamp": "2026-09-08T09:01:03.445670", "ticker": "HAL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 37.08, "reason": "stale quote for HAL (306043.816442s old; limit 180s)"}
+{"timestamp": "2026-09-08T09:02:41.839444", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 319.8, "reason": "stale quote for AAPL (304101.316549s old; limit 180s)"}
+{"timestamp": "2026-09-08T09:02:41.839615", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 25.855, "reason": "stale quote for MOS (306164.046593s old; limit 180s)"}
