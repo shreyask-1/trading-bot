@@ -15832,3 +15832,6 @@
 {"timestamp": "2026-09-08T15:26:37.870653", "ticker": "LITE", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 983.93, "reason": "liquidity filter: LITE average volume 156,130 < 500,000"}
 {"timestamp": "2026-09-08T15:26:38.048477", "ticker": "LRCX", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 320.92, "reason": "liquidity filter: LRCX average volume 304,421 < 500,000"}
 {"timestamp": "2026-09-08T15:26:38.248719", "ticker": "ICE", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 8, "price": 158.8, "reason": "liquidity filter: ICE average volume 147,195 < 500,000"}
+{"timestamp": "2026-09-08T15:28:32.009476", "ticker": "LITE", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 986.28, "reason": "liquidity filter: LITE average volume 156,174 < 500,000"}
+{"timestamp": "2026-09-08T15:28:32.105144", "ticker": "KDP", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 32.445, "reason": "market data unavailable for KDP (bid/ask spread missing)"}
+{"timestamp": "2026-09-08T15:28:32.164443", "ticker": "INTC", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 104.31, "reason": "market data unavailable for INTC (bid/ask spread missing)"}
