@@ -12747,6 +12747,7 @@ Shadow report: 15683 shadow candidate(s), 500 rejection group(s)
 Timings: account: 0.0s | risk: 1.2s | decide: 7.5s | watchlist: 0.1s | perf: 0.3s
 
 === Run at 2026-09-08T12:24:57.293728 ===
+=== Run at 2026-09-08T12:24:26.961952 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-08 08:24 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
 Account value: $99,185.61
@@ -12764,6 +12765,14 @@ Gemini calls used today (all models combined): 137
 Overnight queue cleared after verification.
 Overnight queue retained 6 deferred stale idea(s).
 Dashboard watchlist synced (2 symbols) for news/headlines.
+News: fetched 158, 1 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 35/60 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 137
+  -> {"ticker": "HAL", "status": "skipped", "reason": "stale quote for HAL (318271.207679s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "HPQ", "status": "skipped", "reason": "stale quote for HPQ (318271.791583s old; limit 180s)", "shadow": false, "data_guard": true}
+Overnight queue kept 6 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
+Dashboard watchlist synced (4 symbols) for news/headlines.
 Ending portfolio value: $99,185.61
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
 Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
@@ -12772,4 +12781,6 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 15683 shadow candidate(s), 500 rejection group(s)
 Timings: account: 0.0s | risk: 0.9s | decide: 6.2s | watchlist: 0.1s | perf: 0.3s
+Shadow report: 15685 shadow candidate(s), 500 rejection group(s)
+Timings: account: 0.0s | risk: 0.4s | decide: 2.3s | watchlist: 0.0s | perf: 0.2s
 
