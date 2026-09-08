@@ -15967,3 +15967,6 @@
 {"timestamp": "2026-09-08T17:26:55.844826", "ticker": "MRK", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 148.69, "reason": "liquidity filter: MRK average volume 418,101 < 500,000"}
 {"timestamp": "2026-09-08T17:26:56.108751", "ticker": "HPE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 55.155, "reason": "market data unavailable for HPE (bid/ask spread missing)"}
 {"timestamp": "2026-09-08T17:26:56.358197", "ticker": "LYB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 64.92, "reason": "liquidity filter: LYB average volume 134,795 < 500,000"}
+{"timestamp": "2026-09-08T17:28:31.431431", "ticker": "LITE", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 989.63, "reason": "liquidity filter: LITE average volume 158,580 < 500,000"}
+{"timestamp": "2026-09-08T17:28:31.502979", "ticker": "MCK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 901.81, "reason": "liquidity filter: MCK average volume 39,574 < 500,000"}
+{"timestamp": "2026-09-08T17:28:31.565105", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 26.35, "reason": "market data unavailable for MOS (bid/ask spread missing)"}
