@@ -16020,3 +16020,6 @@
 {"timestamp": "2026-09-08T17:58:48.360991", "ticker": "MCK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 904.5, "reason": "liquidity filter: MCK average volume 39,649 < 500,000"}
 {"timestamp": "2026-09-08T18:00:45.372162", "ticker": "LITE", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 985.98, "reason": "liquidity filter: LITE average volume 159,150 < 500,000"}
 {"timestamp": "2026-09-08T18:00:45.372333", "ticker": "HPE", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 55.11, "reason": "market data unavailable for HPE (bid/ask spread missing)"}
+{"timestamp": "2026-09-08T18:02:55.184319", "ticker": "LITE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 985.405, "reason": "liquidity filter: LITE average volume 159,181 < 500,000"}
+{"timestamp": "2026-09-08T18:02:55.457064", "ticker": "HPE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 55.05, "reason": "market data unavailable for HPE (bid/ask spread missing)"}
+{"timestamp": "2026-09-08T18:02:55.457295", "ticker": "LYB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 65.04, "reason": "liquidity filter: LYB average volume 135,095 < 500,000"}
