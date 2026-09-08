@@ -15756,3 +15756,5 @@
 {"timestamp": "2026-09-08T14:08:38.962355", "ticker": "KDP", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 32.58, "reason": "stale candle for KDP (608.6m old; limit 30.0m)"}
 {"timestamp": "2026-09-08T14:08:39.206709", "ticker": "ICE", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 8, "price": 159.44, "reason": "stale quote for ICE (364.464186s old; limit 180s)"}
 {"timestamp": "2026-09-08T14:08:39.206932", "ticker": "LITE", "action": "buy", "engine": "gemini", "confidence": 72, "conviction": 8, "price": 931.21, "reason": "stale candle for LITE (608.7m old; limit 30.0m)"}
+{"timestamp": "2026-09-08T14:10:37.623270", "ticker": "KDP", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 32.605, "reason": "stale candle for KDP (610.6m old; limit 30.0m)"}
+{"timestamp": "2026-09-08T14:10:37.714612", "ticker": "ICE", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 159.44, "reason": "stale quote for ICE (483.077763s old; limit 180s)"}
