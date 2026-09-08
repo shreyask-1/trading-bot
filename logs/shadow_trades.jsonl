@@ -15736,3 +15736,6 @@
 {"timestamp": "2026-09-08T13:36:36.967283", "ticker": "ICE", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 159.415, "reason": "stale quote for ICE (297.947748s old; limit 180s)"}
 {"timestamp": "2026-09-08T13:38:34.884694", "ticker": "ICE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 159.01, "reason": "stale candle for ICE (578.6m old; limit 30.0m)"}
 {"timestamp": "2026-09-08T13:38:35.048462", "ticker": "KDP", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 32.52, "reason": "stale candle for KDP (578.6m old; limit 30.0m)"}
+{"timestamp": "2026-09-08T13:46:36.446173", "ticker": "ICE", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 159.29, "reason": "stale candle for ICE (586.6m old; limit 30.0m)"}
+{"timestamp": "2026-09-08T13:46:36.686058", "ticker": "INTC", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 101.68, "reason": "stale candle for INTC (586.6m old; limit 30.0m)"}
+{"timestamp": "2026-09-08T13:46:36.934849", "ticker": "JBHT", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 272.98, "reason": "stale quote for JBHT (366.844055s old; limit 180s)"}
