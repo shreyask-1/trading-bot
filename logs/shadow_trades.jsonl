@@ -15787,3 +15787,5 @@
 {"timestamp": "2026-09-08T14:40:41.528721", "ticker": "LITE", "action": "buy", "engine": "gemini", "confidence": 72, "conviction": 8, "price": 969.24, "reason": "stale candle for LITE (640.7m old; limit 30.0m)"}
 {"timestamp": "2026-09-08T14:40:41.731812", "ticker": "KDP", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 32.715, "reason": "stale candle for KDP (640.7m old; limit 30.0m)"}
 {"timestamp": "2026-09-08T14:42:37.184967", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 1019.67, "reason": "market data unavailable for MU (bid/ask spread missing)"}
+{"timestamp": "2026-09-08T14:44:38.696188", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 1021.82, "reason": "market data unavailable for MU (bid/ask spread missing)"}
+{"timestamp": "2026-09-08T14:44:38.925764", "ticker": "KDP", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 32.745, "reason": "stale candle for KDP (644.6m old; limit 30.0m)"}
