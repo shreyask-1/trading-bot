@@ -16023,3 +16023,6 @@
 {"timestamp": "2026-09-08T18:02:55.184319", "ticker": "LITE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 985.405, "reason": "liquidity filter: LITE average volume 159,181 < 500,000"}
 {"timestamp": "2026-09-08T18:02:55.457064", "ticker": "HPE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 55.05, "reason": "market data unavailable for HPE (bid/ask spread missing)"}
 {"timestamp": "2026-09-08T18:02:55.457295", "ticker": "LYB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 65.04, "reason": "liquidity filter: LYB average volume 135,095 < 500,000"}
+{"timestamp": "2026-09-08T18:04:42.710092", "ticker": "LITE", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 985.765, "reason": "liquidity filter: LITE average volume 159,225 < 500,000"}
+{"timestamp": "2026-09-08T18:04:42.710270", "ticker": "MCK", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 903.57, "reason": "liquidity filter: MCK average volume 39,659 < 500,000"}
+{"timestamp": "2026-09-08T18:04:43.056557", "ticker": "LRCX", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 319.25, "reason": "stale quote for LRCX (227.183162s old; limit 180s)"}
