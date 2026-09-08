@@ -15839,3 +15839,5 @@
 {"timestamp": "2026-09-08T15:30:44.906392", "ticker": "LITE", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 984.56, "reason": "liquidity filter: LITE average volume 156,223 < 500,000"}
 {"timestamp": "2026-09-08T15:32:40.202831", "ticker": "LITE", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 985.16, "reason": "liquidity filter: LITE average volume 156,266 < 500,000"}
 {"timestamp": "2026-09-08T15:32:40.443982", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 8, "price": 26.455, "reason": "liquidity filter: MOS average volume 493,846 < 500,000"}
+{"timestamp": "2026-09-08T15:35:10.927526", "ticker": "LITE", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 988.345, "reason": "liquidity filter: LITE average volume 156,344 < 500,000"}
+{"timestamp": "2026-09-08T15:35:11.263927", "ticker": "INTC", "action": "buy", "engine": "gemini", "confidence": 69, "conviction": 7, "price": 104.28, "reason": "market data unavailable for INTC (bid/ask spread missing)"}
