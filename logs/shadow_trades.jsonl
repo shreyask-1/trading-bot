@@ -16121,3 +16121,6 @@
 {"timestamp": "2026-09-08T19:10:43.473154", "ticker": "LITE", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 987.255, "reason": "liquidity filter: LITE average volume 160,489 < 500,000"}
 {"timestamp": "2026-09-08T19:10:43.725262", "ticker": "LRCX", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 320.82, "reason": "liquidity filter: LRCX average volume 312,667 < 500,000"}
 {"timestamp": "2026-09-08T19:12:39.064406", "ticker": "LITE", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 985.155, "reason": "liquidity filter: LITE average volume 160,583 < 500,000"}
+{"timestamp": "2026-09-08T19:14:38.817617", "ticker": "LITE", "action": "buy", "engine": "gemini", "confidence": 90.0, "conviction": 9, "price": 985.7, "reason": "liquidity filter: LITE average volume 160,601 < 500,000"}
+{"timestamp": "2026-09-08T19:14:39.167373", "ticker": "LRCX", "action": "buy", "engine": "gemini", "confidence": 80.0, "conviction": 8, "price": 321.37, "reason": "liquidity filter: LRCX average volume 312,730 < 500,000"}
+{"timestamp": "2026-09-08T19:14:39.420205", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 75.0, "conviction": 8, "price": 26.65, "reason": "market data unavailable for MOS (bid/ask spread missing)"}
