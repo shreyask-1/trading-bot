@@ -15807,3 +15807,5 @@
 {"timestamp": "2026-09-08T15:06:59.370386", "ticker": "ICE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 159.03, "reason": "stale candle for ICE (667.0m old; limit 30.0m)"}
 {"timestamp": "2026-09-08T15:06:59.662342", "ticker": "IFF", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 86.38, "reason": "stale candle for IFF (667.0m old; limit 30.0m)"}
 {"timestamp": "2026-09-08T15:06:59.732121", "ticker": "KDP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 32.775, "reason": "market data unavailable for KDP (bid/ask spread missing)"}
+{"timestamp": "2026-09-08T15:08:32.954955", "ticker": "KDP", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 32.78, "reason": "market data unavailable for KDP (bid/ask spread missing)"}
+{"timestamp": "2026-09-08T15:08:32.995091", "ticker": "INTC", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 103.53, "reason": "market data unavailable for INTC (bid/ask spread missing)"}
