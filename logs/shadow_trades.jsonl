@@ -15616,3 +15616,6 @@
 {"timestamp": "2026-09-08T11:18:29.461228", "ticker": "KDP", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 32.58, "reason": "stale quote for KDP (314317.359015s old; limit 180s)"}
 {"timestamp": "2026-09-08T11:18:29.636424", "ticker": "HAL", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 37.08, "reason": "stale quote for HAL (314310.940376s old; limit 180s)"}
 {"timestamp": "2026-09-08T11:18:29.814487", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 32.64, "reason": "stale quote for HPQ (314311.657007s old; limit 180s)"}
+{"timestamp": "2026-09-08T11:20:58.497875", "ticker": "ARE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 52.62, "reason": "stale quote for ARE (314450.66035s old; limit 180s)"}
+{"timestamp": "2026-09-08T11:20:58.498077", "ticker": "CRL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 5, "price": 288.84, "reason": "stale quote for CRL (314459.780959s old; limit 180s)"}
+{"timestamp": "2026-09-08T11:20:58.498220", "ticker": "CRM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 259.3, "reason": "stale quote for CRM (314442.737599s old; limit 180s)"}
