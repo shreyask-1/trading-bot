@@ -15927,3 +15927,5 @@
 {"timestamp": "2026-09-08T16:56:33.680723", "ticker": "KMI", "action": "buy", "engine": "gemini", "confidence": 70, "conviction": 7, "price": 31.815, "reason": "market data unavailable for KMI (bid/ask spread missing)"}
 {"timestamp": "2026-09-08T16:58:35.693001", "ticker": "LITE", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 991.32, "reason": "liquidity filter: LITE average volume 158,056 < 500,000"}
 {"timestamp": "2026-09-08T17:00:51.072214", "ticker": "LITE", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 995.5, "reason": "liquidity filter: LITE average volume 158,108 < 500,000"}
+{"timestamp": "2026-09-08T17:02:56.326476", "ticker": "LITE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 998.405, "reason": "liquidity filter: LITE average volume 158,154 < 500,000"}
+{"timestamp": "2026-09-08T17:02:56.427048", "ticker": "HPE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 54.995, "reason": "market data unavailable for HPE (bid/ask spread missing)"}
