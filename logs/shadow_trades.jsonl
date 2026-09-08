@@ -15753,3 +15753,6 @@
 {"timestamp": "2026-09-08T13:58:55.977091", "ticker": "INCY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 5, "price": 125.7, "reason": "stale quote for INCY (344.487686s old; limit 180s)"}
 {"timestamp": "2026-09-08T13:58:56.635911", "ticker": "JNJ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 269.93, "reason": "stale candle for JNJ (598.9m old; limit 30.0m)"}
 {"timestamp": "2026-09-08T13:58:57.300415", "ticker": "KDP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 32.49, "reason": "stale candle for KDP (599.0m old; limit 30.0m)"}
+{"timestamp": "2026-09-08T14:08:38.962355", "ticker": "KDP", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 32.58, "reason": "stale candle for KDP (608.6m old; limit 30.0m)"}
+{"timestamp": "2026-09-08T14:08:39.206709", "ticker": "ICE", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 8, "price": 159.44, "reason": "stale quote for ICE (364.464186s old; limit 180s)"}
+{"timestamp": "2026-09-08T14:08:39.206932", "ticker": "LITE", "action": "buy", "engine": "gemini", "confidence": 72, "conviction": 8, "price": 931.21, "reason": "stale candle for LITE (608.7m old; limit 30.0m)"}
