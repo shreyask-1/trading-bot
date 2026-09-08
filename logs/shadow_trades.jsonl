@@ -15852,3 +15852,5 @@
 {"timestamp": "2026-09-08T15:44:30.994099", "ticker": "LITE", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 987.37, "reason": "liquidity filter: LITE average volume 156,610 < 500,000"}
 {"timestamp": "2026-09-08T15:44:31.053192", "ticker": "LRCX", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 321.025, "reason": "liquidity filter: LRCX average volume 304,868 < 500,000"}
 {"timestamp": "2026-09-08T15:44:31.099053", "ticker": "KMI", "action": "buy", "engine": "gemini", "confidence": 70, "conviction": 7, "price": 31.905, "reason": "market data unavailable for KMI (bid/ask spread missing)"}
+{"timestamp": "2026-09-08T15:47:19.401466", "ticker": "LITE", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 988.67, "reason": "liquidity filter: LITE average volume 156,656 < 500,000"}
+{"timestamp": "2026-09-08T15:47:19.695032", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 26.335, "reason": "liquidity filter: MOS average volume 494,762 < 500,000"}
