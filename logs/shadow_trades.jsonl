@@ -15835,3 +15835,5 @@
 {"timestamp": "2026-09-08T15:28:32.009476", "ticker": "LITE", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 986.28, "reason": "liquidity filter: LITE average volume 156,174 < 500,000"}
 {"timestamp": "2026-09-08T15:28:32.105144", "ticker": "KDP", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 32.445, "reason": "market data unavailable for KDP (bid/ask spread missing)"}
 {"timestamp": "2026-09-08T15:28:32.164443", "ticker": "INTC", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 104.31, "reason": "market data unavailable for INTC (bid/ask spread missing)"}
+{"timestamp": "2026-09-08T15:30:44.783767", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 26.47, "reason": "liquidity filter: MOS average volume 493,752 < 500,000"}
+{"timestamp": "2026-09-08T15:30:44.906392", "ticker": "LITE", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 984.56, "reason": "liquidity filter: LITE average volume 156,223 < 500,000"}
