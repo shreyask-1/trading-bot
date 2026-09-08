@@ -15915,3 +15915,5 @@
 {"timestamp": "2026-09-08T16:47:04.376271", "ticker": "LYB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 64.72, "reason": "liquidity filter: LYB average volume 134,530 < 500,000"}
 {"timestamp": "2026-09-08T16:48:39.486701", "ticker": "LITE", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 994.82, "reason": "liquidity filter: LITE average volume 157,819 < 500,000"}
 {"timestamp": "2026-09-08T16:48:39.738241", "ticker": "LRCX", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 318.23, "reason": "liquidity filter: LRCX average volume 306,526 < 500,000"}
+{"timestamp": "2026-09-08T16:50:43.460316", "ticker": "LITE", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 994.755, "reason": "liquidity filter: LITE average volume 157,879 < 500,000"}
+{"timestamp": "2026-09-08T16:50:43.771263", "ticker": "KMI", "action": "buy", "engine": "gemini", "confidence": 70, "conviction": 7, "price": 31.82, "reason": "market data unavailable for KMI (bid/ask spread missing)"}
