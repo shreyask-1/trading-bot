@@ -15824,3 +15824,5 @@
 {"timestamp": "2026-09-08T15:21:00.842826", "ticker": "ICE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 158.93, "reason": "liquidity filter: ICE average volume 147,145 < 500,000"}
 {"timestamp": "2026-09-08T15:21:01.086028", "ticker": "IFF", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 86.04, "reason": "stale candle for IFF (681.0m old; limit 30.0m)"}
 {"timestamp": "2026-09-08T15:21:01.339434", "ticker": "KDP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 32.59, "reason": "market data unavailable for KDP (bid/ask spread missing)"}
+{"timestamp": "2026-09-08T15:22:43.352452", "ticker": "LITE", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 981.84, "reason": "liquidity filter: LITE average volume 156,001 < 500,000"}
+{"timestamp": "2026-09-08T15:22:43.648087", "ticker": "KDP", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 32.61, "reason": "market data unavailable for KDP (bid/ask spread missing)"}
