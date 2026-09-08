@@ -15846,3 +15846,6 @@
 {"timestamp": "2026-09-08T15:38:45.426452", "ticker": "LRCX", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 320.14, "reason": "liquidity filter: LRCX average volume 304,732 < 500,000"}
 {"timestamp": "2026-09-08T15:40:39.926575", "ticker": "LITE", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 985.82, "reason": "liquidity filter: LITE average volume 156,504 < 500,000"}
 {"timestamp": "2026-09-08T15:40:40.105339", "ticker": "LRCX", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 320.79, "reason": "liquidity filter: LRCX average volume 304,798 < 500,000"}
+{"timestamp": "2026-09-08T15:42:36.979679", "ticker": "LITE", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 992.06, "reason": "liquidity filter: LITE average volume 156,568 < 500,000"}
+{"timestamp": "2026-09-08T15:42:37.136778", "ticker": "LRCX", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 321.21, "reason": "liquidity filter: LRCX average volume 304,825 < 500,000"}
+{"timestamp": "2026-09-08T15:42:37.271874", "ticker": "KMI", "action": "buy", "engine": "gemini", "confidence": 70, "conviction": 7, "price": 31.915, "reason": "market data unavailable for KMI (bid/ask spread missing)"}
