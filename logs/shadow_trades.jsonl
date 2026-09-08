@@ -16249,3 +16249,6 @@
 {"timestamp": "2026-09-08T21:48:56.050926", "ticker": "NOW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 134.23, "reason": "stale quote for NOW (6539.626445s old; limit 180s)"}
 {"timestamp": "2026-09-08T21:48:56.304321", "ticker": "MDT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 92.4, "reason": "stale quote for MDT (6536.996673s old; limit 180s)"}
 {"timestamp": "2026-09-08T21:48:56.536869", "ticker": "LYB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 64.59, "reason": "stale quote for LYB (6540.303839s old; limit 180s)"}
+{"timestamp": "2026-09-08T21:50:39.428713", "ticker": "LITE", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 978.545, "reason": "stale quote for LITE (6639.663146s old; limit 180s)"}
+{"timestamp": "2026-09-08T21:50:39.675900", "ticker": "LRCX", "action": "buy", "engine": "gemini", "confidence": 83, "conviction": 8, "price": 320.61, "reason": "stale quote for LRCX (6642.860594s old; limit 180s)"}
+{"timestamp": "2026-09-08T21:50:39.938241", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 1002.79, "reason": "stale quote for MU (5641.023104s old; limit 180s)"}
