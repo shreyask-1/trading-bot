@@ -15797,3 +15797,4 @@
 {"timestamp": "2026-09-08T14:54:36.233665", "ticker": "INTC", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 103.22, "reason": "market data unavailable for INTC (bid/ask spread missing)"}
 {"timestamp": "2026-09-08T14:56:39.613592", "ticker": "KDP", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 32.805, "reason": "stale candle for KDP (656.7m old; limit 30.0m)"}
 {"timestamp": "2026-09-08T14:56:39.922755", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 71, "conviction": 8, "price": 1017.035, "reason": "market data unavailable for MU (bid/ask spread missing)"}
+{"timestamp": "2026-09-08T14:58:33.030449", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 26.695, "reason": "stale candle for MOS (658.6m old; limit 30.0m)"}
