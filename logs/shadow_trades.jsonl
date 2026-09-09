@@ -17285,3 +17285,4 @@
 {"timestamp": "2026-09-09T18:31:06.085298", "ticker": "HCA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 424.17, "reason": "liquidity filter: HCA average volume 64,934 < 500,000"}
 {"timestamp": "2026-09-09T18:31:06.085445", "ticker": "HOOD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 116.84, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
 {"timestamp": "2026-09-09T18:31:06.085587", "ticker": "HPE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 57.92, "reason": "market data unavailable for HPE (bid/ask spread missing)"}
+{"timestamp": "2026-09-09T18:32:46.494553", "ticker": "HCA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 424.33, "reason": "liquidity filter: HCA average volume 65,081 < 500,000"}
