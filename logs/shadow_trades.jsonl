@@ -16961,3 +16961,5 @@
 {"timestamp": "2026-09-09T14:50:59.278726", "ticker": "OKE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 96.195, "reason": "stale quote for OKE (331.089632s old; limit 180s)"}
 {"timestamp": "2026-09-09T14:50:59.540927", "ticker": "OXY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 61.695, "reason": "liquidity filter: OXY average volume 481,001 < 500,000"}
 {"timestamp": "2026-09-09T14:50:59.771652", "ticker": "PFG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 113.67, "reason": "liquidity filter: PFG average volume 55,662 < 500,000"}
+{"timestamp": "2026-09-09T14:52:50.618202", "ticker": "STX", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 910.68, "reason": "liquidity filter: STX average volume 144,137 < 500,000"}
+{"timestamp": "2026-09-09T14:52:50.873986", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 58.005, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
