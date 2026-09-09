@@ -16806,3 +16806,6 @@
 {"timestamp": "2026-09-09T12:56:49.013579", "ticker": "NOW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 134.23, "reason": "stale quote for NOW (60991.513664s old; limit 180s)"}
 {"timestamp": "2026-09-09T12:56:49.019609", "ticker": "ORCL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 162.525, "reason": "stale quote for ORCL (60988.312175s old; limit 180s)"}
 {"timestamp": "2026-09-09T12:56:49.026321", "ticker": "OXY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 60.66, "reason": "stale quote for OXY (60990.648898s old; limit 180s)"}
+{"timestamp": "2026-09-09T12:58:50.604277", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 221.61, "reason": "stale quote for RSG (61131.853306s old; limit 180s)"}
+{"timestamp": "2026-09-09T12:58:50.663246", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 127.05, "reason": "stale quote for RVTY (61137.541599s old; limit 180s)"}
+{"timestamp": "2026-09-09T12:58:50.709255", "ticker": "STX", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 903.93, "reason": "stale quote for STX (61131.578511s old; limit 180s)"}
