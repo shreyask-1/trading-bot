@@ -16848,3 +16848,6 @@
 {"timestamp": "2026-09-09T13:32:39.184988", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 221.61, "reason": "stale quote for RSG (63160.22918s old; limit 180s)"}
 {"timestamp": "2026-09-09T13:34:36.471224", "ticker": "TKO", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 195.43, "reason": "stale quote for TKO (63278.825466s old; limit 180s)"}
 {"timestamp": "2026-09-09T13:34:36.714430", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 1002.83, "reason": "market data unavailable for MU (bid/ask spread missing)"}
+{"timestamp": "2026-09-09T13:36:34.785635", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 1001.32, "reason": "market data unavailable for MU (bid/ask spread missing)"}
+{"timestamp": "2026-09-09T13:36:35.039795", "ticker": "STX", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 906.49, "reason": "liquidity filter: STX average volume 142,844 < 500,000"}
+{"timestamp": "2026-09-09T13:36:35.161182", "ticker": "TER", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 378.945, "reason": "liquidity filter: TER average volume 89,340 < 500,000"}
