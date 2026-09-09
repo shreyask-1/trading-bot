@@ -17137,3 +17137,5 @@
 {"timestamp": "2026-09-09T16:34:36.419075", "ticker": "STLD", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 244.59, "reason": "liquidity filter: STLD average volume 64,143 < 500,000"}
 {"timestamp": "2026-09-09T16:36:52.620166", "ticker": "SNDK", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 1780.0, "reason": "liquidity filter: SNDK average volume 282,345 < 500,000"}
 {"timestamp": "2026-09-09T16:36:53.082719", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 1021.53, "reason": "market data unavailable for MU (bid/ask spread missing)"}
+{"timestamp": "2026-09-09T16:38:47.441327", "ticker": "SNDK", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 1778.04, "reason": "liquidity filter: SNDK average volume 282,427 < 500,000"}
+{"timestamp": "2026-09-09T16:38:47.897680", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 1021.27, "reason": "market data unavailable for MU (bid/ask spread missing)"}
