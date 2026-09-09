@@ -16846,3 +16846,5 @@
 {"timestamp": "2026-09-09T13:32:38.537132", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 998.175, "reason": "market data unavailable for MU (bid/ask spread missing)"}
 {"timestamp": "2026-09-09T13:32:38.876959", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 58.79, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
 {"timestamp": "2026-09-09T13:32:39.184988", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 221.61, "reason": "stale quote for RSG (63160.22918s old; limit 180s)"}
+{"timestamp": "2026-09-09T13:34:36.471224", "ticker": "TKO", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 195.43, "reason": "stale quote for TKO (63278.825466s old; limit 180s)"}
+{"timestamp": "2026-09-09T13:34:36.714430", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 1002.83, "reason": "market data unavailable for MU (bid/ask spread missing)"}
