@@ -17324,3 +17324,5 @@
 {"timestamp": "2026-09-09T19:08:51.252473", "ticker": "HAL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 37.26, "reason": "market data unavailable for HAL (bid/ask spread missing)"}
 {"timestamp": "2026-09-09T19:08:51.267439", "ticker": "HOOD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 115.93, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
 {"timestamp": "2026-09-09T19:08:51.287605", "ticker": "HPE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 57.33, "reason": "market data unavailable for HPE (bid/ask spread missing)"}
+{"timestamp": "2026-09-09T19:10:38.846714", "ticker": "HCA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 426.25, "reason": "liquidity filter: HCA average volume 66,019 < 500,000"}
+{"timestamp": "2026-09-09T19:10:38.968828", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 32.82, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
