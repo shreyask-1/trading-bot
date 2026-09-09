@@ -11281,3 +11281,36 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; wor
 Shadow report: 16660 shadow candidate(s), 451 rejection group(s)
 Timings: account: 0.0s | risk: 0.4s | decide: 9.5s | watchlist: 0.0s | perf: 0.3s
 
+=== Run at 2026-09-09T11:06:28.417378 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-09 07:06 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
+Account value: $99,311.19
+Cash: $99,311.19 | Holdings (0): none
+Sector exposure (cached): unavailable (no holdings)
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Risk state: peak $99,703.60 | drawdown 0.39% | today -0.00% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+Overnight queue deferred 8 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+News: fetched 155, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 30/48 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 105
+  -> {"ticker": "PSKY", "status": "skipped", "reason": "stale quote for PSKY (54417.77999s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "PSX", "status": "skipped", "reason": "stale quote for PSX (54422.730096s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "RSG", "status": "skipped", "reason": "stale quote for RSG (54414.018327s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "RVTY", "status": "skipped", "reason": "stale quote for RVTY (54419.785548s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "SBAC", "status": "skipped", "reason": "stale quote for SBAC (54401.81219s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "SLB", "status": "skipped", "reason": "stale quote for SLB (54391.626893s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "SMCI", "status": "skipped", "reason": "stale quote for SMCI (54389.663229s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "SNDK", "status": "skipped", "reason": "stale quote for SNDK (54212.653445s old; limit 180s)", "shadow": false, "data_guard": true}
+Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); 3 idea(s) remain subject to the retry cap.
+Dashboard watchlist synced (8 symbols) for news/headlines.
+Ending portfolio value: $99,311.19
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.45% | Max drawdown 0.94% | Daily Sharpe 1.89 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 0 | Equity $99,311.19
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+0.00 (0 open) | Books: legacy: realized $-1,705.68, unrealized $+0.00
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 16668 shadow candidate(s), 459 rejection group(s)
+Timings: account: 0.0s | risk: 0.1s | decide: 24.3s | watchlist: 0.1s | perf: 0.2s
+
