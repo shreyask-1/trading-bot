@@ -17368,3 +17368,6 @@
 {"timestamp": "2026-09-09T19:41:06.370120", "ticker": "RSG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 221.315, "reason": "liquidity filter: RSG average volume 62,984 < 500,000"}
 {"timestamp": "2026-09-09T19:41:06.749408", "ticker": "SNDK", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 1758.0, "reason": "liquidity filter: SNDK average volume 285,391 < 500,000"}
 {"timestamp": "2026-09-09T19:41:07.074517", "ticker": "RVTY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 124.43, "reason": "liquidity filter: RVTY average volume 91,842 < 500,000"}
+{"timestamp": "2026-09-09T19:42:44.003981", "ticker": "HCA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 425.11, "reason": "liquidity filter: HCA average volume 66,837 < 500,000"}
+{"timestamp": "2026-09-09T19:42:44.304525", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 32.815, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
+{"timestamp": "2026-09-09T19:42:44.600762", "ticker": "PSX", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 261.24, "reason": "liquidity filter: PSX average volume 123,945 < 500,000"}
