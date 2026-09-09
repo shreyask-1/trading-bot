@@ -16668,3 +16668,5 @@
 {"timestamp": "2026-09-09T11:06:53.056423", "ticker": "SNDK", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 1733.14, "reason": "stale quote for SNDK (54212.653445s old; limit 180s)"}
 {"timestamp": "2026-09-09T11:08:33.600200", "ticker": "PPL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 35.08, "reason": "stale quote for PPL (54515.471689s old; limit 180s)"}
 {"timestamp": "2026-09-09T11:08:33.739031", "ticker": "PSX", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 259.17, "reason": "stale quote for PSX (54523.772697s old; limit 180s)"}
+{"timestamp": "2026-09-09T11:10:41.319143", "ticker": "QCOM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 174.08, "reason": "stale quote for QCOM (54644.466103s old; limit 180s)"}
+{"timestamp": "2026-09-09T11:10:41.638467", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 57.11, "reason": "stale quote for SLB (54642.305605s old; limit 180s)"}
