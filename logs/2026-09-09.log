@@ -6031,6 +6031,7 @@ Shadow report: 16424 shadow candidate(s), 234 rejection group(s)
 Timings: account: 0.0s | risk: 0.1s | decide: 6.0s | watchlist: 0.0s | perf: 0.2s
 
 === Run at 2026-09-09T05:34:44.698472 ===
+=== Run at 2026-09-09T05:34:11.439339 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-09 01:34 AM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,311.41
@@ -6051,6 +6052,12 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued QCOM buy (conf 85, stop 165.0, tp 195.0)
   -> queued KDP buy (conf 80, stop 31.6, tp 33.16)
   -> queued NVDA buy (conf 85, stop 215.0, tp 245.0)
+  -> queued LRCX buy (conf 85, stop 310.0, tp 340.0)
+  -> queued MU buy (conf 88, stop 950.0, tp 1100.0)
+  -> queued MOS buy (conf 85, stop 23.32, tp 26.87)
+  -> queued QCOM buy (conf 85, stop 165.0, tp 195.0)
+  -> queued KDP buy (conf 80, stop 31.6, tp 33.16)
+  -> queued NVDA buy (conf 85, stop 210.0, tp 245.0)
   -> queued HPE buy (conf 78, stop 51.87, tp 64.24)
   -> queued HUM buy (conf None, stop 381.6, tp 413.42)
   -> queued KEYS buy (conf None, stop 313.965, tp 333.76)
@@ -6065,4 +6072,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 16424 shadow candidate(s), 234 rejection group(s)
 Timings: account: 0.0s | risk: 0.2s | decide: 6.1s | watchlist: 0.1s | perf: 0.4s
+Timings: account: 0.0s | risk: 0.2s | decide: 5.7s | watchlist: 0.1s | perf: 0.2s
 
