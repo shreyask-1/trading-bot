@@ -17234,3 +17234,5 @@
 {"timestamp": "2026-09-09T17:59:04.657842", "ticker": "SBAC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 187.97, "reason": "liquidity filter: SBAC average volume 59,319 < 500,000"}
 {"timestamp": "2026-09-09T17:59:04.915439", "ticker": "RSG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 220.97, "reason": "liquidity filter: RSG average volume 61,053 < 500,000"}
 {"timestamp": "2026-09-09T17:59:05.197049", "ticker": "SWKS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 75.7, "reason": "liquidity filter: SWKS average volume 262,147 < 500,000"}
+{"timestamp": "2026-09-09T18:00:54.738747", "ticker": "SNDK", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 1769.505, "reason": "liquidity filter: SNDK average volume 283,297 < 500,000"}
+{"timestamp": "2026-09-09T18:00:54.738925", "ticker": "PSX", "action": "buy", "engine": "gemini", "confidence": 72, "conviction": 7, "price": 261.09, "reason": "liquidity filter: PSX average volume 123,104 < 500,000"}
