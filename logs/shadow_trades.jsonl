@@ -17132,3 +17132,6 @@
 {"timestamp": "2026-09-09T16:32:57.578764", "ticker": "STT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 192.71, "reason": "liquidity filter: STT average volume 52,611 < 500,000"}
 {"timestamp": "2026-09-09T16:32:58.105192", "ticker": "RSG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 220.745, "reason": "liquidity filter: RSG average volume 60,200 < 500,000"}
 {"timestamp": "2026-09-09T16:32:58.484567", "ticker": "SWKS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 75.78, "reason": "liquidity filter: SWKS average volume 260,123 < 500,000"}
+{"timestamp": "2026-09-09T16:34:36.255961", "ticker": "SNDK", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 1775.6, "reason": "liquidity filter: SNDK average volume 282,282 < 500,000"}
+{"timestamp": "2026-09-09T16:34:36.373995", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 1020.6, "reason": "market data unavailable for MU (bid/ask spread missing)"}
+{"timestamp": "2026-09-09T16:34:36.419075", "ticker": "STLD", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 244.59, "reason": "liquidity filter: STLD average volume 64,143 < 500,000"}
