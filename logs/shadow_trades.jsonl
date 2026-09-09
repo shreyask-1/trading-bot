@@ -17469,3 +17469,6 @@
 {"timestamp": "2026-09-09T22:27:01.292766", "ticker": "STT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 191.92, "reason": "stale quote for STT (8835.107694s old; limit 180s)"}
 {"timestamp": "2026-09-09T22:27:01.505018", "ticker": "SLB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 57.06, "reason": "stale quote for SLB (8821.602111s old; limit 180s)"}
 {"timestamp": "2026-09-09T22:27:01.684542", "ticker": "STX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 885.67, "reason": "stale quote for STX (8826.764084s old; limit 180s)"}
+{"timestamp": "2026-09-09T22:28:37.516202", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 222.41, "reason": "stale quote for RSG (8922.837943s old; limit 180s)"}
+{"timestamp": "2026-09-09T22:28:37.818134", "ticker": "SOLV", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 90.045, "reason": "stale quote for SOLV (8926.291426s old; limit 180s)"}
+{"timestamp": "2026-09-09T22:28:38.122256", "ticker": "TER", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 383.97, "reason": "stale quote for TER (8922.914426s old; limit 180s)"}
