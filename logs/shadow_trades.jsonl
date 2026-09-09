@@ -16843,3 +16843,6 @@
 {"timestamp": "2026-09-09T13:28:33.220849", "ticker": "STX", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 903.93, "reason": "stale quote for STX (62914.085684s old; limit 180s)"}
 {"timestamp": "2026-09-09T13:30:54.802015", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 221.61, "reason": "stale quote for RSG (63055.642851s old; limit 180s)"}
 {"timestamp": "2026-09-09T13:30:55.459289", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 125.58, "reason": "stale candle for RVTY (1055.9m old; limit 30.0m)"}
+{"timestamp": "2026-09-09T13:32:38.537132", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 998.175, "reason": "market data unavailable for MU (bid/ask spread missing)"}
+{"timestamp": "2026-09-09T13:32:38.876959", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 58.79, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-09-09T13:32:39.184988", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 221.61, "reason": "stale quote for RSG (63160.22918s old; limit 180s)"}
