@@ -7090,6 +7090,9 @@ Timings: account: 0.0s | risk: 0.3s | decide: 10.1s | watchlist: 0.1s | perf: 0.
 === Run at 2026-09-09T06:35:10.107048 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-09 02:35 AM EDT | Market open (per Alpaca): False | Session: CLOSED
+=== Run at 2026-09-09T06:34:38.677329 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-09 02:34 AM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,311.41
 Cash: $99,311.41 | Holdings (0): none
 Sector exposure (cached): unavailable (no holdings)
@@ -7097,11 +7100,13 @@ Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
 Risk state: peak $99,703.60 | drawdown 0.39% | today +0.00% | halted: False
 Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
 News: fetched 158, 1 new after dedup, 0 ticker(s) matched.
+News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
 Quant pre-screen: 43/65 candidates passed.
 Gemini proposed 3 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 610
 Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
   -> queued LRCX buy (conf 88, stop 310.0, tp 340.0)
+  -> queued LRCX buy (conf 85, stop 305.0, tp 345.0)
   -> queued MOS buy (conf 85, stop 23.32, tp 26.87)
   -> queued QCOM buy (conf 85, stop 165.0, tp 195.0)
   -> queued KDP buy (conf 80, stop 31.6, tp 33.16)
@@ -7112,6 +7117,11 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued KEYS buy (conf None, stop 313.965, tp 333.76)
   -> queued MU buy (conf 88, stop 965.0, tp 1100.0)
   -> queued NVDA buy (conf 85, stop 215.0, tp 245.0)
+  -> queued LITE buy (conf 92, stop 910.0, tp 1050.0)
+  -> queued HUM buy (conf None, stop 381.6, tp 413.42)
+  -> queued KEYS buy (conf None, stop 313.965, tp 333.76)
+  -> queued MU buy (conf 88, stop 945.0, tp 1100.0)
+  -> queued NVDA buy (conf None, stop 209.25, tp 234.75)
   -> queued PFG buy (conf None, stop 108.695, tp 121.03)
 Dashboard watchlist synced (3 symbols) for news/headlines.
 Ending portfolio value: $99,311.41
@@ -7122,4 +7132,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 16424 shadow candidate(s), 234 rejection group(s)
 Timings: account: 0.0s | risk: 0.1s | decide: 5.9s | watchlist: 0.0s | perf: 0.2s
+Timings: account: 0.0s | risk: 0.0s | decide: 5.1s | watchlist: 0.0s | perf: 0.2s
 
