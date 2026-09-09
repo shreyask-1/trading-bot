@@ -17115,3 +17115,6 @@
 {"timestamp": "2026-09-09T16:24:58.968318", "ticker": "NUE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 259.78, "reason": "liquidity filter: NUE average volume 69,498 < 500,000"}
 {"timestamp": "2026-09-09T16:24:59.316983", "ticker": "NVDA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 223.93, "reason": "market data unavailable for NVDA (bid/ask spread missing)"}
 {"timestamp": "2026-09-09T16:24:59.660358", "ticker": "OKE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 95.92, "reason": "stale quote for OKE (270.24305s old; limit 180s)"}
+{"timestamp": "2026-09-09T16:26:38.772479", "ticker": "SNDK", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 1765.69, "reason": "liquidity filter: SNDK average volume 282,086 < 500,000"}
+{"timestamp": "2026-09-09T16:26:39.114348", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 1017.31, "reason": "market data unavailable for MU (bid/ask spread missing)"}
+{"timestamp": "2026-09-09T16:26:39.453834", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 57.67, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
