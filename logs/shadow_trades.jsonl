@@ -16785,3 +16785,5 @@
 {"timestamp": "2026-09-09T12:42:38.947498", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 57.11, "reason": "stale quote for SLB (60159.665903s old; limit 180s)"}
 {"timestamp": "2026-09-09T12:44:30.671978", "ticker": "PPL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 35.08, "reason": "stale quote for PPL (60272.525974s old; limit 180s)"}
 {"timestamp": "2026-09-09T12:44:30.736634", "ticker": "PSX", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 259.17, "reason": "stale quote for PSX (60280.836436s old; limit 180s)"}
+{"timestamp": "2026-09-09T12:46:46.792806", "ticker": "OKE", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 97.49, "reason": "stale quote for OKE (60400.406484s old; limit 180s)"}
+{"timestamp": "2026-09-09T12:46:46.840172", "ticker": "PSX", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 259.17, "reason": "stale quote for PSX (60416.950119s old; limit 180s)"}
