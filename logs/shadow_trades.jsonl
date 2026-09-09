@@ -16552,3 +16552,6 @@
 {"timestamp": "2026-09-09T09:26:38.912559", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 57.11, "reason": "stale quote for SLB (48399.588561s old; limit 180s)"}
 {"timestamp": "2026-09-09T09:28:30.135977", "ticker": "QCOM", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 174.08, "reason": "stale quote for QCOM (48513.478807s old; limit 180s)"}
 {"timestamp": "2026-09-09T09:28:30.136179", "ticker": "NVDA", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 225.82, "reason": "stale quote for NVDA (48510.23916s old; limit 180s)"}
+{"timestamp": "2026-09-09T09:32:31.001828", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 221.61, "reason": "stale quote for RSG (48752.217895s old; limit 180s)"}
+{"timestamp": "2026-09-09T09:32:31.100247", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 127.05, "reason": "stale quote for RVTY (48757.952791s old; limit 180s)"}
+{"timestamp": "2026-09-09T09:32:31.201151", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 57.11, "reason": "stale quote for SLB (48752.034421s old; limit 180s)"}
