@@ -16550,3 +16550,5 @@
 {"timestamp": "2026-09-09T09:24:37.593775", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 221.61, "reason": "stale quote for RSG (48278.717292s old; limit 180s)"}
 {"timestamp": "2026-09-09T09:26:38.607149", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 221.61, "reason": "stale quote for RSG (48399.67034s old; limit 180s)"}
 {"timestamp": "2026-09-09T09:26:38.912559", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 57.11, "reason": "stale quote for SLB (48399.588561s old; limit 180s)"}
+{"timestamp": "2026-09-09T09:28:30.135977", "ticker": "QCOM", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 174.08, "reason": "stale quote for QCOM (48513.478807s old; limit 180s)"}
+{"timestamp": "2026-09-09T09:28:30.136179", "ticker": "NVDA", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 225.82, "reason": "stale quote for NVDA (48510.23916s old; limit 180s)"}
