@@ -16545,3 +16545,6 @@
 {"timestamp": "2026-09-09T09:22:51.663187", "ticker": "PSKY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 10.795, "reason": "stale quote for PSKY (48176.972987s old; limit 180s)"}
 {"timestamp": "2026-09-09T09:22:51.710504", "ticker": "SBAC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 188.575, "reason": "stale quote for SBAC (48183.426161s old; limit 180s)"}
 {"timestamp": "2026-09-09T09:22:51.753409", "ticker": "SNDK", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 1733.14, "reason": "stale quote for SNDK (47993.297202s old; limit 180s)"}
+{"timestamp": "2026-09-09T09:24:37.140896", "ticker": "QCOM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 174.08, "reason": "stale quote for QCOM (48280.361979s old; limit 180s)"}
+{"timestamp": "2026-09-09T09:24:37.368626", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 57.11, "reason": "stale quote for SLB (48278.107552s old; limit 180s)"}
+{"timestamp": "2026-09-09T09:24:37.593775", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 221.61, "reason": "stale quote for RSG (48278.717292s old; limit 180s)"}
