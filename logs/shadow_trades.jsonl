@@ -17166,3 +17166,5 @@
 {"timestamp": "2026-09-09T17:02:55.893906", "ticker": "SNDK", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 1777.36, "reason": "liquidity filter: SNDK average volume 282,750 < 500,000"}
 {"timestamp": "2026-09-09T17:04:43.054268", "ticker": "SNDK", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 1777.45, "reason": "liquidity filter: SNDK average volume 282,771 < 500,000"}
 {"timestamp": "2026-09-09T17:04:43.054480", "ticker": "PSX", "action": "buy", "engine": "gemini", "confidence": 68, "conviction": 7, "price": 260.52, "reason": "liquidity filter: PSX average volume 122,745 < 500,000"}
+{"timestamp": "2026-09-09T17:06:47.205266", "ticker": "SNDK", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 1775.77, "reason": "liquidity filter: SNDK average volume 282,782 < 500,000"}
+{"timestamp": "2026-09-09T17:06:47.385866", "ticker": "PSX", "action": "buy", "engine": "gemini", "confidence": 68, "conviction": 7, "price": 260.52, "reason": "stale quote for PSX (212.709873s old; limit 180s)"}
