@@ -17015,3 +17015,5 @@
 {"timestamp": "2026-09-09T15:24:55.142071", "ticker": "SNDK", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 1773.255, "reason": "liquidity filter: SNDK average volume 280,915 < 500,000"}
 {"timestamp": "2026-09-09T15:26:48.391068", "ticker": "SNDK", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 1777.01, "reason": "liquidity filter: SNDK average volume 280,945 < 500,000"}
 {"timestamp": "2026-09-09T15:26:48.559485", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 57.77, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-09-09T15:28:37.183281", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 57.755, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-09-09T15:28:37.183505", "ticker": "NUE", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 259.9, "reason": "stale quote for NUE (222.847528s old; limit 180s)"}
