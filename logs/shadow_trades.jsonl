@@ -16719,3 +16719,5 @@
 {"timestamp": "2026-09-09T11:38:51.010122", "ticker": "PSKY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 10.795, "reason": "stale quote for PSKY (56336.283552s old; limit 180s)"}
 {"timestamp": "2026-09-09T11:38:51.114570", "ticker": "SBAC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 188.575, "reason": "stale quote for SBAC (56342.784621s old; limit 180s)"}
 {"timestamp": "2026-09-09T11:38:51.302561", "ticker": "SNDK", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 1733.14, "reason": "stale quote for SNDK (56152.803004s old; limit 180s)"}
+{"timestamp": "2026-09-09T11:40:39.339955", "ticker": "PPL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 35.08, "reason": "stale quote for PPL (56441.206378s old; limit 180s)"}
+{"timestamp": "2026-09-09T11:40:39.439384", "ticker": "PSX", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 259.17, "reason": "stale quote for PSX (56449.510477s old; limit 180s)"}
