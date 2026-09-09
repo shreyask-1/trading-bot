@@ -16870,3 +16870,5 @@
 {"timestamp": "2026-09-09T13:46:55.768170", "ticker": "SLB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 59.09, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
 {"timestamp": "2026-09-09T13:46:56.000437", "ticker": "SMCI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 39.505, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
 {"timestamp": "2026-09-09T13:46:56.535754", "ticker": "PSKY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 10.71, "reason": "market data unavailable for PSKY (bid/ask spread missing)"}
+{"timestamp": "2026-09-09T13:48:38.702723", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 316.265, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
+{"timestamp": "2026-09-09T13:48:38.835565", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 1015.05, "reason": "market data unavailable for MU (bid/ask spread missing)"}
