@@ -17389,3 +17389,6 @@
 {"timestamp": "2026-09-09T19:58:41.317879", "ticker": "HCA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 422.135, "reason": "liquidity filter: HCA average volume 67,536 < 500,000"}
 {"timestamp": "2026-09-09T19:58:41.602744", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 32.475, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
 {"timestamp": "2026-09-09T19:58:41.857404", "ticker": "TER", "action": "buy", "engine": "gemini", "confidence": 87, "conviction": 9, "price": 383.65, "reason": "liquidity filter: TER average volume 93,193 < 500,000"}
+{"timestamp": "2026-09-09T21:30:45.175596", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 222.41, "reason": "stale quote for RSG (5450.586243s old; limit 180s)"}
+{"timestamp": "2026-09-09T21:30:45.382812", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 32.405, "reason": "stale quote for HPQ (5446.271297s old; limit 180s)"}
+{"timestamp": "2026-09-09T21:30:45.382967", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 57.06, "reason": "stale quote for SLB (5440.386739s old; limit 180s)"}
