@@ -16584,3 +16584,6 @@
 {"timestamp": "2026-09-09T09:58:36.650549", "ticker": "ORCL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 162.525, "reason": "stale quote for ORCL (50317.00761s old; limit 180s)"}
 {"timestamp": "2026-09-09T10:02:39.465440", "ticker": "QCOM", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 174.08, "reason": "stale quote for QCOM (50559.608593s old; limit 180s)"}
 {"timestamp": "2026-09-09T10:02:39.465633", "ticker": "PSX", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 259.17, "reason": "stale quote for PSX (50564.896622s old; limit 180s)"}
+{"timestamp": "2026-09-09T10:04:55.333997", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 221.61, "reason": "stale quote for RSG (50679.110727s old; limit 180s)"}
+{"timestamp": "2026-09-09T10:04:55.661999", "ticker": "QCOM", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 174.08, "reason": "stale quote for QCOM (50698.800813s old; limit 180s)"}
+{"timestamp": "2026-09-09T10:04:55.984870", "ticker": "PSX", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 259.17, "reason": "stale quote for PSX (50705.88925s old; limit 180s)"}
