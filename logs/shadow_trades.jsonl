@@ -17288,3 +17288,5 @@
 {"timestamp": "2026-09-09T18:32:46.494553", "ticker": "HCA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 424.33, "reason": "liquidity filter: HCA average volume 65,081 < 500,000"}
 {"timestamp": "2026-09-09T18:34:41.604407", "ticker": "HCA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 424.49, "reason": "liquidity filter: HCA average volume 65,100 < 500,000"}
 {"timestamp": "2026-09-09T18:34:41.909775", "ticker": "TER", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 382.22, "reason": "liquidity filter: TER average volume 92,146 < 500,000"}
+{"timestamp": "2026-09-09T18:36:41.997981", "ticker": "HCA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 424.68, "reason": "liquidity filter: HCA average volume 65,118 < 500,000"}
+{"timestamp": "2026-09-09T18:36:42.285786", "ticker": "TER", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 382.22, "reason": "stale quote for TER (199.056325s old; limit 180s)"}
