@@ -17200,3 +17200,6 @@
 {"timestamp": "2026-09-09T17:30:50.056266", "ticker": "TER", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 379.82, "reason": "liquidity filter: TER average volume 91,388 < 500,000"}
 {"timestamp": "2026-09-09T17:34:34.340074", "ticker": "NVDA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 224.255, "reason": "market data unavailable for NVDA (bid/ask spread missing)"}
 {"timestamp": "2026-09-09T17:34:34.394788", "ticker": "NUE", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 258.97, "reason": "liquidity filter: NUE average volume 69,997 < 500,000"}
+{"timestamp": "2026-09-09T17:36:51.862370", "ticker": "SNDK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 1770.82, "reason": "liquidity filter: SNDK average volume 283,044 < 500,000"}
+{"timestamp": "2026-09-09T17:36:52.194394", "ticker": "TER", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 380.06, "reason": "liquidity filter: TER average volume 91,500 < 500,000"}
+{"timestamp": "2026-09-09T17:36:52.460923", "ticker": "STX", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 904.34, "reason": "liquidity filter: STX average volume 148,141 < 500,000"}
