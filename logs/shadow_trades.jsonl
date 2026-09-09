@@ -17238,3 +17238,5 @@
 {"timestamp": "2026-09-09T18:00:54.738925", "ticker": "PSX", "action": "buy", "engine": "gemini", "confidence": 72, "conviction": 7, "price": 261.09, "reason": "liquidity filter: PSX average volume 123,104 < 500,000"}
 {"timestamp": "2026-09-09T18:02:48.665029", "ticker": "SNDK", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 1769.66, "reason": "liquidity filter: SNDK average volume 283,325 < 500,000"}
 {"timestamp": "2026-09-09T18:02:49.038012", "ticker": "PSX", "action": "buy", "engine": "gemini", "confidence": 68, "conviction": 7, "price": 261.09, "reason": "stale quote for PSX (214.845697s old; limit 180s)"}
+{"timestamp": "2026-09-09T18:06:33.870238", "ticker": "SNDK", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 1769.02, "reason": "liquidity filter: SNDK average volume 283,371 < 500,000"}
+{"timestamp": "2026-09-09T18:06:33.870408", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 57.57, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
