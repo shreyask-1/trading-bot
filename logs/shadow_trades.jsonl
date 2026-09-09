@@ -16885,3 +16885,5 @@
 {"timestamp": "2026-09-09T13:52:59.826447", "ticker": "TER", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 376.18, "reason": "liquidity filter: TER average volume 89,525 < 500,000"}
 {"timestamp": "2026-09-09T13:53:00.138938", "ticker": "PSKY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 10.675, "reason": "market data unavailable for PSKY (bid/ask spread missing)"}
 {"timestamp": "2026-09-09T13:53:00.579398", "ticker": "SBAC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 188.4, "reason": "stale quote for SBAC (572.172762s old; limit 180s)"}
+{"timestamp": "2026-09-09T13:54:33.384013", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 39.73, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
+{"timestamp": "2026-09-09T13:54:33.529037", "ticker": "PPL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 35.06, "reason": "liquidity filter: PPL average volume 475,608 < 500,000"}
