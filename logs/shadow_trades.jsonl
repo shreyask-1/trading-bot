@@ -17053,3 +17053,6 @@
 {"timestamp": "2026-09-09T15:46:53.271778", "ticker": "STT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 192.74, "reason": "liquidity filter: STT average volume 52,351 < 500,000"}
 {"timestamp": "2026-09-09T15:46:53.330142", "ticker": "STX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 908.98, "reason": "liquidity filter: STX average volume 145,762 < 500,000"}
 {"timestamp": "2026-09-09T15:46:53.457808", "ticker": "SWKS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 74.895, "reason": "stale quote for SWKS (495.061157s old; limit 180s)"}
+{"timestamp": "2026-09-09T15:48:51.413933", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 57.685, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-09-09T15:48:51.778883", "ticker": "SNDK", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 1769.315, "reason": "liquidity filter: SNDK average volume 281,543 < 500,000"}
+{"timestamp": "2026-09-09T15:48:52.126290", "ticker": "STX", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 909.51, "reason": "liquidity filter: STX average volume 145,824 < 500,000"}
