@@ -16822,3 +16822,4 @@
 {"timestamp": "2026-09-09T13:08:58.133418", "ticker": "SOLV", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 90.16, "reason": "stale quote for SOLV (61728.333255s old; limit 180s)"}
 {"timestamp": "2026-09-09T13:10:47.496363", "ticker": "QCOM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 174.08, "reason": "stale quote for QCOM (61850.649577s old; limit 180s)"}
 {"timestamp": "2026-09-09T13:10:47.793806", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 57.11, "reason": "stale quote for SLB (61848.477887s old; limit 180s)"}
+{"timestamp": "2026-09-09T13:12:52.208109", "ticker": "QCOM", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 174.08, "reason": "stale quote for QCOM (61975.414694s old; limit 180s)"}
