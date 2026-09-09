@@ -17330,3 +17330,6 @@
 {"timestamp": "2026-09-09T19:12:41.851325", "ticker": "TER", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 382.2, "reason": "liquidity filter: TER average volume 92,380 < 500,000"}
 {"timestamp": "2026-09-09T19:14:38.182752", "ticker": "TER", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 382.44, "reason": "liquidity filter: TER average volume 92,396 < 500,000"}
 {"timestamp": "2026-09-09T19:14:38.510159", "ticker": "HCA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 425.49, "reason": "liquidity filter: HCA average volume 66,059 < 500,000"}
+{"timestamp": "2026-09-09T19:16:51.548411", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 32.71, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
+{"timestamp": "2026-09-09T19:16:51.703258", "ticker": "TER", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 383.09, "reason": "liquidity filter: TER average volume 92,430 < 500,000"}
+{"timestamp": "2026-09-09T19:16:51.862880", "ticker": "HCA", "action": "buy", "engine": "gemini", "confidence": 87, "conviction": 9, "price": 424.89, "reason": "liquidity filter: HCA average volume 66,251 < 500,000"}
