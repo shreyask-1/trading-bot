@@ -16761,3 +16761,6 @@
 {"timestamp": "2026-09-09T12:16:30.511121", "ticker": "STX", "action": "buy", "engine": "gemini", "confidence": 98, "conviction": 10, "price": 903.93, "reason": "stale quote for STX (58591.361489s old; limit 180s)"}
 {"timestamp": "2026-09-09T12:18:30.768129", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 40.2, "reason": "stale quote for SMCI (58709.513159s old; limit 180s)"}
 {"timestamp": "2026-09-09T12:18:30.872280", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 57.11, "reason": "stale quote for SLB (58711.701047s old; limit 180s)"}
+{"timestamp": "2026-09-09T12:20:40.700375", "ticker": "QCOM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 174.08, "reason": "stale quote for QCOM (58843.9064s old; limit 180s)"}
+{"timestamp": "2026-09-09T12:20:40.969883", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 57.11, "reason": "stale quote for SLB (58841.686795s old; limit 180s)"}
+{"timestamp": "2026-09-09T12:20:41.245471", "ticker": "STX", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 903.93, "reason": "stale quote for STX (58841.938008s old; limit 180s)"}
