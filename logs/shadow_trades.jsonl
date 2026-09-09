@@ -17195,3 +17195,6 @@
 {"timestamp": "2026-09-09T17:24:45.753393", "ticker": "TER", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 380.31, "reason": "liquidity filter: TER average volume 91,367 < 500,000"}
 {"timestamp": "2026-09-09T17:24:46.135543", "ticker": "STX", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 909.2, "reason": "liquidity filter: STX average volume 147,826 < 500,000"}
 {"timestamp": "2026-09-09T17:26:38.168293", "ticker": "SNDK", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 1776.02, "reason": "liquidity filter: SNDK average volume 282,950 < 500,000"}
+{"timestamp": "2026-09-09T17:30:49.233366", "ticker": "SNDK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 1776.56, "reason": "liquidity filter: SNDK average volume 282,979 < 500,000"}
+{"timestamp": "2026-09-09T17:30:49.570515", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 57.645, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-09-09T17:30:50.056266", "ticker": "TER", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 379.82, "reason": "liquidity filter: TER average volume 91,388 < 500,000"}
