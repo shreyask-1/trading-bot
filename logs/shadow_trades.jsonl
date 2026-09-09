@@ -16811,3 +16811,4 @@
 {"timestamp": "2026-09-09T12:58:50.709255", "ticker": "STX", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 903.93, "reason": "stale quote for STX (61131.578511s old; limit 180s)"}
 {"timestamp": "2026-09-09T13:02:56.905630", "ticker": "PSKY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 10.795, "reason": "stale quote for PSKY (61361.516717s old; limit 180s)"}
 {"timestamp": "2026-09-09T13:02:56.965347", "ticker": "PSX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 259.17, "reason": "stale quote for PSX (61366.582066s old; limit 180s)"}
+{"timestamp": "2026-09-09T13:04:52.227378", "ticker": "QCOM", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 174.08, "reason": "stale quote for QCOM (61495.549169s old; limit 180s)"}
