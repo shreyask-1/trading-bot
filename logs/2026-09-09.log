@@ -937,6 +937,7 @@ Shadow report: 16424 shadow candidate(s), 234 rejection group(s)
 Timings: account: 0.0s | risk: 0.3s | decide: 9.1s | watchlist: 0.1s | perf: 0.3s
 
 === Run at 2026-09-09T00:52:58.979344 ===
+=== Run at 2026-09-09T00:52:27.944524 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-08 08:52 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,311.41
@@ -952,6 +953,8 @@ Gemini calls used today (all models combined): 462
 Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
   -> queued LRCX buy (conf 85, stop 312.31, tp 335.0)
   -> queued LITE buy (conf 92, stop 892.65, tp 1085.0100000000002)
+  -> queued LRCX buy (conf 88, stop 312.31, tp 321.72)
+  -> queued LITE buy (conf 92, stop 892.65, tp 1000.02)
   -> queued MCK buy (conf 85, stop 873.49, tp 928.28)
   -> queued MOS buy (conf 80, stop 23.32, tp 26.87)
   -> queued MU buy (conf 80, stop 907.02, tp 1040.79)
@@ -959,6 +962,7 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued KEYS buy (conf None, stop 313.965, tp 333.76)
   -> queued HUM buy (conf None, stop 381.6, tp 413.42)
   -> queued KDP buy (conf 80, stop 31.6, tp 35.93)
+  -> queued KDP buy (conf 85, stop 31.6, tp 33.16)
   -> queued KMI buy (conf 70.0, stop None, tp None)
   -> queued MPC buy (conf None, stop 348.06, tp 399.52)
   -> queued HPQ buy (conf None, stop 26.735, tp 32.78)
@@ -971,4 +975,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 16424 shadow candidate(s), 234 rejection group(s)
 Timings: account: 0.0s | risk: 0.2s | decide: 5.9s | watchlist: 0.1s | perf: 0.3s
+Timings: account: 0.0s | risk: 0.0s | decide: 3.9s | watchlist: 0.0s | perf: 0.2s
 
