@@ -16476,3 +16476,5 @@
 {"timestamp": "2026-09-09T08:28:41.461398", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 40.2, "reason": "stale quote for SMCI (44920.10433s old; limit 180s)"}
 {"timestamp": "2026-09-09T08:30:52.231899", "ticker": "QCOM", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 174.08, "reason": "stale quote for QCOM (45055.430925s old; limit 180s)"}
 {"timestamp": "2026-09-09T08:30:52.509943", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 57.11, "reason": "stale quote for SLB (45053.220091s old; limit 180s)"}
+{"timestamp": "2026-09-09T08:34:38.298679", "ticker": "MS", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 216.32, "reason": "stale quote for MS (45284.465132s old; limit 180s)"}
+{"timestamp": "2026-09-09T08:34:38.586139", "ticker": "PSX", "action": "buy", "engine": "gemini", "confidence": 73, "conviction": 7, "price": 259.17, "reason": "stale quote for PSX (45288.516763s old; limit 180s)"}
