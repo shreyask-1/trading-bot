@@ -17173,3 +17173,4 @@
 {"timestamp": "2026-09-09T17:08:56.103724", "ticker": "RSG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 221.0, "reason": "stale quote for RSG (203.504128s old; limit 180s)"}
 {"timestamp": "2026-09-09T17:08:56.162602", "ticker": "SBAC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 186.54, "reason": "liquidity filter: SBAC average volume 58,998 < 500,000"}
 {"timestamp": "2026-09-09T17:08:56.219441", "ticker": "SLB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 57.425, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-09-09T17:10:49.670337", "ticker": "NUE", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 258.6, "reason": "liquidity filter: NUE average volume 69,797 < 500,000"}
