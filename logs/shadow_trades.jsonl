@@ -17381,3 +17381,4 @@
 {"timestamp": "2026-09-09T19:48:43.231420", "ticker": "OKE", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 95.88, "reason": "liquidity filter: OKE average volume 164,662 < 500,000"}
 {"timestamp": "2026-09-09T19:50:35.336581", "ticker": "HCA", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 423.3, "reason": "liquidity filter: HCA average volume 67,088 < 500,000"}
 {"timestamp": "2026-09-09T19:50:35.450100", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 32.81, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
+{"timestamp": "2026-09-09T19:52:41.638119", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 32.85, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
