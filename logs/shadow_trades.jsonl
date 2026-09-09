@@ -16993,3 +16993,5 @@
 {"timestamp": "2026-09-09T15:11:03.613377", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 57.685, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
 {"timestamp": "2026-09-09T15:12:44.344848", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 57.65, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
 {"timestamp": "2026-09-09T15:12:44.452597", "ticker": "SMCI", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 39.75, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
+{"timestamp": "2026-09-09T15:14:53.312769", "ticker": "SLB", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 57.69, "reason": "market data unavailable for SLB (bid/ask spread missing)"}
+{"timestamp": "2026-09-09T15:14:53.623642", "ticker": "SNDK", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 1770.73, "reason": "liquidity filter: SNDK average volume 280,584 < 500,000"}
