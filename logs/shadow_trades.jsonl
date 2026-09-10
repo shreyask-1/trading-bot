@@ -18237,3 +18237,4 @@
 {"timestamp": "2026-09-10T14:58:53.636278", "ticker": "ADM", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 86.99, "reason": "liquidity filter: ADM average volume 175,290 < 500,000"}
 {"timestamp": "2026-09-10T15:03:01.522108", "ticker": "ADM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 87.04, "reason": "liquidity filter: ADM average volume 175,342 < 500,000"}
 {"timestamp": "2026-09-10T15:03:01.522323", "ticker": "TRGP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 290.9, "reason": "liquidity filter: TRGP average volume 76,416 < 500,000"}
+{"timestamp": "2026-09-10T15:04:55.269266", "ticker": "WFC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 88.785, "reason": "market data unavailable for WFC (bid/ask spread missing)"}
