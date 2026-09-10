@@ -14008,6 +14008,9 @@ Timings: account: 0.0s | risk: 0.1s | decide: 23.6s | watchlist: 0.0s | perf: 0.
 === Run at 2026-09-10T14:08:34.043464 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-10 10:08 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+=== Run at 2026-09-10T14:07:39.683373 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-10 10:07 AM EDT | Market open (per Alpaca): True | Session: REGULAR
 Account value: $99,311.19
 Cash: $99,311.19 | Holdings (0): none
 Sector exposure (cached): unavailable (no holdings)
@@ -14023,6 +14026,13 @@ Gemini calls used today (all models combined): 168
   -> {"ticker": "VRSN", "status": "skipped", "reason": "stale quote for VRSN (249.85278s old; limit 180s)", "shadow": false, "data_guard": true}
   -> {"ticker": "WFC", "status": "skipped", "reason": "market data unavailable for WFC (bid/ask spread missing)", "shadow": false, "data_guard": true}
   -> {"ticker": "ADM", "status": "skipped", "reason": "liquidity filter: ADM average volume 174,432 < 500,000", "shadow": false, "data_guard": true}
+News: fetched 158, 4 new after dedup, 4 ticker(s) matched.
+Quant pre-screen: 8/18 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 168
+  -> {"ticker": "GEN", "status": "skipped", "reason": "liquidity filter: GEN average volume 381,148 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "MRNA", "status": "skipped", "reason": "market data unavailable for MRNA (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "MU", "status": "skipped", "reason": "market data unavailable for MU (bid/ask spread missing)", "shadow": false, "data_guard": true}
 Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); 5 idea(s) remain subject to the retry cap.
 Run budget reserve reached -- skipping dashboard watchlist sync.
 Run budget reserve reached -- skipping performance snapshot.
@@ -14033,4 +14043,6 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 18175 shadow candidate(s), 457 rejection group(s)
 Timings: account: 0.0s | risk: 0.3s | decide: 24.9s | watchlist: 0.0s | perf: 0.2s
+Shadow report: 18175 shadow candidate(s), 458 rejection group(s)
+Timings: account: 0.0s | risk: 0.3s | decide: 24.2s | watchlist: 0.0s | perf: 0.2s
 
