@@ -18424,3 +18424,6 @@
 {"timestamp": "2026-09-10T17:40:57.093231", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 88.89, "reason": "market data unavailable for WFC (bid/ask spread missing)"}
 {"timestamp": "2026-09-10T17:42:44.762626", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 325.32, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
 {"timestamp": "2026-09-10T17:42:44.835699", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 88.9, "reason": "market data unavailable for WFC (bid/ask spread missing)"}
+{"timestamp": "2026-09-10T17:44:56.047004", "ticker": "SWKS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 84.37, "reason": "liquidity filter: SWKS average volume 281,318 < 500,000"}
+{"timestamp": "2026-09-10T17:44:56.047210", "ticker": "MU", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 978.5, "reason": "market data unavailable for MU (bid/ask spread missing)"}
+{"timestamp": "2026-09-10T17:44:56.047327", "ticker": "NEM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 126.69, "reason": "liquidity filter: NEM average volume 274,124 < 500,000"}
