@@ -8283,6 +8283,9 @@ Timings: account: 0.0s | risk: 0.2s | decide: 4.8s | watchlist: 0.1s | perf: 0.2
 === Run at 2026-09-10T07:39:02.819113 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-10 03:39 AM EDT | Market open (per Alpaca): False | Session: CLOSED
+=== Run at 2026-09-10T07:38:29.036195 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-10 03:38 AM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,311.19
 Cash: $99,311.19 | Holdings (0): none
 Sector exposure (cached): unavailable (no holdings)
@@ -8306,6 +8309,10 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued NVDA buy (conf 85, stop 209.25, tp 234.75000000000003)
   -> queued TER buy (conf None, stop 326.33, tp 384.17)
   -> queued NUE buy (conf 82, stop 246.33, tp 267.24)
+  -> queued OKE buy (conf 85, stop 91.27, tp 99.55)
+  -> queued NVDA buy (conf 84, stop 209.25, tp 234.75000000000003)
+  -> queued TER buy (conf None, stop 326.33, tp 384.17)
+  -> queued NUE buy (conf 89, stop 246.33, tp 267.24)
 Dashboard watchlist synced (2 symbols) for news/headlines.
 Ending portfolio value: $99,311.19
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
@@ -8315,4 +8322,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 17634 shadow candidate(s), 267 rejection group(s)
 Timings: account: 0.0s | risk: 0.1s | decide: 3.3s | watchlist: 0.0s | perf: 0.2s
+Timings: account: 0.0s | risk: 0.4s | decide: 6.6s | watchlist: 0.2s | perf: 0.3s
 
