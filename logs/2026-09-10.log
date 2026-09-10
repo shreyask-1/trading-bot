@@ -12571,6 +12571,9 @@ Timings: account: 0.0s | risk: 0.1s | decide: 4.7s | watchlist: 0.0s | perf: 0.3
 === Run at 2026-09-10T12:31:05.610818 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-10 08:31 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
+=== Run at 2026-09-10T12:30:20.400634 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-10 08:30 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
 Account value: $99,311.19
 Cash: $99,311.19 | Holdings (0): none
 Sector exposure (cached): unavailable (no holdings)
@@ -12586,6 +12589,14 @@ Gemini calls used today (all models combined): 138
   -> {"ticker": "WFC", "status": "skipped", "reason": "stale quote for WFC (59472.171649s old; limit 180s)", "shadow": false, "data_guard": true}
 Overnight queue kept 11 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
 Dashboard watchlist synced (1 symbols) for news/headlines.
+News: fetched 158, 1 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 33/60 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 138
+  -> {"ticker": "WFC", "status": "skipped", "reason": "stale quote for WFC (59435.310866s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "STX", "status": "skipped", "reason": "stale quote for STX (59439.237963s old; limit 180s)", "shadow": false, "data_guard": true}
+Overnight queue kept 11 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
+Dashboard watchlist synced (2 symbols) for news/headlines.
 Ending portfolio value: $99,311.19
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
 Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
@@ -12594,4 +12605,6 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 18009 shadow candidate(s), 498 rejection group(s)
 Timings: account: 0.0s | risk: 0.2s | decide: 4.5s | watchlist: 0.1s | perf: 0.3s
+Shadow report: 18010 shadow candidate(s), 498 rejection group(s)
+Timings: account: 0.0s | risk: 0.3s | decide: 13.0s | watchlist: 0.1s | perf: 0.3s
 
