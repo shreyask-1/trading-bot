@@ -17869,3 +17869,7 @@
 {"timestamp": "2026-09-10T10:58:53.384546", "ticker": "STX", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 885.67, "reason": "stale quote for STX (53938.358447s old; limit 180s)"}
 {"timestamp": "2026-09-10T10:58:53.696370", "ticker": "VLO", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 388.9, "reason": "stale quote for VLO (53934.774216s old; limit 180s)"}
 {"timestamp": "2026-09-10T11:00:53.104072", "ticker": "STX", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 885.67, "reason": "stale quote for STX (54048.4697s old; limit 180s)"}
+{"timestamp": "2026-09-10T11:03:32.004868", "ticker": "STT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 191.92, "reason": "stale quote for STT (54225.807481s old; limit 180s)"}
+{"timestamp": "2026-09-10T11:03:32.191800", "ticker": "STX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 885.67, "reason": "stale quote for STX (54217.265257s old; limit 180s)"}
+{"timestamp": "2026-09-10T11:03:32.368659", "ticker": "VRSN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 5, "price": 286.81, "reason": "stale quote for VRSN (54229.079041s old; limit 180s)"}
+{"timestamp": "2026-09-10T11:03:32.406143", "ticker": "TRGP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 291.5, "reason": "stale quote for TRGP (54205.651342s old; limit 180s)"}
