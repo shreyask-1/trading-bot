@@ -18745,3 +18745,6 @@
 {"timestamp": "2026-09-10T23:04:53.059204", "ticker": "SWKS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 84.06, "reason": "stale quote for SWKS (11098.202523s old; limit 180s)"}
 {"timestamp": "2026-09-10T23:04:53.319582", "ticker": "WFC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 89.445, "reason": "stale quote for WFC (11093.758183s old; limit 180s)"}
 {"timestamp": "2026-09-10T23:04:53.319759", "ticker": "ADM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 86.9, "reason": "stale quote for ADM (11074.407784s old; limit 180s)"}
+{"timestamp": "2026-09-10T23:06:34.854758", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 96, "conviction": 10, "price": 89.445, "reason": "stale quote for WFC (11195.423108s old; limit 180s)"}
+{"timestamp": "2026-09-10T23:06:34.927695", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 84.06, "reason": "stale quote for SWKS (11200.20881s old; limit 180s)"}
+{"timestamp": "2026-09-10T23:06:34.999951", "ticker": "WRB", "action": "buy", "engine": "gemini", "confidence": 83, "conviction": 8, "price": 70.04, "reason": "stale quote for WRB (11204.591053s old; limit 180s)"}
