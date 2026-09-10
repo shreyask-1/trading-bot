@@ -18403,3 +18403,5 @@
 {"timestamp": "2026-09-10T17:22:54.408956", "ticker": "TRGP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 291.6, "reason": "liquidity filter: TRGP average volume 76,952 < 500,000"}
 {"timestamp": "2026-09-10T17:24:55.962820", "ticker": "SWKS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 83.84, "reason": "liquidity filter: SWKS average volume 280,000 < 500,000"}
 {"timestamp": "2026-09-10T17:24:56.290379", "ticker": "AES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 14.825, "reason": "liquidity filter: AES average volume 336,089 < 500,000"}
+{"timestamp": "2026-09-10T17:26:44.576680", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 324.22, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
+{"timestamp": "2026-09-10T17:26:44.872182", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 83.94, "reason": "liquidity filter: SWKS average volume 280,094 < 500,000"}
