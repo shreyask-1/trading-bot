@@ -17828,3 +17828,4 @@
 {"timestamp": "2026-09-10T10:26:52.499263", "ticker": "VZ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 49.76, "reason": "stale quote for VZ (52013.385403s old; limit 180s)"}
 {"timestamp": "2026-09-10T10:26:52.756281", "ticker": "STT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 191.92, "reason": "stale quote for STT (52026.50153s old; limit 180s)"}
 {"timestamp": "2026-09-10T10:26:53.047102", "ticker": "XOM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 164.16, "reason": "stale quote for XOM (52023.177572s old; limit 180s)"}
+{"timestamp": "2026-09-10T10:28:44.378362", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 89.675, "reason": "stale quote for WFC (52125.772629s old; limit 180s)"}
