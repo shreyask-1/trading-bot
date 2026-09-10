@@ -17770,3 +17770,6 @@
 {"timestamp": "2026-09-10T09:42:55.660840", "ticker": "VZ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 49.76, "reason": "stale quote for VZ (49376.552599s old; limit 180s)"}
 {"timestamp": "2026-09-10T09:42:55.910730", "ticker": "STT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 191.92, "reason": "stale quote for STT (49389.661945s old; limit 180s)"}
 {"timestamp": "2026-09-10T09:42:56.167424", "ticker": "XOM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 164.16, "reason": "stale quote for XOM (49386.338224s old; limit 180s)"}
+{"timestamp": "2026-09-10T09:44:35.918884", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 89.675, "reason": "stale quote for WFC (49477.312148s old; limit 180s)"}
+{"timestamp": "2026-09-10T09:44:36.247708", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 315.42, "reason": "stale quote for AAPL (49476.388198s old; limit 180s)"}
+{"timestamp": "2026-09-10T09:44:36.561101", "ticker": "XOM", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 164.16, "reason": "stale quote for XOM (49486.686604s old; limit 180s)"}
