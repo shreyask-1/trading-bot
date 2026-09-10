@@ -17998,3 +17998,5 @@
 {"timestamp": "2026-09-10T12:20:54.199722", "ticker": "STT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 191.92, "reason": "stale quote for STT (58868.102443s old; limit 180s)"}
 {"timestamp": "2026-09-10T12:20:54.262531", "ticker": "XOM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 164.16, "reason": "stale quote for XOM (58864.568902s old; limit 180s)"}
 {"timestamp": "2026-09-10T12:20:54.304589", "ticker": "AES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 14.815, "reason": "stale quote for AES (58863.329618s old; limit 180s)"}
+{"timestamp": "2026-09-10T12:22:39.923725", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 89.675, "reason": "stale quote for WFC (58961.345205s old; limit 180s)"}
+{"timestamp": "2026-09-10T12:22:40.180970", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 317.57, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
