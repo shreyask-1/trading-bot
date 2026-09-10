@@ -18318,3 +18318,5 @@
 {"timestamp": "2026-09-10T16:07:07.756174", "ticker": "TTD", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 13.965, "reason": "market data unavailable for TTD (bid/ask spread missing)"}
 {"timestamp": "2026-09-10T16:09:03.492026", "ticker": "NOW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 133.56, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
 {"timestamp": "2026-09-10T16:09:03.492167", "ticker": "AES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 14.825, "reason": "liquidity filter: AES average volume 328,512 < 500,000"}
+{"timestamp": "2026-09-10T16:10:50.792034", "ticker": "VST", "action": "buy", "engine": "gemini", "confidence": 90.0, "conviction": 9, "price": 151.23, "reason": "liquidity filter: VST average volume 161,544 < 500,000"}
+{"timestamp": "2026-09-10T16:10:50.945413", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 80.0, "conviction": 8, "price": 88.84, "reason": "market data unavailable for WFC (bid/ask spread missing)"}
