@@ -18226,3 +18226,4 @@
 {"timestamp": "2026-09-10T14:46:50.149438", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 320.445, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
 {"timestamp": "2026-09-10T14:51:06.460382", "ticker": "NOW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 133.22, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
 {"timestamp": "2026-09-10T14:51:06.837412", "ticker": "AES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 14.83, "reason": "stale quote for AES (445.540883s old; limit 180s)"}
+{"timestamp": "2026-09-10T14:52:45.440143", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 321.47, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
