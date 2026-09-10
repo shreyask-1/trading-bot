@@ -18388,3 +18388,5 @@
 {"timestamp": "2026-09-10T17:13:00.926935", "ticker": "AES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 14.835, "reason": "stale quote for AES (202.889462s old; limit 180s)"}
 {"timestamp": "2026-09-10T17:14:42.071021", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 323.64, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
 {"timestamp": "2026-09-10T17:14:42.334034", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 83.64, "reason": "liquidity filter: SWKS average volume 279,108 < 500,000"}
+{"timestamp": "2026-09-10T17:16:39.548256", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 83.66, "reason": "liquidity filter: SWKS average volume 279,231 < 500,000"}
+{"timestamp": "2026-09-10T17:16:39.606894", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 72, "conviction": 7, "price": 323.56, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
