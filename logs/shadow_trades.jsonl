@@ -18173,3 +18173,5 @@
 {"timestamp": "2026-09-10T14:08:59.488497", "ticker": "VRSN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 288.36, "reason": "stale quote for VRSN (249.85278s old; limit 180s)"}
 {"timestamp": "2026-09-10T14:08:59.815153", "ticker": "WFC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 89.17, "reason": "market data unavailable for WFC (bid/ask spread missing)"}
 {"timestamp": "2026-09-10T14:08:59.815379", "ticker": "ADM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 86.92, "reason": "liquidity filter: ADM average volume 174,432 < 500,000"}
+{"timestamp": "2026-09-10T14:10:52.842819", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 366.71, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
+{"timestamp": "2026-09-10T14:10:53.186080", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 89.115, "reason": "market data unavailable for WFC (bid/ask spread missing)"}
