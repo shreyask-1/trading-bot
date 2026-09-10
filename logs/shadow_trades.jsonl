@@ -18311,3 +18311,5 @@
 {"timestamp": "2026-09-10T15:56:59.588702", "ticker": "VLO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 392.94, "reason": "stale quote for VLO (244.524564s old; limit 180s)"}
 {"timestamp": "2026-09-10T15:56:59.944165", "ticker": "VRSN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 289.73, "reason": "stale quote for VRSN (496.565826s old; limit 180s)"}
 {"timestamp": "2026-09-10T15:57:00.319233", "ticker": "WFC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 89.22, "reason": "market data unavailable for WFC (bid/ask spread missing)"}
+{"timestamp": "2026-09-10T15:58:46.168074", "ticker": "VST", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 151.3, "reason": "liquidity filter: VST average volume 161,462 < 500,000"}
+{"timestamp": "2026-09-10T15:58:46.525377", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 89.17, "reason": "market data unavailable for WFC (bid/ask spread missing)"}
