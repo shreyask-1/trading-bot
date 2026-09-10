@@ -17963,3 +17963,4 @@
 {"timestamp": "2026-09-10T11:54:51.298086", "ticker": "XOM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 164.16, "reason": "stale quote for XOM (57301.497346s old; limit 180s)"}
 {"timestamp": "2026-09-10T11:54:51.469422", "ticker": "AES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 14.815, "reason": "stale quote for AES (57300.396681s old; limit 180s)"}
 {"timestamp": "2026-09-10T11:56:32.489582", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 89.675, "reason": "stale quote for WFC (57394.077318s old; limit 180s)"}
+{"timestamp": "2026-09-10T11:58:37.947038", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 89.675, "reason": "stale quote for WFC (57519.37394s old; limit 180s)"}
