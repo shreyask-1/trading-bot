@@ -18409,3 +18409,5 @@
 {"timestamp": "2026-09-10T17:28:32.035750", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 88.84, "reason": "market data unavailable for WFC (bid/ask spread missing)"}
 {"timestamp": "2026-09-10T17:30:46.097986", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 324.64, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
 {"timestamp": "2026-09-10T17:30:46.316771", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 88.86, "reason": "market data unavailable for WFC (bid/ask spread missing)"}
+{"timestamp": "2026-09-10T17:32:42.781408", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 325.18, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
+{"timestamp": "2026-09-10T17:32:43.034706", "ticker": "ADM", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 87.25, "reason": "liquidity filter: ADM average volume 177,391 < 500,000"}
