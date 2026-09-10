@@ -18593,3 +18593,6 @@
 {"timestamp": "2026-09-10T19:44:39.493770", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 325.37, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
 {"timestamp": "2026-09-10T19:44:39.818071", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 89.1, "reason": "market data unavailable for WFC (bid/ask spread missing)"}
 {"timestamp": "2026-09-10T19:44:40.129577", "ticker": "APP", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 315.62, "reason": "liquidity filter: APP average volume 159,268 < 500,000"}
+{"timestamp": "2026-09-10T19:46:32.490496", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 325.245, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
+{"timestamp": "2026-09-10T19:46:32.742891", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 89.15, "reason": "market data unavailable for WFC (bid/ask spread missing)"}
+{"timestamp": "2026-09-10T19:46:33.153754", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 72, "conviction": 7, "price": 84.635, "reason": "liquidity filter: SWKS average volume 293,654 < 500,000"}
