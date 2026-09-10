@@ -17846,3 +17846,5 @@
 {"timestamp": "2026-09-10T10:37:01.317941", "ticker": "XOM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 164.16, "reason": "stale quote for XOM (52631.449887s old; limit 180s)"}
 {"timestamp": "2026-09-10T10:38:49.455518", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 89.675, "reason": "stale quote for WFC (52730.972892s old; limit 180s)"}
 {"timestamp": "2026-09-10T10:38:49.644796", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 315.42, "reason": "stale quote for AAPL (52729.86827s old; limit 180s)"}
+{"timestamp": "2026-09-10T10:40:35.428399", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 89.675, "reason": "stale quote for WFC (52836.921375s old; limit 180s)"}
+{"timestamp": "2026-09-10T10:40:35.601460", "ticker": "VLO", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 388.9, "reason": "stale quote for VLO (52836.784324s old; limit 180s)"}
