@@ -18117,3 +18117,5 @@
 {"timestamp": "2026-09-10T13:26:38.890822", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 89.675, "reason": "stale quote for WFC (62800.336848s old; limit 180s)"}
 {"timestamp": "2026-09-10T13:26:39.125873", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 317.49, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
 {"timestamp": "2026-09-10T13:26:39.397741", "ticker": "STX", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 885.67, "reason": "stale quote for STX (62804.39963s old; limit 180s)"}
+{"timestamp": "2026-09-10T13:28:36.275432", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 89.675, "reason": "stale quote for WFC (62917.84265s old; limit 180s)"}
+{"timestamp": "2026-09-10T13:28:36.351375", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 317.49, "reason": "stale quote for AAPL (294.17675s old; limit 180s)"}
