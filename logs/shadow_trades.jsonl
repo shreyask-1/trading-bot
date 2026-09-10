@@ -18152,3 +18152,5 @@
 {"timestamp": "2026-09-10T13:48:46.832698", "ticker": "ADM", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 88.215, "reason": "liquidity filter: ADM average volume 174,018 < 500,000"}
 {"timestamp": "2026-09-10T13:50:38.749655", "ticker": "XOM", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 164.695, "reason": "liquidity filter: XOM average volume 378,321 < 500,000"}
 {"timestamp": "2026-09-10T13:50:38.885264", "ticker": "STT", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 192.22, "reason": "liquidity filter: STT average volume 52,498 < 500,000"}
+{"timestamp": "2026-09-10T13:54:35.411329", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 96, "conviction": 10, "price": 89.46, "reason": "market data unavailable for WFC (bid/ask spread missing)"}
+{"timestamp": "2026-09-10T13:54:35.529405", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 319.46, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
