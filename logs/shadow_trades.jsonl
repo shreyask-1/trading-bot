@@ -18581,3 +18581,6 @@
 {"timestamp": "2026-09-10T19:37:02.724297", "ticker": "WFC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 89.075, "reason": "market data unavailable for WFC (bid/ask spread missing)"}
 {"timestamp": "2026-09-10T19:37:03.171475", "ticker": "ADM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 86.925, "reason": "liquidity filter: ADM average volume 179,328 < 500,000"}
 {"timestamp": "2026-09-10T19:37:03.617388", "ticker": "AES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 14.805, "reason": "liquidity filter: AES average volume 346,876 < 500,000"}
+{"timestamp": "2026-09-10T19:38:29.904612", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 325.605, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
+{"timestamp": "2026-09-10T19:38:30.195798", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 89.04, "reason": "market data unavailable for WFC (bid/ask spread missing)"}
+{"timestamp": "2026-09-10T19:38:30.255264", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 84.64, "reason": "liquidity filter: SWKS average volume 291,684 < 500,000"}
