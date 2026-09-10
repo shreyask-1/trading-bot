@@ -18166,3 +18166,5 @@
 {"timestamp": "2026-09-10T13:58:58.065080", "ticker": "ADM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 88.05, "reason": "liquidity filter: ADM average volume 174,189 < 500,000"}
 {"timestamp": "2026-09-10T13:58:58.112209", "ticker": "AES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 14.82, "reason": "liquidity filter: AES average volume 325,312 < 500,000"}
 {"timestamp": "2026-09-10T14:01:08.898520", "ticker": "VRSN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 288.77, "reason": "stale quote for VRSN (223.850893s old; limit 180s)"}
+{"timestamp": "2026-09-10T14:02:54.608489", "ticker": "VRSN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 288.77, "reason": "stale quote for VRSN (348.136923s old; limit 180s)"}
+{"timestamp": "2026-09-10T14:02:54.608694", "ticker": "WFC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 89.46, "reason": "market data unavailable for WFC (bid/ask spread missing)"}
