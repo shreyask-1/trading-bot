@@ -19621,3 +19621,5 @@
 {"timestamp": "2026-09-11T17:08:44.422204", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 90.68, "reason": "liquidity filter: SWKS average volume 305,178 < 500,000"}
 {"timestamp": "2026-09-11T17:11:02.081293", "ticker": "DELL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 558.76, "reason": "stale quote for DELL (292.349843s old; limit 180s)"}
 {"timestamp": "2026-09-11T17:11:02.227340", "ticker": "SWKS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 90.21, "reason": "liquidity filter: SWKS average volume 305,370 < 500,000"}
+{"timestamp": "2026-09-11T17:12:46.450436", "ticker": "DELL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 558.85, "reason": "liquidity filter: DELL average volume 251,398 < 500,000"}
+{"timestamp": "2026-09-11T17:12:46.533428", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 90.19, "reason": "liquidity filter: SWKS average volume 305,452 < 500,000"}
