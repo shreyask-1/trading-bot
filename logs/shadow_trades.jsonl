@@ -19344,3 +19344,6 @@
 {"timestamp": "2026-09-11T13:34:38.195847", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 287.685, "reason": "liquidity filter: CEG average volume 81,369 < 500,000"}
 {"timestamp": "2026-09-11T13:34:38.317153", "ticker": "CF", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 133.55, "reason": "liquidity filter: CF average volume 125,798 < 500,000"}
 {"timestamp": "2026-09-11T13:34:38.446433", "ticker": "CI", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 282.435, "reason": "stale quote for CI (229.317766s old; limit 180s)"}
+{"timestamp": "2026-09-11T13:36:40.171336", "ticker": "C", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 140.835, "reason": "liquidity filter: C average volume 253,927 < 500,000"}
+{"timestamp": "2026-09-11T13:36:40.399132", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 288.6, "reason": "liquidity filter: CEG average volume 81,372 < 500,000"}
+{"timestamp": "2026-09-11T13:36:40.583435", "ticker": "CI", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 284.27, "reason": "liquidity filter: CI average volume 47,854 < 500,000"}
