@@ -18889,3 +18889,7 @@
 {"timestamp": "2026-09-11T08:40:43.020266", "ticker": "AES", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 14.805, "reason": "stale quote for AES (45642.984836s old; limit 180s)"}
 {"timestamp": "2026-09-11T08:40:43.282175", "ticker": "CF", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 135.14, "reason": "stale quote for CF (45653.510998s old; limit 180s)"}
 {"timestamp": "2026-09-11T08:40:43.553523", "ticker": "C", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 138.505, "reason": "stale quote for C (45645.42996s old; limit 180s)"}
+{"timestamp": "2026-09-11T08:42:54.108743", "ticker": "AES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 14.805, "reason": "stale quote for AES (45774.052128s old; limit 180s)"}
+{"timestamp": "2026-09-11T08:42:54.436427", "ticker": "BNY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 162.68, "reason": "stale quote for BNY (45790.412131s old; limit 180s)"}
+{"timestamp": "2026-09-11T08:42:54.761997", "ticker": "CEG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 285.875, "reason": "stale quote for CEG (45782.583906s old; limit 180s)"}
+{"timestamp": "2026-09-11T08:42:55.068312", "ticker": "CF", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 135.14, "reason": "stale quote for CF (45785.267218s old; limit 180s)"}
