@@ -18823,3 +18823,5 @@
 {"timestamp": "2026-09-10T23:58:35.997222", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 96, "conviction": 10, "price": 89.445, "reason": "stale quote for WFC (14316.435882s old; limit 180s)"}
 {"timestamp": "2026-09-10T23:58:36.251902", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 326.07, "reason": "stale quote for AAPL (11049.078062s old; limit 180s)"}
 {"timestamp": "2026-09-10T23:58:36.501033", "ticker": "AES", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 14.805, "reason": "stale quote for AES (14316.490662s old; limit 180s)"}
+{"timestamp": "2026-09-11T08:00:43.263978", "ticker": "AES", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 14.805, "reason": "stale quote for AES (43237.785603s old; limit 180s)"}
+{"timestamp": "2026-09-11T08:00:43.264139", "ticker": "BRK.B", "action": "buy", "engine": "gemini", "confidence": 70, "conviction": 7, "price": 507.065, "reason": "stale quote for BRK.B (43245.84845s old; limit 180s)"}
