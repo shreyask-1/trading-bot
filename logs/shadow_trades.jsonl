@@ -19464,3 +19464,5 @@
 {"timestamp": "2026-09-11T14:51:31.294140", "ticker": "DELL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 564.21, "reason": "liquidity filter: DELL average volume 248,074 < 500,000"}
 {"timestamp": "2026-09-11T14:51:31.350877", "ticker": "CPAY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 410.78, "reason": "liquidity filter: CPAY average volume 24,549 < 500,000"}
 {"timestamp": "2026-09-11T14:51:31.666060", "ticker": "CDW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 153.25, "reason": "liquidity filter: CDW average volume 84,787 < 500,000"}
+{"timestamp": "2026-09-11T14:52:42.633003", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 289.26, "reason": "liquidity filter: CEG average volume 81,788 < 500,000"}
+{"timestamp": "2026-09-11T14:52:43.117590", "ticker": "DELL", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 565.39, "reason": "liquidity filter: DELL average volume 248,100 < 500,000"}
