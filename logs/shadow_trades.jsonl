@@ -19441,3 +19441,6 @@
 {"timestamp": "2026-09-11T14:38:58.034779", "ticker": "COIN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 179.51, "reason": "liquidity filter: COIN average volume 251,785 < 500,000"}
 {"timestamp": "2026-09-11T14:38:59.388240", "ticker": "CDW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 152.89, "reason": "liquidity filter: CDW average volume 84,639 < 500,000"}
 {"timestamp": "2026-09-11T14:38:59.712886", "ticker": "COP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 136.35, "reason": "liquidity filter: COP average volume 303,395 < 500,000"}
+{"timestamp": "2026-09-11T14:40:39.616424", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 290.1, "reason": "liquidity filter: CEG average volume 81,749 < 500,000"}
+{"timestamp": "2026-09-11T14:40:40.333812", "ticker": "CVX", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 214.065, "reason": "liquidity filter: CVX average volume 256,140 < 500,000"}
+{"timestamp": "2026-09-11T14:40:40.596368", "ticker": "CF", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 134.52, "reason": "liquidity filter: CF average volume 126,619 < 500,000"}
