@@ -18883,3 +18883,6 @@
 {"timestamp": "2026-09-11T08:36:53.918101", "ticker": "STX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 862.61, "reason": "stale quote for STX (45417.498637s old; limit 180s)"}
 {"timestamp": "2026-09-11T08:36:53.978600", "ticker": "SWKS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 84.06, "reason": "stale quote for SWKS (45397.827678s old; limit 180s)"}
 {"timestamp": "2026-09-11T08:36:54.036121", "ticker": "T", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 25.57, "reason": "stale quote for T (45395.485327s old; limit 180s)"}
+{"timestamp": "2026-09-11T08:38:45.678845", "ticker": "AES", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 14.805, "reason": "stale quote for AES (45525.594647s old; limit 180s)"}
+{"timestamp": "2026-09-11T08:38:46.004805", "ticker": "CF", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 135.14, "reason": "stale quote for CF (45536.19287s old; limit 180s)"}
+{"timestamp": "2026-09-11T08:38:46.347451", "ticker": "C", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 138.505, "reason": "stale quote for C (45528.165652s old; limit 180s)"}
