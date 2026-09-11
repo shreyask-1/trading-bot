@@ -19742,3 +19742,6 @@
 {"timestamp": "2026-09-11T18:11:00.583305", "ticker": "CF", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 132.86, "reason": "liquidity filter: CF average volume 129,493 < 500,000"}
 {"timestamp": "2026-09-11T18:11:00.914773", "ticker": "CTAS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 201.94, "reason": "liquidity filter: CTAS average volume 75,758 < 500,000"}
 {"timestamp": "2026-09-11T18:11:01.287368", "ticker": "CVX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 213.695, "reason": "liquidity filter: CVX average volume 261,436 < 500,000"}
+{"timestamp": "2026-09-11T18:12:37.911519", "ticker": "CDW", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 154.22, "reason": "stale quote for CDW (224.891983s old; limit 180s)"}
+{"timestamp": "2026-09-11T18:12:38.240106", "ticker": "DELL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 559.745, "reason": "liquidity filter: DELL average volume 252,232 < 500,000"}
+{"timestamp": "2026-09-11T18:12:38.547840", "ticker": "CVX", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 213.73, "reason": "liquidity filter: CVX average volume 261,455 < 500,000"}
