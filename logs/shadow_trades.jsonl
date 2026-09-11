@@ -19871,3 +19871,6 @@
 {"timestamp": "2026-09-11T19:08:56.360180", "ticker": "CF", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 133.14, "reason": "liquidity filter: CF average volume 130,117 < 500,000"}
 {"timestamp": "2026-09-11T19:08:57.103852", "ticker": "CRM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 248.895, "reason": "market data unavailable for CRM (bid/ask spread missing)"}
 {"timestamp": "2026-09-11T19:08:57.425054", "ticker": "CVX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 213.835, "reason": "liquidity filter: CVX average volume 263,169 < 500,000"}
+{"timestamp": "2026-09-11T19:10:46.950058", "ticker": "CDW", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 153.575, "reason": "liquidity filter: CDW average volume 88,048 < 500,000"}
+{"timestamp": "2026-09-11T19:10:47.222194", "ticker": "CVX", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 213.8, "reason": "liquidity filter: CVX average volume 263,190 < 500,000"}
+{"timestamp": "2026-09-11T19:10:48.219499", "ticker": "DELL", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 559.03, "reason": "liquidity filter: DELL average volume 253,595 < 500,000"}
