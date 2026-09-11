@@ -14545,6 +14545,9 @@ Timings: account: 0.0s | risk: 0.1s | decide: 9.6s | watchlist: 0.0s | perf: 0.2
 === Run at 2026-09-11T14:43:09.477452 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-11 10:43 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+=== Run at 2026-09-11T14:42:30.397050 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-11 10:42 AM EDT | Market open (per Alpaca): True | Session: REGULAR
 Account value: $99,311.19
 Cash: $99,311.19 | Holdings (0): none
 Sector exposure (cached): unavailable (no holdings)
@@ -14558,6 +14561,9 @@ Gemini calls used today (all models combined): 207
   -> {"ticker": "CEG", "status": "skipped", "reason": "liquidity filter: CEG average volume 81,760 < 500,000", "shadow": false, "data_guard": true}
   -> {"ticker": "CVX", "status": "skipped", "reason": "liquidity filter: CVX average volume 256,185 < 500,000", "shadow": false, "data_guard": true}
   -> {"ticker": "CRWD", "status": "skipped", "reason": "entry alignment: price $205.43 is not above SMA-20 $207.47"}
+  -> {"ticker": "CEG", "status": "skipped", "reason": "liquidity filter: CEG average volume 81,752 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "CVX", "status": "skipped", "reason": "liquidity filter: CVX average volume 256,180 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "CRWD", "status": "skipped", "reason": "entry alignment: price $205.98 is not above SMA-20 $207.50"}
 Overnight queue cleared after verification.
 Dashboard watchlist synced (3 symbols) for news/headlines.
 Ending portfolio value: $99,311.19
@@ -14568,4 +14574,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 19448 shadow candidate(s), 407 rejection group(s)
 Timings: account: 0.0s | risk: 0.2s | decide: 18.7s | watchlist: 0.1s | perf: 0.2s
+Timings: account: 0.0s | risk: 0.3s | decide: 9.0s | watchlist: 0.1s | perf: 0.3s
 
