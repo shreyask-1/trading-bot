@@ -19707,3 +19707,6 @@
 {"timestamp": "2026-09-11T17:52:52.562270", "ticker": "COIN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 176.38, "reason": "liquidity filter: COIN average volume 254,331 < 500,000"}
 {"timestamp": "2026-09-11T17:52:52.745522", "ticker": "SWKS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 90.49, "reason": "liquidity filter: SWKS average volume 307,087 < 500,000"}
 {"timestamp": "2026-09-11T17:52:52.924992", "ticker": "CRM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 248.38, "reason": "market data unavailable for CRM (bid/ask spread missing)"}
+{"timestamp": "2026-09-11T17:54:34.429313", "ticker": "DELL", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 561.01, "reason": "liquidity filter: DELL average volume 251,910 < 500,000"}
+{"timestamp": "2026-09-11T17:54:34.546296", "ticker": "CVX", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 213.75, "reason": "liquidity filter: CVX average volume 261,081 < 500,000"}
+{"timestamp": "2026-09-11T17:54:34.689670", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 90.235, "reason": "liquidity filter: SWKS average volume 307,209 < 500,000"}
