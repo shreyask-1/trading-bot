@@ -19631,3 +19631,6 @@
 {"timestamp": "2026-09-11T17:16:49.939738", "ticker": "DELL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 559.31, "reason": "liquidity filter: DELL average volume 251,479 < 500,000"}
 {"timestamp": "2026-09-11T17:16:50.257676", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 90.135, "reason": "liquidity filter: SWKS average volume 305,734 < 500,000"}
 {"timestamp": "2026-09-11T17:16:50.257885", "ticker": "CSCO", "action": "buy", "engine": "gemini", "confidence": 72, "conviction": 7, "price": 111.62, "reason": "market data unavailable for CSCO (bid/ask spread missing)"}
+{"timestamp": "2026-09-11T17:18:29.906209", "ticker": "CDW", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 151.385, "reason": "liquidity filter: CDW average volume 85,757 < 500,000"}
+{"timestamp": "2026-09-11T17:18:29.982182", "ticker": "DELL", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 558.865, "reason": "liquidity filter: DELL average volume 251,531 < 500,000"}
+{"timestamp": "2026-09-11T17:18:30.113372", "ticker": "CF", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 133.565, "reason": "liquidity filter: CF average volume 129,218 < 500,000"}
