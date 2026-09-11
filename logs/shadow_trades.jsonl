@@ -19680,3 +19680,6 @@
 {"timestamp": "2026-09-11T17:42:56.823071", "ticker": "COIN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 176.98, "reason": "stale quote for COIN (385.589439s old; limit 180s)"}
 {"timestamp": "2026-09-11T17:42:57.184473", "ticker": "SWKS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 90.45, "reason": "liquidity filter: SWKS average volume 306,686 < 500,000"}
 {"timestamp": "2026-09-11T17:42:57.523049", "ticker": "CRM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 248.365, "reason": "market data unavailable for CRM (bid/ask spread missing)"}
+{"timestamp": "2026-09-11T17:44:37.904363", "ticker": "CDW", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 151.64, "reason": "liquidity filter: CDW average volume 86,134 < 500,000"}
+{"timestamp": "2026-09-11T17:44:38.109222", "ticker": "CVX", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 214.085, "reason": "liquidity filter: CVX average volume 260,831 < 500,000"}
+{"timestamp": "2026-09-11T17:44:38.291586", "ticker": "CF", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 133.71, "reason": "liquidity filter: CF average volume 129,338 < 500,000"}
