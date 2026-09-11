@@ -18436,3 +18436,35 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; wor
 Shadow report: 19866 shadow candidate(s), 55 rejection group(s)
 Timings: account: 0.0s | risk: 0.4s | decide: 14.7s | watchlist: 0.1s | perf: 0.3s
 
+=== Run at 2026-09-11T19:08:29.325138 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-11 03:08 PM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,311.19
+Cash: $99,311.19 | Holdings (0): none
+Sector exposure (cached): unavailable (no holdings)
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Risk state: peak $99,703.60 | drawdown 0.39% | today +0.00% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 157, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 30/60 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 280
+  -> {"ticker": "DELL", "status": "skipped", "reason": "liquidity filter: DELL average volume 253,552 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "SWKS", "status": "skipped", "reason": "liquidity filter: SWKS average volume 311,880 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "CDW", "status": "skipped", "reason": "liquidity filter: CDW average volume 87,865 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "CEG", "status": "skipped", "reason": "liquidity filter: CEG average volume 83,695 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "CF", "status": "skipped", "reason": "liquidity filter: CF average volume 130,117 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "COIN", "status": "skipped", "reason": "entry alignment: price $174.66 is not above SMA-20 $174.98"}
+  -> {"ticker": "CRM", "status": "skipped", "reason": "market data unavailable for CRM (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "CVX", "status": "skipped", "reason": "liquidity filter: CVX average volume 263,169 < 500,000", "shadow": false, "data_guard": true}
+Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); 2 idea(s) remain subject to the retry cap.
+Run budget reserve reached -- skipping dashboard watchlist sync.
+Run budget reserve reached -- skipping performance snapshot.
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.45% | Max drawdown 0.94% | Daily Sharpe 1.81 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 0 | Equity $99,311.19
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+0.00 (0 open) | Books: legacy: realized $-1,705.68, unrealized $+0.00
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 19873 shadow candidate(s), 52 rejection group(s)
+Timings: account: 0.0s | risk: 0.4s | decide: 27.2s | watchlist: 0.0s | perf: 0.2s
+
