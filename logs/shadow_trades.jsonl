@@ -19723,3 +19723,6 @@
 {"timestamp": "2026-09-11T18:02:52.544711", "ticker": "CDW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 153.44, "reason": "liquidity filter: CDW average volume 87,425 < 500,000"}
 {"timestamp": "2026-09-11T18:02:52.544812", "ticker": "CEG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 285.33, "reason": "stale quote for CEG (243.152301s old; limit 180s)"}
 {"timestamp": "2026-09-11T18:02:52.544910", "ticker": "CF", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 132.86, "reason": "liquidity filter: CF average volume 129,418 < 500,000"}
+{"timestamp": "2026-09-11T18:04:43.130160", "ticker": "CDW", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 153.96, "reason": "liquidity filter: CDW average volume 87,433 < 500,000"}
+{"timestamp": "2026-09-11T18:04:43.305685", "ticker": "DELL", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 557.73, "reason": "liquidity filter: DELL average volume 252,119 < 500,000"}
+{"timestamp": "2026-09-11T18:04:43.484796", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 90.09, "reason": "liquidity filter: SWKS average volume 307,600 < 500,000"}
