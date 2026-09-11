@@ -19338,3 +19338,6 @@
 {"timestamp": "2026-09-11T13:30:55.096143", "ticker": "AES", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 14.82, "reason": "stale candle for AES (1055.9m old; limit 30.0m)"}
 {"timestamp": "2026-09-11T13:30:57.248028", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 289.83, "reason": "stale candle for CEG (1056.0m old; limit 30.0m)"}
 {"timestamp": "2026-09-11T13:30:58.260147", "ticker": "CF", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 133.105, "reason": "stale candle for CF (1056.0m old; limit 30.0m)"}
+{"timestamp": "2026-09-11T13:32:43.959508", "ticker": "AES", "action": "buy", "engine": "gemini", "confidence": 95, "conviction": 10, "price": 14.82, "reason": "liquidity filter: AES average volume 344,092 < 500,000"}
+{"timestamp": "2026-09-11T13:32:44.764943", "ticker": "CF", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 134.26, "reason": "liquidity filter: CF average volume 125,741 < 500,000"}
+{"timestamp": "2026-09-11T13:32:46.455255", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 288.845, "reason": "liquidity filter: CEG average volume 81,368 < 500,000"}
