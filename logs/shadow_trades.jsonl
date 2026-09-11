@@ -19597,3 +19597,5 @@
 {"timestamp": "2026-09-11T16:01:04.114539", "ticker": "SWKS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 90.805, "reason": "liquidity filter: SWKS average volume 301,647 < 500,000"}
 {"timestamp": "2026-09-11T16:01:04.114677", "ticker": "CDW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 151.6, "reason": "liquidity filter: CDW average volume 85,236 < 500,000"}
 {"timestamp": "2026-09-11T16:01:04.114764", "ticker": "COIN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 177.95, "reason": "liquidity filter: COIN average volume 253,454 < 500,000"}
+{"timestamp": "2026-09-11T16:02:47.028692", "ticker": "CDW", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 151.6, "reason": "liquidity filter: CDW average volume 85,242 < 500,000"}
+{"timestamp": "2026-09-11T16:02:47.219693", "ticker": "DELL", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 563.315, "reason": "liquidity filter: DELL average volume 250,072 < 500,000"}
