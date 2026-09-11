@@ -19498,3 +19498,6 @@
 {"timestamp": "2026-09-11T15:10:39.103789", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 95, "conviction": 10, "price": 192.21, "reason": "liquidity filter: PM average volume 173,357 < 500,000"}
 {"timestamp": "2026-09-11T15:10:39.184490", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 289.205, "reason": "stale quote for CEG (226.044037s old; limit 180s)"}
 {"timestamp": "2026-09-11T15:10:39.184722", "ticker": "BBY", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 90.44, "reason": "liquidity filter: BBY average volume 150,029 < 500,000"}
+{"timestamp": "2026-09-11T15:12:46.942685", "ticker": "DELL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 559.3, "reason": "liquidity filter: DELL average volume 248,854 < 500,000"}
+{"timestamp": "2026-09-11T15:12:47.283029", "ticker": "CDW", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 152.08, "reason": "liquidity filter: CDW average volume 84,898 < 500,000"}
+{"timestamp": "2026-09-11T15:12:47.636575", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 289.205, "reason": "stale quote for CEG (354.290376s old; limit 180s)"}
