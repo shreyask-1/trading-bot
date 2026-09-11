@@ -19275,3 +19275,6 @@
 {"timestamp": "2026-09-11T12:48:38.087614", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 285.875, "reason": "stale quote for CEG (60526.040922s old; limit 180s)"}
 {"timestamp": "2026-09-11T12:48:38.241591", "ticker": "CF", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 135.14, "reason": "stale quote for CF (60528.556804s old; limit 180s)"}
 {"timestamp": "2026-09-11T12:48:38.400452", "ticker": "C", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 138.505, "reason": "stale quote for C (60520.362937s old; limit 180s)"}
+{"timestamp": "2026-09-11T12:50:34.441909", "ticker": "C", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 138.505, "reason": "stale quote for C (60636.481582s old; limit 180s)"}
+{"timestamp": "2026-09-11T12:50:34.496599", "ticker": "CF", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 135.14, "reason": "stale quote for CF (60644.881535s old; limit 180s)"}
+{"timestamp": "2026-09-11T12:50:34.552864", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 285.875, "reason": "stale quote for CEG (60642.574236s old; limit 180s)"}
