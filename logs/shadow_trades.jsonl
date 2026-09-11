@@ -19696,3 +19696,6 @@
 {"timestamp": "2026-09-11T17:48:57.358678", "ticker": "COIN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 176.84, "reason": "liquidity filter: COIN average volume 254,314 < 500,000"}
 {"timestamp": "2026-09-11T17:48:57.695035", "ticker": "SWKS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 90.365, "reason": "liquidity filter: SWKS average volume 306,874 < 500,000"}
 {"timestamp": "2026-09-11T17:48:58.020438", "ticker": "CRM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 248.45, "reason": "market data unavailable for CRM (bid/ask spread missing)"}
+{"timestamp": "2026-09-11T17:50:44.622631", "ticker": "CDW", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 151.645, "reason": "liquidity filter: CDW average volume 86,149 < 500,000"}
+{"timestamp": "2026-09-11T17:50:44.955902", "ticker": "CVX", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 213.93, "reason": "liquidity filter: CVX average volume 260,995 < 500,000"}
+{"timestamp": "2026-09-11T17:50:45.194563", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 285.96, "reason": "liquidity filter: CEG average volume 83,406 < 500,000"}
