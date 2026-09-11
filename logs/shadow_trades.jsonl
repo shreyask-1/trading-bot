@@ -19453,3 +19453,5 @@
 {"timestamp": "2026-09-11T14:44:54.563246", "ticker": "CPAY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 410.565, "reason": "liquidity filter: CPAY average volume 24,531 < 500,000"}
 {"timestamp": "2026-09-11T14:44:54.977810", "ticker": "CDW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 152.39, "reason": "liquidity filter: CDW average volume 84,735 < 500,000"}
 {"timestamp": "2026-09-11T14:44:55.238221", "ticker": "COP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 136.005, "reason": "liquidity filter: COP average volume 303,462 < 500,000"}
+{"timestamp": "2026-09-11T14:46:43.228016", "ticker": "CEG", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 289.785, "reason": "liquidity filter: CEG average volume 81,763 < 500,000"}
+{"timestamp": "2026-09-11T14:46:44.198605", "ticker": "CVX", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 213.655, "reason": "liquidity filter: CVX average volume 256,281 < 500,000"}
