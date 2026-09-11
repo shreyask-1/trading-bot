@@ -18825,3 +18825,5 @@
 {"timestamp": "2026-09-10T23:58:36.501033", "ticker": "AES", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 14.805, "reason": "stale quote for AES (14316.490662s old; limit 180s)"}
 {"timestamp": "2026-09-11T08:00:43.263978", "ticker": "AES", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 14.805, "reason": "stale quote for AES (43237.785603s old; limit 180s)"}
 {"timestamp": "2026-09-11T08:00:43.264139", "ticker": "BRK.B", "action": "buy", "engine": "gemini", "confidence": 70, "conviction": 7, "price": 507.065, "reason": "stale quote for BRK.B (43245.84845s old; limit 180s)"}
+{"timestamp": "2026-09-11T08:02:50.449104", "ticker": "AES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 14.805, "reason": "stale quote for AES (43370.49524s old; limit 180s)"}
+{"timestamp": "2026-09-11T08:02:50.618249", "ticker": "BNY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 162.68, "reason": "stale quote for BNY (43386.722096s old; limit 180s)"}
