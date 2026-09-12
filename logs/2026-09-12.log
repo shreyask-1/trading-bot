@@ -7197,6 +7197,9 @@ Timings: account: 0.0s | risk: 0.3s | decide: 6.5s | watchlist: 0.1s | perf: 0.2
 === Run at 2026-09-12T19:53:06.960909 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-12 03:53 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+=== Run at 2026-09-12T19:52:31.384146 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-12 03:52 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,311.19
 Cash: $99,311.19 | Holdings (0): none
 Sector exposure (cached): unavailable (no holdings)
@@ -7219,6 +7222,10 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued CDW buy (conf 85, stop 140.93, tp 168.0)
   -> queued CF buy (conf None, stop 124.55, tp 141.46)
   -> queued DELL buy (conf 80, stop 520.0, tp 620.0)
+  -> queued ETN buy (conf 88, stop 395.0, tp 455.00000000000006)
+  -> queued CDW buy (conf 85, stop 142.0, tp 172.0)
+  -> queued CF buy (conf None, stop 124.55, tp 141.46)
+  -> queued DELL buy (conf 84, stop 500.0, tp 640.0)
   -> queued ELV buy (conf None, stop 391.4, tp 426.39)
 Dashboard watchlist synced (3 symbols) for news/headlines.
 Ending portfolio value: $99,311.19
@@ -7229,4 +7236,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 19980 shadow candidate(s), 45 rejection group(s)
 Timings: account: 0.0s | risk: 0.3s | decide: 7.0s | watchlist: 0.1s | perf: 0.3s
+Timings: account: 0.0s | risk: 0.3s | decide: 6.9s | watchlist: 0.1s | perf: 0.3s
 
