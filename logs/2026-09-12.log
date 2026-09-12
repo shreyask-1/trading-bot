@@ -12780,6 +12780,7 @@ Shadow report: 19980 shadow candidate(s), 45 rejection group(s)
 Timings: account: 0.0s | risk: 0.0s | decide: 2.7s | watchlist: 0.0s | perf: 0.2s
 
 === Run at 2026-09-12T11:48:46.769447 ===
+=== Run at 2026-09-12T11:48:09.526537 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-12 07:48 AM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,311.19
@@ -12791,6 +12792,7 @@ Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100
 News: fetched 158, 2 new after dedup, 0 ticker(s) matched.
 Quant pre-screen: 43/66 candidates passed.
 Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini proposed 2 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 138
 Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
   -> queued HPE buy (conf 95, stop 59.78, tp 66.5)
@@ -12800,12 +12802,17 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued DELL buy (conf 80, stop 520.0, tp 620.0)
   -> queued ETN buy (conf 85, stop 405.0, tp 455.0)
   -> queued ELV buy (conf 84, stop 398.0, tp 445.0)
+  -> queued CDW buy (conf 85, stop 140.93, tp 165.0)
+  -> queued DELL buy (conf 80, stop 520.0, tp 620.0)
+  -> queued ETN buy (conf 88, stop 385.53, tp 450.0)
+  -> queued ELV buy (conf 86, stop 398.0, tp 450.0)
   -> queued ON buy (conf 80, stop 68.79, tp 82.0)
   -> queued CI buy (conf 80, stop 272.49, tp 286.68)
   -> queued AMD buy (conf 80, stop 501.57, tp 550.0)
   -> queued CEG buy (conf 80, stop 269.66, tp 305.64)
   -> queued MET buy (conf 78, stop 93.99, tp 102.5)
 Dashboard watchlist synced (3 symbols) for news/headlines.
+Dashboard watchlist synced (2 symbols) for news/headlines.
 Ending portfolio value: $99,311.19
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
 Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
@@ -12814,4 +12821,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 19980 shadow candidate(s), 45 rejection group(s)
 Timings: account: 0.0s | risk: 0.3s | decide: 12.7s | watchlist: 0.1s | perf: 0.3s
+Timings: account: 0.0s | risk: 0.3s | decide: 8.4s | watchlist: 0.1s | perf: 0.3s
 
