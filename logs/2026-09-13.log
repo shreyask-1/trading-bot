@@ -19887,6 +19887,9 @@ Timings: account: 0.0s | risk: 0.1s | decide: 4.7s | watchlist: 0.0s | perf: 0.3
 === Run at 2026-09-13T19:07:10.128822 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-13 03:07 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+=== Run at 2026-09-13T19:06:28.959906 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-13 03:06 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,311.19
 Cash: $99,311.19 | Holdings (0): none
 Sector exposure (cached): unavailable (no holdings)
@@ -19894,6 +19897,7 @@ Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
 Risk state: peak $99,703.60 | drawdown 0.39% | today +0.00% | halted: False
 Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
 News: fetched 158, 1 new after dedup, 0 ticker(s) matched.
+News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
 Quant pre-screen: 35/54 candidates passed.
 Gemini proposed 2 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 286
@@ -19919,4 +19923,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 19980 shadow candidate(s), 45 rejection group(s)
 Timings: account: 0.0s | risk: 0.4s | decide: 10.6s | watchlist: 0.1s | perf: 0.3s
+Timings: account: 0.0s | risk: 0.4s | decide: 10.5s | watchlist: 0.2s | perf: 0.4s
 
