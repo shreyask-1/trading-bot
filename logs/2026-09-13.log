@@ -9796,6 +9796,9 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; wor
 Shadow report: 19980 shadow candidate(s), 45 rejection group(s)
 Timings: account: 0.0s | risk: 0.1s | decide: 3.5s | watchlist: 0.0s | perf: 0.2s
 
+=== Run at 2026-09-13T23:04:03.437905 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-13 07:04 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 === Run at 2026-09-13T23:03:28.410567 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-13 07:03 PM EDT | Market open (per Alpaca): False | Session: CLOSED
@@ -9818,6 +9821,8 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued SLB buy (conf 80, stop 54.84, tp 60.46)
   -> queued INTC buy (conf 75, stop 85.74, tp 106.69)
   -> queued CF buy (conf 80, stop 124.55, tp 141.46)
+  -> queued CDW buy (conf 85, stop 140.93, tp 165.0)
+  -> queued HUM buy (conf 80, stop 382.36, tp 435.0)
   -> queued CDW buy (conf 88, stop 140.93, tp 165.0)
   -> queued HUM buy (conf 84, stop 382.36, tp 435.0)
   -> queued BG buy (conf None, stop 109.92, tp 127.355)
@@ -9830,6 +9835,7 @@ Performance: Total return +0.45% | Max drawdown 0.94% | Daily Sharpe 1.74 | 19 c
 Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+0.00 (0 open) | Books: legacy: realized $-1,705.68, unrealized $+0.00
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 19980 shadow candidate(s), 45 rejection group(s)
+Timings: account: 0.0s | risk: 0.4s | decide: 12.9s | watchlist: 0.2s | perf: 0.3s
 Timings: account: 0.0s | risk: 0.4s | decide: 9.7s | watchlist: 0.1s | perf: 0.4s
 
 === Run at 2026-09-13T23:04:43.893964 ===
