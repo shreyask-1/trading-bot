@@ -20086,3 +20086,5 @@
 {"timestamp": "2026-09-14T14:34:53.777146", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 193.53, "reason": "stale quote for PM (194.537026s old; limit 180s)"}
 {"timestamp": "2026-09-14T14:34:54.034310", "ticker": "PSX", "action": "buy", "engine": "gemini", "confidence": 68, "conviction": 7, "price": 262.34, "reason": "stale candle for PSX (634.9m old; limit 30.0m)"}
 {"timestamp": "2026-09-14T14:34:54.283198", "ticker": "QCOM", "action": "buy", "engine": "gemini", "confidence": 69, "conviction": 7, "price": 179.26, "reason": "stale candle for QCOM (634.9m old; limit 30.0m)"}
+{"timestamp": "2026-09-14T14:43:09.554663", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 193.725, "reason": "stale candle for PM (643.2m old; limit 30.0m)"}
+{"timestamp": "2026-09-14T14:43:09.554870", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 225.9, "reason": "stale candle for RSG (643.2m old; limit 30.0m)"}
