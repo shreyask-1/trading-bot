@@ -20096,3 +20096,6 @@
 {"timestamp": "2026-09-14T15:05:49.675308", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 140.025, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
 {"timestamp": "2026-09-14T15:16:21.437873", "ticker": "MSFT", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 503.125, "reason": "market data unavailable for MSFT (bid/ask spread missing)"}
 {"timestamp": "2026-09-14T15:16:21.505871", "ticker": "NFLX", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 80.26, "reason": "market data unavailable for NFLX (bid/ask spread missing)"}
+{"timestamp": "2026-09-14T15:26:09.848626", "ticker": "MSFT", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 503.815, "reason": "market data unavailable for MSFT (bid/ask spread missing)"}
+{"timestamp": "2026-09-14T15:26:10.090563", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 69, "conviction": 7, "price": 141.045, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
+{"timestamp": "2026-09-14T15:26:10.357145", "ticker": "NFLX", "action": "buy", "engine": "gemini", "confidence": 66, "conviction": 7, "price": 80.27, "reason": "market data unavailable for NFLX (bid/ask spread missing)"}
