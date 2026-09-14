@@ -20315,3 +20315,6 @@
 {"timestamp": "2026-09-14T19:00:48.135868", "ticker": "PANW", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 375.45, "reason": "liquidity filter: PANW average volume 227,753 < 500,000"}
 {"timestamp": "2026-09-14T19:00:48.136034", "ticker": "QCOM", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 181.59, "reason": "liquidity filter: QCOM average volume 320,509 < 500,000"}
 {"timestamp": "2026-09-14T19:02:53.796023", "ticker": "PANW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 375.25, "reason": "liquidity filter: PANW average volume 227,804 < 500,000"}
+{"timestamp": "2026-09-14T19:04:53.346497", "ticker": "PANW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 375.955, "reason": "liquidity filter: PANW average volume 227,931 < 500,000"}
+{"timestamp": "2026-09-14T19:04:53.403219", "ticker": "RSG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 225.915, "reason": "stale quote for RSG (590.516897s old; limit 180s)"}
+{"timestamp": "2026-09-14T19:04:53.472085", "ticker": "RVTY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 126.37, "reason": "stale quote for RVTY (288.531534s old; limit 180s)"}
