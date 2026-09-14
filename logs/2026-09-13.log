@@ -10083,6 +10083,9 @@ Timings: account: 0.0s | risk: 0.3s | decide: 11.9s | watchlist: 0.1s | perf: 0.
 === Run at 2026-09-13T23:58:01.408354 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-13 07:58 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+=== Run at 2026-09-13T23:53:07.203666 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-13 07:53 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,311.19
 Cash: $99,311.19 | Holdings (0): none
 Sector exposure (cached): unavailable (no holdings)
@@ -10095,6 +10098,24 @@ Gemini proposed 0 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 403
 Market closed (overnight): no trade ideas queued this run.
 Dashboard watchlist synced (1 symbols) for news/headlines.
+News: fetched 158, 2 new after dedup, 2 ticker(s) matched.
+Quant pre-screen: 17/25 candidates passed.
+Gemini proposed 1 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 403
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued OKE buy (conf 85, stop 94.2, tp 102.5)
+  -> queued HCA buy (conf 82, stop 397.46, tp 450.0)
+  -> queued MOS buy (conf 82, stop 23.32, tp 26.95)
+  -> queued KR buy (conf 80, stop 56.14, tp 59.47)
+  -> queued IBM buy (conf 80, stop 229.16, tp 260.0)
+  -> queued SLB buy (conf 80, stop 54.84, tp 60.46)
+  -> queued INTC buy (conf 75, stop 85.74, tp 106.69)
+  -> queued CF buy (conf 80, stop 124.55, tp 141.46)
+  -> queued CDW buy (conf 85, stop 140.93, tp 165.0)
+  -> queued HUM buy (conf 82, stop 382.36, tp 418.05)
+  -> queued BG buy (conf None, stop 109.92, tp 127.355)
+  -> queued KEYS buy (conf 82, stop 313.96, tp 339.12)
+Dashboard watchlist synced (3 symbols) for news/headlines.
 Ending portfolio value: $99,311.19
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
 Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
@@ -10103,4 +10124,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 19980 shadow candidate(s), 45 rejection group(s)
 Timings: account: 0.0s | risk: 0.4s | decide: 22.1s | watchlist: 0.2s | perf: 0.4s
+Timings: account: 0.0s | risk: 0.0s | decide: 3.1s | watchlist: 0.0s | perf: 0.2s
 
