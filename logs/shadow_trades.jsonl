@@ -20069,3 +20069,5 @@
 {"timestamp": "2026-09-14T13:12:26.383765", "ticker": "PSKY", "action": "buy", "engine": "gemini", "confidence": 68, "conviction": 7, "price": 10.61, "reason": "stale quote for PSKY (234746.840066s old; limit 180s)"}
 {"timestamp": "2026-09-14T13:21:45.901222", "ticker": "QCOM", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 181.95, "reason": "stale quote for QCOM (235304.384829s old; limit 180s)"}
 {"timestamp": "2026-09-14T13:21:45.959926", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 191.09, "reason": "stale quote for PM (235307.406202s old; limit 180s)"}
+{"timestamp": "2026-09-14T13:36:09.120949", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 193.965, "reason": "stale candle for PM (576.2m old; limit 30.0m)"}
+{"timestamp": "2026-09-14T13:36:09.121193", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 226.59, "reason": "stale candle for RSG (576.2m old; limit 30.0m)"}
