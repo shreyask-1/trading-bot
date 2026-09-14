@@ -20012,3 +20012,5 @@
 {"timestamp": "2026-09-14T10:00:34.469088", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 191.09, "reason": "stale quote for PM (223233.329106s old; limit 180s)"}
 {"timestamp": "2026-09-14T10:16:12.739428", "ticker": "QCOM", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 181.95, "reason": "stale quote for QCOM (224170.42069s old; limit 180s)"}
 {"timestamp": "2026-09-14T10:16:13.025683", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 191.09, "reason": "stale quote for PM (224174.301565s old; limit 180s)"}
+{"timestamp": "2026-09-14T10:25:45.869435", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 191.09, "reason": "stale quote for PM (224747.265183s old; limit 180s)"}
+{"timestamp": "2026-09-14T10:25:45.998033", "ticker": "QCOM", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 181.95, "reason": "stale quote for QCOM (224747.373691s old; limit 180s)"}
