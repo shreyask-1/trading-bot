@@ -20137,3 +20137,5 @@
 {"timestamp": "2026-09-14T16:14:29.646734", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 114.465, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
 {"timestamp": "2026-09-14T16:16:38.140697", "ticker": "PANW", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 373.825, "reason": "liquidity filter: PANW average volume 221,736 < 500,000"}
 {"timestamp": "2026-09-14T16:16:38.426318", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 226.82, "reason": "liquidity filter: RSG average volume 65,043 < 500,000"}
+{"timestamp": "2026-09-14T16:18:36.775641", "ticker": "PANW", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 374.46, "reason": "liquidity filter: PANW average volume 221,809 < 500,000"}
+{"timestamp": "2026-09-14T16:18:37.080733", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 226.82, "reason": "stale quote for RSG (281.678341s old; limit 180s)"}
