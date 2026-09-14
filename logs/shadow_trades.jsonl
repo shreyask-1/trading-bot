@@ -20073,3 +20073,5 @@
 {"timestamp": "2026-09-14T13:31:48.450535", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 194.4, "reason": "stale candle for PM (571.8m old; limit 30.0m)"}
 {"timestamp": "2026-09-14T13:41:36.157820", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 194.85, "reason": "stale candle for PM (581.6m old; limit 30.0m)"}
 {"timestamp": "2026-09-14T13:41:36.158034", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 226.705, "reason": "stale candle for RSG (581.6m old; limit 30.0m)"}
+{"timestamp": "2026-09-14T13:52:02.836307", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 24.915, "reason": "stale candle for MOS (592.0m old; limit 30.0m)"}
+{"timestamp": "2026-09-14T13:52:03.337624", "ticker": "NUE", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 257.02, "reason": "stale candle for NUE (592.1m old; limit 30.0m)"}
