@@ -20176,3 +20176,4 @@
 {"timestamp": "2026-09-14T16:54:30.547289", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 226.6, "reason": "liquidity filter: RSG average volume 65,278 < 500,000"}
 {"timestamp": "2026-09-14T16:56:45.539271", "ticker": "PANW", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 375.55, "reason": "liquidity filter: PANW average volume 223,650 < 500,000"}
 {"timestamp": "2026-09-14T16:56:45.690804", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 226.6, "reason": "liquidity filter: RSG average volume 65,290 < 500,000"}
+{"timestamp": "2026-09-14T17:01:10.416987", "ticker": "PANW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 376.16, "reason": "liquidity filter: PANW average volume 223,792 < 500,000"}
