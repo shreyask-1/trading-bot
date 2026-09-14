@@ -4515,6 +4515,9 @@ Timings: account: 0.0s | risk: 0.4s | decide: 10.3s | watchlist: 0.1s | perf: 0.
 === Run at 2026-09-14T15:11:05.311101 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-14 11:11 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+=== Run at 2026-09-14T15:05:42.032378 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-14 11:05 AM EDT | Market open (per Alpaca): True | Session: REGULAR
 Account value: $99,311.19
 Cash: $99,311.19 | Holdings (0): none
 Sector exposure (cached): unavailable (no holdings)
@@ -4532,6 +4535,17 @@ Gemini calls used today (all models combined): 51
 Overnight queue cleared after verification.
 Overnight queue retained 3 deferred stale idea(s).
 Dashboard watchlist synced (5 symbols) for news/headlines.
+Overnight queue deferred 2 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+Morning verification: 10 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
+News: fetched 158, 11 new after dedup, 5 ticker(s) matched.
+Quant pre-screen: 8/15 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 45
+  -> {"ticker": "COIN", "status": "skipped", "reason": "liquidity filter: COIN average volume 261,537 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "MSFT", "status": "skipped", "reason": "market data unavailable for MSFT (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "NOW", "status": "skipped", "reason": "market data unavailable for NOW (bid/ask spread missing)", "shadow": false, "data_guard": true}
+Overnight queue kept 12 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
+Dashboard watchlist synced (7 symbols) for news/headlines.
 Ending portfolio value: $99,311.19
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
 Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
@@ -4540,4 +4554,6 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 20089 shadow candidate(s), 137 rejection group(s)
 Timings: account: 0.0s | risk: 0.3s | decide: 11.5s | watchlist: 0.1s | perf: 0.3s
+Shadow report: 20096 shadow candidate(s), 143 rejection group(s)
+Timings: account: 0.0s | risk: 0.1s | decide: 7.1s | watchlist: 0.1s | perf: 0.2s
 
