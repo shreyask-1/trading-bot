@@ -2965,6 +2965,9 @@ Timings: account: 0.0s | risk: 0.0s | decide: 4.3s | watchlist: 0.0s | perf: 0.2
 === Run at 2026-09-14T09:07:48.987507 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-14 05:07 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
+=== Run at 2026-09-14T09:03:00.282682 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-14 05:03 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
 Account value: $99,311.19
 Cash: $99,311.19 | Holdings (0): none
 Sector exposure (cached): unavailable (no holdings)
@@ -2978,6 +2981,15 @@ Gemini proposed 0 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 14
 Overnight queue cleared after verification.
 Overnight queue retained 3 deferred stale idea(s).
+Morning verification: 9 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
+News: fetched 157, 6 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 4/12 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 10
+  -> {"ticker": "PM", "status": "skipped", "reason": "stale quote for PM (219785.547483s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "PKG", "status": "skipped", "reason": "entry alignment: price $234.47 is not above SMA-20 $241.80"}
+Overnight queue kept 12 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
+Dashboard watchlist synced (2 symbols) for news/headlines.
 Ending portfolio value: $99,311.19
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
 Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
@@ -2986,4 +2998,6 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 19994 shadow candidate(s), 56 rejection group(s)
 Timings: account: 0.0s | risk: 0.3s | decide: 7.8s | watchlist: 0.0s | perf: 0.4s
+Shadow report: 19997 shadow candidate(s), 59 rejection group(s)
+Timings: account: 0.0s | risk: 0.2s | decide: 6.1s | watchlist: 0.1s | perf: 0.3s
 
