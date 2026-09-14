@@ -1286,6 +1286,9 @@ Timings: account: 0.0s | risk: 0.4s | decide: 16.9s | watchlist: 0.1s | perf: 0.
 === Run at 2026-09-14T04:05:32.482051 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-14 12:05 AM EDT | Market open (per Alpaca): False | Session: CLOSED
+=== Run at 2026-09-14T04:00:26.323956 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-14 12:00 AM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,311.19
 Cash: $99,311.19 | Holdings (0): none
 Sector exposure (cached): unavailable (no holdings)
@@ -1297,6 +1300,9 @@ Quant pre-screen: 13/18 candidates passed.
 Gemini proposed 2 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 428
 Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+Gemini calls used today (all models combined): 429
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued HUM buy (conf 89, stop 382.36, tp 427.5)
   -> queued OKE buy (conf 85, stop 94.2, tp 102.5)
   -> queued CDW buy (conf 85, stop 140.93, tp 158.01)
   -> queued HCA buy (conf 82, stop 397.46, tp 450.0)
@@ -1308,6 +1314,12 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued CF buy (conf 80, stop 124.55, tp 141.46)
   -> queued META buy (conf 80, stop 556.8, tp 664.05)
   -> queued MET buy (conf 78, stop 93.5, tp 102.0)
+  -> queued KEYS buy (conf 82, stop 313.96, tp 339.12)
+  -> queued KR buy (conf 82, stop 56.14, tp 59.47)
+  -> queued IBM buy (conf 80, stop 229.16, tp 260.0)
+  -> queued SLB buy (conf 80, stop 54.84, tp 60.46)
+  -> queued CF buy (conf 80, stop 124.55, tp 141.46)
+  -> queued META buy (conf 80, stop 556.8, tp 664.05)
   -> queued NUE buy (conf 80, stop 246.33, tp 267.24)
 Dashboard watchlist synced (2 symbols) for news/headlines.
 Ending portfolio value: $99,311.19
@@ -1318,4 +1330,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 19980 shadow candidate(s), 45 rejection group(s)
 Timings: account: 0.0s | risk: 0.3s | decide: 9.7s | watchlist: 0.1s | perf: 0.3s
+Timings: account: 0.0s | risk: 0.4s | decide: 13.0s | watchlist: 0.1s | perf: 0.4s
 
