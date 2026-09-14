@@ -3801,6 +3801,9 @@ Timings: account: 0.0s | risk: 0.4s | decide: 12.5s | watchlist: 0.2s | perf: 0.
 === Run at 2026-09-14T12:18:37.448891 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-14 08:18 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
+=== Run at 2026-09-14T12:13:53.182729 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-14 08:13 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
 Account value: $99,311.19
 Cash: $99,311.19 | Holdings (0): none
 Sector exposure (cached): unavailable (no holdings)
@@ -3815,6 +3818,12 @@ Gemini proposed 2 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 34
   -> {"ticker": "PM", "status": "skipped", "reason": "stale quote for PM (231528.290884s old; limit 180s)", "shadow": false, "data_guard": true}
   -> {"ticker": "QCOM", "status": "skipped", "reason": "stale quote for QCOM (231524.1456s old; limit 180s)", "shadow": false, "data_guard": true}
+News: fetched 158, 5 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 13/24 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 30
+  -> {"ticker": "PM", "status": "skipped", "reason": "stale quote for PM (231238.464377s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "QCOM", "status": "skipped", "reason": "stale quote for QCOM (231236.001241s old; limit 180s)", "shadow": false, "data_guard": true}
 Overnight queue kept 12 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
 Dashboard watchlist synced (2 symbols) for news/headlines.
 Ending portfolio value: $99,311.19
@@ -3825,4 +3834,6 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 20043 shadow candidate(s), 98 rejection group(s)
 Timings: account: 0.0s | risk: 0.3s | decide: 8.8s | watchlist: 0.1s | perf: 0.3s
+Shadow report: 20047 shadow candidate(s), 100 rejection group(s)
+Timings: account: 0.0s | risk: 0.0s | decide: 3.7s | watchlist: 0.0s | perf: 0.2s
 
