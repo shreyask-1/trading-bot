@@ -4053,6 +4053,9 @@ Timings: account: 0.0s | risk: 0.3s | decide: 9.2s | watchlist: 0.1s | perf: 0.4
 === Run at 2026-09-14T13:17:21.413379 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-14 09:17 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
+=== Run at 2026-09-14T13:12:17.425665 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-14 09:12 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
 Account value: $99,311.19
 Cash: $99,311.19 | Holdings (0): none
 Sector exposure (cached): unavailable (no holdings)
@@ -4067,6 +4070,12 @@ Gemini proposed 2 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 40
   -> {"ticker": "QCOM", "status": "skipped", "reason": "stale quote for QCOM (235047.732776s old; limit 180s)", "shadow": false, "data_guard": true}
   -> {"ticker": "PM", "status": "skipped", "reason": "stale quote for PM (235066.776918s old; limit 180s)", "shadow": false, "data_guard": true}
+News: fetched 158, 26 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 5/12 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 35
+  -> {"ticker": "PM", "status": "skipped", "reason": "stale quote for PM (234743.267249s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "PSKY", "status": "skipped", "reason": "stale quote for PSKY (234746.840066s old; limit 180s)", "shadow": false, "data_guard": true}
 Overnight queue kept 12 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
 Dashboard watchlist synced (2 symbols) for news/headlines.
 Ending portfolio value: $99,311.19
@@ -4077,4 +4086,6 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 20053 shadow candidate(s), 106 rejection group(s)
 Timings: account: 0.0s | risk: 0.3s | decide: 23.3s | watchlist: 0.1s | perf: 0.2s
+Shadow report: 20069 shadow candidate(s), 119 rejection group(s)
+Timings: account: 0.0s | risk: 0.3s | decide: 8.1s | watchlist: 0.1s | perf: 0.3s
 
