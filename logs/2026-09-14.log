@@ -11528,6 +11528,7 @@ Shadow report: 20509 shadow candidate(s), 283 rejection group(s)
 Timings: account: 0.0s | risk: 0.1s | decide: 3.1s | watchlist: 0.0s | perf: 0.3s
 
 === Run at 2026-09-14T23:36:29.078720 ===
+=== Run at 2026-09-14T23:36:00.963833 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-14 07:36 PM EDT | Market open (per Alpaca): False | Session: EXTENDED
 Account value: $99,311.19
@@ -11545,6 +11546,13 @@ Gemini calls used today (all models combined): 277
   -> {"ticker": "QCOM", "status": "skipped", "reason": "stale quote for QCOM (12993.290302s old; limit 180s)", "shadow": false, "data_guard": true}
   -> {"ticker": "RSG", "status": "skipped", "reason": "stale quote for RSG (13003.510151s old; limit 180s)", "shadow": false, "data_guard": true}
   -> {"ticker": "RVTY", "status": "skipped", "reason": "stale quote for RVTY (13000.866785s old; limit 180s)", "shadow": false, "data_guard": true}
+News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 34/60 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 277
+  -> {"ticker": "QCOM", "status": "skipped", "reason": "stale quote for QCOM (12965.81184s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "RVTY", "status": "skipped", "reason": "stale quote for RVTY (12973.35678s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "RSG", "status": "skipped", "reason": "stale quote for RSG (12976.097027s old; limit 180s)", "shadow": false, "data_guard": true}
 Overnight queue kept 7 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
 Dashboard watchlist synced (3 symbols) for news/headlines.
 Ending portfolio value: $99,311.19
@@ -11555,4 +11563,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 20512 shadow candidate(s), 283 rejection group(s)
 Timings: account: 0.0s | risk: 0.0s | decide: 2.6s | watchlist: 0.0s | perf: 0.2s
+Timings: account: 0.0s | risk: 0.1s | decide: 3.3s | watchlist: 0.0s | perf: 0.2s
 
