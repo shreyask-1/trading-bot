@@ -2797,6 +2797,9 @@ Timings: account: 0.0s | risk: 0.3s | decide: 5.4s | watchlist: 0.1s | perf: 0.2
 === Run at 2026-09-14T08:28:58.652086 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-14 04:28 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
+=== Run at 2026-09-14T08:24:00.235103 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-14 04:24 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
 Account value: $99,311.19
 Cash: $99,311.19 | Holdings (0): none
 Sector exposure (cached): unavailable (no holdings)
@@ -2810,6 +2813,17 @@ Gemini proposed 0 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 10
 Overnight queue cleared after verification.
 Overnight queue retained 1 deferred stale idea(s).
+Overnight queue deferred 4 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+Morning verification: 8 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
+News: fetched 157, 3 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 5/12 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 6
+  -> {"ticker": "PM", "status": "skipped", "reason": "stale quote for PM (217446.679346s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "PKG", "status": "skipped", "reason": "entry alignment: price $234.47 is not above SMA-20 $241.80"}
+  -> {"ticker": "PGR", "status": "skipped", "reason": "stale quote for PGR (217453.509224s old; limit 180s)", "shadow": false, "data_guard": true}
+Overnight queue kept 12 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
+Dashboard watchlist synced (3 symbols) for news/headlines.
 Ending portfolio value: $99,311.19
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
 Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
@@ -2818,4 +2832,6 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 19983 shadow candidate(s), 47 rejection group(s)
 Timings: account: 0.0s | risk: 0.1s | decide: 3.0s | watchlist: 0.0s | perf: 0.2s
+Shadow report: 19987 shadow candidate(s), 51 rejection group(s)
+Timings: account: 0.0s | risk: 0.3s | decide: 10.1s | watchlist: 0.1s | perf: 0.4s
 

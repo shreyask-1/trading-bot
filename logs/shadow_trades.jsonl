@@ -19980,4 +19980,8 @@
 {"timestamp": "2026-09-11T19:58:45.627299", "ticker": "DELL", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 566.63, "reason": "liquidity filter: DELL average volume 255,398 < 500,000"}
 {"timestamp": "2026-09-14T08:05:47.752888", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 25.195, "reason": "stale quote for MOS (216348.743288s old; limit 180s)"}
 {"timestamp": "2026-09-14T08:05:47.753052", "ticker": "ON", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 76.15, "reason": "stale quote for ON (216348.674912s old; limit 180s)"}
-{"timestamp": "2026-09-14T08:19:15.876401", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 25.195, "reason": "stale quote for MOS (217152.597723s old; limit 180s)"}
+{"timestamp": "2026-09-14T08:15:22.433909", "ticker": "NUE", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 259.57, "reason": "stale quote for NUE (216939.050183s old; limit 180s)"}
+{"timestamp": "2026-09-14T08:15:22.434007", "ticker": "NTAP", "action": "buy", "engine": "gemini", "confidence": 71, "conviction": 7, "price": 199.33, "reason": "stale quote for NTAP (216922.761053s old; limit 180s)"}
+{"timestamp": "2026-09-14T08:15:22.434079", "ticker": "NI", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 41.42, "reason": "stale quote for NI (216919.279798s old; limit 180s)"}
+{"timestamp": "2026-09-14T08:24:11.211636", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 191.09, "reason": "stale quote for PM (217446.679346s old; limit 180s)"}
+{"timestamp": "2026-09-14T08:24:11.211909", "ticker": "PGR", "action": "buy", "engine": "gemini", "confidence": 63, "conviction": 7, "price": 217.66, "reason": "stale quote for PGR (217453.509224s old; limit 180s)"}
