@@ -20205,3 +20205,5 @@
 {"timestamp": "2026-09-14T17:22:54.367872", "ticker": "RVTY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 125.64, "reason": "stale quote for RVTY (504.686996s old; limit 180s)"}
 {"timestamp": "2026-09-14T17:22:54.498880", "ticker": "SMCI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 37.865, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
 {"timestamp": "2026-09-14T17:22:54.658219", "ticker": "SWKS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 80.365, "reason": "liquidity filter: SWKS average volume 319,285 < 500,000"}
+{"timestamp": "2026-09-14T17:24:31.436086", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 80.0, "conviction": 8, "price": 225.935, "reason": "stale quote for RSG (232.2763s old; limit 180s)"}
+{"timestamp": "2026-09-14T17:24:31.550584", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 70.0, "conviction": 7, "price": 125.555, "reason": "liquidity filter: RVTY average volume 94,978 < 500,000"}
