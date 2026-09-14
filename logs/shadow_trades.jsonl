@@ -20092,3 +20092,5 @@
 {"timestamp": "2026-09-14T15:31:46.905476", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 72, "conviction": 7, "price": 140.89, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
 {"timestamp": "2026-09-14T15:36:41.813412", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 225.72, "reason": "liquidity filter: RSG average volume 64,834 < 500,000"}
 {"timestamp": "2026-09-14T15:36:42.056159", "ticker": "NWSA", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 30.235, "reason": "liquidity filter: NWSA average volume 231,309 < 500,000"}
+{"timestamp": "2026-09-14T15:38:40.530070", "ticker": "NWSA", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 30.235, "reason": "liquidity filter: NWSA average volume 231,360 < 500,000"}
+{"timestamp": "2026-09-14T15:38:40.785076", "ticker": "QCOM", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 178.18, "reason": "liquidity filter: QCOM average volume 312,780 < 500,000"}
