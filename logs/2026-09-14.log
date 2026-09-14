@@ -2352,6 +2352,9 @@ Timings: account: 0.0s | risk: 0.3s | decide: 24.3s | watchlist: 0.0s | perf: 0.
 === Run at 2026-09-14T07:02:19.001797 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-14 03:02 AM EDT | Market open (per Alpaca): False | Session: CLOSED
+=== Run at 2026-09-14T06:58:30.961294 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-14 02:58 AM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,311.19
 Cash: $99,311.19 | Holdings (0): none
 Sector exposure (cached): unavailable (no holdings)
@@ -2375,6 +2378,23 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued CF buy (conf 80, stop 124.55, tp 141.46)
   -> queued OKE buy (conf 82, stop 94.2, tp 99.55)
   -> queued NUE buy (conf None, stop 246.33, tp 267.24)
+News: fetched 158, 2 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 42/66 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 445
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued HUM buy (conf 89, stop 382.36, tp 427.5)
+  -> queued WFC buy (conf 85, stop 85.22, tp 91.16)
+  -> queued HCA buy (conf 82, stop 397.46, tp 450.0)
+  -> queued MOS buy (conf 82, stop 23.32, tp 26.95)
+  -> queued KEYS buy (conf 82, stop 313.96, tp 339.12)
+  -> queued SLB buy (conf 80, stop 54.84, tp 60.46)
+  -> queued META buy (conf 80, stop 556.8, tp 664.05)
+  -> queued ORCL buy (conf None, stop 139.75, tp 170.595)
+  -> queued CDW buy (conf 92, stop 140.93, tp 158.01)
+  -> queued CF buy (conf None, stop 124.55, tp 141.46)
+  -> queued OKE buy (conf 88, stop 94.2, tp 99.55)
+  -> queued NUE buy (conf 85, stop 246.33, tp 267.24)
 Dashboard watchlist synced (3 symbols) for news/headlines.
 Ending portfolio value: $99,311.19
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
@@ -2384,4 +2404,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 19980 shadow candidate(s), 45 rejection group(s)
 Timings: account: 0.0s | risk: 0.3s | decide: 10.6s | watchlist: 0.1s | perf: 0.4s
+Timings: account: 0.0s | risk: 0.2s | decide: 7.2s | watchlist: 0.1s | perf: 0.2s
 
