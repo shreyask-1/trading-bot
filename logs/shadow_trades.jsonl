@@ -20075,3 +20075,7 @@
 {"timestamp": "2026-09-14T13:41:36.158034", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 226.705, "reason": "stale candle for RSG (581.6m old; limit 30.0m)"}
 {"timestamp": "2026-09-14T13:52:02.836307", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 24.915, "reason": "stale candle for MOS (592.0m old; limit 30.0m)"}
 {"timestamp": "2026-09-14T13:52:03.337624", "ticker": "NUE", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 257.02, "reason": "stale candle for NUE (592.1m old; limit 30.0m)"}
+{"timestamp": "2026-09-14T14:01:14.284939", "ticker": "ARE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 52.045, "reason": "stale candle for ARE (601.2m old; limit 30.0m)"}
+{"timestamp": "2026-09-14T14:01:14.285131", "ticker": "WELL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 237.975, "reason": "stale quote for WELL (493.658105s old; limit 180s)"}
+{"timestamp": "2026-09-14T14:01:14.285273", "ticker": "PFG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 117.12, "reason": "stale quote for PFG (330.329441s old; limit 180s)"}
+{"timestamp": "2026-09-14T14:01:14.285428", "ticker": "PM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 194.57, "reason": "stale candle for PM (601.2m old; limit 30.0m)"}
