@@ -20127,3 +20127,6 @@
 {"timestamp": "2026-09-14T16:06:33.840357", "ticker": "QCOM", "action": "buy", "engine": "gemini", "confidence": 69, "conviction": 7, "price": 178.945, "reason": "liquidity filter: QCOM average volume 314,287 < 500,000"}
 {"timestamp": "2026-09-14T16:08:37.700221", "ticker": "PANW", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 370.73, "reason": "liquidity filter: PANW average volume 221,482 < 500,000"}
 {"timestamp": "2026-09-14T16:08:37.754011", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 226.5, "reason": "stale quote for RSG (238.10194s old; limit 180s)"}
+{"timestamp": "2026-09-14T16:10:35.806865", "ticker": "META", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 658.15, "reason": "market data unavailable for META (bid/ask spread missing)"}
+{"timestamp": "2026-09-14T16:10:35.891037", "ticker": "PANW", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 371.53, "reason": "liquidity filter: PANW average volume 221,519 < 500,000"}
+{"timestamp": "2026-09-14T16:10:35.891228", "ticker": "NUE", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 256.895, "reason": "stale quote for NUE (423.3951s old; limit 180s)"}
