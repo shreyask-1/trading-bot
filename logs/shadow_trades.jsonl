@@ -20045,3 +20045,6 @@
 {"timestamp": "2026-09-14T12:04:17.850548", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 191.09, "reason": "stale quote for PM (230649.84996s old; limit 180s)"}
 {"timestamp": "2026-09-14T12:13:57.004457", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 191.09, "reason": "stale quote for PM (231238.464377s old; limit 180s)"}
 {"timestamp": "2026-09-14T12:13:57.004687", "ticker": "QCOM", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 181.95, "reason": "stale quote for QCOM (231236.001241s old; limit 180s)"}
+{"timestamp": "2026-09-14T12:23:41.711450", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 191.09, "reason": "stale quote for PM (231822.939086s old; limit 180s)"}
+{"timestamp": "2026-09-14T12:23:41.711675", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 222.8, "reason": "stale quote for RSG (231832.084154s old; limit 180s)"}
+{"timestamp": "2026-09-14T12:23:42.046502", "ticker": "QCOM", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 181.95, "reason": "stale quote for QCOM (231823.257734s old; limit 180s)"}
