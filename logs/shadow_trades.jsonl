@@ -19980,3 +19980,4 @@
 {"timestamp": "2026-09-11T19:58:45.627299", "ticker": "DELL", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 566.63, "reason": "liquidity filter: DELL average volume 255,398 < 500,000"}
 {"timestamp": "2026-09-14T08:05:47.752888", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 25.195, "reason": "stale quote for MOS (216348.743288s old; limit 180s)"}
 {"timestamp": "2026-09-14T08:05:47.753052", "ticker": "ON", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 76.15, "reason": "stale quote for ON (216348.674912s old; limit 180s)"}
+{"timestamp": "2026-09-14T08:19:15.876401", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 25.195, "reason": "stale quote for MOS (217152.597723s old; limit 180s)"}
