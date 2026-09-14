@@ -20094,3 +20094,5 @@
 {"timestamp": "2026-09-14T15:05:49.675054", "ticker": "COIN", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 186.9, "reason": "liquidity filter: COIN average volume 261,537 < 500,000"}
 {"timestamp": "2026-09-14T15:05:49.675185", "ticker": "MSFT", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 502.72, "reason": "market data unavailable for MSFT (bid/ask spread missing)"}
 {"timestamp": "2026-09-14T15:05:49.675308", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 140.025, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
+{"timestamp": "2026-09-14T15:16:21.437873", "ticker": "MSFT", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 503.125, "reason": "market data unavailable for MSFT (bid/ask spread missing)"}
+{"timestamp": "2026-09-14T15:16:21.505871", "ticker": "NFLX", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 80.26, "reason": "market data unavailable for NFLX (bid/ask spread missing)"}
