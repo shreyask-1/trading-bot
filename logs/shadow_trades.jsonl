@@ -20088,3 +20088,5 @@
 {"timestamp": "2026-09-14T15:11:17.533690", "ticker": "COIN", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 187.83, "reason": "liquidity filter: COIN average volume 261,936 < 500,000"}
 {"timestamp": "2026-09-14T15:11:17.533863", "ticker": "ARE", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 51.61, "reason": "liquidity filter: ARE average volume 96,091 < 500,000"}
 {"timestamp": "2026-09-14T15:21:14.843413", "ticker": "MSFT", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 503.58, "reason": "market data unavailable for MSFT (bid/ask spread missing)"}
+{"timestamp": "2026-09-14T15:31:46.845544", "ticker": "NWSA", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 30.225, "reason": "liquidity filter: NWSA average volume 231,227 < 500,000"}
+{"timestamp": "2026-09-14T15:31:46.905476", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 72, "conviction": 7, "price": 140.89, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
