@@ -20351,3 +20351,5 @@
 {"timestamp": "2026-09-14T19:32:36.715794", "ticker": "RVTY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 126.81, "reason": "liquidity filter: RVTY average volume 95,897 < 500,000"}
 {"timestamp": "2026-09-14T19:32:36.946036", "ticker": "SWKS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 79.47, "reason": "liquidity filter: SWKS average volume 330,760 < 500,000"}
 {"timestamp": "2026-09-14T19:32:37.216595", "ticker": "T", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 26.525, "reason": "market data unavailable for T (bid/ask spread missing)"}
+{"timestamp": "2026-09-14T19:34:40.775905", "ticker": "PANW", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 376.94, "reason": "liquidity filter: PANW average volume 228,892 < 500,000"}
+{"timestamp": "2026-09-14T19:34:40.845721", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 226.0, "reason": "liquidity filter: RSG average volume 66,364 < 500,000"}
