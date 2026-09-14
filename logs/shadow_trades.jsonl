@@ -20246,3 +20246,6 @@
 {"timestamp": "2026-09-14T17:56:52.638834", "ticker": "NWSA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 30.635, "reason": "liquidity filter: NWSA average volume 234,405 < 500,000"}
 {"timestamp": "2026-09-14T17:56:52.692567", "ticker": "OKE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 96.97, "reason": "liquidity filter: OKE average volume 161,610 < 500,000"}
 {"timestamp": "2026-09-14T17:56:52.702560", "ticker": "OXY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 61.975, "reason": "liquidity filter: OXY average volume 487,946 < 500,000"}
+{"timestamp": "2026-09-14T17:58:40.114837", "ticker": "PANW", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 377.09, "reason": "liquidity filter: PANW average volume 225,677 < 500,000"}
+{"timestamp": "2026-09-14T17:58:40.443626", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 225.69, "reason": "liquidity filter: RSG average volume 65,483 < 500,000"}
+{"timestamp": "2026-09-14T17:58:40.765856", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 126.195, "reason": "liquidity filter: RVTY average volume 95,151 < 500,000"}
