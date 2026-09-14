@@ -2231,6 +2231,9 @@ Shadow report: 19980 shadow candidate(s), 45 rejection group(s)
 Timings: account: 0.0s | risk: 0.0s | decide: 3.4s | watchlist: 0.0s | perf: 0.2s
 Timings: account: 0.0s | risk: 0.4s | decide: 24.1s | watchlist: 0.0s | perf: 0.2s
 
+=== Run at 2026-09-14T06:45:18.008774 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-14 02:45 AM EDT | Market open (per Alpaca): False | Session: CLOSED
 === Run at 2026-09-14T06:40:30.713583 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-14 02:40 AM EDT | Market open (per Alpaca): False | Session: CLOSED
@@ -2240,6 +2243,23 @@ Sector exposure (cached): unavailable (no holdings)
 Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
 Risk state: peak $99,703.60 | drawdown 0.39% | today +0.00% | halted: False
 Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 1 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 33/54 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 443
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued CDW buy (conf 92, stop 140.93, tp 158.01000000000002)
+  -> queued OKE buy (conf 88, stop 94.2, tp 99.55)
+  -> queued ORCL buy (conf 88, stop 139.75, tp 170.59)
+  -> queued PFG buy (conf 85, stop 108.69, tp 121.03)
+  -> queued NUE buy (conf 85, stop 246.33, tp 267.24)
+  -> queued HCA buy (conf 82, stop 397.46, tp 450.0)
+  -> queued MOS buy (conf 82, stop 23.32, tp 26.95)
+  -> queued KEYS buy (conf 82, stop 313.96, tp 339.12)
+  -> queued HUM buy (conf 80, stop 382.36, tp 418.05)
+  -> queued SLB buy (conf 80, stop 54.84, tp 60.46)
+  -> queued META buy (conf 80, stop 556.8, tp 664.05)
+  -> queued ON buy (conf 80, stop 68.79, tp 82.0)
 News: fetched 158, 4 new after dedup, 0 ticker(s) matched.
 Quant pre-screen: 42/66 candidates passed.
 Gemini proposed 3 trade(s) meeting the conviction bar.
@@ -2265,6 +2285,7 @@ Performance: Total return +0.45% | Max drawdown 0.94% | Daily Sharpe 1.70 | 19 c
 Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+0.00 (0 open) | Books: legacy: realized $-1,705.68, unrealized $+0.00
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 19980 shadow candidate(s), 45 rejection group(s)
+Timings: account: 0.0s | risk: 0.3s | decide: 10.0s | watchlist: 0.1s | perf: 0.4s
 Timings: account: 0.0s | risk: 0.0s | decide: 3.6s | watchlist: 0.0s | perf: 0.2s
 
 === Run at 2026-09-14T06:50:04.448828 ===
