@@ -20039,3 +20039,6 @@
 {"timestamp": "2026-09-14T11:35:45.352732", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 222.8, "reason": "stale quote for RSG (228961.158958s old; limit 180s)"}
 {"timestamp": "2026-09-14T11:45:11.455469", "ticker": "ON", "action": "buy", "engine": "gemini", "confidence": 95, "conviction": 10, "price": 76.15, "reason": "stale quote for ON (229506.868305s old; limit 180s)"}
 {"timestamp": "2026-09-14T11:45:11.455596", "ticker": "STT", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 193.48, "reason": "stale quote for STT (229518.600365s old; limit 180s)"}
+{"timestamp": "2026-09-14T11:54:04.606148", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 191.09, "reason": "stale quote for PM (230046.052054s old; limit 180s)"}
+{"timestamp": "2026-09-14T11:54:04.649628", "ticker": "QCOM", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 181.95, "reason": "stale quote for QCOM (230046.088314s old; limit 180s)"}
+{"timestamp": "2026-09-14T11:54:04.690809", "ticker": "STT", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 193.48, "reason": "stale quote for STT (230057.309291s old; limit 180s)"}
