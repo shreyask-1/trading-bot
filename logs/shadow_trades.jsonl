@@ -20475,3 +20475,5 @@
 {"timestamp": "2026-09-14T22:58:39.027120", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 225.63, "reason": "stale quote for RSG (10730.54431s old; limit 180s)"}
 {"timestamp": "2026-09-14T23:00:40.380219", "ticker": "PANW", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 374.005, "reason": "stale quote for PANW (10840.422201s old; limit 180s)"}
 {"timestamp": "2026-09-14T23:00:40.380374", "ticker": "NFLX", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 80.33, "reason": "stale quote for NFLX (10838.234173s old; limit 180s)"}
+{"timestamp": "2026-09-14T23:02:56.663574", "ticker": "PANW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 374.005, "reason": "stale quote for PANW (10979.294624s old; limit 180s)"}
+{"timestamp": "2026-09-14T23:02:56.720044", "ticker": "PSX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 256.84, "reason": "stale quote for PSX (10971.668195s old; limit 180s)"}
