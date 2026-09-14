@@ -20216,3 +20216,6 @@
 {"timestamp": "2026-09-14T17:31:03.334172", "ticker": "RVTY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 125.48, "reason": "stale quote for RVTY (349.655419s old; limit 180s)"}
 {"timestamp": "2026-09-14T17:31:03.649057", "ticker": "SMCI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 37.865, "reason": "market data unavailable for SMCI (bid/ask spread missing)"}
 {"timestamp": "2026-09-14T17:31:04.008500", "ticker": "SWKS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 79.88, "reason": "liquidity filter: SWKS average volume 319,533 < 500,000"}
+{"timestamp": "2026-09-14T17:32:44.003439", "ticker": "PANW", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 376.67, "reason": "liquidity filter: PANW average volume 224,648 < 500,000"}
+{"timestamp": "2026-09-14T17:32:44.003644", "ticker": "NWSA", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 30.655, "reason": "liquidity filter: NWSA average volume 234,034 < 500,000"}
+{"timestamp": "2026-09-14T17:32:44.003799", "ticker": "ARE", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 52.53, "reason": "liquidity filter: ARE average volume 96,874 < 500,000"}
