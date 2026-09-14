@@ -3045,6 +3045,9 @@ Timings: account: 0.0s | risk: 0.3s | decide: 10.4s | watchlist: 0.1s | perf: 0.
 === Run at 2026-09-14T09:28:18.880409 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-14 05:28 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
+=== Run at 2026-09-14T09:23:17.442635 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-14 05:23 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
 Account value: $99,311.19
 Cash: $99,311.19 | Holdings (0): none
 Sector exposure (cached): unavailable (no holdings)
@@ -3061,6 +3064,13 @@ Gemini calls used today (all models combined): 16
   -> {"ticker": "QCOM", "status": "skipped", "reason": "stale quote for QCOM (221310.253102s old; limit 180s)", "shadow": false, "data_guard": true}
 Overnight queue kept 12 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
 Dashboard watchlist synced (2 symbols) for news/headlines.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 12
+  -> {"ticker": "PM", "status": "skipped", "reason": "stale quote for PM (221009.711313s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "RSG", "status": "skipped", "reason": "stale quote for RSG (221019.467095s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "QCOM", "status": "skipped", "reason": "stale quote for QCOM (221009.9386s old; limit 180s)", "shadow": false, "data_guard": true}
+Overnight queue kept 12 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
+Dashboard watchlist synced (3 symbols) for news/headlines.
 Ending portfolio value: $99,311.19
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
 Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
@@ -3069,4 +3079,6 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 20002 shadow candidate(s), 63 rejection group(s)
 Timings: account: 0.0s | risk: 0.3s | decide: 9.3s | watchlist: 0.1s | perf: 0.3s
+Shadow report: 20003 shadow candidate(s), 63 rejection group(s)
+Timings: account: 0.0s | risk: 0.3s | decide: 10.5s | watchlist: 0.1s | perf: 0.3s
 
