@@ -20079,3 +20079,5 @@
 {"timestamp": "2026-09-14T14:01:14.285131", "ticker": "WELL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 237.975, "reason": "stale quote for WELL (493.658105s old; limit 180s)"}
 {"timestamp": "2026-09-14T14:01:14.285273", "ticker": "PFG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 117.12, "reason": "stale quote for PFG (330.329441s old; limit 180s)"}
 {"timestamp": "2026-09-14T14:01:14.285428", "ticker": "PM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 194.57, "reason": "stale candle for PM (601.2m old; limit 30.0m)"}
+{"timestamp": "2026-09-14T14:12:14.606845", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 194.485, "reason": "stale quote for PM (209.625644s old; limit 180s)"}
+{"timestamp": "2026-09-14T14:12:14.607051", "ticker": "PSX", "action": "buy", "engine": "gemini", "confidence": 68, "conviction": 7, "price": 264.24, "reason": "stale candle for PSX (612.2m old; limit 30.0m)"}
