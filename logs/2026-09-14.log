@@ -1387,6 +1387,9 @@ Shadow report: 19980 shadow candidate(s), 45 rejection group(s)
 Timings: account: 0.0s | risk: 0.0s | decide: 3.4s | watchlist: 0.0s | perf: 0.3s
 Timings: account: 0.0s | risk: 0.4s | decide: 10.1s | watchlist: 0.1s | perf: 0.4s
 
+=== Run at 2026-09-14T04:24:50.694306 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-14 12:24 AM EDT | Market open (per Alpaca): False | Session: CLOSED
 === Run at 2026-09-14T04:20:07.704621 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-14 12:20 AM EDT | Market open (per Alpaca): False | Session: CLOSED
@@ -1399,6 +1402,18 @@ Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100
 News: fetched 158, 1 new after dedup, 0 ticker(s) matched.
 Quant pre-screen: 26/42 candidates passed.
 Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 430
+Market closed (overnight): queued 11 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued OKE buy (conf 84, stop 94.2, tp 99.55)
+  -> queued CDW buy (conf 85, stop 140.93, tp 158.01)
+  -> queued HCA buy (conf 82, stop 397.46, tp 450.0)
+  -> queued MOS buy (conf 82, stop 23.32, tp 26.95)
+  -> queued HUM buy (conf 80, stop 382.36, tp 418.05)
+  -> queued KEYS buy (conf 82, stop 313.96, tp 339.12)
+  -> queued SLB buy (conf 80, stop 54.84, tp 60.46)
+  -> queued CF buy (conf 80, stop 124.55, tp 141.46)
+  -> queued META buy (conf 80, stop 556.8, tp 664.05)
+  -> queued MET buy (conf 78, stop 93.5, tp 102.0)
 Gemini calls used today (all models combined): 431
 Market closed (overnight): queued 10 trade idea(s) for next-morning verification -- nothing submitted yet.
   -> queued HUM buy (conf 89, stop 382.36, tp 427.5)
@@ -1419,6 +1434,7 @@ Performance: Total return +0.45% | Max drawdown 0.94% | Daily Sharpe 1.70 | 19 c
 Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+0.00 (0 open) | Books: legacy: realized $-1,705.68, unrealized $+0.00
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 19980 shadow candidate(s), 45 rejection group(s)
+Timings: account: 0.0s | risk: 0.4s | decide: 9.7s | watchlist: 0.3s | perf: 0.4s
 Timings: account: 0.0s | risk: 0.0s | decide: 3.3s | watchlist: 0.0s | perf: 0.2s
 
 === Run at 2026-09-14T04:29:34.348710 ===
