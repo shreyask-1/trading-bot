@@ -20276,3 +20276,5 @@
 {"timestamp": "2026-09-14T18:24:30.388190", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 225.97, "reason": "stale quote for RSG (416.230309s old; limit 180s)"}
 {"timestamp": "2026-09-14T18:26:37.089180", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 225.97, "reason": "stale quote for RSG (542.722207s old; limit 180s)"}
 {"timestamp": "2026-09-14T18:26:37.415816", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 125.94, "reason": "liquidity filter: RVTY average volume 95,231 < 500,000"}
+{"timestamp": "2026-09-14T18:28:42.245634", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 225.97, "reason": "stale quote for RSG (668.03995s old; limit 180s)"}
+{"timestamp": "2026-09-14T18:28:42.377479", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 125.79, "reason": "liquidity filter: RVTY average volume 95,330 < 500,000"}
