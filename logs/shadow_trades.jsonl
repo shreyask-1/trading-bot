@@ -20096,3 +20096,6 @@
 {"timestamp": "2026-09-14T15:38:40.785076", "ticker": "QCOM", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 178.18, "reason": "liquidity filter: QCOM average volume 312,780 < 500,000"}
 {"timestamp": "2026-09-14T15:40:42.092508", "ticker": "NWSA", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 30.27, "reason": "liquidity filter: NWSA average volume 231,412 < 500,000"}
 {"timestamp": "2026-09-14T15:40:42.249329", "ticker": "QCOM", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 178.44, "reason": "liquidity filter: QCOM average volume 312,863 < 500,000"}
+{"timestamp": "2026-09-14T15:44:56.466968", "ticker": "NWSA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 30.305, "reason": "liquidity filter: NWSA average volume 231,542 < 500,000"}
+{"timestamp": "2026-09-14T15:44:56.819732", "ticker": "SWKS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 80.58, "reason": "liquidity filter: SWKS average volume 314,040 < 500,000"}
+{"timestamp": "2026-09-14T15:44:56.819939", "ticker": "TKO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 197.07, "reason": "liquidity filter: TKO average volume 46,471 < 500,000"}
