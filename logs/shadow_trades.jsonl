@@ -20010,3 +20010,5 @@
 {"timestamp": "2026-09-14T09:51:00.129367", "ticker": "NUE", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 259.57, "reason": "stale quote for NUE (222677.518501s old; limit 180s)"}
 {"timestamp": "2026-09-14T09:51:00.129528", "ticker": "NI", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 41.42, "reason": "stale quote for NI (222658.491414s old; limit 180s)"}
 {"timestamp": "2026-09-14T10:00:34.469088", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 191.09, "reason": "stale quote for PM (223233.329106s old; limit 180s)"}
+{"timestamp": "2026-09-14T10:10:25.518836", "ticker": "QCOM", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 181.95, "reason": "stale quote for QCOM (223822.209357s old; limit 180s)"}
+{"timestamp": "2026-09-14T10:10:25.775840", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 191.09, "reason": "stale quote for PM (223827.076653s old; limit 180s)"}
