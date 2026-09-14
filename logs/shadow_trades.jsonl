@@ -20314,3 +20314,4 @@
 {"timestamp": "2026-09-14T18:58:33.202986", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 70, "conviction": 7, "price": 126.085, "reason": "liquidity filter: RVTY average volume 95,465 < 500,000"}
 {"timestamp": "2026-09-14T19:00:48.135868", "ticker": "PANW", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 375.45, "reason": "liquidity filter: PANW average volume 227,753 < 500,000"}
 {"timestamp": "2026-09-14T19:00:48.136034", "ticker": "QCOM", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 181.59, "reason": "liquidity filter: QCOM average volume 320,509 < 500,000"}
+{"timestamp": "2026-09-14T19:02:53.796023", "ticker": "PANW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 375.25, "reason": "liquidity filter: PANW average volume 227,804 < 500,000"}
