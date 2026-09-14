@@ -20099,3 +20099,5 @@
 {"timestamp": "2026-09-14T15:44:56.466968", "ticker": "NWSA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 30.305, "reason": "liquidity filter: NWSA average volume 231,542 < 500,000"}
 {"timestamp": "2026-09-14T15:44:56.819732", "ticker": "SWKS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 80.58, "reason": "liquidity filter: SWKS average volume 314,040 < 500,000"}
 {"timestamp": "2026-09-14T15:44:56.819939", "ticker": "TKO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 197.07, "reason": "liquidity filter: TKO average volume 46,471 < 500,000"}
+{"timestamp": "2026-09-14T15:46:32.715610", "ticker": "TKO", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 197.11, "reason": "liquidity filter: TKO average volume 46,497 < 500,000"}
+{"timestamp": "2026-09-14T15:46:32.820153", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 225.57, "reason": "stale quote for RSG (226.4187s old; limit 180s)"}
