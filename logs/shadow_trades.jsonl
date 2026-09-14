@@ -20461,3 +20461,5 @@
 {"timestamp": "2026-09-14T22:46:35.205527", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 225.63, "reason": "stale quote for RSG (10006.776087s old; limit 180s)"}
 {"timestamp": "2026-09-14T22:46:35.435203", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 128.53, "reason": "stale quote for RVTY (10004.313108s old; limit 180s)"}
 {"timestamp": "2026-09-14T22:48:31.188788", "ticker": "PANW", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 374.005, "reason": "stale quote for PANW (10113.923437s old; limit 180s)"}
+{"timestamp": "2026-09-14T22:50:45.309306", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 80.0, "conviction": 8, "price": 225.63, "reason": "stale quote for RSG (10256.798519s old; limit 180s)"}
+{"timestamp": "2026-09-14T22:50:45.647041", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 75.0, "conviction": 8, "price": 128.53, "reason": "stale quote for RVTY (10254.438302s old; limit 180s)"}
