@@ -20376,3 +20376,6 @@
 {"timestamp": "2026-09-14T19:54:34.301797", "ticker": "PANW", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 376.555, "reason": "liquidity filter: PANW average volume 230,171 < 500,000"}
 {"timestamp": "2026-09-14T19:56:31.868550", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 80.0, "conviction": 8, "price": 225.99, "reason": "liquidity filter: RSG average volume 66,736 < 500,000"}
 {"timestamp": "2026-09-14T19:58:30.375249", "ticker": "PANW", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 374.36, "reason": "liquidity filter: PANW average volume 230,981 < 500,000"}
+{"timestamp": "2026-09-14T21:30:45.022200", "ticker": "RVTY", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 128.53, "reason": "stale quote for RVTY (5449.611708s old; limit 180s)"}
+{"timestamp": "2026-09-14T21:30:45.022369", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 225.63, "reason": "stale quote for RSG (5451.677927s old; limit 180s)"}
+{"timestamp": "2026-09-14T21:30:45.334976", "ticker": "PSX", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 256.84, "reason": "stale quote for PSX (5460.959756s old; limit 180s)"}
