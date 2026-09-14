@@ -20091,3 +20091,6 @@
 {"timestamp": "2026-09-14T14:54:35.903285", "ticker": "OKE", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 98.05, "reason": "stale candle for OKE (654.6m old; limit 30.0m)"}
 {"timestamp": "2026-09-14T14:54:36.225172", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 193.33, "reason": "stale candle for PM (654.6m old; limit 30.0m)"}
 {"timestamp": "2026-09-14T14:54:36.544924", "ticker": "OXY", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 62.79, "reason": "stale candle for OXY (654.6m old; limit 30.0m)"}
+{"timestamp": "2026-09-14T15:05:49.675054", "ticker": "COIN", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 186.9, "reason": "liquidity filter: COIN average volume 261,537 < 500,000"}
+{"timestamp": "2026-09-14T15:05:49.675185", "ticker": "MSFT", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 502.72, "reason": "market data unavailable for MSFT (bid/ask spread missing)"}
+{"timestamp": "2026-09-14T15:05:49.675308", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 140.025, "reason": "market data unavailable for NOW (bid/ask spread missing)"}
