@@ -3545,6 +3545,9 @@ Timings: account: 0.0s | risk: 0.1s | decide: 4.1s | watchlist: 0.0s | perf: 0.3
 === Run at 2026-09-14T11:20:56.943686 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-14 07:20 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
+=== Run at 2026-09-14T11:16:03.472173 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-14 07:16 AM EDT | Market open (per Alpaca): False | Session: EXTENDED
 Account value: $99,311.19
 Cash: $99,311.19 | Holdings (0): none
 Sector exposure (cached): unavailable (no holdings)
@@ -3560,6 +3563,13 @@ Gemini calls used today (all models combined): 28
   -> {"ticker": "PM", "status": "skipped", "reason": "stale quote for PM (228062.34275s old; limit 180s)", "shadow": false, "data_guard": true}
   -> {"ticker": "QCOM", "status": "skipped", "reason": "stale quote for QCOM (228062.407755s old; limit 180s)", "shadow": false, "data_guard": true}
   -> {"ticker": "RSG", "status": "skipped", "reason": "stale quote for RSG (228074.567535s old; limit 180s)", "shadow": false, "data_guard": true}
+News: fetched 157, 8 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 13/24 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 24
+  -> {"ticker": "PM", "status": "skipped", "reason": "stale quote for PM (227774.310937s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "QCOM", "status": "skipped", "reason": "stale quote for QCOM (227770.247275s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "PWR", "status": "skipped", "reason": "stale quote for PWR (227775.112674s old; limit 180s)", "shadow": false, "data_guard": true}
 Overnight queue kept 12 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
 Dashboard watchlist synced (3 symbols) for news/headlines.
 Ending portfolio value: $99,311.19
@@ -3570,4 +3580,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 20033 shadow candidate(s), 89 rejection group(s)
 Timings: account: 0.0s | risk: 0.1s | decide: 3.8s | watchlist: 0.0s | perf: 0.3s
+Timings: account: 0.0s | risk: 0.4s | decide: 8.6s | watchlist: 0.1s | perf: 0.4s
 
