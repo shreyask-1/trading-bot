@@ -19978,3 +19978,5 @@
 {"timestamp": "2026-09-11T19:58:44.905716", "ticker": "CDW", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 153.725, "reason": "liquidity filter: CDW average volume 89,135 < 500,000"}
 {"timestamp": "2026-09-11T19:58:45.229366", "ticker": "CVX", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 214.18, "reason": "liquidity filter: CVX average volume 264,821 < 500,000"}
 {"timestamp": "2026-09-11T19:58:45.627299", "ticker": "DELL", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 566.63, "reason": "liquidity filter: DELL average volume 255,398 < 500,000"}
+{"timestamp": "2026-09-14T08:05:47.752888", "ticker": "MOS", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 25.195, "reason": "stale quote for MOS (216348.743288s old; limit 180s)"}
+{"timestamp": "2026-09-14T08:05:47.753052", "ticker": "ON", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 76.15, "reason": "stale quote for ON (216348.674912s old; limit 180s)"}
