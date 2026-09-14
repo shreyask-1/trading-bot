@@ -20062,3 +20062,6 @@
 {"timestamp": "2026-09-14T12:53:19.169586", "ticker": "SNDK", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 1630.08, "reason": "stale quote for SNDK (230793.445177s old; limit 180s)"}
 {"timestamp": "2026-09-14T12:53:19.473354", "ticker": "STT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 193.48, "reason": "stale quote for STT (233611.895161s old; limit 180s)"}
 {"timestamp": "2026-09-14T12:53:19.789883", "ticker": "SWKS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 88.38, "reason": "stale quote for SWKS (233604.133458s old; limit 180s)"}
+{"timestamp": "2026-09-14T13:03:15.623242", "ticker": "ON", "action": "buy", "engine": "gemini", "confidence": 95, "conviction": 10, "price": 76.15, "reason": "stale quote for ON (234191.773298s old; limit 180s)"}
+{"timestamp": "2026-09-14T13:03:15.623416", "ticker": "MU", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 974.88, "reason": "stale quote for MU (233873.134488s old; limit 180s)"}
+{"timestamp": "2026-09-14T13:03:15.623561", "ticker": "MSFT", "action": "buy", "engine": "gemini", "confidence": 71, "conviction": 7, "price": 499.15, "reason": "stale quote for MSFT (2576.565232s old; limit 180s)"}
