@@ -4212,6 +4212,9 @@ Timings: account: 0.0s | risk: 0.3s | decide: 10.5s | watchlist: 0.1s | perf: 0.
 Shadow report: 20075 shadow candidate(s), 125 rejection group(s)
 Timings: account: 0.0s | risk: 0.0s | decide: 11.5s | watchlist: 0.0s | perf: 0.2s
 
+=== Run at 2026-09-14T13:56:07.451474 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-14 09:56 AM EDT | Market open (per Alpaca): True | Session: REGULAR
 === Run at 2026-09-14T13:51:51.064211 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-14 09:51 AM EDT | Market open (per Alpaca): True | Session: REGULAR
@@ -4222,6 +4225,15 @@ Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
 Risk state: peak $99,703.60 | drawdown 0.39% | today +0.00% | halted: False
 Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
 Overnight queue deferred 2 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+Morning verification: 1 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
+News: fetched 158, 6 new after dedup, 4 ticker(s) matched.
+Quant pre-screen: 5/15 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 44
+  -> {"ticker": "HCA", "status": "skipped", "reason": "stale candle for HCA (596.2m old; limit 30.0m)", "shadow": false, "data_guard": true}
+  -> {"ticker": "ARE", "status": "skipped", "reason": "stale candle for ARE (596.2m old; limit 30.0m)", "shadow": false, "data_guard": true}
+Overnight queue kept 5 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
+Dashboard watchlist synced (5 symbols) for news/headlines.
 Morning verification: 10 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
 News: fetched 158, 9 new after dedup, 9 ticker(s) matched.
 Quant pre-screen: 27/43 candidates passed.
@@ -4239,6 +4251,7 @@ Performance: Total return +0.45% | Max drawdown 0.94% | Daily Sharpe 1.70 | 19 c
 Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+0.00 (0 open) | Books: legacy: realized $-1,705.68, unrealized $+0.00
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 20077 shadow candidate(s), 127 rejection group(s)
+Timings: account: 0.0s | risk: 0.1s | decide: 3.7s | watchlist: 0.0s | perf: 0.2s
 Timings: account: 0.0s | risk: 0.2s | decide: 11.7s | watchlist: 0.1s | perf: 0.2s
 
 === Run at 2026-09-14T14:00:49.181589 ===
