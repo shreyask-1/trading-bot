@@ -19985,3 +19985,6 @@
 {"timestamp": "2026-09-14T08:15:22.434079", "ticker": "NI", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 41.42, "reason": "stale quote for NI (216919.279798s old; limit 180s)"}
 {"timestamp": "2026-09-14T08:24:11.211636", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 191.09, "reason": "stale quote for PM (217446.679346s old; limit 180s)"}
 {"timestamp": "2026-09-14T08:24:11.211909", "ticker": "PGR", "action": "buy", "engine": "gemini", "confidence": 63, "conviction": 7, "price": 217.66, "reason": "stale quote for PGR (217453.509224s old; limit 180s)"}
+{"timestamp": "2026-09-14T08:33:47.385624", "ticker": "PM", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 191.09, "reason": "stale quote for PM (218028.808301s old; limit 180s)"}
+{"timestamp": "2026-09-14T08:33:47.385882", "ticker": "QCOM", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 181.95, "reason": "stale quote for QCOM (218027.120404s old; limit 180s)"}
+{"timestamp": "2026-09-14T08:33:47.386115", "ticker": "PWR", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 650.79, "reason": "stale quote for PWR (218032.528216s old; limit 180s)"}
