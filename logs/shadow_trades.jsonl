@@ -21476,3 +21476,5 @@
 {"timestamp": "2026-09-15T16:18:34.548694", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 87.695, "reason": "liquidity filter: SWKS average volume 334,353 < 500,000"}
 {"timestamp": "2026-09-15T16:20:38.405205", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 87.57, "reason": "liquidity filter: SWKS average volume 334,402 < 500,000"}
 {"timestamp": "2026-09-15T16:20:38.533939", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 330.39, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
+{"timestamp": "2026-09-15T16:22:37.829508", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 87.88, "reason": "liquidity filter: SWKS average volume 334,468 < 500,000"}
+{"timestamp": "2026-09-15T16:22:37.935971", "ticker": "APA", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 47.16, "reason": "liquidity filter: APA average volume 355,323 < 500,000"}
