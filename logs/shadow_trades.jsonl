@@ -21524,3 +21524,6 @@
 {"timestamp": "2026-09-15T16:52:37.842745", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 89.785, "reason": "liquidity filter: SWKS average volume 335,792 < 500,000"}
 {"timestamp": "2026-09-15T16:52:38.245859", "ticker": "XOM", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 168.66, "reason": "liquidity filter: XOM average volume 387,493 < 500,000"}
 {"timestamp": "2026-09-15T16:52:38.550351", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 88.76, "reason": "market data unavailable for WFC (bid/ask spread missing)"}
+{"timestamp": "2026-09-15T16:54:45.331468", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 89.63, "reason": "liquidity filter: SWKS average volume 335,938 < 500,000"}
+{"timestamp": "2026-09-15T16:54:45.639512", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 88.74, "reason": "market data unavailable for WFC (bid/ask spread missing)"}
+{"timestamp": "2026-09-15T16:54:45.639715", "ticker": "TKO", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 191.95, "reason": "stale quote for TKO (516.533936s old; limit 180s)"}
