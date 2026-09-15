@@ -21646,3 +21646,5 @@
 {"timestamp": "2026-09-15T17:58:38.140846", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 89.18, "reason": "market data unavailable for WFC (bid/ask spread missing)"}
 {"timestamp": "2026-09-15T17:58:38.406015", "ticker": "WST", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 366.91, "reason": "stale quote for WST (572.897764s old; limit 180s)"}
 {"timestamp": "2026-09-15T17:58:38.406183", "ticker": "TRV", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 377.925, "reason": "liquidity filter: TRV average volume 60,353 < 500,000"}
+{"timestamp": "2026-09-15T18:01:48.771850", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 89.63, "reason": "liquidity filter: SWKS average volume 338,454 < 500,000"}
+{"timestamp": "2026-09-15T18:01:48.772042", "ticker": "APA", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 47.39, "reason": "liquidity filter: APA average volume 359,501 < 500,000"}
