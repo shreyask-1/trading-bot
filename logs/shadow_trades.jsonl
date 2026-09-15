@@ -21641,3 +21641,5 @@
 {"timestamp": "2026-09-15T17:54:53.958968", "ticker": "XOM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 169.34, "reason": "liquidity filter: XOM average volume 389,742 < 500,000"}
 {"timestamp": "2026-09-15T17:54:54.218055", "ticker": "VRSN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 298.55, "reason": "stale quote for VRSN (285.83145s old; limit 180s)"}
 {"timestamp": "2026-09-15T17:54:54.501151", "ticker": "APA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 47.405, "reason": "liquidity filter: APA average volume 359,186 < 500,000"}
+{"timestamp": "2026-09-15T17:56:33.869812", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 89.115, "reason": "market data unavailable for WFC (bid/ask spread missing)"}
+{"timestamp": "2026-09-15T17:56:34.066031", "ticker": "WRB", "action": "buy", "engine": "gemini", "confidence": 83, "conviction": 8, "price": 70.75, "reason": "liquidity filter: WRB average volume 77,786 < 500,000"}
