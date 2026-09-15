@@ -21444,3 +21444,5 @@
 {"timestamp": "2026-09-15T15:58:40.222833", "ticker": "WRB", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 70.62, "reason": "liquidity filter: WRB average volume 75,829 < 500,000"}
 {"timestamp": "2026-09-15T16:01:07.071061", "ticker": "SWKS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 87.155, "reason": "liquidity filter: SWKS average volume 333,885 < 500,000"}
 {"timestamp": "2026-09-15T16:01:07.103588", "ticker": "VRSN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 296.96, "reason": "stale quote for VRSN (192.06543s old; limit 180s)"}
+{"timestamp": "2026-09-15T16:02:36.985278", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 87.36, "reason": "liquidity filter: SWKS average volume 333,938 < 500,000"}
+{"timestamp": "2026-09-15T16:02:37.054034", "ticker": "VRSN", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 296.945, "reason": "liquidity filter: VRSN average volume 32,279 < 500,000"}
