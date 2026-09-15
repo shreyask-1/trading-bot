@@ -1809,3 +1809,39 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; wor
 Shadow report: 20539 shadow candidate(s), 283 rejection group(s)
 Timings: account: 0.0s | risk: 0.3s | decide: 6.9s | watchlist: 0.1s | perf: 0.3s
 
+=== Run at 2026-09-15T01:46:34.037236 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-14 09:46 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+Account value: $99,311.19
+Cash: $99,311.19 | Holdings (0): none
+Sector exposure (cached): unavailable (no holdings)
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Risk state: peak $99,703.60 | drawdown 0.39% | today +0.00% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 33/65 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 335
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued RSG buy (conf None, stop 219.79, tp 227.225)
+  -> queued RVTY buy (conf None, stop 120.96, tp 132.53)
+  -> queued PSX buy (conf 82, stop 243.26, tp 275.0)
+  -> queued PANW buy (conf None, stop 321.39, tp 383.51)
+  -> queued QCOM buy (conf 84, stop 162.31, tp 195.0)
+  -> queued NFLX buy (conf 80, stop 75.03, tp 83.58)
+  -> queued HOOD buy (conf 91, stop 111.96, tp 1.2525e+58)
+  -> queued PM buy (conf 94, stop 181.65, tp 1.9535e+59)
+  -> queued OKEF buy (conf 88, stop 94.2, tp 99.55)
+  -> queued OKE buy (conf None, stop 94.2, tp 99.545)
+  -> queued NWSA buy (conf None, stop 29.07, tp 31.32)
+  -> queued PFG buy (conf None, stop 108.695, tp 121.03)
+Dashboard watchlist synced (2 symbols) for news/headlines.
+Ending portfolio value: $99,311.19
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.45% | Max drawdown 0.94% | Daily Sharpe 1.67 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 0 | Equity $99,311.19
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+0.00 (0 open) | Books: legacy: realized $-1,705.68, unrealized $+0.00
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 20539 shadow candidate(s), 283 rejection group(s)
+Timings: account: 0.0s | risk: 0.3s | decide: 12.4s | watchlist: 0.1s | perf: 0.3s
+
