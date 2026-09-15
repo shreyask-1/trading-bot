@@ -21332,3 +21332,5 @@
 {"timestamp": "2026-09-15T14:50:58.419661", "ticker": "TKO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 192.4, "reason": "stale quote for TKO (547.403772s old; limit 180s)"}
 {"timestamp": "2026-09-15T14:50:58.940578", "ticker": "VRSN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 295.01, "reason": "stale quote for VRSN (664.940833s old; limit 180s)"}
 {"timestamp": "2026-09-15T14:50:58.999586", "ticker": "TRV", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 378.28, "reason": "liquidity filter: TRV average volume 59,627 < 500,000"}
+{"timestamp": "2026-09-15T14:52:49.931214", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 86.94, "reason": "liquidity filter: SWKS average volume 330,943 < 500,000"}
+{"timestamp": "2026-09-15T14:52:50.200488", "ticker": "AES", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 14.81, "reason": "liquidity filter: AES average volume 344,317 < 500,000"}
