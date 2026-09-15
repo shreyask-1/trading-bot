@@ -21119,3 +21119,6 @@
 {"timestamp": "2026-09-15T12:52:54.472761", "ticker": "ACN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 195.04, "reason": "stale quote for ACN (60779.333593s old; limit 180s)"}
 {"timestamp": "2026-09-15T12:52:54.526019", "ticker": "ADM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 86.43, "reason": "stale quote for ADM (60784.219271s old; limit 180s)"}
 {"timestamp": "2026-09-15T12:52:54.570919", "ticker": "AES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 14.8, "reason": "stale quote for AES (60774.566519s old; limit 180s)"}
+{"timestamp": "2026-09-15T12:54:45.462081", "ticker": "VLO", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 382.79, "reason": "stale quote for VLO (60888.434366s old; limit 180s)"}
+{"timestamp": "2026-09-15T12:54:45.789344", "ticker": "WRB", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 70.86, "reason": "stale quote for WRB (60890.000714s old; limit 180s)"}
+{"timestamp": "2026-09-15T12:54:46.105189", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 88.705, "reason": "stale quote for WFC (60887.769217s old; limit 180s)"}
