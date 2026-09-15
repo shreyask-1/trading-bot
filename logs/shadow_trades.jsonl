@@ -21659,3 +21659,6 @@
 {"timestamp": "2026-09-15T18:06:43.263287", "ticker": "WST", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 368.17, "reason": "liquidity filter: WST average volume 22,667 < 500,000"}
 {"timestamp": "2026-09-15T18:09:09.191166", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 85.0, "conviction": 8, "price": 89.105, "reason": "market data unavailable for WFC (bid/ask spread missing)"}
 {"timestamp": "2026-09-15T18:09:09.238030", "ticker": "WRB", "action": "buy", "engine": "gemini", "confidence": 82.0, "conviction": 8, "price": 70.82, "reason": "liquidity filter: WRB average volume 78,093 < 500,000"}
+{"timestamp": "2026-09-15T18:10:47.164597", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 89.875, "reason": "liquidity filter: SWKS average volume 338,811 < 500,000"}
+{"timestamp": "2026-09-15T18:10:47.547096", "ticker": "WRB", "action": "buy", "engine": "gemini", "confidence": 93, "conviction": 9, "price": 70.79, "reason": "liquidity filter: WRB average volume 78,195 < 500,000"}
+{"timestamp": "2026-09-15T18:10:47.869173", "ticker": "WST", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 368.17, "reason": "stale quote for WST (253.491677s old; limit 180s)"}
