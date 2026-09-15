@@ -17462,6 +17462,9 @@ Timings: account: 0.0s | risk: 0.3s | decide: 9.7s | watchlist: 0.1s | perf: 0.3
 === Run at 2026-09-15T18:01:31.402822 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-15 02:01 PM EDT | Market open (per Alpaca): True | Session: REGULAR
+=== Run at 2026-09-15T18:00:37.147820 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-15 02:00 PM EDT | Market open (per Alpaca): True | Session: REGULAR
 Account value: $99,311.19
 Cash: $99,311.19 | Holdings (0): none
 Sector exposure (cached): unavailable (no holdings)
@@ -17476,6 +17479,12 @@ Gemini proposed 2 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 252
   -> {"ticker": "SWKS", "status": "skipped", "reason": "liquidity filter: SWKS average volume 338,454 < 500,000", "shadow": false, "data_guard": true}
   -> {"ticker": "APA", "status": "skipped", "reason": "liquidity filter: APA average volume 359,501 < 500,000", "shadow": false, "data_guard": true}
+News: fetched 157, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 4/12 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 252
+  -> {"ticker": "SWKS", "status": "skipped", "reason": "liquidity filter: SWKS average volume 338,420 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "APA", "status": "skipped", "reason": "liquidity filter: APA average volume 359,430 < 500,000", "shadow": false, "data_guard": true}
 Overnight queue cleared after verification.
 Overnight queue retained 2 deferred stale idea(s).
 Dashboard watchlist synced (2 symbols) for news/headlines.
@@ -17487,4 +17496,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 21650 shadow candidate(s), 86 rejection group(s)
 Timings: account: 0.0s | risk: 0.3s | decide: 16.6s | watchlist: 0.1s | perf: 0.3s
+Timings: account: 0.0s | risk: 0.2s | decide: 23.2s | watchlist: 0.1s | perf: 0.3s
 
