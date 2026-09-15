@@ -21203,3 +21203,6 @@
 {"timestamp": "2026-09-15T13:42:53.738670", "ticker": "VRSN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 298.62, "reason": "stale quote for VRSN (63776.385152s old; limit 180s)"}
 {"timestamp": "2026-09-15T13:42:53.993854", "ticker": "VLO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 391.15, "reason": "liquidity filter: VLO average volume 103,651 < 500,000"}
 {"timestamp": "2026-09-15T13:42:54.247054", "ticker": "WAT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 416.63, "reason": "stale quote for WAT (185.93627s old; limit 180s)"}
+{"timestamp": "2026-09-15T13:44:37.391662", "ticker": "XOM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 167.08, "reason": "liquidity filter: XOM average volume 381,209 < 500,000"}
+{"timestamp": "2026-09-15T13:44:37.510354", "ticker": "VLO", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 389.43, "reason": "liquidity filter: VLO average volume 103,665 < 500,000"}
+{"timestamp": "2026-09-15T13:44:37.633330", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 91.45, "reason": "market data unavailable for WFC (bid/ask spread missing)"}
