@@ -21711,3 +21711,5 @@
 {"timestamp": "2026-09-15T18:32:57.160619", "ticker": "ZBH", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 98.7, "reason": "liquidity filter: ZBH average volume 107,189 < 500,000"}
 {"timestamp": "2026-09-15T18:32:57.528297", "ticker": "ABBV", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 262.375, "reason": "liquidity filter: ABBV average volume 175,059 < 500,000"}
 {"timestamp": "2026-09-15T18:32:57.877991", "ticker": "AAPL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 330.15, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
+{"timestamp": "2026-09-15T18:34:31.542344", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 88.39, "reason": "liquidity filter: SWKS average volume 339,865 < 500,000"}
+{"timestamp": "2026-09-15T18:34:31.598752", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 89.09, "reason": "market data unavailable for WFC (bid/ask spread missing)"}
