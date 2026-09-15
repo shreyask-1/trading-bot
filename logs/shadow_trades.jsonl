@@ -21272,3 +21272,6 @@
 {"timestamp": "2026-09-15T14:16:40.416110", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 329.89, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
 {"timestamp": "2026-09-15T14:18:41.144320", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 87.495, "reason": "liquidity filter: SWKS average volume 328,788 < 500,000"}
 {"timestamp": "2026-09-15T14:18:41.337980", "ticker": "XOM", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 167.93, "reason": "liquidity filter: XOM average volume 382,795 < 500,000"}
+{"timestamp": "2026-09-15T14:20:54.608173", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 87.75, "reason": "liquidity filter: SWKS average volume 328,886 < 500,000"}
+{"timestamp": "2026-09-15T14:20:55.123134", "ticker": "XOM", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 168.04, "reason": "liquidity filter: XOM average volume 382,851 < 500,000"}
+{"timestamp": "2026-09-15T14:20:55.407230", "ticker": "AES", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 14.81, "reason": "stale quote for AES (216.566629s old; limit 180s)"}
