@@ -21873,3 +21873,5 @@
 {"timestamp": "2026-09-15T19:56:36.095364", "ticker": "WST", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 363.28, "reason": "liquidity filter: WST average volume 23,390 < 500,000"}
 {"timestamp": "2026-09-15T19:56:36.206066", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 89.5, "reason": "market data unavailable for WFC (bid/ask spread missing)"}
 {"timestamp": "2026-09-15T19:58:48.828782", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 89.31, "reason": "liquidity filter: SWKS average volume 345,967 < 500,000"}
+{"timestamp": "2026-09-15T21:30:49.977814", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 90.0, "reason": "stale quote for SWKS (5456.883315s old; limit 180s)"}
+{"timestamp": "2026-09-15T21:30:49.978014", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 89.715, "reason": "stale quote for WFC (5447.065941s old; limit 180s)"}
