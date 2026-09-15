@@ -21762,3 +21762,6 @@
 {"timestamp": "2026-09-15T19:00:56.940540", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 87.78, "reason": "liquidity filter: SWKS average volume 340,781 < 500,000"}
 {"timestamp": "2026-09-15T19:00:56.940712", "ticker": "WAT", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 417.52, "reason": "liquidity filter: WAT average volume 39,736 < 500,000"}
 {"timestamp": "2026-09-15T19:00:56.940845", "ticker": "VTRS", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 16.64, "reason": "liquidity filter: VTRS average volume 383,542 < 500,000"}
+{"timestamp": "2026-09-15T19:02:52.465448", "ticker": "ARE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 52.89, "reason": "liquidity filter: ARE average volume 95,856 < 500,000"}
+{"timestamp": "2026-09-15T19:02:52.649497", "ticker": "SWKS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 87.61, "reason": "liquidity filter: SWKS average volume 340,862 < 500,000"}
+{"timestamp": "2026-09-15T19:02:52.687673", "ticker": "AIZ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 286.4, "reason": "liquidity filter: AIZ average volume 12,099 < 500,000"}
