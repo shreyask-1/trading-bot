@@ -21346,3 +21346,6 @@
 {"timestamp": "2026-09-15T14:58:37.588216", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 87.305, "reason": "liquidity filter: SWKS average volume 331,440 < 500,000"}
 {"timestamp": "2026-09-15T14:58:37.700189", "ticker": "XOM", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 167.515, "reason": "liquidity filter: XOM average volume 384,367 < 500,000"}
 {"timestamp": "2026-09-15T14:58:37.809630", "ticker": "ADM", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 87.27, "reason": "liquidity filter: ADM average volume 171,386 < 500,000"}
+{"timestamp": "2026-09-15T15:01:08.366698", "ticker": "SWKS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 87.325, "reason": "liquidity filter: SWKS average volume 331,588 < 500,000"}
+{"timestamp": "2026-09-15T15:01:08.366910", "ticker": "XOM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 167.75, "reason": "liquidity filter: XOM average volume 384,398 < 500,000"}
+{"timestamp": "2026-09-15T15:01:08.367065", "ticker": "VRSN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 295.43, "reason": "liquidity filter: VRSN average volume 32,147 < 500,000"}
