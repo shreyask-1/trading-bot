@@ -21239,3 +21239,5 @@
 {"timestamp": "2026-09-15T13:59:45.493520", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 358.72, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
 {"timestamp": "2026-09-15T13:59:45.546944", "ticker": "VLO", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 390.91, "reason": "liquidity filter: VLO average volume 103,879 < 500,000"}
 {"timestamp": "2026-09-15T13:59:45.628613", "ticker": "XOM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 167.61, "reason": "liquidity filter: XOM average volume 381,952 < 500,000"}
+{"timestamp": "2026-09-15T14:00:52.226211", "ticker": "USB", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 63.13, "reason": "liquidity filter: USB average volume 373,046 < 500,000"}
+{"timestamp": "2026-09-15T14:00:52.226388", "ticker": "VRSN", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 295.94, "reason": "stale quote for VRSN (701.537015s old; limit 180s)"}
