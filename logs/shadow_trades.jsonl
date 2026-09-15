@@ -21812,3 +21812,6 @@
 {"timestamp": "2026-09-15T19:24:56.661295", "ticker": "ZBH", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 98.85, "reason": "liquidity filter: ZBH average volume 109,493 < 500,000"}
 {"timestamp": "2026-09-15T19:24:56.973136", "ticker": "WAT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 417.775, "reason": "liquidity filter: WAT average volume 39,948 < 500,000"}
 {"timestamp": "2026-09-15T19:24:57.345377", "ticker": "ABBV", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 261.875, "reason": "liquidity filter: ABBV average volume 176,196 < 500,000"}
+{"timestamp": "2026-09-15T19:26:37.173966", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 88.68, "reason": "liquidity filter: SWKS average volume 341,973 < 500,000"}
+{"timestamp": "2026-09-15T19:26:37.508583", "ticker": "WRB", "action": "buy", "engine": "gemini", "confidence": 93, "conviction": 9, "price": 70.95, "reason": "liquidity filter: WRB average volume 79,433 < 500,000"}
+{"timestamp": "2026-09-15T19:26:37.837186", "ticker": "WST", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 363.47, "reason": "liquidity filter: WST average volume 23,068 < 500,000"}
