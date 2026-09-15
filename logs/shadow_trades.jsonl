@@ -21914,3 +21914,6 @@
 {"timestamp": "2026-09-15T21:52:46.069594", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 89.715, "reason": "stale quote for WFC (6767.057203s old; limit 180s)"}
 {"timestamp": "2026-09-15T21:52:46.372632", "ticker": "WRB", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 71.25, "reason": "stale quote for WRB (6774.263271s old; limit 180s)"}
 {"timestamp": "2026-09-15T21:52:46.671646", "ticker": "AMT", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 177.72, "reason": "stale quote for AMT (6775.321142s old; limit 180s)"}
+{"timestamp": "2026-09-15T21:54:29.872938", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 90.0, "reason": "stale quote for SWKS (6876.895676s old; limit 180s)"}
+{"timestamp": "2026-09-15T21:54:29.945734", "ticker": "WRB", "action": "buy", "engine": "gemini", "confidence": 93, "conviction": 9, "price": 71.25, "reason": "stale quote for WRB (6878.008276s old; limit 180s)"}
+{"timestamp": "2026-09-15T21:54:30.015160", "ticker": "AMT", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 177.72, "reason": "stale quote for AMT (6878.835824s old; limit 180s)"}
