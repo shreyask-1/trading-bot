@@ -21516,3 +21516,4 @@
 {"timestamp": "2026-09-15T16:42:53.655113", "ticker": "ADP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 278.075, "reason": "liquidity filter: ADP average volume 75,528 < 500,000"}
 {"timestamp": "2026-09-15T16:44:38.886981", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 88.235, "reason": "liquidity filter: SWKS average volume 335,270 < 500,000"}
 {"timestamp": "2026-09-15T16:44:38.932299", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 88.745, "reason": "market data unavailable for WFC (bid/ask spread missing)"}
+{"timestamp": "2026-09-15T16:46:41.230533", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 88.98, "reason": "liquidity filter: SWKS average volume 335,416 < 500,000"}
