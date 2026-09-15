@@ -21875,3 +21875,7 @@
 {"timestamp": "2026-09-15T19:58:48.828782", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 89.31, "reason": "liquidity filter: SWKS average volume 345,967 < 500,000"}
 {"timestamp": "2026-09-15T21:30:49.977814", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 90.0, "reason": "stale quote for SWKS (5456.883315s old; limit 180s)"}
 {"timestamp": "2026-09-15T21:30:49.978014", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 89.715, "reason": "stale quote for WFC (5447.065941s old; limit 180s)"}
+{"timestamp": "2026-09-15T21:33:04.612256", "ticker": "SWKS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 90.0, "reason": "stale quote for SWKS (5591.51828s old; limit 180s)"}
+{"timestamp": "2026-09-15T21:33:04.853815", "ticker": "WAT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 417.04, "reason": "stale quote for WAT (5590.464755s old; limit 180s)"}
+{"timestamp": "2026-09-15T21:33:05.177852", "ticker": "WFC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 89.715, "reason": "stale quote for WFC (5586.168603s old; limit 180s)"}
+{"timestamp": "2026-09-15T21:33:05.178080", "ticker": "XOM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 169.27, "reason": "stale quote for XOM (5568.126552s old; limit 180s)"}
