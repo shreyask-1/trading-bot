@@ -21597,3 +21597,4 @@
 {"timestamp": "2026-09-15T17:26:48.498497", "ticker": "XOM", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 169.45, "reason": "liquidity filter: XOM average volume 388,861 < 500,000"}
 {"timestamp": "2026-09-15T17:28:36.356006", "ticker": "WST", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 367.99, "reason": "stale quote for WST (302.966279s old; limit 180s)"}
 {"timestamp": "2026-09-15T17:28:36.502097", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 329.91, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
+{"timestamp": "2026-09-15T17:30:54.379475", "ticker": "WST", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 367.99, "reason": "stale quote for WST (440.908043s old; limit 180s)"}
