@@ -21416,3 +21416,5 @@
 {"timestamp": "2026-09-15T15:27:11.199549", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 330.1, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
 {"timestamp": "2026-09-15T15:28:52.268687", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 87.485, "reason": "liquidity filter: SWKS average volume 333,058 < 500,000"}
 {"timestamp": "2026-09-15T15:28:52.697352", "ticker": "XOM", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 169.245, "reason": "liquidity filter: XOM average volume 385,317 < 500,000"}
+{"timestamp": "2026-09-15T15:30:38.504921", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 87.605, "reason": "liquidity filter: SWKS average volume 333,132 < 500,000"}
+{"timestamp": "2026-09-15T15:30:39.227199", "ticker": "XOM", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 169.185, "reason": "liquidity filter: XOM average volume 385,408 < 500,000"}
