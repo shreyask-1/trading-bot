@@ -21206,3 +21206,6 @@
 {"timestamp": "2026-09-15T13:44:37.391662", "ticker": "XOM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 167.08, "reason": "liquidity filter: XOM average volume 381,209 < 500,000"}
 {"timestamp": "2026-09-15T13:44:37.510354", "ticker": "VLO", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 389.43, "reason": "liquidity filter: VLO average volume 103,665 < 500,000"}
 {"timestamp": "2026-09-15T13:44:37.633330", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 91.45, "reason": "market data unavailable for WFC (bid/ask spread missing)"}
+{"timestamp": "2026-09-15T13:46:33.868801", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 361.22, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
+{"timestamp": "2026-09-15T13:46:33.915841", "ticker": "VLO", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 389.99, "reason": "liquidity filter: VLO average volume 103,722 < 500,000"}
+{"timestamp": "2026-09-15T13:46:33.916033", "ticker": "DELL", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 559.05, "reason": "liquidity filter: DELL average volume 254,557 < 500,000"}
