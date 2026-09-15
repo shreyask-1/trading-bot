@@ -9859,6 +9859,9 @@ Timings: account: 0.0s | risk: 0.1s | decide: 3.2s | watchlist: 0.0s | perf: 0.3
 === Run at 2026-09-15T23:51:48.984081 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-15 07:51 PM EDT | Market open (per Alpaca): False | Session: EXTENDED
+=== Run at 2026-09-15T23:49:55.793610 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-15 07:49 PM EDT | Market open (per Alpaca): False | Session: EXTENDED
 Account value: $99,311.19
 Cash: $99,311.19 | Holdings (0): none
 Sector exposure (cached): unavailable (no holdings)
@@ -9874,6 +9877,9 @@ Gemini calls used today (all models combined): 405
   -> {"ticker": "SWKS", "status": "skipped", "reason": "stale quote for SWKS (13924.574381s old; limit 180s)", "shadow": false, "data_guard": true}
   -> {"ticker": "WFC", "status": "skipped", "reason": "stale quote for WFC (13918.990034s old; limit 180s)", "shadow": false, "data_guard": true}
   -> {"ticker": "WRB", "status": "skipped", "reason": "stale quote for WRB (13926.214652s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "SWKS", "status": "skipped", "reason": "stale quote for SWKS (13808.614226s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "WFC", "status": "skipped", "reason": "stale quote for WFC (13802.881762s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "WRB", "status": "skipped", "reason": "stale quote for WRB (13809.950858s old; limit 180s)", "shadow": false, "data_guard": true}
 Overnight queue kept 12 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
 Dashboard watchlist synced (3 symbols) for news/headlines.
 Ending portfolio value: $99,311.19
@@ -9884,4 +9890,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 22108 shadow candidate(s), 250 rejection group(s)
 Timings: account: 0.0s | risk: 0.3s | decide: 8.5s | watchlist: 0.1s | perf: 0.4s
+Timings: account: 0.0s | risk: 0.2s | decide: 5.8s | watchlist: 7.9s | perf: 0.2s
 
