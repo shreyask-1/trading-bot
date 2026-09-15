@@ -21225,3 +21225,6 @@
 {"timestamp": "2026-09-15T13:54:54.999659", "ticker": "VRSN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 295.94, "reason": "stale quote for VRSN (350.24856s old; limit 180s)"}
 {"timestamp": "2026-09-15T13:54:55.262261", "ticker": "VLO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 390.72, "reason": "liquidity filter: VLO average volume 103,838 < 500,000"}
 {"timestamp": "2026-09-15T13:54:55.519347", "ticker": "WAT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 416.81, "reason": "liquidity filter: WAT average volume 37,901 < 500,000"}
+{"timestamp": "2026-09-15T13:56:38.723875", "ticker": "XOM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 167.44, "reason": "liquidity filter: XOM average volume 381,738 < 500,000"}
+{"timestamp": "2026-09-15T13:56:38.785987", "ticker": "VLO", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 390.72, "reason": "liquidity filter: VLO average volume 103,860 < 500,000"}
+{"timestamp": "2026-09-15T13:56:38.845747", "ticker": "WRB", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 70.655, "reason": "liquidity filter: WRB average volume 73,635 < 500,000"}
