@@ -14660,3 +14660,35 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; wor
 Shadow report: 21328 shadow candidate(s), 372 rejection group(s)
 Timings: account: 0.0s | risk: 0.3s | decide: 7.0s | watchlist: 0.1s | perf: 0.2s
 
+=== Run at 2026-09-15T14:50:32.253327 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-15 10:50 AM EDT | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,311.19
+Cash: $99,311.19 | Holdings (0): none
+Sector exposure (cached): unavailable (no holdings)
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Risk state: peak $99,703.60 | drawdown 0.39% | today +0.00% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+Overnight queue deferred 3 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+News: fetched 158, 4 new after dedup, 2 ticker(s) matched.
+Quant pre-screen: 17/52 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 7 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 182
+  -> {"ticker": "NOW", "status": "skipped", "reason": "market data unavailable for NOW (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "SWKS", "status": "skipped", "reason": "liquidity filter: SWKS average volume 330,804 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "XOM", "status": "skipped", "reason": "liquidity filter: XOM average volume 384,108 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "TKO", "status": "skipped", "reason": "stale quote for TKO (547.403772s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "TSLA", "status": "skipped", "reason": "entry alignment: price $356.69 is not above SMA-20 $356.85"}
+  -> {"ticker": "VRSN", "status": "skipped", "reason": "stale quote for VRSN (664.940833s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "TRV", "status": "skipped", "reason": "liquidity filter: TRV average volume 59,627 < 500,000", "shadow": false, "data_guard": true}
+Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); 3 idea(s) remain subject to the retry cap.
+Run budget reserve reached -- skipping dashboard watchlist sync.
+Run budget reserve reached -- skipping performance snapshot.
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.45% | Max drawdown 0.94% | Daily Sharpe 1.67 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 0 | Equity $99,311.19
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+0.00 (0 open) | Books: legacy: realized $-1,705.68, unrealized $+0.00
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 21334 shadow candidate(s), 369 rejection group(s)
+Timings: account: 0.0s | risk: 0.3s | decide: 25.9s | watchlist: 0.0s | perf: 0.2s
+
