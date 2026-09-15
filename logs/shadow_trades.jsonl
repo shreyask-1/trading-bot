@@ -20731,3 +20731,6 @@
 {"timestamp": "2026-09-15T09:34:55.194868", "ticker": "VEEV", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 265.59, "reason": "stale quote for VEEV (48910.279525s old; limit 180s)"}
 {"timestamp": "2026-09-15T09:34:55.511759", "ticker": "WAT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 410.125, "reason": "stale quote for WAT (48899.94046s old; limit 180s)"}
 {"timestamp": "2026-09-15T09:34:55.833104", "ticker": "ABBV", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 261.735, "reason": "stale quote for ABBV (48897.796635s old; limit 180s)"}
+{"timestamp": "2026-09-15T09:36:36.484652", "ticker": "VEEV", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 265.59, "reason": "stale quote for VEEV (49011.703215s old; limit 180s)"}
+{"timestamp": "2026-09-15T09:36:36.628374", "ticker": "VLO", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 382.79, "reason": "stale quote for VLO (48999.723038s old; limit 180s)"}
+{"timestamp": "2026-09-15T09:36:36.763724", "ticker": "WRB", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 70.86, "reason": "stale quote for WRB (49001.104366s old; limit 180s)"}
