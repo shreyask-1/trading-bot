@@ -21236,3 +21236,6 @@
 {"timestamp": "2026-09-15T13:58:52.639016", "ticker": "VLO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 390.88, "reason": "liquidity filter: VLO average volume 103,869 < 500,000"}
 {"timestamp": "2026-09-15T13:58:52.903986", "ticker": "WAT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 416.71, "reason": "liquidity filter: WAT average volume 37,920 < 500,000"}
 {"timestamp": "2026-09-15T13:58:53.167036", "ticker": "ABBV", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 259.39, "reason": "liquidity filter: ABBV average volume 167,531 < 500,000"}
+{"timestamp": "2026-09-15T13:59:45.493520", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 358.72, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
+{"timestamp": "2026-09-15T13:59:45.546944", "ticker": "VLO", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 390.91, "reason": "liquidity filter: VLO average volume 103,879 < 500,000"}
+{"timestamp": "2026-09-15T13:59:45.628613", "ticker": "XOM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 167.61, "reason": "liquidity filter: XOM average volume 381,952 < 500,000"}
