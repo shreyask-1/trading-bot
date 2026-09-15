@@ -20782,3 +20782,6 @@
 {"timestamp": "2026-09-15T10:05:03.926856", "ticker": "VLO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 382.79, "reason": "stale quote for VLO (50706.881216s old; limit 180s)"}
 {"timestamp": "2026-09-15T10:05:04.243303", "ticker": "VRSN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 298.62, "reason": "stale quote for VRSN (50706.851951s old; limit 180s)"}
 {"timestamp": "2026-09-15T10:05:04.566360", "ticker": "WAT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 410.125, "reason": "stale quote for WAT (50708.988822s old; limit 180s)"}
+{"timestamp": "2026-09-15T10:06:37.541285", "ticker": "VLO", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 382.79, "reason": "stale quote for VLO (50800.698633s old; limit 180s)"}
+{"timestamp": "2026-09-15T10:06:37.595195", "ticker": "VRSN", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 298.62, "reason": "stale quote for VRSN (50800.400866s old; limit 180s)"}
+{"timestamp": "2026-09-15T10:06:37.655526", "ticker": "WRB", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 70.86, "reason": "stale quote for WRB (50802.051931s old; limit 180s)"}
