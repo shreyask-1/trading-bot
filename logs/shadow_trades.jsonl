@@ -21258,3 +21258,6 @@
 {"timestamp": "2026-09-15T14:08:54.950002", "ticker": "WFC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 90.73, "reason": "market data unavailable for WFC (bid/ask spread missing)"}
 {"timestamp": "2026-09-15T14:08:55.197240", "ticker": "VRSN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 295.94, "reason": "stale quote for VRSN (1190.462513s old; limit 180s)"}
 {"timestamp": "2026-09-15T14:08:55.197423", "ticker": "AAPL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 329.61, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
+{"timestamp": "2026-09-15T14:10:53.582110", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 86.685, "reason": "liquidity filter: SWKS average volume 327,807 < 500,000"}
+{"timestamp": "2026-09-15T14:10:54.238794", "ticker": "XOM", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 167.875, "reason": "liquidity filter: XOM average volume 382,508 < 500,000"}
+{"timestamp": "2026-09-15T14:10:54.501154", "ticker": "WFC", "action": "buy", "engine": "gemini", "confidence": 71, "conviction": 7, "price": 90.78, "reason": "market data unavailable for WFC (bid/ask spread missing)"}
