@@ -22631,3 +22631,5 @@
 {"timestamp": "2026-09-16T13:42:30.605629", "ticker": "CHRW", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 154.44, "reason": "liquidity filter: CHRW average volume 66,853 < 500,000"}
 {"timestamp": "2026-09-16T13:44:39.940244", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 96, "conviction": 10, "price": 240.675, "reason": "liquidity filter: CRWD average volume 371,107 < 500,000"}
 {"timestamp": "2026-09-16T13:44:40.214718", "ticker": "CHRW", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 154.77, "reason": "liquidity filter: CHRW average volume 66,880 < 500,000"}
+{"timestamp": "2026-09-16T13:46:42.619253", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 240.79, "reason": "liquidity filter: CRWD average volume 371,298 < 500,000"}
+{"timestamp": "2026-09-16T13:46:42.988186", "ticker": "CHRW", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 154.77, "reason": "stale quote for CHRW (197.137455s old; limit 180s)"}
