@@ -22843,3 +22843,6 @@
 {"timestamp": "2026-09-16T16:02:56.468176", "ticker": "CDW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 151.11, "reason": "liquidity filter: CDW average volume 84,705 < 500,000"}
 {"timestamp": "2026-09-16T16:04:43.551568", "ticker": "DDOG", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 235.33, "reason": "liquidity filter: DDOG average volume 163,904 < 500,000"}
 {"timestamp": "2026-09-16T16:04:43.627739", "ticker": "COHR", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 288.125, "reason": "liquidity filter: COHR average volume 196,333 < 500,000"}
+{"timestamp": "2026-09-16T16:06:45.620097", "ticker": "INTC", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 102.015, "reason": "market data unavailable for INTC (bid/ask spread missing)"}
+{"timestamp": "2026-09-16T16:06:45.620257", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 87.75, "reason": "liquidity filter: SWKS average volume 343,454 < 500,000"}
+{"timestamp": "2026-09-16T16:06:45.979903", "ticker": "DELL", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 571.225, "reason": "stale quote for DELL (200.4993s old; limit 180s)"}
