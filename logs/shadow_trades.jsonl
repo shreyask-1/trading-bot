@@ -22120,3 +22120,6 @@
 {"timestamp": "2026-09-16T08:00:44.017617", "ticker": "BG", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 121.755, "reason": "stale quote for BG (43251.243596s old; limit 180s)"}
 {"timestamp": "2026-09-16T08:02:49.164460", "ticker": "BG", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 121.755, "reason": "stale quote for BG (43381.990043s old; limit 180s)"}
 {"timestamp": "2026-09-16T08:02:49.164630", "ticker": "C", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 136.16, "reason": "stale quote for C (43371.194897s old; limit 180s)"}
+{"timestamp": "2026-09-16T08:04:44.614346", "ticker": "BG", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 121.755, "reason": "stale quote for BG (43497.323975s old; limit 180s)"}
+{"timestamp": "2026-09-16T08:04:44.614565", "ticker": "CFG", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 70.23, "reason": "stale quote for CFG (43481.086675s old; limit 180s)"}
+{"timestamp": "2026-09-16T08:04:44.911046", "ticker": "C", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 136.16, "reason": "stale quote for C (43490.93017s old; limit 180s)"}
