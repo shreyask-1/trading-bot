@@ -22328,3 +22328,6 @@
 {"timestamp": "2026-09-16T10:12:31.002182", "ticker": "C", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 136.16, "reason": "stale quote for C (51157.110468s old; limit 180s)"}
 {"timestamp": "2026-09-16T10:12:31.174078", "ticker": "CFG", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 70.23, "reason": "stale quote for CFG (51151.135065s old; limit 180s)"}
 {"timestamp": "2026-09-16T10:12:31.350803", "ticker": "CHRW", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 157.7, "reason": "stale quote for CHRW (51178.721835s old; limit 180s)"}
+{"timestamp": "2026-09-16T10:16:31.950332", "ticker": "CFG", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 70.23, "reason": "stale quote for CFG (51392.000556s old; limit 180s)"}
+{"timestamp": "2026-09-16T10:16:31.998811", "ticker": "CHRW", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 157.7, "reason": "stale quote for CHRW (51419.467324s old; limit 180s)"}
+{"timestamp": "2026-09-16T10:16:32.054685", "ticker": "C", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 136.16, "reason": "stale quote for C (51398.253523s old; limit 180s)"}
