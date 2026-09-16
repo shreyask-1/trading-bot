@@ -22939,3 +22939,6 @@
 {"timestamp": "2026-09-16T16:59:00.097282", "ticker": "CTSH", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 62.4, "reason": "liquidity filter: CTSH average volume 312,350 < 500,000"}
 {"timestamp": "2026-09-16T17:01:00.659472", "ticker": "DELL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 567.22, "reason": "liquidity filter: DELL average volume 261,488 < 500,000"}
 {"timestamp": "2026-09-16T17:01:00.670544", "ticker": "BRK.B", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 519.01, "reason": "liquidity filter: BRK.B average volume 103,451 < 500,000"}
+{"timestamp": "2026-09-16T17:02:42.703105", "ticker": "DDOG", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 233.33, "reason": "liquidity filter: DDOG average volume 164,974 < 500,000"}
+{"timestamp": "2026-09-16T17:02:42.859564", "ticker": "COHR", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 288.2, "reason": "liquidity filter: COHR average volume 197,119 < 500,000"}
+{"timestamp": "2026-09-16T17:02:43.918179", "ticker": "DELL", "action": "buy", "engine": "gemini", "confidence": 71, "conviction": 7, "price": 567.99, "reason": "liquidity filter: DELL average volume 261,516 < 500,000"}
