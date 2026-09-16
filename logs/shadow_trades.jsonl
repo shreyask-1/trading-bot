@@ -22208,3 +22208,4 @@
 {"timestamp": "2026-09-16T08:58:49.626909", "ticker": "CF", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 135.51, "reason": "stale quote for CF (46736.400951s old; limit 180s)"}
 {"timestamp": "2026-09-16T08:58:49.759547", "ticker": "CNC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 67.645, "reason": "stale quote for CNC (46729.726574s old; limit 180s)"}
 {"timestamp": "2026-09-16T08:58:49.885913", "ticker": "COP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 141.22, "reason": "stale quote for COP (46732.178298s old; limit 180s)"}
+{"timestamp": "2026-09-16T09:02:30.579036", "ticker": "C", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 136.16, "reason": "stale quote for C (46954.080072s old; limit 180s)"}
