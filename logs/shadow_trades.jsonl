@@ -22656,3 +22656,6 @@
 {"timestamp": "2026-09-16T13:58:40.014799", "ticker": "CNC", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 67.54, "reason": "liquidity filter: CNC average volume 166,650 < 500,000"}
 {"timestamp": "2026-09-16T13:58:40.779856", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 96, "conviction": 10, "price": 239.6, "reason": "liquidity filter: CRWD average volume 372,233 < 500,000"}
 {"timestamp": "2026-09-16T14:01:02.049367", "ticker": "BRK.B", "action": "buy", "engine": "gemini", "confidence": 65, "conviction": 7, "price": 519.03, "reason": "liquidity filter: BRK.B average volume 99,982 < 500,000"}
+{"timestamp": "2026-09-16T14:02:52.270954", "ticker": "BRK.B", "action": "buy", "engine": "gemini", "confidence": 65, "conviction": 7, "price": 519.78, "reason": "liquidity filter: BRK.B average volume 100,010 < 500,000"}
+{"timestamp": "2026-09-16T14:02:52.271122", "ticker": "CB", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 8, "price": 342.7, "reason": "liquidity filter: CB average volume 62,588 < 500,000"}
+{"timestamp": "2026-09-16T14:02:52.271217", "ticker": "C", "action": "buy", "engine": "gemini", "confidence": 71, "conviction": 7, "price": 135.755, "reason": "liquidity filter: C average volume 278,567 < 500,000"}
