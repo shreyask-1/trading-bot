@@ -23231,3 +23231,6 @@
 {"timestamp": "2026-09-16T21:40:38.338220", "ticker": "CINF", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 170.83, "reason": "stale quote for CINF (6041.445451s old; limit 180s)"}
 {"timestamp": "2026-09-16T21:42:34.568830", "ticker": "INTC", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 101.17, "reason": "stale quote for INTC (4982.780435s old; limit 180s)"}
 {"timestamp": "2026-09-16T21:42:34.643822", "ticker": "COHR", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 289.83, "reason": "stale quote for COHR (6166.21411s old; limit 180s)"}
+{"timestamp": "2026-09-16T21:44:38.320916", "ticker": "COHR", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 289.83, "reason": "stale quote for COHR (6289.713948s old; limit 180s)"}
+{"timestamp": "2026-09-16T21:44:38.629820", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 241.59, "reason": "stale quote for CRWD (5131.544792s old; limit 180s)"}
+{"timestamp": "2026-09-16T21:44:38.929939", "ticker": "CINF", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 170.83, "reason": "stale quote for CINF (6281.89136s old; limit 180s)"}
