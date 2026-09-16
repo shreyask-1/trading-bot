@@ -22238,3 +22238,6 @@
 {"timestamp": "2026-09-16T09:18:53.421186", "ticker": "CF", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 135.51, "reason": "stale quote for CF (47940.123288s old; limit 180s)"}
 {"timestamp": "2026-09-16T09:18:53.695023", "ticker": "CNC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 67.645, "reason": "stale quote for CNC (47933.590216s old; limit 180s)"}
 {"timestamp": "2026-09-16T09:18:53.958345", "ticker": "COP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 141.22, "reason": "stale quote for COP (47936.130639s old; limit 180s)"}
+{"timestamp": "2026-09-16T09:20:36.697054", "ticker": "C", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 136.16, "reason": "stale quote for C (48042.892617s old; limit 180s)"}
+{"timestamp": "2026-09-16T09:20:36.764951", "ticker": "CFG", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 70.23, "reason": "stale quote for CFG (48036.803772s old; limit 180s)"}
+{"timestamp": "2026-09-16T09:20:36.845080", "ticker": "CNC", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 67.645, "reason": "stale quote for CNC (48036.855023s old; limit 180s)"}
