@@ -23091,3 +23091,6 @@
 {"timestamp": "2026-09-16T18:36:44.451723", "ticker": "COHR", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 286.53, "reason": "liquidity filter: COHR average volume 199,048 < 500,000"}
 {"timestamp": "2026-09-16T18:36:44.762101", "ticker": "DDOG", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 234.01, "reason": "stale quote for DDOG (196.206562s old; limit 180s)"}
 {"timestamp": "2026-09-16T18:36:45.084514", "ticker": "DELL", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 561.02, "reason": "liquidity filter: DELL average volume 263,035 < 500,000"}
+{"timestamp": "2026-09-16T18:38:41.673161", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 87.03, "reason": "liquidity filter: SWKS average volume 349,232 < 500,000"}
+{"timestamp": "2026-09-16T18:38:41.969499", "ticker": "COHR", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 286.94, "reason": "liquidity filter: COHR average volume 199,084 < 500,000"}
+{"timestamp": "2026-09-16T18:38:42.286169", "ticker": "DDOG", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 233.36, "reason": "liquidity filter: DDOG average volume 165,654 < 500,000"}
