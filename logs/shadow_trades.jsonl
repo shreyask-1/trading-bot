@@ -22846,3 +22846,6 @@
 {"timestamp": "2026-09-16T16:06:45.620097", "ticker": "INTC", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 102.015, "reason": "market data unavailable for INTC (bid/ask spread missing)"}
 {"timestamp": "2026-09-16T16:06:45.620257", "ticker": "SWKS", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 87.75, "reason": "liquidity filter: SWKS average volume 343,454 < 500,000"}
 {"timestamp": "2026-09-16T16:06:45.979903", "ticker": "DELL", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 571.225, "reason": "stale quote for DELL (200.4993s old; limit 180s)"}
+{"timestamp": "2026-09-16T16:08:50.783232", "ticker": "CNC", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 67.36, "reason": "liquidity filter: CNC average volume 169,319 < 500,000"}
+{"timestamp": "2026-09-16T16:08:51.083872", "ticker": "CDW", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 150.95, "reason": "stale quote for CDW (199.947473s old; limit 180s)"}
+{"timestamp": "2026-09-16T16:08:51.403889", "ticker": "COHR", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 288.72, "reason": "liquidity filter: COHR average volume 196,423 < 500,000"}
