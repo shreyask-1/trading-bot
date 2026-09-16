@@ -23299,3 +23299,7 @@
 {"timestamp": "2026-09-16T22:32:26.209302", "ticker": "CDW", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 149.93, "reason": "stale quote for CDW (9164.86991s old; limit 180s)"}
 {"timestamp": "2026-09-16T22:32:26.255814", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 241.59, "reason": "stale quote for CRWD (7999.369583s old; limit 180s)"}
 {"timestamp": "2026-09-16T22:32:26.300403", "ticker": "CINF", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 170.83, "reason": "stale quote for CINF (9149.457203s old; limit 180s)"}
+{"timestamp": "2026-09-16T22:34:58.418379", "ticker": "CDW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 149.93, "reason": "stale quote for CDW (9316.910179s old; limit 180s)"}
+{"timestamp": "2026-09-16T22:34:58.672536", "ticker": "CNC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 66.04, "reason": "stale quote for CNC (9308.834804s old; limit 180s)"}
+{"timestamp": "2026-09-16T22:34:58.920038", "ticker": "CRWD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 241.59, "reason": "stale quote for CRWD (8151.882526s old; limit 180s)"}
+{"timestamp": "2026-09-16T22:34:59.240255", "ticker": "CVX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 211.55, "reason": "stale quote for CVX (9300.199255s old; limit 180s)"}
