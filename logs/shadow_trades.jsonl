@@ -23015,3 +23015,4 @@
 {"timestamp": "2026-09-16T17:42:57.853132", "ticker": "CTSH", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 62.645, "reason": "liquidity filter: CTSH average volume 313,005 < 500,000"}
 {"timestamp": "2026-09-16T17:44:40.588455", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 241.28, "reason": "liquidity filter: CRWD average volume 380,218 < 500,000"}
 {"timestamp": "2026-09-16T17:44:40.770453", "ticker": "CDW", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 151.13, "reason": "stale quote for CDW (203.46344s old; limit 180s)"}
+{"timestamp": "2026-09-16T17:46:38.422102", "ticker": "CDW", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 150.935, "reason": "liquidity filter: CDW average volume 85,098 < 500,000"}
