@@ -22354,3 +22354,6 @@
 {"timestamp": "2026-09-16T10:28:30.080752", "ticker": "CFG", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 70.23, "reason": "stale quote for CFG (52110.030251s old; limit 180s)"}
 {"timestamp": "2026-09-16T10:28:30.245486", "ticker": "CHRW", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 157.7, "reason": "stale quote for CHRW (52137.628216s old; limit 180s)"}
 {"timestamp": "2026-09-16T10:28:30.437835", "ticker": "C", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 136.16, "reason": "stale quote for C (52116.530045s old; limit 180s)"}
+{"timestamp": "2026-09-16T10:30:53.000882", "ticker": "C", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 136.16, "reason": "stale quote for C (52258.988805s old; limit 180s)"}
+{"timestamp": "2026-09-16T10:30:53.296900", "ticker": "CFG", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 70.23, "reason": "stale quote for CFG (52253.163851s old; limit 180s)"}
+{"timestamp": "2026-09-16T10:30:53.594429", "ticker": "CNC", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 67.645, "reason": "stale quote for CNC (52253.444784s old; limit 180s)"}
