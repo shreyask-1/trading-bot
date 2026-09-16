@@ -22836,3 +22836,5 @@
 {"timestamp": "2026-09-16T15:58:30.332150", "ticker": "DDOG", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 235.35, "reason": "liquidity filter: DDOG average volume 163,856 < 500,000"}
 {"timestamp": "2026-09-16T15:58:30.450742", "ticker": "COHR", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 289.32, "reason": "liquidity filter: COHR average volume 196,190 < 500,000"}
 {"timestamp": "2026-09-16T15:58:30.581731", "ticker": "CNC", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 67.285, "reason": "liquidity filter: CNC average volume 169,234 < 500,000"}
+{"timestamp": "2026-09-16T16:01:12.270728", "ticker": "DELL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 571.61, "reason": "liquidity filter: DELL average volume 260,976 < 500,000"}
+{"timestamp": "2026-09-16T16:01:12.270855", "ticker": "BRK.B", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 520.6, "reason": "liquidity filter: BRK.B average volume 102,666 < 500,000"}
