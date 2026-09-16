@@ -22928,3 +22928,4 @@
 {"timestamp": "2026-09-16T16:50:35.133553", "ticker": "CNC", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 66.79, "reason": "liquidity filter: CNC average volume 169,798 < 500,000"}
 {"timestamp": "2026-09-16T16:52:30.742481", "ticker": "DDOG", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 234.12, "reason": "liquidity filter: DDOG average volume 164,738 < 500,000"}
 {"timestamp": "2026-09-16T16:52:30.796425", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 241.94, "reason": "liquidity filter: CRWD average volume 378,506 < 500,000"}
+{"timestamp": "2026-09-16T16:54:50.297213", "ticker": "CDW", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 150.94, "reason": "stale quote for CDW (240.126997s old; limit 180s)"}
