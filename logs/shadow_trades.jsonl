@@ -22814,3 +22814,6 @@
 {"timestamp": "2026-09-16T15:44:58.310864", "ticker": "CRWD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 243.58, "reason": "liquidity filter: CRWD average volume 376,826 < 500,000"}
 {"timestamp": "2026-09-16T15:46:51.084556", "ticker": "DELL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 575.43, "reason": "liquidity filter: DELL average volume 260,707 < 500,000"}
 {"timestamp": "2026-09-16T15:46:51.300180", "ticker": "BRK.B", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 520.48, "reason": "liquidity filter: BRK.B average volume 102,415 < 500,000"}
+{"timestamp": "2026-09-16T15:48:41.163907", "ticker": "DDOG", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 235.68, "reason": "liquidity filter: DDOG average volume 163,740 < 500,000"}
+{"timestamp": "2026-09-16T15:48:41.466369", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 243.77, "reason": "liquidity filter: CRWD average volume 376,998 < 500,000"}
+{"timestamp": "2026-09-16T15:48:41.796815", "ticker": "CNC", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 67.33, "reason": "liquidity filter: CNC average volume 169,185 < 500,000"}
