@@ -23115,3 +23115,6 @@
 {"timestamp": "2026-09-16T18:49:02.981711", "ticker": "CF", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 133.16, "reason": "liquidity filter: CF average volume 136,598 < 500,000"}
 {"timestamp": "2026-09-16T18:49:02.981861", "ticker": "BBY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 92.44, "reason": "liquidity filter: BBY average volume 164,259 < 500,000"}
 {"timestamp": "2026-09-16T18:49:02.981933", "ticker": "BG", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 119.11, "reason": "stale quote for BG (397.496738s old; limit 180s)"}
+{"timestamp": "2026-09-16T18:50:46.632595", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 242.8, "reason": "liquidity filter: CRWD average volume 383,154 < 500,000"}
+{"timestamp": "2026-09-16T18:50:46.893625", "ticker": "COHR", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 286.95, "reason": "liquidity filter: COHR average volume 199,280 < 500,000"}
+{"timestamp": "2026-09-16T18:50:47.152311", "ticker": "DELL", "action": "buy", "engine": "gemini", "confidence": 71, "conviction": 7, "price": 562.69, "reason": "liquidity filter: DELL average volume 263,456 < 500,000"}
