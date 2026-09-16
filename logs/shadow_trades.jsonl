@@ -23211,3 +23211,6 @@
 {"timestamp": "2026-09-16T19:58:35.988875", "ticker": "COHR", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 290.83, "reason": "liquidity filter: COHR average volume 201,902 < 500,000"}
 {"timestamp": "2026-09-16T19:58:36.101903", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 241.23, "reason": "liquidity filter: CRWD average volume 387,853 < 500,000"}
 {"timestamp": "2026-09-16T19:58:36.227636", "ticker": "CNC", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 66.11, "reason": "liquidity filter: CNC average volume 172,513 < 500,000"}
+{"timestamp": "2026-09-16T21:30:46.764445", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 241.59, "reason": "stale quote for CRWD (4294.677098s old; limit 180s)"}
+{"timestamp": "2026-09-16T21:30:47.103345", "ticker": "COHR", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 289.83, "reason": "stale quote for COHR (5458.470689s old; limit 180s)"}
+{"timestamp": "2026-09-16T21:30:47.433192", "ticker": "CINF", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 170.83, "reason": "stale quote for CINF (5450.372011s old; limit 180s)"}
