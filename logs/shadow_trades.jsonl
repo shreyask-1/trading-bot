@@ -22521,3 +22521,7 @@
 {"timestamp": "2026-09-16T12:24:32.594661", "ticker": "CFG", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 70.23, "reason": "stale quote for CFG (59072.645958s old; limit 180s)"}
 {"timestamp": "2026-09-16T12:24:32.641873", "ticker": "CHRW", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 157.7, "reason": "stale quote for CHRW (59100.111849s old; limit 180s)"}
 {"timestamp": "2026-09-16T12:24:32.710016", "ticker": "C", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 136.16, "reason": "stale quote for C (59078.89605s old; limit 180s)"}
+{"timestamp": "2026-09-16T12:26:56.942579", "ticker": "ARE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 52.91, "reason": "stale quote for ARE (59209.135016s old; limit 180s)"}
+{"timestamp": "2026-09-16T12:26:57.191241", "ticker": "BRK.B", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 516.42, "reason": "stale quote for BRK.B (59218.251135s old; limit 180s)"}
+{"timestamp": "2026-09-16T12:26:57.246930", "ticker": "AES", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 14.81, "reason": "stale quote for AES (59200.28089s old; limit 180s)"}
+{"timestamp": "2026-09-16T12:26:57.302772", "ticker": "AIZ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 286.01, "reason": "stale quote for AIZ (59220.039964s old; limit 180s)"}
