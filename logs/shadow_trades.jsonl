@@ -22598,3 +22598,4 @@
 {"timestamp": "2026-09-16T13:12:58.866181", "ticker": "COP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 141.22, "reason": "stale quote for COP (61981.063737s old; limit 180s)"}
 {"timestamp": "2026-09-16T13:12:58.921322", "ticker": "CRM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 255.53, "reason": "stale quote for CRM (61968.675929s old; limit 180s)"}
 {"timestamp": "2026-09-16T13:12:58.976203", "ticker": "CRWD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 242.52, "reason": "stale quote for CRWD (61957.737643s old; limit 180s)"}
+{"timestamp": "2026-09-16T13:14:51.528491", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 242.52, "reason": "stale quote for CRWD (62091.449141s old; limit 180s)"}
