@@ -22337,3 +22337,6 @@
 {"timestamp": "2026-09-16T10:18:49.149239", "ticker": "AMT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 177.72, "reason": "stale quote for AMT (51516.732431s old; limit 180s)"}
 {"timestamp": "2026-09-16T10:18:49.159178", "ticker": "ANET", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 5, "price": 192.775, "reason": "stale quote for ANET (51508.145259s old; limit 180s)"}
 {"timestamp": "2026-09-16T10:18:49.168914", "ticker": "APA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 47.41, "reason": "stale quote for APA (51508.208506s old; limit 180s)"}
+{"timestamp": "2026-09-16T10:20:39.408955", "ticker": "C", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 136.16, "reason": "stale quote for C (51645.466129s old; limit 180s)"}
+{"timestamp": "2026-09-16T10:20:39.663623", "ticker": "CFG", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 70.23, "reason": "stale quote for CFG (51639.57154s old; limit 180s)"}
+{"timestamp": "2026-09-16T10:20:39.919729", "ticker": "CHRW", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 157.7, "reason": "stale quote for CHRW (51667.230256s old; limit 180s)"}
