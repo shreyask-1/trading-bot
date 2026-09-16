@@ -23341,3 +23341,6 @@
 {"timestamp": "2026-09-16T22:58:55.831332", "ticker": "BBY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 92.415, "reason": "stale quote for BBY (10741.843357s old; limit 180s)"}
 {"timestamp": "2026-09-16T22:58:56.176318", "ticker": "BRK.B", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 520.095, "reason": "stale quote for BRK.B (10737.990986s old; limit 180s)"}
 {"timestamp": "2026-09-16T22:58:56.264795", "ticker": "APA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 44.79, "reason": "stale quote for APA (10716.719376s old; limit 180s)"}
+{"timestamp": "2026-09-16T23:00:59.416515", "ticker": "ARE", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 53.525, "reason": "stale quote for ARE (10865.888013s old; limit 180s)"}
+{"timestamp": "2026-09-16T23:00:59.560487", "ticker": "INTC", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 101.17, "reason": "stale quote for INTC (9691.65533s old; limit 180s)"}
+{"timestamp": "2026-09-16T23:00:59.714648", "ticker": "AMD", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 512.78, "reason": "stale quote for AMD (10861.416975s old; limit 180s)"}
