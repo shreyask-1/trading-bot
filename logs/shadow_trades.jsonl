@@ -22653,3 +22653,5 @@
 {"timestamp": "2026-09-16T13:54:52.194390", "ticker": "COP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 135.89, "reason": "liquidity filter: COP average volume 288,115 < 500,000"}
 {"timestamp": "2026-09-16T13:54:52.265074", "ticker": "CRM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 255.35, "reason": "market data unavailable for CRM (bid/ask spread missing)"}
 {"timestamp": "2026-09-16T13:54:52.351394", "ticker": "CRWD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 239.48, "reason": "liquidity filter: CRWD average volume 371,879 < 500,000"}
+{"timestamp": "2026-09-16T13:58:40.014799", "ticker": "CNC", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 67.54, "reason": "liquidity filter: CNC average volume 166,650 < 500,000"}
+{"timestamp": "2026-09-16T13:58:40.779856", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 96, "conviction": 10, "price": 239.6, "reason": "liquidity filter: CRWD average volume 372,233 < 500,000"}
