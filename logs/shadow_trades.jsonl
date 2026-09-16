@@ -22577,3 +22577,6 @@
 {"timestamp": "2026-09-16T13:01:13.736524", "ticker": "APA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 47.41, "reason": "stale quote for APA (61255.250621s old; limit 180s)"}
 {"timestamp": "2026-09-16T13:02:37.738337", "ticker": "BRK.B", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 516.42, "reason": "stale quote for BRK.B (61348.955018s old; limit 180s)"}
 {"timestamp": "2026-09-16T13:02:37.738431", "ticker": "C", "action": "buy", "engine": "gemini", "confidence": 72, "conviction": 7, "price": 136.16, "reason": "stale quote for C (61354.722681s old; limit 180s)"}
+{"timestamp": "2026-09-16T13:04:58.568749", "ticker": "BRK.B", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 516.42, "reason": "stale quote for BRK.B (61499.564772s old; limit 180s)"}
+{"timestamp": "2026-09-16T13:04:58.568959", "ticker": "CDW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 153.73, "reason": "stale quote for CDW (61491.270426s old; limit 180s)"}
+{"timestamp": "2026-09-16T13:04:58.569104", "ticker": "CF", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 135.51, "reason": "stale quote for CF (61487.042033s old; limit 180s)"}
