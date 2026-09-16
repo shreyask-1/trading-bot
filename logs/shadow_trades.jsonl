@@ -22612,3 +22612,5 @@
 {"timestamp": "2026-09-16T13:24:34.177313", "ticker": "AMT", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 177.72, "reason": "stale quote for AMT (62680.576827s old; limit 180s)"}
 {"timestamp": "2026-09-16T13:24:34.177479", "ticker": "BDX", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 185.93, "reason": "stale quote for BDX (62674.782522s old; limit 180s)"}
 {"timestamp": "2026-09-16T13:24:34.245526", "ticker": "AES", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 14.81, "reason": "stale quote for AES (62678.429836s old; limit 180s)"}
+{"timestamp": "2026-09-16T13:26:53.821634", "ticker": "CNC", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 68.83, "reason": "stale candle for CNC (1051.9m old; limit 30.0m)"}
+{"timestamp": "2026-09-16T13:26:53.892262", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 96, "conviction": 10, "price": 242.52, "reason": "stale quote for CRWD (62813.920031s old; limit 180s)"}
