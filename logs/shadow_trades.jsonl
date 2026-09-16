@@ -23269,3 +23269,5 @@
 {"timestamp": "2026-09-16T22:12:55.667845", "ticker": "CDW", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 149.93, "reason": "stale quote for CDW (7994.129458s old; limit 180s)"}
 {"timestamp": "2026-09-16T22:12:55.983493", "ticker": "COHR", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 289.83, "reason": "stale quote for COHR (7987.366967s old; limit 180s)"}
 {"timestamp": "2026-09-16T22:12:56.300636", "ticker": "CINF", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 170.83, "reason": "stale quote for CINF (7979.246135s old; limit 180s)"}
+{"timestamp": "2026-09-16T22:14:51.486095", "ticker": "CDW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 149.93, "reason": "stale quote for CDW (8109.992098s old; limit 180s)"}
+{"timestamp": "2026-09-16T22:14:51.544312", "ticker": "ARE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 53.525, "reason": "stale quote for ARE (8077.485238s old; limit 180s)"}
