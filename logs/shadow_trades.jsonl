@@ -23124,3 +23124,6 @@
 {"timestamp": "2026-09-16T18:52:53.087105", "ticker": "CNC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 66.63, "reason": "liquidity filter: CNC average volume 171,408 < 500,000"}
 {"timestamp": "2026-09-16T18:52:53.354908", "ticker": "CRWD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 242.425, "reason": "liquidity filter: CRWD average volume 383,235 < 500,000"}
 {"timestamp": "2026-09-16T18:52:53.602553", "ticker": "CTSH", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 62.62, "reason": "liquidity filter: CTSH average volume 314,257 < 500,000"}
+{"timestamp": "2026-09-16T18:54:33.958721", "ticker": "COHR", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 286.2, "reason": "liquidity filter: COHR average volume 199,343 < 500,000"}
+{"timestamp": "2026-09-16T18:54:34.013850", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 242.565, "reason": "liquidity filter: CRWD average volume 383,307 < 500,000"}
+{"timestamp": "2026-09-16T18:54:34.097079", "ticker": "CDW", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 150.39, "reason": "liquidity filter: CDW average volume 85,431 < 500,000"}
