@@ -23888,3 +23888,5 @@
 {"timestamp": "2026-09-17T17:59:11.902919", "ticker": "GILD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 149.61, "reason": "stale quote for GILD (183.598455s old; limit 180s)"}
 {"timestamp": "2026-09-17T17:59:12.488395", "ticker": "GM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 87.19, "reason": "liquidity filter: GM average volume 190,293 < 500,000"}
 {"timestamp": "2026-09-17T17:59:12.747050", "ticker": "HCA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 432.615, "reason": "liquidity filter: HCA average volume 68,294 < 500,000"}
+{"timestamp": "2026-09-17T18:00:52.075428", "ticker": "HPE", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 61.035, "reason": "market data unavailable for HPE (bid/ask spread missing)"}
+{"timestamp": "2026-09-17T18:00:52.075559", "ticker": "DDOG", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 236.865, "reason": "liquidity filter: DDOG average volume 163,786 < 500,000"}
