@@ -23677,3 +23677,6 @@
 {"timestamp": "2026-09-17T15:11:01.356563", "ticker": "HCA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 430.505, "reason": "liquidity filter: HCA average volume 67,208 < 500,000"}
 {"timestamp": "2026-09-17T15:12:33.108849", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 246.03, "reason": "liquidity filter: CRWD average volume 367,582 < 500,000"}
 {"timestamp": "2026-09-17T15:12:33.170708", "ticker": "FTNT", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 175.29, "reason": "liquidity filter: FTNT average volume 171,654 < 500,000"}
+{"timestamp": "2026-09-17T15:15:07.627373", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 245.73, "reason": "liquidity filter: CRWD average volume 367,648 < 500,000"}
+{"timestamp": "2026-09-17T15:15:07.683437", "ticker": "FTNT", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 175.07, "reason": "liquidity filter: FTNT average volume 171,677 < 500,000"}
+{"timestamp": "2026-09-17T15:15:08.075408", "ticker": "DDOG", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 237.83, "reason": "liquidity filter: DDOG average volume 162,039 < 500,000"}
