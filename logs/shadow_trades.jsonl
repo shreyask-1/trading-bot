@@ -24057,3 +24057,5 @@
 {"timestamp": "2026-09-17T21:51:32.803336", "ticker": "GM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 86.62, "reason": "stale quote for GM (6702.204752s old; limit 180s)"}
 {"timestamp": "2026-09-17T21:51:32.949001", "ticker": "HCA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 429.05, "reason": "stale quote for HCA (6702.814363s old; limit 180s)"}
 {"timestamp": "2026-09-17T21:51:33.087095", "ticker": "HPQ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 34.645, "reason": "stale quote for HPQ (6694.12968s old; limit 180s)"}
+{"timestamp": "2026-09-17T21:52:29.404005", "ticker": "HPE", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 61.04, "reason": "stale quote for HPE (6749.459026s old; limit 180s)"}
+{"timestamp": "2026-09-17T21:52:29.571136", "ticker": "GILD", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 150.96, "reason": "stale quote for GILD (6756.32523s old; limit 180s)"}
