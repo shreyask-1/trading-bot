@@ -23533,3 +23533,4 @@
 {"timestamp": "2026-09-17T13:08:53.052698", "ticker": "GDDY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 99.06, "reason": "stale quote for GDDY (61740.785789s old; limit 180s)"}
 {"timestamp": "2026-09-17T13:08:53.192664", "ticker": "GEN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 30.66, "reason": "stale quote for GEN (61734.995215s old; limit 180s)"}
 {"timestamp": "2026-09-17T13:08:53.324652", "ticker": "GILD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 147.71, "reason": "stale quote for GILD (61743.195305s old; limit 180s)"}
+{"timestamp": "2026-09-17T13:12:34.371463", "ticker": "GOOGL", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 348.04, "reason": "stale quote for GOOGL (741.563309s old; limit 180s)"}
