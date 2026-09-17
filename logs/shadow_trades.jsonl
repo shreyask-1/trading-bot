@@ -23481,3 +23481,5 @@
 {"timestamp": "2026-09-17T11:44:57.218925", "ticker": "GDDY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 99.06, "reason": "stale quote for GDDY (56704.8133s old; limit 180s)"}
 {"timestamp": "2026-09-17T11:44:57.552140", "ticker": "GEN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 30.66, "reason": "stale quote for GEN (56699.210641s old; limit 180s)"}
 {"timestamp": "2026-09-17T11:44:57.892856", "ticker": "GILD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 147.71, "reason": "stale quote for GILD (56707.604111s old; limit 180s)"}
+{"timestamp": "2026-09-17T11:48:36.227061", "ticker": "ARE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 53.525, "reason": "stale quote for ARE (56917.068515s old; limit 180s)"}
+{"timestamp": "2026-09-17T11:48:36.473168", "ticker": "EW", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 89.3, "reason": "stale quote for EW (56918.40366s old; limit 180s)"}
