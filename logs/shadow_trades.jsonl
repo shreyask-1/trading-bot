@@ -23900,3 +23900,5 @@
 {"timestamp": "2026-09-17T18:08:59.253007", "ticker": "HPE", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 61.005, "reason": "market data unavailable for HPE (bid/ask spread missing)"}
 {"timestamp": "2026-09-17T18:08:59.450955", "ticker": "DDOG", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 237.3, "reason": "liquidity filter: DDOG average volume 163,850 < 500,000"}
 {"timestamp": "2026-09-17T18:08:59.451090", "ticker": "HCA", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 432.17, "reason": "liquidity filter: HCA average volume 68,355 < 500,000"}
+{"timestamp": "2026-09-17T18:10:47.799275", "ticker": "HPE", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 61.01, "reason": "market data unavailable for HPE (bid/ask spread missing)"}
+{"timestamp": "2026-09-17T18:10:48.239849", "ticker": "DDOG", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 237.2, "reason": "liquidity filter: DDOG average volume 163,883 < 500,000"}
