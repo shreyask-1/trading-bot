@@ -23785,3 +23785,6 @@
 {"timestamp": "2026-09-17T16:30:38.298926", "ticker": "HPE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 61.55, "reason": "market data unavailable for HPE (bid/ask spread missing)"}
 {"timestamp": "2026-09-17T16:30:38.352870", "ticker": "FTNT", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 173.645, "reason": "liquidity filter: FTNT average volume 173,000 < 500,000"}
 {"timestamp": "2026-09-17T16:32:39.629920", "ticker": "FTNT", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 173.585, "reason": "liquidity filter: FTNT average volume 173,058 < 500,000"}
+{"timestamp": "2026-09-17T16:34:34.005217", "ticker": "HPE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 61.485, "reason": "market data unavailable for HPE (bid/ask spread missing)"}
+{"timestamp": "2026-09-17T16:34:34.075523", "ticker": "HCA", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 432.51, "reason": "liquidity filter: HCA average volume 67,749 < 500,000"}
+{"timestamp": "2026-09-17T16:34:34.782874", "ticker": "FTNT", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 173.585, "reason": "liquidity filter: FTNT average volume 173,084 < 500,000"}
