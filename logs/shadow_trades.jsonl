@@ -23555,3 +23555,6 @@
 {"timestamp": "2026-09-17T13:47:11.862209", "ticker": "FTNT", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 173.255, "reason": "liquidity filter: FTNT average volume 169,377 < 500,000"}
 {"timestamp": "2026-09-17T13:48:51.651873", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 242.85, "reason": "liquidity filter: CRWD average volume 362,966 < 500,000"}
 {"timestamp": "2026-09-17T13:48:51.652079", "ticker": "DELL", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 578.65, "reason": "liquidity filter: DELL average volume 252,130 < 500,000"}
+{"timestamp": "2026-09-17T13:50:41.535288", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 243.05, "reason": "liquidity filter: CRWD average volume 363,135 < 500,000"}
+{"timestamp": "2026-09-17T13:50:41.800382", "ticker": "DELL", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 578.0, "reason": "liquidity filter: DELL average volume 252,176 < 500,000"}
+{"timestamp": "2026-09-17T13:50:42.096030", "ticker": "FFIV", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 433.92, "reason": "liquidity filter: FFIV average volume 24,470 < 500,000"}
