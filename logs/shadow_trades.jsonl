@@ -23416,3 +23416,7 @@
 {"timestamp": "2026-09-17T09:02:46.824935", "ticker": "ELV", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 412.74, "reason": "stale quote for ELV (46991.997797s old; limit 180s)"}
 {"timestamp": "2026-09-17T09:06:36.399394", "ticker": "ELV", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 412.74, "reason": "stale quote for ELV (47221.570225s old; limit 180s)"}
 {"timestamp": "2026-09-17T09:06:36.662600", "ticker": "CVX", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 211.55, "reason": "stale quote for CVX (47197.680988s old; limit 180s)"}
+{"timestamp": "2026-09-17T09:08:52.071108", "ticker": "ELV", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 412.74, "reason": "stale quote for ELV (47357.241208s old; limit 180s)"}
+{"timestamp": "2026-09-17T09:08:52.319061", "ticker": "EPAM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 117.25, "reason": "stale quote for EPAM (47360.524737s old; limit 180s)"}
+{"timestamp": "2026-09-17T09:08:52.589955", "ticker": "EW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 89.3, "reason": "stale quote for EW (47334.496643s old; limit 180s)"}
+{"timestamp": "2026-09-17T09:08:52.837507", "ticker": "EXPD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 189.24, "reason": "stale quote for EXPD (47350.020617s old; limit 180s)"}
