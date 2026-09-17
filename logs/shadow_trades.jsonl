@@ -24030,3 +24030,5 @@
 {"timestamp": "2026-09-17T19:56:29.865000", "ticker": "FTNT", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 172.91, "reason": "liquidity filter: FTNT average volume 176,512 < 500,000"}
 {"timestamp": "2026-09-17T19:58:37.613778", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 34.675, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
 {"timestamp": "2026-09-17T19:58:37.913822", "ticker": "HPE", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 61.095, "reason": "market data unavailable for HPE (bid/ask spread missing)"}
+{"timestamp": "2026-09-17T21:30:36.329193", "ticker": "HPE", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 61.04, "reason": "stale quote for HPE (5436.417898s old; limit 180s)"}
+{"timestamp": "2026-09-17T21:30:36.389618", "ticker": "GILD", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 150.96, "reason": "stale quote for GILD (5443.227338s old; limit 180s)"}
