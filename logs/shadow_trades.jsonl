@@ -23654,3 +23654,5 @@
 {"timestamp": "2026-09-17T14:58:37.675468", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 246.795, "reason": "liquidity filter: CRWD average volume 366,747 < 500,000"}
 {"timestamp": "2026-09-17T15:01:06.441851", "ticker": "FTNT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 175.55, "reason": "liquidity filter: FTNT average volume 171,524 < 500,000"}
 {"timestamp": "2026-09-17T15:01:06.442030", "ticker": "CRWD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 246.81, "reason": "liquidity filter: CRWD average volume 366,795 < 500,000"}
+{"timestamp": "2026-09-17T15:02:56.288566", "ticker": "FTNT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 175.55, "reason": "liquidity filter: FTNT average volume 171,538 < 500,000"}
+{"timestamp": "2026-09-17T15:02:56.436168", "ticker": "CRWD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 245.88, "reason": "liquidity filter: CRWD average volume 367,061 < 500,000"}
