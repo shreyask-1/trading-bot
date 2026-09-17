@@ -23511,3 +23511,5 @@
 {"timestamp": "2026-09-17T12:44:54.105721", "ticker": "GDDY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 99.06, "reason": "stale quote for GDDY (60301.760134s old; limit 180s)"}
 {"timestamp": "2026-09-17T12:44:54.356042", "ticker": "GEN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 30.66, "reason": "stale quote for GEN (60296.076079s old; limit 180s)"}
 {"timestamp": "2026-09-17T12:44:54.619081", "ticker": "GILD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 147.71, "reason": "stale quote for GILD (60304.387196s old; limit 180s)"}
+{"timestamp": "2026-09-17T12:46:30.686205", "ticker": "EPAM", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 117.25, "reason": "stale quote for EPAM (60418.956218s old; limit 180s)"}
+{"timestamp": "2026-09-17T12:46:30.852209", "ticker": "GILD", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 147.71, "reason": "stale quote for GILD (60400.697031s old; limit 180s)"}
