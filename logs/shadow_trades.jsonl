@@ -23544,3 +23544,5 @@
 {"timestamp": "2026-09-17T13:38:39.040811", "ticker": "EPAM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 116.88, "reason": "stale candle for EPAM (1063.7m old; limit 30.0m)"}
 {"timestamp": "2026-09-17T13:38:39.389662", "ticker": "GOOGL", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 346.33, "reason": "market data unavailable for GOOGL (bid/ask spread missing)"}
 {"timestamp": "2026-09-17T13:38:39.721504", "ticker": "FTNT", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 171.405, "reason": "liquidity filter: FTNT average volume 169,103 < 500,000"}
+{"timestamp": "2026-09-17T13:40:44.488232", "ticker": "ARE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 55.29, "reason": "liquidity filter: ARE average volume 89,013 < 500,000"}
+{"timestamp": "2026-09-17T13:40:44.766064", "ticker": "EPAM", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 116.88, "reason": "liquidity filter: EPAM average volume 60,729 < 500,000"}
