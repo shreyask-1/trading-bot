@@ -23499,3 +23499,5 @@
 {"timestamp": "2026-09-17T12:10:55.268253", "ticker": "GEN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 30.66, "reason": "stale quote for GEN (58256.98716s old; limit 180s)"}
 {"timestamp": "2026-09-17T12:10:55.538690", "ticker": "GILD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 147.71, "reason": "stale quote for GILD (58265.300739s old; limit 180s)"}
 {"timestamp": "2026-09-17T12:12:47.331546", "ticker": "EPAM", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 117.25, "reason": "stale quote for EPAM (58395.473045s old; limit 180s)"}
+{"timestamp": "2026-09-17T12:14:40.604925", "ticker": "HPE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 56.71, "reason": "stale quote for HPE (58481.232105s old; limit 180s)"}
+{"timestamp": "2026-09-17T12:14:40.605069", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 250.675, "reason": "stale quote for CRM (58478.422699s old; limit 180s)"}
