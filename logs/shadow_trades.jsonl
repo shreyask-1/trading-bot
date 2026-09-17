@@ -23595,3 +23595,5 @@
 {"timestamp": "2026-09-17T14:08:57.026136", "ticker": "GILD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 147.415, "reason": "liquidity filter: GILD average volume 154,755 < 500,000"}
 {"timestamp": "2026-09-17T14:10:47.473713", "ticker": "EPAM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 118.29, "reason": "liquidity filter: EPAM average volume 60,820 < 500,000"}
 {"timestamp": "2026-09-17T14:10:47.473886", "ticker": "GOOGL", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 345.585, "reason": "market data unavailable for GOOGL (bid/ask spread missing)"}
+{"timestamp": "2026-09-17T14:12:32.593915", "ticker": "EPAM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 118.29, "reason": "stale quote for EPAM (280.184255s old; limit 180s)"}
+{"timestamp": "2026-09-17T14:12:32.674560", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 245.83, "reason": "liquidity filter: CRWD average volume 364,318 < 500,000"}
