@@ -23635,3 +23635,5 @@
 {"timestamp": "2026-09-17T14:42:36.909612", "ticker": "GOOGL", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 348.56, "reason": "market data unavailable for GOOGL (bid/ask spread missing)"}
 {"timestamp": "2026-09-17T14:42:37.220994", "ticker": "HCA", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 431.39, "reason": "liquidity filter: HCA average volume 66,813 < 500,000"}
 {"timestamp": "2026-09-17T14:44:32.711817", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 248.265, "reason": "liquidity filter: CRWD average volume 366,299 < 500,000"}
+{"timestamp": "2026-09-17T14:46:28.986543", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 247.47, "reason": "liquidity filter: CRWD average volume 366,409 < 500,000"}
+{"timestamp": "2026-09-17T14:46:29.040604", "ticker": "HCA", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 431.96, "reason": "liquidity filter: HCA average volume 66,835 < 500,000"}
