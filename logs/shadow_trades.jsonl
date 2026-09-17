@@ -24178,3 +24178,6 @@
 {"timestamp": "2026-09-17T23:38:40.779586", "ticker": "HPE", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 61.04, "reason": "stale quote for HPE (13120.730646s old; limit 180s)"}
 {"timestamp": "2026-09-17T23:38:40.779788", "ticker": "INTC", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 109.33, "reason": "stale quote for INTC (10185.043639s old; limit 180s)"}
 {"timestamp": "2026-09-17T23:38:41.035067", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 34.645, "reason": "stale quote for HPQ (13122.003641s old; limit 180s)"}
+{"timestamp": "2026-09-17T23:41:29.959013", "ticker": "HPE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 61.04, "reason": "stale quote for HPE (13290.010596s old; limit 180s)"}
+{"timestamp": "2026-09-17T23:41:29.980681", "ticker": "CVX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 211.59, "reason": "stale quote for CVX (13268.740135s old; limit 180s)"}
+{"timestamp": "2026-09-17T23:41:30.001694", "ticker": "DELL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 588.42, "reason": "stale quote for DELL (13272.524199s old; limit 180s)"}
