@@ -23689,3 +23689,4 @@
 {"timestamp": "2026-09-17T15:18:54.938214", "ticker": "HCA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 430.595, "reason": "liquidity filter: HCA average volume 67,274 < 500,000"}
 {"timestamp": "2026-09-17T15:20:44.440186", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 245.51, "reason": "liquidity filter: CRWD average volume 367,792 < 500,000"}
 {"timestamp": "2026-09-17T15:20:44.592299", "ticker": "DDOG", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 237.22, "reason": "stale quote for DDOG (205.256615s old; limit 180s)"}
+{"timestamp": "2026-09-17T15:22:46.575122", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 245.455, "reason": "liquidity filter: CRWD average volume 367,836 < 500,000"}
