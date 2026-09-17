@@ -24070,3 +24070,7 @@
 {"timestamp": "2026-09-17T22:02:31.700755", "ticker": "HPE", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 61.04, "reason": "stale quote for HPE (7351.795583s old; limit 180s)"}
 {"timestamp": "2026-09-17T22:04:34.095423", "ticker": "HPE", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 61.04, "reason": "stale quote for HPE (7474.174676s old; limit 180s)"}
 {"timestamp": "2026-09-17T22:04:34.095610", "ticker": "FFIV", "action": "buy", "engine": "gemini", "confidence": 73, "conviction": 7, "price": 434.65, "reason": "stale quote for FFIV (7476.818562s old; limit 180s)"}
+{"timestamp": "2026-09-17T22:06:52.619991", "ticker": "HPE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 61.04, "reason": "stale quote for HPE (7612.587391s old; limit 180s)"}
+{"timestamp": "2026-09-17T22:06:52.650186", "ticker": "FTNT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 172.51, "reason": "stale quote for FTNT (7596.437037s old; limit 180s)"}
+{"timestamp": "2026-09-17T22:06:52.692489", "ticker": "GEN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 30.21, "reason": "stale quote for GEN (7592.402638s old; limit 180s)"}
+{"timestamp": "2026-09-17T22:06:52.732673", "ticker": "GILD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 150.96, "reason": "stale quote for GILD (7598.805623s old; limit 180s)"}
