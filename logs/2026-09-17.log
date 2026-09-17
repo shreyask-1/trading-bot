@@ -16010,6 +16010,7 @@ Shadow report: 23879 shadow candidate(s), 189 rejection group(s)
 Timings: account: 0.0s | risk: 0.4s | decide: 8.4s | watchlist: 0.2s | perf: 0.4s
 
 === Run at 2026-09-17T17:54:59.371386 ===
+=== Run at 2026-09-17T17:54:27.606294 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-17 01:54 PM EDT | Market open (per Alpaca): True | Session: REGULAR
 Account value: $99,311.19
@@ -16028,6 +16029,13 @@ Gemini calls used today (all models combined): 294
   -> {"ticker": "DDOG", "status": "skipped", "reason": "liquidity filter: DDOG average volume 163,650 < 500,000", "shadow": false, "data_guard": true}
 Overnight queue kept 7 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
 Dashboard watchlist synced (2 symbols) for news/headlines.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 294
+  -> {"ticker": "HPE", "status": "skipped", "reason": "market data unavailable for HPE (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "DDOG", "status": "skipped", "reason": "liquidity filter: DDOG average volume 163,646 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "FTNT", "status": "skipped", "reason": "stale quote for FTNT (328.305009s old; limit 180s)", "shadow": false, "data_guard": true}
+Overnight queue kept 7 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
+Dashboard watchlist synced (3 symbols) for news/headlines.
 Ending portfolio value: $99,311.19
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
 Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
@@ -16036,4 +16044,6 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 23881 shadow candidate(s), 187 rejection group(s)
 Timings: account: 0.0s | risk: 0.0s | decide: 8.1s | watchlist: 0.0s | perf: 0.3s
+Shadow report: 23882 shadow candidate(s), 187 rejection group(s)
+Timings: account: 0.0s | risk: 0.1s | decide: 6.4s | watchlist: 0.0s | perf: 0.3s
 
