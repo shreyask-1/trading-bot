@@ -24028,3 +24028,5 @@
 {"timestamp": "2026-09-17T19:54:47.459171", "ticker": "FTNT", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 173.11, "reason": "liquidity filter: FTNT average volume 176,243 < 500,000"}
 {"timestamp": "2026-09-17T19:56:29.800484", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 34.6, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
 {"timestamp": "2026-09-17T19:56:29.865000", "ticker": "FTNT", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 172.91, "reason": "liquidity filter: FTNT average volume 176,512 < 500,000"}
+{"timestamp": "2026-09-17T19:58:37.613778", "ticker": "HPQ", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 34.675, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
+{"timestamp": "2026-09-17T19:58:37.913822", "ticker": "HPE", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 61.095, "reason": "market data unavailable for HPE (bid/ask spread missing)"}
