@@ -23851,3 +23851,5 @@
 {"timestamp": "2026-09-17T17:30:41.575835", "ticker": "DDOG", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 237.04, "reason": "liquidity filter: DDOG average volume 163,199 < 500,000"}
 {"timestamp": "2026-09-17T17:32:37.869191", "ticker": "HPE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 61.19, "reason": "market data unavailable for HPE (bid/ask spread missing)"}
 {"timestamp": "2026-09-17T17:32:38.039080", "ticker": "DDOG", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 236.82, "reason": "liquidity filter: DDOG average volume 163,216 < 500,000"}
+{"timestamp": "2026-09-17T17:34:30.745433", "ticker": "HPE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 61.14, "reason": "market data unavailable for HPE (bid/ask spread missing)"}
+{"timestamp": "2026-09-17T17:34:30.808554", "ticker": "FTNT", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 172.72, "reason": "liquidity filter: FTNT average volume 174,054 < 500,000"}
