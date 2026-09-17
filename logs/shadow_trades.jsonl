@@ -23644,3 +23644,5 @@
 {"timestamp": "2026-09-17T14:50:57.377875", "ticker": "EPAM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 117.77, "reason": "liquidity filter: EPAM average volume 60,882 < 500,000"}
 {"timestamp": "2026-09-17T14:50:57.515339", "ticker": "GILD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 148.27, "reason": "liquidity filter: GILD average volume 155,725 < 500,000"}
 {"timestamp": "2026-09-17T14:50:57.616824", "ticker": "HCA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 431.63, "reason": "liquidity filter: HCA average volume 67,006 < 500,000"}
+{"timestamp": "2026-09-17T14:52:40.915722", "ticker": "HCA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 431.155, "reason": "liquidity filter: HCA average volume 67,046 < 500,000"}
+{"timestamp": "2026-09-17T14:52:41.254313", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 247.73, "reason": "liquidity filter: CRWD average volume 366,630 < 500,000"}
