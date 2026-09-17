@@ -23825,3 +23825,5 @@
 {"timestamp": "2026-09-17T17:08:55.448133", "ticker": "GEN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 30.585, "reason": "liquidity filter: GEN average volume 393,242 < 500,000"}
 {"timestamp": "2026-09-17T17:08:55.488585", "ticker": "GILD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 149.34, "reason": "stale quote for GILD (218.451031s old; limit 180s)"}
 {"timestamp": "2026-09-17T17:08:55.528971", "ticker": "GM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 87.13, "reason": "liquidity filter: GM average volume 189,493 < 500,000"}
+{"timestamp": "2026-09-17T17:10:49.687406", "ticker": "HPE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 61.31, "reason": "market data unavailable for HPE (bid/ask spread missing)"}
+{"timestamp": "2026-09-17T17:10:49.687618", "ticker": "DGX", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 247.995, "reason": "liquidity filter: DGX average volume 52,259 < 500,000"}
