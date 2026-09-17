@@ -23766,3 +23766,5 @@
 {"timestamp": "2026-09-17T16:14:50.113014", "ticker": "DELL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 583.06, "reason": "liquidity filter: DELL average volume 255,621 < 500,000"}
 {"timestamp": "2026-09-17T16:14:50.142691", "ticker": "DGX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 248.05, "reason": "liquidity filter: DGX average volume 51,863 < 500,000"}
 {"timestamp": "2026-09-17T16:14:50.171763", "ticker": "DHR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 211.58, "reason": "liquidity filter: DHR average volume 174,172 < 500,000"}
+{"timestamp": "2026-09-17T16:16:37.498944", "ticker": "HPE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 61.39, "reason": "market data unavailable for HPE (bid/ask spread missing)"}
+{"timestamp": "2026-09-17T16:16:37.703386", "ticker": "FTNT", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 174.12, "reason": "liquidity filter: FTNT average volume 172,727 < 500,000"}
