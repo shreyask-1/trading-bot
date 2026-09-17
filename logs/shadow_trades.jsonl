@@ -23580,3 +23580,6 @@
 {"timestamp": "2026-09-17T14:01:07.559139", "ticker": "CRM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 242.52, "reason": "market data unavailable for CRM (bid/ask spread missing)"}
 {"timestamp": "2026-09-17T14:01:07.559298", "ticker": "CVX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 211.06, "reason": "liquidity filter: CVX average volume 258,993 < 500,000"}
 {"timestamp": "2026-09-17T14:01:07.559445", "ticker": "EPAM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 117.82, "reason": "stale quote for EPAM (254.122308s old; limit 180s)"}
+{"timestamp": "2026-09-17T14:02:51.422477", "ticker": "MRNA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 158.945, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
+{"timestamp": "2026-09-17T14:02:51.743936", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 244.2, "reason": "liquidity filter: CRWD average volume 363,816 < 500,000"}
+{"timestamp": "2026-09-17T14:02:52.283001", "ticker": "DELL", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 581.5, "reason": "liquidity filter: DELL average volume 252,891 < 500,000"}
