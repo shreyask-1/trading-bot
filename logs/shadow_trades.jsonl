@@ -23484,3 +23484,4 @@
 {"timestamp": "2026-09-17T11:48:36.227061", "ticker": "ARE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 53.525, "reason": "stale quote for ARE (56917.068515s old; limit 180s)"}
 {"timestamp": "2026-09-17T11:48:36.473168", "ticker": "EW", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 89.3, "reason": "stale quote for EW (56918.40366s old; limit 180s)"}
 {"timestamp": "2026-09-17T11:56:38.502235", "ticker": "FTNT", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 171.75, "reason": "stale quote for FTNT (57406.278963s old; limit 180s)"}
+{"timestamp": "2026-09-17T12:01:03.084479", "ticker": "EPAM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 117.25, "reason": "stale quote for EPAM (57671.012688s old; limit 180s)"}
