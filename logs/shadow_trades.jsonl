@@ -24813,3 +24813,6 @@
 {"timestamp": "2026-09-18T14:36:56.978068", "ticker": "KR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 60.56, "reason": "liquidity filter: KR average volume 428,574 < 500,000"}
 {"timestamp": "2026-09-18T14:36:57.384846", "ticker": "META", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 675.58, "reason": "market data unavailable for META (bid/ask spread missing)"}
 {"timestamp": "2026-09-18T14:36:57.726104", "ticker": "MPC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 423.87, "reason": "liquidity filter: MPC average volume 109,159 < 500,000"}
+{"timestamp": "2026-09-18T14:38:33.539252", "ticker": "KR", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 60.515, "reason": "liquidity filter: KR average volume 428,749 < 500,000"}
+{"timestamp": "2026-09-18T14:38:33.730740", "ticker": "KEYS", "action": "buy", "engine": "gemini", "confidence": 73, "conviction": 7, "price": 332.935, "reason": "liquidity filter: KEYS average volume 56,386 < 500,000"}
+{"timestamp": "2026-09-18T14:38:33.790434", "ticker": "MPC", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 423.87, "reason": "stale quote for MPC (257.966319s old; limit 180s)"}
