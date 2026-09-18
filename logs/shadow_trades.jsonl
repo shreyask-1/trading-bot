@@ -25043,3 +25043,5 @@
 {"timestamp": "2026-09-18T18:00:59.790316", "ticker": "ISRG", "action": "buy", "engine": "gemini", "confidence": 66, "conviction": 7, "price": 392.195, "reason": "liquidity filter: ISRG average volume 104,864 < 500,000"}
 {"timestamp": "2026-09-18T18:02:41.291373", "ticker": "KMI", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 31.965, "reason": "market data unavailable for KMI (bid/ask spread missing)"}
 {"timestamp": "2026-09-18T18:02:41.540258", "ticker": "KR", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 60.67, "reason": "liquidity filter: KR average volume 442,620 < 500,000"}
+{"timestamp": "2026-09-18T18:04:47.698550", "ticker": "KR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 60.69, "reason": "liquidity filter: KR average volume 442,639 < 500,000"}
+{"timestamp": "2026-09-18T18:04:47.704458", "ticker": "MDT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 5, "price": 92.525, "reason": "liquidity filter: MDT average volume 465,170 < 500,000"}
