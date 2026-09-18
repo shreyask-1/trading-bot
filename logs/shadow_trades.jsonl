@@ -24919,3 +24919,5 @@
 {"timestamp": "2026-09-18T16:10:44.776454", "ticker": "KMI", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 32.04, "reason": "market data unavailable for KMI (bid/ask spread missing)"}
 {"timestamp": "2026-09-18T16:10:45.026536", "ticker": "MPC", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 427.12, "reason": "liquidity filter: MPC average volume 110,279 < 500,000"}
 {"timestamp": "2026-09-18T16:12:36.605887", "ticker": "KMI", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 32.105, "reason": "market data unavailable for KMI (bid/ask spread missing)"}
+{"timestamp": "2026-09-18T16:14:43.327459", "ticker": "KMI", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 32.06, "reason": "market data unavailable for KMI (bid/ask spread missing)"}
+{"timestamp": "2026-09-18T16:14:43.327710", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 238.11, "reason": "liquidity filter: CRWD average volume 372,190 < 500,000"}
