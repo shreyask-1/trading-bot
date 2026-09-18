@@ -24931,3 +24931,5 @@
 {"timestamp": "2026-09-18T16:24:40.273674", "ticker": "KMI", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 32.08, "reason": "market data unavailable for KMI (bid/ask spread missing)"}
 {"timestamp": "2026-09-18T16:26:34.856289", "ticker": "KMI", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 32.07, "reason": "market data unavailable for KMI (bid/ask spread missing)"}
 {"timestamp": "2026-09-18T16:26:35.042421", "ticker": "KR", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 60.49, "reason": "liquidity filter: KR average volume 438,228 < 500,000"}
+{"timestamp": "2026-09-18T16:28:39.456501", "ticker": "KMI", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 32.015, "reason": "market data unavailable for KMI (bid/ask spread missing)"}
+{"timestamp": "2026-09-18T16:28:39.525716", "ticker": "KR", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 60.51, "reason": "liquidity filter: KR average volume 438,297 < 500,000"}
