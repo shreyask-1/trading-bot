@@ -25010,3 +25010,4 @@
 {"timestamp": "2026-09-18T17:36:53.584006", "ticker": "CVX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 210.9, "reason": "liquidity filter: CVX average volume 258,518 < 500,000"}
 {"timestamp": "2026-09-18T17:38:44.027580", "ticker": "KMI", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 32.005, "reason": "market data unavailable for KMI (bid/ask spread missing)"}
 {"timestamp": "2026-09-18T17:38:44.084757", "ticker": "KR", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 60.85, "reason": "liquidity filter: KR average volume 441,489 < 500,000"}
+{"timestamp": "2026-09-18T17:40:38.950637", "ticker": "KMI", "action": "buy", "engine": "gemini", "confidence": 80.0, "conviction": 8, "price": 31.985, "reason": "market data unavailable for KMI (bid/ask spread missing)"}
