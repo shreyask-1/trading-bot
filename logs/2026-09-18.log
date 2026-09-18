@@ -18646,6 +18646,9 @@ Timings: account: 0.0s | risk: 0.1s | decide: 5.1s | watchlist: 0.0s | perf: 0.3
 === Run at 2026-09-18T20:06:11.597304 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-18 04:06 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+=== Run at 2026-09-18T19:59:11.224069 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-18 03:59 PM EDT | Market open (per Alpaca): True | Session: REGULAR
 Account value: $99,311.19
 Cash: $99,311.19 | Holdings (0): none
 Sector exposure (cached): unavailable (no holdings)
@@ -18661,6 +18664,15 @@ Market closed (overnight): queued 4 trade idea(s) for next-morning verification 
   -> queued META buy (conf 88, stop 605.38, tp 690.0)
   -> queued HOOD buy (conf 71, stop 101.72, tp 125.25)
   -> queued KEYS buy (conf 78, stop 311.44, tp 355.0)
+Overnight queue deferred 2 known-stale idea(s) for 30 minutes to preserve Gemini quota.
+Morning verification: 2 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
+News: fetched 158, 5 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 28/60 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 308
+  -> {"ticker": "KMI", "status": "skipped", "reason": "market data unavailable for KMI (bid/ask spread missing)", "shadow": false, "data_guard": true}
+  -> {"ticker": "KR", "status": "skipped", "reason": "liquidity filter: KR average volume 452,075 < 500,000", "shadow": false, "data_guard": true}
+Overnight queue kept 4 idea(s) whose market data was stale; they will be retried after fresh quotes arrive.
 Dashboard watchlist synced (2 symbols) for news/headlines.
 Ending portfolio value: $99,311.19
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
@@ -18670,4 +18682,6 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 25166 shadow candidate(s), 94 rejection group(s)
 Timings: account: 0.0s | risk: 0.1s | decide: 6.3s | watchlist: 0.0s | perf: 0.3s
+Shadow report: 25169 shadow candidate(s), 91 rejection group(s)
+Timings: account: 0.0s | risk: 0.4s | decide: 8.9s | watchlist: 0.2s | perf: 0.4s
 
