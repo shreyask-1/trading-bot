@@ -24772,3 +24772,5 @@
 {"timestamp": "2026-09-18T14:04:35.105419", "ticker": "KR", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 60.515, "reason": "liquidity filter: KR average volume 425,896 < 500,000"}
 {"timestamp": "2026-09-18T14:04:35.168313", "ticker": "KEYS", "action": "buy", "engine": "gemini", "confidence": 73, "conviction": 7, "price": 334.4, "reason": "stale quote for KEYS (240.606847s old; limit 180s)"}
 {"timestamp": "2026-09-18T14:04:35.168516", "ticker": "LUV", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 40.57, "reason": "liquidity filter: LUV average volume 260,983 < 500,000"}
+{"timestamp": "2026-09-18T14:06:56.214886", "ticker": "KR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 60.5, "reason": "liquidity filter: KR average volume 426,024 < 500,000"}
+{"timestamp": "2026-09-18T14:06:56.215083", "ticker": "META", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 675.43, "reason": "market data unavailable for META (bid/ask spread missing)"}
