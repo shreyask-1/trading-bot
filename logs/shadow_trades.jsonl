@@ -24609,3 +24609,6 @@
 {"timestamp": "2026-09-18T11:52:44.525797", "ticker": "KR", "action": "buy", "engine": "gemini", "confidence": 96, "conviction": 10, "price": 60.76, "reason": "stale quote for KR (57164.399669s old; limit 180s)"}
 {"timestamp": "2026-09-18T11:52:44.780293", "ticker": "HPE", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 61.04, "reason": "stale quote for HPE (57164.724821s old; limit 180s)"}
 {"timestamp": "2026-09-18T11:52:45.031311", "ticker": "IBM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 237.735, "reason": "stale quote for IBM (57167.15688s old; limit 180s)"}
+{"timestamp": "2026-09-18T11:54:29.472351", "ticker": "MPC", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 422.28, "reason": "stale quote for MPC (57304.30436s old; limit 180s)"}
+{"timestamp": "2026-09-18T11:54:29.521912", "ticker": "KR", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 60.76, "reason": "stale quote for KR (57269.551442s old; limit 180s)"}
+{"timestamp": "2026-09-18T11:54:29.577142", "ticker": "IBM", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 237.735, "reason": "stale quote for IBM (57271.848967s old; limit 180s)"}
