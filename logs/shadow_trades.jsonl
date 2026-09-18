@@ -24621,3 +24621,5 @@
 {"timestamp": "2026-09-18T11:58:52.022426", "ticker": "MPC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 422.28, "reason": "stale quote for MPC (57566.790211s old; limit 180s)"}
 {"timestamp": "2026-09-18T11:58:52.153664", "ticker": "MRNA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 158.025, "reason": "stale quote for MRNA (57538.062252s old; limit 180s)"}
 {"timestamp": "2026-09-18T12:00:57.278623", "ticker": "IBM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 237.735, "reason": "stale quote for IBM (57638.200649s old; limit 180s)"}
+{"timestamp": "2026-09-18T12:02:56.575594", "ticker": "IBM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 237.735, "reason": "stale quote for IBM (57778.647715s old; limit 180s)"}
+{"timestamp": "2026-09-18T12:02:56.651105", "ticker": "KR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 60.76, "reason": "stale quote for KR (57755.578342s old; limit 180s)"}
