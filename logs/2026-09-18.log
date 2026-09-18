@@ -18883,6 +18883,9 @@ Shadow report: 25169 shadow candidate(s), 91 rejection group(s)
 Timings: account: 0.0s | risk: 0.3s | decide: 24.4s | watchlist: 0.0s | perf: 0.3s
 Timings: account: 0.0s | risk: 0.1s | decide: 24.8s | watchlist: 0.0s | perf: 0.3s
 
+=== Run at 2026-09-18T21:08:40.531033 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-18 05:08 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 === Run at 2026-09-18T21:02:07.771936 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-18 05:02 PM EDT | Market open (per Alpaca): False | Session: CLOSED
@@ -18892,6 +18895,24 @@ Sector exposure (cached): unavailable (no holdings)
 Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
 Risk state: peak $99,703.60 | drawdown 0.39% | today +0.00% | halted: False
 Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 7 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 13/16 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 1 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 309
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued KMI buy (conf 85, stop 30.41, tp 33.5)
+  -> queued META buy (conf None, stop 605.38, tp 690.0)
+  -> queued HOOD buy (conf 72, stop 101.72, tp 135.0)
+  -> queued KEYS buy (conf 78, stop 311.44, tp 355.0)
+  -> queued ARE buy (conf None, stop 49.24, tp 57.23)
+  -> queued KR buy (conf None, stop 56.14, tp 62.535)
+  -> queued RVTY buy (conf None, stop 120.96, tp 149.475)
+  -> queued XOM buy (conf None, stop 158.76, tp 169.63)
+  -> queued PFG buy (conf None, stop 113.225, tp 119.035)
+  -> queued PLTR buy (conf None, stop 164.61, tp 182.0)
+  -> queued LITE buy (conf None, stop 832.11, tp 1025.51)
+  -> queued MET buy (conf None, stop 94.95, tp 98.75)
+Dashboard watchlist synced (1 symbols) for news/headlines.
 News: fetched 158, 6 new after dedup, 0 ticker(s) matched.
 Quant pre-screen: 13/16 candidates passed.
 Technical fallback (Gemini throttled/unavailable) proposed 2 trade(s) meeting the conviction bar.
@@ -18916,6 +18937,7 @@ Performance: Total return +0.45% | Max drawdown 0.94% | Daily Sharpe 1.59 | 19 c
 Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+0.00 (0 open) | Books: legacy: realized $-1,705.68, unrealized $+0.00
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 25169 shadow candidate(s), 91 rejection group(s)
+Timings: account: 0.0s | risk: 0.1s | decide: 24.6s | watchlist: 0.1s | perf: 0.3s
 Timings: account: 0.0s | risk: 0.0s | decide: 24.9s | watchlist: 0.0s | perf: 0.3s
 
 === Run at 2026-09-18T21:15:17.599013 ===
