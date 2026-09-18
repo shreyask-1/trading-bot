@@ -24433,3 +24433,5 @@
 {"timestamp": "2026-09-18T10:04:50.214341", "ticker": "IBM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 237.735, "reason": "stale quote for IBM (50692.276573s old; limit 180s)"}
 {"timestamp": "2026-09-18T10:04:50.534331", "ticker": "JNJ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 270.255, "reason": "stale quote for JNJ (50693.310915s old; limit 180s)"}
 {"timestamp": "2026-09-18T10:04:50.609997", "ticker": "KR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 60.76, "reason": "stale quote for KR (50668.271822s old; limit 180s)"}
+{"timestamp": "2026-09-18T10:06:43.877425", "ticker": "IBM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 237.735, "reason": "stale quote for IBM (50805.988843s old; limit 180s)"}
+{"timestamp": "2026-09-18T10:06:44.147367", "ticker": "KR", "action": "buy", "engine": "gemini", "confidence": 96, "conviction": 10, "price": 60.76, "reason": "stale quote for KR (50804.010219s old; limit 180s)"}
