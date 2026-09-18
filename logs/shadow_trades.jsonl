@@ -25103,3 +25103,6 @@
 {"timestamp": "2026-09-18T18:41:00.593781", "ticker": "HOOD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 119.18, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
 {"timestamp": "2026-09-18T18:41:00.593935", "ticker": "HPE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 60.14, "reason": "market data unavailable for HPE (bid/ask spread missing)"}
 {"timestamp": "2026-09-18T18:41:00.594089", "ticker": "HPQ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 34.455, "reason": "market data unavailable for HPQ (bid/ask spread missing)"}
+{"timestamp": "2026-09-18T18:42:36.640734", "ticker": "KMI", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 9, "price": 32.0, "reason": "market data unavailable for KMI (bid/ask spread missing)"}
+{"timestamp": "2026-09-18T18:42:36.717530", "ticker": "KR", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 60.4, "reason": "liquidity filter: KR average volume 444,477 < 500,000"}
+{"timestamp": "2026-09-18T18:42:36.808865", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 71, "conviction": 7, "price": 119.245, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
