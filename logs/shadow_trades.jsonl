@@ -24849,3 +24849,6 @@
 {"timestamp": "2026-09-18T15:08:45.674540", "ticker": "KMI", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 31.915, "reason": "market data unavailable for KMI (bid/ask spread missing)"}
 {"timestamp": "2026-09-18T15:10:50.709059", "ticker": "MPC", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 427.37, "reason": "liquidity filter: MPC average volume 109,601 < 500,000"}
 {"timestamp": "2026-09-18T15:10:50.709195", "ticker": "MTD", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 1400.43, "reason": "liquidity filter: MTD average volume 11,720 < 500,000"}
+{"timestamp": "2026-09-18T15:12:45.148548", "ticker": "KMI", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 31.95, "reason": "market data unavailable for KMI (bid/ask spread missing)"}
+{"timestamp": "2026-09-18T15:12:45.516510", "ticker": "KR", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 60.38, "reason": "liquidity filter: KR average volume 431,182 < 500,000"}
+{"timestamp": "2026-09-18T15:12:45.890366", "ticker": "MPC", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 427.47, "reason": "liquidity filter: MPC average volume 109,637 < 500,000"}
