@@ -24769,3 +24769,6 @@
 {"timestamp": "2026-09-18T13:58:30.976855", "ticker": "MET", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 96.73, "reason": "liquidity filter: MET average volume 125,080 < 500,000"}
 {"timestamp": "2026-09-18T14:02:40.455511", "ticker": "KR", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 60.53, "reason": "liquidity filter: KR average volume 425,747 < 500,000"}
 {"timestamp": "2026-09-18T14:02:40.576142", "ticker": "KEYS", "action": "buy", "engine": "gemini", "confidence": 73, "conviction": 7, "price": 334.4, "reason": "liquidity filter: KEYS average volume 56,153 < 500,000"}
+{"timestamp": "2026-09-18T14:04:35.105419", "ticker": "KR", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 60.515, "reason": "liquidity filter: KR average volume 425,896 < 500,000"}
+{"timestamp": "2026-09-18T14:04:35.168313", "ticker": "KEYS", "action": "buy", "engine": "gemini", "confidence": 73, "conviction": 7, "price": 334.4, "reason": "stale quote for KEYS (240.606847s old; limit 180s)"}
+{"timestamp": "2026-09-18T14:04:35.168516", "ticker": "LUV", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 40.57, "reason": "liquidity filter: LUV average volume 260,983 < 500,000"}
