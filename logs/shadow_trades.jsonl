@@ -24343,3 +24343,6 @@
 {"timestamp": "2026-09-18T09:08:53.060952", "ticker": "IBM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 237.735, "reason": "stale quote for IBM (47335.1522s old; limit 180s)"}
 {"timestamp": "2026-09-18T09:08:53.358549", "ticker": "KR", "action": "buy", "engine": "gemini", "confidence": 96, "conviction": 10, "price": 60.76, "reason": "stale quote for KR (47333.201441s old; limit 180s)"}
 {"timestamp": "2026-09-18T09:08:53.654095", "ticker": "LUV", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 40.33, "reason": "stale quote for LUV (47333.868918s old; limit 180s)"}
+{"timestamp": "2026-09-18T09:10:39.426736", "ticker": "MPC", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 422.28, "reason": "stale quote for MPC (47471.094735s old; limit 180s)"}
+{"timestamp": "2026-09-18T09:10:39.490930", "ticker": "IBM", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 237.735, "reason": "stale quote for IBM (47441.762538s old; limit 180s)"}
+{"timestamp": "2026-09-18T09:10:39.491129", "ticker": "MET", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 97.36, "reason": "stale quote for MET (47440.504921s old; limit 180s)"}
