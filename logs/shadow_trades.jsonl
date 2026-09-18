@@ -24427,3 +24427,6 @@
 {"timestamp": "2026-09-18T10:01:02.458966", "ticker": "IBM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 237.735, "reason": "stale quote for IBM (50444.947169s old; limit 180s)"}
 {"timestamp": "2026-09-18T10:01:02.459157", "ticker": "HPE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 61.04, "reason": "stale quote for HPE (50443.274021s old; limit 180s)"}
 {"timestamp": "2026-09-18T10:01:02.459293", "ticker": "HPQ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 34.645, "reason": "stale quote for HPQ (50444.547927s old; limit 180s)"}
+{"timestamp": "2026-09-18T10:02:43.168006", "ticker": "IBM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 237.735, "reason": "stale quote for IBM (50565.262384s old; limit 180s)"}
+{"timestamp": "2026-09-18T10:02:43.168250", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 69, "conviction": 7, "price": 270.255, "reason": "stale quote for JNJ (50558.389713s old; limit 180s)"}
+{"timestamp": "2026-09-18T10:02:43.168399", "ticker": "KEYS", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 331.39, "reason": "stale quote for KEYS (50561.858362s old; limit 180s)"}
