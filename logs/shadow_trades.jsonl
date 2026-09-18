@@ -24907,3 +24907,5 @@
 {"timestamp": "2026-09-18T15:54:40.428365", "ticker": "KR", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 60.615, "reason": "liquidity filter: KR average volume 433,526 < 500,000"}
 {"timestamp": "2026-09-18T15:54:40.757811", "ticker": "MPC", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 427.475, "reason": "liquidity filter: MPC average volume 110,126 < 500,000"}
 {"timestamp": "2026-09-18T15:56:56.114332", "ticker": "KR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 60.615, "reason": "liquidity filter: KR average volume 434,754 < 500,000"}
+{"timestamp": "2026-09-18T15:58:30.625837", "ticker": "KMI", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 31.99, "reason": "market data unavailable for KMI (bid/ask spread missing)"}
+{"timestamp": "2026-09-18T15:58:30.696375", "ticker": "META", "action": "buy", "engine": "gemini", "confidence": 83, "conviction": 9, "price": 671.69, "reason": "market data unavailable for META (bid/ask spread missing)"}
