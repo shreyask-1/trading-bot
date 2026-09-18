@@ -24712,3 +24712,7 @@
 {"timestamp": "2026-09-18T13:12:31.546945", "ticker": "MET", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 97.36, "reason": "stale quote for MET (61956.251665s old; limit 180s)"}
 {"timestamp": "2026-09-18T13:15:14.504503", "ticker": "KR", "action": "buy", "engine": "gemini", "confidence": 96, "conviction": 10, "price": 60.76, "reason": "stale quote for KR (62114.44265s old; limit 180s)"}
 {"timestamp": "2026-09-18T13:15:14.917485", "ticker": "LUV", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 40.33, "reason": "stale quote for LUV (62115.208031s old; limit 180s)"}
+{"timestamp": "2026-09-18T13:16:54.801522", "ticker": "MSFT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 497.2, "reason": "stale quote for MSFT (1324.203133s old; limit 180s)"}
+{"timestamp": "2026-09-18T13:16:55.055645", "ticker": "KR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 60.76, "reason": "stale quote for KR (62214.930598s old; limit 180s)"}
+{"timestamp": "2026-09-18T13:16:55.055852", "ticker": "IBM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 237.735, "reason": "stale quote for IBM (62197.629947s old; limit 180s)"}
+{"timestamp": "2026-09-18T13:16:55.055956", "ticker": "INCY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 127.62, "reason": "stale quote for INCY (62199.029176s old; limit 180s)"}
