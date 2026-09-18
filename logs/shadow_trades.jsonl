@@ -24831,3 +24831,4 @@
 {"timestamp": "2026-09-18T14:48:53.160680", "ticker": "KR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 60.54, "reason": "liquidity filter: KR average volume 429,360 < 500,000"}
 {"timestamp": "2026-09-18T14:48:53.335272", "ticker": "META", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 675.045, "reason": "market data unavailable for META (bid/ask spread missing)"}
 {"timestamp": "2026-09-18T14:48:53.473074", "ticker": "MPC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 426.22, "reason": "liquidity filter: MPC average volume 109,260 < 500,000"}
+{"timestamp": "2026-09-18T14:52:38.824589", "ticker": "KEYS", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 333.01, "reason": "stale quote for KEYS (383.417379s old; limit 180s)"}
