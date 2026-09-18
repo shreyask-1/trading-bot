@@ -8423,6 +8423,9 @@ Timings: account: 0.0s | risk: 0.3s | decide: 24.4s | watchlist: 0.0s | perf: 0.
 === Run at 2026-09-18T07:46:39.900260 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-18 03:46 AM EDT | Market open (per Alpaca): False | Session: CLOSED
+=== Run at 2026-09-18T07:45:50.153135 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-18 03:45 AM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,311.19
 Cash: $99,311.19 | Holdings (0): none
 Sector exposure (cached): unavailable (no holdings)
@@ -8446,6 +8449,12 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued KR buy (conf 96, stop 56.14, tp 65.5)
   -> queued IBM buy (conf 89, stop 230.25, tp 251.0)
   -> queued EG buy (conf None, stop 363.76, tp 387.53)
+  -> queued ELV buy (conf 85, stop 391.4, tp 426.39)
+  -> queued CVX buy (conf 85, stop 207.23, tp 217.74)
+  -> queued LUV buy (conf 82, stop 38.5, tp 43.5)
+  -> queued KR buy (conf 80, stop 56.14, tp 62.53)
+  -> queued INCY buy (conf 75, stop 119.98, tp 128.72)
+  -> queued IBM buy (conf None, stop 230.255, tp 251.78)
 Dashboard watchlist synced (3 symbols) for news/headlines.
 Ending portfolio value: $99,311.19
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
@@ -8455,4 +8464,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 24214 shadow candidate(s), 206 rejection group(s)
 Timings: account: 0.0s | risk: 0.1s | decide: 4.3s | watchlist: 0.0s | perf: 0.3s
+Timings: account: 0.0s | risk: 0.3s | decide: 20.6s | watchlist: 0.1s | perf: 0.3s
 
