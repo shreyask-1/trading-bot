@@ -24764,3 +24764,6 @@
 {"timestamp": "2026-09-18T13:57:03.131780", "ticker": "META", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 675.32, "reason": "market data unavailable for META (bid/ask spread missing)"}
 {"timestamp": "2026-09-18T13:57:03.755304", "ticker": "MPC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 421.11, "reason": "liquidity filter: MPC average volume 108,772 < 500,000"}
 {"timestamp": "2026-09-18T13:57:04.060985", "ticker": "MRNA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 156.04, "reason": "market data unavailable for MRNA (bid/ask spread missing)"}
+{"timestamp": "2026-09-18T13:58:30.824002", "ticker": "KEYS", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 334.7, "reason": "liquidity filter: KEYS average volume 56,127 < 500,000"}
+{"timestamp": "2026-09-18T13:58:30.903388", "ticker": "KR", "action": "buy", "engine": "gemini", "confidence": 96, "conviction": 10, "price": 60.645, "reason": "liquidity filter: KR average volume 425,308 < 500,000"}
+{"timestamp": "2026-09-18T13:58:30.976855", "ticker": "MET", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 96.73, "reason": "liquidity filter: MET average volume 125,080 < 500,000"}
