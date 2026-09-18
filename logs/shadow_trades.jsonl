@@ -25126,3 +25126,6 @@
 {"timestamp": "2026-09-18T18:58:31.645337", "ticker": "KMI", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 32.06, "reason": "market data unavailable for KMI (bid/ask spread missing)"}
 {"timestamp": "2026-09-18T18:58:31.715927", "ticker": "KR", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 60.535, "reason": "liquidity filter: KR average volume 445,378 < 500,000"}
 {"timestamp": "2026-09-18T19:01:01.499189", "ticker": "KMI", "action": "buy", "engine": "gemini", "confidence": 80.0, "conviction": 8, "price": 32.06, "reason": "market data unavailable for KMI (bid/ask spread missing)"}
+{"timestamp": "2026-09-18T19:02:48.588030", "ticker": "KMI", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 32.06, "reason": "market data unavailable for KMI (bid/ask spread missing)"}
+{"timestamp": "2026-09-18T19:02:49.043580", "ticker": "KR", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 60.495, "reason": "liquidity filter: KR average volume 445,590 < 500,000"}
+{"timestamp": "2026-09-18T19:02:49.362064", "ticker": "HOOD", "action": "buy", "engine": "gemini", "confidence": 71, "conviction": 7, "price": 119.33, "reason": "market data unavailable for HOOD (bid/ask spread missing)"}
