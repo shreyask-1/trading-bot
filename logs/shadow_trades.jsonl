@@ -24487,3 +24487,4 @@
 {"timestamp": "2026-09-18T10:40:59.300011", "ticker": "MDT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 92.795, "reason": "stale quote for MDT (52859.242328s old; limit 180s)"}
 {"timestamp": "2026-09-18T10:40:59.567003", "ticker": "JNJ", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 270.255, "reason": "stale quote for JNJ (52862.38062s old; limit 180s)"}
 {"timestamp": "2026-09-18T10:40:59.816994", "ticker": "MOS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 25.38, "reason": "stale quote for MOS (52861.237079s old; limit 180s)"}
+{"timestamp": "2026-09-18T10:42:43.917503", "ticker": "JNJ", "action": "buy", "engine": "gemini", "confidence": 69, "conviction": 7, "price": 270.255, "reason": "stale quote for JNJ (52966.74371s old; limit 180s)"}
