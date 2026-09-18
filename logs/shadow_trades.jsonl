@@ -24372,3 +24372,6 @@
 {"timestamp": "2026-09-18T09:22:54.386905", "ticker": "META", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 681.48, "reason": "stale quote for META (47197.929614s old; limit 180s)"}
 {"timestamp": "2026-09-18T09:22:54.512980", "ticker": "MOS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 25.38, "reason": "stale quote for MOS (48176.029855s old; limit 180s)"}
 {"timestamp": "2026-09-18T09:22:54.630328", "ticker": "MPC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 422.28, "reason": "stale quote for MPC (48209.413342s old; limit 180s)"}
+{"timestamp": "2026-09-18T09:24:34.193758", "ticker": "IBM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 237.735, "reason": "stale quote for IBM (48276.469762s old; limit 180s)"}
+{"timestamp": "2026-09-18T09:24:34.269307", "ticker": "KR", "action": "buy", "engine": "gemini", "confidence": 96, "conviction": 10, "price": 60.76, "reason": "stale quote for KR (48274.273019s old; limit 180s)"}
+{"timestamp": "2026-09-18T09:24:34.315212", "ticker": "MET", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 97.36, "reason": "stale quote for MET (48279.033073s old; limit 180s)"}
