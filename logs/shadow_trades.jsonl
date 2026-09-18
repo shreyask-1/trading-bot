@@ -24876,3 +24876,4 @@
 {"timestamp": "2026-09-18T15:34:50.718479", "ticker": "META", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 5, "price": 672.345, "reason": "market data unavailable for META (bid/ask spread missing)"}
 {"timestamp": "2026-09-18T15:34:50.769655", "ticker": "MPC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 426.42, "reason": "liquidity filter: MPC average volume 110,000 < 500,000"}
 {"timestamp": "2026-09-18T15:34:50.832026", "ticker": "MU", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 990.83, "reason": "market data unavailable for MU (bid/ask spread missing)"}
+{"timestamp": "2026-09-18T15:36:45.455638", "ticker": "KMI", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 32.125, "reason": "market data unavailable for KMI (bid/ask spread missing)"}
