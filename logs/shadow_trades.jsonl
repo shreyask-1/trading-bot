@@ -24943,3 +24943,4 @@
 {"timestamp": "2026-09-18T16:36:46.033173", "ticker": "KR", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 60.54, "reason": "liquidity filter: KR average volume 438,467 < 500,000"}
 {"timestamp": "2026-09-18T16:38:36.541516", "ticker": "KMI", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 31.99, "reason": "market data unavailable for KMI (bid/ask spread missing)"}
 {"timestamp": "2026-09-18T16:38:36.541767", "ticker": "NTAP", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 194.28, "reason": "liquidity filter: NTAP average volume 117,340 < 500,000"}
+{"timestamp": "2026-09-18T16:40:48.161249", "ticker": "KMI", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 31.955, "reason": "market data unavailable for KMI (bid/ask spread missing)"}
