@@ -10437,6 +10437,9 @@ Timings: account: 0.0s | risk: 0.3s | decide: 9.4s | watchlist: 0.1s | perf: 0.4
 === Run at 2026-09-19T23:51:23.407664 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-19 07:51 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+=== Run at 2026-09-19T23:50:28.500368 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-19 07:50 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,311.19
 Cash: $99,311.19 | Holdings (0): none
 Sector exposure (cached): unavailable (no holdings)
@@ -10448,6 +10451,10 @@ Quant pre-screen: 36/64 candidates passed.
 Gemini proposed 3 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 428
 Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+Technical fallback (Gemini throttled/unavailable) proposed 7 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 427
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued KMI buy (conf 85, stop 30.41, tp 33.500000000000014)
   -> queued TSLA buy (conf 84, stop 351.38, tp 375.21)
   -> queued TXN buy (conf 82, stop 255.6, tp 273.31)
   -> queued ADM buy (conf 82, stop 83.32, tp 88.69)
@@ -10461,6 +10468,13 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued PSX buy (conf 75, stop 265.0, tp 285.0)
   -> queued KR buy (conf None, stop 56.14, tp 62.535)
 Dashboard watchlist synced (3 symbols) for news/headlines.
+  -> queued KEYS buy (conf 75, stop 325.0, tp 350.0)
+  -> queued QCOM buy (conf None, stop 167.095, tp 191.855)
+  -> queued RVTY buy (conf None, stop 120.96, tp 149.475)
+  -> queued SNDK buy (conf None, stop 1504.56, tp 1807.01)
+  -> queued PSX buy (conf None, stop 248.0, tp 276.95)
+  -> queued KR buy (conf None, stop 56.14, tp 62.535)
+Dashboard watchlist synced (7 symbols) for news/headlines.
 Ending portfolio value: $99,311.19
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
 Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
@@ -10469,4 +10483,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 25169 shadow candidate(s), 91 rejection group(s)
 Timings: account: 0.0s | risk: 0.3s | decide: 6.8s | watchlist: 0.1s | perf: 0.4s
+Timings: account: 0.0s | risk: 0.2s | decide: 24.2s | watchlist: 0.1s | perf: 0.2s
 
