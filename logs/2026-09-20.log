@@ -9580,6 +9580,9 @@ Timings: account: 0.0s | risk: 0.2s | decide: 6.5s | watchlist: 0.1s | perf: 0.3
 === Run at 2026-09-20T15:26:39.913993 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-20 11:26 AM EDT | Market open (per Alpaca): False | Session: CLOSED
+=== Run at 2026-09-20T15:19:58.415846 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-20 11:19 AM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,311.19
 Cash: $99,311.19 | Holdings (0): none
 Sector exposure (cached): unavailable (no holdings)
@@ -9594,6 +9597,13 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued KMI buy (conf 85, stop 30.41, tp 33.5)
   -> queued AES buy (conf 85, stop 14.5, tp 15.5)
   -> queued ADM buy (conf 82, stop 83.32, tp 88.69)
+News: fetched 157, 1 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 14/28 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 5 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 35
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued AES buy (conf 85, stop 14.5, tp 15.5)
+  -> queued KMI buy (conf 85, stop 30.41, tp 32.5)
   -> queued NTAP buy (conf 80, stop 180.75, tp 208.88)
   -> queued ADI buy (conf 80, stop 356.95, tp 395.0)
   -> queued PM buy (conf 78, stop 181.65, tp 195.44)
@@ -9604,6 +9614,12 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued WRB buy (conf 75, stop 68.78, tp 73.5)
   -> queued A buy (conf 75, stop 150.0, tp 165.0)
 Dashboard watchlist synced (3 symbols) for news/headlines.
+  -> queued WRB buy (conf 75, stop 68.78, tp 73.5)
+  -> queued A buy (conf 75, stop 150.0, tp 165.0)
+  -> queued ADM buy (conf 75, stop 83.32, tp 89.0)
+  -> queued UHS buy (conf None, stop 167.88, tp 182.67)
+  -> queued VLO buy (conf None, stop 360.88, tp 416.49)
+Dashboard watchlist synced (5 symbols) for news/headlines.
 Ending portfolio value: $99,311.19
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
 Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
@@ -9612,4 +9628,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 25169 shadow candidate(s), 91 rejection group(s)
 Timings: account: 0.0s | risk: 0.0s | decide: 3.5s | watchlist: 0.0s | perf: 0.3s
+Timings: account: 0.0s | risk: 0.0s | decide: 22.4s | watchlist: 0.0s | perf: 0.3s
 
