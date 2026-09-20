@@ -8078,6 +8078,9 @@ Timings: account: 0.0s | risk: 0.2s | decide: 6.4s | watchlist: 0.1s | perf: 0.3
 === Run at 2026-09-20T09:43:17.311400 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-20 05:43 AM EDT | Market open (per Alpaca): False | Session: CLOSED
+=== Run at 2026-09-20T09:38:18.107886 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-20 05:38 AM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,311.19
 Cash: $99,311.19 | Holdings (0): none
 Sector exposure (cached): unavailable (no holdings)
@@ -8100,6 +8103,22 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued ADM buy (conf None, stop 83.32, tp 88.69)
   -> queued UHS buy (conf None, stop 167.88, tp 182.67)
   -> queued VRSN buy (conf 72, stop 280.17, tp 320.0)
+News: fetched 158, 3 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 21/40 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 10
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued KMI buy (conf 76, stop 30.41, tp 33.5)
+  -> queued VLO buy (conf 80, stop 360.88, tp 435.0)
+  -> queued NTAP buy (conf 80, stop 180.75, tp 208.88)
+  -> queued ADI buy (conf 80, stop 356.95, tp 395.0)
+  -> queued ABBV buy (conf 80, stop 252.0, tp 278.0)
+  -> queued PM buy (conf 78, stop 181.65, tp 195.44)
+  -> queued LRCX buy (conf 78, stop 785.0, tp 865.0)
+  -> queued KEYS buy (conf 72, stop 311.44, tp 355.0)
+  -> queued WRB buy (conf 75, stop 68.78, tp 73.5)
+  -> queued ADM buy (conf None, stop 83.32, tp 88.69)
+  -> queued UHS buy (conf None, stop 167.88, tp 182.67)
   -> queued KR buy (conf None, stop 56.14, tp 62.535)
 Dashboard watchlist synced (3 symbols) for news/headlines.
 Ending portfolio value: $99,311.19
@@ -8110,4 +8129,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 25169 shadow candidate(s), 91 rejection group(s)
 Timings: account: 0.0s | risk: 0.3s | decide: 13.8s | watchlist: 0.1s | perf: 0.3s
+Timings: account: 0.0s | risk: 0.2s | decide: 8.0s | watchlist: 0.1s | perf: 0.2s
 
