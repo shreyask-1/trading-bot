@@ -7451,6 +7451,9 @@ Timings: account: 0.0s | risk: 0.4s | decide: 24.1s | watchlist: 0.0s | perf: 0.
 === Run at 2026-09-20T07:12:15.300629 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-20 03:12 AM EDT | Market open (per Alpaca): False | Session: CLOSED
+=== Run at 2026-09-20T07:06:03.388686 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-20 03:06 AM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,311.19
 Cash: $99,311.19 | Holdings (0): none
 Sector exposure (cached): unavailable (no holdings)
@@ -7463,6 +7466,12 @@ Gemini proposed 2 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 1
 Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
   -> queued KMI buy (conf 85, stop 30.41, tp 34.8)
+News: fetched 158, 1 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 9/16 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 0
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued KMI buy (conf 85, stop 30.41, tp 34.800000000000004)
   -> queued TSLA buy (conf 84, stop 351.38, tp 375.21)
   -> queued TXN buy (conf 82, stop 255.6, tp 273.31)
   -> queued NTAP buy (conf 80, stop 180.75, tp 208.88)
@@ -7483,4 +7492,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 25169 shadow candidate(s), 91 rejection group(s)
 Timings: account: 0.0s | risk: 0.4s | decide: 14.0s | watchlist: 0.1s | perf: 0.4s
+Timings: account: 0.0s | risk: 0.1s | decide: 22.3s | watchlist: 0.0s | perf: 0.3s
 
