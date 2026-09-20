@@ -7398,6 +7398,9 @@ Shadow report: 25169 shadow candidate(s), 91 rejection group(s)
 Timings: account: 0.0s | risk: 0.3s | decide: 24.4s | watchlist: 0.0s | perf: 0.2s
 Timings: account: 0.0s | risk: 0.2s | decide: 5.0s | watchlist: 0.1s | perf: 0.3s
 
+=== Run at 2026-09-20T06:59:28.758415 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-20 02:59 AM EDT | Market open (per Alpaca): False | Session: CLOSED
 === Run at 2026-09-20T06:52:52.283858 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-20 02:52 AM EDT | Market open (per Alpaca): False | Session: CLOSED
@@ -7407,6 +7410,13 @@ Sector exposure (cached): unavailable (no holdings)
 Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
 Risk state: peak $99,703.60 | drawdown 0.39% | today +0.00% | halted: False
 Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 2 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 37/64 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
+Technical fallback cap omitted 2 weaker idea(s) this run.
+Gemini calls used today (all models combined): 603
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued KMI buy (conf 85, stop 30.41, tp 33.500000000000014)
 News: fetched 158, 0 new after dedup, 0 ticker(s) matched.
 Quant pre-screen: 37/64 candidates passed.
 Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
@@ -7425,6 +7435,8 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued ADM buy (conf None, stop 83.32, tp 88.69)
   -> queued UHS buy (conf None, stop 167.88, tp 182.67)
   -> queued VLO buy (conf None, stop 360.88, tp 416.49)
+Dashboard watchlist synced (8 symbols) for news/headlines.
+Ending portfolio value: $99,311.19
 Run budget reserve reached -- skipping dashboard watchlist sync.
 Run budget reserve reached -- skipping performance snapshot.
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
@@ -7433,6 +7445,7 @@ Performance: Total return +0.45% | Max drawdown 0.94% | Daily Sharpe 1.54 | 19 c
 Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+0.00 (0 open) | Books: legacy: realized $-1,705.68, unrealized $+0.00
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 25169 shadow candidate(s), 91 rejection group(s)
+Timings: account: 0.0s | risk: 0.1s | decide: 22.8s | watchlist: 0.1s | perf: 0.3s
 Timings: account: 0.0s | risk: 0.4s | decide: 24.1s | watchlist: 0.0s | perf: 0.3s
 
 === Run at 2026-09-20T07:06:03.388686 ===
