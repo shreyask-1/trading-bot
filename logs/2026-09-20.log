@@ -9630,6 +9630,9 @@ Shadow report: 25169 shadow candidate(s), 91 rejection group(s)
 Timings: account: 0.0s | risk: 0.0s | decide: 3.5s | watchlist: 0.0s | perf: 0.3s
 Timings: account: 0.0s | risk: 0.0s | decide: 22.4s | watchlist: 0.0s | perf: 0.3s
 
+=== Run at 2026-09-20T15:38:05.241682 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-20 11:38 AM EDT | Market open (per Alpaca): False | Session: CLOSED
 === Run at 2026-09-20T15:33:01.711726 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-20 11:33 AM EDT | Market open (per Alpaca): False | Session: CLOSED
@@ -9639,6 +9642,14 @@ Sector exposure (cached): unavailable (no holdings)
 Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
 Risk state: peak $99,703.60 | drawdown 0.39% | today +0.00% | halted: False
 Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 119, 0 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 28/52 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 25
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued KMI buy (conf 85, stop 30.41, tp 34.8)
+  -> queued AES buy (conf 85, stop 14.5, tp 15.5)
+  -> queued ADM buy (conf 82, stop 83.32, tp 88.69)
 News: fetched 157, 5 new after dedup, 0 ticker(s) matched.
 Quant pre-screen: 21/40 candidates passed.
 Gemini proposed 2 trade(s) meeting the conviction bar.
@@ -9650,6 +9661,12 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued ADI buy (conf 80, stop 356.95, tp 395.0)
   -> queued PM buy (conf 78, stop 181.65, tp 195.44)
   -> queued LRCX buy (conf 78, stop 785.0, tp 865.0)
+  -> queued KEYS buy (conf 78, stop 311.44, tp 355.0)
+  -> queued ABBV buy (conf 78, stop 255.0, tp 275.0)
+  -> queued VLO buy (conf 78, stop 360.88, tp 416.49)
+  -> queued WRB buy (conf 75, stop 68.78, tp 73.5)
+  -> queued A buy (conf 72, stop 142.09, tp 163.23)
+Dashboard watchlist synced (3 symbols) for news/headlines.
   -> queued KEYS buy (conf 80, stop 311.44, tp 339.12)
   -> queued WRB buy (conf 75, stop 68.78, tp 73.5)
   -> queued A buy (conf 75, stop 150.0, tp 165.0)
@@ -9664,6 +9681,7 @@ Performance: Total return +0.45% | Max drawdown 0.94% | Daily Sharpe 1.54 | 19 c
 Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+0.00 (0 open) | Books: legacy: realized $-1,705.68, unrealized $+0.00
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 25169 shadow candidate(s), 91 rejection group(s)
+Timings: account: 0.0s | risk: 0.2s | decide: 18.7s | watchlist: 0.1s | perf: 0.2s
 Timings: account: 0.0s | risk: 0.2s | decide: 7.9s | watchlist: 0.1s | perf: 0.2s
 
 === Run at 2026-09-20T15:42:10.930227 ===
