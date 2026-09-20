@@ -9219,6 +9219,9 @@ Shadow report: 25169 shadow candidate(s), 91 rejection group(s)
 Timings: account: 0.0s | risk: 0.1s | decide: 22.8s | watchlist: 0.0s | perf: 0.3s
 Timings: account: 0.0s | risk: 0.3s | decide: 10.1s | watchlist: 0.1s | perf: 0.4s
 
+=== Run at 2026-09-20T14:02:24.220145 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-20 10:02 AM EDT | Market open (per Alpaca): False | Session: CLOSED
 === Run at 2026-09-20T13:55:55.369213 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-20 09:55 AM EDT | Market open (per Alpaca): False | Session: CLOSED
@@ -9229,6 +9232,11 @@ Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
 Risk state: peak $99,703.60 | drawdown 0.39% | today +0.00% | halted: False
 Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
 News: fetched 158, 4 new after dedup, 0 ticker(s) matched.
+Quant pre-screen: 10/16 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 19
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued KMI buy (conf 85, stop 30.41, tp 33.500000000000014)
 Quant pre-screen: 29/52 candidates passed.
 Gemini proposed 1 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 31
@@ -9244,6 +9252,8 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued A buy (conf 75, stop 150.0, tp 165.0)
   -> queued ADM buy (conf 75, stop 83.32, tp 89.0)
   -> queued UHS buy (conf None, stop 167.88, tp 182.67)
+  -> queued VRSN buy (conf 72, stop 280.17, tp 315.0)
+Dashboard watchlist synced (3 symbols) for news/headlines.
   -> queued VLO buy (conf 72, stop 395.0, tp 435.0)
 Dashboard watchlist synced (1 symbols) for news/headlines.
 Ending portfolio value: $99,311.19
@@ -9253,6 +9263,7 @@ Performance: Total return +0.45% | Max drawdown 0.94% | Daily Sharpe 1.54 | 19 c
 Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+0.00 (0 open) | Books: legacy: realized $-1,705.68, unrealized $+0.00
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 25169 shadow candidate(s), 91 rejection group(s)
+Timings: account: 0.0s | risk: 0.2s | decide: 7.1s | watchlist: 0.1s | perf: 0.2s
 Timings: account: 0.0s | risk: 0.2s | decide: 7.4s | watchlist: 0.1s | perf: 0.3s
 
 === Run at 2026-09-20T14:07:27.856586 ===
