@@ -25856,3 +25856,6 @@
 {"timestamp": "2026-09-21T16:20:59.893661", "ticker": "COIN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 203.05, "reason": "liquidity filter: COIN average volume 277,695 < 500,000"}
 {"timestamp": "2026-09-21T16:22:49.227060", "ticker": "CRWD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 247.38, "reason": "liquidity filter: CRWD average volume 382,218 < 500,000"}
 {"timestamp": "2026-09-21T16:22:49.338657", "ticker": "COIN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 203.42, "reason": "liquidity filter: COIN average volume 277,704 < 500,000"}
+{"timestamp": "2026-09-21T16:24:35.083018", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 247.02, "reason": "liquidity filter: CRWD average volume 382,293 < 500,000"}
+{"timestamp": "2026-09-21T16:24:35.145108", "ticker": "COIN", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 203.19, "reason": "liquidity filter: COIN average volume 277,750 < 500,000"}
+{"timestamp": "2026-09-21T16:24:35.211460", "ticker": "AKAM", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 116.07, "reason": "liquidity filter: AKAM average volume 148,115 < 500,000"}
