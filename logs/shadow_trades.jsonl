@@ -25765,3 +25765,5 @@
 {"timestamp": "2026-09-21T15:10:52.260878", "ticker": "AAPL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 337.215, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
 {"timestamp": "2026-09-21T15:10:52.260995", "ticker": "ANET", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 202.635, "reason": "liquidity filter: ANET average volume 203,180 < 500,000"}
 {"timestamp": "2026-09-21T15:10:52.261068", "ticker": "ARE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 53.575, "reason": "stale candle for ARE (670.9m old; limit 30.0m)"}
+{"timestamp": "2026-09-21T15:12:40.474885", "ticker": "COIN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 205.075, "reason": "liquidity filter: COIN average volume 270,354 < 500,000"}
+{"timestamp": "2026-09-21T15:12:40.475139", "ticker": "CRWD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 247.395, "reason": "liquidity filter: CRWD average volume 378,967 < 500,000"}
