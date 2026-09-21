@@ -25690,3 +25690,5 @@
 {"timestamp": "2026-09-21T14:08:52.921530", "ticker": "CAT", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 809.32, "reason": "stale candle for CAT (608.9m old; limit 30.0m)"}
 {"timestamp": "2026-09-21T14:08:53.170403", "ticker": "COIN", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 204.0, "reason": "stale candle for COIN (608.9m old; limit 30.0m)"}
 {"timestamp": "2026-09-21T14:08:53.170607", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 245.61, "reason": "stale candle for CRWD (608.9m old; limit 30.0m)"}
+{"timestamp": "2026-09-21T14:10:57.235153", "ticker": "COIN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 204.875, "reason": "stale candle for COIN (611.0m old; limit 30.0m)"}
+{"timestamp": "2026-09-21T14:10:57.508093", "ticker": "CRWD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 246.03, "reason": "stale candle for CRWD (611.0m old; limit 30.0m)"}
