@@ -25630,3 +25630,6 @@
 {"timestamp": "2026-09-21T13:18:46.089626", "ticker": "META", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 679.52, "reason": "stale quote for META (2819.766216s old; limit 180s)"}
 {"timestamp": "2026-09-21T13:18:46.089787", "ticker": "AMD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 579.3, "reason": "stale quote for AMD (351.172366s old; limit 180s)"}
 {"timestamp": "2026-09-21T13:18:46.089928", "ticker": "ANET", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 199.43, "reason": "stale quote for ANET (235116.927271s old; limit 180s)"}
+{"timestamp": "2026-09-21T13:21:01.001082", "ticker": "BRK.B", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 509.66, "reason": "stale quote for BRK.B (235260.978782s old; limit 180s)"}
+{"timestamp": "2026-09-21T13:21:01.276421", "ticker": "COIN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 205.53, "reason": "stale quote for COIN (855.964946s old; limit 180s)"}
+{"timestamp": "2026-09-21T13:21:01.544382", "ticker": "CRWD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 237.61, "reason": "stale quote for CRWD (235261.352915s old; limit 180s)"}
