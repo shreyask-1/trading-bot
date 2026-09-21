@@ -25227,3 +25227,6 @@
 {"timestamp": "2026-09-21T08:40:35.840028", "ticker": "BRK.B", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 509.66, "reason": "stale quote for BRK.B (218435.970701s old; limit 180s)"}
 {"timestamp": "2026-09-21T08:40:35.881954", "ticker": "COHR", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 317.19, "reason": "stale quote for COHR (218437.42611s old; limit 180s)"}
 {"timestamp": "2026-09-21T08:40:35.926026", "ticker": "COIN", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 194.31, "reason": "stale quote for COIN (218451.150083s old; limit 180s)"}
+{"timestamp": "2026-09-21T08:42:52.096183", "ticker": "BRK.B", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 509.66, "reason": "stale quote for BRK.B (218572.075004s old; limit 180s)"}
+{"timestamp": "2026-09-21T08:42:52.338764", "ticker": "COIN", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 194.31, "reason": "stale quote for COIN (218587.415373s old; limit 180s)"}
+{"timestamp": "2026-09-21T08:42:52.580582", "ticker": "COHR", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 317.19, "reason": "stale quote for COHR (218573.975904s old; limit 180s)"}
