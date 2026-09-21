@@ -25931,3 +25931,6 @@
 {"timestamp": "2026-09-21T17:20:46.676832", "ticker": "AKAM", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 116.09, "reason": "liquidity filter: AKAM average volume 149,693 < 500,000"}
 {"timestamp": "2026-09-21T17:20:46.719504", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 247.17, "reason": "liquidity filter: CRWD average volume 384,073 < 500,000"}
 {"timestamp": "2026-09-21T17:20:46.811997", "ticker": "COIN", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 202.135, "reason": "liquidity filter: COIN average volume 278,571 < 500,000"}
+{"timestamp": "2026-09-21T17:22:56.119309", "ticker": "NVDA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 226.78, "reason": "market data unavailable for NVDA (bid/ask spread missing)"}
+{"timestamp": "2026-09-21T17:22:56.421176", "ticker": "CRWD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 246.845, "reason": "liquidity filter: CRWD average volume 384,292 < 500,000"}
+{"timestamp": "2026-09-21T17:22:56.487881", "ticker": "SWKS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 89.265, "reason": "liquidity filter: SWKS average volume 365,273 < 500,000"}
