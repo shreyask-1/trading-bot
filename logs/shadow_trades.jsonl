@@ -26036,3 +26036,6 @@
 {"timestamp": "2026-09-21T18:38:43.652934", "ticker": "COIN", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 202.61, "reason": "liquidity filter: COIN average volume 279,926 < 500,000"}
 {"timestamp": "2026-09-21T18:38:43.797879", "ticker": "AKAM", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 116.14, "reason": "liquidity filter: AKAM average volume 151,590 < 500,000"}
 {"timestamp": "2026-09-21T18:38:43.914700", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 248.65, "reason": "liquidity filter: CRWD average volume 388,578 < 500,000"}
+{"timestamp": "2026-09-21T18:40:43.481430", "ticker": "AKAM", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 116.34, "reason": "liquidity filter: AKAM average volume 151,670 < 500,000"}
+{"timestamp": "2026-09-21T18:40:43.777478", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 248.64, "reason": "liquidity filter: CRWD average volume 388,620 < 500,000"}
+{"timestamp": "2026-09-21T18:40:43.777652", "ticker": "TEL", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 210.775, "reason": "liquidity filter: TEL average volume 118,440 < 500,000"}
