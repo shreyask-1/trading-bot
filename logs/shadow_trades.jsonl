@@ -26048,3 +26048,6 @@
 {"timestamp": "2026-09-21T18:46:30.052600", "ticker": "COIN", "action": "buy", "engine": "gemini", "confidence": 99, "conviction": 10, "price": 202.02, "reason": "liquidity filter: COIN average volume 280,104 < 500,000"}
 {"timestamp": "2026-09-21T18:46:30.095801", "ticker": "AKAM", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 116.34, "reason": "liquidity filter: AKAM average volume 151,768 < 500,000"}
 {"timestamp": "2026-09-21T18:46:30.142599", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 248.94, "reason": "liquidity filter: CRWD average volume 388,918 < 500,000"}
+{"timestamp": "2026-09-21T18:48:36.385595", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 249.07, "reason": "liquidity filter: CRWD average volume 388,989 < 500,000"}
+{"timestamp": "2026-09-21T18:48:36.385756", "ticker": "ARE", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 54.055, "reason": "liquidity filter: ARE average volume 95,393 < 500,000"}
+{"timestamp": "2026-09-21T18:48:36.385884", "ticker": "INTC", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 121.2, "reason": "market data unavailable for INTC (bid/ask spread missing)"}
