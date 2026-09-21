@@ -26160,3 +26160,5 @@
 {"timestamp": "2026-09-21T21:31:01.196621", "ticker": "C", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 135.05, "reason": "stale quote for C (5463.510329s old; limit 180s)"}
 {"timestamp": "2026-09-21T21:31:01.412125", "ticker": "COIN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 201.03, "reason": "stale quote for COIN (5466.013027s old; limit 180s)"}
 {"timestamp": "2026-09-21T21:31:01.461184", "ticker": "CRWD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 9, "price": 249.335, "reason": "stale quote for CRWD (5441.688832s old; limit 180s)"}
+{"timestamp": "2026-09-21T21:32:36.610480", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 249.335, "reason": "stale quote for CRWD (5557.352276s old; limit 180s)"}
+{"timestamp": "2026-09-21T21:32:36.721567", "ticker": "COIN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 201.03, "reason": "stale quote for COIN (5561.394647s old; limit 180s)"}
