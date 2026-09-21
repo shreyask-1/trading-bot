@@ -26258,3 +26258,6 @@
 {"timestamp": "2026-09-21T22:54:59.955825", "ticker": "C", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 135.05, "reason": "stale quote for C (10502.249101s old; limit 180s)"}
 {"timestamp": "2026-09-21T22:55:00.202765", "ticker": "COIN", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 201.03, "reason": "stale quote for COIN (10504.776573s old; limit 180s)"}
 {"timestamp": "2026-09-21T22:55:00.469032", "ticker": "CRWD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 9, "price": 249.335, "reason": "stale quote for CRWD (10501.112487s old; limit 180s)"}
+{"timestamp": "2026-09-21T22:56:41.678760", "ticker": "AKAM", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 117.435, "reason": "stale quote for AKAM (10601.555013s old; limit 180s)"}
+{"timestamp": "2026-09-21T22:56:41.989490", "ticker": "CHRW", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 152.855, "reason": "stale quote for CHRW (10623.900623s old; limit 180s)"}
+{"timestamp": "2026-09-21T22:56:42.291877", "ticker": "CSCO", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 111.46, "reason": "stale quote for CSCO (10609.238508s old; limit 180s)"}
