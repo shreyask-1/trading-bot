@@ -25759,3 +25759,6 @@
 {"timestamp": "2026-09-21T15:04:45.917362", "ticker": "CAT", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 817.665, "reason": "stale candle for CAT (664.8m old; limit 30.0m)"}
 {"timestamp": "2026-09-21T15:04:45.917538", "ticker": "CIEN", "action": "buy", "engine": "gemini", "confidence": 71, "conviction": 7, "price": 361.55, "reason": "stale candle for CIEN (664.8m old; limit 30.0m)"}
 {"timestamp": "2026-09-21T15:04:45.917648", "ticker": "CHRW", "action": "buy", "engine": "gemini", "confidence": 69, "conviction": 7, "price": 151.19, "reason": "stale candle for CHRW (664.8m old; limit 30.0m)"}
+{"timestamp": "2026-09-21T15:08:49.840188", "ticker": "COHR", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 328.7, "reason": "liquidity filter: COHR average volume 193,514 < 500,000"}
+{"timestamp": "2026-09-21T15:08:49.840375", "ticker": "COIN", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 206.1, "reason": "liquidity filter: COIN average volume 269,871 < 500,000"}
+{"timestamp": "2026-09-21T15:08:49.941696", "ticker": "CAT", "action": "buy", "engine": "gemini", "confidence": 74, "conviction": 7, "price": 819.11, "reason": "liquidity filter: CAT average volume 78,646 < 500,000"}
