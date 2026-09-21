@@ -25523,3 +25523,6 @@
 {"timestamp": "2026-09-21T12:02:31.293147", "ticker": "APA", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 44.86, "reason": "stale quote for APA (230549.062521s old; limit 180s)"}
 {"timestamp": "2026-09-21T12:04:37.011694", "ticker": "BRK.B", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 509.66, "reason": "stale quote for BRK.B (230677.133282s old; limit 180s)"}
 {"timestamp": "2026-09-21T12:04:37.011924", "ticker": "CAT", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 808.56, "reason": "stale quote for CAT (230673.731269s old; limit 180s)"}
+{"timestamp": "2026-09-21T12:06:34.387598", "ticker": "BRK.B", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 509.66, "reason": "stale quote for BRK.B (230794.517822s old; limit 180s)"}
+{"timestamp": "2026-09-21T12:06:34.440733", "ticker": "CAT", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 808.56, "reason": "stale quote for CAT (230798.854576s old; limit 180s)"}
+{"timestamp": "2026-09-21T12:06:34.440944", "ticker": "CHRW", "action": "buy", "engine": "gemini", "confidence": 72, "conviction": 7, "price": 152.98, "reason": "stale quote for CHRW (230794.070714s old; limit 180s)"}
