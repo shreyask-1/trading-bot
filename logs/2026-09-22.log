@@ -420,6 +420,9 @@ Timings: account: 0.0s | risk: 0.0s | decide: 2.7s | watchlist: 0.0s | perf: 0.3
 === Run at 2026-09-22T00:25:17.906592 ===
 Build fingerprint: 4f68550affe5
 Current time: 2026-09-21 08:25 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+=== Run at 2026-09-22T00:24:28.415561 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-21 08:24 PM EDT | Market open (per Alpaca): False | Session: CLOSED
 Account value: $99,311.19
 Cash: $99,311.19 | Holdings (0): none
 Sector exposure (cached): unavailable (no holdings)
@@ -427,6 +430,7 @@ Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
 Risk state: peak $99,703.60 | drawdown 0.39% | today +0.00% | halted: False
 Market regime: BULLISH (position-size multiplier: 100% incl. circuit breaker 100%)
 News: fetched 158, 1 new after dedup, 0 ticker(s) matched.
+News: fetched 158, 2 new after dedup, 0 ticker(s) matched.
 Quant pre-screen: 30/65 candidates passed.
 Gemini proposed 2 trade(s) meeting the conviction bar.
 Gemini calls used today (all models combined): 384
@@ -443,6 +447,8 @@ Market closed (overnight): queued 12 trade idea(s) for next-morning verification
   -> queued AMAT buy (conf 88, stop 440.0, tp 500.0)
   -> queued AVGO buy (conf 85, stop 353.0, tp 372.50000000000006)
   -> queued AKAM buy (conf 82, stop 113.0, tp 125.0)
+  -> queued AVGO buy (conf 88, stop 350.0, tp 385.00000000000006)
+  -> queued AKAM buy (conf 85, stop 110.0, tp 125.0)
 Dashboard watchlist synced (2 symbols) for news/headlines.
 Ending portfolio value: $99,311.19
 Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
@@ -452,4 +458,5 @@ Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealize
 Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
 Shadow report: 26350 shadow candidate(s), 204 rejection group(s)
 Timings: account: 0.0s | risk: 0.0s | decide: 2.9s | watchlist: 0.0s | perf: 0.3s
+Timings: account: 0.0s | risk: 0.4s | decide: 7.4s | watchlist: 0.2s | perf: 0.4s
 
