@@ -26348,3 +26348,5 @@
 {"timestamp": "2026-09-21T23:58:38.393795", "ticker": "AKAM", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 117.435, "reason": "stale quote for AKAM (14318.295072s old; limit 180s)"}
 {"timestamp": "2026-09-21T23:58:38.643220", "ticker": "CSCO", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 111.46, "reason": "stale quote for CSCO (14325.633367s old; limit 180s)"}
 {"timestamp": "2026-09-21T23:58:38.887257", "ticker": "CHRW", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 152.855, "reason": "stale quote for CHRW (14340.850805s old; limit 180s)"}
+{"timestamp": "2026-09-22T08:00:58.356369", "ticker": "DHR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 215.82, "reason": "stale quote for DHR (43244.373645s old; limit 180s)"}
+{"timestamp": "2026-09-22T08:00:58.363408", "ticker": "ELV", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 409.32, "reason": "stale quote for ELV (43244.707s old; limit 180s)"}
