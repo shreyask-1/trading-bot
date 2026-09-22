@@ -26777,3 +26777,5 @@
 {"timestamp": "2026-09-22T13:26:54.004877", "ticker": "DHR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 215.82, "reason": "stale quote for DHR (62820.985275s old; limit 180s)"}
 {"timestamp": "2026-09-22T13:26:54.129690", "ticker": "EXPD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 192.07, "reason": "stale quote for EXPD (62820.008817s old; limit 180s)"}
 {"timestamp": "2026-09-22T13:26:54.253528", "ticker": "FAST", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 49.645, "reason": "stale quote for FAST (62818.975124s old; limit 180s)"}
+{"timestamp": "2026-09-22T13:28:50.499707", "ticker": "ELV", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 409.32, "reason": "stale quote for ELV (62937.096405s old; limit 180s)"}
+{"timestamp": "2026-09-22T13:28:50.842835", "ticker": "GOOGL", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 356.5, "reason": "stale quote for GOOGL (1937.318908s old; limit 180s)"}
