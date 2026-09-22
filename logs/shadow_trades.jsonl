@@ -26718,3 +26718,6 @@
 {"timestamp": "2026-09-22T12:56:35.732202", "ticker": "ELV", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 409.32, "reason": "stale quote for ELV (61002.382585s old; limit 180s)"}
 {"timestamp": "2026-09-22T12:58:30.816083", "ticker": "GOOGL", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 356.5, "reason": "market data unavailable for GOOGL (bid/ask spread missing)"}
 {"timestamp": "2026-09-22T12:58:30.911202", "ticker": "GDDY", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 104.73, "reason": "stale quote for GDDY (61119.178474s old; limit 180s)"}
+{"timestamp": "2026-09-22T13:01:02.348482", "ticker": "DHR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 215.82, "reason": "stale quote for DHR (61248.002229s old; limit 180s)"}
+{"timestamp": "2026-09-22T13:01:02.373888", "ticker": "ELV", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 409.32, "reason": "stale quote for ELV (61248.207714s old; limit 180s)"}
+{"timestamp": "2026-09-22T13:01:02.383635", "ticker": "EMR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 5, "price": 151.74, "reason": "stale quote for EMR (61246.173224s old; limit 180s)"}
