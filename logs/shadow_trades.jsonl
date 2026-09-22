@@ -27716,3 +27716,6 @@
 {"timestamp": "2026-09-22T19:56:36.740786", "ticker": "DHR", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 221.275, "reason": "liquidity filter: DHR average volume 192,983 < 500,000"}
 {"timestamp": "2026-09-22T19:56:37.101299", "ticker": "GNRC", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 205.66, "reason": "liquidity filter: GNRC average volume 76,711 < 500,000"}
 {"timestamp": "2026-09-22T19:56:37.383351", "ticker": "HCA", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 439.265, "reason": "liquidity filter: HCA average volume 70,229 < 500,000"}
+{"timestamp": "2026-09-22T22:32:44.339402", "ticker": "QCOM", "action": "buy", "engine": "gemini", "confidence": 95, "conviction": 10, "price": 198.255, "reason": "stale quote for QCOM (9161.114196s old; limit 180s)"}
+{"timestamp": "2026-09-22T22:32:44.339525", "ticker": "DHR", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 221.21, "reason": "stale quote for DHR (9167.32626s old; limit 180s)"}
+{"timestamp": "2026-09-22T22:32:44.339605", "ticker": "ARE", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 53.855, "reason": "stale quote for ARE (9164.538257s old; limit 180s)"}
