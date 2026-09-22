@@ -27302,3 +27302,5 @@
 {"timestamp": "2026-09-22T16:58:46.280996", "ticker": "EW", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 89.575, "reason": "liquidity filter: EW average volume 134,862 < 500,000"}
 {"timestamp": "2026-09-22T16:58:46.529160", "ticker": "FTNT", "action": "buy", "engine": "gemini", "confidence": 83, "conviction": 8, "price": 173.485, "reason": "liquidity filter: FTNT average volume 174,468 < 500,000"}
 {"timestamp": "2026-09-22T16:58:46.787316", "ticker": "CRL", "action": "buy", "engine": "gemini", "confidence": 81, "conviction": 8, "price": 288.23, "reason": "liquidity filter: CRL average volume 61,004 < 500,000"}
+{"timestamp": "2026-09-22T17:01:08.170105", "ticker": "DHR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 222.33, "reason": "liquidity filter: DHR average volume 184,497 < 500,000"}
+{"timestamp": "2026-09-22T17:01:08.170308", "ticker": "CRL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 288.46, "reason": "liquidity filter: CRL average volume 61,010 < 500,000"}
