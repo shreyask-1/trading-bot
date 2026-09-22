@@ -26859,3 +26859,4 @@
 {"timestamp": "2026-09-22T13:57:00.035239", "ticker": "GILD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 149.23, "reason": "liquidity filter: GILD average volume 171,976 < 500,000"}
 {"timestamp": "2026-09-22T13:58:59.791429", "ticker": "DAL", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 83.925, "reason": "liquidity filter: DAL average volume 229,294 < 500,000"}
 {"timestamp": "2026-09-22T13:58:59.858430", "ticker": "DHR", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 215.45, "reason": "liquidity filter: DHR average volume 179,546 < 500,000"}
+{"timestamp": "2026-09-22T14:04:52.557470", "ticker": "EW", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 89.2, "reason": "liquidity filter: EW average volume 132,008 < 500,000"}
