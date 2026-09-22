@@ -26700,3 +26700,5 @@
 {"timestamp": "2026-09-22T12:41:02.619181", "ticker": "FAST", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 49.645, "reason": "stale quote for FAST (60067.327752s old; limit 180s)"}
 {"timestamp": "2026-09-22T12:41:02.665275", "ticker": "DELL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 575.27, "reason": "stale quote for DELL (60043.644373s old; limit 180s)"}
 {"timestamp": "2026-09-22T12:41:02.695851", "ticker": "DGX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 244.93, "reason": "stale quote for DGX (60043.399405s old; limit 180s)"}
+{"timestamp": "2026-09-22T12:42:37.371445", "ticker": "GOOGL", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 356.29, "reason": "market data unavailable for GOOGL (bid/ask spread missing)"}
+{"timestamp": "2026-09-22T12:42:37.555165", "ticker": "GDDY", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 104.73, "reason": "stale quote for GDDY (60165.752132s old; limit 180s)"}
