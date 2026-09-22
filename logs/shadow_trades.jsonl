@@ -27504,3 +27504,6 @@
 {"timestamp": "2026-09-22T17:56:56.656986", "ticker": "DHR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 221.985, "reason": "liquidity filter: DHR average volume 186,499 < 500,000"}
 {"timestamp": "2026-09-22T17:56:56.940338", "ticker": "GILD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 152.88, "reason": "liquidity filter: GILD average volume 179,663 < 500,000"}
 {"timestamp": "2026-09-22T17:56:57.233185", "ticker": "FAST", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 49.88, "reason": "liquidity filter: FAST average volume 328,954 < 500,000"}
+{"timestamp": "2026-09-22T17:58:53.092401", "ticker": "DHR", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 221.985, "reason": "liquidity filter: DHR average volume 186,560 < 500,000"}
+{"timestamp": "2026-09-22T17:58:53.482364", "ticker": "GNRC", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 207.17, "reason": "liquidity filter: GNRC average volume 74,813 < 500,000"}
+{"timestamp": "2026-09-22T17:58:53.804713", "ticker": "HCA", "action": "buy", "engine": "gemini", "confidence": 83, "conviction": 8, "price": 439.21, "reason": "liquidity filter: HCA average volume 68,834 < 500,000"}
