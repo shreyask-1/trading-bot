@@ -26744,3 +26744,7 @@
 {"timestamp": "2026-09-22T13:12:37.733953", "ticker": "GLW", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 159.15, "reason": "stale quote for GLW (61968.721112s old; limit 180s)"}
 {"timestamp": "2026-09-22T13:12:37.989849", "ticker": "ETN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 435.37, "reason": "stale quote for ETN (61958.45937s old; limit 180s)"}
 {"timestamp": "2026-09-22T13:12:38.237142", "ticker": "GDDY", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 104.73, "reason": "stale quote for GDDY (61966.390151s old; limit 180s)"}
+{"timestamp": "2026-09-22T13:14:52.125122", "ticker": "AAPL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 340.35, "reason": "stale quote for AAPL (1604.519229s old; limit 180s)"}
+{"timestamp": "2026-09-22T13:14:52.155781", "ticker": "NTAP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 198.195, "reason": "stale quote for NTAP (62075.268446s old; limit 180s)"}
+{"timestamp": "2026-09-22T13:14:52.313846", "ticker": "DHR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 215.82, "reason": "stale quote for DHR (62099.284294s old; limit 180s)"}
+{"timestamp": "2026-09-22T13:14:52.314012", "ticker": "AMD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 606.12, "reason": "stale quote for AMD (1813.163684s old; limit 180s)"}
