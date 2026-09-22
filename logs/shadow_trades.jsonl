@@ -26600,3 +26600,6 @@
 {"timestamp": "2026-09-22T11:38:49.815450", "ticker": "DHR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 215.82, "reason": "stale quote for DHR (56336.773491s old; limit 180s)"}
 {"timestamp": "2026-09-22T11:38:49.964034", "ticker": "EXPD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 192.07, "reason": "stale quote for EXPD (56335.828198s old; limit 180s)"}
 {"timestamp": "2026-09-22T11:38:50.127949", "ticker": "FAST", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 49.645, "reason": "stale quote for FAST (56334.816915s old; limit 180s)"}
+{"timestamp": "2026-09-22T11:42:40.331116", "ticker": "FFIV", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 449.945, "reason": "stale quote for FFIV (56560.215316s old; limit 180s)"}
+{"timestamp": "2026-09-22T11:42:40.618088", "ticker": "GDDY", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 104.73, "reason": "stale quote for GDDY (56568.740075s old; limit 180s)"}
+{"timestamp": "2026-09-22T11:42:40.915305", "ticker": "ETN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 435.37, "reason": "stale quote for ETN (56561.345339s old; limit 180s)"}
