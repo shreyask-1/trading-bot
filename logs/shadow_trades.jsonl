@@ -26707,3 +26707,6 @@
 {"timestamp": "2026-09-22T12:46:34.739408", "ticker": "ETN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 435.37, "reason": "stale quote for ETN (60395.360701s old; limit 180s)"}
 {"timestamp": "2026-09-22T12:48:35.203210", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 340.35, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
 {"timestamp": "2026-09-22T12:48:35.203356", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 249.335, "reason": "stale quote for CRWD (60513.251371s old; limit 180s)"}
+{"timestamp": "2026-09-22T12:50:39.614223", "ticker": "FFIV", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 449.945, "reason": "stale quote for FFIV (60639.594005s old; limit 180s)"}
+{"timestamp": "2026-09-22T12:50:39.727138", "ticker": "FTNT", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 175.265, "reason": "stale quote for FTNT (60652.668175s old; limit 180s)"}
+{"timestamp": "2026-09-22T12:50:39.847883", "ticker": "ETN", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 435.37, "reason": "stale quote for ETN (60640.412174s old; limit 180s)"}
