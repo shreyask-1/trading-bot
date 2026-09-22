@@ -27290,3 +27290,5 @@
 {"timestamp": "2026-09-22T16:52:56.372855", "ticker": "FFIV", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 449.11, "reason": "liquidity filter: FFIV average volume 27,034 < 500,000"}
 {"timestamp": "2026-09-22T16:52:56.659871", "ticker": "FTNT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 173.59, "reason": "liquidity filter: FTNT average volume 174,373 < 500,000"}
 {"timestamp": "2026-09-22T16:52:56.904450", "ticker": "GILD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 152.915, "reason": "liquidity filter: GILD average volume 177,885 < 500,000"}
+{"timestamp": "2026-09-22T16:54:57.568241", "ticker": "CRL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 288.3, "reason": "liquidity filter: CRL average volume 60,989 < 500,000"}
+{"timestamp": "2026-09-22T16:54:57.712717", "ticker": "FTNT", "action": "buy", "engine": "gemini", "confidence": 83, "conviction": 8, "price": 173.36, "reason": "liquidity filter: FTNT average volume 174,406 < 500,000"}
