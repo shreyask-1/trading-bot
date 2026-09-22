@@ -27546,3 +27546,6 @@
 {"timestamp": "2026-09-22T18:13:02.330852", "ticker": "FTNT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 174.52, "reason": "liquidity filter: FTNT average volume 175,457 < 500,000"}
 {"timestamp": "2026-09-22T18:13:02.644854", "ticker": "GDDY", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 100.315, "reason": "liquidity filter: GDDY average volume 104,656 < 500,000"}
 {"timestamp": "2026-09-22T18:13:02.975324", "ticker": "GILD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 9, "price": 152.525, "reason": "liquidity filter: GILD average volume 182,258 < 500,000"}
+{"timestamp": "2026-09-22T18:14:33.845839", "ticker": "GILD", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 152.585, "reason": "liquidity filter: GILD average volume 182,278 < 500,000"}
+{"timestamp": "2026-09-22T18:14:33.846042", "ticker": "HCA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 439.95, "reason": "liquidity filter: HCA average volume 68,978 < 500,000"}
+{"timestamp": "2026-09-22T18:14:33.905266", "ticker": "FTNT", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 174.8, "reason": "liquidity filter: FTNT average volume 175,469 < 500,000"}
