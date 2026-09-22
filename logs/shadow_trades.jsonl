@@ -27487,3 +27487,4 @@
 {"timestamp": "2026-09-22T17:50:59.434159", "ticker": "DHR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 221.92, "reason": "liquidity filter: DHR average volume 186,192 < 500,000"}
 {"timestamp": "2026-09-22T17:50:59.697042", "ticker": "GILD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 152.545, "reason": "liquidity filter: GILD average volume 179,411 < 500,000"}
 {"timestamp": "2026-09-22T17:51:00.124928", "ticker": "FAST", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 49.76, "reason": "liquidity filter: FAST average volume 328,764 < 500,000"}
+{"timestamp": "2026-09-22T17:52:53.987654", "ticker": "DHR", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 221.75, "reason": "liquidity filter: DHR average volume 186,286 < 500,000"}
