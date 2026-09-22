@@ -27605,3 +27605,6 @@
 {"timestamp": "2026-09-22T18:37:01.073703", "ticker": "DHR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 221.345, "reason": "liquidity filter: DHR average volume 187,698 < 500,000"}
 {"timestamp": "2026-09-22T18:37:01.441618", "ticker": "FFIV", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 450.905, "reason": "liquidity filter: FFIV average volume 27,232 < 500,000"}
 {"timestamp": "2026-09-22T18:37:01.812431", "ticker": "FAST", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 49.775, "reason": "liquidity filter: FAST average volume 330,344 < 500,000"}
+{"timestamp": "2026-09-22T18:38:39.516751", "ticker": "GILD", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 152.47, "reason": "liquidity filter: GILD average volume 182,765 < 500,000"}
+{"timestamp": "2026-09-22T18:38:39.820761", "ticker": "HCA", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 440.78, "reason": "liquidity filter: HCA average volume 69,174 < 500,000"}
+{"timestamp": "2026-09-22T18:38:40.146505", "ticker": "DHR", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 221.345, "reason": "stale quote for DHR (219.544134s old; limit 180s)"}
