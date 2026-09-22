@@ -26705,3 +26705,5 @@
 {"timestamp": "2026-09-22T12:44:33.634336", "ticker": "GOOGL", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 356.32, "reason": "market data unavailable for GOOGL (bid/ask spread missing)"}
 {"timestamp": "2026-09-22T12:44:33.877007", "ticker": "DHR", "action": "buy", "engine": "gemini", "confidence": 76, "conviction": 8, "price": 215.82, "reason": "stale quote for DHR (60280.766331s old; limit 180s)"}
 {"timestamp": "2026-09-22T12:46:34.739408", "ticker": "ETN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 435.37, "reason": "stale quote for ETN (60395.360701s old; limit 180s)"}
+{"timestamp": "2026-09-22T12:48:35.203210", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 340.35, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
+{"timestamp": "2026-09-22T12:48:35.203356", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 249.335, "reason": "stale quote for CRWD (60513.251371s old; limit 180s)"}
