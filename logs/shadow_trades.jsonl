@@ -27726,3 +27726,6 @@
 {"timestamp": "2026-09-23T17:36:20.203019", "ticker": "KEYS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 348.395, "reason": "liquidity filter: KEYS average volume 54,586 < 500,000"}
 {"timestamp": "2026-09-23T17:36:20.203204", "ticker": "MSFT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 5, "price": 499.38, "reason": "market data unavailable for MSFT (bid/ask spread missing)"}
 {"timestamp": "2026-09-23T17:36:20.203356", "ticker": "MU", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 5, "price": 1070.0, "reason": "market data unavailable for MU (bid/ask spread missing)"}
+{"timestamp": "2026-09-23T23:21:14.139164", "ticker": "ON", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 74.125, "reason": "stale quote for ON (12071.460206s old; limit 180s)"}
+{"timestamp": "2026-09-23T23:21:14.139320", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 336.87, "reason": "stale quote for AAPL (12072.281488s old; limit 180s)"}
+{"timestamp": "2026-09-23T23:21:14.139447", "ticker": "NVDA", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 225.62, "reason": "stale quote for NVDA (12069.347965s old; limit 180s)"}
