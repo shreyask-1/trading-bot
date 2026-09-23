@@ -1,0 +1,36 @@
+=== Run at 2026-09-23T01:04:12.269009 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-22 09:04 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+Account value: $99,311.19
+Cash: $99,311.19 | Holdings (0): none
+Sector exposure (cached): unavailable (no holdings)
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Risk state: peak $99,703.60 | drawdown 0.39% | today +0.00% | halted: False
+Market regime: BULLISH (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 21 new after dedup, 8 ticker(s) matched.
+Quant pre-screen: 18/22 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 253
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued QCOM buy (conf 95, stop 170.72, tp 199.11)
+  -> queued HCA buy (conf 92, stop 425.0, tp 465.00000000000006)
+  -> queued AVGO buy (conf 92, stop 335.89, tp 395.0)
+  -> queued TECH buy (conf 92, stop 72.11, tp 73.5)
+  -> queued DHR buy (conf 91, stop 199.16, tp 222.35)
+  -> queued CDNS buy (conf 88, stop 295.63, tp 315.0)
+  -> queued ARE buy (conf 88, stop 49.24, tp 57.23)
+  -> queued GEV buy (conf 88, stop 930.0, tp 980.0)
+  -> queued TXN buy (conf 88, stop 255.94, tp 290.0)
+  -> queued MPWR buy (conf 85, stop 1320.0, tp 1450.0)
+  -> queued ON buy (conf 85, stop 65.8, tp 80.0)
+  -> queued GNRC buy (conf 84, stop 198.0, tp 220.0)
+Dashboard watchlist synced (10 symbols) for news/headlines.
+Ending portfolio value: $99,311.19
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.45% | Max drawdown 0.94% | Daily Sharpe 1.49 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 0 | Equity $99,311.19
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+0.00 (0 open) | Books: legacy: realized $-1,705.68, unrealized $+0.00
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 27721 shadow candidate(s), 39 rejection group(s)
+Timings: account: 0.0s | risk: 0.4s | decide: 16.4s | watchlist: 0.2s | perf: 0.4s
+
