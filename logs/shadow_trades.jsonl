@@ -27723,3 +27723,6 @@
 {"timestamp": "2026-09-23T12:38:49.751724", "ticker": "HCA", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 438.21, "reason": "stale quote for HCA (59935.872048s old; limit 180s)"}
 {"timestamp": "2026-09-23T12:38:49.751834", "ticker": "TECH", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 72.55, "reason": "stale quote for TECH (59934.957986s old; limit 180s)"}
 {"timestamp": "2026-09-23T12:38:49.751936", "ticker": "ARE", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 53.855, "reason": "stale quote for ARE (59933.346694s old; limit 180s)"}
+{"timestamp": "2026-09-23T17:36:20.203019", "ticker": "KEYS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 348.395, "reason": "liquidity filter: KEYS average volume 54,586 < 500,000"}
+{"timestamp": "2026-09-23T17:36:20.203204", "ticker": "MSFT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 5, "price": 499.38, "reason": "market data unavailable for MSFT (bid/ask spread missing)"}
+{"timestamp": "2026-09-23T17:36:20.203356", "ticker": "MU", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 5, "price": 1070.0, "reason": "market data unavailable for MU (bid/ask spread missing)"}
