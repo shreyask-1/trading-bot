@@ -27737,3 +27737,5 @@
 {"timestamp": "2026-09-24T21:54:42.622511", "ticker": "ON", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 73.21, "reason": "stale quote for ON (6874.247199s old; limit 180s)"}
 {"timestamp": "2026-09-25T10:50:58.006102", "ticker": "ON", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 73.21, "reason": "stale quote for ON (53447.532068s old; limit 180s)"}
 {"timestamp": "2026-09-25T10:50:58.006229", "ticker": "MRK", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 148.03, "reason": "stale quote for MRK (53451.472256s old; limit 180s)"}
+{"timestamp": "2026-09-25T15:41:17.850080", "ticker": "NTAP", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 199.425, "reason": "stale quote for NTAP (586.772946s old; limit 180s)"}
+{"timestamp": "2026-09-25T15:41:17.850290", "ticker": "ON", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 75.985, "reason": "liquidity filter: ON average volume 424,418 < 500,000"}
