@@ -1,0 +1,30 @@
+=== Run at 2026-09-25T00:10:08.957964 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-09-24 08:10 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+Account value: $99,311.19
+Cash: $99,311.19 | Holdings (0): none
+Sector exposure (cached): unavailable (no holdings)
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Risk state: peak $99,703.60 | drawdown 0.39% | today +0.00% | halted: False
+Market regime: BULLISH (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 38 new after dedup, 5 ticker(s) matched.
+Quant pre-screen: 13/19 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 4
+Market closed (overnight): queued 6 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued AVGO buy (conf 100.0, stop None, tp None)
+  -> queued CDNS buy (conf 60.0, stop None, tp None)
+  -> queued META buy (conf 85, stop 743.04, tp 795.0)
+  -> queued ON buy (conf 90, stop 68.5, tp 78.0)
+  -> queued NTAP buy (conf 88, stop 185.0, tp 208.50000000000003)
+  -> queued NVDA buy (conf 84, stop 210.0, tp 235.0)
+Dashboard watchlist synced (7 symbols) for news/headlines.
+Ending portfolio value: $99,311.19
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.45% | Max drawdown 0.94% | Daily Sharpe 1.45 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 0 | Equity $99,311.19
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+0.00 (0 open) | Books: legacy: realized $-1,705.68, unrealized $+0.00
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 27737 shadow candidate(s), 51 rejection group(s)
+Timings: account: 0.0s | risk: 0.2s | decide: 10.9s | watchlist: 0.1s | perf: 0.3s
+
