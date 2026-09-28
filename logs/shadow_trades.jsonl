@@ -27745,3 +27745,6 @@
 {"timestamp": "2026-09-25T19:43:40.384713", "ticker": "WBD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 30.85, "reason": "market data unavailable for WBD (bid/ask spread missing)"}
 {"timestamp": "2026-09-25T19:43:40.384815", "ticker": "MRNA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 198.17, "reason": "liquidity filter: MRNA average volume 431,973 < 500,000"}
 {"timestamp": "2026-09-25T19:43:40.384908", "ticker": "INTC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 123.21, "reason": "market data unavailable for INTC (bid/ask spread missing)"}
+{"timestamp": "2026-09-28T09:08:27.088820", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 264.28, "reason": "stale quote for ABBV (220095.682262s old; limit 180s)"}
+{"timestamp": "2026-09-28T09:08:27.089013", "ticker": "CRL", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 292.78, "reason": "stale quote for CRL (220107.280775s old; limit 180s)"}
+{"timestamp": "2026-09-28T09:08:27.089192", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 252.1, "reason": "stale quote for CRWD (220095.972415s old; limit 180s)"}
