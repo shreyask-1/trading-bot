@@ -27748,3 +27748,6 @@
 {"timestamp": "2026-09-28T09:08:27.088820", "ticker": "ABBV", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 264.28, "reason": "stale quote for ABBV (220095.682262s old; limit 180s)"}
 {"timestamp": "2026-09-28T09:08:27.089013", "ticker": "CRL", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 292.78, "reason": "stale quote for CRL (220107.280775s old; limit 180s)"}
 {"timestamp": "2026-09-28T09:08:27.089192", "ticker": "CRWD", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 252.1, "reason": "stale quote for CRWD (220095.972415s old; limit 180s)"}
+{"timestamp": "2026-09-28T17:53:21.920596", "ticker": "IT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 186.465, "reason": "stale quote for IT (229.965829s old; limit 180s)"}
+{"timestamp": "2026-09-28T17:53:21.920771", "ticker": "NVDA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 230.205, "reason": "market data unavailable for NVDA (bid/ask spread missing)"}
+{"timestamp": "2026-09-28T17:53:21.920918", "ticker": "HUM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 393.46, "reason": "stale quote for HUM (769.828205s old; limit 180s)"}
