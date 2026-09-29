@@ -27754,3 +27754,5 @@
 {"timestamp": "2026-09-28T22:46:16.603262", "ticker": "IDXX", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 529.0, "reason": "stale quote for IDXX (9977.218993s old; limit 180s)"}
 {"timestamp": "2026-09-28T22:46:16.603449", "ticker": "HUBB", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 466.13, "reason": "stale quote for HUBB (9993.921951s old; limit 180s)"}
 {"timestamp": "2026-09-28T22:46:16.603598", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 331.27, "reason": "stale quote for NDSN (9979.267568s old; limit 180s)"}
+{"timestamp": "2026-09-29T09:18:15.926914", "ticker": "NDSN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 331.27, "reason": "stale quote for NDSN (47896.859192s old; limit 180s)"}
+{"timestamp": "2026-09-29T09:18:15.927081", "ticker": "DE", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 689.67, "reason": "stale quote for DE (47897.171503s old; limit 180s)"}
