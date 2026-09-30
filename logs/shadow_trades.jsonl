@@ -27758,3 +27758,6 @@
 {"timestamp": "2026-09-29T09:18:15.927081", "ticker": "DE", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 689.67, "reason": "stale quote for DE (47897.171503s old; limit 180s)"}
 {"timestamp": "2026-09-29T16:15:53.938590", "ticker": "CCL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 24.8, "reason": "market data unavailable for CCL (bid/ask spread missing)"}
 {"timestamp": "2026-09-29T16:15:53.938725", "ticker": "NTAP", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 205.59, "reason": "liquidity filter: NTAP average volume 123,192 < 500,000"}
+{"timestamp": "2026-09-30T13:12:02.284332", "ticker": "MSFT", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 510.51, "reason": "stale quote for MSFT (1036.854689s old; limit 180s)"}
+{"timestamp": "2026-09-30T13:12:02.284443", "ticker": "ON", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 75.945, "reason": "stale quote for ON (61916.629516s old; limit 180s)"}
+{"timestamp": "2026-09-30T13:12:02.284525", "ticker": "VLTO", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 96.66, "reason": "stale quote for VLTO (61921.1821s old; limit 180s)"}
