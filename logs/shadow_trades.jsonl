@@ -27761,3 +27761,6 @@
 {"timestamp": "2026-09-30T13:12:02.284332", "ticker": "MSFT", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 510.51, "reason": "stale quote for MSFT (1036.854689s old; limit 180s)"}
 {"timestamp": "2026-09-30T13:12:02.284443", "ticker": "ON", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 75.945, "reason": "stale quote for ON (61916.629516s old; limit 180s)"}
 {"timestamp": "2026-09-30T13:12:02.284525", "ticker": "VLTO", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 96.66, "reason": "stale quote for VLTO (61921.1821s old; limit 180s)"}
+{"timestamp": "2026-09-30T18:43:38.926715", "ticker": "NVDA", "action": "buy", "engine": "gemini", "confidence": 95, "conviction": 10, "price": 230.58, "reason": "market data unavailable for NVDA (bid/ask spread missing)"}
+{"timestamp": "2026-09-30T18:43:38.926886", "ticker": "VEEV", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 285.935, "reason": "stale quote for VEEV (705.869699s old; limit 180s)"}
+{"timestamp": "2026-09-30T18:43:38.927063", "ticker": "AES", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 14.885, "reason": "stale quote for AES (566.709374s old; limit 180s)"}
