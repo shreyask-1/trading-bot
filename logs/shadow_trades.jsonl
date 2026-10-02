@@ -27776,3 +27776,5 @@
 {"timestamp": "2026-10-01T15:51:06.173115", "ticker": "MSFT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 513.09, "reason": "market data unavailable for MSFT (bid/ask spread missing)"}
 {"timestamp": "2026-10-01T15:51:06.173297", "ticker": "XOM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 163.78, "reason": "liquidity filter: XOM average volume 413,706 < 500,000"}
 {"timestamp": "2026-10-01T15:51:06.173454", "ticker": "KR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 60.05, "reason": "market data unavailable for KR (bid/ask spread missing)"}
+{"timestamp": "2026-10-02T13:22:31.577682", "ticker": "ON", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 86.01, "reason": "stale quote for ON (1595.343473s old; limit 180s)"}
+{"timestamp": "2026-10-02T13:22:31.577812", "ticker": "HAS", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 89.99, "reason": "stale quote for HAS (62550.019934s old; limit 180s)"}
