@@ -27782,3 +27782,6 @@
 {"timestamp": "2026-10-02T18:49:46.572424", "ticker": "PWR", "action": "buy", "engine": "gemini", "confidence": 72, "conviction": 7, "price": 677.22, "reason": "liquidity filter: PWR average volume 43,277 < 500,000"}
 {"timestamp": "2026-10-05T16:45:24.723643", "ticker": "EXPD", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 193.62, "reason": "liquidity filter: EXPD average volume 50,324 < 500,000"}
 {"timestamp": "2026-10-05T16:45:24.723821", "ticker": "ON", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 85.74, "reason": "market data unavailable for ON (bid/ask spread missing)"}
+{"timestamp": "2026-10-05T23:01:16.281455", "ticker": "NVDA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 9, "price": 238.9, "reason": "stale quote for NVDA (10692.701545s old; limit 180s)"}
+{"timestamp": "2026-10-05T23:01:16.281658", "ticker": "TECH", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 72.6, "reason": "stale quote for TECH (10864.504174s old; limit 180s)"}
+{"timestamp": "2026-10-05T23:01:16.281816", "ticker": "TSLA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 378.67, "reason": "stale quote for TSLA (10866.533551s old; limit 180s)"}
