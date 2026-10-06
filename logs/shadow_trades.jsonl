@@ -27785,3 +27785,5 @@
 {"timestamp": "2026-10-05T23:01:16.281455", "ticker": "NVDA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 9, "price": 238.9, "reason": "stale quote for NVDA (10692.701545s old; limit 180s)"}
 {"timestamp": "2026-10-05T23:01:16.281658", "ticker": "TECH", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 72.6, "reason": "stale quote for TECH (10864.504174s old; limit 180s)"}
 {"timestamp": "2026-10-05T23:01:16.281816", "ticker": "TSLA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 378.67, "reason": "stale quote for TSLA (10866.533551s old; limit 180s)"}
+{"timestamp": "2026-10-06T10:55:29.916496", "ticker": "ON", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 85.98, "reason": "stale quote for ON (53719.614118s old; limit 180s)"}
+{"timestamp": "2026-10-06T10:55:29.916699", "ticker": "CRL", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 310.955, "reason": "stale quote for CRL (53731.16368s old; limit 180s)"}
