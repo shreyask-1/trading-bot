@@ -27797,3 +27797,5 @@
 {"timestamp": "2026-10-08T14:13:58.782044", "ticker": "AAPL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 337.07, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
 {"timestamp": "2026-10-08T14:13:58.782181", "ticker": "MSFT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 531.82, "reason": "market data unavailable for MSFT (bid/ask spread missing)"}
 {"timestamp": "2026-10-08T14:13:58.782327", "ticker": "NVDA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 235.73, "reason": "market data unavailable for NVDA (bid/ask spread missing)"}
+{"timestamp": "2026-10-09T14:10:51.899395", "ticker": "MTD", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 1546.45, "reason": "liquidity filter: MTD average volume 15,074 < 500,000"}
+{"timestamp": "2026-10-09T14:10:51.899571", "ticker": "CBOE", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 303.43, "reason": "liquidity filter: CBOE average volume 70,420 < 500,000"}
