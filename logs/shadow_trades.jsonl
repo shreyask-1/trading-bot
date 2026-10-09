@@ -27799,3 +27799,6 @@
 {"timestamp": "2026-10-08T14:13:58.782327", "ticker": "NVDA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 235.73, "reason": "market data unavailable for NVDA (bid/ask spread missing)"}
 {"timestamp": "2026-10-09T14:10:51.899395", "ticker": "MTD", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 1546.45, "reason": "liquidity filter: MTD average volume 15,074 < 500,000"}
 {"timestamp": "2026-10-09T14:10:51.899571", "ticker": "CBOE", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 303.43, "reason": "liquidity filter: CBOE average volume 70,420 < 500,000"}
+{"timestamp": "2026-10-09T19:55:20.134705", "ticker": "MSFT", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 534.94, "reason": "market data unavailable for MSFT (bid/ask spread missing)"}
+{"timestamp": "2026-10-09T19:55:20.134858", "ticker": "MTD", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 1551.39, "reason": "liquidity filter: MTD average volume 15,496 < 500,000"}
+{"timestamp": "2026-10-09T19:55:20.134972", "ticker": "JBL", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 305.76, "reason": "liquidity filter: JBL average volume 104,817 < 500,000"}
