@@ -27804,3 +27804,4 @@
 {"timestamp": "2026-10-09T19:55:20.134972", "ticker": "JBL", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 305.76, "reason": "liquidity filter: JBL average volume 104,817 < 500,000"}
 {"timestamp": "2026-10-12T16:19:49.720163", "ticker": "ON", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 76.91, "reason": "liquidity filter: ON average volume 493,161 < 500,000"}
 {"timestamp": "2026-10-12T16:19:49.720273", "ticker": "TXN", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 282.93, "reason": "liquidity filter: TXN average volume 198,455 < 500,000"}
+{"timestamp": "2026-10-12T23:22:47.502261", "ticker": "META", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 743.02, "reason": "stale quote for META (12162.837788s old; limit 180s)"}
