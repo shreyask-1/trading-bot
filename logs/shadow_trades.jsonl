@@ -27809,3 +27809,5 @@
 {"timestamp": "2026-10-13T12:21:06.621541", "ticker": "MET", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 100.17, "reason": "stale quote for MET (58864.392469s old; limit 180s)"}
 {"timestamp": "2026-10-13T12:21:06.621688", "ticker": "MDLZ", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 61.8, "reason": "stale quote for MDLZ (58856.767444s old; limit 180s)"}
 {"timestamp": "2026-10-13T19:40:09.875121", "ticker": "KR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 60.735, "reason": "market data unavailable for KR (bid/ask spread missing)"}
+{"timestamp": "2026-10-13T23:31:55.696002", "ticker": "ON", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 76.715, "reason": "stale quote for ON (12699.206804s old; limit 180s)"}
+{"timestamp": "2026-10-13T23:31:55.739431", "ticker": "AAPL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 341.33, "reason": "stale quote for AAPL (12695.372015s old; limit 180s)"}
