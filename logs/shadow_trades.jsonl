@@ -27813,3 +27813,5 @@
 {"timestamp": "2026-10-13T23:31:55.739431", "ticker": "AAPL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 341.33, "reason": "stale quote for AAPL (12695.372015s old; limit 180s)"}
 {"timestamp": "2026-10-14T08:12:47.256717", "ticker": "HPE", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 68.79, "reason": "stale quote for HPE (43962.995031s old; limit 180s)"}
 {"timestamp": "2026-10-14T08:12:47.256883", "ticker": "HUM", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 420.7, "reason": "stale quote for HUM (43972.094973s old; limit 180s)"}
+{"timestamp": "2026-10-15T12:18:17.824893", "ticker": "ITW", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 269.35, "reason": "stale quote for ITW (58704.270291s old; limit 180s)"}
+{"timestamp": "2026-10-15T12:18:17.825063", "ticker": "XOM", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 176.97, "reason": "stale quote for XOM (58703.724738s old; limit 180s)"}
