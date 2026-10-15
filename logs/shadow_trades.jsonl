@@ -27818,3 +27818,5 @@
 {"timestamp": "2026-10-15T17:30:33.510908", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 207.22, "reason": "stale quote for IT (2266.549749s old; limit 180s)"}
 {"timestamp": "2026-10-15T17:30:33.511093", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 147.19, "reason": "stale quote for NOW (2043.141931s old; limit 180s)"}
 {"timestamp": "2026-10-15T17:30:33.511244", "ticker": "BKNG", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 167.26, "reason": "stale quote for BKNG (2030.979269s old; limit 180s)"}
+{"timestamp": "2026-10-15T23:26:07.975354", "ticker": "AMZN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 254.76, "reason": "stale quote for AMZN (12358.444963s old; limit 180s)"}
+{"timestamp": "2026-10-15T23:26:07.975465", "ticker": "ADSK", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 245.23, "reason": "stale quote for ADSK (12361.989925s old; limit 180s)"}
