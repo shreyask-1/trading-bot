@@ -27815,3 +27815,6 @@
 {"timestamp": "2026-10-14T08:12:47.256883", "ticker": "HUM", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 420.7, "reason": "stale quote for HUM (43972.094973s old; limit 180s)"}
 {"timestamp": "2026-10-15T12:18:17.824893", "ticker": "ITW", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 269.35, "reason": "stale quote for ITW (58704.270291s old; limit 180s)"}
 {"timestamp": "2026-10-15T12:18:17.825063", "ticker": "XOM", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 176.97, "reason": "stale quote for XOM (58703.724738s old; limit 180s)"}
+{"timestamp": "2026-10-15T17:30:33.510908", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 207.22, "reason": "stale quote for IT (2266.549749s old; limit 180s)"}
+{"timestamp": "2026-10-15T17:30:33.511093", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 147.19, "reason": "stale quote for NOW (2043.141931s old; limit 180s)"}
+{"timestamp": "2026-10-15T17:30:33.511244", "ticker": "BKNG", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 167.26, "reason": "stale quote for BKNG (2030.979269s old; limit 180s)"}
