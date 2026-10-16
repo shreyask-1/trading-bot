@@ -27820,3 +27820,6 @@
 {"timestamp": "2026-10-15T17:30:33.511244", "ticker": "BKNG", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 167.26, "reason": "stale quote for BKNG (2030.979269s old; limit 180s)"}
 {"timestamp": "2026-10-15T23:26:07.975354", "ticker": "AMZN", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 254.76, "reason": "stale quote for AMZN (12358.444963s old; limit 180s)"}
 {"timestamp": "2026-10-15T23:26:07.975465", "ticker": "ADSK", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 245.23, "reason": "stale quote for ADSK (12361.989925s old; limit 180s)"}
+{"timestamp": "2026-10-16T12:52:10.320934", "ticker": "NOW", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 148.54, "reason": "stale quote for NOW (60720.41893s old; limit 180s)"}
+{"timestamp": "2026-10-16T12:52:10.321032", "ticker": "LMT", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 532.89, "reason": "stale quote for LMT (60729.228876s old; limit 180s)"}
+{"timestamp": "2026-10-16T12:52:10.321107", "ticker": "COF", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 198.91, "reason": "stale quote for COF (60730.78932s old; limit 180s)"}
