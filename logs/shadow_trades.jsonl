@@ -27829,3 +27829,4 @@
 {"timestamp": "2026-10-16T17:05:24.931293", "ticker": "ABBV", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 285.22, "reason": "liquidity filter: ABBV average volume 191,154 < 500,000"}
 {"timestamp": "2026-10-19T11:36:06.483007", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 205.32, "reason": "stale quote for IT (228994.762367s old; limit 180s)"}
 {"timestamp": "2026-10-19T11:36:06.483117", "ticker": "SBUX", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 97.52, "reason": "stale quote for SBUX (228970.153287s old; limit 180s)"}
+{"timestamp": "2026-10-19T17:58:30.707120", "ticker": "MCK", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 1005.44, "reason": "liquidity filter: MCK average volume 35,254 < 500,000"}
