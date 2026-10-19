@@ -1,0 +1,27 @@
+=== Run at 2026-10-19T00:37:07.978874 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-10-18 08:37 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+Account value: $99,311.19
+Cash: $99,311.19 | Holdings (0): none
+Sector exposure (cached): unavailable (no holdings)
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Risk state: peak $99,703.60 | drawdown 0.39% | today +0.00% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 158, 32 new after dedup, 2 ticker(s) matched.
+Quant pre-screen: 17/19 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 6
+Market closed (overnight): queued 3 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued NOW buy (conf 85, stop 134.21, tp 154.04000000000002)
+  -> queued IT buy (conf 85, stop 184.63, tp 225.00000000000003)
+  -> queued CRM buy (conf 82, stop 220.31, tp 265.00000000000006)
+Dashboard watchlist synced (4 symbols) for news/headlines.
+Ending portfolio value: $99,311.19
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.45% | Max drawdown 0.94% | Daily Sharpe 1.13 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 0 | Equity $99,311.19
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+0.00 (0 open) | Books: legacy: realized $-1,705.68, unrealized $+0.00
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 27829 shadow candidate(s), 106 rejection group(s)
+Timings: account: 0.0s | risk: 0.1s | decide: 4.1s | watchlist: 0.0s | perf: 0.3s
+
