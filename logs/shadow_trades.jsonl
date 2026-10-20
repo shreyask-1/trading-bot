@@ -27834,3 +27834,7 @@
 {"timestamp": "2026-10-19T22:01:48.315848", "ticker": "PG", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 157.67, "reason": "stale quote for PG (7315.079845s old; limit 180s)"}
 {"timestamp": "2026-10-20T12:24:26.360311", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 207.44, "reason": "stale quote for IT (59085.275758s old; limit 180s)"}
 {"timestamp": "2026-10-20T12:24:26.360522", "ticker": "ISRG", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 433.36, "reason": "stale quote for ISRG (59082.357332s old; limit 180s)"}
+{"timestamp": "2026-10-20T17:38:02.563671", "ticker": "IT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 218.705, "reason": "liquidity filter: IT average volume 52,117 < 500,000"}
+{"timestamp": "2026-10-20T17:38:02.563807", "ticker": "TSLA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 374.41, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
+{"timestamp": "2026-10-20T17:38:02.563893", "ticker": "HAS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 107.7, "reason": "liquidity filter: HAS average volume 107,522 < 500,000"}
+{"timestamp": "2026-10-20T17:38:02.563967", "ticker": "IR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 78.005, "reason": "liquidity filter: IR average volume 268,258 < 500,000"}
