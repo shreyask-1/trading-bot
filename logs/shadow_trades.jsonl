@@ -27847,3 +27847,5 @@
 {"timestamp": "2026-10-21T15:45:16.922031", "ticker": "VEEV", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 320.02, "reason": "liquidity filter: VEEV average volume 85,470 < 500,000"}
 {"timestamp": "2026-10-21T15:45:16.922174", "ticker": "VLO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 432.66, "reason": "liquidity filter: VLO average volume 128,123 < 500,000"}
 {"timestamp": "2026-10-21T15:45:16.922355", "ticker": "VLTO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 101.41, "reason": "liquidity filter: VLTO average volume 79,942 < 500,000"}
+{"timestamp": "2026-10-21T19:47:26.797074", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 386.59, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
+{"timestamp": "2026-10-21T19:47:26.797261", "ticker": "VLTO", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 101.14, "reason": "liquidity filter: VLTO average volume 81,001 < 500,000"}
