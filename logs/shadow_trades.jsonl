@@ -27838,3 +27838,4 @@
 {"timestamp": "2026-10-20T17:38:02.563807", "ticker": "TSLA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 374.41, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
 {"timestamp": "2026-10-20T17:38:02.563893", "ticker": "HAS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 107.7, "reason": "liquidity filter: HAS average volume 107,522 < 500,000"}
 {"timestamp": "2026-10-20T17:38:02.563967", "ticker": "IR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 78.005, "reason": "liquidity filter: IR average volume 268,258 < 500,000"}
+{"timestamp": "2026-10-21T10:50:49.706876", "ticker": "VLTO", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 101.37, "reason": "stale quote for VLTO (53449.502142s old; limit 180s)"}
