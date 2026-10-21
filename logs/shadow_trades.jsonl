@@ -27849,3 +27849,6 @@
 {"timestamp": "2026-10-21T15:45:16.922355", "ticker": "VLTO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 101.41, "reason": "liquidity filter: VLTO average volume 79,942 < 500,000"}
 {"timestamp": "2026-10-21T19:47:26.797074", "ticker": "TSLA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 386.59, "reason": "market data unavailable for TSLA (bid/ask spread missing)"}
 {"timestamp": "2026-10-21T19:47:26.797261", "ticker": "VLTO", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 101.14, "reason": "liquidity filter: VLTO average volume 81,001 < 500,000"}
+{"timestamp": "2026-10-21T22:54:17.556920", "ticker": "META", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 742.05, "reason": "stale quote for META (7827.727878s old; limit 180s)"}
+{"timestamp": "2026-10-21T22:54:17.557099", "ticker": "CASY", "action": "buy", "engine": "gemini", "confidence": 82, "conviction": 8, "price": 695.385, "reason": "stale quote for CASY (10468.7371s old; limit 180s)"}
+{"timestamp": "2026-10-21T22:54:17.557173", "ticker": "VLO", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 436.655, "reason": "stale quote for VLO (10452.33839s old; limit 180s)"}
