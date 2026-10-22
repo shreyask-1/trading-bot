@@ -27860,3 +27860,6 @@
 {"timestamp": "2026-10-22T12:38:17.374410", "ticker": "IFF", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 91.04, "reason": "stale quote for IFF (59882.90438s old; limit 180s)"}
 {"timestamp": "2026-10-22T17:44:45.652303", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 229.29, "reason": "liquidity filter: IT average volume 54,162 < 500,000"}
 {"timestamp": "2026-10-22T17:44:45.652475", "ticker": "COST", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 1012.82, "reason": "liquidity filter: COST average volume 97,317 < 500,000"}
+{"timestamp": "2026-10-22T23:54:30.401702", "ticker": "CRM", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 250.27, "reason": "stale quote for CRM (14062.251873s old; limit 180s)"}
+{"timestamp": "2026-10-22T23:54:30.401877", "ticker": "CPRT", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 29.1, "reason": "stale quote for CPRT (14058.340753s old; limit 180s)"}
+{"timestamp": "2026-10-22T23:54:30.401985", "ticker": "CPB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 21.27, "reason": "stale quote for CPB (14059.578263s old; limit 180s)"}
