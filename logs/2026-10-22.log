@@ -1,0 +1,37 @@
+=== Run at 2026-10-22T01:05:41.071896 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-10-21 09:05 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+Account value: $99,311.19
+Cash: $99,311.19 | Holdings (0): none
+Sector exposure (cached): unavailable (no holdings)
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Risk state: peak $99,703.60 | drawdown 0.39% | today +0.00% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 156, 31 new after dedup, 3 ticker(s) matched.
+Quant pre-screen: 20/21 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
+Technical fallback cap omitted 2 weaker idea(s) this run.
+Gemini calls used today (all models combined): 4
+Market closed (overnight): queued 12 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued AMZN buy (conf 100.0, stop None, tp None)
+  -> queued NOW buy (conf None, stop 135.585, tp 154.04)
+  -> queued TSLA buy (conf None, stop 349.41, tp 388.825)
+  -> queued VLTO buy (conf 85, stop 94.18, tp 103.69)
+  -> queued META buy (conf 85, stop 681.18, tp 771.15)
+  -> queued CASY buy (conf 82, stop 636.01, tp 707.9)
+  -> queued VLO buy (conf 78, stop 423.9, tp 461.04)
+  -> queued MRNA buy (conf None, stop 192.83, tp 254.425)
+  -> queued DVN buy (conf None, stop 48.13, tp 51.53)
+  -> queued MSFT buy (conf None, stop 518.83, tp 551.08)
+  -> queued MA buy (conf None, stop 569.32, tp 624.435)
+  -> queued V buy (conf None, stop 369.64, tp 408.59)
+Run budget reserve reached -- skipping dashboard watchlist sync.
+Run budget reserve reached -- skipping performance snapshot.
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.45% | Max drawdown 0.94% | Daily Sharpe 1.10 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 0 | Equity $99,311.19
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+0.00 (0 open) | Books: legacy: realized $-1,705.68, unrealized $+0.00
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 27854 shadow candidate(s), 114 rejection group(s)
+Timings: account: 0.0s | risk: 0.2s | decide: 24.4s | watchlist: 0.0s | perf: 0.2s
+
