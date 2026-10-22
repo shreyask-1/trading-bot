@@ -27858,3 +27858,5 @@
 {"timestamp": "2026-10-22T12:38:17.356223", "ticker": "APA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 49.64, "reason": "stale quote for APA (59879.486288s old; limit 180s)"}
 {"timestamp": "2026-10-22T12:38:17.368069", "ticker": "IEX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 235.375, "reason": "stale quote for IEX (59890.647095s old; limit 180s)"}
 {"timestamp": "2026-10-22T12:38:17.374410", "ticker": "IFF", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 91.04, "reason": "stale quote for IFF (59882.90438s old; limit 180s)"}
+{"timestamp": "2026-10-22T17:44:45.652303", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 229.29, "reason": "liquidity filter: IT average volume 54,162 < 500,000"}
+{"timestamp": "2026-10-22T17:44:45.652475", "ticker": "COST", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 1012.82, "reason": "liquidity filter: COST average volume 97,317 < 500,000"}
