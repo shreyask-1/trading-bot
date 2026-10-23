@@ -27865,3 +27865,6 @@
 {"timestamp": "2026-10-22T23:54:30.401985", "ticker": "CPB", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 21.27, "reason": "stale quote for CPB (14059.578263s old; limit 180s)"}
 {"timestamp": "2026-10-23T08:05:52.263456", "ticker": "IT", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 234.28, "reason": "stale quote for IT (43559.452402s old; limit 180s)"}
 {"timestamp": "2026-10-23T08:05:52.263618", "ticker": "TGT", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 158.11, "reason": "stale quote for TGT (43558.549964s old; limit 180s)"}
+{"timestamp": "2026-10-23T13:57:06.366821", "ticker": "IT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 234.42, "reason": "stale quote for IT (1175.685011s old; limit 180s)"}
+{"timestamp": "2026-10-23T13:57:06.367049", "ticker": "KMI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 34.225, "reason": "market data unavailable for KMI (bid/ask spread missing)"}
+{"timestamp": "2026-10-23T13:57:06.367217", "ticker": "KO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 94.06, "reason": "market data unavailable for KO (bid/ask spread missing)"}
