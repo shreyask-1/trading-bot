@@ -27870,3 +27870,6 @@
 {"timestamp": "2026-10-23T13:57:06.367217", "ticker": "KO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 94.06, "reason": "market data unavailable for KO (bid/ask spread missing)"}
 {"timestamp": "2026-10-23T18:03:39.922278", "ticker": "GDDY", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 113.58, "reason": "stale quote for GDDY (202.468445s old; limit 180s)"}
 {"timestamp": "2026-10-23T18:03:39.922400", "ticker": "KMI", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 34.605, "reason": "market data unavailable for KMI (bid/ask spread missing)"}
+{"timestamp": "2026-10-26T11:53:44.113457", "ticker": "TRMB", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 63.51, "reason": "stale quote for TRMB (230029.038405s old; limit 180s)"}
+{"timestamp": "2026-10-26T11:53:44.113585", "ticker": "TRGP", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 302.44, "reason": "stale quote for TRGP (230024.587037s old; limit 180s)"}
+{"timestamp": "2026-10-26T11:53:44.113689", "ticker": "TMO", "action": "buy", "engine": "gemini", "confidence": 78, "conviction": 8, "price": 673.84, "reason": "stale quote for TMO (230028.333654s old; limit 180s)"}
