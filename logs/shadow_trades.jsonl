@@ -27891,3 +27891,4 @@
 {"timestamp": "2026-10-27T13:46:56.751786", "ticker": "APA", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 51.44, "reason": "liquidity filter: APA average volume 350,571 < 500,000"}
 {"timestamp": "2026-10-27T19:05:36.788068", "ticker": "BBY", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 98.22, "reason": "liquidity filter: BBY average volume 166,772 < 500,000"}
 {"timestamp": "2026-10-27T19:05:36.788223", "ticker": "HAS", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 119.2, "reason": "liquidity filter: HAS average volume 123,062 < 500,000"}
+{"timestamp": "2026-10-27T23:22:08.867940", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 347.1, "reason": "stale quote for AAPL (12122.532565s old; limit 180s)"}
