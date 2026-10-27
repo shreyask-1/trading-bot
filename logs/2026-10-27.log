@@ -1,0 +1,33 @@
+=== Run at 2026-10-27T01:43:50.706618 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-10-26 09:43 PM EDT | Market open (per Alpaca): False | Session: CLOSED
+Account value: $99,311.19
+Cash: $99,311.19 | Holdings (0): none
+Sector exposure (cached): unavailable (no holdings)
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Risk state: peak $99,703.60 | drawdown 0.39% | today +0.00% | halted: False
+Market regime: NEUTRAL (position-size multiplier: 100% incl. circuit breaker 100%)
+News: fetched 157, 45 new after dedup, 3 ticker(s) matched.
+Quant pre-screen: 19/19 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 3
+Market closed (overnight): queued 9 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued TRMB buy (conf 86, stop 58.6, tp 68.5)
+  -> queued TRGP buy (conf 79, stop 277.44, tp 325.0)
+  -> queued TMO buy (conf 78, stop 653.54, tp 705.65)
+  -> queued CRM buy (conf None, stop 231.52, tp 252.41)
+  -> queued DHR buy (conf None, stop 217.55, tp 237.755)
+  -> queued META buy (conf 100.0, stop None, tp None)
+  -> queued PLTR buy (conf 80.0, stop None, tp None)
+  -> queued NOW buy (conf 90, stop 149.0, tp 172.00000000000003)
+  -> queued TXN buy (conf 85, stop 280.0, tp 318.00000000000006)
+Dashboard watchlist synced (5 symbols) for news/headlines.
+Ending portfolio value: $99,311.19
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.45% | Max drawdown 0.94% | Daily Sharpe 1.06 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 0 | Equity $99,311.19
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+0.00 (0 open) | Books: legacy: realized $-1,705.68, unrealized $+0.00
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 27887 shadow candidate(s), 138 rejection group(s)
+Timings: account: 0.0s | risk: 0.4s | decide: 17.2s | watchlist: 0.2s | perf: 0.4s
+
