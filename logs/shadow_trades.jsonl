@@ -27903,3 +27903,5 @@
 {"timestamp": "2026-10-29T14:47:45.347617", "ticker": "SRE", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 85.97, "reason": "liquidity filter: SRE average volume 138,865 < 500,000"}
 {"timestamp": "2026-10-29T14:47:45.347768", "ticker": "STZ", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 129.695, "reason": "liquidity filter: STZ average volume 115,537 < 500,000"}
 {"timestamp": "2026-10-29T14:47:45.347878", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 55.19, "reason": "market data unavailable for EQT (bid/ask spread missing)"}
+{"timestamp": "2026-10-29T19:58:13.497949", "ticker": "F", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 12.275, "reason": "market data unavailable for F (bid/ask spread missing)"}
+{"timestamp": "2026-10-29T19:58:13.498121", "ticker": "FAST", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 52.565, "reason": "market data unavailable for FAST (bid/ask spread missing)"}
