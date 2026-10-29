@@ -27900,3 +27900,6 @@
 {"timestamp": "2026-10-28T16:53:49.531512", "ticker": "KR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 65.7, "reason": "liquidity filter: KR average volume 472,288 < 500,000"}
 {"timestamp": "2026-10-28T16:53:49.531616", "ticker": "KVUE", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 19.4, "reason": "market data unavailable for KVUE (bid/ask spread missing)"}
 {"timestamp": "2026-10-28T16:53:49.531735", "ticker": "L", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 9, "price": 110.935, "reason": "liquidity filter: L average volume 22,580 < 500,000"}
+{"timestamp": "2026-10-29T14:47:45.347617", "ticker": "SRE", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 85.97, "reason": "liquidity filter: SRE average volume 138,865 < 500,000"}
+{"timestamp": "2026-10-29T14:47:45.347768", "ticker": "STZ", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 129.695, "reason": "liquidity filter: STZ average volume 115,537 < 500,000"}
+{"timestamp": "2026-10-29T14:47:45.347878", "ticker": "EQT", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 55.19, "reason": "market data unavailable for EQT (bid/ask spread missing)"}
