@@ -27911,3 +27911,6 @@
 {"timestamp": "2026-10-30T10:35:33.194880", "ticker": "RSG", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 236.38, "reason": "stale quote for RSG (52540.442912s old; limit 180s)"}
 {"timestamp": "2026-10-30T10:35:33.195045", "ticker": "RJF", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 161.26, "reason": "stale quote for RJF (52539.238326s old; limit 180s)"}
 {"timestamp": "2026-10-30T10:35:33.195219", "ticker": "RL", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 400.67, "reason": "stale quote for RL (52541.506715s old; limit 180s)"}
+{"timestamp": "2026-10-30T16:53:25.654664", "ticker": "GDDY", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 113.03, "reason": "liquidity filter: GDDY average volume 96,460 < 500,000"}
+{"timestamp": "2026-10-30T16:53:25.654834", "ticker": "CTAS", "action": "buy", "engine": "gemini", "confidence": 91, "conviction": 9, "price": 222.3, "reason": "stale quote for CTAS (241.773218s old; limit 180s)"}
+{"timestamp": "2026-10-30T16:53:25.655043", "ticker": "XOM", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 186.33, "reason": "liquidity filter: XOM average volume 378,250 < 500,000"}
