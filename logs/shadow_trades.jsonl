@@ -27925,3 +27925,5 @@
 {"timestamp": "2026-11-03T11:29:31.566677", "ticker": "COP", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 146.88, "reason": "stale quote for COP (52157.09033s old; limit 180s)"}
 {"timestamp": "2026-11-03T11:29:31.566757", "ticker": "COST", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 1039.01, "reason": "stale quote for COST (49664.024778s old; limit 180s)"}
 {"timestamp": "2026-11-03T11:29:31.566879", "ticker": "CRL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 338.42, "reason": "stale quote for CRL (52163.701097s old; limit 180s)"}
+{"timestamp": "2026-11-03T18:50:19.757967", "ticker": "EMR", "action": "buy", "engine": "gemini", "confidence": 93, "conviction": 9, "price": 166.105, "reason": "liquidity filter: EMR average volume 130,333 < 500,000"}
+{"timestamp": "2026-11-03T18:50:19.758078", "ticker": "EPAM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 139.875, "reason": "stale quote for EPAM (464.391251s old; limit 180s)"}
