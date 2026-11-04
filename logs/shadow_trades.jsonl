@@ -27929,3 +27929,6 @@
 {"timestamp": "2026-11-03T18:50:19.758078", "ticker": "EPAM", "action": "buy", "engine": "gemini", "confidence": 89, "conviction": 9, "price": 139.875, "reason": "stale quote for EPAM (464.391251s old; limit 180s)"}
 {"timestamp": "2026-11-03T23:48:00.635870", "ticker": "MPWR", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 1329.59, "reason": "stale quote for MPWR (10076.563581s old; limit 180s)"}
 {"timestamp": "2026-11-03T23:48:00.635985", "ticker": "MO", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 76.91, "reason": "stale quote for MO (10074.254925s old; limit 180s)"}
+{"timestamp": "2026-11-04T11:50:53.794105", "ticker": "NDAQ", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 106.98, "reason": "stale quote for NDAQ (53445.313228s old; limit 180s)"}
+{"timestamp": "2026-11-04T11:50:53.794264", "ticker": "TYL", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 404.32, "reason": "stale quote for TYL (53458.193682s old; limit 180s)"}
+{"timestamp": "2026-11-04T11:50:53.794425", "ticker": "ULTA", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 634.89, "reason": "stale quote for ULTA (53461.315491s old; limit 180s)"}
