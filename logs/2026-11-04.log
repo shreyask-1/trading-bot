@@ -56,3 +56,38 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; wor
 Shadow report: 27934 shadow candidate(s), 167 rejection group(s)
 Timings: account: 0.0s | risk: 0.3s | decide: 13.8s | watchlist: 0.2s | perf: 0.4s
 
+=== Run at 2026-11-04T19:06:13.197161 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-11-04 02:06 PM EST | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,311.19
+Cash: $99,311.19 | Holdings (0): none
+Sector exposure (cached): unavailable (no holdings)
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Risk state: peak $99,703.60 | drawdown 0.39% | today +0.00% | halted: False
+Market regime: BEARISH (position-size multiplier: 0% incl. circuit breaker 100%)
+Overnight queue expired 1 stale/over-retried idea(s); fresh analysis will replace them.
+Morning verification: 8 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
+News: fetched 155, 34 new after dedup, 6 ticker(s) matched.
+Quant pre-screen: 17/17 candidates passed.
+Technical fallback (Gemini throttled/unavailable) proposed 8 trade(s) meeting the conviction bar.
+Technical fallback cap omitted 1 weaker idea(s) this run.
+Gemini calls used today (all models combined): 2
+  -> {"ticker": "URI", "status": "skipped", "reason": "liquidity filter: URI average volume 39,170 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "BALL", "status": "skipped", "reason": "stale quote for BALL (203.126884s old; limit 180s)", "shadow": false, "data_guard": true}
+  -> {"ticker": "ALL", "status": "skipped", "reason": "liquidity filter: ALL average volume 92,274 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "UDR", "status": "skipped", "reason": "liquidity filter: UDR average volume 406,447 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "UNP", "status": "skipped", "reason": "liquidity filter: UNP average volume 127,974 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "UPS", "status": "skipped", "reason": "liquidity filter: UPS average volume 248,294 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "V", "status": "skipped", "reason": "liquidity filter: V average volume 350,887 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "TXT", "status": "skipped", "reason": "liquidity filter: TXT average volume 104,380 < 500,000", "shadow": false, "data_guard": true}
+Overnight queue KEPT for next run (Gemini did not verify this round -- technical fallback or decision failure); 8 idea(s) remain subject to the retry cap.
+Run budget reserve reached -- skipping dashboard watchlist sync.
+Run budget reserve reached -- skipping performance snapshot.
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.45% | Max drawdown 0.94% | Daily Sharpe 1.00 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 0 | Equity $99,311.19
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+0.00 (0 open) | Books: legacy: realized $-1,705.68, unrealized $+0.00
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 27942 shadow candidate(s), 168 rejection group(s)
+Timings: account: 0.0s | risk: 0.2s | decide: 24.4s | watchlist: 0.0s | perf: 0.3s
+
