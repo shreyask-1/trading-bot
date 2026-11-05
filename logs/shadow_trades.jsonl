@@ -27940,3 +27940,5 @@
 {"timestamp": "2026-11-04T19:06:38.266311", "ticker": "UPS", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 114.23, "reason": "liquidity filter: UPS average volume 248,294 < 500,000"}
 {"timestamp": "2026-11-04T19:06:38.266428", "ticker": "V", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 433.73, "reason": "liquidity filter: V average volume 350,887 < 500,000"}
 {"timestamp": "2026-11-04T19:06:38.266592", "ticker": "TXT", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 86.655, "reason": "liquidity filter: TXT average volume 104,380 < 500,000"}
+{"timestamp": "2026-11-05T00:39:16.556011", "ticker": "TYL", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 423.435, "reason": "stale quote for TYL (13161.266871s old; limit 180s)"}
+{"timestamp": "2026-11-05T00:39:16.556182", "ticker": "UDR", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 37.23, "reason": "stale quote for UDR (13150.848885s old; limit 180s)"}
