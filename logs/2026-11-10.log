@@ -51,3 +51,31 @@ Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; wor
 Shadow report: 27967 shadow candidate(s), 174 rejection group(s)
 Timings: account: 0.0s | risk: 0.0s | decide: 7.0s | watchlist: 0.1s | perf: 0.3s
 
+=== Run at 2026-11-10T16:47:38.006472 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-11-10 11:47 AM EST | Market open (per Alpaca): True | Session: REGULAR
+Account value: $99,311.19
+Cash: $99,311.19 | Holdings (0): none
+Sector exposure (cached): unavailable (no holdings)
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Risk state: peak $99,703.60 | drawdown 0.39% | today +0.00% | halted: False
+Market regime: BEARISH (position-size multiplier: 0% incl. circuit breaker 100%)
+Overnight queue expired 2 stale/over-retried idea(s); fresh analysis will replace them.
+Morning verification: 3 overnight-queued trade(s) handed to Gemini for re-verification against fresh data.
+News: fetched 157, 88 new after dedup, 1 ticker(s) matched.
+Quant pre-screen: 8/12 candidates passed.
+Gemini proposed 2 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 2
+  -> {"ticker": "PEP", "status": "skipped", "reason": "liquidity filter: PEP average volume 381,317 < 500,000", "shadow": false, "data_guard": true}
+  -> {"ticker": "PG", "status": "skipped", "reason": "liquidity filter: PG average volume 491,276 < 500,000", "shadow": false, "data_guard": true}
+Overnight queue cleared after verification.
+Dashboard watchlist synced (3 symbols) for news/headlines.
+Ending portfolio value: $99,311.19
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.45% | Max drawdown 0.94% | Daily Sharpe 0.96 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 0 | Equity $99,311.19
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+0.00 (0 open) | Books: legacy: realized $-1,705.68, unrealized $+0.00
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 27969 shadow candidate(s), 173 rejection group(s)
+Timings: account: 0.0s | risk: 0.3s | decide: 22.3s | watchlist: 0.2s | perf: 0.4s
+
