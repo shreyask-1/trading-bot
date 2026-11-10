@@ -1,0 +1,29 @@
+=== Run at 2026-11-10T01:16:40.621462 ===
+Build fingerprint: 4f68550affe5
+Current time: 2026-11-09 08:16 PM EST | Market open (per Alpaca): False | Session: CLOSED
+Account value: $99,311.19
+Cash: $99,311.19 | Holdings (0): none
+Sector exposure (cached): unavailable (no holdings)
+Fill reconciliation: {'filled': 0, 'partial': 0, 'rejected': 1}
+Risk state: peak $99,703.60 | drawdown 0.39% | today +0.00% | halted: False
+Market regime: BEARISH (position-size multiplier: 0% incl. circuit breaker 100%)
+News: fetched 155, 46 new after dedup, 14 ticker(s) matched.
+Quant pre-screen: 29/29 candidates passed.
+Gemini proposed 3 trade(s) meeting the conviction bar.
+Gemini calls used today (all models combined): 2
+Market closed (overnight): queued 5 trade idea(s) for next-morning verification -- nothing submitted yet.
+  -> queued NDAQ buy (conf 80, stop 102.69, tp 110.94)
+  -> queued COST buy (conf 78, stop 980.36, tp 1081.13)
+  -> queued FOX buy (conf 85, stop 55.41, tp 68.14)
+  -> queued MDLZ buy (conf 78, stop 61.51, tp 68.75)
+  -> queued KEY buy (conf 75, stop 20.73, tp 24.07)
+Dashboard watchlist synced (15 symbols) for news/headlines.
+Ending portfolio value: $99,311.19
+Trade journal: all: 19 trades, 21% win rate, avg -2.19% | breakout: 1 trades, 0% win rate, avg -8.61% | other: 13 trades, 23% win rate, avg -1.93% | technical: 5 trades, 20% win rate, avg -1.58%
+Self-learning: breakout: 1 trades, 0% win rate, avg -8.61% (LOSING) | other: 13 trades, 23% win rate, avg -1.93% (LOSING) | technical: 5 trades, 20% win rate, avg -1.58% (LOSING)
+Performance: Total return +0.45% | Max drawdown 0.94% | Daily Sharpe 0.97 | 19 closed trades | Win rate 21% | Avg winner +1.83% | Avg loser -3.26% | Open positions: 0 | Equity $99,311.19
+Engine P&L: legacy/unknown: realized $-1,705.68 (19 closed, 21% wins), unrealized $+0.00 (0 open) | Books: legacy: realized $-1,705.68, unrealized $+0.00
+Reports: daily realized $+0.00; worst symbols none | weekly realized $+0.00; worst symbols none
+Shadow report: 27967 shadow candidate(s), 174 rejection group(s)
+Timings: account: 0.0s | risk: 0.2s | decide: 20.0s | watchlist: 0.1s | perf: 0.3s
+
