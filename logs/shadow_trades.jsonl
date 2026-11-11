@@ -27974,3 +27974,6 @@
 {"timestamp": "2026-11-11T10:02:07.167001", "ticker": "WBD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 30.99, "reason": "stale quote for WBD (3158131.878484s old; limit 180s)"}
 {"timestamp": "2026-11-11T10:02:07.167112", "ticker": "WEC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 117.015, "reason": "stale quote for WEC (46921.193951s old; limit 180s)"}
 {"timestamp": "2026-11-11T10:02:07.167226", "ticker": "WELL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 247.66, "reason": "stale quote for WELL (46921.709366s old; limit 180s)"}
+{"timestamp": "2026-11-11T18:13:05.678173", "ticker": "HD", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 349.04, "reason": "liquidity filter: HD average volume 224,247 < 500,000"}
+{"timestamp": "2026-11-11T18:13:05.678339", "ticker": "TECH", "action": "buy", "engine": "gemini", "confidence": 94, "conviction": 9, "price": 72.785, "reason": "stale quote for TECH (561.219667s old; limit 180s)"}
+{"timestamp": "2026-11-11T18:13:05.678486", "ticker": "HIG", "action": "buy", "engine": "gemini", "confidence": 84, "conviction": 8, "price": 135.76, "reason": "liquidity filter: HIG average volume 91,790 < 500,000"}
