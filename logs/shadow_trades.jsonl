@@ -27982,3 +27982,5 @@
 {"timestamp": "2026-11-12T17:22:48.887977", "ticker": "BDX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 5, "price": 215.83, "reason": "liquidity filter: BDX average volume 114,635 < 500,000"}
 {"timestamp": "2026-11-12T17:22:48.888078", "ticker": "BF.B", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 30.075, "reason": "liquidity filter: BF.B average volume 146,296 < 500,000"}
 {"timestamp": "2026-11-12T17:22:48.888172", "ticker": "BIIB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 253.435, "reason": "liquidity filter: BIIB average volume 66,667 < 500,000"}
+{"timestamp": "2026-11-12T22:59:01.632746", "ticker": "AMZN", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 267.39, "reason": "stale quote for AMZN (5033.862916s old; limit 180s)"}
+{"timestamp": "2026-11-12T22:59:01.632856", "ticker": "AMD", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 584.88, "reason": "stale quote for AMD (5626.555878s old; limit 180s)"}
