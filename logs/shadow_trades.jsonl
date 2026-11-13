@@ -27984,3 +27984,5 @@
 {"timestamp": "2026-11-12T17:22:48.888172", "ticker": "BIIB", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 253.435, "reason": "liquidity filter: BIIB average volume 66,667 < 500,000"}
 {"timestamp": "2026-11-12T22:59:01.632746", "ticker": "AMZN", "action": "buy", "engine": "gemini", "confidence": 88, "conviction": 9, "price": 267.39, "reason": "stale quote for AMZN (5033.862916s old; limit 180s)"}
 {"timestamp": "2026-11-12T22:59:01.632856", "ticker": "AMD", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 584.88, "reason": "stale quote for AMD (5626.555878s old; limit 180s)"}
+{"timestamp": "2026-11-13T11:43:55.729361", "ticker": "NDAQ", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 108.64, "reason": "stale quote for NDAQ (53027.379837s old; limit 180s)"}
+{"timestamp": "2026-11-13T11:43:55.729487", "ticker": "ECL", "action": "buy", "engine": "gemini", "confidence": 90, "conviction": 9, "price": 304.6, "reason": "stale quote for ECL (53037.363611s old; limit 180s)"}
