@@ -27996,3 +27996,5 @@
 {"timestamp": "2026-11-16T12:17:14.699109", "ticker": "TKO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 195.285, "reason": "stale quote for TKO (227840.943731s old; limit 180s)"}
 {"timestamp": "2026-11-16T12:17:14.699243", "ticker": "FAST", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 55.22, "reason": "stale quote for FAST (227821.173384s old; limit 180s)"}
 {"timestamp": "2026-11-16T12:17:14.699407", "ticker": "TPR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 132.43, "reason": "stale quote for TPR (227834.825295s old; limit 180s)"}
+{"timestamp": "2026-11-17T13:59:29.311771", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 351.15, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
+{"timestamp": "2026-11-17T13:59:29.311896", "ticker": "SO", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 94.66, "reason": "stale quote for SO (61158.839893s old; limit 180s)"}
