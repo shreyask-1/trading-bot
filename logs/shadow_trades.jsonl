@@ -27998,3 +27998,5 @@
 {"timestamp": "2026-11-16T12:17:14.699407", "ticker": "TPR", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 132.43, "reason": "stale quote for TPR (227834.825295s old; limit 180s)"}
 {"timestamp": "2026-11-17T13:59:29.311771", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 351.15, "reason": "market data unavailable for AAPL (bid/ask spread missing)"}
 {"timestamp": "2026-11-17T13:59:29.311896", "ticker": "SO", "action": "buy", "engine": "gemini", "confidence": 80, "conviction": 8, "price": 94.66, "reason": "stale quote for SO (61158.839893s old; limit 180s)"}
+{"timestamp": "2026-11-18T12:37:30.510473", "ticker": "TGT", "action": "buy", "engine": "gemini", "confidence": 92, "conviction": 9, "price": 159.45, "reason": "stale quote for TGT (56246.339426s old; limit 180s)"}
+{"timestamp": "2026-11-18T12:37:30.510569", "ticker": "LOW", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 8, "price": 220.53, "reason": "stale quote for LOW (56254.017082s old; limit 180s)"}
