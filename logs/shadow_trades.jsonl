@@ -28008,3 +28008,4 @@
 {"timestamp": "2026-11-19T10:56:17.375936", "ticker": "DAL", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 84.89, "reason": "stale quote for DAL (50173.290332s old; limit 180s)"}
 {"timestamp": "2026-11-19T10:56:17.375998", "ticker": "DD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 150.23, "reason": "stale quote for DD (50192.244174s old; limit 180s)"}
 {"timestamp": "2026-11-19T10:56:17.376075", "ticker": "DGX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 259.68, "reason": "stale quote for DGX (50187.492757s old; limit 180s)"}
+{"timestamp": "2026-11-19T19:17:18.473204", "ticker": "NI", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 44.825, "reason": "liquidity filter: NI average volume 435,659 < 500,000"}
