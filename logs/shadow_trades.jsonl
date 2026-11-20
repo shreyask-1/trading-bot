@@ -28009,3 +28009,5 @@
 {"timestamp": "2026-11-19T10:56:17.375998", "ticker": "DD", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 150.23, "reason": "stale quote for DD (50192.244174s old; limit 180s)"}
 {"timestamp": "2026-11-19T10:56:17.376075", "ticker": "DGX", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 259.68, "reason": "stale quote for DGX (50187.492757s old; limit 180s)"}
 {"timestamp": "2026-11-19T19:17:18.473204", "ticker": "NI", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 44.825, "reason": "liquidity filter: NI average volume 435,659 < 500,000"}
+{"timestamp": "2026-11-20T18:09:43.672962", "ticker": "TMUS", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 167.05, "reason": "liquidity filter: TMUS average volume 295,912 < 500,000"}
+{"timestamp": "2026-11-20T18:09:43.673067", "ticker": "TJX", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 140.075, "reason": "liquidity filter: TJX average volume 368,386 < 500,000"}
