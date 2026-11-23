@@ -28011,3 +28011,6 @@
 {"timestamp": "2026-11-19T19:17:18.473204", "ticker": "NI", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 44.825, "reason": "liquidity filter: NI average volume 435,659 < 500,000"}
 {"timestamp": "2026-11-20T18:09:43.672962", "ticker": "TMUS", "action": "buy", "engine": "gemini", "confidence": 79, "conviction": 8, "price": 167.05, "reason": "liquidity filter: TMUS average volume 295,912 < 500,000"}
 {"timestamp": "2026-11-20T18:09:43.673067", "ticker": "TJX", "action": "buy", "engine": "gemini", "confidence": 86, "conviction": 9, "price": 140.075, "reason": "liquidity filter: TJX average volume 368,386 < 500,000"}
+{"timestamp": "2026-11-23T13:52:55.833062", "ticker": "TTWO", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 210.275, "reason": "stale quote for TTWO (233555.811477s old; limit 180s)"}
+{"timestamp": "2026-11-23T13:52:55.839330", "ticker": "MRSH", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 206.27, "reason": "stale quote for MRSH (233563.827629s old; limit 180s)"}
+{"timestamp": "2026-11-23T13:52:55.845687", "ticker": "MSI", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 520.42, "reason": "stale quote for MSI (233562.694984s old; limit 180s)"}
