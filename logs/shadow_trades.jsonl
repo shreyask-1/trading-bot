@@ -28019,3 +28019,6 @@
 {"timestamp": "2026-11-25T15:10:44.041903", "ticker": "MCK", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 7, "price": 1082.22, "reason": "liquidity filter: MCK average volume 43,486 < 500,000"}
 {"timestamp": "2026-11-25T15:10:44.042028", "ticker": "MGM", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 6, "price": 34.07, "reason": "liquidity filter: MGM average volume 366,071 < 500,000"}
 {"timestamp": "2026-11-25T15:10:44.042148", "ticker": "MKC", "action": "buy", "engine": "technical_fallback", "confidence": null, "conviction": 8, "price": 50.08, "reason": "liquidity filter: MKC average volume 177,476 < 500,000"}
+{"timestamp": "2026-11-27T00:53:24.739280", "ticker": "AAPL", "action": "buy", "engine": "gemini", "confidence": 85, "conviction": 9, "price": 355.14, "reason": "stale quote for AAPL (97728.281105s old; limit 180s)"}
+{"timestamp": "2026-11-27T00:53:24.739397", "ticker": "RMD", "action": "buy", "engine": "gemini", "confidence": 75, "conviction": 8, "price": 245.75, "reason": "stale quote for RMD (100404.845682s old; limit 180s)"}
+{"timestamp": "2026-11-27T00:53:24.739552", "ticker": "LEN", "action": "buy", "engine": "gemini", "confidence": 70, "conviction": 7, "price": 86.79, "reason": "stale quote for LEN (100406.962186s old; limit 180s)"}
